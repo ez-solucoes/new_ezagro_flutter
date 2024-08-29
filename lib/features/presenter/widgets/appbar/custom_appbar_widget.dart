@@ -55,6 +55,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
 
   AppBar get _buildStepsAndBackArrow => AppBar(
         backgroundColor: AppColors.whiteColor,
+        scrolledUnderElevation: 0,
         title: Column(
           children: [
             GestureDetector(
@@ -81,6 +82,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
 
   AppBar get _buildTitleAndBackArrow => AppBar(
         backgroundColor: AppColors.whiteColor,
+        scrolledUnderElevation: 0,
         title: Column(
           children: [
             Row(
@@ -108,6 +110,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
 
   AppBar get _buildHamburgerAndTitle => AppBar(
         backgroundColor: AppColors.whiteColor,
+        scrolledUnderElevation: 0,
         automaticallyImplyLeading: false,
         centerTitle: true,
         title: Stack(
@@ -125,6 +128,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
 
   AppBar get _buildHamburgerAndEmployee => AppBar(
         backgroundColor: AppColors.whiteColor,
+        scrolledUnderElevation: 0,
         title: Align(
           alignment: Alignment.centerLeft,
           child: Text(

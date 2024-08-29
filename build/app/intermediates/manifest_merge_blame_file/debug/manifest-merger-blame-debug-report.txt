@@ -13,8 +13,8 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->C:\src\ezsolucoes\ezagro\version2\new_ezagro_flutter\android\app\src\debug\AndroidManifest.xml:6:5-66
-15-->C:\src\ezsolucoes\ezagro\version2\new_ezagro_flutter\android\app\src\debug\AndroidManifest.xml:6:22-64
+15-->C:\src\Ez Agro Novo\new_ezagro_flutter\android\app\src\debug\AndroidManifest.xml:6:5-66
+15-->C:\src\Ez Agro Novo\new_ezagro_flutter\android\app\src\debug\AndroidManifest.xml:6:22-64
 16    <!--
 17     Required to query activities that can process text, see:
 18         https://developer.android.com/training/package-visibility?hl=en and
@@ -23,34 +23,34 @@
 21         In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin.
 22    -->
 23    <queries>
-23-->C:\src\ezsolucoes\ezagro\version2\new_ezagro_flutter\android\app\src\main\AndroidManifest.xml:38:5-43:15
+23-->C:\src\Ez Agro Novo\new_ezagro_flutter\android\app\src\main\AndroidManifest.xml:38:5-43:15
 24        <intent>
-24-->C:\src\ezsolucoes\ezagro\version2\new_ezagro_flutter\android\app\src\main\AndroidManifest.xml:39:9-42:18
+24-->C:\src\Ez Agro Novo\new_ezagro_flutter\android\app\src\main\AndroidManifest.xml:39:9-42:18
 25            <action android:name="android.intent.action.PROCESS_TEXT" />
-25-->C:\src\ezsolucoes\ezagro\version2\new_ezagro_flutter\android\app\src\main\AndroidManifest.xml:40:13-72
-25-->C:\src\ezsolucoes\ezagro\version2\new_ezagro_flutter\android\app\src\main\AndroidManifest.xml:40:21-70
+25-->C:\src\Ez Agro Novo\new_ezagro_flutter\android\app\src\main\AndroidManifest.xml:40:13-72
+25-->C:\src\Ez Agro Novo\new_ezagro_flutter\android\app\src\main\AndroidManifest.xml:40:21-70
 26
 27            <data android:mimeType="text/plain" />
-27-->C:\src\ezsolucoes\ezagro\version2\new_ezagro_flutter\android\app\src\main\AndroidManifest.xml:41:13-50
-27-->C:\src\ezsolucoes\ezagro\version2\new_ezagro_flutter\android\app\src\main\AndroidManifest.xml:41:19-48
+27-->C:\src\Ez Agro Novo\new_ezagro_flutter\android\app\src\main\AndroidManifest.xml:41:13-50
+27-->C:\src\Ez Agro Novo\new_ezagro_flutter\android\app\src\main\AndroidManifest.xml:41:19-48
 28        </intent>
 29    </queries>
 30
 31    <permission
-31-->[androidx.core:core:1.13.1] C:\Users\lenin\.gradle\caches\transforms-3\fac84cd5ecf1ec88a8c98571217c9350\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+31-->[androidx.core:core:1.13.1] C:\Users\Lucas\.gradle\caches\transforms-3\425e0d43938c7c537acdac2636dbb926\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
 32        android:name="br.com.ezsolucoes.new_ezagro_flutter.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-32-->[androidx.core:core:1.13.1] C:\Users\lenin\.gradle\caches\transforms-3\fac84cd5ecf1ec88a8c98571217c9350\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+32-->[androidx.core:core:1.13.1] C:\Users\Lucas\.gradle\caches\transforms-3\425e0d43938c7c537acdac2636dbb926\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
 33        android:protectionLevel="signature" />
-33-->[androidx.core:core:1.13.1] C:\Users\lenin\.gradle\caches\transforms-3\fac84cd5ecf1ec88a8c98571217c9350\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+33-->[androidx.core:core:1.13.1] C:\Users\Lucas\.gradle\caches\transforms-3\425e0d43938c7c537acdac2636dbb926\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
 34
 35    <uses-permission android:name="br.com.ezsolucoes.new_ezagro_flutter.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-35-->[androidx.core:core:1.13.1] C:\Users\lenin\.gradle\caches\transforms-3\fac84cd5ecf1ec88a8c98571217c9350\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
-35-->[androidx.core:core:1.13.1] C:\Users\lenin\.gradle\caches\transforms-3\fac84cd5ecf1ec88a8c98571217c9350\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+35-->[androidx.core:core:1.13.1] C:\Users\Lucas\.gradle\caches\transforms-3\425e0d43938c7c537acdac2636dbb926\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+35-->[androidx.core:core:1.13.1] C:\Users\Lucas\.gradle\caches\transforms-3\425e0d43938c7c537acdac2636dbb926\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
 36
 37    <application
 38        android:name="android.app.Application"
 39        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-39-->[androidx.core:core:1.13.1] C:\Users\lenin\.gradle\caches\transforms-3\fac84cd5ecf1ec88a8c98571217c9350\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+39-->[androidx.core:core:1.13.1] C:\Users\Lucas\.gradle\caches\transforms-3\425e0d43938c7c537acdac2636dbb926\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
 40        android:debuggable="true"
 41        android:icon="@mipmap/ic_launcher"
 42        android:label="new_ezagro_flutter" >
@@ -88,75 +88,75 @@
 74            android:value="2" />
 75
 76        <uses-library
-76-->[androidx.window:window:1.2.0] C:\Users\lenin\.gradle\caches\transforms-3\d47b1192960df52846144d82ac9e1d6f\transformed\jetified-window-1.2.0\AndroidManifest.xml:23:9-25:40
+76-->[androidx.window:window:1.2.0] C:\Users\Lucas\.gradle\caches\transforms-3\963af20acac67d7dc1cee9a57d76de95\transformed\jetified-window-1.2.0\AndroidManifest.xml:23:9-25:40
 77            android:name="androidx.window.extensions"
-77-->[androidx.window:window:1.2.0] C:\Users\lenin\.gradle\caches\transforms-3\d47b1192960df52846144d82ac9e1d6f\transformed\jetified-window-1.2.0\AndroidManifest.xml:24:13-54
+77-->[androidx.window:window:1.2.0] C:\Users\Lucas\.gradle\caches\transforms-3\963af20acac67d7dc1cee9a57d76de95\transformed\jetified-window-1.2.0\AndroidManifest.xml:24:13-54
 78            android:required="false" />
-78-->[androidx.window:window:1.2.0] C:\Users\lenin\.gradle\caches\transforms-3\d47b1192960df52846144d82ac9e1d6f\transformed\jetified-window-1.2.0\AndroidManifest.xml:25:13-37
+78-->[androidx.window:window:1.2.0] C:\Users\Lucas\.gradle\caches\transforms-3\963af20acac67d7dc1cee9a57d76de95\transformed\jetified-window-1.2.0\AndroidManifest.xml:25:13-37
 79        <uses-library
-79-->[androidx.window:window:1.2.0] C:\Users\lenin\.gradle\caches\transforms-3\d47b1192960df52846144d82ac9e1d6f\transformed\jetified-window-1.2.0\AndroidManifest.xml:26:9-28:40
+79-->[androidx.window:window:1.2.0] C:\Users\Lucas\.gradle\caches\transforms-3\963af20acac67d7dc1cee9a57d76de95\transformed\jetified-window-1.2.0\AndroidManifest.xml:26:9-28:40
 80            android:name="androidx.window.sidecar"
-80-->[androidx.window:window:1.2.0] C:\Users\lenin\.gradle\caches\transforms-3\d47b1192960df52846144d82ac9e1d6f\transformed\jetified-window-1.2.0\AndroidManifest.xml:27:13-51
+80-->[androidx.window:window:1.2.0] C:\Users\Lucas\.gradle\caches\transforms-3\963af20acac67d7dc1cee9a57d76de95\transformed\jetified-window-1.2.0\AndroidManifest.xml:27:13-51
 81            android:required="false" />
-81-->[androidx.window:window:1.2.0] C:\Users\lenin\.gradle\caches\transforms-3\d47b1192960df52846144d82ac9e1d6f\transformed\jetified-window-1.2.0\AndroidManifest.xml:28:13-37
+81-->[androidx.window:window:1.2.0] C:\Users\Lucas\.gradle\caches\transforms-3\963af20acac67d7dc1cee9a57d76de95\transformed\jetified-window-1.2.0\AndroidManifest.xml:28:13-37
 82
 83        <provider
-83-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\lenin\.gradle\caches\transforms-3\d674cd90e13def17f77b3f8010d35e09\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:24:9-32:20
+83-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Lucas\.gradle\caches\transforms-3\95f36622cbb60b690458c3372661354d\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:24:9-32:20
 84            android:name="androidx.startup.InitializationProvider"
-84-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\lenin\.gradle\caches\transforms-3\d674cd90e13def17f77b3f8010d35e09\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:25:13-67
+84-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Lucas\.gradle\caches\transforms-3\95f36622cbb60b690458c3372661354d\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:25:13-67
 85            android:authorities="br.com.ezsolucoes.new_ezagro_flutter.androidx-startup"
-85-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\lenin\.gradle\caches\transforms-3\d674cd90e13def17f77b3f8010d35e09\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:26:13-68
+85-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Lucas\.gradle\caches\transforms-3\95f36622cbb60b690458c3372661354d\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:26:13-68
 86            android:exported="false" >
-86-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\lenin\.gradle\caches\transforms-3\d674cd90e13def17f77b3f8010d35e09\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:27:13-37
+86-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Lucas\.gradle\caches\transforms-3\95f36622cbb60b690458c3372661354d\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:27:13-37
 87            <meta-data
-87-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\lenin\.gradle\caches\transforms-3\d674cd90e13def17f77b3f8010d35e09\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
+87-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Lucas\.gradle\caches\transforms-3\95f36622cbb60b690458c3372661354d\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
 88                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-88-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\lenin\.gradle\caches\transforms-3\d674cd90e13def17f77b3f8010d35e09\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
+88-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Lucas\.gradle\caches\transforms-3\95f36622cbb60b690458c3372661354d\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
 89                android:value="androidx.startup" />
-89-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\lenin\.gradle\caches\transforms-3\d674cd90e13def17f77b3f8010d35e09\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
+89-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Lucas\.gradle\caches\transforms-3\95f36622cbb60b690458c3372661354d\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
 90            <meta-data
-90-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+90-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lucas\.gradle\caches\transforms-3\c32cd84007570f797566726b9f41937f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
 91                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-91-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+91-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lucas\.gradle\caches\transforms-3\c32cd84007570f797566726b9f41937f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
 92                android:value="androidx.startup" />
-92-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+92-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lucas\.gradle\caches\transforms-3\c32cd84007570f797566726b9f41937f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
 93        </provider>
 94
 95        <receiver
-95-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+95-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lucas\.gradle\caches\transforms-3\c32cd84007570f797566726b9f41937f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
 96            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-96-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+96-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lucas\.gradle\caches\transforms-3\c32cd84007570f797566726b9f41937f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
 97            android:directBootAware="false"
-97-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+97-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lucas\.gradle\caches\transforms-3\c32cd84007570f797566726b9f41937f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
 98            android:enabled="true"
-98-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+98-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lucas\.gradle\caches\transforms-3\c32cd84007570f797566726b9f41937f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
 99            android:exported="true"
-99-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+99-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lucas\.gradle\caches\transforms-3\c32cd84007570f797566726b9f41937f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
 100            android:permission="android.permission.DUMP" >
-100-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+100-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lucas\.gradle\caches\transforms-3\c32cd84007570f797566726b9f41937f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
 101            <intent-filter>
-101-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+101-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lucas\.gradle\caches\transforms-3\c32cd84007570f797566726b9f41937f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
 102                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-102-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
-102-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+102-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lucas\.gradle\caches\transforms-3\c32cd84007570f797566726b9f41937f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+102-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lucas\.gradle\caches\transforms-3\c32cd84007570f797566726b9f41937f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
 103            </intent-filter>
 104            <intent-filter>
-104-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+104-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lucas\.gradle\caches\transforms-3\c32cd84007570f797566726b9f41937f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
 105                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-105-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
-105-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+105-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lucas\.gradle\caches\transforms-3\c32cd84007570f797566726b9f41937f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+105-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lucas\.gradle\caches\transforms-3\c32cd84007570f797566726b9f41937f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
 106            </intent-filter>
 107            <intent-filter>
-107-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+107-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lucas\.gradle\caches\transforms-3\c32cd84007570f797566726b9f41937f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
 108                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-108-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
-108-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+108-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lucas\.gradle\caches\transforms-3\c32cd84007570f797566726b9f41937f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+108-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lucas\.gradle\caches\transforms-3\c32cd84007570f797566726b9f41937f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
 109            </intent-filter>
 110            <intent-filter>
-110-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+110-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lucas\.gradle\caches\transforms-3\c32cd84007570f797566726b9f41937f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
 111                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-111-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
-111-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+111-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lucas\.gradle\caches\transforms-3\c32cd84007570f797566726b9f41937f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+111-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lucas\.gradle\caches\transforms-3\c32cd84007570f797566726b9f41937f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
 112            </intent-filter>
 113        </receiver>
 114    </application>

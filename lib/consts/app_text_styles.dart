@@ -95,4 +95,27 @@ class AppTextStyles {
       color: color,
     );
   }
+
+  static TextStyle bigBoldCellTitle({
+    required Color color,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.montserratFont,
+      fontWeight: FontWeight.bold,
+      fontSize: AppDimens.subTitleDimen,
+      color: color
+    );
+  }
+
+  static TextStyle cellBodyTextStyle({
+    required Color color,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.montserratFont,
+      fontWeight: FontWeight.w500,
+      fontSize: AppDimens.smallTextDimen,
+      color: color,
+    );
+  }
+
 }

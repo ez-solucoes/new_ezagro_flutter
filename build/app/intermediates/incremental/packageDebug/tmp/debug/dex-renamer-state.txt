@@ -1,0 +1,16 @@
+#Thu Aug 29 02:24:34 BRT 2024
+base.0=C\:\\src\\ezsolucoes\\ezagro\\version2\\new_ezagro_flutter\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=C\:\\src\\ezsolucoes\\ezagro\\version2\\new_ezagro_flutter\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\0\\classes.dex
+base.2=C\:\\src\\ezsolucoes\\ezagro\\version2\\new_ezagro_flutter\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.3=C\:\\src\\ezsolucoes\\ezagro\\version2\\new_ezagro_flutter\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
+base.4=C\:\\src\\ezsolucoes\\ezagro\\version2\\new_ezagro_flutter\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\8\\classes.dex
+path.0=classes.dex
+path.1=0/classes.dex
+path.2=0/classes.dex
+path.3=1/classes.dex
+path.4=8/classes.dex
+renamed.0=classes.dex
+renamed.1=classes2.dex
+renamed.2=classes3.dex
+renamed.3=classes4.dex
+renamed.4=classes5.dex

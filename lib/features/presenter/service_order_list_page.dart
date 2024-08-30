@@ -12,7 +12,7 @@ import '../../../consts/app_routes.dart';
 
 class ServiceOrderListPage extends StatelessWidget {
   const ServiceOrderListPage({Key? key}) : super(key: key);
-
+  static const List<String> statusList = ['Aguard. Aprovação', 'Pausada','Em Andamento','Cancelada', 'A Iniciar','Concluído'];
   @override
   Widget build(BuildContext context) {
     return BackgroundWidget(
@@ -46,7 +46,7 @@ class ServiceOrderListPage extends StatelessWidget {
                           ),
                           Flexible(
                             child: ListView.separated(
-                              itemCount: 5,
+                              itemCount: statusList.length,
                               itemBuilder: (context, index) {
                                 return ServiceOrderCellWidget(
                                   id: "80548",
@@ -54,9 +54,8 @@ class ServiceOrderListPage extends StatelessWidget {
                                   farm: "Fazenda de Uberlândia",
                                   costCenter: "23235",
                                   openingDate: "21/04/2023",
-                                  closingDate: "22/04/2023",
-                                  status:
-                                      index % 2 == 0 ? "Pendente" : "Concluído",
+                                  closingDate: statusList[index] == "Concluído" ? "22/04/2023" : "",
+                                  status: statusList[index],
                                 );
                               },
                               separatorBuilder: (context, index) {

@@ -26,8 +26,6 @@ class ServiceOrderCellWidget extends StatelessWidget {
     switch (status.toLowerCase()) {
       case 'concluído':
         return AppColors.greenColor;
-      case 'pendente':
-        return AppColors.trueWhiteColor;
       default:
         return AppColors.trueWhiteColor;
     }
@@ -37,8 +35,6 @@ class ServiceOrderCellWidget extends StatelessWidget {
     switch (status.toLowerCase()) {
       case 'concluído':
         return AppColors.trueWhiteColor;
-      case 'pendente':
-        return AppColors.blackColor;
       default:
         return AppColors.blackColor;
     }
@@ -48,17 +44,25 @@ class ServiceOrderCellWidget extends StatelessWidget {
     switch (status.toLowerCase()) {
       case 'concluído':
         return AppColors.trueWhiteColor;
-      case 'pendente':
-        return AppColors.transparent;
+      case 'aguard. aprovação':
+        return AppColors.muddyYellowColor;
+      case 'pausada':
+        return AppColors.darkGreyColor;
+      case 'em andamento':
+        return AppColors.greenColor;
+      case 'cancelada':
+        return AppColors.redCanceledColor;
+      case 'a iniciar':
+        return AppColors.whiteBorderColor;
       default:
-        return AppColors.transparent;
+        return AppColors.blackColor;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(2.0),
+      padding: EdgeInsets.all(1.0),
       decoration: BoxDecoration(
           color: _getBackgroundColor(),
           borderRadius: BorderRadius.circular(7.0)),
@@ -96,7 +100,7 @@ class ServiceOrderCellWidget extends StatelessWidget {
                 Text(AppStrings.openingDateCellField + openingDate,
                     style: AppTextStyles.cellBodyTextStyle(
                         color: _getTextColor())),
-                Text(AppStrings.closingDateCellField + closingDate,
+                closingDate.isEmpty ? SizedBox() : Text(AppStrings.closingDateCellField + closingDate,
                     style:
                         AppTextStyles.cellBodyTextStyle(color: _getTextColor()))
               ],

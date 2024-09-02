@@ -74,6 +74,39 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle boldTextOnCardStyle({
+    required Color color,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.montserratFont,
+      fontWeight: FontWeight.bold,
+      fontSize: AppDimens.textOnCard,
+      color: color,
+    );
+  }
+
+  static TextStyle smallBoldTextOnCardStyle({
+    required Color color,
+  }) {
+    return TextStyle(
+        fontFamily: AppFonts.montserratFont,
+        fontWeight: FontWeight.bold,
+        fontSize: AppDimens.smallTextDimen,
+        color: color
+    );
+  }
+
+  static TextStyle labelOnCardStyle({
+    required Color color,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.montserratFont,
+      fontWeight: FontWeight.w500,
+      fontSize: AppDimens.labelOnCard,
+      color: color,
+    );
+  }
+
   static TextStyle appBarTitleTextStyle({
     required Color color,
   }) {

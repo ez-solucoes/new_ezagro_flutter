@@ -4,7 +4,8 @@ import 'package:new_ezagro_flutter/features/presenter/documents_page/documents_p
 import 'package:new_ezagro_flutter/features/presenter/register_page/register_fifth_step_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/register_page/register_fourth_step_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/register_page/register_second_step_page.dart';
-import 'package:new_ezagro_flutter/features/presenter/service_order_list_page.dart';
+import 'package:new_ezagro_flutter/features/presenter/service_order_list_page/service_order_list_page.dart';
+import 'package:new_ezagro_flutter/features/presenter/service_order_page/service_order_page.dart';
 
 import 'features/presenter/login_page/login_page.dart';
 import 'features/presenter/register_page/register_first_step_page.dart';
@@ -17,7 +18,7 @@ class AppModule extends Module {
 
   @override
   void routes(r) {
-    r.child(AppRoutes.appDefaultPage, child: (context) => const ServiceOrderListPage());
+    r.child(AppRoutes.appDefaultPage, child: (context) => const ServiceOrderPage());
     r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
     r.child(AppRoutes.appHomePage, child: (context) => LoginPage());
     r.child(AppRoutes.appRegisterFirstStepPage, child: (context) => const RegisterFirstStepPage());
@@ -26,5 +27,7 @@ class AppModule extends Module {
     r.child(AppRoutes.appRegisterFourthStepPage, child: (context) => const RegisterFourthStepPage());
     r.child(AppRoutes.appRegisterFifthStepPage, child: (context) => const RegisterFifthStepPage());
     r.child(AppRoutes.appDocumentsPage, child: (context) => const DocumentsPage());
+    r.child(AppRoutes.appServiceOrderListPage, child: (context) => const ServiceOrderListPage());
+    r.child(AppRoutes.appServiceOrderPage, child: (context) => const ServiceOrderPage());
   }
 }

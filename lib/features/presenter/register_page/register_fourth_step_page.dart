@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:new_ezagro_flutter/consts/app_routes.dart';
+import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 
 import '../../../consts/app_colors.dart';
 import '../../../consts/app_strings.dart';
@@ -9,12 +12,24 @@ import '../widgets/buttons/custom_green_elevated_button.dart';
 import '../widgets/textFields/custom_underlined_text_field.dart';
 
 class RegisterFourthStepPage extends StatelessWidget {
-  const RegisterFourthStepPage({super.key});
+  final ArgParams? args;
+  static const String routePath = AppRoutes.appRegisterFourthStepPage;
+
+  static navigate(ArgParams args) =>
+      Modular.to.navigate(routePath, arguments: args);
+
+  static push(ArgParams args) =>
+      Modular.to.pushNamed(routePath, arguments: args);
+
+  const RegisterFourthStepPage({super.key, this.args});
 
   @override
   Widget build(BuildContext context) {
     return BackgroundWidget(
-      appBar: const CustomAppBarWidget(indicatorValue: 0.8, appBarType: AppBarType.stepsAndBackArrow,),
+      appBar: const CustomAppBarWidget(
+        indicatorValue: 0.8,
+        appBarType: AppBarType.stepsAndBackArrow,
+      ),
       scrollable: true,
       child: Padding(
         padding: const EdgeInsets.all(19.0),

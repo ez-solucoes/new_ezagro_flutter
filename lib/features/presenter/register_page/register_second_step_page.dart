@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:new_ezagro_flutter/consts/app_routes.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/consts/app_text_styles.dart';
+import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/appbar/custom_appbar_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/background/background_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/buttons/custom_green_elevated_button.dart';
@@ -8,12 +11,24 @@ import '../../../consts/app_colors.dart';
 import '../widgets/textFields/custom_pinput_text_field.dart';
 
 class RegisterSecondStepPage extends StatelessWidget {
-  const RegisterSecondStepPage({super.key});
+  final ArgParams? args;
+  static const String routePath = AppRoutes.appRegisterSecondStepPage;
+
+  static navigate(ArgParams args) =>
+      Modular.to.navigate(routePath, arguments: args);
+
+  static push(ArgParams args) =>
+      Modular.to.pushNamed(routePath, arguments: args);
+
+  const RegisterSecondStepPage({super.key, this.args});
 
   @override
   Widget build(BuildContext context) {
     return BackgroundWidget(
-      appBar: const CustomAppBarWidget(indicatorValue: 0.8, appBarType: AppBarType.stepsAndBackArrow,),
+      appBar: const CustomAppBarWidget(
+        indicatorValue: 0.8,
+        appBarType: AppBarType.stepsAndBackArrow,
+      ),
       scrollable: true,
       child: Padding(
         padding: const EdgeInsets.all(19),
@@ -23,14 +38,17 @@ class RegisterSecondStepPage extends StatelessWidget {
             const SizedBox(height: 72),
             const Text(
               AppStrings.weSentTheConfirmationCodeToYourPhone,
-              style:
-                  TextStyle(fontWeight: FontWeight.w700, fontSize: 14, color: AppColors.blackColor),
+              style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 14,
+                  color: AppColors.blackColor),
             ),
             const SizedBox(height: 18),
             Text(
               AppStrings.typeTheNumberBellow,
               textAlign: TextAlign.start,
-              style: AppTextStyles.subTitleTextStyle(color: AppColors.blackColor),
+              style:
+                  AppTextStyles.subTitleTextStyle(color: AppColors.blackColor),
             ),
             const SizedBox(height: 18),
             Center(

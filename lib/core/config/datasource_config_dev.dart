@@ -1,15 +1,13 @@
 import 'package:new_ezagro_flutter/core/config/datasource_config.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/api_datasource/api_endpoints/api_endpoints.dart';
 
 class DatasourceConfigDev implements DatasourceConfig {
   @override
-  String get apiAuthority => );
+  String get apiAuthority => AppEndpoints.mainBaseUrl;
 
   @override
-  // TODO: implement apiScheme
-  String get apiScheme => throw UnimplementedError();
+  String get apiScheme => AppEndpoints.baseUrlProtocolWithSecurity;
 
   @override
-  // TODO: implement isSendFeedbackEnabled
-  bool get isSendFeedbackEnabled => throw UnimplementedError();
-
+  bool get isSendFeedbackEnabled => false;
 }

@@ -29,7 +29,7 @@ class DocumentsPage extends StatelessWidget {
       ),
       scrollable: false,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 19, horizontal: 19),
+        padding: const EdgeInsets.only(left: 19, right: 19, bottom: 19),
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,

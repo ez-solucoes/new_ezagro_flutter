@@ -9,7 +9,7 @@ class BackgroundWidget extends StatelessWidget {
   final bool scrollable;
   final Widget child;
 
-  const BackgroundWidget({super.key, required this.child, this.appBar, required this.scrollable});
+  const BackgroundWidget({super.key, required this.scrollable, required this.child, this.appBar});
 
   @override
   Widget build(BuildContext context) {

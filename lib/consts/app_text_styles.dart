@@ -12,7 +12,7 @@ class AppTextStyles {
   }) {
     return TextStyle(
       fontFamily: AppFonts.montserratFont,
-      fontSize: 12,
+      fontSize: AppDimens.smallTextDimen,
       color: color,
       fontWeight: FontWeight.w700,
     );
@@ -23,7 +23,7 @@ class AppTextStyles {
   }) {
     return TextStyle(
         fontFamily: AppFonts.montserratFont,
-        fontSize: 14,
+        fontSize: AppDimens.bodyTextDimen,
         color: color,
         fontWeight: FontWeight.bold);
   }
@@ -34,7 +34,7 @@ class AppTextStyles {
     return TextStyle(
       fontFamily: AppFonts.montserratFont,
       fontWeight: FontWeight.w500,
-      fontSize: 14,
+      fontSize: AppDimens.bodyTextDimen,
       color: color,
       decoration: TextDecoration.underline,
       decorationColor: AppColors.blackColor,
@@ -58,7 +58,7 @@ class AppTextStyles {
   }) {
     return TextStyle(
       fontWeight: FontWeight.w700,
-      fontSize: 14,
+      fontSize: AppDimens.bodyTextDimen,
       color: color,
     );
   }
@@ -92,6 +92,17 @@ class AppTextStyles {
       fontFamily: AppFonts.montserratFont,
       fontWeight: FontWeight.w400,
       fontSize: AppDimens.smallTextDimen,
+      color: color,
+    );
+  }
+
+  static TextStyle hintTextFieldTextStyle({
+    required Color color,
+}) {
+    return TextStyle(
+      fontFamily: AppFonts.montserratFont,
+      fontWeight: FontWeight.w400,
+      fontSize: AppDimens.bodyTextDimen,
       color: color,
     );
   }

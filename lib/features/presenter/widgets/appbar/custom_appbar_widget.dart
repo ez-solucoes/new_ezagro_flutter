@@ -5,8 +5,8 @@ import '../../../../consts/app_colors.dart';
 import '../../../../consts/app_text_styles.dart';
 
 enum AppBarType {
-  stepsAndBackArrow,
-  titleAndBackArrow,
+  backArrowAndSteps,
+  backArrowAndTitle,
   hamburgerAndTitle,
   hamburgerAndEmployee,
 }
@@ -40,9 +40,9 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
   @override
   Widget build(BuildContext context) {
     switch (appBarType) {
-      case AppBarType.stepsAndBackArrow:
+      case AppBarType.backArrowAndSteps:
         return _buildStepsAndBackArrow;
-      case AppBarType.titleAndBackArrow:
+      case AppBarType.backArrowAndTitle:
         return _buildTitleAndBackArrow;
       case AppBarType.hamburgerAndTitle:
         return _buildHamburgerAndTitle;
@@ -98,8 +98,11 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
                     ],
                   ),
                 ),
-                Text(title!,
-                    style: AppTextStyles.appBarTitleTextStyle(color: AppColors.blackColor)),
+                title != null
+                    ? Text(title!,
+                        style: AppTextStyles.appBarTitleTextStyle(color: AppColors.blackColor))
+                    : Text('',
+                        style: AppTextStyles.appBarTitleTextStyle(color: AppColors.blackColor)),
               ],
             ),
           ],

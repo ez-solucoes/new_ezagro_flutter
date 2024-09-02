@@ -12,4 +12,7 @@ class AppRoutes {
   static const String appRegisterFourthStepPage = '/registerFourthStepPage';
   static const String appRegisterFifthStepPage = '/registerFifthStepPage';
   static const String appDocumentsPage = '/documentsPage';
+
+  //Change Password
+  static const String appChangePasswordFirstStepPage = '/changePasswordFirstStepPage';
 }

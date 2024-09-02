@@ -14,7 +14,7 @@ class RegisterThirdStepPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BackgroundWidget(
-      appBar: const CustomAppBarWidget(indicatorValue: 0.8, appBarType: AppBarType.stepsAndBackArrow,),
+      appBar: const CustomAppBarWidget(indicatorValue: 0.8, appBarType: AppBarType.backArrowAndSteps,),
       scrollable: true,
       child: Padding(
         padding: const EdgeInsets.all(19.0),

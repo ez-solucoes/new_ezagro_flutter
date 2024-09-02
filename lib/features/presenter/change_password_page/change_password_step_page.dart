@@ -15,7 +15,7 @@ class ChangePasswordStepPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BackgroundWidget(
       scrollable: true,
-      appBar: const CustomAppBarWidget(appBarType: AppBarType.backArrowAndTitle),
+      appBar: const CustomAppBarWidget(appBarType: AppBarType.titleAndBackArrow),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 19.0),
         child: Column(

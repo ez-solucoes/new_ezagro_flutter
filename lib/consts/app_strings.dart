@@ -34,4 +34,11 @@ class AppStrings {
       'Erro ao fazer a chamada de um serviço na API.';
   static const String reautenticationNeededErrorMessage =
       'Erro ao efetuar o Login.\nPor favor, verifique os dados digitados e repita a operação.';
+  static const String unauthenticatedUserErrorCausedBy =
+      'Usuário não autenticado.';
+
+  //Shared Preferences keys
+  static const String tokenKey = 'Token';
+  static const String idKey = 'id';
+  static const String directoryKey = 'Directory';
 }

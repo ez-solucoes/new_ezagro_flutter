@@ -100,8 +100,11 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
                     ],
                   ),
                 ),
-                Text(title!,
-                    style: AppTextStyles.appBarTitleTextStyle(color: AppColors.blackColor)),
+                title != null
+                    ? Text(title!,
+                        style: AppTextStyles.appBarTitleTextStyle(color: AppColors.blackColor))
+                    : Text('',
+                        style: AppTextStyles.appBarTitleTextStyle(color: AppColors.blackColor)),
               ],
             ),
           ],

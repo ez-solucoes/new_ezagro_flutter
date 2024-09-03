@@ -25,4 +25,20 @@ class AppStrings {
 
   static const String forgotPasswordFirstStep = 'Esqueceu sua senha?\nDigite seu CPF e vamos enviar uma senha provisória em seu telefone:';
 
+  //Errors
+  static const String genericErrorMessage =
+      'Ocorreu um erro inesperado. Por favor, tente novamente mais tarde ou entre em contato conosco para relatar o problema.';
+  static const String serverErrorMessage =
+      'Ocorreu um erro no processamento da sua requisição. Por favor, tente novamente mais tarde ou entre em contato conosco para relatar o problema.';
+  static const String serverErrorCausedBy =
+      'Erro ao fazer a chamada de um serviço na API.';
+  static const String reautenticationNeededErrorMessage =
+      'Erro ao efetuar o Login.\nPor favor, verifique os dados digitados e repita a operação.';
+  static const String unauthenticatedUserErrorCausedBy =
+      'Usuário não autenticado.';
+
+  //Shared Preferences keys
+  static const String tokenKey = 'Token';
+  static const String idKey = 'id';
+  static const String directoryKey = 'Directory';
 }

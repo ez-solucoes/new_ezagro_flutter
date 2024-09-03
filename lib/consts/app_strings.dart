@@ -25,4 +25,8 @@ class AppStrings {
 
   static const String forgotPasswordFirstStep = 'Esqueceu sua senha?\nDigite seu CPF e vamos enviar uma senha provisória em seu telefone:';
 
+  //Errors
+  static const String genericErrorMessage =
+      'Ocorreu um erro inesperado. Por favor, tente novamente mais tarde ou entre em contato conosco para relatar o problema.';
+
 }

@@ -129,7 +129,7 @@ class AppTextStyles {
     );
   }
 
-  static TextStyle bigBoldCellTitle({
+  static TextStyle bigBoldCardTitle({
     required Color color,
   }) {
     return TextStyle(
@@ -140,13 +140,24 @@ class AppTextStyles {
     );
   }
 
-  static TextStyle cellBodyTextStyle({
+  static TextStyle cardBodyTextStyle({
     required Color color,
   }) {
     return TextStyle(
       fontFamily: AppFonts.montserratFont,
       fontWeight: FontWeight.w500,
       fontSize: AppDimens.smallTextDimen,
+      color: color,
+    );
+  }
+
+  static TextStyle hintTextFieldTextStyle({
+    required Color color,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.montserratFont,
+      fontWeight: FontWeight.w400,
+      fontSize: AppDimens.bodyTextDimen,
       color: color,
     );
   }

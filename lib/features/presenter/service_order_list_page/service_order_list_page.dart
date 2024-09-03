@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
+import 'package:new_ezagro_flutter/core/enums/service_order_type_enum.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/appbar/custom_appbar_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/background/background_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/customSearchBar/custom_search_bar.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/service_order_cell_widget.dart';
+import 'package:new_ezagro_flutter/features/presenter/widgets/service_order_card_widget.dart';
 
 import '../../../../../../../consts/app_colors.dart';
 import '../../../../../../../consts/app_dimens.dart';
 
 class ServiceOrderListPage extends StatelessWidget {
   const ServiceOrderListPage({super.key});
-  static const List<String> statusList = ['Aguard. Aprovação', 'Pausada','Em Andamento','Cancelada', 'A Iniciar','Concluído'];
+  static const List<ServiceOrderTypeEnum> statusList = [ServiceOrderTypeEnum.approvalPending,
+    ServiceOrderTypeEnum.paused,ServiceOrderTypeEnum.onGoing,ServiceOrderTypeEnum.canceled,
+    ServiceOrderTypeEnum.toBeStarted,ServiceOrderTypeEnum.finished];
   @override
   Widget build(BuildContext context) {
     return BackgroundWidget(
@@ -45,13 +48,13 @@ class ServiceOrderListPage extends StatelessWidget {
                             child: ListView.separated(
                               itemCount: statusList.length,
                               itemBuilder: (context, index) {
-                                return ServiceOrderCellWidget(
+                                return ServiceOrderCardWidget(
                                   id: "80548",
                                   serviceOrderType: "Plantio",
                                   farm: "Fazenda de Uberlândia",
                                   costCenter: "23235",
                                   openingDate: "21/04/2023",
-                                  closingDate: statusList[index] == "Concluído" ? "22/04/2023" : "",
+                                  closingDate: statusList[index] == ServiceOrderTypeEnum.finished ? "22/04/2023" : "",
                                   status: statusList[index],
                                 );
                               },

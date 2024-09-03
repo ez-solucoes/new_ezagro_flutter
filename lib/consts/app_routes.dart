@@ -14,4 +14,7 @@ class AppRoutes {
   static const String appDocumentsPage = '/documentsPage';
   static const String appServiceOrderListPage = '/serviceOrderListPage';
   static const String appServiceOrderPage = '/serviceOrderPage';
+
+  //Change Password
+  static const String appChangePasswordFirstStepPage = '/changePasswordFirstStepPage';
 }

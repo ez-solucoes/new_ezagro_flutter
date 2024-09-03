@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/appbar/custom_appbar_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/background/background_widget.dart';
@@ -8,18 +7,18 @@ import 'package:new_ezagro_flutter/features/presenter/widgets/service_order_cell
 
 import '../../../../../../../consts/app_colors.dart';
 import '../../../../../../../consts/app_dimens.dart';
-import '../../../../consts/app_routes.dart';
 
 class ServiceOrderListPage extends StatelessWidget {
-  const ServiceOrderListPage({Key? key}) : super(key: key);
+  const ServiceOrderListPage({super.key});
   static const List<String> statusList = ['Aguard. Aprovação', 'Pausada','Em Andamento','Cancelada', 'A Iniciar','Concluído'];
   @override
   Widget build(BuildContext context) {
     return BackgroundWidget(
+        scrollable: false,
         child: Scaffold(
           backgroundColor: AppColors.transparent,
           resizeToAvoidBottomInset: false,
-          appBar: CustomAppBarWidget(
+          appBar: const CustomAppBarWidget(
             appBarType: AppBarType.hamburgerAndTitle,
             title: AppStrings.serviceOrderTitle,
           ),
@@ -29,8 +28,8 @@ class ServiceOrderListPage extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
+                  const Padding(
+                    padding: EdgeInsets.only(
                         top: 20, left: 30, right: 30, bottom: 0),
                     child: CustomSearchBar(),
                   ),
@@ -57,7 +56,7 @@ class ServiceOrderListPage extends StatelessWidget {
                                 );
                               },
                               separatorBuilder: (context, index) {
-                                return Divider(
+                                return const Divider(
                                   thickness: 8,
                                   indent: 0,
                                   endIndent: 8,
@@ -80,14 +79,13 @@ class ServiceOrderListPage extends StatelessWidget {
           floatingActionButton: FloatingActionButton(
             backgroundColor: AppColors.trueWhiteColor,
             onPressed: () {},
-            child: Icon(
+            child: const Icon(
               Icons.add,
               color: AppColors.greenColor,
               size: 50,
             ),
           ),
           floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-        ),
-        scrollable: false);
+        ));
   }
 }

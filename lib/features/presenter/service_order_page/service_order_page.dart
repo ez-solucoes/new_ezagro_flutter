@@ -1,25 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/appbar/custom_appbar_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/background/background_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/customInfoCard/custom_info_card_widget.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/customSearchBar/custom_search_bar.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/service_order_cell_widget.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/textFields/custom_outlined_text_form_field.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/textFields/custom_pinput_text_field.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/textFields/custom_underlined_text_field.dart';
 
 import '../../../../../../../consts/app_colors.dart';
-import '../../../../../../../consts/app_dimens.dart';
-import '../../../../consts/app_routes.dart';
 
 class ServiceOrderPage extends StatelessWidget {
-  const ServiceOrderPage({Key? key}) : super(key: key);
+  const ServiceOrderPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BackgroundWidget(
+    return const BackgroundWidget(
+        scrollable: false,
         child: Scaffold(
           backgroundColor: AppColors.transparent,
           resizeToAvoidBottomInset: false,
@@ -75,6 +68,6 @@ class ServiceOrderPage extends StatelessWidget {
             ),
           )
         ),
-        scrollable: false);
+    );
   }
 }

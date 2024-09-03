@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 
-class CustomSearchBar extends StatefulWidget {
-  @override
-  _CustomSearchBarState createState() => _CustomSearchBarState();
-}
+import '../../../../consts/app_strings.dart';
 
-class _CustomSearchBarState extends State<CustomSearchBar> {
-  String _searchText = '';
+class CustomSearchBar extends StatelessWidget {
+  const CustomSearchBar({super.key});
 
+  //String _searchText = '';
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 1.0),
+      padding: const EdgeInsets.symmetric(horizontal: 1.0),
       decoration: BoxDecoration(
         color: Colors.transparent,
         border: Border(
@@ -21,17 +19,15 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
       child: Row(
         children: [
           Icon(Icons.search, color: Colors.grey.shade400),
-          SizedBox(width: 8.0),
+          const SizedBox(width: 8.0),
           Expanded(
             child: TextField(
               onChanged: (text) {
-                setState(() {
-                  _searchText = text;
-                });
+
               },
-              style: TextStyle(color: Colors.black),
+              style: const TextStyle(color: Colors.black),
               decoration: InputDecoration(
-                hintText: 'Pesquisar',
+                hintText: AppStrings.searchBarHint,
                 hintStyle: TextStyle(color: Colors.grey.shade400),
                 border: InputBorder.none,
               ),

@@ -22,6 +22,7 @@ class CustomInfoCardWidget extends StatelessWidget {
   final Function() onIconTap;
 
   const CustomInfoCardWidget({
+    super.key,
     this.labelOne = "",
     this.textOne = "",
     this.labelTwo = "",
@@ -48,7 +49,7 @@ class CustomInfoCardWidget extends StatelessWidget {
   }
 
   Container get _buildActivityCard => Container(
-      padding: EdgeInsets.all(12.0),
+      padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(5),
@@ -57,7 +58,7 @@ class CustomInfoCardWidget extends StatelessWidget {
             color: Colors.black.withOpacity(0.1),
             spreadRadius: 2,
             blurRadius: 8,
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -98,7 +99,7 @@ class CustomInfoCardWidget extends StatelessWidget {
       ));
 
   Container get _buildOneLabeledInfo => Container(
-      padding: EdgeInsets.all(12.0),
+      padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(5),
@@ -107,7 +108,7 @@ class CustomInfoCardWidget extends StatelessWidget {
             color: Colors.black.withOpacity(0.1),
             spreadRadius: 2,
             blurRadius: 8,
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -136,7 +137,7 @@ class CustomInfoCardWidget extends StatelessWidget {
       ));
 
   Container get _buildTwoLabeledInfo => Container(
-      padding: EdgeInsets.all(12.0),
+      padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(5),
@@ -145,7 +146,7 @@ class CustomInfoCardWidget extends StatelessWidget {
             color: Colors.black.withOpacity(0.1),
             spreadRadius: 2,
             blurRadius: 8,
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -170,12 +171,12 @@ class CustomInfoCardWidget extends StatelessWidget {
           IntrinsicHeight(
             child: Row(
               children: [
-                VerticalDivider(
+                const VerticalDivider(
                   width: 1,
                   thickness: 1,
                   color: AppColors.softGreyColor,
                 ),
-                SizedBox(width: 5),
+                const SizedBox(width: 5),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -198,7 +199,7 @@ class CustomInfoCardWidget extends StatelessWidget {
       ));
 
   Container get _buildThreeLabeledInfo => Container(
-      padding: EdgeInsets.all(12.0),
+      padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(5),
@@ -207,7 +208,7 @@ class CustomInfoCardWidget extends StatelessWidget {
             color: Colors.black.withOpacity(0.1),
             spreadRadius: 2,
             blurRadius: 8,
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -230,7 +231,7 @@ class CustomInfoCardWidget extends StatelessWidget {
                 )
               ],
             ),
-            VerticalDivider(
+            const VerticalDivider(
               width: 1,
               thickness: 1,
               color: AppColors.softGreyColor,
@@ -250,7 +251,7 @@ class CustomInfoCardWidget extends StatelessWidget {
                 )
               ],
             ),
-            VerticalDivider(
+            const VerticalDivider(
               width: 1,
               thickness: 1,
               color: AppColors.softGreyColor,
@@ -278,7 +279,7 @@ class CustomInfoCardWidget extends StatelessWidget {
     if (icon != null) {
       return IconButton(onPressed: onIconTap, icon: Icon(icon));
     } else {
-      return SizedBox();
+      return const SizedBox();
     }
   }
 

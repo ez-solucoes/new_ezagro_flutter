@@ -12,7 +12,8 @@ class ServiceOrderCellWidget extends StatelessWidget {
   final String closingDate;
   final String status;
 
-  ServiceOrderCellWidget({
+  const ServiceOrderCellWidget({
+    super.key,
     required this.id,
     required this.serviceOrderType,
     required this.farm,
@@ -62,20 +63,20 @@ class ServiceOrderCellWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(1.0),
+      padding: const EdgeInsets.all(1.0),
       decoration: BoxDecoration(
           color: _getBackgroundColor(),
           borderRadius: BorderRadius.circular(7.0)),
       child: Container(
-          padding: EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(10.0),
           decoration: BoxDecoration(
             color: _getBackgroundColor(),
             borderRadius: BorderRadius.circular(7.0),
             border: Border.all(
-              color: _getBorderColor(), // Cor da borda
-              width: 1.5, // Largura da borda
+              color: _getBorderColor(),
+              width: 1.5,
             ),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Colors.black26,
                 blurRadius: 2.0,
@@ -87,10 +88,10 @@ class ServiceOrderCellWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(id + " - " + serviceOrderType,
+                Text("$id - $serviceOrderType",
                     style:
                         AppTextStyles.bigBoldCellTitle(color: _getTextColor())),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Text(farm,
                     style: AppTextStyles.cellBodyTextStyle(
                         color: _getTextColor())),
@@ -100,12 +101,12 @@ class ServiceOrderCellWidget extends StatelessWidget {
                 Text(AppStrings.openingDateCellField + openingDate,
                     style: AppTextStyles.cellBodyTextStyle(
                         color: _getTextColor())),
-                closingDate.isEmpty ? SizedBox() : Text(AppStrings.closingDateCellField + closingDate,
+                closingDate.isEmpty ? const SizedBox() : Text(AppStrings.closingDateCellField + closingDate,
                     style:
                         AppTextStyles.cellBodyTextStyle(color: _getTextColor()))
               ],
             ),
-            Spacer(),
+            const Spacer(),
             Column(
               children: [
                 Row(
@@ -113,7 +114,7 @@ class ServiceOrderCellWidget extends StatelessWidget {
                     Text(status,
                         style: AppTextStyles.cellBodyTextStyle(
                             color: _getTextColor())),
-                    SizedBox(width: 8.0),
+                    const SizedBox(width: 8.0),
                     Icon(
                       Icons.arrow_forward_ios,
                       size: 16.0,

@@ -5,6 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../../consts/app_strings.dart';
 import '../../features/data/datasources/api_datasource/api_endpoints/api_endpoints.dart';
 import '../errors/authentication_error.dart';
+import '../local_storage/local_storage_client_secure_impl.dart';
 
 class AuthInterceptor extends Interceptor {
   /// The callback will be executed before the request is initiated.
@@ -15,7 +16,7 @@ class AuthInterceptor extends Interceptor {
   /// you can resolve a [Response] object with [handler.resolve].
   ///
   /// If you want to complete the request with an error message,
-  /// you can reject a [DioError] object with [handler.reject].
+  /// you can reject a [DioException] object with [handler.reject].
 
   @override
   void onRequest(
@@ -37,9 +38,9 @@ class AuthInterceptor extends Interceptor {
         options.headers.putIfAbsent('Authorization', () => 'Bearer $authenticated');
         handler.next(options);
       } else {
-        DioError error = DioError(
+        DioException error = DioException(
           requestOptions: options,
-          type: DioErrorType.unknown,
+          type: DioExceptionType.unknown,
           error: AuthenticationError(
             friendlyMessage: AppStrings.reautenticationNeededErrorMessage,
             causedBy: AppStrings.unauthenticatedUserErrorCausedBy,

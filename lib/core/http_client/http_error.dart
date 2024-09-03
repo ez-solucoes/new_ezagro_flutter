@@ -2,13 +2,13 @@ import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_response.dart';
 
 class HttpError {
-  HttpError(
-    this.type,
+  HttpError({
+    required this.type,
     this.message,
     this.response,
     this.request,
     this.error,
-  );
+  });
 
   final HttpErrorType type;
   final String? message;

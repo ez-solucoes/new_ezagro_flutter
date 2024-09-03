@@ -10,8 +10,7 @@ class AppWidget extends StatelessWidget {
     return MaterialApp.router(
       title: AppStrings.appTitle,
       debugShowCheckedModeBanner: false,
-      routeInformationParser: Modular.routeInformationParser,
-      routerDelegate: Modular.routerDelegate,
+      routerConfig: Modular.routerConfig,
     );
   }
 }

@@ -28,5 +28,7 @@ class AppStrings {
   //Errors
   static const String genericErrorMessage =
       'Ocorreu um erro inesperado. Por favor, tente novamente mais tarde ou entre em contato conosco para relatar o problema.';
+  static const String serverErrorMessage =
+      'Ocorreu um erro no processamento da sua requisição. Por favor, tente novamente mais tarde ou entre em contato conosco para relatar o problema.';
 
 }

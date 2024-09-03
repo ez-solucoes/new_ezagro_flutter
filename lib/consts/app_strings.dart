@@ -30,5 +30,8 @@ class AppStrings {
       'Ocorreu um erro inesperado. Por favor, tente novamente mais tarde ou entre em contato conosco para relatar o problema.';
   static const String serverErrorMessage =
       'Ocorreu um erro no processamento da sua requisição. Por favor, tente novamente mais tarde ou entre em contato conosco para relatar o problema.';
-
+  static const String serverErrorCausedBy =
+      'Erro ao fazer a chamada de um serviço na API.';
+  static const String reautenticationNeededErrorMessage =
+      'Erro ao efetuar o Login.\nPor favor, verifique os dados digitados e repita a operação.';
 }

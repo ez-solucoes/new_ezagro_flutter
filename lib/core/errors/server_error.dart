@@ -6,9 +6,10 @@ class ServerError extends ApplicationError {
     super.causedBy,
     super.fingerprint,
     super.additionalInfo,
+    String? friendlyMessage,
   }) : super(
-          friendlyMessage: AppStrings.serverErrorMessage,
-        );
+    friendlyMessage: friendlyMessage ?? AppStrings.serverErrorMessage,
+  );
 
   @override
   String get name => throw '$ServerError';

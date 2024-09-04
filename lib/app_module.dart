@@ -2,7 +2,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
 
 import 'core/binds/core_binds.dart';
-import 'modules/data/datasources/datasourceBinds.dart';
+import 'modules/data/datasources/datasource_binds.dart';
 import 'modules/data/repositories/repository_binds.dart';
 import 'modules/domain/usecases/usecase_binds.dart';
 import 'modules/presenter/features/change_password_page/change_password_step_page.dart';

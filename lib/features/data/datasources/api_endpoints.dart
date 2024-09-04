@@ -9,4 +9,7 @@ class AppEndpoints {
   static const String forgotPasswordEndpoint = '/recover-password';
   static const String registerEndpoint = '/register';
   static const String validateTokenEndpoint = '/validate-token';
+
+  //Service Order
+  static const String getServiceOrderListEndpoint = '/field/service-order/simplified';
 }

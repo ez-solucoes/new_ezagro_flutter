@@ -4,12 +4,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:new_ezagro_flutter/consts/app_drawables.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
-import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/background/background_widget.dart';
+import 'package:new_ezagro_flutter/modules/domain/params/arg_params/arg_params.dart';
+import 'package:new_ezagro_flutter/modules/presenter/widgets/background/background_widget.dart';
 
-import '../widgets/buttons/custom_green_elevated_button.dart';
-import '../widgets/buttons/custom_underlined_text_button.dart';
-import '../widgets/textFields/custom_outlined_text_form_field.dart';
+import '../../widgets/buttons/custom_green_elevated_button.dart';
+import '../../widgets/buttons/custom_underlined_text_button.dart';
+import '../../widgets/textFields/custom_outlined_text_form_field.dart';
+
 
 class LoginPage extends StatelessWidget {
   final ArgParams? args;

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/core/enums/service_order_type_enum.dart';
+import 'package:new_ezagro_flutter/features/presenter/controllers/service_order_list_controller/service_order_list_controller.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/background/background_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/appbar/custom_appbar_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customSearchBar/custom_search_bar.dart';
@@ -8,14 +10,25 @@ import 'package:new_ezagro_flutter/modules/presenter/widgets/service_order_card_
 
 import '../../../../../../../consts/app_colors.dart';
 import '../../../../../../../consts/app_dimens.dart';
+import '../../../consts/app_routes.dart';
+import '../../../modules/domain/params/arg_params/arg_params.dart';
 
 class ServiceOrderListPage extends StatelessWidget {
+
+  static const String routePath = AppRoutes.appServiceOrderListPage;
+
+  static navigate(ArgParams args) =>
+      Modular.to.navigate(routePath, arguments: args);
+
+  static push(ArgParams args) =>
+      Modular.to.pushNamed(routePath, arguments: args);
+
   const ServiceOrderListPage({super.key});
-  static const List<ServiceOrderTypeEnum> statusList = [ServiceOrderTypeEnum.approvalPending,
-    ServiceOrderTypeEnum.paused,ServiceOrderTypeEnum.onGoing,ServiceOrderTypeEnum.canceled,
-    ServiceOrderTypeEnum.toBeStarted,ServiceOrderTypeEnum.finished];
+
   @override
   Widget build(BuildContext context) {
+    final ServiceOrderListController controller = ServiceOrderListController();
+    controller.getServiceOrderList();
     return BackgroundWidget(
         scrollable: false,
         child: Scaffold(
@@ -46,16 +59,16 @@ class ServiceOrderListPage extends StatelessWidget {
                           ),
                           Flexible(
                             child: ListView.separated(
-                              itemCount: statusList.length,
+                              itemCount: controller.serviceOrderListEntities.length,
                               itemBuilder: (context, index) {
                                 return ServiceOrderCardWidget(
-                                  id: "80548",
-                                  serviceOrderType: "Plantio",
-                                  farm: "Fazenda de Uberlândia",
-                                  costCenter: "23235",
-                                  openingDate: "21/04/2023",
-                                  closingDate: statusList[index] == ServiceOrderTypeEnum.finished ? "22/04/2023" : "",
-                                  status: statusList[index],
+                                  id: controller.serviceOrderListEntities[index].id,
+                                  serviceOrderType: controller.serviceOrderListEntities[index].activityName,
+                                  farm: controller.serviceOrderListEntities[index].name,
+                                  costCenter: "",
+                                  openingDate: controller.serviceOrderListEntities[index].expectedStartDate,
+                                  closingDate: "",
+                                  status: ServiceOrderTypeEnumExtension.getEnumServiceOrderTypeFromString(controller.serviceOrderListEntities[index].status),
                                 );
                               },
                               separatorBuilder: (context, index) {

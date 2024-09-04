@@ -21,7 +21,7 @@ extension ServiceOrderTypeEnumExtension on ServiceOrderTypeEnum {
       case ServiceOrderTypeEnum.finished:
         return AppStrings.finishedOSEnum;
       case ServiceOrderTypeEnum.approvalPending:
-        return AppStrings.approvalPendingOSEnum;
+        return AppStrings.approvalPendingOSWithLineBreakEnum;
       case ServiceOrderTypeEnum.canceled:
         return AppStrings.canceledOSEnum;
       default:
@@ -39,7 +39,7 @@ extension ServiceOrderTypeEnumExtension on ServiceOrderTypeEnum {
         return ServiceOrderTypeEnum.paused;
       case AppStrings.finishedOSEnum:
         return ServiceOrderTypeEnum.finished;
-      case AppStrings.approvalPendingOSEnum:
+      case AppStrings.approvalPendingOSEnum || AppStrings.approvalPendingOSWithLineBreakEnum:
         return ServiceOrderTypeEnum.approvalPending;
       case AppStrings.canceledOSEnum:
         return ServiceOrderTypeEnum.canceled;

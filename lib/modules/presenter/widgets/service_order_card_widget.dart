@@ -5,7 +5,7 @@ import 'package:new_ezagro_flutter/consts/app_text_styles.dart';
 import 'package:new_ezagro_flutter/core/enums/service_order_type_enum.dart';
 
 class ServiceOrderCardWidget extends StatelessWidget {
-  final String id;
+  final int id;
   final String serviceOrderType;
   final String farm;
   final String costCenter;

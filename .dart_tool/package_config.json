@@ -153,7 +153,7 @@
     },
     {
       "name": "dio",
-      "rootUri": "file:///C:/Users/Lucas/AppData/Local/Pub/Cache/hosted/pub.dev/dio-5.6.0",
+      "rootUri": "file:///C:/Users/Lucas/AppData/Local/Pub/Cache/hosted/pub.dev/dio-5.7.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -752,7 +752,7 @@
       "languageVersion": "3.3"
     }
   ],
-  "generated": "2024-09-03T14:17:07.765221Z",
+  "generated": "2024-09-04T22:59:34.967495Z",
   "generator": "pub",
   "generatorVersion": "3.5.0",
   "flutterRoot": "file:///C:/src/flutter",

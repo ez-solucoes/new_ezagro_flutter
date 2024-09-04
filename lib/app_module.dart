@@ -34,7 +34,7 @@ class AppModule extends Module {
 
   @override
   void routes(r) {
-    r.child(AppRoutes.appDefaultPage, child: (context) => const ChangePasswordStepPage());
+    r.child(AppRoutes.appDefaultPage, child: (context) => const ServiceOrderListPage());
     r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
     r.child(AppRoutes.appHomePage, child: (context) => LoginPage());
     r.child(AppRoutes.appRegisterFirstStepPage, child: (context) => const RegisterFirstStepPage());
@@ -46,21 +46,6 @@ class AppModule extends Module {
     r.child(AppRoutes.appChangePasswordFirstStepPage, child: (context) => const ChangePasswordStepPage());
     r.child(AppRoutes.appServiceOrderPage, child: (context) => const ServiceOrderPage());
     r.child(AppRoutes.appServiceOrderListPage, child: (context) => const ServiceOrderListPage());
-  }
-
-  @override
-  void binds(i) {
-    ///DatasourceClientsBind
-    i.addInstance(LocalStorageClientSecureImpl.new);
-    i.add<LocalStorageClientSecureImpl>(LocalStorageClientSecureImpl.new);
-    i.addLazySingleton<LogInterceptor>(LogInterceptor.new);
-    i.addSingleton<HttpClient>(HttpClientDioImp.new);
-
-    ///DataSourceBinds
-    i.addLazySingleton<ServiceOrderListDatasource>(ServiceOrderListDatasourceImpl.new);
-
-    ///Repositories
-    i.addLazySingleton<ServiceOrderListRepository(constructor)
   }
 
 }

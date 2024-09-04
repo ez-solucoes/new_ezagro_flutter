@@ -8,11 +8,11 @@ import 'package:new_ezagro_flutter/features/data/datasources/service_order_list_
 import 'package:new_ezagro_flutter/features/data/models/service_order_list_model/service_order_list_model.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/service_order_list_repositories/service_order_list_repository.dart';
 
-class ServiceOrderRepositoryImpl implements ServiceOrderListRepository {
+class ServiceOrderListRepositoryImpl implements ServiceOrderListRepository {
 
   final ServiceOrderListDatasource datasource;
 
-  ServiceOrderRepositoryImpl(this.datasource);
+  ServiceOrderListRepositoryImpl(this.datasource);
 
   @override
   Future<Either<ApplicationError, List<ServiceOrderListModel>>> getServiceOrderList(NoParams noParams) async {
@@ -25,7 +25,7 @@ class ServiceOrderRepositoryImpl implements ServiceOrderListRepository {
     } catch(e, stacktrace) {
         return Left(
         GenericError(
-          fingerprint: '$ServiceOrderRepositoryImpl.getServiceOrderList',
+          fingerprint: '$ServiceOrderListRepositoryImpl.getServiceOrderList',
           additionalInfo: stacktrace.toString()
         )
       );

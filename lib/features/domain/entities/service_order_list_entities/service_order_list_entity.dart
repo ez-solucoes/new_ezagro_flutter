@@ -4,7 +4,7 @@ class ServiceOrderListEntity extends Equatable {
   final int id;
   final String name;
   final String status;
-  final String? expectedStartDate;
+  final String expectedStartDate;
   final String activityName;
 
   const ServiceOrderListEntity({

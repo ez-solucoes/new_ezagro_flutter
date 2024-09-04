@@ -7,7 +7,7 @@ class ServiceOrderListModel extends ServiceOrderListEntity {
   final int id;
   final String name;
   final String status;
-  final String? expectedStartDate;
+  final String expectedStartDate;
   final String activityName;
 
   const ServiceOrderListModel({
@@ -39,7 +39,7 @@ class ServiceOrderListModel extends ServiceOrderListEntity {
       id: map['id'] as int,
       name: map['name'] as String,
       status: map['status'] as String,
-      expectedStartDate: map['expectedStartDate'] != null ? map["expectedStartDate"] as String : null,
+      expectedStartDate: map['expectedStartDate'] as String,
       activityName: map['activityName'] as String
     );
   }

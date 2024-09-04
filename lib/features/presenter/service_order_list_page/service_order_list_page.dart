@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/core/enums/service_order_type_enum.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/appbar/custom_appbar_widget.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/background/background_widget.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/customSearchBar/custom_search_bar.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/service_order_card_widget.dart';
+import 'package:new_ezagro_flutter/modules/presenter/widgets/background/background_widget.dart';
+import 'package:new_ezagro_flutter/modules/presenter/widgets/appbar/custom_appbar_widget.dart';
+import 'package:new_ezagro_flutter/modules/presenter/widgets/customSearchBar/custom_search_bar.dart';
+import 'package:new_ezagro_flutter/modules/presenter/widgets/service_order_card_widget.dart';
 
 import '../../../../../../../consts/app_colors.dart';
 import '../../../../../../../consts/app_dimens.dart';

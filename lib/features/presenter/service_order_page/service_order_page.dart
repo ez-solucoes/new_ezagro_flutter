@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/appbar/custom_appbar_widget.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/background/background_widget.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/customInfoCard/custom_info_card_widget.dart';
+import 'package:new_ezagro_flutter/modules/presenter/widgets/appbar/custom_appbar_widget.dart';
+import 'package:new_ezagro_flutter/modules/presenter/widgets/background/background_widget.dart';
+import 'package:new_ezagro_flutter/modules/presenter/widgets/customInfoCard/custom_info_card_widget.dart';
 
 import '../../../../../../../consts/app_colors.dart';
 

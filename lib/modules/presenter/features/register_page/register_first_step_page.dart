@@ -3,13 +3,13 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_colors.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
-import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/appbar/custom_appbar_widget.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/background/background_widget.dart';
+import 'package:new_ezagro_flutter/modules/domain/params/arg_params/arg_params.dart';
+import 'package:new_ezagro_flutter/modules/presenter/widgets/appbar/custom_appbar_widget.dart';
+import 'package:new_ezagro_flutter/modules/presenter/widgets/background/background_widget.dart';
 
-import '../../../consts/app_text_styles.dart';
-import '../widgets/buttons/custom_green_elevated_button.dart';
-import '../widgets/textFields/custom_underlined_text_field.dart';
+import '../../../../consts/app_text_styles.dart';
+import '../../widgets/buttons/custom_green_elevated_button.dart';
+import '../../widgets/textFields/custom_underlined_text_field.dart';
 
 class RegisterFirstStepPage extends StatelessWidget {
   final ArgParams? args;

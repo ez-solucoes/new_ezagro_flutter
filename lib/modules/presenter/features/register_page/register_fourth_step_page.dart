@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
-import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 
-import '../../../consts/app_colors.dart';
-import '../../../consts/app_strings.dart';
-import '../../../consts/app_text_styles.dart';
-import '../widgets/appbar/custom_appbar_widget.dart';
-import '../widgets/background/background_widget.dart';
-import '../widgets/buttons/custom_green_elevated_button.dart';
-import '../widgets/textFields/custom_underlined_text_field.dart';
+import '../../../../consts/app_colors.dart';
+import '../../../../consts/app_strings.dart';
+import '../../../../consts/app_text_styles.dart';
+import '../../../domain/params/arg_params/arg_params.dart';
+import '../../widgets/appbar/custom_appbar_widget.dart';
+import '../../widgets/background/background_widget.dart';
+import '../../widgets/buttons/custom_green_elevated_button.dart';
+import '../../widgets/textFields/custom_underlined_text_field.dart';
 
 class RegisterFourthStepPage extends StatelessWidget {
   final ArgParams? args;

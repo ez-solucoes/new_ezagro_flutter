@@ -1,19 +1,19 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
-import 'package:new_ezagro_flutter/features/data/datasources/datasourceBinds.dart';
-import 'package:new_ezagro_flutter/features/data/repositories/repository_binds.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/usecase_binds.dart';
-import 'package:new_ezagro_flutter/features/presenter/documents_page/documents_page.dart';
-import 'package:new_ezagro_flutter/features/presenter/register_page/register_fifth_step_page.dart';
-import 'package:new_ezagro_flutter/features/presenter/register_page/register_fourth_step_page.dart';
-import 'package:new_ezagro_flutter/features/presenter/register_page/register_second_step_page.dart';
 
 import 'core/binds/core_binds.dart';
-import 'features/presenter/change_password_page/change_password_step_page.dart';
-import 'features/presenter/login_page/login_page.dart';
-import 'features/presenter/register_page/register_first_step_page.dart';
-import 'features/presenter/register_page/register_third_step_page.dart';
-import 'features/presenter/splash_page/splash_page.dart';
+import 'modules/data/datasources/datasourceBinds.dart';
+import 'modules/data/repositories/repository_binds.dart';
+import 'modules/domain/usecases/usecase_binds.dart';
+import 'modules/presenter/features/change_password_page/change_password_step_page.dart';
+import 'modules/presenter/features/documents_page/documents_page.dart';
+import 'modules/presenter/features/login_page/login_page.dart';
+import 'modules/presenter/features/register_page/register_fifth_step_page.dart';
+import 'modules/presenter/features/register_page/register_first_step_page.dart';
+import 'modules/presenter/features/register_page/register_fourth_step_page.dart';
+import 'modules/presenter/features/register_page/register_second_step_page.dart';
+import 'modules/presenter/features/register_page/register_third_step_page.dart';
+import 'modules/presenter/splash_page/splash_page.dart';
 
 class AppModule extends Module {
 

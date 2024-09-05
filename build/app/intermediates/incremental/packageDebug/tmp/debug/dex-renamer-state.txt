@@ -1,4 +1,4 @@
-#Wed Sep 04 20:30:03 BRT 2024
+#Thu Sep 05 09:29:33 BRT 2024
 base.0=C\:\\src\\Ez Agro Novo\\new_ezagro_flutter\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\src\\Ez Agro Novo\\new_ezagro_flutter\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\0\\classes.dex
 base.2=C\:\\src\\Ez Agro Novo\\new_ezagro_flutter\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex

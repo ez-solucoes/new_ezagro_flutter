@@ -72,6 +72,7 @@ class ServiceOrderPage extends StatelessWidget {
                 textOne: "Alan Brito",
                 icon: Icons.edit_outlined,
                 infoCardType: InfoCardType.oneLabeledInfo),
+            const SizedBox(height: 10),
             const CustomInfoCardWidget(
                 labelOne: "Cultura:",
                 textOne: "Milho",

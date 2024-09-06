@@ -4,10 +4,16 @@ import 'dart:convert';
 import 'package:new_ezagro_flutter/features/domain/entities/service_order_list_entities/service_order_list_entity.dart';
 
 class ServiceOrderListModel extends ServiceOrderListEntity {
+
+  @override
   final int id;
+  @override
   final String name;
+  @override
   final String status;
+  @override
   final String expectedStartDate;
+  @override
   final String activityName;
 
   const ServiceOrderListModel({

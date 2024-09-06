@@ -11,41 +11,49 @@ class ServiceOrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const BackgroundWidget(
+    return BackgroundWidget(
         scrollable: false,
         child: Scaffold(
           backgroundColor: AppColors.transparent,
           resizeToAvoidBottomInset: false,
-          appBar: CustomAppBarWidget(
+          appBar: const CustomAppBarWidget(
             appBarType: AppBarType.hamburgerAndTitle,
             title: AppStrings.serviceOrderTitle,
           ),
           body: Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                CustomInfoCardWidget(
+                const CustomInfoCardWidget(
                     labelOne: "Atividade",
                     textOne: "80548",
                     labelTwo: "Abertura: 21/04/203",
                     textTwo: "Plantio",
                     infoCardType: InfoCardType.activityType
                 ),
-                SizedBox(height: 10.0),
-                CustomInfoCardWidget(
+                const SizedBox(height: 10.0),
+                Container(
+                  color: AppColors.whiteBorderColor,
+                  child: Column(
+                    children: [
+                      Text("Título")
+                    ],
+                  ),
+                ),
+                const CustomInfoCardWidget(
                     labelOne: "Estoque",
                     textOne: "Estoque",
                     infoCardType: InfoCardType.oneLabeledInfo
                 ),
-                SizedBox(height: 10.0),
-                CustomInfoCardWidget(
+                const SizedBox(height: 10.0),
+                const CustomInfoCardWidget(
                     labelOne: "Responsável",
                     textOne: "Alan Brito",
                     icon: Icons.edit_outlined,
                     infoCardType: InfoCardType.oneLabeledInfo
                 ),
-                SizedBox(height: 10.0),
-                CustomInfoCardWidget(
+                const SizedBox(height: 10.0),
+                const CustomInfoCardWidget(
                     labelOne: "Previsão de início",
                     textOne: "21/08/2024",
                     labelTwo: "Previsão de término",
@@ -53,8 +61,8 @@ class ServiceOrderPage extends StatelessWidget {
                     icon: Icons.edit_outlined,
                     infoCardType: InfoCardType.twoLabeledInfo
                 ),
-                SizedBox(height: 10.0,),
-                CustomInfoCardWidget(
+                const SizedBox(height: 10.0,),
+                const CustomInfoCardWidget(
                     labelOne: "Cultura:",
                     textOne: "Milho",
                     labelTwo: "Variedade:",

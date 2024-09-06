@@ -5,9 +5,8 @@ import 'package:new_ezagro_flutter/core/enums/service_order_type_enum.dart';
 import 'package:new_ezagro_flutter/features/presenter/controllers/service_order_list_controller/service_order_list_controller.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/background/background_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/appbar/custom_appbar_widget.dart';
+import 'package:new_ezagro_flutter/modules/presenter/widgets/customCardWithTitle/custom_card_with_title.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customSearchBar/custom_search_bar.dart';
-import 'package:new_ezagro_flutter/modules/presenter/widgets/service_order_card_widget.dart';
-
 import '../../../../../../../consts/app_colors.dart';
 import '../../../../../../../consts/app_dimens.dart';
 import '../../../consts/app_routes.dart';
@@ -61,14 +60,18 @@ class ServiceOrderListPage extends StatelessWidget {
                             child: ListView.separated(
                               itemCount: controller.serviceOrderListEntities.length,
                               itemBuilder: (context, index) {
-                                return ServiceOrderCardWidget(
+                                final status = ServiceOrderTypeEnumExtension.getEnumServiceOrderTypeFromString(controller.serviceOrderListEntities[index].status);
+                                return CustomCardWithTitleWidget(
                                   id: controller.serviceOrderListEntities[index].id,
                                   serviceOrderType: controller.serviceOrderListEntities[index].activityName,
                                   farm: controller.serviceOrderListEntities[index].name,
                                   costCenter: "",
                                   openingDate: controller.serviceOrderListEntities[index].expectedStartDate,
                                   closingDate: "",
-                                  status: ServiceOrderTypeEnumExtension.getEnumServiceOrderTypeFromString(controller.serviceOrderListEntities[index].status),
+                                  status: status,
+                                  backgroundColor: controller.getBackgroundColor(status),
+                                  borderColor: controller.getBorderColor(status),
+                                  textColor: controller.getTextColor(status),
                                 );
                               },
                               separatorBuilder: (context, index) {

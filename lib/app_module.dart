@@ -1,11 +1,5 @@
-import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
-import 'package:new_ezagro_flutter/core/http_client/http_client.dart';
-import 'package:new_ezagro_flutter/core/http_client/http_client_dio_imp.dart';
-import 'package:new_ezagro_flutter/core/local_storage/local_storage_client_secure_impl.dart';
-import 'package:new_ezagro_flutter/features/data/datasources/service_order_list_datasources/service_order_list_datasource.dart';
-import 'package:new_ezagro_flutter/features/data/datasources/service_order_list_datasources/service_order_list_datasource_impl.dart';
 import 'package:new_ezagro_flutter/features/presenter/service_order_list_page/service_order_list_page.dart';
 import 'features/presenter/service_order_page/service_order_page.dart';
 import 'core/binds/core_binds.dart';
@@ -34,7 +28,7 @@ class AppModule extends Module {
 
   @override
   void routes(r) {
-    r.child(AppRoutes.appDefaultPage, child: (context) => const ServiceOrderListPage());
+    r.child(AppRoutes.appDefaultPage, child: (context) => const ServiceOrderPage());
     r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
     r.child(AppRoutes.appHomePage, child: (context) => LoginPage());
     r.child(AppRoutes.appRegisterFirstStepPage, child: (context) => const RegisterFirstStepPage());

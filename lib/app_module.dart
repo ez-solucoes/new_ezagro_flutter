@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
+import 'package:new_ezagro_flutter/features/presenter/create_service_order_page/create_service_order_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/service_order_list_page/service_order_list_page.dart';
 import 'features/presenter/service_order_page/service_order_page.dart';
 import 'core/binds/core_binds.dart';
@@ -28,7 +29,7 @@ class AppModule extends Module {
 
   @override
   void routes(r) {
-    r.child(AppRoutes.appDefaultPage, child: (context) => const ServiceOrderPage());
+    r.child(AppRoutes.appDefaultPage, child: (context) => const CreateServiceOrderPage());
     r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
     r.child(AppRoutes.appHomePage, child: (context) => LoginPage());
     r.child(AppRoutes.appRegisterFirstStepPage, child: (context) => const RegisterFirstStepPage());
@@ -40,6 +41,7 @@ class AppModule extends Module {
     r.child(AppRoutes.appChangePasswordFirstStepPage, child: (context) => const ChangePasswordStepPage());
     r.child(AppRoutes.appServiceOrderPage, child: (context) => const ServiceOrderPage());
     r.child(AppRoutes.appServiceOrderListPage, child: (context) => const ServiceOrderListPage());
+    r.child(AppRoutes.appCreateServiceOrderPage, child: (context) => const CreateServiceOrderPage());
   }
 
 }

@@ -48,11 +48,21 @@ class AppStrings {
   static const String saveOSButton = "Salvar";
   static const String suspendOSButton = "Suspender";
   static const String cancelOSButton = "Cancelar";
-  static const String finisheOSButton = "Finalizar";
+  static const String finishedOSButton = "Finalizar";
   static const String resumeOSButton = "Retomar";
 
+  //Create Service Order
+  static const String previousButton = "Anterior";
+  static const String nextButton = "Próximo";
+  static const String activitySelector = "Atividade:";
+  static const String costCenterSelector = "Centro de Custo";
+  static const String farmSelector = "Fazenda:";
+  static const String harvestSelector = "Safra";
+  static const String executionerSelector = "Executores:";
+  static const String machinerySelector = "Maquinário:";
+  static const String productSelector = "Produto:";
 
-  //Errors
+  ///Errors
   static const String genericErrorMessage =
       'Ocorreu um erro inesperado. Por favor, tente novamente mais tarde ou entre em contato conosco para relatar o problema.';
   static const String serverErrorMessage =
@@ -64,7 +74,7 @@ class AppStrings {
   static const String unauthenticatedUserErrorCausedBy =
       'Usuário não autenticado.';
 
-  //Shared Preferences keys
+  ///Shared Preferences keys
   static const String tokenKey = 'Token';
   static const String idKey = 'id';
   static const String directoryKey = 'Directory';

@@ -20,16 +20,19 @@ class AppStrings {
   static const String privacyPolicy = 'Política de Privacidade';
   static const String and = ' e ';
   static const String userTerms = 'Termos do Usuário';
+
+  static const String loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+
+  static const String forgotPasswordFirstStep = 'Esqueceu sua senha?\nDigite seu CPF e vamos enviar uma senha provisória em seu telefone:';
+
+  ///Service Order Module
+  //Service Order List Strings
   static const String serviceOrderTitle = "Ordem de Serviço";
   static const String costCenterCardField = "Centro de Custo: ";
   static const String openingDateCardField = "Abertura: ";
   static const String closingDateCardField = "Conclusão: ";
   static const String searchBarHint = 'Pesquisar';
   static const String dateNotInformed = "Não informado";
-
-  static const String loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-
-  static const String forgotPasswordFirstStep = 'Esqueceu sua senha?\nDigite seu CPF e vamos enviar uma senha provisória em seu telefone:';
 
   //Service Order Type Enum Strings
   static const String toBeStartedSOEnum = "A iniciar";
@@ -39,6 +42,15 @@ class AppStrings {
   static const String approvalPendingOSEnum = "Aguardando aprovação";
   static const String approvalPendingOSWithLineBreakEnum = "Aguardando\naprovação";
   static const String canceledOSEnum = "Cancelada";
+
+  //Service Order Details
+  static const String finishedServiceOrder = "Essa Ordem de Serviço\nfoi finalizada";
+  static const String saveOSButton = "Salvar";
+  static const String suspendOSButton = "Suspender";
+  static const String cancelOSButton = "Cancelar";
+  static const String finisheOSButton = "Finalizar";
+  static const String resumeOSButton = "Retomar";
+
 
   //Errors
   static const String genericErrorMessage =

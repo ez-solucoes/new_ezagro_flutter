@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/appbar/custom_appbar_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/background/background_widget.dart';
+import 'package:new_ezagro_flutter/modules/presenter/widgets/buttons/custom_elevated_button.dart';
+import 'package:new_ezagro_flutter/modules/presenter/widgets/buttons/custom_outlined_button.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customInfoCard/custom_info_card_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customListItem/custom_list_item_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/listTitleCard/list_title_card_widget.dart';
 
 import '../../../../../../../consts/app_colors.dart';
+import '../../../consts/app_text_styles.dart';
 
 class ServiceOrderPage extends StatelessWidget {
   const ServiceOrderPage({super.key});
+  final isFinished = false;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +26,7 @@ class ServiceOrderPage extends StatelessWidget {
     ];
     final mockExecutionList = ["José Junior", "Lucas Souza"];
     final mockMachineryList = ["Máquina 1", "Máquina 2"];
+
     return BackgroundWidget(
       scrollable: true,
       appBar: const CustomAppBarWidget(
@@ -32,6 +37,8 @@ class ServiceOrderPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
+            _isFinished(),
+            const SizedBox(height: 15,),
             const CustomInfoCardWidget(
                 labelOne: "Atividade",
                 textOne: "80548",
@@ -161,9 +168,43 @@ class ServiceOrderPage extends StatelessWidget {
                 labelOne: "Observações",
                 textOne: "Sem observação",
                 infoCardType: InfoCardType.oneLabeledInfo),
+            const SizedBox(
+              height: 15,
+            ),
+            _getAvailableButtons()
           ],
         ),
       ),
     );
+  }
+
+  Widget _isFinished() {
+    return isFinished ?
+        Row(
+          children: [
+            const Icon(Icons.check_circle, size: 35, color: AppColors.greenColor,),
+            const SizedBox(width: 6,),
+            Text(AppStrings.finishedServiceOrder,
+                style: AppTextStyles.boldMediumTextStyle(color: AppColors.blackColor))
+          ],
+        )
+        :
+        const SizedBox.shrink();
+  }
+
+  Widget _getAvailableButtons() {
+
+    return isFinished ?
+      CustomElevatedButton(onPressed: () {}, label: AppStrings.resumeOSButton)
+      :
+      Column(
+        children: [
+          CustomOutlinedButton(onPressed: (){}, label: AppStrings.saveOSButton),
+          CustomElevatedButton(onPressed: (){}, label: AppStrings.suspendOSButton, backgroundColor: AppColors.darkGreyColor),
+          CustomElevatedButton(onPressed: (){}, label: AppStrings.cancelOSButton, backgroundColor: AppColors.redCanceledColor,),
+          const SizedBox(height: 15,),
+          CustomElevatedButton(onPressed: (){}, label: AppStrings.finisheOSButton)
+        ],
+      );
   }
 }

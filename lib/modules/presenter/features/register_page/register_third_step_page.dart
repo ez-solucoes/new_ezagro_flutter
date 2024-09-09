@@ -5,7 +5,7 @@ import '../../../../consts/app_strings.dart';
 import '../../../../consts/app_text_styles.dart';
 import '../../widgets/appbar/custom_appbar_widget.dart';
 import '../../widgets/background/background_widget.dart';
-import '../../widgets/buttons/custom_green_elevated_button.dart';
+import '../../widgets/buttons/custom_elevated_button.dart';
 import '../../widgets/textFields/custom_underlined_text_field.dart';
 
 class RegisterThirdStepPage extends StatelessWidget {
@@ -33,7 +33,7 @@ class RegisterThirdStepPage extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             Center(
-              child: CustomGreenElevatedButton(
+              child: CustomElevatedButton(
                 onPressed: () {},
                 label: AppStrings.forwardString,
               ),

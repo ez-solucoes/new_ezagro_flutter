@@ -9,7 +9,7 @@ import '../../../../consts/app_strings.dart';
 import '../../../domain/params/arg_params/arg_params.dart';
 import '../../widgets/appbar/custom_appbar_widget.dart';
 import '../../widgets/background/background_widget.dart';
-import '../../widgets/buttons/custom_green_elevated_button.dart';
+import '../../widgets/buttons/custom_elevated_button.dart';
 
 class RegisterFifthStepPage extends StatelessWidget {
   final ArgParams? args;
@@ -77,7 +77,7 @@ class RegisterFifthStepPage extends StatelessWidget {
             ),
             const SizedBox(height: 52),
             Center(
-              child: CustomGreenElevatedButton(
+              child: CustomElevatedButton(
                 onPressed: () {},
                 label: AppStrings.forwardString,
               ),

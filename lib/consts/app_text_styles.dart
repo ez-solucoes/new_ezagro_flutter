@@ -162,4 +162,15 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle boldMediumTextStyle({
+    required Color color,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.montserratFont,
+      fontWeight: FontWeight.bold,
+      fontSize: AppDimens.bodyTextDimen,
+      color: color,
+    );
+  }
+
 }

@@ -4,57 +4,69 @@ import 'package:new_ezagro_flutter/consts/app_text_styles.dart';
 
 import '../../../../consts/app_colors.dart';
 
-class CustomSelectorWidget extends StatelessWidget {
+class CustomSelectorWidget extends StatefulWidget {
   final Function() onSelect;
   final List<String> items;
-  final String label;
+  final String title;
+  final String selectorHint;
 
   const CustomSelectorWidget({
     super.key,
     required this.onSelect,
     required this.items,
-    required this.label,
+    required this.title,
+    required this.selectorHint
   });
 
   @override
+  State<CustomSelectorWidget> createState() => _CustomSelectorWidgetState();
+
+}
+
+class _CustomSelectorWidgetState extends State<CustomSelectorWidget> {
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-            color: AppColors.trueWhiteColor,
-            borderRadius: BorderRadius.circular(5.0),
-            boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.2),
-              spreadRadius: 1,
-              blurRadius: 7,
-              offset: const Offset(0, 2),
-          )
-        ]),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              label,
-              style: AppTextStyles.smallBoldTextOnCardStyle(
-                  color: AppColors.blackColor),
-            ),
-            const SizedBox(height: 16),
-            DropdownButtonFormField(
-              hint: Text(
-                label,
-                style: AppTextStyles.appBarTitleTextStyle(
-                    color: AppColors.formGreyColor),
-              ),
-              items: items.map((String item) {
-                return DropdownMenuItem<String>(value: item, child: Text(item));
-              }).toList(),
-              onChanged: onSelect(),
-              decoration: const InputDecoration(
-                  enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: AppColors.formGreyColor))),
-            ),
-          ],
-        ));
+    String? selectorValue;
+    return Card(
+        color: AppColors.trueWhiteColor,
+        child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.title,
+                  style: AppTextStyles.smallBoldTextOnCardStyle(
+                      color: AppColors.blackColor),
+                ),
+                const SizedBox(height: 16),
+                DropdownButtonFormField(
+                  value: selectorValue,
+                  dropdownColor: AppColors.softGreenColor,
+                  style: AppTextStyles.appBarSubTitleTextStyle(color: AppColors.blackColor),
+                  hint: Text(
+                    widget.selectorHint,
+                    style: AppTextStyles.appBarTitleTextStyle(
+                        color: AppColors.formGreyColor),
+                  ),
+                  items: widget.items.map((String item) {
+                    return DropdownMenuItem<String>(
+                        value: item, child: Text(item));
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      selectorValue = value;
+                    });
+                  },
+                  decoration: const InputDecoration(
+                      enabledBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(color: AppColors.formGreyColor)),
+                          focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.greenColor)),
+                  )
+                ),
+              ],
+            )));
   }
 }

@@ -54,13 +54,20 @@ class AppStrings {
   //Create Service Order
   static const String previousButton = "Anterior";
   static const String nextButton = "Próximo";
-  static const String activitySelector = "Atividade:";
-  static const String costCenterSelector = "Centro de Custo";
-  static const String farmSelector = "Fazenda:";
-  static const String harvestSelector = "Safra";
-  static const String executionerSelector = "Executores:";
-  static const String machinerySelector = "Maquinário:";
-  static const String productSelector = "Produto:";
+  static const String activitySelectorTitle = "Atividade:";
+  static const String costCenterSelectorTitle = "Centro de Custo:";
+  static const String farmSelectorTitle = "Fazenda:";
+  static const String harvestSelectorTitle = "Safra:";
+  static const String executionerSelectorTitle = "Executores:";
+  static const String machinerySelectorTitle = "Maquinário:";
+  static const String productSelectorTitle = "Produto:";
+  static const String activitySelectorHint = "Selecione uma atividade";
+  static const String costCenterSelectorHint = "Selecione um centro de custo";
+  static const String farmSelectorHint = "Selecione uma fazenda";
+  static const String harvestSelectorHint = "Selecione uma safra";
+  static const String executionerSelectorHint = "Selecione um executor";
+  static const String machinerySelectorHint = "Selecione um maquinário";
+  static const String productSelectorHint = "Selecione um produto";
 
   ///Errors
   static const String genericErrorMessage =

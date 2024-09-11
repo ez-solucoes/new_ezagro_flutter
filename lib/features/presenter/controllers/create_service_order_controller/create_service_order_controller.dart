@@ -10,6 +10,9 @@ abstract class _CreateServiceOrderController with Store {
   @observable
   int page = 0;
 
+  @observable
+  bool selectAll = false;
+
   @action
    incrementPage() {
     if (page<4) {

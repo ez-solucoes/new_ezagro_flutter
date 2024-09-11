@@ -14,6 +14,10 @@ abstract class _CreateServiceOrderController with Store {
   bool selectAll = false;
 
   @action
+  toggleSelectAll() {
+    selectAll = !selectAll;
+  }
+  @action
    incrementPage() {
     if (page<4) {
       page+=1;

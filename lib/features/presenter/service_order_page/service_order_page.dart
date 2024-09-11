@@ -199,7 +199,7 @@ class ServiceOrderPage extends StatelessWidget {
       :
       Column(
         children: [
-          CustomOutlinedButton(onPressed: (){}, label: AppStrings.saveOSButton),
+          CustomOutlinedButton(onPressed: (){}, label: AppStrings.saveOSButton, textStyle: AppTextStyles.labelTextButtonStyle(color: AppColors.blackColor),),
           CustomElevatedButton(onPressed: (){}, label: AppStrings.suspendOSButton, backgroundColor: AppColors.darkGreyColor),
           CustomElevatedButton(onPressed: (){}, label: AppStrings.cancelOSButton, backgroundColor: AppColors.redCanceledColor,),
           const SizedBox(height: 15,),

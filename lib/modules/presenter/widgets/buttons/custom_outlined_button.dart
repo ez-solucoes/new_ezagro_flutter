@@ -6,11 +6,13 @@ import '../../../../consts/app_colors.dart';
 class CustomOutlinedButton extends StatelessWidget {
   final Function() onPressed;
   final String label;
+  final TextStyle textStyle;
 
   const CustomOutlinedButton({
     super.key,
     required this.onPressed,
     required this.label,
+    required this.textStyle
   });
 
   @override
@@ -21,13 +23,13 @@ class CustomOutlinedButton extends StatelessWidget {
           minimumSize: const Size(150, 38),
           backgroundColor: AppColors.transparent,
           shape: RoundedRectangleBorder(
-              side: const BorderSide(color: AppColors.blackColor, width: 1),
+              side: const BorderSide(color: AppColors.softGreyColor, width: 1),
               borderRadius: BorderRadius.circular(5)),
         shadowColor: AppColors.transparent
       ),
       child: Text(
         label,
-        style: AppTextStyles.labelTextButtonStyle(color: AppColors.blackColor),
+        style: textStyle,
       ),
     );
   }

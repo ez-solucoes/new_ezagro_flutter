@@ -37,8 +37,35 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     });
   }
 
+  late final _$selectAllAtom =
+      Atom(name: '_CreateServiceOrderController.selectAll', context: context);
+
+  @override
+  bool get selectAll {
+    _$selectAllAtom.reportRead();
+    return super.selectAll;
+  }
+
+  @override
+  set selectAll(bool value) {
+    _$selectAllAtom.reportWrite(value, super.selectAll, () {
+      super.selectAll = value;
+    });
+  }
+
   late final _$_CreateServiceOrderControllerActionController =
       ActionController(name: '_CreateServiceOrderController', context: context);
+
+  @override
+  dynamic toggleSelectAll() {
+    final _$actionInfo = _$_CreateServiceOrderControllerActionController
+        .startAction(name: '_CreateServiceOrderController.toggleSelectAll');
+    try {
+      return super.toggleSelectAll();
+    } finally {
+      _$_CreateServiceOrderControllerActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   dynamic incrementPage() {
@@ -66,7 +93,8 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   String toString() {
     return '''
 isLoading: ${isLoading},
-page: ${page}
+page: ${page},
+selectAll: ${selectAll}
     ''';
   }
 }

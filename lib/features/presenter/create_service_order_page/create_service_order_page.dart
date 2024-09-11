@@ -13,28 +13,15 @@ import 'package:new_ezagro_flutter/modules/presenter/widgets/custom_selector_wid
 
 import '../../../consts/app_colors.dart';
 import '../../../consts/app_routes.dart';
+import '../../../consts/app_text_styles.dart';
 
-class CreateServiceOrderPage extends StatefulWidget {
+class CreateServiceOrderPage extends StatelessWidget {
   const CreateServiceOrderPage({Key? key}) : super(key: key);
-
-  static const String routePath = AppRoutes.appCreateServiceOrderPage;
-
-  static void navigate() => Modular.to.navigate(routePath);
-
-  @override
-  State<CreateServiceOrderPage> createState() => _CreateServiceOrderPageState();
-}
-
-class _CreateServiceOrderPageState extends State<CreateServiceOrderPage> {
-  final CreateServiceOrderController _controller =
-      CreateServiceOrderController();
-  List<List<String>> plots = List.generate(50, (index) {
-    return [(index + 1).toString(), '100ha', 'milho'];
-  });
-
 
   @override
   Widget build(BuildContext context) {
+    CreateServiceOrderController _controller =
+    CreateServiceOrderController();
     return BackgroundWidget(
         scrollable: false,
         appBar: const CustomAppBarWidget(
@@ -42,35 +29,35 @@ class _CreateServiceOrderPageState extends State<CreateServiceOrderPage> {
           title: AppStrings.serviceOrderTitle,
         ),
         child: DefaultTabController(
-            length: 4,
-            child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Column(children: [
-                  Container(
-                      height: MediaQuery.sizeOf(context).height * 0.78,
-                      child: TabBarView(children: <Widget>[
-                        Center(
-                          child: _getGeneralInformation(),
-                        ),
-                        Center(
-                          child: _getPlotSelector(),
-                        ),
-                        Center(
-                          child: Text("It's sunny here"),
-                        ),
-                        Center(
-                          child: Text("It's "),
-                        ),
-                      ])),
-                  const SizedBox(height: 10),
-                  BottomButtonsWidget(
-                    controller: _controller,
-                  )
-                ]))));
+                length: 4,
+                child: Padding(
+                    padding: const EdgeInsets.all(14.0),
+                    child: Column(children: [
+                      SizedBox(
+                          height: MediaQuery.sizeOf(context).height * 0.75,
+                          child: TabBarView(children: <Widget>[
+                            Center(
+                              child: _getGeneralInformation(_controller),
+                            ),
+                            Center(
+                              child: _getPlotSelector(_controller),
+                            ),
+                            Center(
+                              child: Text("It's sunny here"),
+                            ),
+                            Center(
+                              child: Text("It's "),
+                            ),
+                          ])),
+                      const SizedBox(height: 10),
+                      BottomButtonsWidget(
+                        controller: _controller,
+                      )
+                    ]))));
   }
 
-  //Page 01
-  Widget _getGeneralInformation() {
+  ///Page 01
+  Widget _getGeneralInformation(CreateServiceOrderController controller) {
     return Column(children: [
       CustomSelectorWidget(
           onSelect: () {},
@@ -104,32 +91,50 @@ class _CreateServiceOrderPageState extends State<CreateServiceOrderPage> {
     ]);
   }
 
-  //Page 02
-  Widget _getPlotSelector() {
-    return Container(
-      padding: EdgeInsets.all(2),
-        decoration: BoxDecoration(
-            color: AppColors.contourWhiteColor,
-            borderRadius: BorderRadius.circular(8)),
-        child: ListView.builder(
-            itemCount: plots.length + 1,
-            itemBuilder: (context, index) {
-              return index == 0
-                  ? const CustomListHeaderWidget(
-                      firstColumn: "",
-                      secondColumn: "Talhão",
-                      thirdColumn: "Área",
-                      fourthColumn: "Cultura",
-                    )
-                  : CustomCheckableListItemWidget(
-                  indexIsChecked: _controller.selectAll,
-                  firstColumn: plots[index-1][0],
-                  secondColumn: plots[index-1][1],
-                  thirdColumn: plots[index-1][2],
-                  index: index-1,
-                  onCheckBoxTap: (index){});
-            }));
+  ///Page 02
+  Widget _getPlotSelector(CreateServiceOrderController controller) {
+    List<List<String>> plots = List.generate(50, (index) {
+      return [(index).toString(), '100ha', 'milho'];
+    });
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+      CustomOutlinedButton(
+          onPressed: () {
+            controller.toggleSelectAll();
+          },
+          label: AppStrings.selectAllButton,
+          textStyle: AppTextStyles.smallBoldTextOnCardStyle(
+              color: AppColors.blackColor)),
+      const SizedBox(height: 5,),
+      Expanded(child: Container(
+          padding: const EdgeInsets.all(2),
+          decoration: BoxDecoration(
+              color: AppColors.contourWhiteColor,
+              borderRadius: BorderRadius.circular(8)),
+          child: Column(children: [
+            const CustomListHeaderWidget(
+              firstColumn: "",
+              secondColumn: "Talhão",
+              thirdColumn: "Área",
+              fourthColumn: "Cultura",
+            ),
+            Expanded(
+                child: Observer(builder: (context) => ListView.builder(
+                    itemCount: plots.length,
+                    itemBuilder: (context, index) {
+                      return CustomCheckableListItemWidget(
+                          indexIsChecked: controller.selectAll,
+                          firstColumn: plots[index][0],
+                          secondColumn: plots[index][1],
+                          thirdColumn: plots[index][2],
+                          index: index,
+                          onCheckBoxTap: (index) {});
+                    })))
+          ])))
+    ]);
   }
+  
 }
 
 class BottomButtonsWidget extends StatelessWidget {
@@ -142,32 +147,32 @@ class BottomButtonsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Observer(
-        builder: (context) => Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                controller.page == 0
-                    ? const SizedBox.shrink()
-                    : CustomOutlinedButton(
-                        onPressed: () {
-                          controller.decrementPage();
-                          DefaultTabController.of(context)
-                              .animateTo(controller.page);
-                        },
-                        label: AppStrings.previousButton),
-                CustomElevatedButton(
-                    onPressed: controller.page == 4
-                        ? rightButtonAction()
-                        : () {
-                            controller.incrementPage();
-                            DefaultTabController.of(context)
-                                .animateTo(controller.page);
-                          },
-                    label: controller.page == 4
-                        ? AppStrings.finishedOSButton
-                        : AppStrings.nextButton)
-              ],
-            ));
+    return Observer(builder: (context) => Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        controller.page == 0
+            ? const SizedBox.shrink()
+            : CustomOutlinedButton(
+                onPressed: () {
+                  controller.decrementPage();
+                  DefaultTabController.of(context).animateTo(controller.page);
+                },
+                label: AppStrings.previousButton,
+                textStyle: AppTextStyles.labelTextButtonStyle(
+                    color: AppColors.blackColor),
+              ),
+        CustomElevatedButton(
+            onPressed: controller.page == 4
+                ? rightButtonAction()
+                : () {
+                    controller.incrementPage();
+                    DefaultTabController.of(context).animateTo(controller.page);
+                  },
+            label: controller.page == 4
+                ? AppStrings.finishedOSButton
+                : AppStrings.nextButton)
+      ],
+    ));
   }
 
   static rightButtonAction() {}

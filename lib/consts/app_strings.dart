@@ -68,6 +68,7 @@ class AppStrings {
   static const String executionerSelectorHint = "Selecione um executor";
   static const String machinerySelectorHint = "Selecione um maquinário";
   static const String productSelectorHint = "Selecione um produto";
+  static const String selectAllButton = "Selecionar tudo";
 
   ///Errors
   static const String genericErrorMessage =

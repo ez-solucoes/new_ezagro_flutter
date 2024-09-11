@@ -11,45 +11,65 @@ class CustomListHeaderWidget extends StatelessWidget {
   final Color borderColor;
 
   const CustomListHeaderWidget(
-      {
-        super.key,
-        required this.firstColumn,
-        required this.secondColumn,
-        required this.thirdColumn,
-        required this.fourthColumn,
-        this.borderColor = AppColors.whiteBorderColor
-      });
+      {super.key,
+      required this.firstColumn,
+      required this.secondColumn,
+      required this.thirdColumn,
+      required this.fourthColumn,
+      this.borderColor = AppColors.whiteBorderColor});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: AppColors.trueWhiteColor,
-        child: Column(
-            children: [
-        Padding(
-        padding: const EdgeInsets.all(12.0), child:
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      color: AppColors.trueWhiteColor,
+      child: Column(
+        children: [
+          Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text(firstColumn, style: AppTextStyles.smallBoldTextOnCardStyle(
-                          color: AppColors.blackColor)),
-                  Text(secondColumn, style: AppTextStyles.smallBoldTextOnCardStyle(
-                      color: AppColors.blackColor)),
-
-                  Text(thirdColumn, style: AppTextStyles.smallBoldTextOnCardStyle(
-                      color: AppColors.blackColor)),
-
-                  Text(fourthColumn, style: AppTextStyles.smallBoldTextOnCardStyle(
-                      color: AppColors.blackColor))
+                  Column(
+                    children: [_getFirstColumn()],
+                  ),
+                  Expanded(
+                      child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(secondColumn,
+                              style: AppTextStyles.smallBoldTextOnCardStyle(
+                                  color: AppColors.blackColor)),
+                          Text(thirdColumn,
+                              style: AppTextStyles.smallBoldTextOnCardStyle(
+                                  color: AppColors.blackColor)),
+                          Text(fourthColumn,
+                              style: AppTextStyles.smallBoldTextOnCardStyle(
+                                  color: AppColors.blackColor))
+                        ],
+                      )
+                    ],
+                  ))
                 ],
               )),
-              Divider(
-                color: borderColor,
-                thickness: 1.0,
-                height: 1.0,
-              )
-            ],
-          ),
-        );
+          Divider(
+            color: borderColor,
+            thickness: 1.0,
+            height: 1.0,
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _getFirstColumn() {
+    return firstColumn == ""
+        ? SizedBox(
+            width: 25,
+          )
+        : Text(firstColumn,
+            style: AppTextStyles.smallBoldTextOnCardStyle(
+                color: AppColors.blackColor));
   }
 }

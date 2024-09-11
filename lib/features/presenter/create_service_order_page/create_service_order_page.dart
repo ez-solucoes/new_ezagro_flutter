@@ -104,6 +104,8 @@ class CreateServiceOrderPage extends StatelessWidget {
   static rightButtonAction() {
     if (page < 4) {
       page += 1;
-    } else {}
+    } else {
+
+    }
   }
 }

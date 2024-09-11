@@ -13,7 +13,7 @@ import '../../../consts/app_text_styles.dart';
 
 class ServiceOrderPage extends StatelessWidget {
   const ServiceOrderPage({super.key});
-  final isFinished = false;
+  final isFinished = true;
 
   @override
   Widget build(BuildContext context) {

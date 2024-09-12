@@ -16,6 +16,9 @@ abstract class _CreateServiceOrderController with Store {
   @observable
   List<String> executioners = ObservableList();
 
+  @observable
+  List<String> machinery = ObservableList();
+
   @action
   toggleSelectAll() {
     selectAll = !selectAll;

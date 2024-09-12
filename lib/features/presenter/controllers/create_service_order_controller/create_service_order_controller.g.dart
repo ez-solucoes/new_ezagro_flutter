@@ -73,6 +73,22 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     });
   }
 
+  late final _$machineryAtom =
+      Atom(name: '_CreateServiceOrderController.machinery', context: context);
+
+  @override
+  List<String> get machinery {
+    _$machineryAtom.reportRead();
+    return super.machinery;
+  }
+
+  @override
+  set machinery(List<String> value) {
+    _$machineryAtom.reportWrite(value, super.machinery, () {
+      super.machinery = value;
+    });
+  }
+
   late final _$_CreateServiceOrderControllerActionController =
       ActionController(name: '_CreateServiceOrderController', context: context);
 
@@ -115,7 +131,8 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
 isLoading: ${isLoading},
 page: ${page},
 selectAll: ${selectAll},
-executioners: ${executioners}
+executioners: ${executioners},
+machinery: ${machinery}
     ''';
   }
 }

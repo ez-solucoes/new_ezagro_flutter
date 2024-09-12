@@ -7,21 +7,21 @@ import 'package:new_ezagro_flutter/modules/presenter/widgets/appbar/custom_appba
 import 'package:new_ezagro_flutter/modules/presenter/widgets/background/background_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/buttons/custom_elevated_button.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/buttons/custom_outlined_button.dart';
+import 'package:new_ezagro_flutter/modules/presenter/widgets/customCardWithLogo/custom_card_with_logo_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customCheckableListItem/custom_checkable_list_item_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customInfoCard/custom_info_card_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customListHeader/custom_list_header_widget.dart';
-import 'package:new_ezagro_flutter/modules/presenter/widgets/custom_selector_widget/custom_selector_widget.dart';
 
 import '../../../consts/app_colors.dart';
-import '../../../consts/app_routes.dart';
 import '../../../consts/app_text_styles.dart';
+import '../../../modules/presenter/widgets/customSelector/custom_selector_widget.dart';
 
 class CreateServiceOrderPage extends StatelessWidget {
-  const CreateServiceOrderPage({Key? key}) : super(key: key);
+  const CreateServiceOrderPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    CreateServiceOrderController _controller = CreateServiceOrderController();
+    CreateServiceOrderController controller = CreateServiceOrderController();
     return BackgroundWidget(
         scrollable: false,
         appBar: const CustomAppBarWidget(
@@ -36,22 +36,14 @@ class CreateServiceOrderPage extends StatelessWidget {
                   SizedBox(
                       height: MediaQuery.sizeOf(context).height * 0.75,
                       child: TabBarView(children: <Widget>[
-                        Center(
-                          child: _getGeneralInformation(_controller),
-                        ),
-                        Center(
-                          child: _getPlotSelector(_controller),
-                        ),
-                        Center(
-                          child: _getExecutionersList(_controller),
-                        ),
-                        Center(
-                          child: Text("It's "),
-                        ),
+                        _getGeneralInformation(controller),
+                        _getPlotSelector(controller),
+                        _getExecutionersList(controller),
+                        _getMachineryList(controller),
                       ])),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 5),
                   BottomButtonsWidget(
-                    controller: _controller,
+                    controller: controller,
                   )
                 ]))));
   }
@@ -124,13 +116,14 @@ class CreateServiceOrderPage extends StatelessWidget {
                             child: ListView.builder(
                                 itemCount: plots.length,
                                 itemBuilder: (context, index) {
-                                  return CustomCheckableListItemWidget(
+                                  return Observer(
+                                      builder: (context) => CustomCheckableListItemWidget(
                                       indexIsChecked: controller.selectAll,
                                       firstColumn: plots[index][0],
                                       secondColumn: plots[index][1],
                                       thirdColumn: plots[index][2],
                                       index: index,
-                                      onCheckBoxTap: (index) {});
+                                      onCheckBoxTap: (index) {}));
                                 }))
                       ])))
             ]));
@@ -182,6 +175,55 @@ class CreateServiceOrderPage extends StatelessWidget {
   }
 
   ///Page 04
+  Widget _getMachineryList(CreateServiceOrderController controller) {
+    return Observer(
+        builder: (context) => Column(
+          children: [
+            CustomSelectorWidget(
+                onSelect: (value) {
+                  controller.machinery.add(value);
+                },
+                items: ["máquina 1", "máquina 2", "máquina 3"],
+                title: AppStrings.machinerySelectorTitle,
+                selectorHint: AppStrings.machinerySelectorHint),
+            const SizedBox(height: 6),
+            const Divider(
+              height: 1,
+              color: AppColors.softGreyColor,
+            ),
+            const SizedBox(height: 6),
+            Expanded(
+                child: ListView.separated(
+                  itemCount: controller.machinery.length,
+                  itemBuilder: (context, index) {
+                    return Observer(
+                        builder: (context) => CustomCardWithLogoWidget(
+                      index: index,
+                      labelOne: "Máquina:",
+                      textOne: controller.machinery[index],
+                      labelTwo: "Apelido:",
+                      textTwo: controller.machinery[index],
+                      labelThree: "Horímetro:",
+                      textThree: "Horímetro",
+                      labelFour: "Quilometragem",
+                      textFour: "Quilometragem",
+                      icon: Icons.delete_outline,
+                      logo: Icons.agriculture_sharp,
+                      onIconTap: (index) {
+                        controller.machinery.removeAt(index);
+                      },
+                    ));
+                  },
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(height: 4);
+                  },
+                ))
+          ],
+        ));
+  }
+
+  ///Page 05
+
 }
 
 class BottomButtonsWidget extends StatelessWidget {
@@ -210,7 +252,7 @@ class BottomButtonsWidget extends StatelessWidget {
                         textStyle: AppTextStyles.labelTextButtonStyle(
                             color: AppColors.blackColor),
                       ),
-                CustomElevatedButton(
+                    CustomElevatedButton(
                     onPressed: controller.page >= 3
                         ? rightButtonAction()
                         : () {
@@ -226,6 +268,6 @@ class BottomButtonsWidget extends StatelessWidget {
   }
 
   static rightButtonAction() {
-    print("aaaaaa");
+
   }
 }

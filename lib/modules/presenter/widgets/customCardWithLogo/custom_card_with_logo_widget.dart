@@ -97,7 +97,7 @@ class CustomCardWithLogoWidget extends StatelessWidget {
   Row _buildInformationLines(String label, String text) {
     return Row(
       children: [
-        const VerticalDivider(
+        label == "" ? const SizedBox.shrink() : const VerticalDivider(
           width: 1,
           thickness: 1,
           color: AppColors.softGreyColor,
@@ -128,7 +128,7 @@ class CustomCardWithLogoWidget extends StatelessWidget {
         size: 60,
       );
     } else {
-      return const SizedBox(width: 30);
+      return const SizedBox(width: 60);
     }
   }
 

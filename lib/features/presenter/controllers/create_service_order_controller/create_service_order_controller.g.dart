@@ -89,6 +89,22 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     });
   }
 
+  late final _$productsAtom =
+      Atom(name: '_CreateServiceOrderController.products', context: context);
+
+  @override
+  List<String> get products {
+    _$productsAtom.reportRead();
+    return super.products;
+  }
+
+  @override
+  set products(List<String> value) {
+    _$productsAtom.reportWrite(value, super.products, () {
+      super.products = value;
+    });
+  }
+
   late final _$_CreateServiceOrderControllerActionController =
       ActionController(name: '_CreateServiceOrderController', context: context);
 
@@ -132,7 +148,8 @@ isLoading: ${isLoading},
 page: ${page},
 selectAll: ${selectAll},
 executioners: ${executioners},
-machinery: ${machinery}
+machinery: ${machinery},
+products: ${products}
     ''';
   }
 }

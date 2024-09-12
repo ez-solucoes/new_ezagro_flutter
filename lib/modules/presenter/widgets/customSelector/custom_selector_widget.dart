@@ -43,7 +43,7 @@ class _CustomSelectorWidgetState extends State<CustomSelectorWidget> {
                 const SizedBox(height: 16),
                 DropdownButtonFormField(
                   value: selectorValue,
-                  dropdownColor: AppColors.softGreenColor,
+                  dropdownColor: AppColors.trueWhiteColor,
                   style: AppTextStyles.appBarSubTitleTextStyle(color: AppColors.blackColor),
                   hint: Text(
                     widget.selectorHint,

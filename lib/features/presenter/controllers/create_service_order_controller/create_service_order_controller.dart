@@ -19,13 +19,16 @@ abstract class _CreateServiceOrderController with Store {
   @observable
   List<String> machinery = ObservableList();
 
+  @observable
+  List<String> products = ObservableList();
+
   @action
   toggleSelectAll() {
     selectAll = !selectAll;
   }
   @action
    incrementPage() {
-    if (page<3) {
+    if (page<4) {
       page+=1;
     }
   }

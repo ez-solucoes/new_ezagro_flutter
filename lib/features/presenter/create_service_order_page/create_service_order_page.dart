@@ -29,7 +29,7 @@ class CreateServiceOrderPage extends StatelessWidget {
           title: AppStrings.serviceOrderTitle,
         ),
         child: DefaultTabController(
-            length: 4,
+            length: 5,
             child: Padding(
                 padding: const EdgeInsets.all(14.0),
                 child: Column(children: [
@@ -40,6 +40,7 @@ class CreateServiceOrderPage extends StatelessWidget {
                         _getPlotSelector(controller),
                         _getExecutionersList(controller),
                         _getMachineryList(controller),
+                        _getProductList(controller)
                       ])),
                   const SizedBox(height: 5),
                   BottomButtonsWidget(
@@ -223,7 +224,49 @@ class CreateServiceOrderPage extends StatelessWidget {
   }
 
   ///Page 05
-
+  Widget _getProductList(CreateServiceOrderController controller) {
+    return Observer(
+        builder: (context) => Column(
+          children: [
+            CustomSelectorWidget(
+                onSelect: (value) {
+                  controller.products.add(value);
+                },
+                items: ["Produto 1", "Produto 2", "Produto 3"],
+                title: AppStrings.productSelectorTitle,
+                selectorHint: AppStrings.productSelectorHint),
+            const SizedBox(height: 6),
+            const Divider(
+              height: 1,
+              color: AppColors.softGreyColor,
+            ),
+            const SizedBox(height: 6),
+            Expanded(
+                child: ListView.separated(
+                  itemCount: controller.products.length,
+                  itemBuilder: (context, index) {
+                    return Observer(
+                        builder: (context) => CustomCardWithLogoWidget(
+                          index: index,
+                          labelOne: "Produto:",
+                          textOne: controller.products[index],
+                          labelTwo: "Quantidade:",
+                          textTwo: "Quantidade",
+                          labelThree: "Recomendação",
+                          textThree: "Recomendação",
+                          icon: Icons.delete_outline,
+                          onIconTap: (index) {
+                            controller.products.removeAt(index);
+                          },
+                        ));
+                  },
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(height: 4);
+                  },
+                ))
+          ],
+        ));
+  }
 }
 
 class BottomButtonsWidget extends StatelessWidget {
@@ -253,14 +296,14 @@ class BottomButtonsWidget extends StatelessWidget {
                             color: AppColors.blackColor),
                       ),
                     CustomElevatedButton(
-                    onPressed: controller.page >= 3
+                    onPressed: controller.page >= 4
                         ? rightButtonAction()
                         : () {
                             controller.incrementPage();
                             DefaultTabController.of(context)
                                 .animateTo(controller.page);
                           },
-                    label: controller.page == 3
+                    label: controller.page == 4
                         ? AppStrings.finishedOSButton
                         : AppStrings.nextButton)
               ],

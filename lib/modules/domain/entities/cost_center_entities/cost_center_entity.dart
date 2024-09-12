@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:equatable/equatable.dart';
 
 import 'cost_center_type_entity.dart';

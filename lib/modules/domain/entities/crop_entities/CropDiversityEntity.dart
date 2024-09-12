@@ -6,9 +6,16 @@ class CropDiversityEntity extends Equatable {
   final String name;
   final TechnologyTypeEntity technologyType;
 
+  const CropDiversityEntity({
+    required this.name,
+    required this.id,
+    required this.technologyType,
+  });
 
   @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
-
+  List<Object?> get props => [
+        id,
+        name,
+        technologyType,
+      ];
 }

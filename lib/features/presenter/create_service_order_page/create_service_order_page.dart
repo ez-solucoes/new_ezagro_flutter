@@ -8,6 +8,7 @@ import 'package:new_ezagro_flutter/modules/presenter/widgets/background/backgrou
 import 'package:new_ezagro_flutter/modules/presenter/widgets/buttons/custom_elevated_button.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/buttons/custom_outlined_button.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customCheckableListItem/custom_checkable_list_item_widget.dart';
+import 'package:new_ezagro_flutter/modules/presenter/widgets/customInfoCard/custom_info_card_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customListHeader/custom_list_header_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/custom_selector_widget/custom_selector_widget.dart';
 
@@ -20,8 +21,7 @@ class CreateServiceOrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CreateServiceOrderController _controller =
-    CreateServiceOrderController();
+    CreateServiceOrderController _controller = CreateServiceOrderController();
     return BackgroundWidget(
         scrollable: false,
         appBar: const CustomAppBarWidget(
@@ -29,38 +29,38 @@ class CreateServiceOrderPage extends StatelessWidget {
           title: AppStrings.serviceOrderTitle,
         ),
         child: DefaultTabController(
-                length: 4,
-                child: Padding(
-                    padding: const EdgeInsets.all(14.0),
-                    child: Column(children: [
-                      SizedBox(
-                          height: MediaQuery.sizeOf(context).height * 0.75,
-                          child: TabBarView(children: <Widget>[
-                            Center(
-                              child: _getGeneralInformation(_controller),
-                            ),
-                            Center(
-                              child: _getPlotSelector(_controller),
-                            ),
-                            Center(
-                              child: Text("It's sunny here"),
-                            ),
-                            Center(
-                              child: Text("It's "),
-                            ),
-                          ])),
-                      const SizedBox(height: 10),
-                      BottomButtonsWidget(
-                        controller: _controller,
-                      )
-                    ]))));
+            length: 4,
+            child: Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: Column(children: [
+                  SizedBox(
+                      height: MediaQuery.sizeOf(context).height * 0.75,
+                      child: TabBarView(children: <Widget>[
+                        Center(
+                          child: _getGeneralInformation(_controller),
+                        ),
+                        Center(
+                          child: _getPlotSelector(_controller),
+                        ),
+                        Center(
+                          child: _getExecutionersList(_controller),
+                        ),
+                        Center(
+                          child: Text("It's "),
+                        ),
+                      ])),
+                  const SizedBox(height: 10),
+                  BottomButtonsWidget(
+                    controller: _controller,
+                  )
+                ]))));
   }
 
   ///Page 01
   Widget _getGeneralInformation(CreateServiceOrderController controller) {
     return Column(children: [
       CustomSelectorWidget(
-          onSelect: () {},
+          onSelect: (value) {},
           items: ["Atividade 01", "Atividade 02"],
           title: AppStrings.activitySelectorTitle,
           selectorHint: AppStrings.activitySelectorHint),
@@ -68,7 +68,7 @@ class CreateServiceOrderPage extends StatelessWidget {
         height: 5,
       ),
       CustomSelectorWidget(
-          onSelect: () {},
+          onSelect: (value) {},
           items: ["CC 01", "CC 02"],
           title: AppStrings.costCenterSelectorTitle,
           selectorHint: AppStrings.costCenterSelectorHint),
@@ -76,7 +76,7 @@ class CreateServiceOrderPage extends StatelessWidget {
         height: 5,
       ),
       CustomSelectorWidget(
-          onSelect: () {},
+          onSelect: (value) {},
           items: ["Fazenda 01", "Fazenda 02"],
           title: AppStrings.farmSelectorTitle,
           selectorHint: AppStrings.farmSelectorHint),
@@ -84,7 +84,7 @@ class CreateServiceOrderPage extends StatelessWidget {
         height: 5,
       ),
       CustomSelectorWidget(
-          onSelect: () {},
+          onSelect: (value) {},
           items: ["Safra 01", "Safra 02"],
           title: AppStrings.harvestSelectorTitle,
           selectorHint: AppStrings.harvestSelectorHint)
@@ -96,45 +96,92 @@ class CreateServiceOrderPage extends StatelessWidget {
     List<List<String>> plots = List.generate(50, (index) {
       return [(index).toString(), '100ha', 'milho'];
     });
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-      CustomOutlinedButton(
-          onPressed: () {
-            controller.toggleSelectAll();
-          },
-          label: AppStrings.selectAllButton,
-          textStyle: AppTextStyles.smallBoldTextOnCardStyle(
-              color: AppColors.blackColor)),
-      const SizedBox(height: 5,),
-      Expanded(child: Container(
-          padding: const EdgeInsets.all(2),
-          decoration: BoxDecoration(
-              color: AppColors.contourWhiteColor,
-              borderRadius: BorderRadius.circular(8)),
-          child: Column(children: [
-            const CustomListHeaderWidget(
-              firstColumn: "",
-              secondColumn: "Talhão",
-              thirdColumn: "Área",
-              fourthColumn: "Cultura",
-            ),
-            Expanded(
-                child: Observer(builder: (context) => ListView.builder(
-                    itemCount: plots.length,
-                    itemBuilder: (context, index) {
-                      return CustomCheckableListItemWidget(
-                          indexIsChecked: controller.selectAll,
-                          firstColumn: plots[index][0],
-                          secondColumn: plots[index][1],
-                          thirdColumn: plots[index][2],
-                          index: index,
-                          onCheckBoxTap: (index) {});
-                    })))
-          ])))
-    ]);
+    return Observer(
+        builder: (context) =>
+            Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              CustomOutlinedButton(
+                  onPressed: () {controller.toggleSelectAll();},
+                  label: AppStrings.selectAllButton,
+                  textStyle: AppTextStyles.smallBoldTextOnCardStyle(
+                      color: AppColors.blackColor)),
+              const SizedBox(
+                height: 5,
+              ),
+              Expanded(
+                  child: Container(
+                      padding: const EdgeInsets.all(2),
+                      decoration: BoxDecoration(
+                          color: AppColors.contourWhiteColor,
+                          borderRadius: BorderRadius.circular(8)),
+                      child: Column(children: [
+                        const CustomListHeaderWidget(
+                          firstColumn: "",
+                          secondColumn: AppStrings.plotColumn,
+                          thirdColumn: AppStrings.areaColumn,
+                          fourthColumn: AppStrings.cropColumn,
+                        ),
+                        Expanded(
+                            child: ListView.builder(
+                                itemCount: plots.length,
+                                itemBuilder: (context, index) {
+                                  return CustomCheckableListItemWidget(
+                                      indexIsChecked: controller.selectAll,
+                                      firstColumn: plots[index][0],
+                                      secondColumn: plots[index][1],
+                                      thirdColumn: plots[index][2],
+                                      index: index,
+                                      onCheckBoxTap: (index) {});
+                                }))
+                      ])))
+            ]));
   }
-  
+
+  ///Page 03
+  Widget _getExecutionersList(CreateServiceOrderController controller) {
+    return Observer(
+        builder: (context) => Column(
+              children: [
+                CustomSelectorWidget(
+                    onSelect: (value) {
+                      controller.executioners.add(value);
+                    },
+                    items: ["executores 1", "ex 2", "ex 3"],
+                    title: AppStrings.executionerSelectorTitle,
+                    selectorHint: AppStrings.executionerSelectorHint),
+                const SizedBox(height: 6),
+                const Divider(
+                  height: 1,
+                  color: AppColors.softGreyColor,
+                ),
+                const SizedBox(height: 6),
+                Expanded(
+                    child: ListView.separated(
+                  itemCount: controller.executioners.length,
+                  itemBuilder: (context, index) {
+                    return CustomInfoCardWidget(
+                      index: index,
+                      infoCardType: InfoCardType.threeLabeledInfoWithIcon,
+                      labelOne: "Nome:",
+                      textOne: controller.executioners[index],
+                      labelTwo: "ID",
+                      textTwo: "00.000.000-00",
+                      labelThree: "Turno:",
+                      textThree: "Matutino",
+                      icon: Icons.delete_outline,
+                      onIconTap: (index) {
+                        controller.executioners.removeAt(index);
+                      },
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(height: 4);
+                  },
+                ))
+              ],
+            ));
+  }
+
+  ///Page 04
 }
 
 class BottomButtonsWidget extends StatelessWidget {
@@ -147,33 +194,38 @@ class BottomButtonsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Observer(builder: (context) => Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        controller.page == 0
-            ? const SizedBox.shrink()
-            : CustomOutlinedButton(
-                onPressed: () {
-                  controller.decrementPage();
-                  DefaultTabController.of(context).animateTo(controller.page);
-                },
-                label: AppStrings.previousButton,
-                textStyle: AppTextStyles.labelTextButtonStyle(
-                    color: AppColors.blackColor),
-              ),
-        CustomElevatedButton(
-            onPressed: controller.page == 4
-                ? rightButtonAction()
-                : () {
-                    controller.incrementPage();
-                    DefaultTabController.of(context).animateTo(controller.page);
-                  },
-            label: controller.page == 4
-                ? AppStrings.finishedOSButton
-                : AppStrings.nextButton)
-      ],
-    ));
+    return Observer(
+        builder: (context) => Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                controller.page == 0
+                    ? const SizedBox.shrink()
+                    : CustomOutlinedButton(
+                        onPressed: () {
+                          controller.decrementPage();
+                          DefaultTabController.of(context)
+                              .animateTo(controller.page);
+                        },
+                        label: AppStrings.previousButton,
+                        textStyle: AppTextStyles.labelTextButtonStyle(
+                            color: AppColors.blackColor),
+                      ),
+                CustomElevatedButton(
+                    onPressed: controller.page >= 3
+                        ? rightButtonAction()
+                        : () {
+                            controller.incrementPage();
+                            DefaultTabController.of(context)
+                                .animateTo(controller.page);
+                          },
+                    label: controller.page == 3
+                        ? AppStrings.finishedOSButton
+                        : AppStrings.nextButton)
+              ],
+            ));
   }
 
-  static rightButtonAction() {}
+  static rightButtonAction() {
+    print("aaaaaa");
+  }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:new_ezagro_flutter/consts/app_text_styles.dart';
 
 import '../../../../consts/app_colors.dart';
 
@@ -18,7 +17,7 @@ class CustomOutlinedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: onPressed,
+      onPressed: () {onPressed();},
       style: ElevatedButton.styleFrom(
           minimumSize: const Size(150, 38),
           backgroundColor: AppColors.transparent,

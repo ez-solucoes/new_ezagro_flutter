@@ -6,12 +6,14 @@ enum InfoCardType {
   activityType,
   oneLabeledInfo,
   twoLabeledInfo,
-  threeLabeledInfo
+  threeLabeledInfo,
+  threeLabeledInfoWithIcon
 }
 
 class CustomInfoCardWidget extends StatelessWidget {
   final InfoCardType infoCardType;
 
+  final int index;
   final String labelOne;
   final String textOne;
   final String labelTwo;
@@ -19,10 +21,11 @@ class CustomInfoCardWidget extends StatelessWidget {
   final String labelThree;
   final String textThree;
   final IconData? icon;
-  final Function() onIconTap;
+  final Function(int) onIconTap;
 
   const CustomInfoCardWidget({
     super.key,
+    this.index = 0,
     this.labelOne = "",
     this.textOne = "",
     this.labelTwo = "",
@@ -45,6 +48,8 @@ class CustomInfoCardWidget extends StatelessWidget {
         return _buildTwoLabeledInfo;
       case InfoCardType.threeLabeledInfo:
         return _buildThreeLabeledInfo;
+      case InfoCardType.threeLabeledInfoWithIcon:
+        return _buildThreeLabeledInfoWithCard;
     }
   }
 
@@ -275,13 +280,83 @@ class CustomInfoCardWidget extends StatelessWidget {
         ),
       ));
 
+  Card get _buildThreeLabeledInfoWithCard => Card(
+      color: AppColors.trueWhiteColor,
+      child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: IntrinsicHeight(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          labelOne,
+                          style: AppTextStyles.labelOnCardStyle(
+                              color: AppColors.blackColor),
+                        ),
+                        Text(
+                          textOne,
+                          style: AppTextStyles.boldMediumTextStyle(
+                              color: AppColors.blackColor),
+                        )
+                      ]),
+                  Column(children: [_putIconIfNeeded()]),
+                ]),
+            Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(
+                  labelTwo,
+                  style: AppTextStyles.labelOnCardStyle(
+                      color: AppColors.blackColor),
+                ),
+                Text(
+                  textTwo,
+                  style: AppTextStyles.boldMediumTextStyle(
+                      color: AppColors.blackColor),
+                )
+              ]),
+              const SizedBox(width: 30),
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                IntrinsicHeight(
+                    child: Row(children: [
+                  const VerticalDivider(
+                    width: 2,
+                    thickness: 1,
+                    color: AppColors.softGreyColor,
+                  ),
+                  const SizedBox(width: 5),
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          labelThree,
+                          style: AppTextStyles.labelOnCardStyle(
+                              color: AppColors.blackColor),
+                        ),
+                        Text(
+                          textThree,
+                          style: AppTextStyles.boldMediumTextStyle(
+                              color: AppColors.blackColor),
+                        )
+                      ])
+                ]))
+              ]),
+            ]),
+          ]))));
+
   Widget _putIconIfNeeded() {
     if (icon != null) {
-      return IconButton(onPressed: onIconTap, icon: Icon(icon));
+      return IconButton(onPressed: () {onIconTap(index);}, icon: Icon(icon));
     } else {
       return const SizedBox();
     }
   }
 
-  static void _defaultIconAction() {}
+  static _defaultIconAction(int index) {}
 }

@@ -5,7 +5,7 @@ import 'package:new_ezagro_flutter/consts/app_text_styles.dart';
 import '../../../../consts/app_colors.dart';
 
 class CustomSelectorWidget extends StatefulWidget {
-  final Function() onSelect;
+  final Function(String) onSelect;
   final List<String> items;
   final String title;
   final String selectorHint;
@@ -55,6 +55,9 @@ class _CustomSelectorWidgetState extends State<CustomSelectorWidget> {
                         value: item, child: Text(item));
                   }).toList(),
                   onChanged: (value) {
+                    if (value != null) {
+                      widget.onSelect(value!);
+                    }
                     setState(() {
                       selectorValue = value;
                     });

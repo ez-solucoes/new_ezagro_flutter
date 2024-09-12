@@ -13,13 +13,16 @@ abstract class _CreateServiceOrderController with Store {
   @observable
   bool selectAll = false;
 
+  @observable
+  List<String> executioners = ObservableList();
+
   @action
   toggleSelectAll() {
     selectAll = !selectAll;
   }
   @action
    incrementPage() {
-    if (page<4) {
+    if (page<3) {
       page+=1;
     }
   }

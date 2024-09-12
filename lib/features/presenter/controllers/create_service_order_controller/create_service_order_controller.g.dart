@@ -57,6 +57,22 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     });
   }
 
+  late final _$executionersAtom = Atom(
+      name: '_CreateServiceOrderController.executioners', context: context);
+
+  @override
+  List<String> get executioners {
+    _$executionersAtom.reportRead();
+    return super.executioners;
+  }
+
+  @override
+  set executioners(List<String> value) {
+    _$executionersAtom.reportWrite(value, super.executioners, () {
+      super.executioners = value;
+    });
+  }
+
   late final _$_CreateServiceOrderControllerActionController =
       ActionController(name: '_CreateServiceOrderController', context: context);
 
@@ -98,7 +114,8 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     return '''
 isLoading: ${isLoading},
 page: ${page},
-selectAll: ${selectAll}
+selectAll: ${selectAll},
+executioners: ${executioners}
     ''';
   }
 }

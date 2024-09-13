@@ -28,8 +28,9 @@ abstract class _CreateServiceOrderController with Store {
   }
   @action
    incrementPage() {
-    if (page<4) {
+    if (page<=4) {
       page+=1;
+      print(page);
     }
   }
 
@@ -37,6 +38,7 @@ abstract class _CreateServiceOrderController with Store {
   decrementPage() {
     if (page>0) {
       page-=1;
+      print(page);
     }
   }
 

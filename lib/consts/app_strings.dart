@@ -61,6 +61,7 @@ class AppStrings {
   static const String executionerSelectorTitle = "Executores:";
   static const String machinerySelectorTitle = "Maquinário:";
   static const String productSelectorTitle = "Produto:";
+  static const String responsiveSelectorTitle = "Responsável:";
   static const String activitySelectorHint = "Selecione uma atividade";
   static const String costCenterSelectorHint = "Selecione um centro de custo";
   static const String farmSelectorHint = "Selecione uma fazenda";
@@ -68,10 +69,14 @@ class AppStrings {
   static const String executionerSelectorHint = "Selecione um executor";
   static const String machinerySelectorHint = "Selecione um maquinário";
   static const String productSelectorHint = "Selecione um produto";
+  static const String responsibleSelectorHint = "Selecione um responsável";
   static const String selectAllButton = "Selecionar tudo";
   static const String plotColumn = "Talhão";
   static const String areaColumn = "Área";
   static const String cropColumn = "Cultura";
+  static const String dateLabel = "Data";
+  static const String expectedStartDate = "Previsão de início";
+  static const String expectedFinishingDate = "Previsão de Término";
 
   ///Errors
   static const String genericErrorMessage =

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/features/presenter/controllers/create_service_order_controller/create_service_order_controller.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/appbar/custom_appbar_widget.dart';
@@ -9,6 +8,7 @@ import 'package:new_ezagro_flutter/modules/presenter/widgets/buttons/custom_elev
 import 'package:new_ezagro_flutter/modules/presenter/widgets/buttons/custom_outlined_button.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customCardWithLogo/custom_card_with_logo_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customCheckableListItem/custom_checkable_list_item_widget.dart';
+import 'package:new_ezagro_flutter/modules/presenter/widgets/customDatePicker/custom_date_picker_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customInfoCard/custom_info_card_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customListHeader/custom_list_header_widget.dart';
 
@@ -29,7 +29,7 @@ class CreateServiceOrderPage extends StatelessWidget {
           title: AppStrings.serviceOrderTitle,
         ),
         child: DefaultTabController(
-            length: 5,
+            length: 7,
             child: Padding(
                 padding: const EdgeInsets.all(14.0),
                 child: Column(children: [
@@ -40,7 +40,9 @@ class CreateServiceOrderPage extends StatelessWidget {
                         _getPlotSelector(controller),
                         _getExecutionersList(controller),
                         _getMachineryList(controller),
-                        _getProductList(controller)
+                        _getProductList(controller),
+                        _getSchedulingInformation(controller),
+                        _getFinalInformation(controller)
                       ])),
                   const SizedBox(height: 5),
                   BottomButtonsWidget(
@@ -267,6 +269,27 @@ class CreateServiceOrderPage extends StatelessWidget {
           ],
         ));
   }
+
+  ///Page 06
+  Widget _getSchedulingInformation(CreateServiceOrderController controller) {
+      return Column(
+        children: [
+          const CustomDatePickerWidget(title: AppStrings.expectedStartDate),
+          const CustomDatePickerWidget(title: AppStrings.expectedFinishingDate),
+          CustomSelectorWidget(
+              onSelect: (value){},
+              items: ["Responsável 01", "Responsávl 02", "Responsável 03", "Responsável 04", ],
+              title: AppStrings.responsiveSelectorTitle,
+              selectorHint: AppStrings.responsibleSelectorHint)
+        ],
+      );
+  }
+
+  ///Page 07
+  Widget _getFinalInformation(CreateServiceOrderController controller) {
+    return const Text("");
+  }
+
 }
 
 class BottomButtonsWidget extends StatelessWidget {
@@ -296,14 +319,14 @@ class BottomButtonsWidget extends StatelessWidget {
                             color: AppColors.blackColor),
                       ),
                     CustomElevatedButton(
-                    onPressed: controller.page >= 4
+                    onPressed: controller.page >= 5
                         ? rightButtonAction()
                         : () {
                             controller.incrementPage();
                             DefaultTabController.of(context)
                                 .animateTo(controller.page);
                           },
-                    label: controller.page == 4
+                    label: controller.page == 5
                         ? AppStrings.finishedOSButton
                         : AppStrings.nextButton)
               ],

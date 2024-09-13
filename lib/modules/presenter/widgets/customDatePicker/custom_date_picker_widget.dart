@@ -16,9 +16,13 @@ class CustomDatePickerWidget extends StatefulWidget {
 
 class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
   DateTime selectedDate = DateTime.now();
+  DateFormat df = DateFormat("dd/MM/yyyy");
+  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    _controller.value = TextEditingValue(text: df.format(selectedDate).toString());
+    _controller.text = df.format(selectedDate);
     return Card(
         color: AppColors.trueWhiteColor,
         child: Padding(
@@ -37,13 +41,12 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
                   },
                   child: IgnorePointer(
                       child: TextFormField(
-                    initialValue: DateFormat("dd/MM/yyyy").format(selectedDate),
-                    keyboardType: TextInputType.datetime,
-                    textAlign: TextAlign.center,
-                    decoration: const InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: AppColors.contourWhiteColor)),
+                        controller: _controller,
+                        keyboardType: TextInputType.datetime,
+                        textAlign: TextAlign.center,
+                        decoration: const InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: AppColors.contourWhiteColor)),
                         labelText: AppStrings.dateLabel,
                         suffixIcon: Icon(Icons.calendar_today_outlined),
                         labelStyle: TextStyle(color: AppColors.greyColor)),
@@ -60,6 +63,9 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
             lastDate: now.add(const Duration(days: 1827)));
     setState(() {
       selectedDate = date ?? DateTime.now();
+      String formattedDate = df.format(selectedDate).toString();
+      _controller.text = formattedDate;
+      _controller.value = TextEditingValue(text: formattedDate);
     });
   }
 }

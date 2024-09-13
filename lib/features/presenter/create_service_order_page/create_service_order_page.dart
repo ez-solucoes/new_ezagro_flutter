@@ -9,8 +9,10 @@ import 'package:new_ezagro_flutter/modules/presenter/widgets/buttons/custom_outl
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customCardWithLogo/custom_card_with_logo_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customCheckableListItem/custom_checkable_list_item_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customDatePicker/custom_date_picker_widget.dart';
+import 'package:new_ezagro_flutter/modules/presenter/widgets/customDoubleSelector/custom_double_selector_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customInfoCard/custom_info_card_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customListHeader/custom_list_header_widget.dart';
+import 'package:new_ezagro_flutter/modules/presenter/widgets/customTextInput/custom_text_input_widget.dart';
 
 import '../../../consts/app_colors.dart';
 import '../../../consts/app_text_styles.dart';
@@ -272,7 +274,7 @@ class CreateServiceOrderPage extends StatelessWidget {
 
   ///Page 06
   Widget _getSchedulingInformation(CreateServiceOrderController controller) {
-      return Column(
+      return Flexible(child: Column(
         children: [
           const CustomDatePickerWidget(title: AppStrings.expectedStartDate),
           const CustomDatePickerWidget(title: AppStrings.expectedFinishingDate),
@@ -282,12 +284,33 @@ class CreateServiceOrderPage extends StatelessWidget {
               title: AppStrings.responsiveSelectorTitle,
               selectorHint: AppStrings.responsibleSelectorHint)
         ],
-      );
+      ));
   }
 
   ///Page 07
   Widget _getFinalInformation(CreateServiceOrderController controller) {
-    return const Text("");
+    return Column(
+      children: [
+        CustomDoubleSelectorWidget(
+            onSelectFirst: (value){},
+            itemsOne: ["C. de custo 01","C. de custo 02","C. de custo 03" ],
+            titleOne: AppStrings.finalCostCenterSelector,
+            selectorHintOne: AppStrings.finalCostCenterSelectorHint,
+            onSelectSecond: (value){},
+            itemsTwo: ["Estoque 01", "Estoque 02"],
+            titleTwo: AppStrings.finalStorageSelector,
+            selectorHintTwo: AppStrings.finalStorageSelectorHint),
+        const SizedBox(height: 12),
+        const Divider(
+          height: 1,
+          color: AppColors.softGreyColor,
+        ),
+        const SizedBox(height: 6),
+        const CustomTextInputWidget(title: AppStrings.jobValueTextFieldTitle),
+        const SizedBox(height: 6),
+        const CustomTextInputWidget(title: AppStrings.notesTextFieldTitle)
+      ],
+    );
   }
 
 }
@@ -319,14 +342,14 @@ class BottomButtonsWidget extends StatelessWidget {
                             color: AppColors.blackColor),
                       ),
                     CustomElevatedButton(
-                    onPressed: controller.page >= 5
+                    onPressed: controller.page >= 8
                         ? rightButtonAction()
                         : () {
                             controller.incrementPage();
                             DefaultTabController.of(context)
                                 .animateTo(controller.page);
                           },
-                    label: controller.page == 5
+                    label: controller.page == 8
                         ? AppStrings.finishedOSButton
                         : AppStrings.nextButton)
               ],

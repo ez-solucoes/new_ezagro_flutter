@@ -6,10 +6,12 @@ import '../../../../consts/app_colors.dart';
 
 class CustomTextInputWidget extends StatefulWidget {
   final String title;
+  final Function(String) getText;
 
   const CustomTextInputWidget({
     super.key,
-    required this.title
+    required this.title,
+    required this.getText
   });
 
   @override
@@ -48,6 +50,7 @@ class _CustomTextInputWidgetState extends State<CustomTextInputWidget> {
                     )),
                     hoverColor: AppColors.greenColor
                   ),
+                  onEditingComplete: (){widget.getText(_controller.text);},
                 )
               ],
             )));

@@ -7,8 +7,9 @@ import 'package:intl/intl.dart';
 
 class CustomDatePickerWidget extends StatefulWidget {
   final String title;
+  final Function(String) getSelectedDate;
 
-  const CustomDatePickerWidget({super.key, required this.title});
+  const CustomDatePickerWidget({super.key, required this.title, required this.getSelectedDate});
 
   @override
   State<CustomDatePickerWidget> createState() => _CustomDatePickerWidgetState();
@@ -66,6 +67,7 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
       String formattedDate = df.format(selectedDate).toString();
       _controller.text = formattedDate;
       _controller.value = TextEditingValue(text: formattedDate);
+      widget.getSelectedDate(formattedDate);
     });
   }
 }

@@ -57,7 +57,7 @@ class CreateServiceOrderPage extends StatelessWidget {
   Widget _getGeneralInformation(CreateServiceOrderController controller) {
     return Column(children: [
       CustomSelectorWidget(
-          onSelect: (value) {},
+          onSelect: (value) {controller.activity = {"activity": value};},
           items: ["Atividade 01", "Atividade 02"],
           title: AppStrings.activitySelectorTitle,
           selectorHint: AppStrings.activitySelectorHint),
@@ -65,7 +65,7 @@ class CreateServiceOrderPage extends StatelessWidget {
         height: 5,
       ),
       CustomSelectorWidget(
-          onSelect: (value) {},
+          onSelect: (value) {controller.costCenter = {"costCenter": value};},
           items: ["CC 01", "CC 02"],
           title: AppStrings.costCenterSelectorTitle,
           selectorHint: AppStrings.costCenterSelectorHint),
@@ -73,7 +73,7 @@ class CreateServiceOrderPage extends StatelessWidget {
         height: 5,
       ),
       CustomSelectorWidget(
-          onSelect: (value) {},
+          onSelect: (value) {controller.farm = {"farm": value};},
           items: ["Fazenda 01", "Fazenda 02"],
           title: AppStrings.farmSelectorTitle,
           selectorHint: AppStrings.farmSelectorHint),
@@ -81,7 +81,7 @@ class CreateServiceOrderPage extends StatelessWidget {
         height: 5,
       ),
       CustomSelectorWidget(
-          onSelect: (value) {},
+          onSelect: (value) {controller.harvest = {"harvest": value};},
           items: ["Safra 01", "Safra 02"],
           title: AppStrings.harvestSelectorTitle,
           selectorHint: AppStrings.harvestSelectorHint)
@@ -129,7 +129,14 @@ class CreateServiceOrderPage extends StatelessWidget {
                                       secondColumn: plots[index][1],
                                       thirdColumn: plots[index][2],
                                       index: index,
-                                      onCheckBoxTap: (index) {}));
+                                      onCheckBoxTap: (index) {
+                                        if (controller.plots.contains(plots[index])) {
+                                          controller.plots.removeWhere((e) => plots[index] == e);
+                                        } else {
+                                          controller.plots.add(plots[index] as String);
+                                        }
+                                        controller.selectedPlots["plots"] = controller.plots;
+                                      }));
                                 }))
                       ])))
             ]));
@@ -143,6 +150,7 @@ class CreateServiceOrderPage extends StatelessWidget {
                 CustomSelectorWidget(
                     onSelect: (value) {
                       controller.executioners.add(value);
+                      controller.selectedExecutioners["executioners"] = controller.executioners;
                     },
                     items: ["executores 1", "ex 2", "ex 3"],
                     title: AppStrings.executionerSelectorTitle,
@@ -169,6 +177,7 @@ class CreateServiceOrderPage extends StatelessWidget {
                       icon: Icons.delete_outline,
                       onIconTap: (index) {
                         controller.executioners.removeAt(index);
+                        controller.selectedExecutioners["executioners"] = controller.executioners;
                       },
                     );
                   },
@@ -188,6 +197,7 @@ class CreateServiceOrderPage extends StatelessWidget {
             CustomSelectorWidget(
                 onSelect: (value) {
                   controller.machinery.add(value);
+                  controller.selectedMachinery["machinery"] = controller.executioners;
                 },
                 items: ["máquina 1", "máquina 2", "máquina 3"],
                 title: AppStrings.machinerySelectorTitle,
@@ -217,6 +227,7 @@ class CreateServiceOrderPage extends StatelessWidget {
                       logo: Icons.agriculture_sharp,
                       onIconTap: (index) {
                         controller.machinery.removeAt(index);
+                        controller.selectedMachinery["machinery"] = controller.executioners;
                       },
                     ));
                   },
@@ -236,6 +247,7 @@ class CreateServiceOrderPage extends StatelessWidget {
             CustomSelectorWidget(
                 onSelect: (value) {
                   controller.products.add(value);
+                  controller.selectedProducts["products"] = controller.products;
                 },
                 items: ["Produto 1", "Produto 2", "Produto 3"],
                 title: AppStrings.productSelectorTitle,
@@ -262,6 +274,7 @@ class CreateServiceOrderPage extends StatelessWidget {
                           icon: Icons.delete_outline,
                           onIconTap: (index) {
                             controller.products.removeAt(index);
+                            controller.selectedProducts["products"] = controller.products;
                           },
                         ));
                   },
@@ -277,10 +290,18 @@ class CreateServiceOrderPage extends StatelessWidget {
   Widget _getSchedulingInformation(CreateServiceOrderController controller) {
       return Flexible(child: Column(
         children: [
-          const CustomDatePickerWidget(title: AppStrings.expectedStartDate),
-          const CustomDatePickerWidget(title: AppStrings.expectedFinishingDate),
+          CustomDatePickerWidget(
+            title: AppStrings.expectedStartDate,
+            getSelectedDate: (date) {
+              controller.startDate["startDate"] = date;
+            },),
+          CustomDatePickerWidget(
+            title: AppStrings.expectedFinishingDate,
+            getSelectedDate: (date) {
+              controller.endDate["endDate"] = date;
+            }),
           CustomSelectorWidget(
-              onSelect: (value){},
+              onSelect: (value){ controller.responsible["responsible"] = value;},
               items: ["Responsável 01", "Responsávl 02", "Responsável 03", "Responsável 04", ],
               title: AppStrings.responsiveSelectorTitle,
               selectorHint: AppStrings.responsibleSelectorHint)
@@ -293,11 +314,11 @@ class CreateServiceOrderPage extends StatelessWidget {
     return Column(
       children: [
         CustomDoubleSelectorWidget(
-            onSelectFirst: (value){},
+            onSelectFirst: (value){ controller.finalCostCenter["finalCostCenter"] =  value;},
             itemsOne: ["C. de custo 01","C. de custo 02","C. de custo 03" ],
             titleOne: AppStrings.finalCostCenterSelector,
             selectorHintOne: AppStrings.finalCostCenterSelectorHint,
-            onSelectSecond: (value){},
+            onSelectSecond: (value){ controller.finalStorage["finalStorage"] = value;},
             itemsTwo: ["Estoque 01", "Estoque 02"],
             titleTwo: AppStrings.finalStorageSelector,
             selectorHintTwo: AppStrings.finalStorageSelectorHint),
@@ -307,9 +328,17 @@ class CreateServiceOrderPage extends StatelessWidget {
           color: AppColors.softGreyColor,
         ),
         const SizedBox(height: 6),
-        const CustomTextInputWidget(title: AppStrings.jobValueTextFieldTitle),
+        CustomTextInputWidget(
+          title: AppStrings.jobValueTextFieldTitle,
+          getText: (answer) {
+            controller.servicePrice["servicePrice"] = answer;
+          },),
         const SizedBox(height: 6),
-        const CustomTextInputWidget(title: AppStrings.notesTextFieldTitle)
+        CustomTextInputWidget(
+          title: AppStrings.notesTextFieldTitle,
+          getText: (answer) {
+            controller.notes["notes"] = answer;
+          },)
       ],
     );
   }

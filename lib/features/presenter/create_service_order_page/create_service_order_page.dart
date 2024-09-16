@@ -57,7 +57,7 @@ class CreateServiceOrderPage extends StatelessWidget {
     return Column(children: [
       CustomSelectorWidget(
           onSelect: (value) {controller.activity = {"activity": value};},
-          items: ["Atividade 01", "Atividade 02"],
+          items: const ["Atividade 01", "Atividade 02"],
           title: AppStrings.activitySelectorTitle,
           selectorHint: AppStrings.activitySelectorHint),
       const SizedBox(
@@ -65,7 +65,7 @@ class CreateServiceOrderPage extends StatelessWidget {
       ),
       CustomSelectorWidget(
           onSelect: (value) {controller.costCenter = {"costCenter": value};},
-          items: ["CC 01", "CC 02"],
+          items: const ["CC 01", "CC 02"],
           title: AppStrings.costCenterSelectorTitle,
           selectorHint: AppStrings.costCenterSelectorHint),
       const SizedBox(
@@ -73,7 +73,7 @@ class CreateServiceOrderPage extends StatelessWidget {
       ),
       CustomSelectorWidget(
           onSelect: (value) {controller.farm = {"farm": value};},
-          items: ["Fazenda 01", "Fazenda 02"],
+          items: const ["Fazenda 01", "Fazenda 02"],
           title: AppStrings.farmSelectorTitle,
           selectorHint: AppStrings.farmSelectorHint),
       const SizedBox(
@@ -81,7 +81,7 @@ class CreateServiceOrderPage extends StatelessWidget {
       ),
       CustomSelectorWidget(
           onSelect: (value) {controller.harvest = {"harvest": value};},
-          items: ["Safra 01", "Safra 02"],
+          items: const ["Safra 01", "Safra 02"],
           title: AppStrings.harvestSelectorTitle,
           selectorHint: AppStrings.harvestSelectorHint)
     ]);
@@ -167,11 +167,11 @@ class CreateServiceOrderPage extends StatelessWidget {
                     return CustomInfoCardWidget(
                       index: index,
                       infoCardType: InfoCardType.threeLabeledInfoWithIcon,
-                      labelOne: "Nome:",
+                      labelOne: AppStrings.nameField,
                       textOne: controller.executioners[index],
-                      labelTwo: "ID",
+                      labelTwo: AppStrings.idField,
                       textTwo: "00.000.000-00",
-                      labelThree: "Turno:",
+                      labelThree: AppStrings.shiftField,
                       textThree: "Matutino",
                       icon: Icons.delete_outline,
                       onIconTap: (index) {
@@ -198,7 +198,7 @@ class CreateServiceOrderPage extends StatelessWidget {
                   controller.machinery.add(value);
                   controller.selectedMachinery["machinery"] = controller.executioners;
                 },
-                items: ["máquina 1", "máquina 2", "máquina 3"],
+                items: const ["máquina 1", "máquina 2", "máquina 3"],
                 title: AppStrings.machinerySelectorTitle,
                 selectorHint: AppStrings.machinerySelectorHint),
             const SizedBox(height: 6),
@@ -214,13 +214,13 @@ class CreateServiceOrderPage extends StatelessWidget {
                     return Observer(
                         builder: (context) => CustomCardLogoWidget(
                       index: index,
-                      labelOne: "Máquina:",
+                      labelOne: AppStrings.machineryField,
                       textOne: controller.machinery[index],
-                      labelTwo: "Apelido:",
+                      labelTwo: AppStrings.machineryAliasField,
                       textTwo: controller.machinery[index],
-                      labelThree: "Horímetro:",
+                      labelThree: AppStrings.hourMeterField,
                       textThree: "Horímetro",
-                      labelFour: "Quilometragem",
+                      labelFour: AppStrings.kiloMeterField,
                       textFour: "Quilometragem",
                       icon: Icons.delete_outline,
                       logo: Icons.agriculture_sharp,
@@ -264,11 +264,11 @@ class CreateServiceOrderPage extends StatelessWidget {
                     return Observer(
                         builder: (context) => CustomCardLogoWidget(
                           index: index,
-                          labelOne: "Produto:",
+                          labelOne: AppStrings.productField,
                           textOne: controller.products[index],
-                          labelTwo: "Quantidade:",
+                          labelTwo: AppStrings.quantityField,
                           textTwo: "Quantidade",
-                          labelThree: "Recomendação",
+                          labelThree: AppStrings.recommendationField,
                           textThree: "Recomendação",
                           icon: Icons.delete_outline,
                           onIconTap: (index) {
@@ -314,11 +314,11 @@ class CreateServiceOrderPage extends StatelessWidget {
       children: [
         CustomDoubleSelectorWidget(
             onSelectFirst: (value){ controller.finalCostCenter["finalCostCenter"] =  value;},
-            itemsOne: ["C. de custo 01","C. de custo 02","C. de custo 03" ],
+            itemsOne: const ["C. de custo 01","C. de custo 02","C. de custo 03" ],
             titleOne: AppStrings.finalCostCenterSelector,
             selectorHintOne: AppStrings.finalCostCenterSelectorHint,
             onSelectSecond: (value){ controller.finalStorage["finalStorage"] = value;},
-            itemsTwo: ["Estoque 01", "Estoque 02"],
+            itemsTwo: const ["Estoque 01", "Estoque 02"],
             titleTwo: AppStrings.finalStorageSelector,
             selectorHintTwo: AppStrings.finalStorageSelectorHint),
         const SizedBox(height: 12),

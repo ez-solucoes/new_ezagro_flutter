@@ -83,6 +83,16 @@ class AppStrings {
   static const String expectedFinishingDate = "Previsão de Término";
   static const String jobValueTextFieldTitle = "Valor do Serviço:";
   static const String notesTextFieldTitle = "Observações:";
+  static const String nameField = "Nome:";
+  static const String idField = "ID:";
+  static const String shiftField = "Turno:";
+  static const String machineryField = "Máquina:";
+  static const String machineryAliasField = "Apelido:";
+  static const String hourMeterField = "Horímetro:";
+  static const String kiloMeterField = "Quilometragem:";
+  static const String productField = "Produto:";
+  static const String quantityField = "Quantidade:";
+  static const String recommendationField = "Recomendação:";
 
   ///Errors
   static const String genericErrorMessage =

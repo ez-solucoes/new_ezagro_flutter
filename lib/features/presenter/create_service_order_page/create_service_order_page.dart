@@ -6,12 +6,11 @@ import 'package:new_ezagro_flutter/modules/presenter/widgets/appbar/custom_appba
 import 'package:new_ezagro_flutter/modules/presenter/widgets/background/background_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/buttons/custom_elevated_button.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/buttons/custom_outlined_button.dart';
-import 'package:new_ezagro_flutter/modules/presenter/widgets/customCardWithLogo/custom_card_with_logo_widget.dart';
+import 'package:new_ezagro_flutter/modules/presenter/widgets/customCardLogo/custom_card_logo_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customCheckableListItem/custom_checkable_list_item_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customDatePicker/custom_date_picker_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customDoubleSelector/custom_double_selector_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customInfoCard/custom_info_card_widget.dart';
-import 'package:new_ezagro_flutter/modules/presenter/widgets/customListHeader/custom_list_header_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/customTextInput/custom_text_input_widget.dart';
 
 import '../../../consts/app_colors.dart';
@@ -213,7 +212,7 @@ class CreateServiceOrderPage extends StatelessWidget {
                   itemCount: controller.machinery.length,
                   itemBuilder: (context, index) {
                     return Observer(
-                        builder: (context) => CustomCardWithLogoWidget(
+                        builder: (context) => CustomCardLogoWidget(
                       index: index,
                       labelOne: "Máquina:",
                       textOne: controller.machinery[index],
@@ -263,7 +262,7 @@ class CreateServiceOrderPage extends StatelessWidget {
                   itemCount: controller.products.length,
                   itemBuilder: (context, index) {
                     return Observer(
-                        builder: (context) => CustomCardWithLogoWidget(
+                        builder: (context) => CustomCardLogoWidget(
                           index: index,
                           labelOne: "Produto:",
                           textOne: controller.products[index],
@@ -288,7 +287,7 @@ class CreateServiceOrderPage extends StatelessWidget {
 
   ///Page 06
   Widget _getSchedulingInformation(CreateServiceOrderController controller) {
-      return Flexible(child: Column(
+      return Column(
         children: [
           CustomDatePickerWidget(
             title: AppStrings.expectedStartDate,
@@ -306,7 +305,7 @@ class CreateServiceOrderPage extends StatelessWidget {
               title: AppStrings.responsiveSelectorTitle,
               selectorHint: AppStrings.responsibleSelectorHint)
         ],
-      ));
+      );
   }
 
   ///Page 07

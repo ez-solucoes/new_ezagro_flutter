@@ -3,7 +3,7 @@ import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/consts/app_text_styles.dart';
 import 'package:new_ezagro_flutter/core/enums/service_order_type_enum.dart';
 
-class CustomCardWithTitleWidget extends StatelessWidget {
+class CustomCardTitleWidget extends StatelessWidget {
   final int id;
   final String serviceOrderType;
   final String farm;
@@ -15,7 +15,7 @@ class CustomCardWithTitleWidget extends StatelessWidget {
   final Color textColor;
   final Color borderColor;
 
-  const CustomCardWithTitleWidget({
+  const CustomCardTitleWidget({
     super.key,
     required this.id,
     required this.serviceOrderType,

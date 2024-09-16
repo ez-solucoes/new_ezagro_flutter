@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../../consts/app_colors.dart';
 import '../../../../consts/app_text_styles.dart';
 
-class CustomCardWithLogoWidget extends StatelessWidget {
+class CustomCardLogoWidget extends StatelessWidget {
   final int index;
   final String labelOne;
   final String textOne;
@@ -16,7 +16,7 @@ class CustomCardWithLogoWidget extends StatelessWidget {
   final IconData? icon;
   final Function(int) onIconTap;
 
-  const CustomCardWithLogoWidget(
+  const CustomCardLogoWidget(
       {super.key,
       this.index = 0,
       this.labelOne = "",

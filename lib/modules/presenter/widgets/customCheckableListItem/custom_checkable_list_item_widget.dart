@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import '../../../../consts/app_colors.dart';
 import '../../../../consts/app_text_styles.dart';
 
-
 class CustomCheckableListItemWidget extends StatefulWidget {
   bool indexIsChecked;
+  final bool isHeader;
   final String firstColumn;
   final String secondColumn;
   final String thirdColumn;
@@ -13,6 +13,7 @@ class CustomCheckableListItemWidget extends StatefulWidget {
 
   CustomCheckableListItemWidget(
       {super.key,
+      this.isHeader = false,
       this.indexIsChecked = false,
       required this.firstColumn,
       required this.secondColumn,
@@ -21,10 +22,12 @@ class CustomCheckableListItemWidget extends StatefulWidget {
       required this.onCheckBoxTap});
 
   @override
-  _CustomCheckableListItemWidgetState createState() => _CustomCheckableListItemWidgetState();
+  _CustomCheckableListItemWidgetState createState() =>
+      _CustomCheckableListItemWidgetState();
 }
 
-class _CustomCheckableListItemWidgetState extends State<CustomCheckableListItemWidget> {
+class _CustomCheckableListItemWidgetState
+    extends State<CustomCheckableListItemWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,10 +44,13 @@ class _CustomCheckableListItemWidgetState extends State<CustomCheckableListItemW
         children: [
           Column(children: [
             Checkbox(
-                value: widget.indexIsChecked,
+                value: widget.isHeader? true : widget.indexIsChecked,
                 activeColor: AppColors.greenColor,
                 onChanged: (bool? value) {
                   setState(() {
+                    if (widget.isHeader) {
+                      return;
+                    }
                     widget.indexIsChecked = value!;
                   });
                 })
@@ -57,20 +63,32 @@ class _CustomCheckableListItemWidgetState extends State<CustomCheckableListItemW
                 children: [
                   Text(
                     widget.firstColumn,
-                    style: AppTextStyles.cardBodyTextStyle(
-                        color: AppColors.blackColor),
+                    style: widget.isHeader
+                        ? AppTextStyles.smallBoldTextOnCardStyle(
+                            color: AppColors.blackColor)
+                        : AppTextStyles.cardBodyTextStyle(
+                            color: AppColors.blackColor),
+                    textAlign: TextAlign.center,
                   ),
                   Text(
                     widget.secondColumn,
-                    style: AppTextStyles.cardBodyTextStyle(
+                    style: widget.isHeader
+                        ? AppTextStyles.smallBoldTextOnCardStyle(
+                        color: AppColors.blackColor)
+                        : AppTextStyles.cardBodyTextStyle(
                         color: AppColors.blackColor),
+                    textAlign: TextAlign.center,
                   ),
                   Text(
                     widget.thirdColumn,
-                    style: AppTextStyles.cardBodyTextStyle(
+                    style: widget.isHeader
+                        ? AppTextStyles.smallBoldTextOnCardStyle(
+                        color: AppColors.blackColor)
+                        : AppTextStyles.cardBodyTextStyle(
                         color: AppColors.blackColor),
+                    textAlign: TextAlign.center,
                   )
-                ],
+                ].map((e) => Expanded(child: e)).toList(),
               )
             ],
           ))
@@ -78,5 +96,4 @@ class _CustomCheckableListItemWidgetState extends State<CustomCheckableListItemW
       ),
     );
   }
-
 }

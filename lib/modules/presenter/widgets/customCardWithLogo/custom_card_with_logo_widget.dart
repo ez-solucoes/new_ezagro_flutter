@@ -37,23 +37,22 @@ class CustomCardWithLogoWidget extends StatelessWidget {
       color: AppColors.trueWhiteColor,
       child: Padding(
         padding: const EdgeInsets.all(12.0),
-        child: IntrinsicHeight(
-            child: Row(
-                children: [
-          Column(mainAxisAlignment: MainAxisAlignment.center, children: [_putLogoIfNeeded()]),
-          const SizedBox(width: 15),
-          Expanded(child:
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _buildFirstRow(),
-              _buildSecondRow(),
-              const SizedBox(height: 10),
-              _buildThirdRow(),
-            ],
-          )
-          )
-        ])),
+        child: Row(children: [
+                  Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [_putLogoIfNeeded()]),
+                  const SizedBox(width: 15),
+                  Expanded(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          _buildFirstRow(),
+          _buildSecondRow(),
+          const SizedBox(height: 10),
+          _buildThirdRow(),
+        ],
+                  ))
+                ]),
       ),
     );
   }
@@ -62,9 +61,7 @@ class CustomCardWithLogoWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-            IntrinsicHeight(child:
-                _buildInformationLines(labelOne, textOne)
-            ),
+        IntrinsicHeight(child: _buildInformationLines(labelOne, textOne)),
         _putIconIfNeeded()
       ],
     );
@@ -74,8 +71,7 @@ class CustomCardWithLogoWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-            IntrinsicHeight(child:
-            _buildInformationLines(labelTwo, textTwo))
+        IntrinsicHeight(child: _buildInformationLines(labelTwo, textTwo))
       ],
     );
   }
@@ -84,39 +80,40 @@ class CustomCardWithLogoWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-            IntrinsicHeight(child:
-            _buildInformationLines(labelThree, textThree)
-            ),
-            IntrinsicHeight(child: 
-              _buildInformationLines(labelFour, textFour)
-            )
+        IntrinsicHeight(child: _buildInformationLines(labelThree, textThree)),
+        IntrinsicHeight(child: _buildInformationLines(labelFour, textFour))
       ],
     );
   }
-  
+
   Row _buildInformationLines(String label, String text) {
     return Row(
       children: [
-        label == "" ? const SizedBox.shrink() : const VerticalDivider(
-          width: 1,
-          thickness: 1,
-          color: AppColors.softGreyColor,
+        label == ""
+            ? const SizedBox.shrink()
+            : const VerticalDivider(
+                width: 1,
+                thickness: 1,
+                color: AppColors.softGreyColor,
+              ),
+        const SizedBox(
+          width: 5,
         ),
-        const SizedBox(width: 5,),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               label,
-              style: AppTextStyles.labelOnCardStyle(
-                  color: AppColors.blackColor),
+              style:
+                  AppTextStyles.labelOnCardStyle(color: AppColors.blackColor),
             ),
             Text(
               text,
               style: AppTextStyles.smallBoldTextOnCardStyle(
                   color: AppColors.blackColor),
             )
-          ],)
+          ],
+        )
       ],
     );
   }

@@ -111,12 +111,13 @@ class CreateServiceOrderPage extends StatelessWidget {
                           color: AppColors.contourWhiteColor,
                           borderRadius: BorderRadius.circular(8)),
                       child: Column(children: [
-                        const CustomListHeaderWidget(
-                          firstColumn: "",
-                          secondColumn: AppStrings.plotColumn,
-                          thirdColumn: AppStrings.areaColumn,
-                          fourthColumn: AppStrings.cropColumn,
-                        ),
+                        CustomCheckableListItemWidget(
+                            isHeader: true,
+                            firstColumn: AppStrings.plotColumn,
+                            secondColumn: AppStrings.areaColumn,
+                            thirdColumn: AppStrings.cropColumn,
+                            index: 0,
+                            onCheckBoxTap: (index){}),
                         Expanded(
                             child: ListView.builder(
                                 itemCount: plots.length,
@@ -315,6 +316,7 @@ class CreateServiceOrderPage extends StatelessWidget {
 
 }
 
+///Corrigir problema de operação ternária com variável observer (quebra layout na última página)
 class BottomButtonsWidget extends StatelessWidget {
   const BottomButtonsWidget({
     super.key,

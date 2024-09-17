@@ -9,5 +9,21 @@ class PlotEntity extends Equatable {
   final CoordinateEntity coordinate;
   final PlotOwnershipTypeEntity plotOwnerShipType;
   final double number;
-  
+
+  const PlotEntity({
+    required this.id,
+    required this.plotGroup,
+    required this.coordinate,
+    required this.plotOwnerShipType,
+    required this.number,
+  });
+
+  @override
+  List<Object?> get props => [
+        id,
+        plotGroup,
+        coordinate,
+        plotOwnerShipType,
+        number,
+      ];
 }

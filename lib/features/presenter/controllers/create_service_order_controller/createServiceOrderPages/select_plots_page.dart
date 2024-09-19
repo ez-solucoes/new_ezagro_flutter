@@ -131,7 +131,6 @@ class _SelectPlotPageState extends State<SelectPlotsPage> {
                                 onLongPressEnd: _onLongPressEnd,
                                 onLongPressMoveUpdate: (details) {
                                   if (_isSelecting) {
-                                    final itemIndex = _scrollController.
                                     final itemIndex = (details.localPosition.dy/_itemHeight).floor();
                                     if (itemIndex >= 0 && itemIndex < plots.length) {
                                       setState(() {

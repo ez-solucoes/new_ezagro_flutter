@@ -24,8 +24,8 @@ class FarmEntity extends Equatable {
   final int areaAcre;
   final List<ContractEntity> contracts;
   final List<MultipartFileCustom> attachments;
-  final CostCenterEntity costCenter;
-  final List<RuralProducerEntity>? ruralProducers;
+  final String attachmentNames;
+  final List<CostCenterEntity> costCenters;
 
   const FarmEntity({
     required this.id,
@@ -43,8 +43,8 @@ class FarmEntity extends Equatable {
     required this.areaAcre,
     required this.contracts,
     required this.attachments,
-    required this.costCenter,
-    required this.ruralProducers,
+    required this.costCenters,
+    required this.attachmentNames,
   });
 
   @override
@@ -64,7 +64,7 @@ class FarmEntity extends Equatable {
         areaAcre,
         contracts,
         attachments,
-        costCenter,
-        ruralProducers,
+        costCenters,
+        attachmentNames,
       ];
 }

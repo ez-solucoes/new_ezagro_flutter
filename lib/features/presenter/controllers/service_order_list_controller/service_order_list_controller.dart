@@ -28,7 +28,7 @@ abstract class _ServiceOrderListController with Store {
     final getServiceOrdersListUsecase = Modular.get<ServiceOrderListUsecase>();
     final result = await getServiceOrdersListUsecase(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      serviceOrderListEntities = success;
+      serviceOrderListEntities = success.content;
       return success;
     });
 

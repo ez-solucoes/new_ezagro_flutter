@@ -7,56 +7,85 @@ class ServiceOrderListModel extends ServiceOrderListEntity {
 
   @override
   final int id;
-  @override
-  final String name;
-  @override
-  final String status;
-  @override
-  final String expectedStartDate;
+
   @override
   final String activityName;
 
+  @override
+  final String farmName;
+
+  @override
+  final String employeeName;
+
+  @override
+  final String status;
+
+  @override
+  final String activityStart;
+
+  @override
+  final String activityEnd;
+
+  @override
+  final String costCenterName;
+
   const ServiceOrderListModel({
     required this.id,
-    required this.name,
+    required this.activityName,
+    required this.farmName,
+    required this.employeeName,
     required this.status,
-    required this.expectedStartDate,
-    required this.activityName
+    required this.activityStart,
+    required this.activityEnd,
+    required this.costCenterName
   }) : super(
-      id: id,
-      name: name,
-      status: status,
-      expectedStartDate: expectedStartDate,
-      activityName: activityName
+    id: id,
+    activityName: activityName,
+    farmName: farmName,
+    employeeName: employeeName,
+    status: status,
+    activityStart: activityStart,
+    activityEnd: activityEnd,
+    costCenterName: costCenterName
   );
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'name': name,
-      'status': status,
-      'expectedStartDate': expectedStartDate,
       'activityName': activityName,
+      'farmName': farmName,
+      'employeeName': employeeName,
+      'status': status,
+      'activityStart': activityStart,
+      'activityEnd': activityEnd,
+      'costCenterName': costCenterName
     };
   }
 
   factory ServiceOrderListModel.fromMap(Map<String, dynamic> map) {
     return ServiceOrderListModel(
       id: map['id'] as int,
-      name: map['name'] as String,
+      activityName: map['activityName'] as String,
+      farmName: map['farmName'] as String,
+      employeeName: map['employeeName'] as String,
       status: map['status'] as String,
-      expectedStartDate: map['expectedStartDate'] as String,
-      activityName: map['activityName'] as String
+      activityStart: map['activityStart'] as String,
+      activityEnd: map['activityEnd'] as String,
+      costCenterName: map['costCenterName'] as String
     );
   }
   
   factory ServiceOrderListModel.fromEntity(ServiceOrderListEntity entity) {
     return ServiceOrderListModel(
         id: entity.id,
-        name: entity.name,
+        activityName: entity.activityName,
+        farmName: entity.farmName,
+        employeeName: entity.employeeName,
         status: entity.status,
-        expectedStartDate: entity.expectedStartDate,
-        activityName: entity.activityName);
+        activityStart: entity.activityStart,
+        activityEnd: entity.activityEnd,
+        costCenterName: entity.costCenterName
+    );
   }
 
   String toJson() => json.encode(toMap());

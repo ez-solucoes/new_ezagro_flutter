@@ -64,10 +64,10 @@ class ServiceOrderListPage extends StatelessWidget {
                                 return CustomCardTitleWidget(
                                   id: controller.serviceOrderListEntities[index].id,
                                   serviceOrderType: controller.serviceOrderListEntities[index].activityName,
-                                  farm: controller.serviceOrderListEntities[index].name,
+                                  farm: controller.serviceOrderListEntities[index].farmName,
                                   costCenter: "",
-                                  openingDate: controller.serviceOrderListEntities[index].expectedStartDate,
-                                  closingDate: "",
+                                  openingDate: controller.serviceOrderListEntities[index].activityStart,
+                                  closingDate: controller.serviceOrderListEntities[index].activityEnd,
                                   status: status,
                                   backgroundColor: controller.getBackgroundColor(status),
                                   borderColor: controller.getBorderColor(status),

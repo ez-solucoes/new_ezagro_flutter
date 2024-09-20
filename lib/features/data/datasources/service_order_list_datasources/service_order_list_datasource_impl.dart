@@ -3,10 +3,10 @@ import 'package:new_ezagro_flutter/core/http_client/http_client_helper.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/service_order_list_datasources/service_order_list_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/models/service_order_list_model/service_order_list_model.dart';
-
 import '../../../../core/mixins/uri_builder_mixin.dart';
 import '../../../../core/usecase/usecase.dart';
 import '../../../../modules/data/datasources/api_endpoints.dart';
+import '../../models/paginatino_model/pagination_model.dart';
 
 class ServiceOrderListDatasourceImpl with UriBuilder implements ServiceOrderListDatasource {
 
@@ -15,7 +15,7 @@ class ServiceOrderListDatasourceImpl with UriBuilder implements ServiceOrderList
   ServiceOrderListDatasourceImpl(this.httpClient);
 
   @override
-  Future<List<ServiceOrderListModel>> getServiceOrderList(NoParams noParams) async {
+  Future<PaginationModel<ServiceOrderListModel>> getServiceOrderList(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
@@ -27,10 +27,13 @@ class ServiceOrderListDatasourceImpl with UriBuilder implements ServiceOrderList
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
-            response: result,
-            fromListMap: ServiceOrderListModel.fromListMap,
-            fromJsonList: ServiceOrderListModel.fromJsonList);
+        return mountModelInstanceFromResponse(
+          response: result,
+          fromMap: (map) =>
+              PaginationModel.fromMap(map, ServiceOrderListModel.fromMap),
+          fromJson: (jsonString) => PaginationModel.fromJson(
+              jsonString, ServiceOrderListModel.fromMap),
+        );
       default:
         throw mountServerErrorInstance(request: request, response: result);
     }

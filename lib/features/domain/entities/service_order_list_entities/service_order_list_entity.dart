@@ -2,26 +2,35 @@ import 'package:equatable/equatable.dart';
 
 class ServiceOrderListEntity extends Equatable {
   final int id;
-  final String name;
-  final String status;
-  final String expectedStartDate;
   final String activityName;
+  final String farmName;
+  final String employeeName;
+  final String status;
+  final String activityStart;
+  final String activityEnd;
+  final String costCenterName;
 
   const ServiceOrderListEntity({
       required this.id,
-      required this.name,
+      required this.activityName,
+      required this.farmName,
+      required this.employeeName,
       required this.status,
-      required this.expectedStartDate,
-      required this.activityName
+      required this.activityStart,
+      this.activityEnd = "",
+      required this.costCenterName
   });
 
   @override
   List<Object?> get props => [
     id,
-    name,
+    activityName,
+    farmName,
+    employeeName,
     status,
-    expectedStartDate,
-    activityName
+    activityStart,
+    activityEnd,
+    costCenterName
   ];
 
 }

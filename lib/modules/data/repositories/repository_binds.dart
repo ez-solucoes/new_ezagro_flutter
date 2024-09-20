@@ -3,11 +3,18 @@ import 'package:new_ezagro_flutter/features/data/repositories/service_order_list
 
 import '../../../features/domain/repositories/service_order_list_repositories/service_order_list_repository.dart';
 
-class RepositoryBins extends Module {
+class RepositoryBinds extends Module {
   @override
-  void binds(i) {
-
-    ///Service Order List
-    i.addLazySingleton<ServiceOrderListRepository>(ServiceOrderListRepositoryImpl.new);
+  void exportedBinds(Injector i) {
+    i.addLazySingleton<ServiceOrderListRepository>(
+        ServiceOrderListRepositoryImpl.new);
+    super.exportedBinds(i);
   }
 }
+
+// @override
+// void exportedBinds(i) {
+//
+//   ///Service Order List
+//   i.addLazySingleton<ServiceOrderListRepository>(ServiceOrderListRepositoryImpl.new);
+// }

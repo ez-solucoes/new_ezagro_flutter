@@ -4,7 +4,15 @@ import '../../../features/domain/usecases/service_order_list_usecase/service_ord
 
 class UsecaseBinds extends Module {
   @override
-  void binds(i) {
-    i.addLazySingleton<ServiceOrderListUsecase>(ServiceOrderListUsecaseImpl.new);
+  void exportedBinds(Injector i) {
+    i.addLazySingleton<ServiceOrderListUsecase>(
+        ServiceOrderListUsecaseImpl.new);
+    super.exportedBinds(i);
   }
 }
+
+//   @override
+//   void exportedBinds(i) {
+//
+//   }
+// }

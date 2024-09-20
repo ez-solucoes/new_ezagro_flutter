@@ -6,7 +6,6 @@ import 'package:new_ezagro_flutter/modules/domain/entities/plot_entities/plot_en
 import '../address_entities/address_entity.dart';
 import '../company_entities/company_entity.dart';
 import '../multipart_file_custom_entities/multipart_file_custom_entity.dart';
-import '../rural_producer_entities/rural_producer_entity.dart';
 
 class FarmEntity extends Equatable {
   final int id;

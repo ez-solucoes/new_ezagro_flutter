@@ -14,8 +14,6 @@ import 'features/domain/repositories/service_order_list_repositories/service_ord
 import 'features/domain/usecases/service_order_list_usecase/service_order_list_usecase.dart';
 import 'features/domain/usecases/service_order_list_usecase/service_order_list_usecase_impl.dart';
 import 'features/presenter/service_order_page/service_order_page.dart';
-import 'modules/data/repositories/repository_binds.dart';
-import 'modules/domain/usecases/usecase_binds.dart';
 import 'modules/presenter/features/change_password_page/change_password_step_page.dart';
 import 'modules/presenter/features/documents_page/documents_page.dart';
 import 'modules/presenter/features/login_page/login_page.dart';

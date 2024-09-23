@@ -43,6 +43,40 @@ mixin _$ServiceOrderListController on _ServiceOrderListController, Store {
     });
   }
 
+  late final _$searchTextAtom =
+      Atom(name: '_ServiceOrderListController.searchText', context: context);
+
+  @override
+  String get searchText {
+    _$searchTextAtom.reportRead();
+    return super.searchText;
+  }
+
+  @override
+  set searchText(String value) {
+    _$searchTextAtom.reportWrite(value, super.searchText, () {
+      super.searchText = value;
+    });
+  }
+
+  late final _$filteredServiceOrdersAtom = Atom(
+      name: '_ServiceOrderListController.filteredServiceOrders',
+      context: context);
+
+  @override
+  List<ServiceOrderListEntity> get filteredServiceOrders {
+    _$filteredServiceOrdersAtom.reportRead();
+    return super.filteredServiceOrders;
+  }
+
+  @override
+  set filteredServiceOrders(List<ServiceOrderListEntity> value) {
+    _$filteredServiceOrdersAtom.reportWrite(value, super.filteredServiceOrders,
+        () {
+      super.filteredServiceOrders = value;
+    });
+  }
+
   late final _$getServiceOrderListAsyncAction = AsyncAction(
       '_ServiceOrderListController.getServiceOrderList',
       context: context);
@@ -57,7 +91,9 @@ mixin _$ServiceOrderListController on _ServiceOrderListController, Store {
   String toString() {
     return '''
 isLoading: ${isLoading},
-serviceOrderListEntities: ${serviceOrderListEntities}
+serviceOrderListEntities: ${serviceOrderListEntities},
+searchText: ${searchText},
+filteredServiceOrders: ${filteredServiceOrders}
     ''';
   }
 }

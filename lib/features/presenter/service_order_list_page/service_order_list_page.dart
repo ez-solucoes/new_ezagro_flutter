@@ -44,10 +44,12 @@ class ServiceOrderListPage extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(
+                  Padding(
+                    padding: const EdgeInsets.only(
                         top: 20, left: 30, right: 30, bottom: 0),
-                    child: CustomSearchBar(),
+                    child: CustomSearchBar(
+                      onTextChanged: (search){controller.filterSOList(search.toLowerCase());},
+                    ),
                   ),
                   Expanded(
                     child: Padding(
@@ -60,7 +62,7 @@ class ServiceOrderListPage extends StatelessWidget {
                           Flexible(
                             child: Observer(
                                 builder: (context) =>ListView.separated(
-                                itemCount: controller.serviceOrderListEntities.length,
+                                itemCount: controller.filteredServiceOrders.length,
                                 itemBuilder: (context, index) {
                                   final status = ServiceOrderTypeEnumExtension.getEnumServiceOrderTypeFromString(controller.serviceOrderListEntities[index].status);
                                   return CustomCardTitleWidget(

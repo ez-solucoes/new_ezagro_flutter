@@ -4,7 +4,11 @@ import 'package:new_ezagro_flutter/features/domain/entities/mockEntity/mock_enti
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/executor_usecases/executor_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/machinery_usecases/machinery_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecase.dart';
 import '../../../../core/usecase/usecase.dart';
 part 'create_service_order_controller.g.dart';
 
@@ -33,7 +37,19 @@ abstract class _CreateServiceOrderController with Store {
   List<MockEntity> cropOptions = ObservableList();
 
   @observable
-  List<String> executioners = ObservableList();
+  List<MockEntity> executorsOptions = ObservableList();
+
+  @observable
+  List<MockEntity> machineryOptions = ObservableList();
+
+  @observable
+  List<MockEntity> productsOptions = ObservableList();
+
+  @observable
+  List<MockEntity> plotsOptions = ObservableList();
+
+  @observable
+  List<String> plots = ObservableList();
 
   @observable
   List<String> machinery = ObservableList();
@@ -41,7 +57,8 @@ abstract class _CreateServiceOrderController with Store {
   @observable
   List<String> products = ObservableList();
 
-  List<String> plots = ObservableList();
+  @observable
+  List<String> executors = ObservableList();
 
   Map<String, dynamic> activity = {"activity": null};
 
@@ -53,7 +70,7 @@ abstract class _CreateServiceOrderController with Store {
 
   Map<String, dynamic> selectedPlots = {"plots": null};
 
-  Map<String, dynamic> selectedExecutioners = {"executioners": null};
+  Map<String, dynamic> selectedExecutors = {"executioners": null};
 
   Map<String, dynamic> selectedMachinery = {"machinery": null};
 
@@ -119,6 +136,58 @@ abstract class _CreateServiceOrderController with Store {
     final result = await getSimplifiedCrops(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
       cropOptions= success.content;
+      return success;
+    });
+
+    isLoading = false;
+  }
+
+  @action
+  Future getPlotsOptions() async {
+    isLoading = true;
+    final getPlots = Modular.get<PlotsUsecase>();
+    final result = await getPlots(NoParams());
+    result.fold((error) => error.friendlyMessage, (success) {
+      plotsOptions = success.content;
+      return success;
+    });
+
+    isLoading = false;
+  }
+
+  @action
+  Future getExecutorOptions() async {
+    isLoading = true;
+    final getExecutors = Modular.get<ExecutorUsecase>();
+    final result = await getExecutors(NoParams());
+    result.fold((error) => error.friendlyMessage, (success) {
+      executorsOptions = success.content;
+      return success;
+    });
+
+    isLoading = false;
+  }
+
+  @action
+  Future getMachinery() async {
+    isLoading = true;
+    final getMachinery = Modular.get<MachineryUsecase>();
+    final result = await getMachinery(NoParams());
+    result.fold((error) => error.friendlyMessage, (success) {
+      machineryOptions = success.content;
+      return success;
+    });
+
+    isLoading = false;
+  }
+
+  @action
+  Future getProductsOptions() async {
+    isLoading = true;
+    final getProducts = Modular.get<ProductUsecase>();
+    final result = await getProducts(NoParams());
+    result.fold((error) => error.friendlyMessage, (success) {
+      productsOptions = success.content;
       return success;
     });
 

@@ -66,7 +66,7 @@ class AppStrings {
   static const String costCenterSelectorTitle = 'Centro de Custo:';
   static const String farmSelectorTitle = 'Fazenda:';
   static const String harvestSelectorTitle = 'Safra:';
-  static const String executionerSelectorTitle = 'Executores:';
+  static const String executorSelectorTitle = 'Executores:';
   static const String machinerySelectorTitle = 'Maquinário:';
   static const String productSelectorTitle = 'Produto:';
   static const String responsiveSelectorTitle = 'Responsável:';
@@ -76,7 +76,7 @@ class AppStrings {
   static const String costCenterSelectorHint = 'Selecione um centro de custo';
   static const String farmSelectorHint = 'Selecione uma fazenda';
   static const String harvestSelectorHint = 'Selecione uma safra';
-  static const String executionerSelectorHint = 'Selecione um executor';
+  static const String executorSelectorHint = 'Selecione um executor';
   static const String machinerySelectorHint = 'Selecione um maquinário';
   static const String productSelectorHint = 'Selecione um produto';
   static const String responsibleSelectorHint = 'Selecione um responsável';

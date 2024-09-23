@@ -7,11 +7,11 @@ import '../../../../../modules/presenter/widgets/customInfoCard/custom_info_card
 import '../../../../../modules/presenter/widgets/customSelector/custom_selector_widget.dart';
 import '../create_service_order_controller.dart';
 
-class ExecutionersPage extends StatelessWidget {
+class ExecutorsPage extends StatelessWidget {
 
   CreateServiceOrderController controller;
 
-  ExecutionersPage({
+  ExecutorsPage({
     super.key,
     required this.controller
   });
@@ -24,13 +24,13 @@ class ExecutionersPage extends StatelessWidget {
               children: [
                 CustomSelectorWidget(
                     onSelect: (value) {
-                      controller.executioners.add(value);
-                      controller.selectedExecutioners["executioners"] =
-                          controller.executioners;
+                      controller.executors.add(value);
+                      controller.selectedExecutors["executors"] =
+                          controller.executors;
                     },
                     items: ["executores 1", "ex 2", "ex 3"],
-                    title: AppStrings.executionerSelectorTitle,
-                    selectorHint: AppStrings.executionerSelectorHint),
+                    title: AppStrings.executorSelectorTitle,
+                    selectorHint: AppStrings.executorSelectorHint),
                 const SizedBox(height: 6),
                 const Divider(
                   height: 1,
@@ -39,22 +39,22 @@ class ExecutionersPage extends StatelessWidget {
                 const SizedBox(height: 6),
                 Expanded(
                     child: ListView.separated(
-                      itemCount: controller.executioners.length,
+                      itemCount: controller.executors.length,
                       itemBuilder: (context, index) {
                         return CustomInfoCardWidget(
                           index: index,
                           infoCardType: InfoCardType.threeLabeledInfoWithIcon,
                           labelOne: AppStrings.nameField,
-                          textOne: controller.executioners[index],
+                          textOne: controller.executors[index],
                           labelTwo: AppStrings.idField,
                           textTwo: "00.000.000-00",
                           labelThree: AppStrings.shiftField,
                           textThree: "Matutino",
                           icon: Icons.delete_outline,
                           onIconTap: (index) {
-                            controller.executioners.removeAt(index);
-                            controller.selectedExecutioners["executioners"] =
-                                controller.executioners;
+                            controller.executors.removeAt(index);
+                            controller.selectedExecutors["executors"] =
+                                controller.executors;
                           },
                         );
                       },

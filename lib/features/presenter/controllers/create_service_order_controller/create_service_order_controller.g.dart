@@ -122,19 +122,83 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     });
   }
 
-  late final _$executionersAtom = Atom(
-      name: '_CreateServiceOrderController.executioners', context: context);
+  late final _$executorsOptionsAtom = Atom(
+      name: '_CreateServiceOrderController.executorsOptions', context: context);
 
   @override
-  List<String> get executioners {
-    _$executionersAtom.reportRead();
-    return super.executioners;
+  List<MockEntity> get executorsOptions {
+    _$executorsOptionsAtom.reportRead();
+    return super.executorsOptions;
   }
 
   @override
-  set executioners(List<String> value) {
-    _$executionersAtom.reportWrite(value, super.executioners, () {
-      super.executioners = value;
+  set executorsOptions(List<MockEntity> value) {
+    _$executorsOptionsAtom.reportWrite(value, super.executorsOptions, () {
+      super.executorsOptions = value;
+    });
+  }
+
+  late final _$machineryOptionsAtom = Atom(
+      name: '_CreateServiceOrderController.machineryOptions', context: context);
+
+  @override
+  List<MockEntity> get machineryOptions {
+    _$machineryOptionsAtom.reportRead();
+    return super.machineryOptions;
+  }
+
+  @override
+  set machineryOptions(List<MockEntity> value) {
+    _$machineryOptionsAtom.reportWrite(value, super.machineryOptions, () {
+      super.machineryOptions = value;
+    });
+  }
+
+  late final _$productsOptionsAtom = Atom(
+      name: '_CreateServiceOrderController.productsOptions', context: context);
+
+  @override
+  List<MockEntity> get productsOptions {
+    _$productsOptionsAtom.reportRead();
+    return super.productsOptions;
+  }
+
+  @override
+  set productsOptions(List<MockEntity> value) {
+    _$productsOptionsAtom.reportWrite(value, super.productsOptions, () {
+      super.productsOptions = value;
+    });
+  }
+
+  late final _$plotsOptionsAtom = Atom(
+      name: '_CreateServiceOrderController.plotsOptions', context: context);
+
+  @override
+  List<MockEntity> get plotsOptions {
+    _$plotsOptionsAtom.reportRead();
+    return super.plotsOptions;
+  }
+
+  @override
+  set plotsOptions(List<MockEntity> value) {
+    _$plotsOptionsAtom.reportWrite(value, super.plotsOptions, () {
+      super.plotsOptions = value;
+    });
+  }
+
+  late final _$plotsAtom =
+      Atom(name: '_CreateServiceOrderController.plots', context: context);
+
+  @override
+  List<String> get plots {
+    _$plotsAtom.reportRead();
+    return super.plots;
+  }
+
+  @override
+  set plots(List<String> value) {
+    _$plotsAtom.reportWrite(value, super.plots, () {
+      super.plots = value;
     });
   }
 
@@ -167,6 +231,22 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   set products(List<String> value) {
     _$productsAtom.reportWrite(value, super.products, () {
       super.products = value;
+    });
+  }
+
+  late final _$executorsAtom =
+      Atom(name: '_CreateServiceOrderController.executors', context: context);
+
+  @override
+  List<String> get executors {
+    _$executorsAtom.reportRead();
+    return super.executors;
+  }
+
+  @override
+  set executors(List<String> value) {
+    _$executorsAtom.reportWrite(value, super.executors, () {
+      super.executors = value;
     });
   }
 
@@ -206,6 +286,44 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   Future<dynamic> getSimplifiedCrops() {
     return _$getSimplifiedCropsAsyncAction
         .run(() => super.getSimplifiedCrops());
+  }
+
+  late final _$getPlotsOptionsAsyncAction = AsyncAction(
+      '_CreateServiceOrderController.getPlotsOptions',
+      context: context);
+
+  @override
+  Future<dynamic> getPlotsOptions() {
+    return _$getPlotsOptionsAsyncAction.run(() => super.getPlotsOptions());
+  }
+
+  late final _$getExecutorOptionsAsyncAction = AsyncAction(
+      '_CreateServiceOrderController.getExecutorOptions',
+      context: context);
+
+  @override
+  Future<dynamic> getExecutorOptions() {
+    return _$getExecutorOptionsAsyncAction
+        .run(() => super.getExecutorOptions());
+  }
+
+  late final _$getMachineryAsyncAction = AsyncAction(
+      '_CreateServiceOrderController.getMachinery',
+      context: context);
+
+  @override
+  Future<dynamic> getMachinery() {
+    return _$getMachineryAsyncAction.run(() => super.getMachinery());
+  }
+
+  late final _$getProductsOptionsAsyncAction = AsyncAction(
+      '_CreateServiceOrderController.getProductsOptions',
+      context: context);
+
+  @override
+  Future<dynamic> getProductsOptions() {
+    return _$getProductsOptionsAsyncAction
+        .run(() => super.getProductsOptions());
   }
 
   late final _$_CreateServiceOrderControllerActionController =
@@ -254,9 +372,14 @@ activityOptions: ${activityOptions},
 costCenterOptions: ${costCenterOptions},
 farmOptions: ${farmOptions},
 cropOptions: ${cropOptions},
-executioners: ${executioners},
+executorsOptions: ${executorsOptions},
+machineryOptions: ${machineryOptions},
+productsOptions: ${productsOptions},
+plotsOptions: ${plotsOptions},
+plots: ${plots},
 machinery: ${machinery},
-products: ${products}
+products: ${products},
+executors: ${executors}
     ''';
   }
 }

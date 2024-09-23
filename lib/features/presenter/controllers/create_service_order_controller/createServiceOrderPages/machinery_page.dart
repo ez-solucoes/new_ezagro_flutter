@@ -20,7 +20,7 @@ class MachineryPage extends StatelessWidget {
                     onSelect: (value) {
                       controller.machinery.add(value);
                       controller.selectedMachinery["machinery"] =
-                          controller.executioners;
+                          controller.executors;
                     },
                     items: const ["máquina 1", "máquina 2", "máquina 3"],
                     title: AppStrings.machinerySelectorTitle,
@@ -51,7 +51,7 @@ class MachineryPage extends StatelessWidget {
                               onIconTap: (index) {
                                 controller.machinery.removeAt(index);
                                 controller.selectedMachinery["machinery"] =
-                                    controller.executioners;
+                                    controller.executors;
                               },
                             ));
                   },

@@ -38,7 +38,7 @@ class CreateServiceOrderPage extends StatelessWidget {
                       child: TabBarView(children: <Widget>[
                         GeneralInformationPage(controller: controller),
                         SelectPlotsPage(controller: controller),
-                        ExecutionersPage(controller: controller),
+                        ExecutorsPage(controller: controller),
                         MachineryPage(controller: controller),
                         ProductsPage(controller: controller),
                         SchedulePage(controller: controller),

@@ -16,4 +16,8 @@ class AppEndpoints {
   static const String getCostCentersEndpoint = '/cost-center';
   static const String getFarmsSimplifiedEndpoint = '/farm/simplified';
   static const String getSimplifiedCropsEndpoint = '/crop/simplified';
+  static const String getPlotsEndpoint = '/farm/plot';
+  static const String getExecutorsEndpoint = '/company/service-provider';
+  static const String getProductsEndpoint = '/product';
+  static const String getMachineryEndpoint = '/fleet/machinery';
 }

@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/presenter/create_service_order_page/create_service_order_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/service_order_list_page/service_order_list_page.dart';
 import 'core/http_client/http_client.dart';
@@ -36,6 +38,7 @@ class AppModule extends Module {
 
   //Usecase
   i.addLazySingleton<ServiceOrderListUsecase>(ServiceOrderListUsecaseImpl.new);
+  i.addLazySingleton<ActivityUsecase>(ActivityUsecaseImpl.new);
   //Repository
   i.addLazySingleton<ServiceOrderListRepository>(ServiceOrderListRepositoryImpl.new);
   //Datasource
@@ -45,7 +48,7 @@ class AppModule extends Module {
 
 @override
   void routes(RouteManager r) {
-  r.child(AppRoutes.appDefaultPage, child: (context) => const ServiceOrderListPage());
+  r.child(AppRoutes.appDefaultPage, child: (context) => const CreateServiceOrderPage());
   r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
   r.child(AppRoutes.appHomePage, child: (context) => LoginPage());
   r.child(AppRoutes.appRegisterFirstStepPage, child: (context) => const RegisterFirstStepPage());

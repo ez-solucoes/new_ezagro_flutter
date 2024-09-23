@@ -1,4 +1,8 @@
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/mockEntity/mock_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
+import '../../../../core/usecase/usecase.dart';
 part 'create_service_order_controller.g.dart';
 
 class CreateServiceOrderController = _CreateServiceOrderController with _$CreateServiceOrderController;
@@ -12,6 +16,9 @@ abstract class _CreateServiceOrderController with Store {
 
   @observable
   bool selectAll = false;
+
+  @observable
+  List<MockEntity> activityOptions = ObservableList();
 
   @observable
   List<String> executioners = ObservableList();
@@ -55,9 +62,22 @@ abstract class _CreateServiceOrderController with Store {
   Map<String, dynamic> notes = {"notes": null};
 
   @action
+  Future getActivities() async {
+    isLoading = true;
+    final getActivities = Modular.get<ActivityUsecase>();
+    final result = await getActivities(NoParams());
+    result.fold((error) => error.friendlyMessage, (success) {
+      activityOptions = success.content;
+      return success;
+    });
+
+    isLoading = false;
+  }
+  @action
   toggleSelectAll() {
     selectAll = !selectAll;
   }
+
   @action
    incrementPage() {
     if (page<=6) {

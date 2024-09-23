@@ -3,14 +3,36 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/presenter/create_service_order_page/create_service_order_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/service_order_list_page/service_order_list_page.dart';
 import 'core/http_client/http_client.dart';
 import 'core/http_client/http_client_dio_imp.dart';
 import 'core/local_storage/local_storage_client_secure_impl.dart';
+import 'features/data/datasources/activity_datasources/activity_datasource.dart';
+import 'features/data/datasources/activity_datasources/activity_datasource_impl.dart';
+import 'features/data/datasources/cost_center_datasource/cost_center_datasource.dart';
+import 'features/data/datasources/cost_center_datasource/cost_center_datasource_impl.dart';
+import 'features/data/datasources/crop_datasource/crop_datasource.dart';
+import 'features/data/datasources/crop_datasource/crop_datasource_impl.dart';
+import 'features/data/datasources/farm_datasource/farm_datasource.dart';
+import 'features/data/datasources/farm_datasource/farm_datasource_impl.dart';
 import 'features/data/datasources/service_order_list_datasources/service_order_list_datasource.dart';
 import 'features/data/datasources/service_order_list_datasources/service_order_list_datasource_impl.dart';
+import 'features/data/repositories/activity_repositories/activity_repository_impl.dart';
+import 'features/data/repositories/cost_center_repositories/cost_center_repository_impl.dart';
+import 'features/data/repositories/crop_repositories/crop_repository_impl.dart';
+import 'features/data/repositories/farm_repositories/farm_repository_impl.dart';
 import 'features/data/repositories/service_order_list_repositories/service_order_list_repository_impl.dart';
+import 'features/domain/repositories/activity_repository/activity_repository.dart';
+import 'features/domain/repositories/cost_center_repositories/cost_center_repository.dart';
+import 'features/domain/repositories/crop_repositories/crop_repository.dart';
+import 'features/domain/repositories/farm_repositories/farm_repository.dart';
 import 'features/domain/repositories/service_order_list_repositories/service_order_list_repository.dart';
 import 'features/domain/usecases/service_order_list_usecase/service_order_list_usecase.dart';
 import 'features/domain/usecases/service_order_list_usecase/service_order_list_usecase_impl.dart';
@@ -39,10 +61,21 @@ class AppModule extends Module {
   //Usecase
   i.addLazySingleton<ServiceOrderListUsecase>(ServiceOrderListUsecaseImpl.new);
   i.addLazySingleton<ActivityUsecase>(ActivityUsecaseImpl.new);
+  i.addLazySingleton<CostCenterUsecase>(CostCenterUsecaseImpl.new);
+  i.addLazySingleton<FarmUsecase>(FarmUsecaseImpl.new);
+  i.addLazySingleton<CropUsecase>(CropUsecaseImpl.new);
   //Repository
   i.addLazySingleton<ServiceOrderListRepository>(ServiceOrderListRepositoryImpl.new);
+  i.addLazySingleton<ActivityRepository>(ActivityRepositoryImpl.new);
+  i.addLazySingleton<CostCenterRepository>(CostCenterRepositoryImpl.new);
+  i.addLazySingleton<FarmRepository>(FarmRepositoryImpl.new);
+  i.addLazySingleton<CropRepository>(CropRepositoryImpl.new);
   //Datasource
   i.addLazySingleton<ServiceOrderListDatasource>(ServiceOrderListDatasourceImpl.new);
+  i.addLazySingleton<ActivityDatasource>(ActivityDatasourceImpl.new);
+  i.addLazySingleton<CostCenterDatasource>(CostCenterDatasourceImpl.new);
+  i.addLazySingleton<FarmDatasource>(FarmDatasourceImpl.new);
+  i.addLazySingleton<CropDatasource>(CropDatasourceImpl.new);
     super.binds(i);
   }
 

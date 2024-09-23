@@ -3,27 +3,28 @@ import 'package:new_ezagro_flutter/core/errors/application_error.dart';
 import 'package:new_ezagro_flutter/core/errors/generic_error.dart';
 import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/activity_datasources/activity_datasource.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/cost_center_datasource/cost_center_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/models/mock_model/mock_model.dart';
-import 'package:new_ezagro_flutter/features/domain/repositories/activity_repository/activity_repository.dart';
+import 'package:new_ezagro_flutter/features/domain/repositories/cost_center_repositories/cost_center_repository.dart';
 import '../../models/paginatino_model/pagination_model.dart';
 
-class ActivityRepositoryImpl implements ActivityRepository {
+class CostCenterRepositoryImpl implements CostCenterRepository {
 
-  final ActivityDatasource datasource;
+  final CostCenterDatasource datasource;
 
-  ActivityRepositoryImpl(this.datasource);
+  CostCenterRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<ApplicationError, PaginationModel<MockModel>>> getActvities(NoParams noParams) async {
+  Future<Either<ApplicationError, PaginationModel<MockModel>>> getCostCenters(NoParams noParams) async {
     try{
-      final result = await datasource.getActivities(noParams);
+      final result = await datasource.getCostCenters(noParams);
       return Right(result);
     } on ApplicationError catch(e) {
       return Left(e);
     } catch(e, stacktrace) {
       return Left(
           GenericError(
-              fingerprint: '$ActivityRepositoryImpl.getActivities',
+              fingerprint: '$CostCenterRepositoryImpl.getCostCenters',
               additionalInfo: stacktrace.toString()
           )
       );

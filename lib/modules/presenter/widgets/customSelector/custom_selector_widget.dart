@@ -56,7 +56,7 @@ class _CustomSelectorWidgetState extends State<CustomSelectorWidget> {
                   }).toList(),
                   onChanged: (value) {
                     if (value != null) {
-                      widget.onSelect(value!);
+                      widget.onSelect(value);
                     }
                     setState(() {
                       selectorValue = value;

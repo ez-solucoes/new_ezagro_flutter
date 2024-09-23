@@ -2,6 +2,9 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/mockEntity/mock_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_usecase.dart';
 import '../../../../core/usecase/usecase.dart';
 part 'create_service_order_controller.g.dart';
 
@@ -19,6 +22,15 @@ abstract class _CreateServiceOrderController with Store {
 
   @observable
   List<MockEntity> activityOptions = ObservableList();
+
+  @observable
+  List<MockEntity> costCenterOptions = ObservableList();
+
+  @observable
+  List<MockEntity> farmOptions = ObservableList();
+
+  @observable
+  List<MockEntity> cropOptions = ObservableList();
 
   @observable
   List<String> executioners = ObservableList();
@@ -73,6 +85,46 @@ abstract class _CreateServiceOrderController with Store {
 
     isLoading = false;
   }
+
+  @action
+  Future getCostCenters() async {
+    isLoading = true;
+    final getCostCenters = Modular.get<CostCenterUsecase>();
+    final result = await getCostCenters(NoParams());
+    result.fold((error) => error.friendlyMessage, (success) {
+      costCenterOptions = success.content;
+      return success;
+    });
+
+    isLoading = false;
+  }
+
+  @action
+  Future getSimplifiedFarms() async {
+    isLoading = true;
+    final getSimplifiedFarms = Modular.get<FarmUsecase>();
+    final result = await getSimplifiedFarms(NoParams());
+    result.fold((error) => error.friendlyMessage, (success) {
+      farmOptions = success.content;
+      return success;
+    });
+
+    isLoading = false;
+  }
+
+  @action
+  Future getSimplifiedCrops() async {
+    isLoading = true;
+    final getSimplifiedCrops = Modular.get<CropUsecase>();
+    final result = await getSimplifiedCrops(NoParams());
+    result.fold((error) => error.friendlyMessage, (success) {
+      cropOptions= success.content;
+      return success;
+    });
+
+    isLoading = false;
+  }
+
   @action
   toggleSelectAll() {
     selectAll = !selectAll;

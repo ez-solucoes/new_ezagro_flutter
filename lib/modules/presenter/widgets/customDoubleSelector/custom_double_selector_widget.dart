@@ -65,7 +65,7 @@ class _CustomDoubleSelectorWidgetState
                     }).toList(),
                     onChanged: (value) {
                       if (value != null) {
-                        widget.onSelectFirst(value!);
+                        widget.onSelectFirst(value);
                       }
                       setState(() {
                         selectorValueOne = value;
@@ -103,7 +103,7 @@ class _CustomDoubleSelectorWidgetState
                     }).toList(),
                     onChanged: (value) {
                       if (value != null) {
-                        widget.onSelectSecond(value!);
+                        widget.onSelectSecond(value);
                       }
                       setState(() {
                         selectorValueTwo = value;

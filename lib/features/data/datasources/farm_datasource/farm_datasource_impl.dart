@@ -6,20 +6,20 @@ import '../../../../core/usecase/usecase.dart';
 import '../../../../modules/data/datasources/api_endpoints.dart';
 import '../../models/mock_model/mock_model.dart';
 import '../../models/paginatino_model/pagination_model.dart';
-import 'activity_datasource.dart';
+import 'farm_datasource.dart';
 
-class ActivityDatasourceImpl with UriBuilder implements ActivityDatasource {
+class FarmDatasourceImpl with UriBuilder implements FarmDatasource {
 
   final HttpClient httpClient;
 
-  ActivityDatasourceImpl(this.httpClient);
+  FarmDatasourceImpl(this.httpClient);
 
   @override
-  Future<PaginationModel<MockModel>> getActivities(NoParams noParams) async {
+  Future<PaginationModel<MockModel>> getSimplifiedFarms(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
-      AppEndpoints.getActivityTypesEndpoint,
+      AppEndpoints.getFarmsSimplifiedEndpoint,
     );
 
     final HttpRequest request = HttpRequest.get( path: url);

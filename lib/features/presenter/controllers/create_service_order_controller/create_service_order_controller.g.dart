@@ -57,6 +57,71 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     });
   }
 
+  late final _$activityOptionsAtom = Atom(
+      name: '_CreateServiceOrderController.activityOptions', context: context);
+
+  @override
+  List<MockEntity> get activityOptions {
+    _$activityOptionsAtom.reportRead();
+    return super.activityOptions;
+  }
+
+  @override
+  set activityOptions(List<MockEntity> value) {
+    _$activityOptionsAtom.reportWrite(value, super.activityOptions, () {
+      super.activityOptions = value;
+    });
+  }
+
+  late final _$costCenterOptionsAtom = Atom(
+      name: '_CreateServiceOrderController.costCenterOptions',
+      context: context);
+
+  @override
+  List<MockEntity> get costCenterOptions {
+    _$costCenterOptionsAtom.reportRead();
+    return super.costCenterOptions;
+  }
+
+  @override
+  set costCenterOptions(List<MockEntity> value) {
+    _$costCenterOptionsAtom.reportWrite(value, super.costCenterOptions, () {
+      super.costCenterOptions = value;
+    });
+  }
+
+  late final _$farmOptionsAtom =
+      Atom(name: '_CreateServiceOrderController.farmOptions', context: context);
+
+  @override
+  List<MockEntity> get farmOptions {
+    _$farmOptionsAtom.reportRead();
+    return super.farmOptions;
+  }
+
+  @override
+  set farmOptions(List<MockEntity> value) {
+    _$farmOptionsAtom.reportWrite(value, super.farmOptions, () {
+      super.farmOptions = value;
+    });
+  }
+
+  late final _$cropOptionsAtom =
+      Atom(name: '_CreateServiceOrderController.cropOptions', context: context);
+
+  @override
+  List<MockEntity> get cropOptions {
+    _$cropOptionsAtom.reportRead();
+    return super.cropOptions;
+  }
+
+  @override
+  set cropOptions(List<MockEntity> value) {
+    _$cropOptionsAtom.reportWrite(value, super.cropOptions, () {
+      super.cropOptions = value;
+    });
+  }
+
   late final _$executionersAtom = Atom(
       name: '_CreateServiceOrderController.executioners', context: context);
 
@@ -105,6 +170,44 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     });
   }
 
+  late final _$getActivitiesAsyncAction = AsyncAction(
+      '_CreateServiceOrderController.getActivities',
+      context: context);
+
+  @override
+  Future<dynamic> getActivities() {
+    return _$getActivitiesAsyncAction.run(() => super.getActivities());
+  }
+
+  late final _$getCostCentersAsyncAction = AsyncAction(
+      '_CreateServiceOrderController.getCostCenters',
+      context: context);
+
+  @override
+  Future<dynamic> getCostCenters() {
+    return _$getCostCentersAsyncAction.run(() => super.getCostCenters());
+  }
+
+  late final _$getSimplifiedFarmsAsyncAction = AsyncAction(
+      '_CreateServiceOrderController.getSimplifiedFarms',
+      context: context);
+
+  @override
+  Future<dynamic> getSimplifiedFarms() {
+    return _$getSimplifiedFarmsAsyncAction
+        .run(() => super.getSimplifiedFarms());
+  }
+
+  late final _$getSimplifiedCropsAsyncAction = AsyncAction(
+      '_CreateServiceOrderController.getSimplifiedCrops',
+      context: context);
+
+  @override
+  Future<dynamic> getSimplifiedCrops() {
+    return _$getSimplifiedCropsAsyncAction
+        .run(() => super.getSimplifiedCrops());
+  }
+
   late final _$_CreateServiceOrderControllerActionController =
       ActionController(name: '_CreateServiceOrderController', context: context);
 
@@ -147,6 +250,10 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
 isLoading: ${isLoading},
 page: ${page},
 selectAll: ${selectAll},
+activityOptions: ${activityOptions},
+costCenterOptions: ${costCenterOptions},
+farmOptions: ${farmOptions},
+cropOptions: ${cropOptions},
 executioners: ${executioners},
 machinery: ${machinery},
 products: ${products}

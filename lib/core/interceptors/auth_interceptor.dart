@@ -78,5 +78,5 @@ List<String> get unauthenticatedRoutes => [
   AppEndpoints.firstAccessEndpoint,
   AppEndpoints.forgotPasswordEndpoint,
   AppEndpoints.validateTokenEndpoint,
-  AppEndpoints.registerEndpoint,
+  AppEndpoints.registerEndpoint
 ];

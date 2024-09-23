@@ -31,20 +31,20 @@ extension ServiceOrderTypeEnumExtension on ServiceOrderTypeEnum {
 
   static getEnumServiceOrderTypeFromString(type) {
     switch (type) {
-      case AppStrings.toBeStartedSOEnum:
+      case AppStrings.toBeStartedSOKey || AppStrings.toBeStartedSOEnum:
         return ServiceOrderTypeEnum.toBeStarted;
-      case AppStrings.onGoingSOEnum:
+      case AppStrings.onGoingSOKey || AppStrings.onGoingSOEnum:
         return ServiceOrderTypeEnum.onGoing;
-      case AppStrings.pausedSOEnum:
+      case AppStrings.pausedSOKey || AppStrings.pausedSOEnum:
         return ServiceOrderTypeEnum.paused;
-      case AppStrings.finishedOSEnum:
+      case AppStrings.finishedOSKey || AppStrings.finishedOSEnum:
         return ServiceOrderTypeEnum.finished;
-      case AppStrings.approvalPendingOSEnum || AppStrings.approvalPendingOSWithLineBreakEnum:
+      case AppStrings.approvalPendingOSKey || AppStrings.approvalPendingOSWithLineBreakEnum:
         return ServiceOrderTypeEnum.approvalPending;
-      case AppStrings.canceledOSEnum:
+      case AppStrings.canceledOSKey || AppStrings.canceledOSEnum:
         return ServiceOrderTypeEnum.canceled;
       default:
-        return '';
+        return ServiceOrderTypeEnum.toBeStarted;
     }
   }
 }

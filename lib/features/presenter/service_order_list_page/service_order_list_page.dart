@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/core/enums/service_order_type_enum.dart';
@@ -57,31 +58,33 @@ class ServiceOrderListPage extends StatelessWidget {
                             height: AppDimens.titleDimen,
                           ),
                           Flexible(
-                            child: ListView.separated(
-                              itemCount: controller.serviceOrderListEntities.length,
-                              itemBuilder: (context, index) {
-                                final status = ServiceOrderTypeEnumExtension.getEnumServiceOrderTypeFromString(controller.serviceOrderListEntities[index].status);
-                                return CustomCardTitleWidget(
-                                  id: controller.serviceOrderListEntities[index].id,
-                                  serviceOrderType: controller.serviceOrderListEntities[index].activityName,
-                                  farm: controller.serviceOrderListEntities[index].farmName,
-                                  costCenter: "",
-                                  openingDate: controller.serviceOrderListEntities[index].activityStart,
-                                  closingDate: controller.serviceOrderListEntities[index].activityEnd,
-                                  status: status,
-                                  backgroundColor: controller.getBackgroundColor(status),
-                                  borderColor: controller.getBorderColor(status),
-                                  textColor: controller.getTextColor(status),
-                                );
-                              },
-                              separatorBuilder: (context, index) {
-                                return const Divider(
-                                  thickness: 8,
-                                  indent: 0,
-                                  endIndent: 8,
-                                  color: AppColors.transparent,
-                                );
-                              },
+                            child: Observer(
+                                builder: (context) =>ListView.separated(
+                                itemCount: controller.serviceOrderListEntities.length,
+                                itemBuilder: (context, index) {
+                                  final status = ServiceOrderTypeEnumExtension.getEnumServiceOrderTypeFromString(controller.serviceOrderListEntities[index].status);
+                                  return CustomCardTitleWidget(
+                                    id: controller.serviceOrderListEntities[index].id,
+                                    serviceOrderType: controller.serviceOrderListEntities[index].activityName,
+                                    farm: controller.serviceOrderListEntities[index].farmName,
+                                    costCenter: "",
+                                    openingDate: controller.serviceOrderListEntities[index].activityStart,
+                                    closingDate: controller.serviceOrderListEntities[index].activityEnd,
+                                    status: status,
+                                    backgroundColor: controller.getBackgroundColor(status),
+                                    borderColor: controller.getBorderColor(status),
+                                    textColor: controller.getTextColor(status),
+                                  );
+                                },
+                                separatorBuilder: (context, index) {
+                                  return const Divider(
+                                    thickness: 8,
+                                    indent: 0,
+                                    endIndent: 8,
+                                    color: AppColors.transparent,
+                                  );
+                                },
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -107,4 +110,5 @@ class ServiceOrderListPage extends StatelessWidget {
           floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         ));
   }
+
 }

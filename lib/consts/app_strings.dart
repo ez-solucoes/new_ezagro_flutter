@@ -27,72 +27,80 @@ class AppStrings {
 
   ///Service Order Module
   //Service Order List Strings
-  static const String serviceOrderTitle = "Ordem de Serviço";
-  static const String costCenterCardField = "Centro de Custo: ";
-  static const String openingDateCardField = "Abertura: ";
-  static const String closingDateCardField = "Conclusão: ";
+  static const String serviceOrderTitle = 'Ordem de Serviço';
+  static const String costCenterCardField = 'Centro de Custo: ';
+  static const String openingDateCardField = 'Abertura: ';
+  static const String closingDateCardField = 'Conclusão: ';
   static const String searchBarHint = 'Pesquisar';
-  static const String dateNotInformed = "Não informado";
+  static const String dateNotInformed = 'Não informado';
 
   //Service Order Type Enum Strings
-  static const String toBeStartedSOEnum = "A iniciar";
-  static const String onGoingSOEnum = "Em andamento";
-  static const String pausedSOEnum = "Pausada";
-  static const String finishedOSEnum = "Finalizada";
-  static const String approvalPendingOSEnum = "Aguardando aprovação";
-  static const String approvalPendingOSWithLineBreakEnum = "Aguardando\naprovação";
-  static const String canceledOSEnum = "Cancelada";
+  static const String toBeStartedSOEnum = 'A iniciar';
+  static const String onGoingSOEnum = 'Em andamento';
+  static const String pausedSOEnum = 'Suspensa';
+  static const String finishedOSEnum = 'Finalizada';
+  static const String approvalPendingOSEnum = 'Aguardando aprovação';
+  static const String approvalPendingOSWithLineBreakEnum = 'Aguardando\naprovação';
+  static const String canceledOSEnum = 'Cancelada';
+
+  //Service Order Type Backend Strings
+  static const String toBeStartedSOKey = 'A_INICIAR';
+  static const String onGoingSOKey = 'EM_ANDAMENTO';
+  static const String pausedSOKey= 'SUSPENSA';
+  static const String finishedOSKey = 'FINALIZADA';
+  static const String approvalPendingOSKey = 'PENDENTE_APROVACAO';
+  static const String canceledOSKey = 'CANCELADA';
 
   //Service Order Details
-  static const String finishedServiceOrder = "Essa Ordem de Serviço\nfoi finalizada";
-  static const String saveOSButton = "Salvar";
-  static const String suspendOSButton = "Suspender";
-  static const String cancelOSButton = "Cancelar";
-  static const String finishedOSButton = "Finalizar";
-  static const String resumeOSButton = "Retomar";
+  static const String finishedServiceOrder = 'Essa Ordem de Serviço\nfoi finalizada';
+  static const String saveOSButton = 'Salvar';
+  static const String suspendOSButton = 'Suspender';
+  static const String cancelOSButton = 'Cancelar';
+  static const String finishedOSButton = 'Finalizar';
+  static const String resumeOSButton = 'Retomar';
 
   //Create Service Order
-  static const String previousButton = "Anterior";
-  static const String nextButton = "Próximo";
-  static const String activitySelectorTitle = "Atividade:";
-  static const String costCenterSelectorTitle = "Centro de Custo:";
-  static const String farmSelectorTitle = "Fazenda:";
-  static const String harvestSelectorTitle = "Safra:";
-  static const String executionerSelectorTitle = "Executores:";
-  static const String machinerySelectorTitle = "Maquinário:";
-  static const String productSelectorTitle = "Produto:";
-  static const String responsiveSelectorTitle = "Responsável:";
-  static const String finalCostCenterSelector = "Centro de Custo de Estoque de Destino:";
-  static const String finalStorageSelector = "Estoque de Destino:";
-  static const String activitySelectorHint = "Selecione uma atividade";
-  static const String costCenterSelectorHint = "Selecione um centro de custo";
-  static const String farmSelectorHint = "Selecione uma fazenda";
-  static const String harvestSelectorHint = "Selecione uma safra";
-  static const String executionerSelectorHint = "Selecione um executor";
-  static const String machinerySelectorHint = "Selecione um maquinário";
-  static const String productSelectorHint = "Selecione um produto";
-  static const String responsibleSelectorHint = "Selecione um responsável";
-  static const String finalCostCenterSelectorHint = "Selecione um Centro de Custo do Estoque";
-  static const String finalStorageSelectorHint = "Selecione um estoque de destino";
-  static const String selectAllButton = "Selecionar tudo";
-  static const String plotColumn = "Talhão";
-  static const String areaColumn = "Área";
-  static const String cropColumn = "Cultura";
-  static const String dateLabel = "Data";
-  static const String expectedStartDate = "Previsão de início";
-  static const String expectedFinishingDate = "Previsão de Término";
-  static const String jobValueTextFieldTitle = "Valor do Serviço:";
-  static const String notesTextFieldTitle = "Observações:";
-  static const String nameField = "Nome:";
-  static const String idField = "ID:";
-  static const String shiftField = "Turno:";
-  static const String machineryField = "Máquina:";
-  static const String machineryAliasField = "Apelido:";
-  static const String hourMeterField = "Horímetro:";
-  static const String kiloMeterField = "Quilometragem:";
-  static const String productField = "Produto:";
-  static const String quantityField = "Quantidade:";
-  static const String recommendationField = "Recomendação:";
+  static const String previousButton = 'Anterior';
+  static const String nextButton = 'Próximo';
+  static const String activitySelectorTitle = 'Atividade:';
+  static const String costCenterSelectorTitle = 'Centro de Custo:';
+  static const String farmSelectorTitle = 'Fazenda:';
+  static const String harvestSelectorTitle = 'Safra:';
+  static const String executionerSelectorTitle = 'Executores:';
+  static const String machinerySelectorTitle = 'Maquinário:';
+  static const String productSelectorTitle = 'Produto:';
+  static const String responsiveSelectorTitle = 'Responsável:';
+  static const String finalCostCenterSelector = 'Centro de Custo de Estoque de Destino:';
+  static const String finalStorageSelector = 'Estoque de Destino:';
+  static const String activitySelectorHint = 'Selecione uma atividade';
+  static const String costCenterSelectorHint = 'Selecione um centro de custo';
+  static const String farmSelectorHint = 'Selecione uma fazenda';
+  static const String harvestSelectorHint = 'Selecione uma safra';
+  static const String executionerSelectorHint = 'Selecione um executor';
+  static const String machinerySelectorHint = 'Selecione um maquinário';
+  static const String productSelectorHint = 'Selecione um produto';
+  static const String responsibleSelectorHint = 'Selecione um responsável';
+  static const String finalCostCenterSelectorHint = 'Selecione um Centro de Custo do Estoque';
+  static const String finalStorageSelectorHint = 'Selecione um estoque de destino';
+  static const String selectAllButton = 'Selecionar tudo';
+  static const String plotColumn = 'Talhão';
+  static const String areaColumn = 'Área';
+  static const String cropColumn = 'Cultura';
+  static const String dateLabel = 'Data';
+  static const String expectedStartDate = 'Previsão de início';
+  static const String expectedFinishingDate = 'Previsão de Término';
+  static const String jobValueTextFieldTitle = 'Valor do Serviço:';
+  static const String notesTextFieldTitle = 'Observações:';
+  static const String nameField = 'Nome:';
+  static const String idField = 'ID:';
+  static const String shiftField = 'Turno:';
+  static const String machineryField = 'Máquina:';
+  static const String machineryAliasField = 'Apelido:';
+  static const String hourMeterField = 'Horímetro:';
+  static const String kiloMeterField = 'Quilometragem:';
+  static const String productField = 'Produto:';
+  static const String quantityField = 'Quantidade:';
+  static const String recommendationField = 'Recomendação:';
 
   ///Errors
   static const String genericErrorMessage =

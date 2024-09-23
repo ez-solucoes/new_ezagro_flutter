@@ -5,7 +5,6 @@ import 'package:new_ezagro_flutter/features/presenter/create_service_order_page/
 import 'package:new_ezagro_flutter/features/presenter/service_order_list_page/service_order_list_page.dart';
 import 'core/http_client/http_client.dart';
 import 'core/http_client/http_client_dio_imp.dart';
-import 'core/local_storage/local_storage_client.dart';
 import 'core/local_storage/local_storage_client_secure_impl.dart';
 import 'features/data/datasources/service_order_list_datasources/service_order_list_datasource.dart';
 import 'features/data/datasources/service_order_list_datasources/service_order_list_datasource_impl.dart';
@@ -30,9 +29,10 @@ class AppModule extends Module {
   void binds(Injector i) {
 
   //Core Binds
+  i.addInstance(LocalStorageClientSecureImpl.new);
+  i.add<LocalStorageClientSecureImpl>(LocalStorageClientSecureImpl.new);
+  i.addLazySingleton<LogInterceptor>(LogInterceptor.new);
   i.addSingleton<HttpClient>(HttpClientDioImp.new);
-  i.addLazySingleton<LocalStorageClient>(LocalStorageClientSecureImpl.new);
-  i.addSingleton<LogInterceptor>(LogInterceptor.new);
 
   //Usecase
   i.addLazySingleton<ServiceOrderListUsecase>(ServiceOrderListUsecaseImpl.new);

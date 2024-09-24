@@ -4,6 +4,7 @@ import 'package:new_ezagro_flutter/features/domain/entities/mockEntity/mock_enti
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/employee_usecase/employee_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/executor_usecases/executor_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/machinery_usecases/machinery_usecase.dart';
@@ -44,6 +45,9 @@ abstract class _CreateServiceOrderController with Store {
 
   @observable
   List<MockEntity> productsOptions = ObservableList();
+
+  @observable
+  List<MockEntity> employeeOptions = ObservableList();
 
   @observable
   List<MockEntity> plotsOptions = ObservableList();
@@ -188,6 +192,19 @@ abstract class _CreateServiceOrderController with Store {
     final result = await getProducts(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
       productsOptions = success.content;
+      return success;
+    });
+
+    isLoading = false;
+  }
+
+  @action
+  Future getEmployeeOptions() async {
+    isLoading = true;
+    final getEmployees = Modular.get<EmployeeUsecase>();
+    final result = await getEmployees(NoParams());
+    result.fold((error) => error.friendlyMessage, (success) {
+      employeeOptions = success.content;
       return success;
     });
 

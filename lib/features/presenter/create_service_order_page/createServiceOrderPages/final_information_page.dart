@@ -3,7 +3,7 @@ import '../../../../../consts/app_colors.dart';
 import '../../../../../consts/app_strings.dart';
 import '../../../../../modules/presenter/widgets/customDoubleSelector/custom_double_selector_widget.dart';
 import '../../../../../modules/presenter/widgets/customTextInput/custom_text_input_widget.dart';
-import '../create_service_order_controller.dart';
+import '../../controllers/create_service_order_controller/create_service_order_controller.dart';
 
 class FinalInformationPage extends StatelessWidget {
   CreateServiceOrderController controller;

@@ -4,7 +4,7 @@ import '../../../../../consts/app_colors.dart';
 import '../../../../../consts/app_strings.dart';
 import '../../../../../modules/presenter/widgets/customCardLogo/custom_card_logo_widget.dart';
 import '../../../../../modules/presenter/widgets/customSelector/custom_selector_widget.dart';
-import '../create_service_order_controller.dart';
+import '../../controllers/create_service_order_controller/create_service_order_controller.dart';
 
 class ProductsPage extends StatelessWidget {
 

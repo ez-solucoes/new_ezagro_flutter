@@ -5,7 +5,7 @@ import '../../../../../consts/app_strings.dart';
 import '../../../../../consts/app_text_styles.dart';
 import '../../../../../modules/presenter/widgets/buttons/custom_outlined_button.dart';
 import '../../../../../modules/presenter/widgets/customCheckableListItem/custom_checkable_list_item_widget.dart';
-import '../create_service_order_controller.dart';
+import '../../controllers/create_service_order_controller/create_service_order_controller.dart';
 
 class SelectPlotsPage extends StatefulWidget {
 

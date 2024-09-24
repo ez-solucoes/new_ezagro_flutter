@@ -166,6 +166,22 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     });
   }
 
+  late final _$employeeOptionsAtom = Atom(
+      name: '_CreateServiceOrderController.employeeOptions', context: context);
+
+  @override
+  List<MockEntity> get employeeOptions {
+    _$employeeOptionsAtom.reportRead();
+    return super.employeeOptions;
+  }
+
+  @override
+  set employeeOptions(List<MockEntity> value) {
+    _$employeeOptionsAtom.reportWrite(value, super.employeeOptions, () {
+      super.employeeOptions = value;
+    });
+  }
+
   late final _$plotsOptionsAtom = Atom(
       name: '_CreateServiceOrderController.plotsOptions', context: context);
 
@@ -322,6 +338,16 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
         .run(() => super.getProductsOptions());
   }
 
+  late final _$getEmployeeOptionsAsyncAction = AsyncAction(
+      '_CreateServiceOrderController.getEmployeeOptions',
+      context: context);
+
+  @override
+  Future<dynamic> getEmployeeOptions() {
+    return _$getEmployeeOptionsAsyncAction
+        .run(() => super.getEmployeeOptions());
+  }
+
   late final _$_CreateServiceOrderControllerActionController =
       ActionController(name: '_CreateServiceOrderController', context: context);
 
@@ -371,6 +397,7 @@ cropOptions: ${cropOptions},
 executorsOptions: ${executorsOptions},
 machineryOptions: ${machineryOptions},
 productsOptions: ${productsOptions},
+employeeOptions: ${employeeOptions},
 plotsOptions: ${plotsOptions},
 plots: ${plots},
 machinery: ${machinery},

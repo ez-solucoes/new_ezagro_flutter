@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
-import 'package:new_ezagro_flutter/features/presenter/controllers/create_service_order_controller/createServiceOrderPages/executioners_page.dart';
-import 'package:new_ezagro_flutter/features/presenter/controllers/create_service_order_controller/createServiceOrderPages/final_information_page.dart';
-import 'package:new_ezagro_flutter/features/presenter/controllers/create_service_order_controller/createServiceOrderPages/general_information_page.dart';
-import 'package:new_ezagro_flutter/features/presenter/controllers/create_service_order_controller/createServiceOrderPages/machinery_page.dart';
-import 'package:new_ezagro_flutter/features/presenter/controllers/create_service_order_controller/createServiceOrderPages/schedule_page.dart';
-import 'package:new_ezagro_flutter/features/presenter/controllers/create_service_order_controller/createServiceOrderPages/select_plots_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/controllers/create_service_order_controller/create_service_order_controller.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/appbar/custom_appbar_widget.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/background/background_widget.dart';
@@ -14,7 +8,13 @@ import 'package:new_ezagro_flutter/modules/presenter/widgets/buttons/custom_elev
 import 'package:new_ezagro_flutter/modules/presenter/widgets/buttons/custom_outlined_button.dart';
 import '../../../consts/app_colors.dart';
 import '../../../consts/app_text_styles.dart';
-import '../controllers/create_service_order_controller/createServiceOrderPages/products_page.dart';
+import 'createServiceOrderPages/executors_page.dart';
+import 'createServiceOrderPages/final_information_page.dart';
+import 'createServiceOrderPages/general_information_page.dart';
+import 'createServiceOrderPages/machinery_page.dart';
+import 'createServiceOrderPages/products_page.dart';
+import 'createServiceOrderPages/schedule_page.dart';
+import 'createServiceOrderPages/select_plots_page.dart';
 
 class CreateServiceOrderPage extends StatelessWidget {
   const CreateServiceOrderPage({super.key});

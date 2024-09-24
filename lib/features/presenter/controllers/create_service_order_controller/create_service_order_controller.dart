@@ -1,6 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/mockEntity/mock_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/params/create_service_order_params/create_service_order_params.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_usecase.dart';
@@ -10,6 +11,7 @@ import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_u
 import 'package:new_ezagro_flutter/features/domain/usecases/machinery_usecases/machinery_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase.dart';
 import '../../../../core/usecase/usecase.dart';
 part 'create_service_order_controller.g.dart';
 
@@ -205,6 +207,19 @@ abstract class _CreateServiceOrderController with Store {
     final result = await getEmployees(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
       employeeOptions = success.content;
+      return success;
+    });
+
+    isLoading = false;
+  }
+
+  @action
+  Future createServiceOrder() async {
+    isLoading = true;
+    const mock = MockParams();
+    final createServiceOrder = Modular.get<CreateServiceOrderUsecase>();
+    final result = await createServiceOrder(mock);
+    result.fold((error) => error.friendlyMessage, (success) {
       return success;
     });
 

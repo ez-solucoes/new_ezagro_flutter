@@ -17,6 +17,8 @@ import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots
 import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecases_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/presenter/create_service_order_page/create_service_order_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/service_order_list_page/service_order_list_page.dart';
 import 'core/http_client/http_client.dart';
@@ -40,8 +42,8 @@ import 'features/data/datasources/machinery_datasources/machinery_datasource_imp
 import 'features/data/datasources/plots_datasource/plots_datasource.dart';
 import 'features/data/datasources/plots_datasource/plots_datasource_impl.dart';
 import 'features/data/datasources/product_datasources/product_datasource_impl.dart';
-import 'features/data/datasources/service_order_list_datasources/service_order_list_datasource.dart';
-import 'features/data/datasources/service_order_list_datasources/service_order_list_datasource_impl.dart';
+import 'features/data/datasources/service_order_datasources/service_order_datasource.dart';
+import 'features/data/datasources/service_order_datasources/service_order_datasource_impl.dart';
 import 'features/data/repositories/activity_repositories/activity_repository_impl.dart';
 import 'features/data/repositories/cost_center_repositories/cost_center_repository_impl.dart';
 import 'features/data/repositories/crop_repositories/crop_repository_impl.dart';
@@ -51,7 +53,7 @@ import 'features/data/repositories/farm_repositories/farm_repository_impl.dart';
 import 'features/data/repositories/machinery_repositories/machinery_repository_impl.dart';
 import 'features/data/repositories/plots_repositories/plots_repository_impl.dart';
 import 'features/data/repositories/products_repositories/products_repository_impl.dart';
-import 'features/data/repositories/service_order_list_repositories/service_order_list_repository_impl.dart';
+import 'features/data/repositories/service_order_repositories/service_order_repository_impl.dart';
 import 'features/domain/repositories/activity_repository/activity_repository.dart';
 import 'features/domain/repositories/cost_center_repositories/cost_center_repository.dart';
 import 'features/domain/repositories/crop_repositories/crop_repository.dart';
@@ -61,7 +63,7 @@ import 'features/domain/repositories/farm_repositories/farm_repository.dart';
 import 'features/domain/repositories/machinery_repositories/machinery_repository.dart';
 import 'features/domain/repositories/plots_repositories/plots_repository.dart';
 import 'features/domain/repositories/product_repositories/product_repository.dart';
-import 'features/domain/repositories/service_order_list_repositories/service_order_list_repository.dart';
+import 'features/domain/repositories/service_order_repositories/service_order_repository.dart';
 import 'features/domain/usecases/employee_usecase/employee_usecase.dart';
 import 'features/domain/usecases/employee_usecase/employee_usecase_impl.dart';
 import 'features/domain/usecases/service_order_list_usecase/service_order_list_usecase.dart';
@@ -99,8 +101,9 @@ class AppModule extends Module {
   i.addLazySingleton<MachineryUsecase>(MachineryUsecaseImpl.new);
   i.addLazySingleton<ProductUsecase>(ProductUsecaseImpl.new);
   i.addLazySingleton<EmployeeUsecase>(EmployeeUsecaseImpl.new);
+  i.addLazySingleton<CreateServiceOrderUsecase>(CreateServiceOrderUsecaseImpl.new);
   //Repository
-  i.addLazySingleton<ServiceOrderListRepository>(ServiceOrderListRepositoryImpl.new);
+  i.addLazySingleton<ServiceOrderRepository>(ServiceOrderRepositoryImpl.new);
   i.addLazySingleton<ActivityRepository>(ActivityRepositoryImpl.new);
   i.addLazySingleton<CostCenterRepository>(CostCenterRepositoryImpl.new);
   i.addLazySingleton<FarmRepository>(FarmRepositoryImpl.new);
@@ -111,7 +114,7 @@ class AppModule extends Module {
   i.addLazySingleton<ProductRepository>(ProductRepositoryImpl.new);
   i.addLazySingleton<EmployeeRepository>(EmployeeRepositoryImpl.new);
   //Datasource
-  i.addLazySingleton<ServiceOrderListDatasource>(ServiceOrderListDatasourceImpl.new);
+  i.addLazySingleton<ServiceOrderDatasource>(ServiceOrderDatasourceImpl.new);
   i.addLazySingleton<ActivityDatasource>(ActivityDatasourceImpl.new);
   i.addLazySingleton<CostCenterDatasource>(CostCenterDatasourceImpl.new);
   i.addLazySingleton<FarmDatasource>(FarmDatasourceImpl.new);

@@ -8,59 +8,33 @@ import '../../../../../modules/presenter/widgets/customCheckableListItem/custom_
 import '../../controllers/create_service_order_controller/create_service_order_controller.dart';
 
 class SelectPlotsPage extends StatefulWidget {
-
   @override
   _SelectPlotPageState createState() => _SelectPlotPageState();
 
   CreateServiceOrderController controller;
 
-  SelectPlotsPage({
-    super.key,
-    required this.controller
-  });
-
+  SelectPlotsPage({super.key, required this.controller});
 }
 
 class _SelectPlotPageState extends State<SelectPlotsPage> {
-
   final ScrollController _scrollController = ScrollController();
-  final double _itemHeight = 80;
+  final double _itemHeight = 70;
   bool _isSelecting = false;
   int? _startIndex;
-  int? _endIndex;
+  double? deltaY;
   List<List<String>> plots = List.generate(300, (index) {
     return [(index).toString(), '100ha', 'milho'];
   });
-  List<String> selectedPlots = [];
+
   @override
   void initState() {
     super.initState();
-   //_scrollController.addListener(_scrollListener);
   }
+
   @override
   void dispose() {
     _scrollController.dispose();
     super.dispose();
-  }
-
-  void _scrollListener() {
-    // if (_isSelecting) {
-    //   final offset = _scrollController.offset;
-    //   final viewportHeight = _scrollController.position.viewportDimension;
-    //   final itemIndex = (offset / _itemHeight).floor();
-    //   final visibleIndex = ((offset + viewportHeight) / _itemHeight).floor();
-    //
-    //   setState(() {
-    //     final start = (_startIndex ?? 0).clamp(0, plots.length - 1);
-    //     final end = visibleIndex.clamp(0, plots.length - 1);
-    //
-    //     for (int i = start; i <= end; i++) {
-    //       if (!selectedPlots.contains(plots[i][0])) {
-    //         selectedPlots.add(plots[i][0]);
-    //       }
-    //     }
-    //   });
-    // }
   }
 
   void _autoScroll() {
@@ -73,19 +47,19 @@ class _SelectPlotPageState extends State<SelectPlotsPage> {
   }
 
   void _onLongPressStart(LongPressStartDetails details) {
-    final itemIndex = (details.localPosition.dy / _itemHeight).floor();
+    final offset = _scrollController.offset;
+    final itemIndex =
+        ((details.localPosition.dy + offset) / _itemHeight).floor();
+    deltaY = details.localPosition.dy;
     setState(() {
       _isSelecting = true;
       _startIndex = itemIndex;
-      _endIndex = itemIndex;
 
       final start = (_startIndex ?? 0).clamp(0, plots.length - 1);
-      //final end = (_endIndex ?? 0).clamp(0, plots.length -1);
 
-      if (!selectedPlots.contains(plots[start][0])) {
-          selectedPlots.add(plots[start][0]);
-        }
-
+      if (!widget.controller.plots.contains(plots[start][0])) {
+        widget.controller.plots.add(plots[start][0]);
+      }
     });
   }
 
@@ -93,94 +67,113 @@ class _SelectPlotPageState extends State<SelectPlotsPage> {
     setState(() {
       _isSelecting = false;
       _startIndex = null;
-      _endIndex = null;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-      
-      return Observer(
-          builder: (context) =>
-              Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                CustomOutlinedButton(
-                    onPressed: () {widget.controller.toggleSelectAll();},
-                    label: AppStrings.selectAllButton,
-                    textStyle: AppTextStyles.smallBoldTextOnCardStyle(
-                        color: AppColors.blackColor)),
-                const SizedBox(
-                  height: 5,
-                ),
-                Expanded(
-                    child: Container(
-                        padding: const EdgeInsets.all(2),
-                        decoration: BoxDecoration(
-                            color: AppColors.contourWhiteColor,
-                            borderRadius: BorderRadius.circular(8)),
-                        child: Column(children: [
-                          CustomCheckableListItemWidget(
-                              isHeader: true,
-                              firstColumn: AppStrings.plotColumn,
-                              secondColumn: AppStrings.areaColumn,
-                              thirdColumn: AppStrings.cropColumn,
-                              index: 0,
-                              onCheckBoxTap: (index){}),
-                          Expanded(
-                              child: GestureDetector(
-                                onLongPressStart: _onLongPressStart,
-                                onLongPressEnd: _onLongPressEnd,
-                                onLongPressMoveUpdate: (details) {
-                                  if (_isSelecting) {
-                                    final itemIndex = (details.localPosition.dy/_itemHeight).floor();
-                                    if (itemIndex >= 0 && itemIndex < plots.length) {
-                                      setState(() {
-                                        _endIndex = itemIndex;
+    return Observer(
+        builder: (context) =>
+            Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              CustomOutlinedButton(
+                  onPressed: () {
+                    widget.controller.toggleSelectAll();
+                  },
+                  label: AppStrings.selectAllButton,
+                  textStyle: AppTextStyles.smallBoldTextOnCardStyle(
+                      color: AppColors.blackColor)),
+              const SizedBox(
+                height: 5,
+              ),
+              Expanded(
+                  child: Container(
+                      padding: const EdgeInsets.all(2),
+                      decoration: BoxDecoration(
+                          color: AppColors.contourWhiteColor,
+                          borderRadius: BorderRadius.circular(8)),
+                      child: Column(children: [
+                        CustomCheckableListItemWidget(
+                            isHeader: true,
+                            firstColumn: AppStrings.plotColumn,
+                            secondColumn: AppStrings.areaColumn,
+                            thirdColumn: AppStrings.cropColumn,
+                            index: 0,
+                            onCheckBoxTap: (index) {}),
+                        Expanded(
+                            child: GestureDetector(
+                          onLongPressStart: _onLongPressStart,
+                          onLongPressEnd: _onLongPressEnd,
+                          onLongPressMoveUpdate: (details) {
+                            if (_isSelecting) {
+                              final itemIndex =
+                                  (_scrollController.offset / _itemHeight)
+                                          .floor() +
+                                      (details.localPosition.dy / _itemHeight)
+                                          .floor();
+                              if (itemIndex >= 0 && itemIndex < plots.length) {
+                                setState(() {
+                                  int start = (_startIndex ?? 0);
+                                  int end = itemIndex;
 
-                                        int start = (_startIndex ?? 0);
-                                        int end = (_endIndex ?? 0);
-
-                                        for (int i = start; i <= end; i++) {
-                                          if (!selectedPlots.contains(plots[i][0])) {
-                                            selectedPlots.add(plots[i][0]);
-                                          }
-                                        }
-                                      });
+                                  if (end > start) {
+                                    for (int i = start; i < end; i++) {
+                                      if (!widget.controller.plots
+                                          .contains(plots[i][0])) {
+                                        widget.controller.plots
+                                            .add(plots[i][0]);
+                                      }
                                     }
-                                    _endIndex = null;
-                                    final RenderBox renderBox = context.findRenderObject() as RenderBox;
-                                    final position = renderBox.globalToLocal(details.globalPosition);
-                                    if (position.dy >= renderBox.size.height - 30) {
-                                      _scrollController.jumpTo(_scrollController.position.pixels + 10);
-                                      _autoScroll();
-                                    } else if (position.dy <= 30) {
-                                      _scrollController.jumpTo(_scrollController.position.pixels - 10);
-                                      _autoScroll();
-                                    }
+                                    final deltaScroll = _scrollController.offset == 0 ? 130 : 30;
+                                    _scrollController.jumpTo(
+                                        _scrollController.position.pixels + deltaScroll);
+                                    _autoScroll();
+                                  } else {
+                                    // for (int i = end; i > start; i--) {
+                                    //   if (!widget.controller.plots
+                                    //       .contains(plots[i][0])) {
+                                    //     widget.controller.plots
+                                    //         .add(plots[i][0]);
+                                    //   }
+                                    // }
+                                    // _scrollController.jumpTo(
+                                    //     _scrollController.position.pixels - 30);
+                                    // _autoScroll();
                                   }
-                                },
-                                child: ListView.builder(
-                                    controller: _scrollController,
-                                    itemCount: plots.length,
-                                    itemBuilder: (context, index) {
-                                      return Observer(
-                                          builder: (context) => CustomCheckableListItemWidget(
-                                              indexIsChecked: selectedPlots.contains(plots[index][0]),
+                                });
+                              }
+                            }
+                          },
+                          child: ListView.builder(
+                              controller: _scrollController,
+                              itemCount: plots.length,
+                              itemBuilder: (context, index) {
+                                return Observer(
+                                    builder: (context) => SizedBox(
+                                          height: _itemHeight,
+                                          child: CustomCheckableListItemWidget(
+                                              indexIsChecked: widget
+                                                  .controller.plots
+                                                  .contains(plots[index][0]),
                                               firstColumn: plots[index][0],
                                               secondColumn: plots[index][1],
                                               thirdColumn: plots[index][2],
                                               index: index,
                                               onCheckBoxTap: (index) {
-                                                if (widget.controller.plots.contains(plots[index][0])) {
-                                                  widget.controller.plots.removeWhere((e) => plots[index][0] == e);
+                                                if (widget.controller.plots
+                                                    .contains(
+                                                        plots[index][0])) {
+                                                  widget.controller.plots
+                                                      .removeWhere((e) =>
+                                                          plots[index][0] == e);
                                                 } else {
-                                                  widget.controller.plots.add(plots[index][0]);
+                                                  widget.controller.plots
+                                                      .add(plots[index][0]);
                                                 }
-                                                widget.controller.selectedPlots["plots"] = widget.controller.plots;
-                                              }));
-                                    }),
-                              ))
-                        ])))
-              ]));
+                                              }),
+                                        ));
+                              }),
+                        ))
+                      ])))
+            ]));
   }
-
 }

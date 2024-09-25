@@ -39,11 +39,15 @@ class _CustomCheckableListItemWidgetState
                 : AppColors.softGreenColor,
             border: const Border(
                 bottom:
-                    BorderSide(color: AppColors.contourWhiteColor, width: 2.0))),
+                    BorderSide(color: AppColors.contourWhiteColor, width: 2.0))
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Column(children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+                children: [
               Checkbox(
                   value: widget.isHeader? true : widget.indexIsChecked,
                   activeColor: AppColors.greenColor,
@@ -58,6 +62,7 @@ class _CustomCheckableListItemWidgetState
             ]),
             Expanded(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,

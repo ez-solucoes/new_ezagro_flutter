@@ -79,21 +79,19 @@ class BottomButtonsWidget extends StatelessWidget {
                         textStyle: AppTextStyles.labelTextButtonStyle(
                             color: AppColors.blackColor),
                       ),
+                    controller.isLastPage ?
                     CustomElevatedButton(
-                    onPressed: controller.page >= 8
-                        ? rightButtonAction()
-                        : () {
-                            controller.incrementPage();
-                            DefaultTabController.of(context)
-                                .animateTo(controller.page);
-                          },
-                    label: controller.page == 8
-                        ? AppStrings.finishedOSButton
-                        : AppStrings.nextButton)
+                    onPressed: () {controller.finishOSCreation;},
+                    label:AppStrings.finishedOSButton)
+                    :
+                    CustomElevatedButton(
+                        onPressed: () {
+                          controller.incrementPage();
+                          DefaultTabController.of(context)
+                              .animateTo(controller.page);
+                        },
+                        label: AppStrings.nextButton)
               ],
             ));
-  }
-  static rightButtonAction() {
-
   }
 }

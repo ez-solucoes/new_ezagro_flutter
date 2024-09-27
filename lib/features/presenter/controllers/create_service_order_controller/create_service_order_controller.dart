@@ -22,6 +22,9 @@ abstract class _CreateServiceOrderController with Store {
   bool isLoading = false;
 
   @observable
+  bool isLastPage = false;
+
+  @observable
   int page = 0;
 
   @observable
@@ -226,9 +229,14 @@ abstract class _CreateServiceOrderController with Store {
     isLoading = false;
   }
 
+  finishOSCreation() {
+
+  }
+
+
   @action
   toggleSelectAll() {
-    selectAll = !selectAll;
+
   }
 
   @action
@@ -236,6 +244,7 @@ abstract class _CreateServiceOrderController with Store {
     if (page<=6) {
       page+=1;
     }
+    isLastPage = page == 6;
   }
 
   @action
@@ -243,6 +252,7 @@ abstract class _CreateServiceOrderController with Store {
     if (page>0) {
       page-=1;
     }
+    isLastPage = page == 6;
   }
 
 }

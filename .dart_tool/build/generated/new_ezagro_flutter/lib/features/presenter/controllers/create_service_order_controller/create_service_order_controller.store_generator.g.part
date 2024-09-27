@@ -21,6 +21,22 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     });
   }
 
+  late final _$isLastPageAtom =
+      Atom(name: '_CreateServiceOrderController.isLastPage', context: context);
+
+  @override
+  bool get isLastPage {
+    _$isLastPageAtom.reportRead();
+    return super.isLastPage;
+  }
+
+  @override
+  set isLastPage(bool value) {
+    _$isLastPageAtom.reportWrite(value, super.isLastPage, () {
+      super.isLastPage = value;
+    });
+  }
+
   late final _$pageAtom =
       Atom(name: '_CreateServiceOrderController.page', context: context);
 
@@ -348,6 +364,16 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
         .run(() => super.getEmployeeOptions());
   }
 
+  late final _$createServiceOrderAsyncAction = AsyncAction(
+      '_CreateServiceOrderController.createServiceOrder',
+      context: context);
+
+  @override
+  Future<dynamic> createServiceOrder() {
+    return _$createServiceOrderAsyncAction
+        .run(() => super.createServiceOrder());
+  }
+
   late final _$_CreateServiceOrderControllerActionController =
       ActionController(name: '_CreateServiceOrderController', context: context);
 
@@ -388,6 +414,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   String toString() {
     return '''
 isLoading: ${isLoading},
+isLastPage: ${isLastPage},
 page: ${page},
 selectAll: ${selectAll},
 activityOptions: ${activityOptions},

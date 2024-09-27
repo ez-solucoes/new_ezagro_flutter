@@ -48,18 +48,17 @@ class _SelectPlotPageState extends State<SelectPlotsPage> {
 
   void _onLongPressStart(LongPressStartDetails details) {
     final offset = _scrollController.offset;
-    final itemIndex =
-        ((details.localPosition.dy + offset) / _itemHeight).floor();
+    final itemIndex = ((details.localPosition.dy + offset) / _itemHeight).floor();
     deltaY = details.localPosition.dy;
     setState(() {
-      _isSelecting = true;
       _startIndex = itemIndex;
 
-      final start = (_startIndex ?? 0).clamp(0, plots.length - 1);
+      final start = itemIndex.clamp(0, plots.length - 1);
 
       if (!widget.controller.plots.contains(plots[start][0])) {
         widget.controller.plots.add(plots[start][0]);
       }
+      _isSelecting = true;
     });
   }
 
@@ -110,9 +109,9 @@ class _SelectPlotPageState extends State<SelectPlotsPage> {
                                           .floor() +
                                       (details.localPosition.dy / _itemHeight)
                                           .floor();
-                              if (itemIndex >= 0 && itemIndex < plots.length) {
+                              if (itemIndex >= 0 && itemIndex < plots.length && _startIndex != null) {
                                 setState(() {
-                                  int start = (_startIndex ?? 0);
+                                  int start = (_startIndex!);
                                   int end = itemIndex;
 
                                   if (end > start) {
@@ -128,16 +127,16 @@ class _SelectPlotPageState extends State<SelectPlotsPage> {
                                         _scrollController.position.pixels + deltaScroll);
                                     _autoScroll();
                                   } else {
-                                    // for (int i = end; i > start; i--) {
-                                    //   if (!widget.controller.plots
-                                    //       .contains(plots[i][0])) {
-                                    //     widget.controller.plots
-                                    //         .add(plots[i][0]);
-                                    //   }
-                                    // }
-                                    // _scrollController.jumpTo(
-                                    //     _scrollController.position.pixels - 30);
-                                    // _autoScroll();
+                                    for (int i = end; i > start; i--) {
+                                      if (!widget.controller.plots
+                                          .contains(plots[i][0])) {
+                                        widget.controller.plots
+                                            .add(plots[i][0]);
+                                      }
+                                    }
+                                    _scrollController.jumpTo(
+                                        _scrollController.position.pixels - 30);
+                                    _autoScroll();
                                   }
                                 });
                               }

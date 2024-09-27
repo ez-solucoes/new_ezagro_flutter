@@ -58,46 +58,50 @@ abstract class _CreateServiceOrderController with Store {
   List<MockEntity> plotsOptions = ObservableList();
 
   @observable
-  List<String> plots = ObservableList();
+  List<String> selectedPlots = ObservableList();
 
   @observable
-  List<String> machinery = ObservableList();
+  List<String> selectedMachinery = ObservableList();
 
   @observable
-  List<String> products = ObservableList();
+  List<String> selectedProducts = ObservableList();
 
   @observable
-  List<String> executors = ObservableList();
+  List<String> selectedExecutors = ObservableList();
 
   Map<String, dynamic> activity = {"activity": null};
 
-  Map<String, dynamic>  costCenter = {"costCenter": null};
-
-  Map<String, dynamic>  farm = {"farm": null};
-
   Map<String, dynamic>  harvest = {"harvest": null};
 
-  Map<String, dynamic> selectedPlots = {"plots": null};
+  String startDate = "";
 
-  Map<String, dynamic> selectedExecutors = {"executioners": null};
+  String? endDate;
 
-  Map<String, dynamic> selectedMachinery = {"machinery": null};
+  String farmId = "";
 
-  Map<String, dynamic> selectedProducts = {"products": null};
+  Map<String, dynamic> plotsIds = {"plots": []};
 
-  Map<String, dynamic> startDate = {"startDate": null};
+  int totalArea = 0;
 
-  Map<String, dynamic> endDate = {"endDate": null};
+  String cropDiversityId = "";
 
-  Map<String, dynamic> responsible = {"responsible": null};
+  Map<String, dynamic> machineryIds = {"machineImplements": []};
 
-  Map<String, dynamic> finalCostCenter = {"finalCostCenter": null};
+  String inventoryId = "";
 
-  Map<String, dynamic> finalStorage = {"finalStorage": null};
+  Map<String, dynamic> productsId = {"productRecommendations": []};
 
-  Map<String, dynamic> servicePrice = {"servicePrice": null};
+  String costCenterId = "";
 
-  Map<String, dynamic> notes = {"notes": null};
+  Map<String, dynamic> activityHolder = {"employeeActivityHolder": null};
+
+  Map<String, dynamic> executorsIds = {"companies": []};
+
+  Map<String, dynamic> responsible = {"employees": []};
+
+  double activityValue = 0;
+
+  String notes = "";
 
   @action
   Future getActivities() async {
@@ -230,7 +234,36 @@ abstract class _CreateServiceOrderController with Store {
   }
 
   finishOSCreation() {
-
+    if (_validFields()) {
+    Map<String, dynamic> osPayload = {
+    "activityStart": "",
+    "activityEnd": "",
+    "farm": {
+    "farmId": farmId
+    },
+    "plots": plotsIds["plots"],
+    "areaTotal": totalArea,
+    "cropDiversity": {
+    "cropDiversityId" : cropDiversityId
+    },
+    "machineImplements": machineryIds["machineryImplements"],
+    "inventorySource": {
+    "inventoryId": inventoryId
+    },
+    "productRecommendations": productsId["productRecommendations"],
+    "agriculturalActivity": activity["activity"],
+    "costCenterLocal": {
+    "costCenterId": costCenterId
+    },
+    "employeeActivityHolder": activityHolder["employeeActivityHolder"],
+    "employees": responsible["employees"],
+    "description": notes,
+    "activityValue": activityValue,
+    "expectedStartDate": startDate,
+    "expectedEndDate": endDate,
+    };
+    createServiceOrder();
+    }
   }
 
 
@@ -253,6 +286,10 @@ abstract class _CreateServiceOrderController with Store {
       page-=1;
     }
     isLastPage = page == 6;
+  }
+
+  bool _validFields() {
+    return true;
   }
 
 }

@@ -28,7 +28,7 @@ class GeneralInformationPage extends StatelessWidget {
       ),
       CustomSelectorWidget(
           onSelect: (value) {
-            controller.costCenter = {"costCenter": value};
+            controller.costCenterId = value;
           },
           items: const ["CC 01", "CC 02"],
           title: AppStrings.costCenterSelectorTitle,
@@ -38,7 +38,7 @@ class GeneralInformationPage extends StatelessWidget {
       ),
       CustomSelectorWidget(
           onSelect: (value) {
-            controller.farm = {"farm": value};
+            controller.farmId = value;
           },
           items: const ["Fazenda 01", "Fazenda 02"],
           title: AppStrings.farmSelectorTitle,

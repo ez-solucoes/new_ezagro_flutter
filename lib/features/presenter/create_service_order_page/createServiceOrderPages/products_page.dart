@@ -19,8 +19,7 @@ class ProductsPage extends StatelessWidget {
             children: [
               CustomSelectorWidget(
                   onSelect: (value) {
-                    controller.products.add(value);
-                    controller.selectedProducts["products"] = controller.products;
+                    controller.selectedProducts.add(value);
                   },
                   items: ["Produto 1", "Produto 2", "Produto 3"],
                   title: AppStrings.productSelectorTitle,
@@ -33,21 +32,20 @@ class ProductsPage extends StatelessWidget {
               const SizedBox(height: 6),
               Expanded(
                   child: ListView.separated(
-                    itemCount: controller.products.length,
+                    itemCount: controller.selectedProducts.length,
                     itemBuilder: (context, index) {
                       return Observer(
                           builder: (context) => CustomCardLogoWidget(
                             index: index,
                             labelOne: AppStrings.productField,
-                            textOne: controller.products[index],
+                            textOne: controller.selectedProducts[index],
                             labelTwo: AppStrings.quantityField,
                             textTwo: "Quantidade",
                             labelThree: AppStrings.recommendationField,
                             textThree: "Recomendação",
                             icon: Icons.delete_outline,
                             onIconTap: (index) {
-                              controller.products.removeAt(index);
-                              controller.selectedProducts["products"] = controller.products;
+                              controller.selectedProducts.removeAt(index);
                             },
                           ));
                     },

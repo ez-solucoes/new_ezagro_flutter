@@ -23,9 +23,7 @@ class ExecutorsPage extends StatelessWidget {
               children: [
                 CustomSelectorWidget(
                     onSelect: (value) {
-                      controller.executors.add(value);
-                      controller.selectedExecutors["executors"] =
-                          controller.executors;
+                      controller.selectedExecutors.add(value);
                     },
                     items: ["executores 1", "ex 2", "ex 3"],
                     title: AppStrings.executorSelectorTitle,
@@ -38,22 +36,20 @@ class ExecutorsPage extends StatelessWidget {
                 const SizedBox(height: 6),
                 Expanded(
                     child: ListView.separated(
-                      itemCount: controller.executors.length,
+                      itemCount: controller.selectedExecutors.length,
                       itemBuilder: (context, index) {
                         return CustomInfoCardWidget(
                           index: index,
                           infoCardType: InfoCardType.threeLabeledInfoWithIcon,
                           labelOne: AppStrings.nameField,
-                          textOne: controller.executors[index],
+                          textOne: controller.selectedExecutors[index],
                           labelTwo: AppStrings.idField,
                           textTwo: "00.000.000-00",
                           labelThree: AppStrings.shiftField,
                           textThree: "Matutino",
                           icon: Icons.delete_outline,
                           onIconTap: (index) {
-                            controller.executors.removeAt(index);
-                            controller.selectedExecutors["executors"] =
-                                controller.executors;
+                            controller.selectedExecutors.removeAt(index);
                           },
                         );
                       },

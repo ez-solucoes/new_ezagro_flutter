@@ -55,8 +55,8 @@ class _SelectPlotPageState extends State<SelectPlotsPage> {
 
       final start = itemIndex.clamp(0, plots.length - 1);
 
-      if (!widget.controller.plots.contains(plots[start][0])) {
-        widget.controller.plots.add(plots[start][0]);
+      if (!widget.controller.selectedPlots.contains(plots[start][0])) {
+        widget.controller.selectedPlots.add(plots[start][0]);
       }
       _isSelecting = true;
     });
@@ -116,10 +116,8 @@ class _SelectPlotPageState extends State<SelectPlotsPage> {
 
                                   if (end > start) {
                                     for (int i = start; i < end; i++) {
-                                      if (!widget.controller.plots
-                                          .contains(plots[i][0])) {
-                                        widget.controller.plots
-                                            .add(plots[i][0]);
+                                      if (!widget.controller.selectedPlots.contains(plots[i][0])) {
+                                        widget.controller.selectedPlots.add(plots[i][0]);
                                       }
                                     }
                                     final deltaScroll = _scrollController.offset == 0 ? 130 : 30;
@@ -128,10 +126,8 @@ class _SelectPlotPageState extends State<SelectPlotsPage> {
                                     _autoScroll();
                                   } else {
                                     for (int i = end; i > start; i--) {
-                                      if (!widget.controller.plots
-                                          .contains(plots[i][0])) {
-                                        widget.controller.plots
-                                            .add(plots[i][0]);
+                                      if (!widget.controller.selectedPlots.contains(plots[i][0])) {
+                                        widget.controller.selectedPlots.add(plots[i][0]);
                                       }
                                     }
                                     _scrollController.jumpTo(
@@ -151,21 +147,21 @@ class _SelectPlotPageState extends State<SelectPlotsPage> {
                                           height: _itemHeight,
                                           child: CustomCheckableListItemWidget(
                                               indexIsChecked: widget
-                                                  .controller.plots
+                                                  .controller.selectedPlots
                                                   .contains(plots[index][0]),
                                               firstColumn: plots[index][0],
                                               secondColumn: plots[index][1],
                                               thirdColumn: plots[index][2],
                                               index: index,
                                               onCheckBoxTap: (index) {
-                                                if (widget.controller.plots
+                                                if (widget.controller.selectedPlots
                                                     .contains(
                                                         plots[index][0])) {
-                                                  widget.controller.plots
+                                                  widget.controller.selectedPlots
                                                       .removeWhere((e) =>
                                                           plots[index][0] == e);
                                                 } else {
-                                                  widget.controller.plots
+                                                  widget.controller.selectedPlots
                                                       .add(plots[index][0]);
                                                 }
                                               }),

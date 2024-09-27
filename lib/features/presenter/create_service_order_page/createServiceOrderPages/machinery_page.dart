@@ -18,9 +18,7 @@ class MachineryPage extends StatelessWidget {
               children: [
                 CustomSelectorWidget(
                     onSelect: (value) {
-                      controller.machinery.add(value);
-                      controller.selectedMachinery["machinery"] =
-                          controller.executors;
+                      controller.selectedMachinery.add(value);
                     },
                     items: const ["máquina 1", "máquina 2", "máquina 3"],
                     title: AppStrings.machinerySelectorTitle,
@@ -33,15 +31,15 @@ class MachineryPage extends StatelessWidget {
                 const SizedBox(height: 6),
                 Expanded(
                     child: ListView.separated(
-                  itemCount: controller.machinery.length,
+                  itemCount: controller.selectedMachinery.length,
                   itemBuilder: (context, index) {
                     return Observer(
                         builder: (context) => CustomCardLogoWidget(
                               index: index,
                               labelOne: AppStrings.machineryField,
-                              textOne: controller.machinery[index],
+                              textOne: controller.selectedMachinery[index],
                               labelTwo: AppStrings.machineryAliasField,
-                              textTwo: controller.machinery[index],
+                              textTwo: controller.selectedMachinery[index],
                               labelThree: AppStrings.hourMeterField,
                               textThree: "Horímetro",
                               labelFour: AppStrings.kiloMeterField,
@@ -49,9 +47,7 @@ class MachineryPage extends StatelessWidget {
                               icon: Icons.delete_outline,
                               logo: Icons.agriculture_sharp,
                               onIconTap: (index) {
-                                controller.machinery.removeAt(index);
-                                controller.selectedMachinery["machinery"] =
-                                    controller.executors;
+                                controller.selectedMachinery.removeAt(index);
                               },
                             ));
                   },

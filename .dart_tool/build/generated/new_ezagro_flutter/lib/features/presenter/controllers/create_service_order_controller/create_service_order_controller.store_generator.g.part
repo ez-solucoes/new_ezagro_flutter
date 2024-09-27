@@ -214,67 +214,69 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     });
   }
 
-  late final _$plotsAtom =
-      Atom(name: '_CreateServiceOrderController.plots', context: context);
+  late final _$selectedPlotsAtom = Atom(
+      name: '_CreateServiceOrderController.selectedPlots', context: context);
 
   @override
-  List<String> get plots {
-    _$plotsAtom.reportRead();
-    return super.plots;
+  List<String> get selectedPlots {
+    _$selectedPlotsAtom.reportRead();
+    return super.selectedPlots;
   }
 
   @override
-  set plots(List<String> value) {
-    _$plotsAtom.reportWrite(value, super.plots, () {
-      super.plots = value;
+  set selectedPlots(List<String> value) {
+    _$selectedPlotsAtom.reportWrite(value, super.selectedPlots, () {
+      super.selectedPlots = value;
     });
   }
 
-  late final _$machineryAtom =
-      Atom(name: '_CreateServiceOrderController.machinery', context: context);
+  late final _$selectedMachineryAtom = Atom(
+      name: '_CreateServiceOrderController.selectedMachinery',
+      context: context);
 
   @override
-  List<String> get machinery {
-    _$machineryAtom.reportRead();
-    return super.machinery;
+  List<String> get selectedMachinery {
+    _$selectedMachineryAtom.reportRead();
+    return super.selectedMachinery;
   }
 
   @override
-  set machinery(List<String> value) {
-    _$machineryAtom.reportWrite(value, super.machinery, () {
-      super.machinery = value;
+  set selectedMachinery(List<String> value) {
+    _$selectedMachineryAtom.reportWrite(value, super.selectedMachinery, () {
+      super.selectedMachinery = value;
     });
   }
 
-  late final _$productsAtom =
-      Atom(name: '_CreateServiceOrderController.products', context: context);
+  late final _$selectedProductsAtom = Atom(
+      name: '_CreateServiceOrderController.selectedProducts', context: context);
 
   @override
-  List<String> get products {
-    _$productsAtom.reportRead();
-    return super.products;
+  List<String> get selectedProducts {
+    _$selectedProductsAtom.reportRead();
+    return super.selectedProducts;
   }
 
   @override
-  set products(List<String> value) {
-    _$productsAtom.reportWrite(value, super.products, () {
-      super.products = value;
+  set selectedProducts(List<String> value) {
+    _$selectedProductsAtom.reportWrite(value, super.selectedProducts, () {
+      super.selectedProducts = value;
     });
   }
 
-  late final _$executorsAtom =
-      Atom(name: '_CreateServiceOrderController.executors', context: context);
+  late final _$selectedExecutorsAtom = Atom(
+      name: '_CreateServiceOrderController.selectedExecutors',
+      context: context);
 
   @override
-  List<String> get executors {
-    _$executorsAtom.reportRead();
-    return super.executors;
+  List<String> get selectedExecutors {
+    _$selectedExecutorsAtom.reportRead();
+    return super.selectedExecutors;
   }
 
   @override
-  set executors(List<String> value) {
-    _$executorsAtom.reportWrite(value, super.executors, () {
-      super.executors = value;
+  set selectedExecutors(List<String> value) {
+    _$selectedExecutorsAtom.reportWrite(value, super.selectedExecutors, () {
+      super.selectedExecutors = value;
     });
   }
 
@@ -426,10 +428,10 @@ machineryOptions: ${machineryOptions},
 productsOptions: ${productsOptions},
 employeeOptions: ${employeeOptions},
 plotsOptions: ${plotsOptions},
-plots: ${plots},
-machinery: ${machinery},
-products: ${products},
-executors: ${executors}
+selectedPlots: ${selectedPlots},
+selectedMachinery: ${selectedMachinery},
+selectedProducts: ${selectedProducts},
+selectedExecutors: ${selectedExecutors}
     ''';
   }
 }

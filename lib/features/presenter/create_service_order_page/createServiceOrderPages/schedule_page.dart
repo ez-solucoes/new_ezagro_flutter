@@ -16,13 +16,13 @@ class SchedulePage extends StatelessWidget {
         CustomDatePickerWidget(
           title: AppStrings.expectedStartDate,
           getSelectedDate: (date) {
-            controller.startDate["startDate"] = date;
+            controller.startDate = date;
           },
         ),
         CustomDatePickerWidget(
             title: AppStrings.expectedFinishingDate,
             getSelectedDate: (date) {
-              controller.endDate["endDate"] = date;
+              controller.endDate = date;
             }),
         CustomSelectorWidget(
             onSelect: (value) {

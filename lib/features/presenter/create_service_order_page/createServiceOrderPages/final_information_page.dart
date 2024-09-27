@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import '../../../../../consts/app_colors.dart';
 import '../../../../../consts/app_strings.dart';
@@ -16,7 +18,7 @@ class FinalInformationPage extends StatelessWidget {
       children: [
         CustomDoubleSelectorWidget(
             onSelectFirst: (value) {
-              controller.finalCostCenter["finalCostCenter"] = value;
+              controller.costCenterId = value;
             },
             itemsOne: const [
               "C. de custo 01",
@@ -26,7 +28,7 @@ class FinalInformationPage extends StatelessWidget {
             titleOne: AppStrings.finalCostCenterSelector,
             selectorHintOne: AppStrings.finalCostCenterSelectorHint,
             onSelectSecond: (value) {
-              controller.finalStorage["finalStorage"] = value;
+
             },
             itemsTwo: const ["Estoque 01", "Estoque 02"],
             titleTwo: AppStrings.finalStorageSelector,
@@ -40,14 +42,14 @@ class FinalInformationPage extends StatelessWidget {
         CustomTextInputWidget(
           title: AppStrings.jobValueTextFieldTitle,
           getText: (answer) {
-            controller.servicePrice["servicePrice"] = answer;
+            controller.activityValue = double.parse(answer);
           },
         ),
         const SizedBox(height: 6),
         CustomTextInputWidget(
           title: AppStrings.notesTextFieldTitle,
           getText: (answer) {
-            controller.notes["notes"] = answer;
+            controller.notes = answer;
           },
         )
       ],

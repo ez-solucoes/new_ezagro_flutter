@@ -16,6 +16,7 @@ class BackgroundWidget extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
       appBar: appBar,
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Stack(
           fit: StackFit.expand,
@@ -25,7 +26,7 @@ class BackgroundWidget extends StatelessWidget {
                 right: -140,
                 child: SvgPicture.asset(
                   AppDrawables.ezAgroLogoIcon,
-                  colorFilter: const ColorFilter.mode(Color(0xffFFFBF5), BlendMode.srcIn),
+                  colorFilter: const ColorFilter.mode(Color(0xffFDFDFD), BlendMode.srcIn),
                   width: 399,
                   height: 445,
                 )),

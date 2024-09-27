@@ -8,7 +8,7 @@ import 'package:new_ezagro_flutter/modules/presenter/widgets/appbar/custom_appba
 import 'package:new_ezagro_flutter/modules/presenter/widgets/background/background_widget.dart';
 
 import '../../../../consts/app_text_styles.dart';
-import '../../widgets/buttons/custom_green_elevated_button.dart';
+import '../../widgets/buttons/custom_elevated_button.dart';
 import '../../widgets/textFields/custom_underlined_text_field.dart';
 
 class RegisterFirstStepPage extends StatelessWidget {
@@ -48,7 +48,7 @@ class RegisterFirstStepPage extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             Center(
-              child: CustomGreenElevatedButton(
+              child: CustomElevatedButton(
                 onPressed: () {},
                 label: AppStrings.forwardString,
               ),

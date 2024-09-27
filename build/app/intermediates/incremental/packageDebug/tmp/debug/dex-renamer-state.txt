@@ -1,9 +1,9 @@
-#Mon Sep 02 13:56:37 BRT 2024
-base.0=C\:\\src\\ezsolucoes\\ezagro\\version2\\new_ezagro_flutter\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\src\\ezsolucoes\\ezagro\\version2\\new_ezagro_flutter\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\0\\classes.dex
-base.2=C\:\\src\\ezsolucoes\\ezagro\\version2\\new_ezagro_flutter\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.3=C\:\\src\\ezsolucoes\\ezagro\\version2\\new_ezagro_flutter\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
-base.4=C\:\\src\\ezsolucoes\\ezagro\\version2\\new_ezagro_flutter\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\8\\classes.dex
+#Fri Sep 27 11:12:14 BRT 2024
+base.0=C\:\\src\\Ez Agro Novo\\new_ezagro_flutter\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=C\:\\src\\Ez Agro Novo\\new_ezagro_flutter\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\0\\classes.dex
+base.2=C\:\\src\\Ez Agro Novo\\new_ezagro_flutter\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.3=C\:\\src\\Ez Agro Novo\\new_ezagro_flutter\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
+base.4=C\:\\src\\Ez Agro Novo\\new_ezagro_flutter\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\8\\classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=0/classes.dex

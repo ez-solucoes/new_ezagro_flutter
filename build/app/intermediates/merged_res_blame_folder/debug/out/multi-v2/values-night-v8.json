@@ -4,7 +4,7 @@
             "outputFile": "br.com.ezsolucoes.new_ezagro_flutter.app-mergeDebugResources-28:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\src\\ezsolucoes\\ezagro\\version2\\new_ezagro_flutter\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\src\\Ez Agro Novo\\new_ezagro_flutter\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

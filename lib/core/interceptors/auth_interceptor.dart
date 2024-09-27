@@ -31,9 +31,9 @@ class AuthInterceptor extends Interceptor {
       handler.next(options);
     } else {
       final sharedPreferencesInstance =
-      Modular.get<LocalStorageClientSecureImpl>();
+      Modular.tryGet<LocalStorageClientSecureImpl>();
       final authenticated =
-      await sharedPreferencesInstance.readData(AppStrings.tokenKey);
+      await sharedPreferencesInstance?.readData(AppStrings.tokenKey);
       if (authenticated != null && authenticated != '') {
         options.headers.putIfAbsent('Authorization', () => 'Bearer $authenticated');
         handler.next(options);
@@ -78,4 +78,5 @@ List<String> get unauthenticatedRoutes => [
   AppEndpoints.firstAccessEndpoint,
   AppEndpoints.forgotPasswordEndpoint,
   AppEndpoints.validateTokenEndpoint,
+  AppEndpoints.registerEndpoint
 ];

@@ -17,9 +17,9 @@ plantingTypeEnum(String plantingType) {
 plantingTypeString(type) {
   switch (type) {
     case PlantingTypeEnum.perene:
-      'PERENE';
+      return 'PERENE';
     case PlantingTypeEnum.naoPerene:
-      'NAO_PERENE';
+      return 'NAO_PERENE';
     default:
       return '';
   }

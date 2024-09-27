@@ -22,7 +22,7 @@ class FarmEntity extends Equatable {
   final String name;
   final int areaAcre;
   final List<ContractEntity> contracts;
-  final List<MultipartFileCustom> attachments;
+  final List<MultipartFileCustomEntity> attachments;
   final String attachmentNames;
   final List<CostCenterEntity> costCenters;
 

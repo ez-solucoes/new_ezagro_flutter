@@ -1,13 +1,13 @@
 import 'package:equatable/equatable.dart';
 
-class MultipartFileCustom extends Equatable {
+class MultipartFileCustomEntity extends Equatable {
   final String name;
   final String originalFilename;
   final String contentType;
   final int size;
   final List<String> content;
 
-  const MultipartFileCustom({
+  const MultipartFileCustomEntity({
     required this.name,
     required this.originalFilename,
     required this.contentType,

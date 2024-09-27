@@ -1,13 +1,16 @@
 import 'package:equatable/equatable.dart';
 import 'package:new_ezagro_flutter/modules/domain/entities/products_entities/product_compartment_entity.dart';
 
-class CompartmentHistoryEntity extends Equatable {
+class CompartmentEntity extends Equatable {
   final int id;
-  final int code;
+  final String code;
   final List<ProductCompartmentEntity> products;
 
-  const CompartmentHistoryEntity(
-      {required this.id, required this.code, required this.products});
+  const CompartmentEntity({
+    required this.id,
+    required this.code,
+    required this.products,
+  });
 
   @override
   List<Object?> get props => [

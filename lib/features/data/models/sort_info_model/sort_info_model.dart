@@ -9,7 +9,7 @@ class SortInfoModel extends SortInfoEntity {
   @override
   final bool unsorted;
 
-  SortInfoModel({
+  const SortInfoModel({
     required this.empty,
     required this.sorted,
     required this.unsorted,

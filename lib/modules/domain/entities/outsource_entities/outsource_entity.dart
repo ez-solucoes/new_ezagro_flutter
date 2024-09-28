@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:new_ezagro_flutter/modules/domain/entities/email_entities/email_entity.dart';
-import 'package:new_ezagro_flutter/modules/domain/entities/outsource_entities/outsourceStatusEntity.dart';
+import 'package:new_ezagro_flutter/modules/domain/entities/outsource_entities/outsource_status_entity.dart';
 import 'package:new_ezagro_flutter/modules/domain/entities/outsource_entities/outsource_type_entity.dart';
 import 'package:new_ezagro_flutter/modules/domain/entities/phone_entities/phone_entity.dart';
 

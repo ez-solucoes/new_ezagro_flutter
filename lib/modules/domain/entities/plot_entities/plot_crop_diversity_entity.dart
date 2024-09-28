@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:new_ezagro_flutter/modules/domain/entities/plot_entities/plot_crop_diversity_id_entity.dart';
 
-import '../crop_entities/CropDiversityEntity.dart';
+import '../crop_entities/crop_diversity_entity.dart';
 
 class PlotCropDiversityEntity extends Equatable {
   final PlotCropDiversityIdEntity id;

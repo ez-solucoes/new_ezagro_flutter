@@ -14,9 +14,9 @@ import '../../../domain/entities/service_order_list_entities/service_order_list_
 
 part 'service_order_list_controller.g.dart';
 
-class ServiceOrderListController = _ServiceOrderListController with _$ServiceOrderListController;
+class ServiceOrderListController = ServiceOrderListControllerAbstract with _$ServiceOrderListController;
 
-abstract class _ServiceOrderListController with Store {
+abstract class ServiceOrderListControllerAbstract with Store {
   @observable
   bool isLoading = false;
 

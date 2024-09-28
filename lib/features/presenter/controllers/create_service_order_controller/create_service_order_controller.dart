@@ -15,9 +15,9 @@ import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_u
 import '../../../../core/usecase/usecase.dart';
 part 'create_service_order_controller.g.dart';
 
-class CreateServiceOrderController = _CreateServiceOrderController with _$CreateServiceOrderController;
+class CreateServiceOrderController = CreateServiceOrderControllerAbstract with _$CreateServiceOrderController;
 
-abstract class _CreateServiceOrderController with Store {
+abstract class CreateServiceOrderControllerAbstract with Store {
   @observable
   bool isLoading = false;
 

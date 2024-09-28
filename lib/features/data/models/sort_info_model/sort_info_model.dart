@@ -2,8 +2,11 @@ import 'dart:convert';
 import '../../../domain/entities/sort_info_entity/sort_info_entity.dart';
 
 class SortInfoModel extends SortInfoEntity {
+  @override
   final bool empty;
+  @override
   final bool sorted;
+  @override
   final bool unsorted;
 
   SortInfoModel({

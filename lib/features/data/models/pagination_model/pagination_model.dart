@@ -5,15 +5,25 @@ import '../../../domain/entities/sort_info_entity/sort_info_entity.dart';
 import '../sort_info_model/sort_info_model.dart';
 
 class PaginationModel<T> extends PaginationEntity<T> {
+  @override
   final int totalPages;
+  @override
   final int totalElements;
+  @override
   final int size;
+  @override
   final List<T> content;
+  @override
   final int number;
+  @override
   final bool first;
+  @override
   final bool last;
+  @override
   final bool empty;
+  @override
   final SortInfoEntity sort;
+  @override
   final int numberOfElements;
 
   const PaginationModel({

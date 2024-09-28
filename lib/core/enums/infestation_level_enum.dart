@@ -1,7 +1,7 @@
 //[ SEM_REGISTRO, BAIXO, ATENCAO, ALTO ]
 
 enum InfestationLevelEnum {
-  sem_registro,
+  semRegistro,
   baixo,
   atencao,
   alto,
@@ -10,7 +10,7 @@ enum InfestationLevelEnum {
 infestationLevelEnum(String infestationLevel) {
   switch (infestationLevel) {
     case 'SEM_REGISTRO':
-      return InfestationLevelEnum.sem_registro;
+      return InfestationLevelEnum.semRegistro;
     case 'BAIXO':
       return InfestationLevelEnum.baixo;
     case 'ATENCAO':
@@ -22,7 +22,7 @@ infestationLevelEnum(String infestationLevel) {
 
 infestationLevelString(type) {
   switch (type) {
-    case InfestationLevelEnum.sem_registro:
+    case InfestationLevelEnum.semRegistro:
       return 'SEM_REGISTRO';
     case InfestationLevelEnum.baixo:
       return 'BAIXO';

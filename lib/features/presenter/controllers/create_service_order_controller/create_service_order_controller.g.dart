@@ -8,9 +8,10 @@ part of 'create_service_order_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
-  late final _$isLoadingAtom =
-      Atom(name: '_CreateServiceOrderController.isLoading', context: context);
+mixin _$CreateServiceOrderController
+    on CreateServiceOrderControllerAbstract, Store {
+  late final _$isLoadingAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -25,8 +26,9 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     });
   }
 
-  late final _$isLastPageAtom =
-      Atom(name: '_CreateServiceOrderController.isLastPage', context: context);
+  late final _$isLastPageAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.isLastPage',
+      context: context);
 
   @override
   bool get isLastPage {
@@ -42,7 +44,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$pageAtom =
-      Atom(name: '_CreateServiceOrderController.page', context: context);
+      Atom(name: 'CreateServiceOrderControllerAbstract.page', context: context);
 
   @override
   int get page {
@@ -57,8 +59,8 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     });
   }
 
-  late final _$selectAllAtom =
-      Atom(name: '_CreateServiceOrderController.selectAll', context: context);
+  late final _$selectAllAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.selectAll', context: context);
 
   @override
   bool get selectAll {
@@ -74,7 +76,8 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$activityOptionsAtom = Atom(
-      name: '_CreateServiceOrderController.activityOptions', context: context);
+      name: 'CreateServiceOrderControllerAbstract.activityOptions',
+      context: context);
 
   @override
   List<MockEntity> get activityOptions {
@@ -90,7 +93,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$costCenterOptionsAtom = Atom(
-      name: '_CreateServiceOrderController.costCenterOptions',
+      name: 'CreateServiceOrderControllerAbstract.costCenterOptions',
       context: context);
 
   @override
@@ -106,8 +109,9 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     });
   }
 
-  late final _$farmOptionsAtom =
-      Atom(name: '_CreateServiceOrderController.farmOptions', context: context);
+  late final _$farmOptionsAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.farmOptions',
+      context: context);
 
   @override
   List<MockEntity> get farmOptions {
@@ -122,8 +126,9 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     });
   }
 
-  late final _$cropOptionsAtom =
-      Atom(name: '_CreateServiceOrderController.cropOptions', context: context);
+  late final _$cropOptionsAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.cropOptions',
+      context: context);
 
   @override
   List<MockEntity> get cropOptions {
@@ -139,7 +144,8 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$executorsOptionsAtom = Atom(
-      name: '_CreateServiceOrderController.executorsOptions', context: context);
+      name: 'CreateServiceOrderControllerAbstract.executorsOptions',
+      context: context);
 
   @override
   List<MockEntity> get executorsOptions {
@@ -155,7 +161,8 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$machineryOptionsAtom = Atom(
-      name: '_CreateServiceOrderController.machineryOptions', context: context);
+      name: 'CreateServiceOrderControllerAbstract.machineryOptions',
+      context: context);
 
   @override
   List<MockEntity> get machineryOptions {
@@ -171,7 +178,8 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$productsOptionsAtom = Atom(
-      name: '_CreateServiceOrderController.productsOptions', context: context);
+      name: 'CreateServiceOrderControllerAbstract.productsOptions',
+      context: context);
 
   @override
   List<MockEntity> get productsOptions {
@@ -187,7 +195,8 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$employeeOptionsAtom = Atom(
-      name: '_CreateServiceOrderController.employeeOptions', context: context);
+      name: 'CreateServiceOrderControllerAbstract.employeeOptions',
+      context: context);
 
   @override
   List<MockEntity> get employeeOptions {
@@ -203,7 +212,8 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$plotsOptionsAtom = Atom(
-      name: '_CreateServiceOrderController.plotsOptions', context: context);
+      name: 'CreateServiceOrderControllerAbstract.plotsOptions',
+      context: context);
 
   @override
   List<MockEntity> get plotsOptions {
@@ -219,7 +229,8 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$selectedPlotsAtom = Atom(
-      name: '_CreateServiceOrderController.selectedPlots', context: context);
+      name: 'CreateServiceOrderControllerAbstract.selectedPlots',
+      context: context);
 
   @override
   List<String> get selectedPlots {
@@ -235,7 +246,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$selectedMachineryAtom = Atom(
-      name: '_CreateServiceOrderController.selectedMachinery',
+      name: 'CreateServiceOrderControllerAbstract.selectedMachinery',
       context: context);
 
   @override
@@ -252,7 +263,8 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$selectedProductsAtom = Atom(
-      name: '_CreateServiceOrderController.selectedProducts', context: context);
+      name: 'CreateServiceOrderControllerAbstract.selectedProducts',
+      context: context);
 
   @override
   List<String> get selectedProducts {
@@ -268,7 +280,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$selectedExecutorsAtom = Atom(
-      name: '_CreateServiceOrderController.selectedExecutors',
+      name: 'CreateServiceOrderControllerAbstract.selectedExecutors',
       context: context);
 
   @override
@@ -285,7 +297,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$getActivitiesAsyncAction = AsyncAction(
-      '_CreateServiceOrderController.getActivities',
+      'CreateServiceOrderControllerAbstract.getActivities',
       context: context);
 
   @override
@@ -294,7 +306,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$getCostCentersAsyncAction = AsyncAction(
-      '_CreateServiceOrderController.getCostCenters',
+      'CreateServiceOrderControllerAbstract.getCostCenters',
       context: context);
 
   @override
@@ -303,7 +315,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$getSimplifiedFarmsAsyncAction = AsyncAction(
-      '_CreateServiceOrderController.getSimplifiedFarms',
+      'CreateServiceOrderControllerAbstract.getSimplifiedFarms',
       context: context);
 
   @override
@@ -313,7 +325,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$getSimplifiedCropsAsyncAction = AsyncAction(
-      '_CreateServiceOrderController.getSimplifiedCrops',
+      'CreateServiceOrderControllerAbstract.getSimplifiedCrops',
       context: context);
 
   @override
@@ -323,7 +335,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$getPlotsOptionsAsyncAction = AsyncAction(
-      '_CreateServiceOrderController.getPlotsOptions',
+      'CreateServiceOrderControllerAbstract.getPlotsOptions',
       context: context);
 
   @override
@@ -332,7 +344,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$getExecutorOptionsAsyncAction = AsyncAction(
-      '_CreateServiceOrderController.getExecutorOptions',
+      'CreateServiceOrderControllerAbstract.getExecutorOptions',
       context: context);
 
   @override
@@ -342,7 +354,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$getMachineryAsyncAction = AsyncAction(
-      '_CreateServiceOrderController.getMachinery',
+      'CreateServiceOrderControllerAbstract.getMachinery',
       context: context);
 
   @override
@@ -351,7 +363,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$getProductsOptionsAsyncAction = AsyncAction(
-      '_CreateServiceOrderController.getProductsOptions',
+      'CreateServiceOrderControllerAbstract.getProductsOptions',
       context: context);
 
   @override
@@ -361,7 +373,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$getEmployeeOptionsAsyncAction = AsyncAction(
-      '_CreateServiceOrderController.getEmployeeOptions',
+      'CreateServiceOrderControllerAbstract.getEmployeeOptions',
       context: context);
 
   @override
@@ -371,7 +383,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$createServiceOrderAsyncAction = AsyncAction(
-      '_CreateServiceOrderController.createServiceOrder',
+      'CreateServiceOrderControllerAbstract.createServiceOrder',
       context: context);
 
   @override
@@ -380,39 +392,46 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
         .run(() => super.createServiceOrder());
   }
 
-  late final _$_CreateServiceOrderControllerActionController =
-      ActionController(name: '_CreateServiceOrderController', context: context);
+  late final _$CreateServiceOrderControllerAbstractActionController =
+      ActionController(
+          name: 'CreateServiceOrderControllerAbstract', context: context);
 
   @override
   dynamic toggleSelectAll() {
-    final _$actionInfo = _$_CreateServiceOrderControllerActionController
-        .startAction(name: '_CreateServiceOrderController.toggleSelectAll');
+    final _$actionInfo =
+        _$CreateServiceOrderControllerAbstractActionController.startAction(
+            name: 'CreateServiceOrderControllerAbstract.toggleSelectAll');
     try {
       return super.toggleSelectAll();
     } finally {
-      _$_CreateServiceOrderControllerActionController.endAction(_$actionInfo);
+      _$CreateServiceOrderControllerAbstractActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   dynamic incrementPage() {
-    final _$actionInfo = _$_CreateServiceOrderControllerActionController
-        .startAction(name: '_CreateServiceOrderController.incrementPage');
+    final _$actionInfo =
+        _$CreateServiceOrderControllerAbstractActionController.startAction(
+            name: 'CreateServiceOrderControllerAbstract.incrementPage');
     try {
       return super.incrementPage();
     } finally {
-      _$_CreateServiceOrderControllerActionController.endAction(_$actionInfo);
+      _$CreateServiceOrderControllerAbstractActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   dynamic decrementPage() {
-    final _$actionInfo = _$_CreateServiceOrderControllerActionController
-        .startAction(name: '_CreateServiceOrderController.decrementPage');
+    final _$actionInfo =
+        _$CreateServiceOrderControllerAbstractActionController.startAction(
+            name: 'CreateServiceOrderControllerAbstract.decrementPage');
     try {
       return super.decrementPage();
     } finally {
-      _$_CreateServiceOrderControllerActionController.endAction(_$actionInfo);
+      _$CreateServiceOrderControllerAbstractActionController
+          .endAction(_$actionInfo);
     }
   }
 

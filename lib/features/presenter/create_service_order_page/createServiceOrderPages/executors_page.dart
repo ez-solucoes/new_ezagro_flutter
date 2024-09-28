@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import '../../../../../consts/app_colors.dart';
 import '../../../../../consts/app_strings.dart';
 import '../../../../../modules/presenter/widgets/customInfoCard/custom_info_card_widget.dart';
@@ -7,23 +8,19 @@ import '../../../../../modules/presenter/widgets/customSelector/custom_selector_
 import '../../controllers/create_service_order_controller/create_service_order_controller.dart';
 
 class ExecutorsPage extends StatelessWidget {
-
-  CreateServiceOrderController controller;
-
-  ExecutorsPage({
-    super.key,
-    required this.controller
-  });
+  const ExecutorsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final createServiceOrderController =
+        Modular.get<CreateServiceOrderController>();
+
     return Observer(
-        builder: (context) =>
-            Column(
+        builder: (context) => Column(
               children: [
                 CustomSelectorWidget(
                     onSelect: (value) {
-                      controller.selectedExecutors.add(value);
+                      createServiceOrderController.selectedExecutors.add(value);
                     },
                     items: ["executores 1", "ex 2", "ex 3"],
                     title: AppStrings.executorSelectorTitle,
@@ -36,27 +33,30 @@ class ExecutorsPage extends StatelessWidget {
                 const SizedBox(height: 6),
                 Expanded(
                     child: ListView.separated(
-                      itemCount: controller.selectedExecutors.length,
-                      itemBuilder: (context, index) {
-                        return CustomInfoCardWidget(
-                          index: index,
-                          infoCardType: InfoCardType.threeLabeledInfoWithIcon,
-                          labelOne: AppStrings.nameField,
-                          textOne: controller.selectedExecutors[index],
-                          labelTwo: AppStrings.idField,
-                          textTwo: "00.000.000-00",
-                          labelThree: AppStrings.shiftField,
-                          textThree: "Matutino",
-                          icon: Icons.delete_outline,
-                          onIconTap: (index) {
-                            controller.selectedExecutors.removeAt(index);
-                          },
-                        );
+                  itemCount:
+                      createServiceOrderController.selectedExecutors.length,
+                  itemBuilder: (context, index) {
+                    return CustomInfoCardWidget(
+                      index: index,
+                      infoCardType: InfoCardType.threeLabeledInfoWithIcon,
+                      labelOne: AppStrings.nameField,
+                      textOne:
+                          createServiceOrderController.selectedExecutors[index],
+                      labelTwo: AppStrings.idField,
+                      textTwo: "00.000.000-00",
+                      labelThree: AppStrings.shiftField,
+                      textThree: "Matutino",
+                      icon: Icons.delete_outline,
+                      onIconTap: (index) {
+                        createServiceOrderController.selectedExecutors
+                            .removeAt(index);
                       },
-                      separatorBuilder: (context, index) {
-                        return const SizedBox(height: 4);
-                      },
-                    ))
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(height: 4);
+                  },
+                ))
               ],
             ));
   }

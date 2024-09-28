@@ -6,7 +6,7 @@ import '../../../../core/mixins/uri_builder_mixin.dart';
 import '../../../../core/usecase/usecase.dart';
 import '../../../../modules/data/datasources/api_endpoints.dart';
 import '../../models/mock_model/mock_model.dart';
-import '../../models/paginatino_model/pagination_model.dart';
+import '../../models/pagination_model/pagination_model.dart';
 
 class ExecutorsDatasourceImpl with UriBuilder implements ExecutorsDatasource {
 

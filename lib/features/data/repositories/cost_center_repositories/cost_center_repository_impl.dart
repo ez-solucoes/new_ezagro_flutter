@@ -5,7 +5,7 @@ import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/cost_center_datasource/cost_center_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/models/mock_model/mock_model.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/cost_center_repositories/cost_center_repository.dart';
-import '../../models/paginatino_model/pagination_model.dart';
+import '../../models/pagination_model/pagination_model.dart';
 
 class CostCenterRepositoryImpl implements CostCenterRepository {
 

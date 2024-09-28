@@ -5,7 +5,7 @@ import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/data/models/mock_model/mock_model.dart';
 import '../../../domain/repositories/product_repositories/product_repository.dart';
 import '../../datasources/Product_datasources/Product_datasource.dart';
-import '../../models/paginatino_model/pagination_model.dart';
+import '../../models/pagination_model/pagination_model.dart';
 
 class ProductRepositoryImpl implements ProductRepository {
 

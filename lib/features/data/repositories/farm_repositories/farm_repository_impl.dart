@@ -5,7 +5,8 @@ import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/farm_datasource/farm_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/models/mock_model/mock_model.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/farm_repositories/farm_repository.dart';
-import '../../models/paginatino_model/pagination_model.dart';
+
+import '../../models/pagination_model/pagination_model.dart';
 
 class FarmRepositoryImpl implements FarmRepository {
 

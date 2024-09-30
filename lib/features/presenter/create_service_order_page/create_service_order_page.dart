@@ -46,53 +46,38 @@ class CreateServiceOrderPage extends StatelessWidget {
                         FinalInformationPage(controller: controller)
                       ])),
                   const SizedBox(height: 5),
-                  BottomButtonsWidget(
-                    controller: controller,
-                  )
+                  Observer(
+                      builder: (context) => Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              controller.page == 0
+                                  ? const SizedBox.shrink()
+                                  : CustomOutlinedButton(
+                                      onPressed: () {
+                                        controller.decrementPage();
+                                        DefaultTabController.of(context)
+                                            .animateTo(controller.page);
+                                      },
+                                      label: AppStrings.previousButton,
+                                      textStyle:
+                                          AppTextStyles.labelTextButtonStyle(
+                                              color: AppColors.blackColor),
+                                    ),
+                              controller.isLastPage
+                                  ? CustomElevatedButton(
+                                      onPressed: () {
+                                        controller.finishOSCreation;
+                                      },
+                                      label: AppStrings.finishedOSButton)
+                                  : CustomElevatedButton(
+                                      onPressed: () {
+                                        controller.incrementPage();
+                                        DefaultTabController.of(context)
+                                            .animateTo(controller.page);
+                                      },
+                                      label: AppStrings.nextButton)
+                            ],
+                          ))
                 ]))));
-  }
-}
-
-///Corrigir problema de operação ternária com variável observer (quebra layout na última página)
-class BottomButtonsWidget extends StatelessWidget {
-  const BottomButtonsWidget({
-    super.key,
-    required this.controller,
-  });
-
-  final CreateServiceOrderController controller;
-
-  @override
-  Widget build(BuildContext context) {
-    return Observer(
-        builder: (context) => Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                controller.page == 0
-                    ? const SizedBox.shrink()
-                    : CustomOutlinedButton(
-                        onPressed: () {
-                          controller.decrementPage();
-                          DefaultTabController.of(context)
-                              .animateTo(controller.page);
-                        },
-                        label: AppStrings.previousButton,
-                        textStyle: AppTextStyles.labelTextButtonStyle(
-                            color: AppColors.blackColor),
-                      ),
-                    controller.isLastPage ?
-                    CustomElevatedButton(
-                    onPressed: () {controller.finishOSCreation;},
-                    label:AppStrings.finishedOSButton)
-                    :
-                    CustomElevatedButton(
-                        onPressed: () {
-                          controller.incrementPage();
-                          DefaultTabController.of(context)
-                              .animateTo(controller.page);
-                        },
-                        label: AppStrings.nextButton)
-              ],
-            ));
   }
 }

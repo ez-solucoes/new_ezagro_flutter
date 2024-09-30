@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/features/presenter/controllers/create_service_order_controller/create_service_order_controller.dart';
 import 'package:new_ezagro_flutter/modules/presenter/widgets/appbar/custom_appbar_widget.dart';
@@ -21,7 +22,7 @@ class CreateServiceOrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CreateServiceOrderController controller = CreateServiceOrderController();
+    final controller = Modular.get<CreateServiceOrderController>();
     return BackgroundWidget(
         scrollable: false,
         appBar: const CustomAppBarWidget(

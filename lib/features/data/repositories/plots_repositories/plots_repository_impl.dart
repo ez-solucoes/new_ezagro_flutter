@@ -5,7 +5,7 @@ import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/data/models/mock_model/mock_model.dart';
 import '../../../domain/repositories/plots_repositories/plots_repository.dart';
 import '../../datasources/plots_datasource/plots_datasource.dart';
-import '../../models/paginatino_model/pagination_model.dart';
+import '../../models/pagination_model/pagination_model.dart';
 
 class PlotsRepositoryImpl implements PlotsRepository {
 

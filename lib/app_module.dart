@@ -19,6 +19,7 @@ import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/pro
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecases_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/presenter/controllers/create_service_order_controller/create_service_order_controller.dart';
 import 'package:new_ezagro_flutter/features/presenter/create_service_order_page/create_service_order_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/service_order_list_page/service_order_list_page.dart';
 import 'core/http_client/http_client.dart';
@@ -124,6 +125,9 @@ class AppModule extends Module {
   i.addLazySingleton<MachineryDatasource>(MachineryDatasourceImpl.new);
   i.addLazySingleton<ProductDatasource>(ProductDatasourceImpl.new);
   i.addLazySingleton<EmployeeDatasource>(EmployeeDatasourceImpl.new);
+
+  //Controllers
+  i.addLazySingleton<CreateServiceOrderController>(CreateServiceOrderController.new);
     super.binds(i);
   }
 

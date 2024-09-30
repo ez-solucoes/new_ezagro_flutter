@@ -7,7 +7,7 @@ import 'package:new_ezagro_flutter/features/data/models/service_order_list_model
 import '../../../domain/params/create_service_order_params/create_service_order_params.dart';
 import '../../../domain/repositories/service_order_repositories/service_order_repository.dart';
 import '../../datasources/service_order_datasources/service_order_datasource.dart';
-import '../../models/paginatino_model/pagination_model.dart';
+import '../../models/pagination_model/pagination_model.dart';
 
 class ServiceOrderRepositoryImpl implements ServiceOrderRepository {
 

@@ -5,7 +5,7 @@ import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/Employee_datasources/Employee_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/models/mock_model/mock_model.dart';
 import '../../../domain/repositories/employee_repositories/employee_repository.dart';
-import '../../models/paginatino_model/pagination_model.dart';
+import '../../models/pagination_model/pagination_model.dart';
 
 class EmployeeRepositoryImpl implements EmployeeRepository {
 

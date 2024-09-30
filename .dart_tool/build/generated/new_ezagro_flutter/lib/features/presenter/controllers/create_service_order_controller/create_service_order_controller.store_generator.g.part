@@ -280,6 +280,38 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     });
   }
 
+  late final _$isSelectingAtom =
+      Atom(name: '_CreateServiceOrderController.isSelecting', context: context);
+
+  @override
+  bool get isSelecting {
+    _$isSelectingAtom.reportRead();
+    return super.isSelecting;
+  }
+
+  @override
+  set isSelecting(bool value) {
+    _$isSelectingAtom.reportWrite(value, super.isSelecting, () {
+      super.isSelecting = value;
+    });
+  }
+
+  late final _$startIndexAtom =
+      Atom(name: '_CreateServiceOrderController.startIndex', context: context);
+
+  @override
+  int get startIndex {
+    _$startIndexAtom.reportRead();
+    return super.startIndex;
+  }
+
+  @override
+  set startIndex(int value) {
+    _$startIndexAtom.reportWrite(value, super.startIndex, () {
+      super.startIndex = value;
+    });
+  }
+
   late final _$getActivitiesAsyncAction = AsyncAction(
       '_CreateServiceOrderController.getActivities',
       context: context);
@@ -413,6 +445,28 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   @override
+  void onLongPressEnd(LongPressEndDetails details) {
+    final _$actionInfo = _$_CreateServiceOrderControllerActionController
+        .startAction(name: '_CreateServiceOrderController.onLongPressEnd');
+    try {
+      return super.onLongPressEnd(details);
+    } finally {
+      _$_CreateServiceOrderControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void onLongPressUpdate(LongPressMoveUpdateDetails details) {
+    final _$actionInfo = _$_CreateServiceOrderControllerActionController
+        .startAction(name: '_CreateServiceOrderController.onLongPressUpdate');
+    try {
+      return super.onLongPressUpdate(details);
+    } finally {
+      _$_CreateServiceOrderControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 isLoading: ${isLoading},
@@ -431,7 +485,9 @@ plotsOptions: ${plotsOptions},
 selectedPlots: ${selectedPlots},
 selectedMachinery: ${selectedMachinery},
 selectedProducts: ${selectedProducts},
-selectedExecutors: ${selectedExecutors}
+selectedExecutors: ${selectedExecutors},
+isSelecting: ${isSelecting},
+startIndex: ${startIndex}
     ''';
   }
 }

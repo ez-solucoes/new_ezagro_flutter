@@ -38,7 +38,7 @@ class CreateServiceOrderPage extends StatelessWidget {
                       height: MediaQuery.sizeOf(context).height * 0.75,
                       child: TabBarView(children: <Widget>[
                         GeneralInformationPage(controller: controller),
-                        SelectPlotsPage(controller: controller),
+                        SelectPlotsPage(),
                         ExecutorsPage(controller: controller),
                         MachineryPage(controller: controller),
                         ProductsPage(controller: controller),

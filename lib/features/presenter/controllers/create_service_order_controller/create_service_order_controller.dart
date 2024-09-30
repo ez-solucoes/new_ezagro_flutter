@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/mockEntity/mock_entity.dart';
@@ -102,6 +103,20 @@ abstract class _CreateServiceOrderController with Store {
   double activityValue = 0;
 
   String notes = "";
+
+  //Select Plots Page Variables
+  final ScrollController scrollController = ScrollController();
+  final double itemHeight = 70;
+
+  @observable
+  bool isSelecting = false;
+
+  @observable
+  int startIndex = 0;
+
+  final mockPlots = List.generate(300, (index) {
+    return [(index).toString(), '100ha', 'milho'];
+  });
 
   @action
   Future getActivities() async {
@@ -269,7 +284,13 @@ abstract class _CreateServiceOrderController with Store {
 
   @action
   toggleSelectAll() {
-
+    if(mockPlots.length != selectedPlots.length) {
+      for (int i = 0; i < mockPlots.length; i++) {
+          selectedPlots.add(mockPlots[i][0]);
+      }
+    } else {
+      selectedPlots.clear();
+    }
   }
 
   @action
@@ -290,6 +311,60 @@ abstract class _CreateServiceOrderController with Store {
 
   bool _validFields() {
     return true;
+  }
+
+  //Select Plots Actions
+  @action
+  void onLongPressEnd(LongPressEndDetails details) {
+      isSelecting = false;
+  }
+  void autoScroll() {
+    if (scrollController.position.pixels >=
+        scrollController.position.maxScrollExtent - 30) {
+      scrollController.jumpTo(scrollController.position.maxScrollExtent);
+    } else if (scrollController.position.pixels <= 30) {
+      scrollController.jumpTo(0);
+    }
+  }
+
+  void onLongPressStart(LongPressStartDetails details) {
+    final offset = scrollController.offset;
+    final itemIndex = ((details.localPosition.dy + offset) / itemHeight).floor();
+    startIndex = itemIndex;
+
+    final start = itemIndex.clamp(0, mockPlots.length - 1);
+
+    if (!selectedPlots.contains(mockPlots[start][0])) {
+      selectedPlots.add(mockPlots[start][0]);
+    }
+    isSelecting = true;
+  }
+
+  @action
+  void onLongPressUpdate(LongPressMoveUpdateDetails details) {
+    if (isSelecting) {
+      final itemIndex =
+          (scrollController.offset / itemHeight)
+              .floor() +
+              (details.localPosition.dy / itemHeight)
+                  .floor();
+      if (itemIndex >= 0 && itemIndex < mockPlots.length && startIndex != null) {
+          int start = (startIndex!);
+          int end = itemIndex;
+
+          if (end > start) {
+            for (int i = start; i < end; i++) {
+              if (!selectedPlots.contains(mockPlots[i][0])) {
+                selectedPlots.add(mockPlots[i][0]);
+              }
+            }
+            final deltaScroll = scrollController.offset == 0 ? 130 : 30;
+            scrollController.jumpTo(
+                scrollController.position.pixels + deltaScroll);
+            autoScroll();
+          }
+      }
+    }
   }
 
 }

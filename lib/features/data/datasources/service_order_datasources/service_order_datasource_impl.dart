@@ -5,7 +5,7 @@ import 'package:new_ezagro_flutter/features/data/datasources/service_order_datas
 import 'package:new_ezagro_flutter/features/data/models/service_order_list_model/service_order_list_model.dart';
 import '../../../../core/mixins/uri_builder_mixin.dart';
 import '../../../../core/usecase/usecase.dart';
-import '../../../../modules/data/datasources/api_endpoints.dart';
+import '../api_endpoints.dart';
 import '../../../domain/params/create_service_order_params/create_service_order_params.dart';
 import '../../models/mock_model/mock_model.dart';
 import '../../models/pagination_model/pagination_model.dart';

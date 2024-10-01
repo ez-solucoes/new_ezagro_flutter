@@ -3,7 +3,7 @@ import 'package:new_ezagro_flutter/core/http_client/http_client_helper.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
 import '../../../../core/mixins/uri_builder_mixin.dart';
 import '../../../../core/usecase/usecase.dart';
-import '../../../../modules/data/datasources/api_endpoints.dart';
+import '../api_endpoints.dart';
 import '../../models/mock_model/mock_model.dart';
 import '../../models/pagination_model/pagination_model.dart';
 import 'employee_datasource.dart';

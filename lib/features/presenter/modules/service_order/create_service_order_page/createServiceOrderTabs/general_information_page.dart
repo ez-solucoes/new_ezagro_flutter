@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../../../consts/app_strings.dart';
 import '../../../../widgets/customSelector/custom_selector_widget.dart';
@@ -6,16 +7,14 @@ import '../../controller/create_service_order_controller/create_service_order_co
 
 class GeneralInformationPage extends StatelessWidget {
 
-  CreateServiceOrderController controller;
-
   GeneralInformationPage({
-    super.key,
-    required this.controller
+    super.key
   });
 
 
   @override
   Widget build(BuildContext context) {
+    final controller = Modular.get<CreateServiceOrderController>();
     return Column(children: [
       CustomSelectorWidget(
           onSelect: (value) {

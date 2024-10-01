@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-
+import 'package:flutter_modular/flutter_modular.dart';
 import '../../../../../../consts/app_colors.dart';
 import '../../../../../../consts/app_strings.dart';
 import '../../../../widgets/customCardLogo/custom_card_logo_widget.dart';
@@ -8,12 +8,12 @@ import '../../../../widgets/customSelector/custom_selector_widget.dart';
 import '../../controller/create_service_order_controller/create_service_order_controller.dart';
 
 class MachineryPage extends StatelessWidget {
-  CreateServiceOrderController controller;
 
-  MachineryPage({super.key, required this.controller});
+  MachineryPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Modular.get<CreateServiceOrderController>();
     return Observer(
         builder: (context) => Column(
               children: [

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_modular/flutter_modular.dart';
 import '../../../../../../consts/app_colors.dart';
 import '../../../../../../consts/app_strings.dart';
 import '../../../../widgets/customDoubleSelector/custom_double_selector_widget.dart';
@@ -7,12 +7,12 @@ import '../../../../widgets/customTextInput/custom_text_input_widget.dart';
 import '../../controller/create_service_order_controller/create_service_order_controller.dart';
 
 class FinalInformationPage extends StatelessWidget {
-  CreateServiceOrderController controller;
 
-  FinalInformationPage({super.key, required this.controller});
+  FinalInformationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Modular.get<CreateServiceOrderController>();
     return Column(
       children: [
         CustomDoubleSelectorWidget(

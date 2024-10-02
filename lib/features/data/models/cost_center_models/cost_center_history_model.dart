@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '../../../domain/entities/cost_center_entities/cost_center_history_entity.dart';
 import 'cost_center_type_model.dart';
 
@@ -11,27 +13,6 @@ class CostCenterHistoryModel extends CostCenterHistoryEntity {
     required super.dtEnd,
     required super.active,
   });
-
-  factory CostCenterHistoryModel.fromJson(Map<String, dynamic> json) =>
-      CostCenterHistoryModel(
-        costCenterHistoryId: json['costCenterHistoryId'],
-        costCenterId: json['costCenterId'],
-        costCenterName: json['costCenterName'],
-        costCenterType: CostCenterTypeModel.fromJson(json['costCenterType']),
-        dtStart: json['dtStart'],
-        dtEnd: json['dtEnd'],
-        active: json['active'],
-      );
-
-  Map<String, dynamic> toJson() => {
-    'costCenterHistoryId': costCenterHistoryId,
-    'costCenterId': costCenterId,
-    'costCenterName': costCenterName,
-    'costCenterType': (costCenterType as CostCenterTypeModel).toJson(),
-    'dtStart': dtStart,
-    'dtEnd': dtEnd,
-    'active': active,
-  };
 
   Map<String, dynamic> toMap() => {
     'costCenterHistoryId': costCenterHistoryId,
@@ -53,4 +34,9 @@ class CostCenterHistoryModel extends CostCenterHistoryEntity {
         dtEnd: map['dtEnd'],
         active: map['active'],
       );
+
+  String toJson() => json.encode(toMap());
+
+  factory CostCenterHistoryModel.fromJson(String source) =>
+      CostCenterHistoryModel.fromMap(json.decode(source));
 }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:new_ezagro_flutter/features/data/models/pix_models/pix_type_model.dart';
 import '../../../domain/entities/pix_entities/pix_entity.dart';
 
@@ -8,20 +10,6 @@ class PixModel extends PixEntity {
     required super.pixKey,
     required super.active,
   });
-
-  factory PixModel.fromJson(Map<String, dynamic> json) => PixModel(
-    id: json['id'],
-    pixType: PixTypeModel.fromJson(json['pixType']),
-    pixKey: json['pixKey'],
-    active: json['active'],
-  );
-
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'pixType': (pixType as PixTypeModel).toJson(),
-    'pixKey': pixKey,
-    'active': active,
-  };
 
   Map<String, dynamic> toMap() => {
     'id': id,
@@ -36,4 +24,9 @@ class PixModel extends PixEntity {
     pixKey: map['pixKey'],
     active: map['active'],
   );
+
+  String toJson() => json.encode(toMap());
+
+  factory PixModel.fromJson(String source) =>
+      PixModel.fromMap(json.decode(source));
 }

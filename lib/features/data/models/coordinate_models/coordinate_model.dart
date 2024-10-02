@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '../../../domain/entities/coordinate_entities/coordinate_entity.dart';
 
 class CoordinateModel extends CoordinateEntity {
@@ -6,18 +8,6 @@ class CoordinateModel extends CoordinateEntity {
     required super.longitude,
     required super.latitude,
   });
-
-  factory CoordinateModel.fromJson(Map<String, dynamic> json) => CoordinateModel(
-    id: json['id'],
-    longitude: json['longitude'],
-    latitude: json['latitude'],
-  );
-
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'longitude': longitude,
-    'latitude': latitude,
-  };
 
   Map<String, dynamic> toMap() => {
     'id': id,
@@ -30,4 +20,9 @@ class CoordinateModel extends CoordinateEntity {
     longitude: map['longitude'],
     latitude: map['latitude'],
   );
+
+  String toJson() => json.encode(toMap());
+
+  factory CoordinateModel.fromJson(String source) =>
+      CoordinateModel.fromMap(json.decode(source));
 }

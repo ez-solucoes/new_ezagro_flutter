@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '../../../domain/entities/address_entities/address_entity.dart';
 
 class AddressModel extends AddressEntity {
@@ -12,31 +14,6 @@ class AddressModel extends AddressEntity {
     required super.street,
     required super.number,required super.complement,
   });
-
-  factory AddressModel.fromJson(Map<String, dynamic> json) => AddressModel(
-    id: json['id'],
-    country: json['country'],
-    referenceLocation: json['referenceLocation'],
-    state: json['state'],
-    cep: json['cep'],
-    city: json['city'],
-    neighbourhood: json['neighbourhood'],
-    street: json['street'],
-    number: json['number'],
-    complement: json['complement'],
-  );
-
-  Map<String, dynamic> toJson() => {'id': id,
-    'country': country,
-    'referenceLocation': referenceLocation,
-    'state': state,
-    'cep': cep,
-    'city': city,
-    'neighbourhood': neighbourhood,
-    'street': street,
-    'number': number,
-    'complement': complement,
-  };
 
   Map<String, dynamic> toMap() => {
     'id': id,
@@ -63,4 +40,9 @@ class AddressModel extends AddressEntity {
     number: map['number'],
     complement: map['complement'],
   );
+
+  String toJson() => json.encode(toMap());
+
+  factory AddressModel.fromJson(String source) =>
+      AddressModel.fromMap(json.decode(source));
 }

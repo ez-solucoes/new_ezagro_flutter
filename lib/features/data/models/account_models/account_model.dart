@@ -1,3 +1,6 @@
+
+import 'dart:convert';
+
 import '../../../domain/entities/account_entities/account_entity.dart';
 import '../pix_models/pix_model.dart';
 import '../pix_models/pix_type_model.dart';
@@ -14,25 +17,6 @@ class AccountModel extends AccountEntity {
         required super.pix,
         required super.pixType
       });
-
-  factory AccountModel.fromJson(Map<String, dynamic> json) => AccountModel(
-    id: json['id'],
-    agency: json['agency'],
-    account: json['account'],
-    bank: json['bank'],
-    accountType: AccountTypeModel.fromJson(json['accountType']),
-    pix: PixModel.fromJson(json['pix']),
-    pixType: PixTypeModel.fromJson(json['pixType']),
-  );
-
-  Map<String, dynamic> toJson() => {
-    'id': id,'agency': agency,
-    'account': account,
-    'bank': bank,
-    'accountType': (accountType as AccountTypeModel).toJson(),
-    'pix': (pix as PixModel).toJson(),
-    'pixType': (pixType as PixTypeModel).toJson(),
-  };
 
   Map<String, dynamic> toMap() => {
     'id': id,
@@ -53,4 +37,9 @@ class AccountModel extends AccountEntity {
     pix: PixModel.fromMap(map['pix']),
     pixType: PixTypeModel.fromMap(map['pixType']),
   );
+
+  String toJson() => json.encode(toMap());
+
+  factory AccountModel.fromJson(String source) =>
+      AccountModel.fromMap(json.decode(source));
 }

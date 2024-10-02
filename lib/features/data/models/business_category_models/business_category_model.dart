@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '../../../domain/entities/business_category_entities/business_category_entity.dart';
 
 class BusinessCategoryModel extends BusinessCategoryEntity {
@@ -5,15 +7,6 @@ class BusinessCategoryModel extends BusinessCategoryEntity {
     required super.id,
     required super.description,
   });
-
-  factory BusinessCategoryModel.fromJson(Map<String, dynamic> json) =>
-      BusinessCategoryModel(
-        id: json['id'],
-        description: json['description'],
-      );Map<String, dynamic> toJson() => {
-    'id': id,
-    'description': description,
-  };
 
   Map<String, dynamic> toMap() => {
     'id': id,
@@ -25,4 +18,9 @@ class BusinessCategoryModel extends BusinessCategoryEntity {
         id: map['id'],
         description: map['description'],
       );
+
+  String toJson() => json.encode(toMap());
+
+  factory BusinessCategoryModel.fromJson(String source) =>
+      BusinessCategoryModel.fromMap(json.decode(source));
 }

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import '../../../domain/entities/account_entities/account_type_entity.dart';
 
 class AccountTypeModel extends AccountTypeEntity {
@@ -7,12 +8,6 @@ class AccountTypeModel extends AccountTypeEntity {
     required super.description,
     required super.active,
   });
-
-  factory AccountTypeModel.fromJson(Map<String, dynamic> json) => AccountTypeModel(
-    id: json['id'],name: json['name'],
-    description: json['description'],
-    active: json['active'],
-  );
 
   factory AccountTypeModel.fromEntity(AccountTypeEntity entity) => AccountTypeModel(
     id: entity.id,
@@ -28,13 +23,6 @@ class AccountTypeModel extends AccountTypeEntity {
     active: active,
   );
 
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'name': name,
-    'description': description,
-    'active': active,
-  };
-
   Map<String, dynamic> toMap() => {
     'id': id,
     'name': name,
@@ -48,4 +36,9 @@ class AccountTypeModel extends AccountTypeEntity {
     description: map['description'],
     active: map['active'],
   );
+
+  String toJson() => json.encode(toMap());
+
+  factory AccountTypeModel.fromJson(String source) =>
+      AccountTypeModel.fromMap(json.decode(source));
 }

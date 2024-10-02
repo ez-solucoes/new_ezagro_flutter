@@ -1,3 +1,4 @@
+import 'dart:convert';
 import '../../../domain/entities/brand_entities/brand_entity.dart';
 
 class BrandModel extends BrandEntity {
@@ -5,16 +6,6 @@ class BrandModel extends BrandEntity {
     required super.id,
     required super.name,
   });
-
-  factory BrandModel.fromJson(Map<String, dynamic> json) => BrandModel(
-    id: json['id'],
-    name: json['name'],
-  );
-
-  Map<String, dynamic> toJson() =>{
-    'id': id,
-    'name': name,
-  };
 
   Map<String, dynamic> toMap() => {
     'id': id,
@@ -25,4 +16,9 @@ class BrandModel extends BrandEntity {
     id: map['id'],
     name: map['name'],
   );
+
+  String toJson() => json.encode(toMap());
+
+  factory BrandModel.fromJson(String source) =>
+      BrandModel.fromMap(json.decode(source));
 }

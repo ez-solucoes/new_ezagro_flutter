@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/purchaseOrderEntities/purchase_order_item_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/purchase_order_entities/purchase_order_item_entity.dart';
 
 import '../company_entities/company_entity.dart';
 import '../issuer_recipient_entities/issuer_recipient_entity.dart';

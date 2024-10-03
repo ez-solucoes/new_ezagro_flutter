@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import '../address_entities/address_entity.dart';
 import '../email_entities/email_entity.dart';
 import '../phone_entities/phone_entity.dart';
-import 'outsourceStatusEntity.dart';
+import 'outsource_status_entity.dart';
 import 'outsource_type_entity.dart';
 
 class OutsourceEntity extends Equatable {

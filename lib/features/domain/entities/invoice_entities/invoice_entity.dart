@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import '../company_entities/company_entity.dart';
 import '../cost_center_entities/cost_center_entity.dart';
 import '../issuer_recipient_entities/issuer_recipient_entity.dart';
-import '../purchaseOrderEntities/purchase_order_entity.dart';
+import '../purchase_order_entities/purchase_order_entity.dart';
 import '../rural_producer_entities/rural_producer_entity.dart';
 import 'invoice_items_entity.dart';
 import 'invoice_payment_method_entity.dart';

@@ -4,7 +4,7 @@ import '../farm_entities/farm_entity.dart';
 import '../inventory_entities/inventory_entity.dart';
 import '../machine_implement_entities/machine_implement_entity.dart';
 import '../products_entities/product_entity.dart';
-import '../purchaseOrderEntities/purchase_order_item_entity.dart';
+import '../purchase_order_entities/purchase_order_item_entity.dart';
 import '../tax_entities/tax_entity.dart';
 
 class InvoiceItemsEntity extends Equatable{

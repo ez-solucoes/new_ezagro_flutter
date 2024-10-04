@@ -3,7 +3,7 @@ import 'package:new_ezagro_flutter/core/errors/application_error.dart';
 import 'package:new_ezagro_flutter/core/errors/generic_error.dart';
 import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/machinery_datasources/machinery_datasource.dart';
-import 'package:new_ezagro_flutter/features/data/models/mock_model/mock_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/machine_implement_models/machine_implement_model.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/machinery_repositories/machinery_repository.dart';
 import '../../models/pagination_model/pagination_model.dart';
 
@@ -14,7 +14,7 @@ class MachineryRepositoryImpl implements MachineryRepository {
   MachineryRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<ApplicationError, PaginationModel<MockModel>>> getMachinery(NoParams noParams) async {
+  Future<Either<ApplicationError, PaginationModel<MachineImplementModel>>> getMachinery(NoParams noParams) async {
     try{
       final result = await datasource.getMachinery(noParams);
       return Right(result);

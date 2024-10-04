@@ -1,10 +1,10 @@
 import 'package:new_ezagro_flutter/core/http_client/http_client.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_client_helper.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
+import 'package:new_ezagro_flutter/features/data/models/agricultural_models/agricultural_activity_model.dart';
 import '../../../../core/mixins/uri_builder_mixin.dart';
 import '../../../../core/usecase/usecase.dart';
 import '../api_endpoints.dart';
-import '../../models/mock_model/mock_model.dart';
 import '../../models/pagination_model/pagination_model.dart';
 import 'activity_datasource.dart';
 
@@ -15,7 +15,7 @@ class ActivityDatasourceImpl with UriBuilder implements ActivityDatasource {
   ActivityDatasourceImpl(this.httpClient);
 
   @override
-  Future<PaginationModel<MockModel>> getActivities(NoParams noParams) async {
+  Future<PaginationModel<AgriculturalActivityModel>> getActivities(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
@@ -30,9 +30,9 @@ class ActivityDatasourceImpl with UriBuilder implements ActivityDatasource {
         return mountModelInstanceFromResponse(
           response: result,
           fromMap: (map) =>
-              PaginationModel.fromMap(map, MockModel.fromMap),
+              PaginationModel.fromMap(map, AgriculturalActivityModel.fromMap),
           fromJson: (jsonString) => PaginationModel.fromJson(
-              jsonString, MockModel.fromMap),
+              jsonString, AgriculturalActivityModel.fromMap),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

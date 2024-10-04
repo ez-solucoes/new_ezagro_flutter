@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/mockEntity/mock_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/agricultural_entities/agricultural_activity_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/cost_center_entities/cost_center_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/crop_entities/crop_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/employee_entities/employee_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/farm_entities/farm_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/machine_implement_entities/machine_implement_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/plot_entities/plot_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/products_entities/product_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/params/create_service_order_params/create_service_order_params.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase.dart';
@@ -33,31 +40,31 @@ abstract class _CreateServiceOrderController with Store {
   bool selectAll = false;
 
   @observable
-  List<MockEntity> activityOptions = ObservableList();
+  List<AgriculturalActivityEntity> activityOptions = ObservableList();
 
   @observable
-  List<MockEntity> costCenterOptions = ObservableList();
+  List<CostCenterEntity> costCenterOptions = ObservableList();
 
   @observable
-  List<MockEntity> farmOptions = ObservableList();
+  List<FarmEntity> farmOptions = ObservableList();
 
   @observable
-  List<MockEntity> cropOptions = ObservableList();
+  List<CropEntity> cropOptions = ObservableList();
 
   @observable
-  List<MockEntity> executorsOptions = ObservableList();
+  List<EmployeeEntity> executorsOptions = ObservableList();
 
   @observable
-  List<MockEntity> machineryOptions = ObservableList();
+  List<MachineImplementEntity> machineryOptions = ObservableList();
 
   @observable
-  List<MockEntity> productsOptions = ObservableList();
+  List<ProductEntity> productsOptions = ObservableList();
 
   @observable
-  List<MockEntity> employeeOptions = ObservableList();
+  List<EmployeeEntity> employeeOptions = ObservableList();
 
   @observable
-  List<MockEntity> plotsOptions = ObservableList();
+  List<PlotEntity> plotsOptions = ObservableList();
 
   @observable
   List<String> selectedPlots = ObservableList();

@@ -77,13 +77,13 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
       name: '_CreateServiceOrderController.activityOptions', context: context);
 
   @override
-  List<MockEntity> get activityOptions {
+  List<AgriculturalActivityEntity> get activityOptions {
     _$activityOptionsAtom.reportRead();
     return super.activityOptions;
   }
 
   @override
-  set activityOptions(List<MockEntity> value) {
+  set activityOptions(List<AgriculturalActivityEntity> value) {
     _$activityOptionsAtom.reportWrite(value, super.activityOptions, () {
       super.activityOptions = value;
     });
@@ -94,13 +94,13 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
       context: context);
 
   @override
-  List<MockEntity> get costCenterOptions {
+  List<CostCenterEntity> get costCenterOptions {
     _$costCenterOptionsAtom.reportRead();
     return super.costCenterOptions;
   }
 
   @override
-  set costCenterOptions(List<MockEntity> value) {
+  set costCenterOptions(List<CostCenterEntity> value) {
     _$costCenterOptionsAtom.reportWrite(value, super.costCenterOptions, () {
       super.costCenterOptions = value;
     });
@@ -110,13 +110,13 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
       Atom(name: '_CreateServiceOrderController.farmOptions', context: context);
 
   @override
-  List<MockEntity> get farmOptions {
+  List<FarmEntity> get farmOptions {
     _$farmOptionsAtom.reportRead();
     return super.farmOptions;
   }
 
   @override
-  set farmOptions(List<MockEntity> value) {
+  set farmOptions(List<FarmEntity> value) {
     _$farmOptionsAtom.reportWrite(value, super.farmOptions, () {
       super.farmOptions = value;
     });
@@ -126,13 +126,13 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
       Atom(name: '_CreateServiceOrderController.cropOptions', context: context);
 
   @override
-  List<MockEntity> get cropOptions {
+  List<CropEntity> get cropOptions {
     _$cropOptionsAtom.reportRead();
     return super.cropOptions;
   }
 
   @override
-  set cropOptions(List<MockEntity> value) {
+  set cropOptions(List<CropEntity> value) {
     _$cropOptionsAtom.reportWrite(value, super.cropOptions, () {
       super.cropOptions = value;
     });
@@ -142,13 +142,13 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
       name: '_CreateServiceOrderController.executorsOptions', context: context);
 
   @override
-  List<MockEntity> get executorsOptions {
+  List<EmployeeEntity> get executorsOptions {
     _$executorsOptionsAtom.reportRead();
     return super.executorsOptions;
   }
 
   @override
-  set executorsOptions(List<MockEntity> value) {
+  set executorsOptions(List<EmployeeEntity> value) {
     _$executorsOptionsAtom.reportWrite(value, super.executorsOptions, () {
       super.executorsOptions = value;
     });
@@ -158,13 +158,13 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
       name: '_CreateServiceOrderController.machineryOptions', context: context);
 
   @override
-  List<MockEntity> get machineryOptions {
+  List<MachineImplementEntity> get machineryOptions {
     _$machineryOptionsAtom.reportRead();
     return super.machineryOptions;
   }
 
   @override
-  set machineryOptions(List<MockEntity> value) {
+  set machineryOptions(List<MachineImplementEntity> value) {
     _$machineryOptionsAtom.reportWrite(value, super.machineryOptions, () {
       super.machineryOptions = value;
     });
@@ -174,13 +174,13 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
       name: '_CreateServiceOrderController.productsOptions', context: context);
 
   @override
-  List<MockEntity> get productsOptions {
+  List<ProductEntity> get productsOptions {
     _$productsOptionsAtom.reportRead();
     return super.productsOptions;
   }
 
   @override
-  set productsOptions(List<MockEntity> value) {
+  set productsOptions(List<ProductEntity> value) {
     _$productsOptionsAtom.reportWrite(value, super.productsOptions, () {
       super.productsOptions = value;
     });
@@ -190,13 +190,13 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
       name: '_CreateServiceOrderController.employeeOptions', context: context);
 
   @override
-  List<MockEntity> get employeeOptions {
+  List<EmployeeEntity> get employeeOptions {
     _$employeeOptionsAtom.reportRead();
     return super.employeeOptions;
   }
 
   @override
-  set employeeOptions(List<MockEntity> value) {
+  set employeeOptions(List<EmployeeEntity> value) {
     _$employeeOptionsAtom.reportWrite(value, super.employeeOptions, () {
       super.employeeOptions = value;
     });
@@ -206,13 +206,13 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
       name: '_CreateServiceOrderController.plotsOptions', context: context);
 
   @override
-  List<MockEntity> get plotsOptions {
+  List<PlotEntity> get plotsOptions {
     _$plotsOptionsAtom.reportRead();
     return super.plotsOptions;
   }
 
   @override
-  set plotsOptions(List<MockEntity> value) {
+  set plotsOptions(List<PlotEntity> value) {
     _$plotsOptionsAtom.reportWrite(value, super.plotsOptions, () {
       super.plotsOptions = value;
     });

@@ -222,13 +222,13 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
       name: '_CreateServiceOrderController.selectedPlots', context: context);
 
   @override
-  List<String> get selectedPlots {
+  List<int> get selectedPlots {
     _$selectedPlotsAtom.reportRead();
     return super.selectedPlots;
   }
 
   @override
-  set selectedPlots(List<String> value) {
+  set selectedPlots(List<int> value) {
     _$selectedPlotsAtom.reportWrite(value, super.selectedPlots, () {
       super.selectedPlots = value;
     });
@@ -281,6 +281,22 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   set selectedExecutors(List<String> value) {
     _$selectedExecutorsAtom.reportWrite(value, super.selectedExecutors, () {
       super.selectedExecutors = value;
+    });
+  }
+
+  late final _$activityAtom =
+      Atom(name: '_CreateServiceOrderController.activity', context: context);
+
+  @override
+  AgriculturalActivityEntity? get activity {
+    _$activityAtom.reportRead();
+    return super.activity;
+  }
+
+  @override
+  set activity(AgriculturalActivityEntity? value) {
+    _$activityAtom.reportWrite(value, super.activity, () {
+      super.activity = value;
     });
   }
 
@@ -490,6 +506,7 @@ selectedPlots: ${selectedPlots},
 selectedMachinery: ${selectedMachinery},
 selectedProducts: ${selectedProducts},
 selectedExecutors: ${selectedExecutors},
+activity: ${activity},
 isSelecting: ${isSelecting},
 startIndex: ${startIndex}
     ''';

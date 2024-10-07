@@ -7,10 +7,10 @@ class AgriculturalActivityModel extends AgriculturalActivityEntity {
   const AgriculturalActivityModel({
     required super.id,
     required super.activityName,
-    required super.description,
-    required super.needsApproval,
-    required super.isDefault,
-    required super.activityType,
+    super.description,
+    super.needsApproval,
+    super.isDefault,
+    super.activityType,
   });
 
   Map<String, dynamic> toMap() => {
@@ -36,4 +36,15 @@ class AgriculturalActivityModel extends AgriculturalActivityEntity {
 
   factory AgriculturalActivityModel.fromJson(String source) =>
       AgriculturalActivityModel.fromMap(json.decode(source));
+
+  factory AgriculturalActivityModel.fromEntity(
+      AgriculturalActivityEntity entity) =>
+      AgriculturalActivityModel(
+        id: entity.id,
+        activityName: entity.activityName,
+        description: entity.description,
+        needsApproval: entity.needsApproval,
+        isDefault: entity.isDefault,
+        activityType: entity.activityType,
+      );
 }

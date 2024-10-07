@@ -20,8 +20,11 @@ import 'package:new_ezagro_flutter/features/domain/usecases/machinery_usecases/m
 import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase.dart';
-
+import '../../../../../../consts/app_strings.dart';
+import '../../../../../../core/local_storage/local_storage_client_secure_impl.dart';
+import '../../../../../../core/local_storage/local_storage_item.dart';
 import '../../../../../../core/usecase/usecase.dart';
+import '../../../../../data/models/agricultural_models/agricultural_activity_model.dart';
 part 'create_service_order_controller.g.dart';
 
 class CreateServiceOrderController = _CreateServiceOrderController with _$CreateServiceOrderController;
@@ -67,7 +70,7 @@ abstract class _CreateServiceOrderController with Store {
   List<PlotEntity> plotsOptions = ObservableList();
 
   @observable
-  List<String> selectedPlots = ObservableList();
+  List<int> selectedPlots = ObservableList();
 
   @observable
   List<String> selectedMachinery = ObservableList();
@@ -78,7 +81,8 @@ abstract class _CreateServiceOrderController with Store {
   @observable
   List<String> selectedExecutors = ObservableList();
 
-  Map<String, dynamic> activity = {"activity": null};
+  @observable
+  AgriculturalActivityEntity? activity;
 
   Map<String, dynamic>  harvest = {"harvest": null};
 
@@ -100,7 +104,7 @@ abstract class _CreateServiceOrderController with Store {
 
   Map<String, dynamic> productsId = {"productRecommendations": []};
 
-  String costCenterId = "";
+  int? costCenterId;
 
   Map<String, dynamic> activityHolder = {"employeeActivityHolder": null};
 
@@ -122,9 +126,14 @@ abstract class _CreateServiceOrderController with Store {
   @observable
   int startIndex = 0;
 
-  final mockPlots = List.generate(300, (index) {
-    return [(index).toString(), '100ha', 'milho'];
-  });
+  Future<void> _writeToken() async {
+    final storage = Modular.get<LocalStorageClientSecureImpl>();
+    String? token = await storage.readData(AppStrings.tokenKey);
+    if (token != null) {
+      await storage.deleteData(AppStrings.tokenKey);
+    }
+    await storage.writeData(LocalStorageItem(key: AppStrings.tokenKey, value: 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTExMTExMTExMSIsImV4cCI6MTcyODQxMTMzNSwiaWF0IjoxNzI4MzI0OTM1fQ.SwhAFopJkI48j6rr95b7Z4OmgKrnUBkxqh-baYLQeyoTBxx99rJ20zFtzHZ6rI7vGTfzuewYoQmqvLTIt2vGpg'));
+  }
 
   @action
   Future getActivities() async {
@@ -181,6 +190,7 @@ abstract class _CreateServiceOrderController with Store {
   @action
   Future getPlotsOptions() async {
     isLoading = true;
+    await _writeToken();
     final getPlots = Modular.get<PlotsUsecase>();
     final result = await getPlots(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
@@ -274,7 +284,7 @@ abstract class _CreateServiceOrderController with Store {
     "inventoryId": inventoryId
     },
     "productRecommendations": productsId["productRecommendations"],
-    "agriculturalActivity": activity["activity"],
+    "agriculturalActivity": AgriculturalActivityModel.fromEntity(activity!).toMap(),
     "costCenterLocal": {
     "costCenterId": costCenterId
     },
@@ -292,12 +302,12 @@ abstract class _CreateServiceOrderController with Store {
 
   @action
   toggleSelectAll() {
-    if(mockPlots.length != selectedPlots.length) {
-      for (int i = 0; i < mockPlots.length; i++) {
-          selectedPlots.add(mockPlots[i][0]);
+    if(plotsOptions.length != selectedPlots.length) {
+      for (int i = 0; i < plotsOptions.length; i++) {
+          selectedPlots.add(plotsOptions[i].id);
       }
     } else {
-      selectedPlots.clear();
+      selectedPlots = [];
     }
   }
 
@@ -318,6 +328,12 @@ abstract class _CreateServiceOrderController with Store {
   }
 
   bool _validFields() {
+    if (activity == null) {
+      return false;
+    }
+    if (costCenterId == null){
+      return false;
+    }
     return true;
   }
 
@@ -340,10 +356,10 @@ abstract class _CreateServiceOrderController with Store {
     final itemIndex = ((details.localPosition.dy + offset) / itemHeight).floor();
     startIndex = itemIndex;
 
-    final start = itemIndex.clamp(0, mockPlots.length - 1);
+    final start = itemIndex.clamp(0, plotsOptions.length - 1);
 
-    if (!selectedPlots.contains(mockPlots[start][0])) {
-      selectedPlots.add(mockPlots[start][0]);
+    if (!selectedPlots.contains(plotsOptions[start])) {
+      selectedPlots.add(plotsOptions[start].id);
     }
     isSelecting = true;
   }
@@ -356,14 +372,14 @@ abstract class _CreateServiceOrderController with Store {
               .floor() +
               (details.localPosition.dy / itemHeight)
                   .floor();
-      if (itemIndex >= 0 && itemIndex < mockPlots.length && startIndex != null) {
+      if (itemIndex >= 0 && itemIndex < plotsOptions.length && startIndex != null) {
           int start = (startIndex!);
           int end = itemIndex;
 
           if (end > start) {
             for (int i = start; i < end; i++) {
-              if (!selectedPlots.contains(mockPlots[i][0])) {
-                selectedPlots.add(mockPlots[i][0]);
+              if (!selectedPlots.contains(plotsOptions[i].id)) {
+                selectedPlots.add(plotsOptions[i].id);
               }
             }
             final deltaScroll = scrollController.offset == 0 ? 130 : 30;

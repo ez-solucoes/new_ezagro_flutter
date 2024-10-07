@@ -17,7 +17,7 @@ class FinalInformationPage extends StatelessWidget {
       children: [
         CustomDoubleSelectorWidget(
             onSelectFirst: (value) {
-              controller.costCenterId = value;
+
             },
             itemsOne: const [
               "C. de custo 01",

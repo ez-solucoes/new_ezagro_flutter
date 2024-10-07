@@ -10,6 +10,7 @@ class PlotEntity extends Equatable {
   final CoordinateEntity coordinate;
   final PlotOwnershipTypeEntity plotOwnerShipType;
   final double number;
+  final double area;
 
   const PlotEntity({
     required this.id,
@@ -17,6 +18,7 @@ class PlotEntity extends Equatable {
     required this.coordinate,
     required this.plotOwnerShipType,
     required this.number,
+    required this.area
   });
 
   @override

@@ -22,6 +22,7 @@ class SelectPlotsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Modular.get<CreateServiceOrderController>();
+    controller.getPlotsOptions();
     return Observer(
         builder: (context) =>
             Column(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -56,28 +57,28 @@ class SelectPlotsPage extends StatelessWidget {
                           onLongPressMoveUpdate: controller.onLongPressUpdate,
                           child: ListView.builder(
                               controller: controller.scrollController,
-                              itemCount: controller.mockPlots.length,
+                              itemCount: controller.plotsOptions.length,
                               itemBuilder: (context, index) {
                                 return Observer(
                                     builder: (context) => SizedBox(
                                           height: controller.itemHeight,
                                           child: CustomCheckableListItemWidget(
                                               indexIsChecked: controller.selectedPlots
-                                                  .contains(controller.mockPlots[index][0]),
-                                              firstColumn: controller.mockPlots[index][0],
-                                              secondColumn: controller.mockPlots[index][1],
-                                              thirdColumn: controller.mockPlots[index][2],
+                                                  .contains(controller.plotsOptions[index].id),
+                                              firstColumn: controller.plotsOptions[index].id.toString(),
+                                              secondColumn: controller.plotsOptions[index].area.toString(),
+                                              thirdColumn: controller.plotsOptions[index].plotGroup.name,
                                               index: index,
                                               onCheckBoxTap: (index) {
                                                 if (controller.selectedPlots
                                                     .contains(
-                                                    controller.mockPlots[index][0])) {
+                                                    controller.plotsOptions[index].id)) {
                                                   controller.selectedPlots
                                                       .removeWhere((e) =>
-                                                  controller.mockPlots[index][0] == e);
+                                                  controller.plotsOptions[index].id == e);
                                                 } else {
                                                   controller.selectedPlots
-                                                      .add(controller.mockPlots[index][0]);
+                                                      .add(controller.plotsOptions[index].id);
                                                 }
                                               }),
                                         ));

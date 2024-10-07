@@ -4,30 +4,25 @@ import 'package:new_ezagro_flutter/consts/app_text_styles.dart';
 
 import '../../../../consts/app_colors.dart';
 
-class CustomSelectorWidget extends StatefulWidget {
+class CustomSelectorWidget extends StatelessWidget {
+
   final Function(String) onSelect;
   final List<String> items;
   final String title;
   final String selectorHint;
+  String? selectedValue;
 
-  const CustomSelectorWidget({
+  CustomSelectorWidget({
     super.key,
     required this.onSelect,
     required this.items,
     required this.title,
-    required this.selectorHint
+    required this.selectorHint,
+    this.selectedValue
   });
 
   @override
-  State<CustomSelectorWidget> createState() => _CustomSelectorWidgetState();
-
-}
-
-class _CustomSelectorWidgetState extends State<CustomSelectorWidget> {
-
-  @override
   Widget build(BuildContext context) {
-    String? selectorValue;
     return Card(
         color: AppColors.trueWhiteColor,
         child: Padding(
@@ -36,31 +31,28 @@ class _CustomSelectorWidgetState extends State<CustomSelectorWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  widget.title,
+                  title,
                   style: AppTextStyles.smallBoldTextOnCardStyle(
                       color: AppColors.blackColor),
                 ),
                 const SizedBox(height: 16),
                 DropdownButtonFormField(
-                  value: selectorValue,
+                  value: selectedValue,
                   dropdownColor: AppColors.trueWhiteColor,
                   style: AppTextStyles.appBarSubTitleTextStyle(color: AppColors.blackColor),
                   hint: Text(
-                    widget.selectorHint,
+                    selectorHint,
                     style: AppTextStyles.appBarTitleTextStyle(
                         color: AppColors.formGreyColor),
                   ),
-                  items: widget.items.map((String item) {
+                  items: items.map((String item) {
                     return DropdownMenuItem<String>(
                         value: item, child: Text(item));
                   }).toList(),
                   onChanged: (value) {
                     if (value != null) {
-                      widget.onSelect(value);
+                      onSelect(value);
                     }
-                    setState(() {
-                      selectorValue = value;
-                    });
                   },
                   decoration: const InputDecoration(
                       enabledBorder: UnderlineInputBorder(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../../../consts/app_strings.dart';
@@ -15,34 +16,46 @@ class GeneralInformationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Modular.get<CreateServiceOrderController>();
+    controller.getActivities();
+    //controller.getCostCenters();
+    controller.getSimplifiedFarms();
     return Column(children: [
-      CustomSelectorWidget(
-          onSelect: (value) {
-            controller.activity = {"activity": value};
-          },
-          items: const ["Atividade 01", "Atividade 02"],
-          title: AppStrings.activitySelectorTitle,
-          selectorHint: AppStrings.activitySelectorHint),
+      Observer(
+        builder: (context) => CustomSelectorWidget(
+            onSelect: (value) {
+              controller.activity = controller.activityOptions.where((e) => e.activityName == value).toList().first;
+
+            },
+            items: controller.activityOptions.map((activity) => activity.activityName).toList(),
+            title: AppStrings.activitySelectorTitle,
+            selectorHint: AppStrings.activitySelectorHint,
+            selectedValue: controller.activity?.activityName
+          ),
+      ),
       const SizedBox(
         height: 5,
       ),
-      CustomSelectorWidget(
-          onSelect: (value) {
-            controller.costCenterId = value;
-          },
-          items: const ["CC 01", "CC 02"],
-          title: AppStrings.costCenterSelectorTitle,
-          selectorHint: AppStrings.costCenterSelectorHint),
+      Observer(
+        builder: (context) => CustomSelectorWidget(
+            onSelect: (value) {
+              controller.costCenterId = controller.costCenterOptions.where((e) => e.name == value).toList().first.id;
+            },
+            items: controller.costCenterOptions.map((costCenter) => costCenter.name).toList(),
+            title: AppStrings.costCenterSelectorTitle,
+            selectorHint: AppStrings.costCenterSelectorHint),
+      ),
       const SizedBox(
         height: 5,
       ),
-      CustomSelectorWidget(
-          onSelect: (value) {
-            controller.farmId = value;
-          },
-          items: const ["Fazenda 01", "Fazenda 02"],
-          title: AppStrings.farmSelectorTitle,
-          selectorHint: AppStrings.farmSelectorHint),
+      Observer(
+        builder: (context) => CustomSelectorWidget(
+            onSelect: (value) {
+              controller.farmId = value;
+            },
+            items: const ["Fazenda 01", "Fazenda 02"],
+            title: AppStrings.farmSelectorTitle,
+            selectorHint: AppStrings.farmSelectorHint),
+      ),
       const SizedBox(
         height: 5,
       ),

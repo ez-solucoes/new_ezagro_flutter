@@ -11,6 +11,7 @@ class PlotModel extends PlotEntity {
     required super.coordinate,
     required super.plotOwnerShipType,
     required super.number,
+    required super.area
   });
 
   String toJson() => json.encode(toMap());
@@ -24,6 +25,7 @@ class PlotModel extends PlotEntity {
     'coordinate': (coordinate as CoordinateModel).toMap(),
     'plotOwnerShipType': (plotOwnerShipType as PlotOwnershipTypeModel).toMap(),
     'number':number,
+    'area': area
   };
 
   factory PlotModel.fromMap(Map<String, dynamic> map) => PlotModel(
@@ -32,5 +34,6 @@ class PlotModel extends PlotEntity {
     coordinate: CoordinateModel.fromMap(map['coordinate']),
     plotOwnerShipType: PlotOwnershipTypeModel.fromMap(map['plotOwnerShipType']),
     number: map['number'],
+    area: map['area']
   );
 }

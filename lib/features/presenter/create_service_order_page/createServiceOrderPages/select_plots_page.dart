@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import '../../../../../consts/app_colors.dart';
 import '../../../../../consts/app_strings.dart';
 import '../../../../../consts/app_text_styles.dart';
@@ -9,14 +10,12 @@ import '../../controllers/create_service_order_controller/create_service_order_c
 
 class SelectPlotsPage extends StatefulWidget {
   @override
-  _SelectPlotPageState createState() => _SelectPlotPageState();
+  SelectPlotPageState createState() => SelectPlotPageState();
 
-  CreateServiceOrderController controller;
-
-  SelectPlotsPage({super.key, required this.controller});
+  const SelectPlotsPage({super.key, required this.controller});
 }
 
-class _SelectPlotPageState extends State<SelectPlotsPage> {
+class SelectPlotPageState extends State<SelectPlotsPage> {
   final ScrollController _scrollController = ScrollController();
   final double _itemHeight = 70;
   bool _isSelecting = false;
@@ -71,6 +70,8 @@ class _SelectPlotPageState extends State<SelectPlotsPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    CreateServiceOrderController controller = Modular.get<CreateServiceOrderController>();
     return Observer(
         builder: (context) =>
             Column(mainAxisAlignment: MainAxisAlignment.center, children: [

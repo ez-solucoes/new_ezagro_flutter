@@ -22,11 +22,11 @@ class CustomCheckableListItemWidget extends StatefulWidget {
       required this.onCheckBoxTap});
 
   @override
-  _CustomCheckableListItemWidgetState createState() =>
-      _CustomCheckableListItemWidgetState();
+  CustomCheckableListItemWidgetState createState() =>
+      CustomCheckableListItemWidgetState();
 }
 
-class _CustomCheckableListItemWidgetState
+class CustomCheckableListItemWidgetState
     extends State<CustomCheckableListItemWidget> {
   @override
   Widget build(BuildContext context) {

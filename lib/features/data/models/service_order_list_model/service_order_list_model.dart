@@ -5,49 +5,16 @@ import 'package:new_ezagro_flutter/features/domain/entities/service_order_list_e
 
 class ServiceOrderListModel extends ServiceOrderListEntity {
 
-  @override
-  final int id;
-
-  @override
-  final String activityName;
-
-  @override
-  final String farmName;
-
-  @override
-  final String employeeName;
-
-  @override
-  final String status;
-
-  @override
-  final String activityStart;
-
-  @override
-  final String activityEnd;
-
-  @override
-  final String costCenterName;
-
   const ServiceOrderListModel({
-    required this.id,
-    required this.activityName,
-    required this.farmName,
-    required this.employeeName,
-    required this.status,
-    required this.activityStart,
-    required this.activityEnd,
-    required this.costCenterName
-  }) : super(
-    id: id,
-    activityName: activityName,
-    farmName: farmName,
-    employeeName: employeeName,
-    status: status,
-    activityStart: activityStart,
-    activityEnd: activityEnd,
-    costCenterName: costCenterName
-  );
+    required super.id,
+    required super.activityName,
+    required super.farmName,
+    required super.employeeName,
+    required super.status,
+    required super.activityStart,
+    required super.activityEnd,
+    required super.costCenterName
+  });
 
   Map<String, dynamic> toMap() {
     return {

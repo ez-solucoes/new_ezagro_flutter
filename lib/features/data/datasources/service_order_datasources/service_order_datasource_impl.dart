@@ -2,13 +2,13 @@ import 'package:new_ezagro_flutter/core/http_client/http_client.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_client_helper.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/service_order_datasources/service_order_datasource.dart';
+import 'package:new_ezagro_flutter/features/data/models/field_service_order_models/field_service_order_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/service_order_list_model/service_order_list_model.dart';
 import '../../../../core/mixins/uri_builder_mixin.dart';
 import '../../../../core/usecase/usecase.dart';
-import '../../../../modules/data/datasources/api_endpoints.dart';
+import '../api_endpoints.dart';
 import '../../../domain/params/create_service_order_params/create_service_order_params.dart';
-import '../../models/mock_model/mock_model.dart';
-import '../../models/paginatino_model/pagination_model.dart';
+import '../../models/pagination_model/pagination_model.dart';
 
 class ServiceOrderDatasourceImpl
     with UriBuilder
@@ -44,7 +44,7 @@ class ServiceOrderDatasourceImpl
   }
 
   @override
-  Future<MockModel> createServiceOrder(MockParams mockParams) async {
+  Future<FieldServiceOrderModel> createServiceOrder(MockParams mockParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
@@ -61,8 +61,8 @@ class ServiceOrderDatasourceImpl
       case 200:
         return mountModelInstanceFromResponse(
             response: result,
-            fromMap: MockModel.fromMap,
-            fromJson: MockModel.fromJson);
+            fromMap: FieldServiceOrderModel.fromMap,
+            fromJson: FieldServiceOrderModel.fromJson);
       default:
         throw mountServerErrorInstance(request: request, response: result);
     }

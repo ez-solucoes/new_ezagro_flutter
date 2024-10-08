@@ -1,11 +1,11 @@
 import 'package:new_ezagro_flutter/core/http_client/http_client.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_client_helper.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
+import 'package:new_ezagro_flutter/features/data/models/machine_implement_models/machine_implement_model.dart';
 import '../../../../core/mixins/uri_builder_mixin.dart';
 import '../../../../core/usecase/usecase.dart';
-import '../../../../modules/data/datasources/api_endpoints.dart';
-import '../../models/mock_model/mock_model.dart';
-import '../../models/paginatino_model/pagination_model.dart';
+import '../api_endpoints.dart';
+import '../../models/pagination_model/pagination_model.dart';
 import 'machinery_datasource.dart';
 
 class MachineryDatasourceImpl with UriBuilder implements MachineryDatasource {
@@ -15,7 +15,7 @@ class MachineryDatasourceImpl with UriBuilder implements MachineryDatasource {
   MachineryDatasourceImpl(this.httpClient);
 
   @override
-  Future<PaginationModel<MockModel>> getMachinery(NoParams noParams) async {
+  Future<PaginationModel<MachineImplementModel>> getMachinery(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
@@ -30,9 +30,9 @@ class MachineryDatasourceImpl with UriBuilder implements MachineryDatasource {
         return mountModelInstanceFromResponse(
           response: result,
           fromMap: (map) =>
-              PaginationModel.fromMap(map, MockModel.fromMap),
+              PaginationModel.fromMap(map, MachineImplementModel.fromMap),
           fromJson: (jsonString) => PaginationModel.fromJson(
-              jsonString, MockModel.fromMap),
+              jsonString, MachineImplementModel.fromMap),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

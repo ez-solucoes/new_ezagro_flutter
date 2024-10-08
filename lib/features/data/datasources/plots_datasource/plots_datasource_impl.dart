@@ -1,13 +1,12 @@
 import 'package:new_ezagro_flutter/core/http_client/http_client.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_client_helper.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
-import 'package:new_ezagro_flutter/features/data/datasources/executors_datasources/executors_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/plots_datasource/plots_datasource.dart';
+import 'package:new_ezagro_flutter/features/data/models/plot_models/plot_model.dart';
 import '../../../../core/mixins/uri_builder_mixin.dart';
 import '../../../../core/usecase/usecase.dart';
-import '../../../../modules/data/datasources/api_endpoints.dart';
-import '../../models/mock_model/mock_model.dart';
-import '../../models/paginatino_model/pagination_model.dart';
+import '../api_endpoints.dart';
+import '../../models/pagination_model/pagination_model.dart';
 
 class PlotsDatasourceImpl with UriBuilder implements PlotsDatasource {
 
@@ -16,7 +15,7 @@ class PlotsDatasourceImpl with UriBuilder implements PlotsDatasource {
   PlotsDatasourceImpl(this.httpClient);
 
   @override
-  Future<PaginationModel<MockModel>> getPlots(NoParams noParams) async {
+  Future<PaginationModel<PlotModel>> getPlots(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
@@ -31,9 +30,9 @@ class PlotsDatasourceImpl with UriBuilder implements PlotsDatasource {
         return mountModelInstanceFromResponse(
           response: result,
           fromMap: (map) =>
-              PaginationModel.fromMap(map, MockModel.fromMap),
+              PaginationModel.fromMap(map, PlotModel.fromMap),
           fromJson: (jsonString) => PaginationModel.fromJson(
-              jsonString, MockModel.fromMap),
+              jsonString, PlotModel.fromMap),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

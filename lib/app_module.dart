@@ -19,8 +19,6 @@ import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/pro
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecases_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase_impl.dart';
-import 'package:new_ezagro_flutter/features/presenter/create_service_order_page/create_service_order_page.dart';
-import 'package:new_ezagro_flutter/features/presenter/service_order_list_page/service_order_list_page.dart';
 import 'core/http_client/http_client.dart';
 import 'core/http_client/http_client_dio_imp.dart';
 import 'core/local_storage/local_storage_client_secure_impl.dart';
@@ -68,16 +66,19 @@ import 'features/domain/usecases/employee_usecase/employee_usecase.dart';
 import 'features/domain/usecases/employee_usecase/employee_usecase_impl.dart';
 import 'features/domain/usecases/service_order_list_usecase/service_order_list_usecase.dart';
 import 'features/domain/usecases/service_order_list_usecase/service_order_list_usecase_impl.dart';
-import 'features/presenter/service_order_page/service_order_page.dart';
-import 'modules/presenter/features/change_password_page/change_password_step_page.dart';
-import 'modules/presenter/features/documents_page/documents_page.dart';
-import 'modules/presenter/features/login_page/login_page.dart';
-import 'modules/presenter/features/register_page/register_fifth_step_page.dart';
-import 'modules/presenter/features/register_page/register_first_step_page.dart';
-import 'modules/presenter/features/register_page/register_fourth_step_page.dart';
-import 'modules/presenter/features/register_page/register_second_step_page.dart';
-import 'modules/presenter/features/register_page/register_third_step_page.dart';
-import 'modules/presenter/splash_page/splash_page.dart';
+import 'features/presenter/modules/account_management/change_password_page/change_password_step_page.dart';
+import 'features/presenter/modules/account_management/login_page/login_page.dart';
+import 'features/presenter/modules/account_management/register_page/register_fifth_step_page.dart';
+import 'features/presenter/modules/account_management/register_page/register_first_step_page.dart';
+import 'features/presenter/modules/account_management/register_page/register_fourth_step_page.dart';
+import 'features/presenter/modules/account_management/register_page/register_second_step_page.dart';
+import 'features/presenter/modules/account_management/register_page/register_third_step_page.dart';
+import 'features/presenter/modules/documents/documents_page/documents_page.dart';
+import 'features/presenter/modules/service_order/controller/create_service_order_controller/create_service_order_controller.dart';
+import 'features/presenter/modules/service_order/create_service_order_page/create_service_order_page.dart';
+import 'features/presenter/modules/service_order/service_order_list_page/service_order_list_page.dart';
+import 'features/presenter/modules/service_order/service_order_page/service_order_page.dart';
+import 'features/presenter/modules/splash/splash_page/splash_page.dart';
 
 class AppModule extends Module {
 
@@ -124,6 +125,9 @@ class AppModule extends Module {
   i.addLazySingleton<MachineryDatasource>(MachineryDatasourceImpl.new);
   i.addLazySingleton<ProductDatasource>(ProductDatasourceImpl.new);
   i.addLazySingleton<EmployeeDatasource>(EmployeeDatasourceImpl.new);
+
+  //Controllers
+  i.addLazySingleton<CreateServiceOrderController>(CreateServiceOrderController.new);
     super.binds(i);
   }
 

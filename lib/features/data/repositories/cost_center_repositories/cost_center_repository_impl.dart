@@ -2,11 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:new_ezagro_flutter/core/errors/application_error.dart';
 import 'package:new_ezagro_flutter/core/errors/generic_error.dart';
 import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
-import 'package:new_ezagro_flutter/features/data/datasources/activity_datasources/activity_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/cost_center_datasource/cost_center_datasource.dart';
-import 'package:new_ezagro_flutter/features/data/models/mock_model/mock_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/cost_center_models/cost_center_model.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/cost_center_repositories/cost_center_repository.dart';
-import '../../models/paginatino_model/pagination_model.dart';
+import '../../models/pagination_model/pagination_model.dart';
 
 class CostCenterRepositoryImpl implements CostCenterRepository {
 
@@ -15,7 +14,7 @@ class CostCenterRepositoryImpl implements CostCenterRepository {
   CostCenterRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<ApplicationError, PaginationModel<MockModel>>> getCostCenters(NoParams noParams) async {
+  Future<Either<ApplicationError, PaginationModel<CostCenterModel>>> getCostCenters(NoParams noParams) async {
     try{
       final result = await datasource.getCostCenters(noParams);
       return Right(result);

@@ -1,6 +1,6 @@
 import 'package:new_ezagro_flutter/core/config/datasource_config.dart';
 
-import '../../modules/data/datasources/api_endpoints.dart';
+import '../../features/data/datasources/api_endpoints.dart';
 
 class DatasourceConfigDev implements DatasourceConfig {
   @override

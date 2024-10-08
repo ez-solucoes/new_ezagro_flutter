@@ -2,19 +2,11 @@ import 'dart:convert';
 import '../../../domain/entities/sort_info_entity/sort_info_entity.dart';
 
 class SortInfoModel extends SortInfoEntity {
-  final bool empty;
-  final bool sorted;
-  final bool unsorted;
-
-  SortInfoModel({
-    required this.empty,
-    required this.sorted,
-    required this.unsorted,
-  }) : super(
-    empty: empty,
-    sorted: sorted,
-    unsorted: unsorted,
-  );
+  const SortInfoModel({
+    required super.empty,
+    required super.sorted,
+    required super.unsorted,
+  });
 
   Map<String, dynamic> toMap() {
     return {

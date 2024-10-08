@@ -1,11 +1,11 @@
 import 'package:new_ezagro_flutter/core/http_client/http_client.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_client_helper.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
+import 'package:new_ezagro_flutter/features/data/models/crop_models/crop_model.dart';
 import '../../../../core/mixins/uri_builder_mixin.dart';
 import '../../../../core/usecase/usecase.dart';
-import '../../../../modules/data/datasources/api_endpoints.dart';
-import '../../models/mock_model/mock_model.dart';
-import '../../models/paginatino_model/pagination_model.dart';
+import '../api_endpoints.dart';
+import '../../models/pagination_model/pagination_model.dart';
 import 'crop_datasource.dart';
 
 class CropDatasourceImpl with UriBuilder implements CropDatasource {
@@ -15,7 +15,7 @@ class CropDatasourceImpl with UriBuilder implements CropDatasource {
   CropDatasourceImpl(this.httpClient);
 
   @override
-  Future<PaginationModel<MockModel>> getSimplifiedCrops(NoParams noParams) async {
+  Future<PaginationModel<CropModel>> getSimplifiedCrops(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
@@ -30,9 +30,9 @@ class CropDatasourceImpl with UriBuilder implements CropDatasource {
         return mountModelInstanceFromResponse(
           response: result,
           fromMap: (map) =>
-              PaginationModel.fromMap(map, MockModel.fromMap),
+              PaginationModel.fromMap(map, CropModel.fromMap),
           fromJson: (jsonString) => PaginationModel.fromJson(
-              jsonString, MockModel.fromMap),
+              jsonString, CropModel.fromMap),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

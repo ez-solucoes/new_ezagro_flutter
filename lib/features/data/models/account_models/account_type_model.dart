@@ -4,9 +4,9 @@ import '../../../domain/entities/account_entities/account_type_entity.dart';
 class AccountTypeModel extends AccountTypeEntity {
   const AccountTypeModel({
     required super.id,
-    required super.name,
-    required super.description,
-    required super.active,
+    super.name,
+    super.description,
+    super.active,
   });
 
   factory AccountTypeModel.fromEntity(AccountTypeEntity entity) => AccountTypeModel(

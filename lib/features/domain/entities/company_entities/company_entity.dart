@@ -11,47 +11,47 @@ import 'company_type_entity.dart';
 
 class CompanyEntity extends Equatable {
   final int id;
-  final String name;
-  final String cnpj;
-  final String cpf;
-  final bool isServiceProvider;
-  final bool exempt;
-  final bool isAssigned;
-  final bool ownedByUser;
-  final String stateRegistration;
-  final CompanyTypeEntity companyType;
-  final PhoneEntity phone;
-  final AddressEntity address;
-  final AccountEntity account;
-  final List<BusinessCategoryEntity> businessCategories;
-  final CostCenterEntity costCenter;
-  final List<ContractEntity> contracts;
-  final List<MultipartFileCustomEntity> attachments;
-  final String attachmentNames;
-  final List<ShareHoldingStructureEntity> shareholdingStructure;
-  final String paymentMethod;
+  final String? name;
+  final String? cnpj;
+  final String? cpf;
+  final bool? isServiceProvider;
+  final bool? exempt;
+  final bool? isAssigned;
+  final bool? ownedByUser;
+  final String? stateRegistration;
+  final CompanyTypeEntity? companyType;
+  final PhoneEntity? phone;
+  final AddressEntity? address;
+  final AccountEntity? account;
+  final List<BusinessCategoryEntity>? businessCategories;
+  final CostCenterEntity? costCenter;
+  final List<ContractEntity>? contracts;
+  final List<MultipartFileCustomEntity>? attachments;
+  final String? attachmentNames;
+  final List<ShareHoldingStructureEntity>? shareholdingStructure;
+  final String? paymentMethod;
 
   const CompanyEntity({
     required this.id,
-    required this.name,
-    required this.cnpj,
-    required this.cpf,
-    required this.isServiceProvider,
-    required this.exempt,
-    required this.isAssigned,
-    required this.ownedByUser,
-    required this.stateRegistration,
-    required this.companyType,
-    required this.phone,
-    required this.address,
-    required this.account,
-    required this.businessCategories,
-    required this.costCenter,
-    required this.contracts,
-    required this.attachments,
-    required this.attachmentNames,
-    required this.shareholdingStructure,
-    required this.paymentMethod,
+    this.name,
+    this.cnpj,
+    this.cpf,
+    this.isServiceProvider,
+    this.exempt,
+    this.isAssigned,
+    this.ownedByUser,
+    this.stateRegistration,
+    this.companyType,
+    this.phone,
+    this.address,
+    this.account,
+    this.businessCategories,
+    this.costCenter,
+    this.contracts,
+    this.attachments,
+    this.attachmentNames,
+    this.shareholdingStructure,
+    this.paymentMethod,
   });
 
   @override

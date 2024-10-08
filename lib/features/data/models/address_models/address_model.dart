@@ -5,14 +5,14 @@ import '../../../domain/entities/address_entities/address_entity.dart';
 class AddressModel extends AddressEntity {
   const AddressModel({
     required super.id,
-    required super.country,
-    required super.referenceLocation,
-    required super.state,
-    required super.cep,
-    required super.city,
-    required super.neighbourhood,
-    required super.street,
-    required super.number,required super.complement,
+    super.country,
+    super.referenceLocation,
+    super.state,
+    super.cep,
+    super.city,
+    super.neighbourhood,
+    super.street,
+    super.number,super.complement,
   });
 
   Map<String, dynamic> toMap() => {

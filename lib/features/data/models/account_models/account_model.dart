@@ -10,12 +10,12 @@ class AccountModel extends AccountEntity {
   const AccountModel(
       {
         required super.id,
-        required super.agency,
-        required super.account,
-        required super.bank,
-        required super.accountType,
-        required super.pix,
-        required super.pixType
+        super.agency,
+        super.account,
+        super.bank,
+        super.accountType,
+        super.pix,
+        super.pixType
       });
 
   Map<String, dynamic> toMap() => {
@@ -24,7 +24,7 @@ class AccountModel extends AccountEntity {
     'account': account,
     'bank': bank,
     'accountType': (accountType as AccountTypeModel).toMap(),
-    'pix': (pix as PixModel).toMap(),
+    'pix': pix?.map((e) => (e as PixModel).toMap()).toList(),
     'pixType': (pixType as PixTypeModel).toMap(),
   };
 
@@ -34,8 +34,10 @@ class AccountModel extends AccountEntity {
     account: map['account'],
     bank: map['bank'],
     accountType: AccountTypeModel.fromMap(map['accountType']),
-    pix: PixModel.fromMap(map['pix']),
-    pixType: PixTypeModel.fromMap(map['pixType']),
+    pix: List<PixModel>.from(
+        map['pix']
+            ?.map((x) => PixModel.fromMap(x))),
+    pixType: map['pixType'] != null ? PixTypeModel.fromMap(map['pixType']) : null,
   );
 
   String toJson() => json.encode(toMap());

@@ -65,12 +65,12 @@ class FarmModel extends FarmEntity {
         map['plots']?.map((x) => PlotModel.fromMap(x))),
     name: map['name'],
     areaAcre: map['areaAcre'],
-    contracts: List<ContractModel>.from(
+    contracts: map['contracts'] == null ? null : List<ContractModel>.from(
         map['contracts']?.map((x) => ContractModel.fromMap(x))),
-    attachments: List<MultipartFileCustomModel>.from(
+    attachments: map['attachments'] == null ? null : List<MultipartFileCustomModel>.from(
         map['attachments']?.map((x) => MultipartFileCustomModel.fromMap(x))),
-    attachmentNames: map['attachmentNames'],
-    costCenters: List<CostCenterModel>.from(
+    attachmentNames: "", //map['attachmentNames'],
+    costCenters: map['costCenters'] == null ? null : List<CostCenterModel>.from(
         map['costCenters']?.map((x) => CostCenterModel.fromMap(x))),
   );
 

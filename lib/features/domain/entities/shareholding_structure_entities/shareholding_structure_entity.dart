@@ -2,15 +2,15 @@ import 'package:equatable/equatable.dart';
 
 class ShareHoldingStructureEntity extends Equatable {
   final int id;
-  final String name;
-  final String cpf;
-  final double percentage;
+  final String? name;
+  final String? cpf;
+  final double? percentage;
 
   const ShareHoldingStructureEntity({
     required this.id,
-    required this.name,
-    required this.cpf,
-    required this.percentage,
+    this.name,
+    this.cpf,
+    this.percentage,
   });
 
   @override

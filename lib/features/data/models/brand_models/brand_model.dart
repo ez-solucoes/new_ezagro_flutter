@@ -4,7 +4,7 @@ import '../../../domain/entities/brand_entities/brand_entity.dart';
 class BrandModel extends BrandEntity {
   const BrandModel({
     required super.id,
-    required super.name,
+    super.name,
   });
 
   Map<String, dynamic> toMap() => {

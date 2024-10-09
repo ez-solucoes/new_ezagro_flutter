@@ -4,9 +4,9 @@ import '../../../domain/entities/employee_entities/employee_composition_salary_e
 class EmployeeCompositionSalaryModel extends EmployeeCompositionSalaryEntity {
   const EmployeeCompositionSalaryModel({
     required super.id,
-    required super.salaryComposition,
-    required super.salaryCompositionReference,
-    required super.salaryReferenceBase,
+    super.salaryComposition,
+    super.salaryCompositionReference,
+    super.salaryReferenceBase,
   });
 
   Map<String, dynamic> toMap() => {

@@ -7,10 +7,10 @@ import '../phone_models/phone_model.dart';
 class ClientModel extends ClientEntity {
   ClientModel({
     required super.id,
-    required super.name,
-    required super.cpf,
-    required super.phone,
-    required super.email,
+    super.name,
+    super.cpf,
+    super.phone,
+    super.email,
   });
 
   String toJson() => json.encode(toMap());
@@ -22,14 +22,14 @@ class ClientModel extends ClientEntity {
     'id': id,
     'name': name,
     'cpf': cpf,
-    'phone': (phone as PhoneModel).toMap(),
-    'email': (email as EmailModel).toMap(),
+    'phone': phone == null ? null : (phone as PhoneModel).toMap(),
+    'email': email == null ? null : (email as EmailModel).toMap(),
   };
 
   factory ClientModel.fromMap(Map<String, dynamic> map) => ClientModel(
     id: map['id'],name: map['name'],
     cpf: map['cpf'],
-    phone: PhoneModel.fromMap(map['phone']),
-    email: EmailModel.fromMap(map['email']),
+    phone: map['phone'] == null ? null : PhoneModel.fromMap(map['phone']),
+    email: map['email'] == null ? null : EmailModel.fromMap(map['email']),
   );
 }

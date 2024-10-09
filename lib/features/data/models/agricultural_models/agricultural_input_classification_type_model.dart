@@ -6,9 +6,9 @@ class AgriculturalInputClassificationTypeModel
     extends AgriculturalInputClassificationTypeEntity {
   const AgriculturalInputClassificationTypeModel({
     required super.id,
-    required super.name,
-    required super.description,
-    required super.active,
+    super.name,
+    super.description,
+    super.active,
   });
 
   Map<String, dynamic> toMap() => {

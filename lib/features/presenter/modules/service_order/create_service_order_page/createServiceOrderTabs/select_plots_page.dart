@@ -14,12 +14,6 @@ class SelectPlotsPage extends StatelessWidget {
   const SelectPlotsPage({super.key});
 
   @override
-  void dispose() {
-    Modular.get<CreateServiceOrderController>().scrollController.dispose();
-    dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final controller = Modular.get<CreateServiceOrderController>();
     controller.getPlotsOptions();
@@ -67,7 +61,7 @@ class SelectPlotsPage extends StatelessWidget {
                                                   .contains(controller.plotsOptions[index].id),
                                               firstColumn: controller.plotsOptions[index].id.toString(),
                                               secondColumn: controller.plotsOptions[index].area.toString(),
-                                              thirdColumn: controller.plotsOptions[index].plotGroup.name,
+                                              thirdColumn: controller.plotsOptions[index].plotGroup?.name ?? "",
                                               index: index,
                                               onCheckBoxTap: (index) {
                                                 if (controller.selectedPlots

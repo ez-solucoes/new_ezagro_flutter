@@ -44,13 +44,13 @@ class CompanyModel extends CompanyEntity {
     'isAssigned': isAssigned,
     'ownedByUser': ownedByUser,
     'stateRegistration': stateRegistration,
-    'companyType': (companyType as CompanyTypeModel).toMap(),
-    'phone': (phone as PhoneModel).toMap(),
-    'address': (address as AddressModel).toMap(),
-    'account': (account as AccountModel).toMap(),
+    'companyType': companyType == null ? null : (companyType as CompanyTypeModel).toMap(),
+    'phone': phone == null ? null : (phone as PhoneModel).toMap(),
+    'address': address == null ? null : (address as AddressModel).toMap(),
+    'account': account == null ? null : (account as AccountModel).toMap(),
     'businessCategories': businessCategories?.map((e) => (e as BusinessCategoryModel).toMap())
         .toList(),
-    'costCenter': (costCenter as CostCenterModel).toMap(),
+    'costCenter': costCenter == null ? null : (costCenter as CostCenterModel).toMap(),
     'contracts': contracts?.map((e) => (e as ContractModel).toMap()).toList(),
     'attachments':
     attachments?.map((e) => (e as MultipartFileCustomModel).toMap()).toList(),
@@ -79,10 +79,10 @@ class CompanyModel extends CompanyEntity {
     costCenter: map['costCenter'] == null ? null : CostCenterModel.fromMap(map['costCenter']),
     contracts: List<ContractModel>.from(
         map['contracts']?.map((x) => ContractModel.fromMap(x))),
-    attachments: List<MultipartFileCustomModel>.from(
-        map['attachments']?.map((x) => MultipartFileCustomModel.fromMap(x))),
-    attachmentNames: map['attachmentNames'],
-    shareholdingStructure: List<ShareHoldingStructureModel>.from(
+    attachments: map['attachments'] == null ? null : List<MultipartFileCustomModel>.from(
+        map['attachments'].map((x) => MultipartFileCustomModel.fromMap(x))),
+    attachmentNames: "", //map['attachmentNames'],
+    shareholdingStructure: map['shareholdingStructure'] == null ? null : List<ShareHoldingStructureModel>.from(
         map['shareholdingStructure']
             ?.map((x) => ShareHoldingStructureModel.fromMap(x))),
     paymentMethod: map['paymentMethod'],

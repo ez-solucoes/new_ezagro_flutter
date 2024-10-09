@@ -132,7 +132,7 @@ abstract class _CreateServiceOrderController with Store {
     if (token != null) {
       await storage.deleteData(AppStrings.tokenKey);
     }
-    await storage.writeData(LocalStorageItem(key: AppStrings.tokenKey, value: 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTExMTExMTExMSIsImV4cCI6MTcyODQxMTMzNSwiaWF0IjoxNzI4MzI0OTM1fQ.SwhAFopJkI48j6rr95b7Z4OmgKrnUBkxqh-baYLQeyoTBxx99rJ20zFtzHZ6rI7vGTfzuewYoQmqvLTIt2vGpg'));
+    await storage.writeData(LocalStorageItem(key: AppStrings.tokenKey, value: 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzMzMzMzMzMzMzMyIsImV4cCI6MTcyODU2NDg2NywiaWF0IjoxNzI4NDc4NDY3fQ.0tpbBNBTz91-ULuMwrRyL1nQjm5VqWT1S_X9U7b1MD4JDVfhOrrNPxmR7J8iR-4XzDdWi12QleLmD7TczrJg5w'));
   }
 
   @action

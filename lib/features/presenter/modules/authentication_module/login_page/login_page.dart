@@ -6,6 +6,7 @@ import 'package:new_ezagro_flutter/consts/app_drawables.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/authentication_controller/authentication_controller.dart';
+import '../../../../../core/utils/text_input_formatter_mask.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/background/background_widget.dart';
 import '../../../widgets/buttons/custom_elevated_button.dart';
@@ -22,13 +23,14 @@ class LoginPage extends StatelessWidget {
   static push(ArgParams args) =>
       Modular.to.pushNamed(routePath, arguments: args);
 
-  final TextEditingController _controller = TextEditingController();
-
-  LoginPage({super.key, this.args});
+  const LoginPage({super.key, this.args});
 
   @override
   Widget build(BuildContext context) {
     final controller = Modular.get<AuthenticationController>();
+    final TextEditingController usernameController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
+
     return BackgroundWidget(
       scrollable: true,
       child: Padding(
@@ -36,15 +38,27 @@ class LoginPage extends StatelessWidget {
         child: Column(mainAxisSize: MainAxisSize.min, children: [
           SvgPicture.asset(AppDrawables.ezAgroLogoComplete),
           const SizedBox(height: 72),
-          CustomOutlinedTextFormField(
-              controller: _controller, label: AppStrings.cpfString),
+          Observer(
+            builder: (context) => CustomOutlinedTextFormField(
+              controller: usernameController,
+              inputFormatters: [TextInputFormatterMask(mask: 'CPF')],
+              label: AppStrings.cpfString,
+              inputType: TextInputType.number, passwordField: false,
+            ),
+          ),
           const SizedBox(height: 27),
           CustomOutlinedTextFormField(
-              controller: _controller, label: AppStrings.passwordString),
+            controller: passwordController,
+            label: AppStrings.passwordString,
+            passwordField: true,
+          ),
           const SizedBox(height: 37),
           Observer(
             builder: (context) => CustomElevatedButton(
               onPressed: () {
+                controller.username = usernameController.text;
+                controller.password = passwordController.text;
+
                 controller.authenticate();
               },
               label: AppStrings.enterString,

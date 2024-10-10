@@ -3,7 +3,9 @@ import 'package:new_ezagro_flutter/core/enums/mask_type_enum.dart';
 import 'package:new_ezagro_flutter/core/extensions/unmask_text_field_extension.dart';
 
 class MaskedTextController extends TextEditingController {
-  MaskedTextController(){
+  final MaskTypeEnum maskType;
+
+  MaskedTextController(this.maskType){
     addListener(_maskText);
   }
 
@@ -16,7 +18,7 @@ class MaskedTextController extends TextEditingController {
   }
 
     String _applyMaskTo(String text) {
-      switch (maskType(text.toUpperCase())) {
+      switch (maskType) {
         case MaskTypeEnum.cpf : return _applyCPFMask(text.toUpperCase());
         case MaskTypeEnum.cep : return _applyCEPMask(text.toUpperCase());
         case MaskTypeEnum.cnpj : return _applyCNPJMask(text.toUpperCase());

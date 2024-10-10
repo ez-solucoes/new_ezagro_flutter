@@ -39,3 +39,16 @@ maskTypeString(type) {
       return '';
   }
 }
+
+maskString(type) {
+  switch (type) {
+    case MaskTypeEnum.cpf:
+      return '###.###.###-##';
+    case MaskTypeEnum.cnpj:
+      return '##.###.###/####-##';
+    case MaskTypeEnum.cep:
+      return '#####-###';
+    default:
+      return '';
+  }
+}

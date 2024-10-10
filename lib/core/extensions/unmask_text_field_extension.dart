@@ -1,4 +1,3 @@
-
 extension Unmask on String {
-  String get unmask => replaceAll(RegExp(r'[ˆ0-9]'), '');
+  String get unmask => replaceAll(RegExp(r'[^0-9]'), '');
 }

@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
+import 'package:new_ezagro_flutter/consts/app_strings.dart';
+import 'package:new_ezagro_flutter/core/local_storage/local_storage_client.dart';
+import 'package:new_ezagro_flutter/core/local_storage/local_storage_client_shared_prefs_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/authentication_repository/authentication_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/authentication_repository/authentication_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
@@ -93,8 +96,8 @@ class AppModule extends Module {
   void binds(Injector i) {
 
   //Core Binds
-  i.addInstance(LocalStorageClientSecureImpl.new);
-  i.add<LocalStorageClientSecureImpl>(LocalStorageClientSecureImpl.new);
+  i.addLazySingleton<LocalStorageClient>(LocalStorageClientSharedPrefsImpl.new, key: AppStrings.storageTypeLocal);
+  i.addLazySingleton<LocalStorageClient>(LocalStorageClientSecureImpl.new, key: AppStrings.storageTypeSecure);
   i.addLazySingleton<LogInterceptor>(LogInterceptor.new);
   i.addSingleton<HttpClient>(HttpClientDioImp.new);
 

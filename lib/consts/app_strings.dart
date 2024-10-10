@@ -115,7 +115,10 @@ class AppStrings {
       'Usuário não autenticado.';
 
   ///Shared Preferences keys
+  static const String storageTypeSecure = 'Secure Storage';
+  static const String storageTypeLocal = 'Local Storage';
   static const String tokenKey = 'Token';
+  static const String nameKey = 'Name';
   static const String idKey = 'id';
   static const String directoryKey = 'Directory';
 }

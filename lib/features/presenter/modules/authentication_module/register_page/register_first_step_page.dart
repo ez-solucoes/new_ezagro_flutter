@@ -10,6 +10,7 @@ import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
 import '../../../widgets/buttons/custom_elevated_button.dart';
 import '../../../widgets/textFields/custom_underlined_text_field.dart';
+import '../authentication_controller/authentication_controller.dart';
 
 class RegisterFirstStepPage extends StatelessWidget {
   final ArgParams? args;
@@ -25,6 +26,8 @@ class RegisterFirstStepPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Modular.get<AuthenticationController>();
+
     return BackgroundWidget(
       appBar: const CustomAppBarWidget(
         indicatorValue: 0.8,
@@ -51,6 +54,7 @@ class RegisterFirstStepPage extends StatelessWidget {
               child: CustomElevatedButton(
                 onPressed: () {},
                 label: AppStrings.forwardString,
+                isLoading: controller.isLoading,
               ),
             ),
           ],

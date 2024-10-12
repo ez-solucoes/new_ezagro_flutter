@@ -35,45 +35,44 @@ class LoginPage extends StatelessWidget {
       scrollable: true,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 55, horizontal: 40),
-        child: Column(mainAxisSize: MainAxisSize.min, children: [
-          SvgPicture.asset(AppDrawables.ezAgroLogoComplete),
-          const SizedBox(height: 72),
-          Observer(
-            builder: (context) => CustomOutlinedTextFormField(
-              controller: usernameController,
-              inputFormatters: [TextInputFormatterMask(mask: 'CPF')],
-              label: AppStrings.cpfString,
-              inputType: TextInputType.number,
-              passwordField: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SvgPicture.asset(AppDrawables.ezAgroLogoComplete),
+            const SizedBox(height: 72),
+            Observer(
+              builder: (context) => CustomOutlinedTextFormField(
+                controller: usernameController,
+                inputFormatters: [TextInputFormatterMask(mask: 'CPF')],
+                label: AppStrings.cpfString,
+                inputType: TextInputType.number,
+                passwordField: false,
+              ),
             ),
-          ),
-          const SizedBox(height: 27),
-          CustomOutlinedTextFormField(
-            controller: passwordController,
-            label: AppStrings.passwordString,
-            passwordField: true,
-          ),
-          const SizedBox(height: 37),
-          Observer(
-            builder: (context) => CustomElevatedButton(
-              onPressed: () {
-                controller.username = usernameController.text;
-                controller.password = passwordController.text;
+            const SizedBox(height: 27),
+            CustomOutlinedTextFormField(
+              controller: passwordController,
+              label: AppStrings.passwordString,
+              passwordField: true,
+            ),
+            const SizedBox(height: 37),
+            Observer(
+              builder: (context) => CustomElevatedButton(
+                onPressed: () {
+                  controller.username = usernameController.text;
+                  controller.password = passwordController.text;
 
-                controller.authenticate();
-              },
-              label: AppStrings.enterString,
-              isLoading: controller.isLoading,
+                  controller.authenticate();
+                },
+                label: AppStrings.enterString,
+                isLoading: controller.isLoading,
+              ),
             ),
-          ),
-          const SizedBox(height: 37),
-          CustomUnderlinedTextButton(
-              onTap: () {}, label: AppStrings.forgotPasswordString),
-          const SizedBox(height: 184),
-          Center(
-              child: CustomUnderlinedTextButton(
-                  onTap: () {}, label: AppStrings.firstAccessString)),
-        ]),
+            const SizedBox(height: 37),
+            CustomUnderlinedTextButton(
+                onTap: () {}, label: AppStrings.forgotPasswordString),
+          ],
+        ),
       ),
     );
   }

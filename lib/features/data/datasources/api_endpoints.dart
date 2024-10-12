@@ -6,7 +6,7 @@ class AppEndpoints {
   //Authentication
   static const String authenticateEndpoint = '/authenticate';
   static const String firstAccessEndpoint = '/update-password';
-  static const String forgotPasswordEndpoint = '/recover-password';
+  static const String recoverPasswordEndpoint = '/recover-password';
   static const String validateTokenEndpoint = '/validate-token';
 
   //Service Order

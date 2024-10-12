@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:new_ezagro_flutter/core/enums/mask_type_enum.dart';
 
 import '../../../../consts/app_colors.dart';
@@ -13,6 +14,8 @@ class PasswordFormWidget extends StatelessWidget {
   final TextEditingController controller;
   final VoidCallback onButtonPressed;
   final bool passwordField;
+  final TextInputType? inputType;
+  final List<TextInputFormatter>? inputFormatters;
 
   const PasswordFormWidget({
     super.key,
@@ -22,6 +25,8 @@ class PasswordFormWidget extends StatelessWidget {
     required this.buttonText,
     required this.onButtonPressed,
     required this.passwordField,
+    this.inputType,
+    this.inputFormatters,
   });
 
   @override
@@ -36,6 +41,8 @@ class PasswordFormWidget extends StatelessWidget {
         ),
         const SizedBox(height: 67),
         CustomUnderlinedTextField(
+          inputFormatters: inputFormatters,
+          inputType: inputType,
           hintText: !passwordField
               ? maskString(MaskTypeEnum.cpf)
               : '',

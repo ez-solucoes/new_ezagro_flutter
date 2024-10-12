@@ -22,7 +22,7 @@ class ChangePasswordStepPage extends StatelessWidget {
           children: [
             const SizedBox(height: 52),
             Text(
-              AppStrings.forgotPasswordFirstStep,
+              '',
               style: AppTextStyles.titleTextStyle(color: AppColors.blackColor),
             ),
             const SizedBox(height: 45),

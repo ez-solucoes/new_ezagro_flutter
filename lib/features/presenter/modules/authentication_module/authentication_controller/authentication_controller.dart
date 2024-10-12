@@ -4,11 +4,12 @@ import 'package:new_ezagro_flutter/core/enums/first_access_enum.dart';
 import 'package:new_ezagro_flutter/core/extensions/unmask_text_field_extension.dart';
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_client.dart';
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_item.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecase/authentication_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase.dart';
 
 import '../../../../../consts/app_strings.dart';
 import '../../../../domain/entities/authentication_entities/authentication_entity.dart';
 import '../../../../domain/params/authentication_params/authentication_params.dart';
+import '../../../../domain/usecases/authentication_usecases/authenticate_usecase/authenticate_usecase.dart';
 
 part 'authentication_controller.g.dart';
 
@@ -32,6 +33,12 @@ abstract class AuthenticationControllerAbstract with Store {
   String password = '';
 
   @observable
+  String retypePassword = '';
+
+  @observable
+  String temporaryPassword = '';
+
+  @observable
   String accessStatus = '';
 
   @observable
@@ -40,7 +47,7 @@ abstract class AuthenticationControllerAbstract with Store {
   Future authenticate() async {
     isLoading = true;
 
-    final authenticationUsecase = Modular.get<AuthenticationUsecase>();
+    final authenticationUsecase = Modular.get<AuthenticateUsecase>();
 
     final result = await authenticationUsecase(
         AuthenticationParams(password: password, username: username.unmask));
@@ -55,6 +62,25 @@ abstract class AuthenticationControllerAbstract with Store {
     });
 
     isLoading = false;
+  }
+
+  Future recoverPassword() async {
+    isLoading = true;
+
+    final recoverPasswordUsecase = Modular.get<RecoverPasswordUsecase>();
+
+    final result = await recoverPasswordUsecase(
+        AuthenticationParams(username: username.unmask));
+    result.fold((error) => errorMessage = error.friendlyMessage, (success) async {
+    });
+  }
+
+  bool comparePasswords(String password, String retypedPassword) {
+    if(password.compareTo(retypedPassword) == 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   void saveToken(AuthenticationEntity success) async {

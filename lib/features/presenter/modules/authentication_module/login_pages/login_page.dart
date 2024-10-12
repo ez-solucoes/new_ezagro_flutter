@@ -12,15 +12,16 @@ import '../../../widgets/background/background_widget.dart';
 import '../../../widgets/buttons/custom_elevated_button.dart';
 import '../../../widgets/buttons/custom_underlined_text_button.dart';
 import '../../../widgets/textFields/custom_outlined_text_form_field.dart';
+import '../recover_password_pages/username_input_page.dart';
 
 class LoginPage extends StatelessWidget {
   final ArgParams? args;
   static const String routePath = AppRoutes.appLoginPage;
 
-  static navigate(ArgParams args) =>
+  static navigate(ArgParams? args) =>
       Modular.to.navigate(routePath, arguments: args);
 
-  static push(ArgParams args) =>
+  static push(ArgParams? args) =>
       Modular.to.pushNamed(routePath, arguments: args);
 
   const LoginPage({super.key, this.args});
@@ -70,7 +71,10 @@ class LoginPage extends StatelessWidget {
             ),
             const SizedBox(height: 37),
             CustomUnderlinedTextButton(
-                onTap: () {}, label: AppStrings.forgotPasswordString),
+                onTap: () {
+                  UsernameInputPage.push();
+                },
+                label: AppStrings.forgotPasswordString),
           ],
         ),
       ),

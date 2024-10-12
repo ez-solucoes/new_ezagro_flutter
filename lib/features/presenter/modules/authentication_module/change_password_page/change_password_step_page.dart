@@ -27,6 +27,7 @@ class ChangePasswordStepPage extends StatelessWidget {
             ),
             const SizedBox(height: 45),
             CustomUnderlinedTextField(
+              passwordField: false,
               hintText: '000.000.000-00',
               onPressed: () {},
               controller: TextEditingController(),

@@ -47,7 +47,7 @@ class RegisterFirstStepPage extends StatelessWidget {
             const SizedBox(height: 67),
             CustomUnderlinedTextField(
               onPressed: () {},
-              controller: TextEditingController(),
+              controller: TextEditingController(), passwordField: true,
             ),
             const SizedBox(height: 40),
             Center(

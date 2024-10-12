@@ -43,11 +43,11 @@ maskTypeString(type) {
 maskString(type) {
   switch (type) {
     case MaskTypeEnum.cpf:
-      return '###.###.###-##';
+      return '000.000.000-00';
     case MaskTypeEnum.cnpj:
-      return '##.###.###/####-##';
+      return '00.000.000/0000-00';
     case MaskTypeEnum.cep:
-      return '#####-###';
+      return '00000-000';
     default:
       return '';
   }

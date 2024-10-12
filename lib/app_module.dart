@@ -26,6 +26,7 @@ import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/pro
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecases_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/first_access_pages/username_input_page.dart';
 import 'core/http_client/http_client.dart';
 import 'core/http_client/http_client_dio_imp.dart';
 import 'core/local_storage/local_storage_client_secure_impl.dart';
@@ -77,7 +78,7 @@ import 'features/domain/usecases/service_order_list_usecase/service_order_list_u
 import 'features/domain/usecases/service_order_list_usecase/service_order_list_usecase_impl.dart';
 import 'features/presenter/modules/authentication_module/authentication_controller/authentication_controller.dart';
 import 'features/presenter/modules/authentication_module/change_password_page/change_password_step_page.dart';
-import 'features/presenter/modules/authentication_module/login_page/login_page.dart';
+import 'features/presenter/modules/authentication_module/login_pages/login_page.dart';
 import 'features/presenter/modules/authentication_module/register_page/register_fifth_step_page.dart';
 import 'features/presenter/modules/authentication_module/register_page/register_first_step_page.dart';
 import 'features/presenter/modules/authentication_module/register_page/register_fourth_step_page.dart';
@@ -149,9 +150,13 @@ class AppModule extends Module {
 
 @override
   void routes(RouteManager r) {
-  r.child(AppRoutes.appDefaultPage, child: (context) => RegisterFirstStepPage());
+  r.child(AppRoutes.appDefaultPage, child: (context) => UsernameInputPage());
   r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
+
   r.child(AppRoutes.appHomePage, child: (context) => LoginPage());
+  r.child(AppRoutes.appUsernameInputPage, child: (context) => UsernameInputPage());
+
+
   r.child(AppRoutes.appRegisterFirstStepPage, child: (context) => const RegisterFirstStepPage());
   r.child(AppRoutes.appRegisterSecondStepPage, child: (context) => const RegisterSecondStepPage());
   r.child(AppRoutes.appRegisterThirdStepPage, child: (context) => const RegisterThirdStepPage());

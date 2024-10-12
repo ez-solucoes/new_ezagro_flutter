@@ -8,6 +8,10 @@ class AppRoutes {
   static const String appHomePage = '/homePage';
 
   static const String appUsernameInputPage = '/usernameInputPage';
+  static const String appTempPasswordPage = '/tempPasswordPage';
+  static const String appNewPasswordPage = '/newPasswordPage';
+  static const String appRepeatPasswordPage = '/repeatPasswordPage';
+  static const String appRecoverPasswordSuccessPage = '/recoverPasswordSuccessPage';
 
 
 

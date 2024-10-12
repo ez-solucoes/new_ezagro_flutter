@@ -8,8 +8,9 @@ import 'package:new_ezagro_flutter/features/data/repositories/authentication_rep
 import 'package:new_ezagro_flutter/features/domain/repositories/authentication_repository/authentication_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase_impl.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecase/authentication_usecase.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecase/authentication_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/authenticate_usecase/authenticate_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_usecase.dart';
@@ -26,7 +27,10 @@ import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/pro
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecases_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase_impl.dart';
-import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/first_access_pages/username_input_page.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/recover_password_success_page.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/repeat_password_page.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/temp_password_page.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/username_input_page.dart';
 import 'core/http_client/http_client.dart';
 import 'core/http_client/http_client_dio_imp.dart';
 import 'core/local_storage/local_storage_client_secure_impl.dart';
@@ -72,6 +76,7 @@ import 'features/domain/repositories/machinery_repositories/machinery_repository
 import 'features/domain/repositories/plots_repositories/plots_repository.dart';
 import 'features/domain/repositories/product_repositories/product_repository.dart';
 import 'features/domain/repositories/service_order_repositories/service_order_repository.dart';
+import 'features/domain/usecases/authentication_usecases/authenticate_usecase/authenticate_usecase.dart';
 import 'features/domain/usecases/employee_usecase/employee_usecase.dart';
 import 'features/domain/usecases/employee_usecase/employee_usecase_impl.dart';
 import 'features/domain/usecases/service_order_list_usecase/service_order_list_usecase.dart';
@@ -103,7 +108,8 @@ class AppModule extends Module {
   i.addSingleton<HttpClient>(HttpClientDioImp.new);
 
   //Usecase
-  i.addLazySingleton<AuthenticationUsecase>(AuthenticationUsecaseImpl.new);
+  i.addLazySingleton<AuthenticateUsecase>(AuthenticateUsecaseImpl.new);
+  i.addLazySingleton<RecoverPasswordUsecase>(RecoverPasswordUsecaseImpl.new);
   i.addLazySingleton<ServiceOrderListUsecase>(ServiceOrderListUsecaseImpl.new);
   i.addLazySingleton<ActivityUsecase>(ActivityUsecaseImpl.new);
   i.addLazySingleton<CostCenterUsecase>(CostCenterUsecaseImpl.new);
@@ -150,11 +156,14 @@ class AppModule extends Module {
 
 @override
   void routes(RouteManager r) {
-  r.child(AppRoutes.appDefaultPage, child: (context) => UsernameInputPage());
+  r.child(AppRoutes.appDefaultPage, child: (context) => LoginPage());
   r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
 
   r.child(AppRoutes.appHomePage, child: (context) => LoginPage());
   r.child(AppRoutes.appUsernameInputPage, child: (context) => UsernameInputPage());
+  r.child(AppRoutes.appTempPasswordPage, child: (context) => TempPasswordPage());
+  r.child(AppRoutes.appRepeatPasswordPage, child: (context) => RepeatPasswordPage());
+  r.child(AppRoutes.appRecoverPasswordSuccessPage, child: (context) => RecoverPasswordSuccessPage());
 
 
   r.child(AppRoutes.appRegisterFirstStepPage, child: (context) => const RegisterFirstStepPage());

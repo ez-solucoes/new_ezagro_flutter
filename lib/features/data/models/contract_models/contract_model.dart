@@ -66,20 +66,20 @@ class ContractModel extends ContractEntity {
     contract: map['contract'],
     dtContract: map['dtContract'],
     dtContractEnd: map['dtContractEnd'],
-    attachments: List<MultipartFileCustomModel>.from(
+    attachments: map['attachments'] == null ? null : List<MultipartFileCustomModel>.from(
         map['attachments']?.map((x) => MultipartFileCustomModel.fromMap(x))),
     description: map['description'],
-    costCenters: List<CostCenterModel>.from(
+    costCenters: map['costCenters'] == null ? null : List<CostCenterModel>.from(
         map['costCenters']?.map((x) => CostCenterModel.fromMap(x))),
-    plots: List<PlotModel>.from(map['plots']?.map((x) => PlotModel.fromMap(x))),
+    plots: map['plots'] == null ? null : List<PlotModel>.from(map['plots']?.map((x) => PlotModel.fromMap(x))),
     contractType: map['contractType'] == null ? null : ContractTypeModel.fromMap(map['contractType']),
-    attachmentNames: List<String>.from(map['attachmentNames']),
+    attachmentNames: null,//map['attachmentNames'] == null ? null : List<String>.from(map['attachmentNames']),
     externalCode: map['externalCode'],
-    contractCoverages: List<ContractCoverageModel>.from(
+    contractCoverages: map['contractCoverages'] == null ? null : List<ContractCoverageModel>.from(
         map['contractCoverages']?.map((x) => ContractCoverageModel.fromMap(x))),
-    deductiblePrice: map['deductiblePrice'],
-    fixedPrice: map['fixedPrice'],
-    items: List<ContractItemModel>.from(
+    deductiblePrice: map['deductiblePrice'] == null ? null : (map['deductiblePrice'] is double ? map['deductiblePrice'] : (map['deductiblePrice'] as int).toDouble()),
+    fixedPrice: map['fixedPrice'] == null ? null : (map['fixedPrice'] is double ? map['fixedPrice'] : (map['fixedPrice'] as int).toDouble()),
+    items: map['items'] == null ? null : List<ContractItemModel>.from(
         map['items']?.map((x) => ContractItemModel.fromMap(x))),
   );
 

@@ -74,6 +74,39 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle boldTextOnCardStyle({
+    required Color color,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.montserratFont,
+      fontWeight: FontWeight.bold,
+      fontSize: AppDimens.textOnCard,
+      color: color,
+    );
+  }
+
+  static TextStyle smallBoldTextOnCardStyle({
+    required Color color,
+  }) {
+    return TextStyle(
+        fontFamily: AppFonts.montserratFont,
+        fontWeight: FontWeight.bold,
+        fontSize: AppDimens.smallTextDimen,
+        color: color
+    );
+  }
+
+  static TextStyle labelOnCardStyle({
+    required Color color,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.montserratFont,
+      fontWeight: FontWeight.w500,
+      fontSize: AppDimens.labelOnCard,
+      color: color,
+    );
+  }
+
   static TextStyle appBarTitleTextStyle({
     required Color color,
   }) {
@@ -95,4 +128,49 @@ class AppTextStyles {
       color: color,
     );
   }
+
+  static TextStyle bigBoldCardTitle({
+    required Color color,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.montserratFont,
+      fontWeight: FontWeight.bold,
+      fontSize: AppDimens.subTitleDimen,
+      color: color
+    );
+  }
+
+  static TextStyle cardBodyTextStyle({
+    required Color color,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.montserratFont,
+      fontWeight: FontWeight.w500,
+      fontSize: AppDimens.smallTextDimen,
+      color: color,
+    );
+  }
+
+  static TextStyle hintTextFieldTextStyle({
+    required Color color,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.montserratFont,
+      fontWeight: FontWeight.w400,
+      fontSize: AppDimens.bodyTextDimen,
+      color: color,
+    );
+  }
+
+  static TextStyle boldMediumTextStyle({
+    required Color color,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.montserratFont,
+      fontWeight: FontWeight.bold,
+      fontSize: AppDimens.bodyTextDimen,
+      color: color,
+    );
+  }
+
 }

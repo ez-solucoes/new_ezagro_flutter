@@ -1,34 +1,34 @@
-br.com.ezsolucoes.new_ezagro_flutter.app-lifecycle-livedata-2.7.0-0 C:\Users\lenin\.gradle\caches\transforms-3\0313b4099446464f98d0df0606c58c95\transformed\lifecycle-livedata-2.7.0\res
-br.com.ezsolucoes.new_ezagro_flutter.app-jetified-core-1.0.0-1 C:\Users\lenin\.gradle\caches\transforms-3\052a56087b23de77791a629d260284c0\transformed\jetified-core-1.0.0\res
-br.com.ezsolucoes.new_ezagro_flutter.app-jetified-profileinstaller-1.3.1-2 C:\Users\lenin\.gradle\caches\transforms-3\166e5df34c1c015ef6ddeae137513a3f\transformed\jetified-profileinstaller-1.3.1\res
-br.com.ezsolucoes.new_ezagro_flutter.app-lifecycle-viewmodel-2.7.0-3 C:\Users\lenin\.gradle\caches\transforms-3\2e94595ca22e3aadcdebdc547820608c\transformed\lifecycle-viewmodel-2.7.0\res
-br.com.ezsolucoes.new_ezagro_flutter.app-jetified-datastore-1.0.0-4 C:\Users\lenin\.gradle\caches\transforms-3\3314cb25a5330f11bf2a55b7a9a310ab\transformed\jetified-datastore-1.0.0\res
-br.com.ezsolucoes.new_ezagro_flutter.app-jetified-lifecycle-livedata-core-ktx-2.7.0-5 C:\Users\lenin\.gradle\caches\transforms-3\455c428e62a6dd75da98c7152f7af462\transformed\jetified-lifecycle-livedata-core-ktx-2.7.0\res
-br.com.ezsolucoes.new_ezagro_flutter.app-jetified-activity-1.8.1-6 C:\Users\lenin\.gradle\caches\transforms-3\4b07bb875192e8c29c9b76677237c5c8\transformed\jetified-activity-1.8.1\res
-br.com.ezsolucoes.new_ezagro_flutter.app-jetified-annotation-experimental-1.4.0-7 C:\Users\lenin\.gradle\caches\transforms-3\4d10c72f31024081b56fc5037069e011\transformed\jetified-annotation-experimental-1.4.0\res
-br.com.ezsolucoes.new_ezagro_flutter.app-jetified-startup-runtime-1.1.1-8 C:\Users\lenin\.gradle\caches\transforms-3\4ee1d1c3643bd699aea17aa2adbcb7ee\transformed\jetified-startup-runtime-1.1.1\res
-br.com.ezsolucoes.new_ezagro_flutter.app-jetified-window-java-1.2.0-9 C:\Users\lenin\.gradle\caches\transforms-3\5292c4072ce6d2ab49b0e25db445cdfe\transformed\jetified-window-java-1.2.0\res
-br.com.ezsolucoes.new_ezagro_flutter.app-jetified-lifecycle-viewmodel-savedstate-2.7.0-10 C:\Users\lenin\.gradle\caches\transforms-3\6e7c2231d2ac9b957ecfe9d432e59ed2\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\res
-br.com.ezsolucoes.new_ezagro_flutter.app-core-runtime-2.2.0-11 C:\Users\lenin\.gradle\caches\transforms-3\73778f1c206428361b6eebbb974be913\transformed\core-runtime-2.2.0\res
-br.com.ezsolucoes.new_ezagro_flutter.app-jetified-core-ktx-1.13.1-12 C:\Users\lenin\.gradle\caches\transforms-3\740c93e8e1043856a6b7cb15a7eaa9f0\transformed\jetified-core-ktx-1.13.1\res
-br.com.ezsolucoes.new_ezagro_flutter.app-lifecycle-runtime-2.7.0-13 C:\Users\lenin\.gradle\caches\transforms-3\98474e5913354eaede53aaa879a4dd8b\transformed\lifecycle-runtime-2.7.0\res
-br.com.ezsolucoes.new_ezagro_flutter.app-jetified-savedstate-1.2.1-14 C:\Users\lenin\.gradle\caches\transforms-3\aadceac8ee0316c01a9163bad1a5e0ed\transformed\jetified-savedstate-1.2.1\res
-br.com.ezsolucoes.new_ezagro_flutter.app-fragment-1.7.1-15 C:\Users\lenin\.gradle\caches\transforms-3\c683cde5b1f5377825fe27da54e1b718\transformed\fragment-1.7.1\res
-br.com.ezsolucoes.new_ezagro_flutter.app-jetified-security-crypto-1.1.0-alpha06-16 C:\Users\lenin\.gradle\caches\transforms-3\ca7368cd271529f40a2f8be7195365c0\transformed\jetified-security-crypto-1.1.0-alpha06\res
-br.com.ezsolucoes.new_ezagro_flutter.app-jetified-datastore-preferences-1.0.0-17 C:\Users\lenin\.gradle\caches\transforms-3\cb38a9efa74695bcecf2cdc4810f475f\transformed\jetified-datastore-preferences-1.0.0\res
-br.com.ezsolucoes.new_ezagro_flutter.app-lifecycle-livedata-core-2.7.0-18 C:\Users\lenin\.gradle\caches\transforms-3\ce9e6112a0f9c5113844bb49506e7a06\transformed\lifecycle-livedata-core-2.7.0\res
-br.com.ezsolucoes.new_ezagro_flutter.app-jetified-window-1.2.0-19 C:\Users\lenin\.gradle\caches\transforms-3\d47b1192960df52846144d82ac9e1d6f\transformed\jetified-window-1.2.0\res
-br.com.ezsolucoes.new_ezagro_flutter.app-jetified-lifecycle-process-2.7.0-20 C:\Users\lenin\.gradle\caches\transforms-3\d674cd90e13def17f77b3f8010d35e09\transformed\jetified-lifecycle-process-2.7.0\res
-br.com.ezsolucoes.new_ezagro_flutter.app-jetified-tracing-1.2.0-21 C:\Users\lenin\.gradle\caches\transforms-3\e67a2d3f5080e81a9ca4ada76d6846fb\transformed\jetified-tracing-1.2.0\res
-br.com.ezsolucoes.new_ezagro_flutter.app-core-1.13.1-22 C:\Users\lenin\.gradle\caches\transforms-3\fac84cd5ecf1ec88a8c98571217c9350\transformed\core-1.13.1\res
-br.com.ezsolucoes.new_ezagro_flutter.app-debug-23 C:\src\ezsolucoes\ezagro\version2\new_ezagro_flutter\android\app\src\debug\res
-br.com.ezsolucoes.new_ezagro_flutter.app-main-24 C:\src\ezsolucoes\ezagro\version2\new_ezagro_flutter\android\app\src\main\res
-br.com.ezsolucoes.new_ezagro_flutter.app-pngs-25 C:\src\ezsolucoes\ezagro\version2\new_ezagro_flutter\build\app\generated\res\pngs\debug
-br.com.ezsolucoes.new_ezagro_flutter.app-resValues-26 C:\src\ezsolucoes\ezagro\version2\new_ezagro_flutter\build\app\generated\res\resValues\debug
-br.com.ezsolucoes.new_ezagro_flutter.app-rs-27 C:\src\ezsolucoes\ezagro\version2\new_ezagro_flutter\build\app\generated\res\rs\debug
-br.com.ezsolucoes.new_ezagro_flutter.app-mergeDebugResources-28 C:\src\ezsolucoes\ezagro\version2\new_ezagro_flutter\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
-br.com.ezsolucoes.new_ezagro_flutter.app-mergeDebugResources-29 C:\src\ezsolucoes\ezagro\version2\new_ezagro_flutter\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
-br.com.ezsolucoes.new_ezagro_flutter.app-merged_res-30 C:\src\ezsolucoes\ezagro\version2\new_ezagro_flutter\build\app\intermediates\merged_res\debug
-br.com.ezsolucoes.new_ezagro_flutter.app-packaged_res-31 C:\src\ezsolucoes\ezagro\version2\new_ezagro_flutter\build\flutter_secure_storage\intermediates\packaged_res\debug
-br.com.ezsolucoes.new_ezagro_flutter.app-packaged_res-32 C:\src\ezsolucoes\ezagro\version2\new_ezagro_flutter\build\path_provider_android\intermediates\packaged_res\debug
-br.com.ezsolucoes.new_ezagro_flutter.app-packaged_res-33 C:\src\ezsolucoes\ezagro\version2\new_ezagro_flutter\build\shared_preferences_android\intermediates\packaged_res\debug
+br.com.ezsolucoes.new_ezagro_flutter.app-lifecycle-livedata-2.7.0-0 C:\Users\Lucas\.gradle\caches\transforms-3\07d947aba7b59817c83a7eb7ed11f73f\transformed\lifecycle-livedata-2.7.0\res
+br.com.ezsolucoes.new_ezagro_flutter.app-lifecycle-runtime-2.7.0-1 C:\Users\Lucas\.gradle\caches\transforms-3\097e43c6fd112928642829c24fd09041\transformed\lifecycle-runtime-2.7.0\res
+br.com.ezsolucoes.new_ezagro_flutter.app-jetified-window-1.2.0-2 C:\Users\Lucas\.gradle\caches\transforms-3\1763abeebf5cfd4f4dbca3627b0a271d\transformed\jetified-window-1.2.0\res
+br.com.ezsolucoes.new_ezagro_flutter.app-core-runtime-2.2.0-3 C:\Users\Lucas\.gradle\caches\transforms-3\2315fb6c467d8d4b7a993f7ce26ea3de\transformed\core-runtime-2.2.0\res
+br.com.ezsolucoes.new_ezagro_flutter.app-jetified-window-java-1.2.0-4 C:\Users\Lucas\.gradle\caches\transforms-3\2d14c1947012aabd9f1ba62db020a06a\transformed\jetified-window-java-1.2.0\res
+br.com.ezsolucoes.new_ezagro_flutter.app-lifecycle-livedata-core-2.7.0-5 C:\Users\Lucas\.gradle\caches\transforms-3\36d699313988d34b89235e29f2ebe543\transformed\lifecycle-livedata-core-2.7.0\res
+br.com.ezsolucoes.new_ezagro_flutter.app-jetified-lifecycle-process-2.7.0-6 C:\Users\Lucas\.gradle\caches\transforms-3\469aae804747924d25481b4b74e9c251\transformed\jetified-lifecycle-process-2.7.0\res
+br.com.ezsolucoes.new_ezagro_flutter.app-jetified-annotation-experimental-1.4.0-7 C:\Users\Lucas\.gradle\caches\transforms-3\52c978064055b36db9cfdaf01c986f2c\transformed\jetified-annotation-experimental-1.4.0\res
+br.com.ezsolucoes.new_ezagro_flutter.app-fragment-1.7.1-8 C:\Users\Lucas\.gradle\caches\transforms-3\53183c00a910e60b30892d0c9788338a\transformed\fragment-1.7.1\res
+br.com.ezsolucoes.new_ezagro_flutter.app-jetified-profileinstaller-1.3.1-9 C:\Users\Lucas\.gradle\caches\transforms-3\6668973fb6e2a0d1306ddcf83fe9c937\transformed\jetified-profileinstaller-1.3.1\res
+br.com.ezsolucoes.new_ezagro_flutter.app-jetified-datastore-1.0.0-10 C:\Users\Lucas\.gradle\caches\transforms-3\67d3ef4e6ece699cb3871406211c3348\transformed\jetified-datastore-1.0.0\res
+br.com.ezsolucoes.new_ezagro_flutter.app-jetified-core-ktx-1.13.1-11 C:\Users\Lucas\.gradle\caches\transforms-3\7ccf036e9ea6d13ade64305a76527d0c\transformed\jetified-core-ktx-1.13.1\res
+br.com.ezsolucoes.new_ezagro_flutter.app-jetified-tracing-1.2.0-12 C:\Users\Lucas\.gradle\caches\transforms-3\8b4e4c391a8a4ec2c9fed4eb33333940\transformed\jetified-tracing-1.2.0\res
+br.com.ezsolucoes.new_ezagro_flutter.app-jetified-datastore-preferences-1.0.0-13 C:\Users\Lucas\.gradle\caches\transforms-3\98064f0c016bda21736ddd4e941484a1\transformed\jetified-datastore-preferences-1.0.0\res
+br.com.ezsolucoes.new_ezagro_flutter.app-jetified-savedstate-1.2.1-14 C:\Users\Lucas\.gradle\caches\transforms-3\aea751c8c9380f5bd15862c772298538\transformed\jetified-savedstate-1.2.1\res
+br.com.ezsolucoes.new_ezagro_flutter.app-lifecycle-viewmodel-2.7.0-15 C:\Users\Lucas\.gradle\caches\transforms-3\b1234b17096347da0743a6a38d7c1000\transformed\lifecycle-viewmodel-2.7.0\res
+br.com.ezsolucoes.new_ezagro_flutter.app-core-1.13.1-16 C:\Users\Lucas\.gradle\caches\transforms-3\be14133980b5f6a2feb47282d511da70\transformed\core-1.13.1\res
+br.com.ezsolucoes.new_ezagro_flutter.app-jetified-startup-runtime-1.1.1-17 C:\Users\Lucas\.gradle\caches\transforms-3\c867725c885ec362d5741baee7b4b8b3\transformed\jetified-startup-runtime-1.1.1\res
+br.com.ezsolucoes.new_ezagro_flutter.app-jetified-lifecycle-livedata-core-ktx-2.7.0-18 C:\Users\Lucas\.gradle\caches\transforms-3\d1e33e67fdeac407d6b5ccbddb63fa6c\transformed\jetified-lifecycle-livedata-core-ktx-2.7.0\res
+br.com.ezsolucoes.new_ezagro_flutter.app-jetified-activity-1.8.1-19 C:\Users\Lucas\.gradle\caches\transforms-3\d8f1cb00a2a13bfed5df287fb658c720\transformed\jetified-activity-1.8.1\res
+br.com.ezsolucoes.new_ezagro_flutter.app-jetified-security-crypto-1.1.0-alpha06-20 C:\Users\Lucas\.gradle\caches\transforms-3\d8f3bc3866f4877389defff09cdd6310\transformed\jetified-security-crypto-1.1.0-alpha06\res
+br.com.ezsolucoes.new_ezagro_flutter.app-jetified-core-1.0.0-21 C:\Users\Lucas\.gradle\caches\transforms-3\e24a5a093ec7e9bde6782bf2bbe98a74\transformed\jetified-core-1.0.0\res
+br.com.ezsolucoes.new_ezagro_flutter.app-jetified-lifecycle-viewmodel-savedstate-2.7.0-22 C:\Users\Lucas\.gradle\caches\transforms-3\fc0ebfc2d29a4f50c245dfc81f5c3506\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\res
+br.com.ezsolucoes.new_ezagro_flutter.app-debug-23 C:\src\Ez Agro Novo\new_ezagro_flutter\android\app\src\debug\res
+br.com.ezsolucoes.new_ezagro_flutter.app-main-24 C:\src\Ez Agro Novo\new_ezagro_flutter\android\app\src\main\res
+br.com.ezsolucoes.new_ezagro_flutter.app-pngs-25 C:\src\Ez Agro Novo\new_ezagro_flutter\build\app\generated\res\pngs\debug
+br.com.ezsolucoes.new_ezagro_flutter.app-resValues-26 C:\src\Ez Agro Novo\new_ezagro_flutter\build\app\generated\res\resValues\debug
+br.com.ezsolucoes.new_ezagro_flutter.app-rs-27 C:\src\Ez Agro Novo\new_ezagro_flutter\build\app\generated\res\rs\debug
+br.com.ezsolucoes.new_ezagro_flutter.app-mergeDebugResources-28 C:\src\Ez Agro Novo\new_ezagro_flutter\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
+br.com.ezsolucoes.new_ezagro_flutter.app-mergeDebugResources-29 C:\src\Ez Agro Novo\new_ezagro_flutter\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+br.com.ezsolucoes.new_ezagro_flutter.app-merged_res-30 C:\src\Ez Agro Novo\new_ezagro_flutter\build\app\intermediates\merged_res\debug
+br.com.ezsolucoes.new_ezagro_flutter.app-packaged_res-31 C:\src\Ez Agro Novo\new_ezagro_flutter\build\flutter_secure_storage\intermediates\packaged_res\debug
+br.com.ezsolucoes.new_ezagro_flutter.app-packaged_res-32 C:\src\Ez Agro Novo\new_ezagro_flutter\build\path_provider_android\intermediates\packaged_res\debug
+br.com.ezsolucoes.new_ezagro_flutter.app-packaged_res-33 C:\src\Ez Agro Novo\new_ezagro_flutter\build\shared_preferences_android\intermediates\packaged_res\debug

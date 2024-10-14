@@ -6,5 +6,7 @@ class AppDimens {
   static const double bodyTextDimen = 14;
   static const double smallTextDimen = 12;
   static const double buttonTextDimen = 14;
+  static const double labelOnCard = 10;
+  static const double textOnCard = 16;
 
 }

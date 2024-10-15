@@ -7,9 +7,9 @@ import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
 import '../../../widgets/buttons/custom_elevated_button.dart';
 import '../../../widgets/buttons/custom_outlined_button.dart';
-import '../../../widgets/customInfoCard/custom_info_card_widget.dart';
-import '../../../widgets/customListItem/custom_list_item_widget.dart';
-import '../../../widgets/listTitleCard/list_title_card_widget.dart';
+import '../../../widgets/custom_info_card/custom_info_card_widget.dart';
+import '../../../widgets/custom_list_item/custom_list_item_widget.dart';
+import '../../../widgets/list_title_card/list_title_card_widget.dart';
 
 class ServiceOrderPage extends StatelessWidget {
   const ServiceOrderPage({super.key});

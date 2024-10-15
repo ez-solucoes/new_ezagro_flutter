@@ -9,7 +9,7 @@ import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
 import '../../../widgets/buttons/custom_elevated_button.dart';
-import '../../../widgets/textFields/custom_underlined_text_field.dart';
+import '../../../widgets/text_fields/custom_underlined_text_field.dart';
 
 class RegisterFirstStepPage extends StatelessWidget {
   final ArgParams? args;

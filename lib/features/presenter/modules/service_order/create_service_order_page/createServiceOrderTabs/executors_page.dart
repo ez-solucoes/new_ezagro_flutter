@@ -3,8 +3,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import '../../../../../../consts/app_colors.dart';
 import '../../../../../../consts/app_strings.dart';
-import '../../../../widgets/customInfoCard/custom_info_card_widget.dart';
-import '../../../../widgets/customSelector/custom_selector_widget.dart';
+import '../../../../widgets/custom_info_card/custom_info_card_widget.dart';
+import '../../../../widgets/custom_selector/custom_selector_widget.dart';
 import '../../controller/create_service_order_controller/create_service_order_controller.dart';
 
 class ExecutorsPage extends StatelessWidget {

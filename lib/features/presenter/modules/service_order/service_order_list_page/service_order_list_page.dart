@@ -10,8 +10,8 @@ import '../../../../../consts/app_routes.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
-import '../../../widgets/customCardTitle/custom_card_title.dart';
-import '../../../widgets/customSearchBar/custom_search_bar.dart';
+import '../../../widgets/custom_card_title/custom_card_title.dart';
+import '../../../widgets/custom_search_bar/custom_search_bar.dart';
 import '../controller/service_order_list_controller/service_order_list_controller.dart';
 
 class ServiceOrderListPage extends StatelessWidget {

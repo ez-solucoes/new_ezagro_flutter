@@ -28,6 +28,7 @@ class AppStrings {
   ///Service Order Module
   //Service Order List Strings
   static const String serviceOrderTitle = 'Ordem de Serviço';
+  static const String pluralServicesOrder = "Ordens de Serviços";
   static const String costCenterCardField = 'Centro de Custo: ';
   static const String openingDateCardField = 'Abertura: ';
   static const String closingDateCardField = 'Conclusão: ';
@@ -60,6 +61,7 @@ class AppStrings {
   static const String resumeOSButton = 'Retomar';
 
   //Create Service Order
+  static const String createServiceOrder = 'Criar Ordem de Serviço';
   static const String previousButton = 'Anterior';
   static const String nextButton = 'Próximo';
   static const String activitySelectorTitle = 'Atividade:';

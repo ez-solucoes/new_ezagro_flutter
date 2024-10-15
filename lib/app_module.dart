@@ -19,6 +19,7 @@ import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/pro
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecases_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/home/home_page.dart';
 import 'core/http_client/http_client.dart';
 import 'core/http_client/http_client_dio_imp.dart';
 import 'core/local_storage/local_storage_client_secure_impl.dart';
@@ -133,15 +134,16 @@ class AppModule extends Module {
 
 @override
   void routes(RouteManager r) {
-  r.child(AppRoutes.appDefaultPage, child: (context) => const CreateServiceOrderPage());
+  r.child(AppRoutes.appDefaultPage, child: (context) => HomePage());
   r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
-  r.child(AppRoutes.appHomePage, child: (context) => LoginPage());
+  r.child(AppRoutes.appLoginPage, child: (context) => LoginPage());
   r.child(AppRoutes.appRegisterFirstStepPage, child: (context) => const RegisterFirstStepPage());
   r.child(AppRoutes.appRegisterSecondStepPage, child: (context) => const RegisterSecondStepPage());
   r.child(AppRoutes.appRegisterThirdStepPage, child: (context) => const RegisterThirdStepPage());
   r.child(AppRoutes.appRegisterFourthStepPage, child: (context) => const RegisterFourthStepPage());
   r.child(AppRoutes.appRegisterFifthStepPage, child: (context) => const RegisterFifthStepPage());
   r.child(AppRoutes.appDocumentsPage, child: (context) => const DocumentsPage());
+  r.child(AppRoutes.appHomePage, child: (context) => HomePage());
   r.child(AppRoutes.appChangePasswordFirstStepPage, child: (context) => const ChangePasswordStepPage());
   r.child(AppRoutes.appServiceOrderPage, child: (context) => const ServiceOrderPage());
   r.child(AppRoutes.appServiceOrderListPage, child: (context) => const ServiceOrderListPage());

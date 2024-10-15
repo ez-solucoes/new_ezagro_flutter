@@ -45,7 +45,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
       case AppBarType.titleAndBackArrow:
         return _buildTitleAndBackArrow;
       case AppBarType.hamburgerAndTitle:
-        return _buildHamburgerAndTitle;
+        return _buildHamburgerAndTitle(context);
       case AppBarType.hamburgerAndEmployee:
         return _buildHamburgerAndEmployee;
       default:
@@ -111,38 +111,44 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
         ),
       );
 
-  AppBar get _buildHamburgerAndTitle => AppBar(
-        backgroundColor: AppColors.whiteColor,
-        scrolledUnderElevation: 0,
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        title: Stack(
-          children: [
-            Center(
-                child: Text('\n$title',
-                    textAlign: TextAlign.center,
-                    style: AppTextStyles.bodyTextStyle(color: AppColors.blackColor))),
-            Align(
-                alignment: Alignment.centerLeft,
-                child: IconButton(onPressed: () {}, icon: const Icon(Icons.menu, size: 35))),
-          ],
-        ),
-      );
+  AppBar _buildHamburgerAndTitle(BuildContext context) {
+    return AppBar(
+      backgroundColor: AppColors.whiteColor,
+      scrolledUnderElevation: 0,
+      automaticallyImplyLeading: false,
+      centerTitle: true,
+      title: Stack(
+        children: [
+          Center(
+              child: Text('\n$title',
+                  textAlign: TextAlign.center,
+                  style: AppTextStyles.bodyTextStyle(
+                      color: AppColors.blackColor))),
+          Align(
+              alignment: Alignment.centerLeft,
+              child: IconButton(onPressed: () {
+                Scaffold.of(context).openDrawer();
+              }, icon: const Icon(Icons.menu, size: 35))),
+        ],
+      ),
+    );
+  }
 
-  AppBar get _buildHamburgerAndEmployee => AppBar(
-        backgroundColor: AppColors.whiteColor,
-        scrolledUnderElevation: 0,
-        title: Align(
-          alignment: Alignment.centerLeft,
-          child: Text(
-            'Olá,\n$employeeName',
-            textAlign: TextAlign.start,
-            style: AppTextStyles.appBarSubTitleTextStyle(color: AppColors.blackColor),
-          ),
+    AppBar get _buildHamburgerAndEmployee => AppBar(
+      backgroundColor: AppColors.whiteColor,
+      scrolledUnderElevation: 0,
+      title: Align(
+        alignment: Alignment.centerLeft,
+        child: Text(
+          'Olá,\n$employeeName',
+          textAlign: TextAlign.start,
+          style: AppTextStyles.appBarSubTitleTextStyle(color: AppColors.blackColor),
         ),
-        leading: IconButton(onPressed: () {}, icon: const Icon(Icons.menu, size: 35)),
-      );
+      ),
+      leading: IconButton(onPressed: () {}, icon: const Icon(Icons.menu, size: 35)),
+    );
 
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+    @override
+    Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+
 }

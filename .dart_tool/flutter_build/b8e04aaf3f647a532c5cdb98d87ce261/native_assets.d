@@ -1,1 +1,0 @@
- /Users/lenincanuto/src/ezsolucoes/projetos/ez-agro/new/new_ezagro_flutter/.dart_tool/flutter_build/b8e04aaf3f647a532c5cdb98d87ce261/native_assets.yaml: 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/authentication_controller/authentication_controller.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/login_pages/login_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages//temp_password_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/appbar/custom_appbar_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/background/background_widget.dart';
@@ -29,9 +30,9 @@ class UsernameInputPage extends StatelessWidget {
     final TextEditingController textController = TextEditingController();
 
     return BackgroundWidget(
-      appBar: const CustomAppBarWidget(
-        appBarType: AppBarType.stepsAndBackArrow,
-        indicatorValue: 0.25,
+      appBar: CustomAppBarWidget(
+        appBarType: AppBarType.backArrow,
+        callback: () => LoginPage.navigate,
       ),
       scrollable: true,
       child: Padding(
@@ -46,7 +47,8 @@ class UsernameInputPage extends StatelessWidget {
             passwordField: false,
             onButtonPressed: () {
               controller.username = textController.text;
-              TempPasswordPage.push();
+              controller.recoverPassword();
+              TempPasswordPage.navigate();
 
             }),
       ),

@@ -18,11 +18,11 @@ class LoginPage extends StatelessWidget {
   final ArgParams? args;
   static const String routePath = AppRoutes.appLoginPage;
 
-  static navigate(ArgParams? args) =>
-      Modular.to.navigate(routePath, arguments: args);
+  static navigate() =>
+      Modular.to.navigate(routePath);
 
-  static push(ArgParams? args) =>
-      Modular.to.pushNamed(routePath, arguments: args);
+  static push() =>
+      Modular.to.pushNamed(routePath);
 
   const LoginPage({super.key, this.args});
 
@@ -72,7 +72,7 @@ class LoginPage extends StatelessWidget {
             const SizedBox(height: 37),
             CustomUnderlinedTextButton(
                 onTap: () {
-                  UsernameInputPage.push();
+                  UsernameInputPage.navigate();
                 },
                 label: AppStrings.forgotPasswordString),
           ],

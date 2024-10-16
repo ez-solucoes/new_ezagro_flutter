@@ -3,12 +3,13 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/authentication_controller/authentication_controller.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/new_password_page.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/username_input_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/appbar/custom_appbar_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/background/background_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/custom_forms/password_form_widget.dart';
 
-import '../authentication_controller/authentication_controller.dart';
 
 class TempPasswordPage extends StatelessWidget {
   final ArgParams? args;
@@ -27,8 +28,8 @@ class TempPasswordPage extends StatelessWidget {
 
     return BackgroundWidget(
         appBar: const CustomAppBarWidget(
-          appBarType: AppBarType.stepsAndBackArrow,
-          indicatorValue: 0.50,
+          appBarType: AppBarType.backArrow,
+          callback: UsernameInputPage.navigate,
         ),
         scrollable: true,
         child: Padding(
@@ -40,7 +41,7 @@ class TempPasswordPage extends StatelessWidget {
             buttonText: AppStrings.forwardString,
             onButtonPressed: () {
               controller.temporaryPassword = textController.text;
-              NewPasswordPage.push();
+              NewPasswordPage.navigate();
             },
             passwordField: true,
           ),

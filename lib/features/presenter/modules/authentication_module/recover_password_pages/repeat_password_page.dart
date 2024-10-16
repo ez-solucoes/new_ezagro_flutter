@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/new_password_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/recover_password_success_page.dart';
 
 import '../../../../../consts/app_routes.dart';
@@ -27,8 +28,8 @@ class RepeatPasswordPage extends StatelessWidget {
 
     return BackgroundWidget(
         appBar: const CustomAppBarWidget(
-          appBarType: AppBarType.stepsAndBackArrow,
-          indicatorValue: 1,
+          appBarType: AppBarType.backArrow,
+          callback: NewPasswordPage.navigate,
         ),
         scrollable: true,
         child: Padding(
@@ -43,7 +44,7 @@ class RepeatPasswordPage extends StatelessWidget {
               if(controller.comparePasswords(
                   controller.password, controller.retypePassword)){
                 controller.recoverPassword();
-                RecoverPasswordSuccessPage.push();
+                RecoverPasswordSuccessPage.navigate();
               }
             },
             passwordField: true,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/login_pages/login_page.dart';
 
 import '../../../../../consts/app_colors.dart';
 import '../../../../../consts/app_drawables.dart';
@@ -29,7 +30,7 @@ class RecoverPasswordSuccessPage extends StatelessWidget {
     return BackgroundWidget(
         appBar: const CustomAppBarWidget(
           appBarType: AppBarType.backArrow,
-          indicatorValue: 1,
+          callback: LoginPage.navigate,
         ),
         scrollable: false,
         child: Padding(
@@ -49,7 +50,9 @@ class RecoverPasswordSuccessPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     CustomUnderlinedTextButton(
-                      onTap: () {}, label: AppStrings.backToLoginString),
+                      onTap: () {
+                        LoginPage.navigate();
+                      }, label: AppStrings.backToLoginString),
                     const SizedBox(height: 60),
                   ],
                 ),

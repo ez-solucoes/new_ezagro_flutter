@@ -159,7 +159,7 @@ class AppModule extends Module {
   r.child(AppRoutes.appDefaultPage, child: (context) => LoginPage());
   r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
 
-  r.child(AppRoutes.appHomePage, child: (context) => LoginPage());
+  r.child(AppRoutes.appLoginPage, child: (context) => LoginPage());
   r.child(AppRoutes.appUsernameInputPage, child: (context) => UsernameInputPage());
   r.child(AppRoutes.appTempPasswordPage, child: (context) => TempPasswordPage());
   r.child(AppRoutes.appRepeatPasswordPage, child: (context) => RepeatPasswordPage());

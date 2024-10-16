@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:new_ezagro_flutter/core/enums/first_access_enum.dart';
@@ -71,12 +72,16 @@ abstract class AuthenticationControllerAbstract with Store {
 
     final result = await recoverPasswordUsecase(
         AuthenticationParams(username: username.unmask));
-    result.fold((error) => errorMessage = error.friendlyMessage, (success) async {
+    result.fold((error) => errorMessage = error.friendlyMessage,
+        (success) async {
+      debugPrint('Envio efetuado com sucesso');
+      debugPrint(success.toString());
     });
+    isLoading = false;
   }
 
   bool comparePasswords(String password, String retypedPassword) {
-    if(password.compareTo(retypedPassword) == 0) {
+    if (password.compareTo(retypedPassword) == 0) {
       return true;
     } else {
       return false;

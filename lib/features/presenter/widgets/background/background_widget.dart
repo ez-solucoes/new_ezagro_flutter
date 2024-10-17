@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:new_ezagro_flutter/features/presenter/widgets/custom_drawer/custom_drawer_widget.dart';
 import '../../../../consts/app_colors.dart';
 import '../../../../consts/app_drawables.dart';
 
@@ -16,6 +17,7 @@ class BackgroundWidget extends StatelessWidget {
       backgroundColor: AppColors.whiteColor,
       appBar: appBar,
       resizeToAvoidBottomInset: false,
+      drawer: CustomDrawerWidget(),
       body: SafeArea(
         child: Stack(
           fit: StackFit.expand,

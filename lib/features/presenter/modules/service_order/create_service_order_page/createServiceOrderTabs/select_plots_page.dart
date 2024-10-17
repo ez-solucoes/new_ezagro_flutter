@@ -6,7 +6,7 @@ import '../../../../../../consts/app_colors.dart';
 import '../../../../../../consts/app_strings.dart';
 import '../../../../../../consts/app_text_styles.dart';
 import '../../../../widgets/buttons/custom_outlined_button.dart';
-import '../../../../widgets/customCheckableListItem/custom_checkable_list_item_widget.dart';
+import '../../../../widgets/custom_checkable_list_item/custom_checkable_list_item_widget.dart';
 import '../../controller/create_service_order_controller/create_service_order_controller.dart';
 
 class SelectPlotsPage extends StatelessWidget {

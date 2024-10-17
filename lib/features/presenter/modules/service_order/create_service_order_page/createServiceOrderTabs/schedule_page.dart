@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import '../../../../../../consts/app_strings.dart';
-import '../../../../widgets/customDatePicker/custom_date_picker_widget.dart';
-import '../../../../widgets/customSelector/custom_selector_widget.dart';
+import '../../../../widgets/custom_date_picker/custom_date_picker_widget.dart';
+import '../../../../widgets/custom_selector/custom_selector_widget.dart';
 import '../../controller/create_service_order_controller/create_service_order_controller.dart';
 
 class SchedulePage extends StatelessWidget {

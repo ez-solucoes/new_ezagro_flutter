@@ -10,10 +10,7 @@ import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
 import '../../../widgets/buttons/custom_elevated_button.dart';
 import '../../../widgets/textFields/custom_underlined_text_field.dart';
-<<<<<<<< HEAD:lib/features/presenter/modules/account_management/register_page/register_first_step_page.dart
-========
 import '../authentication_controller/authentication_controller.dart';
->>>>>>>> feature/first-access-steps:lib/features/presenter/modules/authentication_module/register_page/register_first_step_page.dart
 
 class RegisterFirstStepPage extends StatelessWidget {
   final ArgParams? args;

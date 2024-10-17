@@ -11,7 +11,7 @@ import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/background/background_widget.dart';
 import '../../../widgets/buttons/custom_elevated_button.dart';
 import '../../../widgets/buttons/custom_underlined_text_button.dart';
-import '../../../widgets/textFields/custom_outlined_text_form_field.dart';
+import '../../../widgets/text_fields/custom_outlined_text_form_field.dart';
 import '../recover_password_pages/username_input_page.dart';
 
 class LoginPage extends StatelessWidget {

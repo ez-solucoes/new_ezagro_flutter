@@ -27,7 +27,7 @@ class RepeatPasswordPage extends StatelessWidget {
     final TextEditingController textController = TextEditingController();
 
     return BackgroundWidget(
-        appBar: const CustomAppBarWidget(
+        appBar: CustomAppBarWidget(
           appBarType: AppBarType.backArrow,
           callback: NewPasswordPage.navigate,
         ),

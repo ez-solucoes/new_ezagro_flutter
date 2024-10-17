@@ -29,7 +29,7 @@ class NewPasswordPage extends StatelessWidget {
     final TextEditingController textController = TextEditingController();
 
     return BackgroundWidget(
-        appBar: const CustomAppBarWidget(
+        appBar: CustomAppBarWidget(
           appBarType: AppBarType.backArrow,
           callback: TempPasswordPage.navigate,
         ),

@@ -97,6 +97,6 @@ abstract class AuthenticationControllerAbstract with Store {
     await localStorage.writeData(
         LocalStorageItem(key: AppStrings.tokenKey, value: success.token));
     await localStorage.writeData(LocalStorageItem(
-        key: AppStrings.nameKey, value: success.employee!.employeeName));
+        key: AppStrings.nameKey, value: success.employee!.employeeName!));
   }
 }

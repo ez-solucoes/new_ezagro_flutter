@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:new_ezagro_flutter/core/enums/mask_type_enum.dart';
-
 import '../../../../consts/app_colors.dart';
 import '../../../../consts/app_text_styles.dart';
 import '../buttons/custom_elevated_button.dart';
-import '../textFields/custom_underlined_text_field.dart';
+import '../text_fields/custom_underlined_text_field.dart';
 
 class PasswordFormWidget extends StatelessWidget {
   final bool isLoading;

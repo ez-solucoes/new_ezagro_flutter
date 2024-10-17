@@ -35,10 +35,10 @@ class LoginPage extends StatelessWidget {
           SvgPicture.asset(AppDrawables.ezAgroLogoComplete),
           const SizedBox(height: 72),
           CustomOutlinedTextFormField(
-              controller: _controller, label: AppStrings.cpfString),
+              controller: _controller, label: AppStrings.cpfString, passwordField: false,),
           const SizedBox(height: 27),
           CustomOutlinedTextFormField(
-              controller: _controller, label: AppStrings.passwordString),
+              controller: _controller, label: AppStrings.passwordString, passwordField: true,),
           const SizedBox(height: 37),
           CustomElevatedButton(
             onPressed: () {},

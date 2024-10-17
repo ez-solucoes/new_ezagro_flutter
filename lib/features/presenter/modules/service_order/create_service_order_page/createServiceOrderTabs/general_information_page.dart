@@ -12,12 +12,11 @@ class GeneralInformationPage extends StatelessWidget {
     super.key
   });
 
-
   @override
   Widget build(BuildContext context) {
     final controller = Modular.get<CreateServiceOrderController>();
     controller.getActivities();
-    //controller.getCostCenters();
+    controller.getCostCenters();
     controller.getSimplifiedFarms();
     return Column(children: [
       Observer(
@@ -40,7 +39,7 @@ class GeneralInformationPage extends StatelessWidget {
             onSelect: (value) {
               controller.costCenterId = controller.costCenterOptions.where((e) => e.name == value).toList().first.id;
             },
-            items: controller.costCenterOptions.map((costCenter) => costCenter.name).toList(),
+            items: controller.costCenterOptions.map((costCenter) => costCenter.name ?? "").toList(),
             title: AppStrings.costCenterSelectorTitle,
             selectorHint: AppStrings.costCenterSelectorHint),
       ),

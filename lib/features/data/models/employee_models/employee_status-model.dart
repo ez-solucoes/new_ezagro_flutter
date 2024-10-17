@@ -5,8 +5,8 @@ import '../../../domain/entities/employee_entities/employee_status_entity.dart';
 class EmployeeStatusModel extends EmployeeStatusEntity {
   const EmployeeStatusModel({
     required super.id,
-    required super.name,
-    required super.active,
+    super.name,
+    super.active,
   });
 
   Map<String, dynamic> toMap() => {

@@ -11,45 +11,45 @@ import 'contract_type_entity.dart';
 
 class ContractEntity extends Equatable {
   final int id;
-  final CompanyEntity company;
-  final CompanyEntity contractedCompany;
-  final RuralProducerEntity ruralProducer;
-  final FarmEntity farm;
-  final String contract;
-  final String dtContract;
-  final String dtContractEnd;
-  final List<MultipartFileCustomEntity> attachments;
-  final String description;
-  final List<CostCenterEntity> costCenters;
-  final List<PlotEntity> plots;
-  final ContractTypeEntity contractType;
-  final List<String> attachmentNames;
-  final String externalCode;
-  final List<ContractCoverageEntity> contractCoverages;
-  final double deductiblePrice;
-  final double fixedPrice;
-  final List<ContractItemEntity> items;
+  final CompanyEntity? company;
+  final CompanyEntity? contractedCompany;
+  final RuralProducerEntity? ruralProducer;
+  final FarmEntity? farm;
+  final String? contract;
+  final String? dtContract;
+  final String? dtContractEnd;
+  final List<MultipartFileCustomEntity>? attachments;
+  final String? description;
+  final List<CostCenterEntity>? costCenters;
+  final List<PlotEntity>? plots;
+  final ContractTypeEntity? contractType;
+  final List<String>? attachmentNames;
+  final String? externalCode;
+  final List<ContractCoverageEntity>? contractCoverages;
+  final double? deductiblePrice;
+  final double? fixedPrice;
+  final List<ContractItemEntity>? items;
 
   const ContractEntity({
     required this.id,
-    required this.company,
-    required this.contractedCompany,
-    required this.ruralProducer,
-    required this.farm,
-    required this.contract,
-    required this.dtContract,
-    required this.dtContractEnd,
-    required this.attachments,
-    required this.description,
-    required this.costCenters,
-    required this.plots,
-    required this.contractType,
-    required this.attachmentNames,
-    required this.externalCode,
-    required this.contractCoverages,
-    required this.deductiblePrice,
-    required this.fixedPrice,
-    required this.items,
+    this.company,
+    this.contractedCompany,
+    this.ruralProducer,
+    this.farm,
+    this.contract,
+    this.dtContract,
+    this.dtContractEnd,
+    this.attachments,
+    this.description,
+    this.costCenters,
+    this.plots,
+    this.contractType,
+    this.attachmentNames,
+    this.externalCode,
+    this.contractCoverages,
+    this.deductiblePrice,
+    this.fixedPrice,
+    this.items,
   });
 
   @override

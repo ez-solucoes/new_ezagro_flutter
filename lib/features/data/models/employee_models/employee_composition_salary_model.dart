@@ -4,9 +4,9 @@ import '../../../domain/entities/employee_entities/employee_composition_salary_e
 class EmployeeCompositionSalaryModel extends EmployeeCompositionSalaryEntity {
   const EmployeeCompositionSalaryModel({
     required super.id,
-    required super.salaryComposition,
-    required super.salaryCompositionReference,
-    required super.salaryReferenceBase,
+    super.salaryComposition,
+    super.salaryCompositionReference,
+    super.salaryReferenceBase,
   });
 
   Map<String, dynamic> toMap() => {
@@ -20,7 +20,7 @@ class EmployeeCompositionSalaryModel extends EmployeeCompositionSalaryEntity {
       EmployeeCompositionSalaryModel(
         id: map['id'],
         salaryComposition: map['salaryComposition'],
-        salaryCompositionReference: map['salaryCompositionReference'],
+        salaryCompositionReference: map['salaryCompositionReference'] == null ? null : (map['salaryCompositionReference'] is double ? map['salaryCompositionReference'] : (map['salaryCompositionReference'] as int).toDouble()),
         salaryReferenceBase: map['salaryReferenceBase'],
       );
 

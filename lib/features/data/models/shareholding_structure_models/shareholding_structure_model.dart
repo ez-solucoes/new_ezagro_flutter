@@ -4,9 +4,9 @@ import '../../../domain/entities/shareholding_structure_entities/shareholding_st
 class ShareHoldingStructureModel extends ShareHoldingStructureEntity {
   const ShareHoldingStructureModel({
     required super.id,
-    required super.name,
-    required super.cpf,
-    required super.percentage,
+    super.name,
+    super.cpf,
+    super.percentage,
   });
 
   Map<String, dynamic> toMap() => {

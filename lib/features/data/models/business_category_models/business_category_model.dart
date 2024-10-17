@@ -5,7 +5,7 @@ import '../../../domain/entities/business_category_entities/business_category_en
 class BusinessCategoryModel extends BusinessCategoryEntity {
   const BusinessCategoryModel({
     required super.id,
-    required super.description,
+    super.description,
   });
 
   Map<String, dynamic> toMap() => {

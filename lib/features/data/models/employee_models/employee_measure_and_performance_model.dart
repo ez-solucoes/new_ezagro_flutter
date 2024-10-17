@@ -5,11 +5,11 @@ import '../../../domain/entities/employee_entities/employee_measure_and_performa
 class EmployeeMeasureAndPerformanceModel extends EmployeeMeasureAndPerformanceEntity {
   const EmployeeMeasureAndPerformanceModel({
     required super.id,
-    required super.setGoals,
-    required super.dtGoalEvaluationStart,
-    required super.dtGoalEvaluationEnd,
-    required super.goalPerformance,
-    required super.bonusesReceived,
+    super.setGoals,
+    super.dtGoalEvaluationStart,
+    super.dtGoalEvaluationEnd,
+    super.goalPerformance,
+    super.bonusesReceived,
   });
 
   Map<String, dynamic> toMap() => {

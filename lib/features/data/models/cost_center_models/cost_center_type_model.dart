@@ -5,8 +5,8 @@ import '../../../domain/entities/cost_center_entities/cost_center_type_entity.da
 class CostCenterTypeModel extends CostCenterTypeEntity {
   const CostCenterTypeModel({
     required super.id,
-    required super.name,
-    required super.description,
+    super.name,
+    super.description,
   });
 
   Map<String, dynamic> toMap() => {

@@ -5,8 +5,8 @@ import '../../../domain/entities/coordinate_entities/coordinate_entity.dart';
 class CoordinateModel extends CoordinateEntity {
   const CoordinateModel({
     required super.id,
-    required super.longitude,
-    required super.latitude,
+    super.longitude,
+    super.latitude,
   });
 
   Map<String, dynamic> toMap() => {

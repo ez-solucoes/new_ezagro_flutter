@@ -2,13 +2,13 @@ import 'package:equatable/equatable.dart';
 
 class EmployeeStatusEntity extends Equatable{
   final int id;
-  final String name;
-  final bool active;
+  final String? name;
+  final bool? active;
 
   const EmployeeStatusEntity({
     required this.id,
-    required this.name,
-    required this.active,
+    this.name,
+    this.active,
 });
 
   @override

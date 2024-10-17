@@ -17,6 +17,7 @@ class ExecutorsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Modular.get<CreateServiceOrderController>();
+    controller.getExecutorOptions();
     return Observer(
         builder: (context) =>
             Column(
@@ -25,7 +26,7 @@ class ExecutorsPage extends StatelessWidget {
                     onSelect: (value) {
                       controller.selectedExecutors.add(value);
                     },
-                    items: ["executores 1", "ex 2", "ex 3"],
+                    items: controller.executorsOptions.map((executors) => executors.employeeName ?? "").toList(),
                     title: AppStrings.executorSelectorTitle,
                     selectorHint: AppStrings.executorSelectorHint),
                 const SizedBox(height: 6),

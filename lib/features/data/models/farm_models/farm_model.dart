@@ -9,22 +9,22 @@ import '../plot_models/plot_model.dart';
 
 class FarmModel extends FarmEntity {
   const FarmModel({required super.id,
-    required super.address,
-    required super.car,
-    required super.stateRegistration,
-    required super.externalCode,
-    required super.caepf,
-    required super.cnae,
-    required super.nameLandowner,
-    required super.recordLandowner,
-    required super.company,
-    required super.plots,
-    required super.name,
-    required super.areaAcre,
-    required super.contracts,
-    required super.attachments,
-    required super.costCenters,
-    required super.attachmentNames,
+    super.address,
+    super.car,
+    super.stateRegistration,
+    super.externalCode,
+    super.caepf,
+    super.cnae,
+    super.nameLandowner,
+    super.recordLandowner,
+    super.company,
+    super.plots,
+    super.name,
+    super.areaAcre,
+    super.contracts,
+    super.attachments,
+    super.costCenters,
+    super.attachmentNames,
   });
 
   Map<String, dynamic> toMap() => {
@@ -38,15 +38,15 @@ class FarmModel extends FarmEntity {
     'nameLandowner': nameLandowner,
     'recordLandowner': recordLandowner,
     'company': (company as CompanyModel).toMap(),
-    'plots': plots.map((e) => (e as PlotModel).toMap()).toList(),
+    'plots': plots?.map((e) => (e as PlotModel).toMap()).toList(),
     'name': name,
     'areaAcre': areaAcre,
     'contracts':
-    contracts.map((e) => (e as ContractModel).toMap()).toList(),
+    contracts?.map((e) => (e as ContractModel).toMap()).toList(),
     'attachments':
-    attachments.map((e) => (e as MultipartFileCustomModel).toMap()).toList(),
+    attachments?.map((e) => (e as MultipartFileCustomModel).toMap()).toList(),
     'attachmentNames': attachmentNames,
-    'costCenters':costCenters.map((e) => (e as CostCenterModel).toMap()).toList(),
+    'costCenters':costCenters?.map((e) => (e as CostCenterModel).toMap()).toList(),
   };
 
   factory FarmModel.fromMap(Map<String, dynamic> map) => FarmModel(
@@ -60,17 +60,17 @@ class FarmModel extends FarmEntity {
     cnae: map['cnae'],
     nameLandowner: map['nameLandowner'],
     recordLandowner: map['recordLandowner'],
-    company: CompanyModel.fromMap(map['company']),
+    company: map['company'] == null? null : CompanyModel.fromMap(map['company']),
     plots: List<PlotModel>.from(
         map['plots']?.map((x) => PlotModel.fromMap(x))),
     name: map['name'],
     areaAcre: map['areaAcre'],
-    contracts: List<ContractModel>.from(
+    contracts: map['contracts'] == null ? null : List<ContractModel>.from(
         map['contracts']?.map((x) => ContractModel.fromMap(x))),
-    attachments: List<MultipartFileCustomModel>.from(
+    attachments: map['attachments'] == null ? null : List<MultipartFileCustomModel>.from(
         map['attachments']?.map((x) => MultipartFileCustomModel.fromMap(x))),
-    attachmentNames: map['attachmentNames'],
-    costCenters: List<CostCenterModel>.from(
+    attachmentNames: "", //map['attachmentNames'],
+    costCenters: map['costCenters'] == null ? null : List<CostCenterModel>.from(
         map['costCenters']?.map((x) => CostCenterModel.fromMap(x))),
   );
 

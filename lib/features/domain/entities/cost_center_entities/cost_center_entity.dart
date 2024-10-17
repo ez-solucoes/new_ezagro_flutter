@@ -4,10 +4,10 @@ import 'cost_center_type_entity.dart';
 
 class CostCenterEntity extends Equatable {
   final int id;
-  final String name;
-  final CostCenterTypeEntity costCenterType;
-  final String dtStart;
-  final String dtEnd;
+  final String? name;
+  final CostCenterTypeEntity? costCenterType;
+  final String? dtStart;
+  final String? dtEnd;
 
   const CostCenterEntity(
       {required this.id,

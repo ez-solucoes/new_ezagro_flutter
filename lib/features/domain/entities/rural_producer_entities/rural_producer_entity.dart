@@ -6,29 +6,29 @@ import 'common_association_of_rural_producer_entity.dart';
 
 class RuralProducerEntity extends Equatable {
   final int id;
-  final String dtBirth;
-  final String stateRegistration;
-  final String name;
-  final String cpf;
-  final List<AccountEntity> accounts;
-  final List<ContractEntity> contracts;
-  final List<String> attachmentNames;
-  final List<CommonAssociationOfRuralProducerEntity> commonAssociation;
-  final List<FarmEntity> farms;
-  final bool active;
+  final String? dtBirth;
+  final String? stateRegistration;
+  final String? name;
+  final String? cpf;
+  final List<AccountEntity>? accounts;
+  final List<ContractEntity>? contracts;
+  final List<String>? attachmentNames;
+  final List<CommonAssociationOfRuralProducerEntity>? commonAssociation;
+  final List<FarmEntity>? farms;
+  final bool? active;
 
   const RuralProducerEntity({
     required this.id,
-    required this.dtBirth,
-    required this.stateRegistration,
-    required this.name,
-    required this.cpf,
-    required this.accounts,
-    required this.contracts,
-    required this.attachmentNames,
-    required this.commonAssociation,
-    required this.farms,
-    required this.active,
+    this.dtBirth,
+    this.stateRegistration,
+    this.name,
+    this.cpf,
+    this.accounts,
+    this.contracts,
+    this.attachmentNames,
+    this.commonAssociation,
+    this.farms,
+    this.active,
   });
 
   @override

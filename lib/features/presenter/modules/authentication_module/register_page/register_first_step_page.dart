@@ -1,0 +1,68 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:new_ezagro_flutter/consts/app_colors.dart';
+import 'package:new_ezagro_flutter/consts/app_routes.dart';
+import 'package:new_ezagro_flutter/consts/app_strings.dart';
+
+import '../../../../../consts/app_text_styles.dart';
+import '../../../../domain/params/arg_params/arg_params.dart';
+import '../../../widgets/appbar/custom_appbar_widget.dart';
+import '../../../widgets/background/background_widget.dart';
+import '../../../widgets/buttons/custom_elevated_button.dart';
+import '../../../widgets/textFields/custom_underlined_text_field.dart';
+<<<<<<<< HEAD:lib/features/presenter/modules/account_management/register_page/register_first_step_page.dart
+========
+import '../authentication_controller/authentication_controller.dart';
+>>>>>>>> feature/first-access-steps:lib/features/presenter/modules/authentication_module/register_page/register_first_step_page.dart
+
+class RegisterFirstStepPage extends StatelessWidget {
+  final ArgParams? args;
+  static const String routePath = AppRoutes.appRegisterFirstStepPage;
+
+  static navigate(ArgParams args) =>
+      Modular.to.navigate(routePath, arguments: args);
+
+  static push(ArgParams args) =>
+      Modular.to.pushNamed(routePath, arguments: args);
+
+  const RegisterFirstStepPage({super.key, this.args});
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = Modular.get<AuthenticationController>();
+
+    return BackgroundWidget(
+      appBar: const CustomAppBarWidget(
+        indicatorValue: 0.8,
+        appBarType: AppBarType.stepsAndBackArrow,
+      ),
+      scrollable: true,
+      child: Padding(
+        padding: const EdgeInsets.all(19.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 72),
+            Text(
+              AppStrings.firstTypeYourCpfString,
+              style: AppTextStyles.titleTextStyle(color: AppColors.blackColor),
+            ),
+            const SizedBox(height: 67),
+            CustomUnderlinedTextField(
+              onPressed: () {},
+              controller: TextEditingController(), passwordField: true,
+            ),
+            const SizedBox(height: 40),
+            Center(
+              child: CustomElevatedButton(
+                onPressed: () {},
+                label: AppStrings.forwardString,
+                isLoading: controller.isLoading,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

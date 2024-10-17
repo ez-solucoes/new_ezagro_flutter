@@ -372,8 +372,8 @@ abstract class _CreateServiceOrderController with Store {
               .floor() +
               (details.localPosition.dy / itemHeight)
                   .floor();
-      if (itemIndex >= 0 && itemIndex < plotsOptions.length && startIndex != null) {
-          int start = (startIndex!);
+      if (itemIndex >= 0 && itemIndex < plotsOptions.length) {
+          int start = startIndex;
           int end = itemIndex;
 
           if (end > start) {

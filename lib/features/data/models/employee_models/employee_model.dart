@@ -12,7 +12,7 @@ import '../multipart_file_custom_model/multipart_file_custom_model.dart';
 import '../rural_producer_models/rural_producer_model.dart';
 import 'employee_contract_model.dart';
 import 'employee_measure_and_performance_model.dart';
-import 'employee_status-model.dart';
+import 'employee_status_model.dart';
 
 class EmployeeModel extends EmployeeEntity {
   const EmployeeModel({

@@ -6,6 +6,15 @@ class AppRoutes {
   static const String appOnboardingPage = '/onboardingPage';
   static const String appLoginPage = '/loginPage';
   static const String appHomePage = '/homePage';
+
+  static const String appUsernameInputPage = '/usernameInputPage';
+  static const String appTempPasswordPage = '/tempPasswordPage';
+  static const String appNewPasswordPage = '/newPasswordPage';
+  static const String appRepeatPasswordPage = '/repeatPasswordPage';
+  static const String appRecoverPasswordSuccessPage = '/recoverPasswordSuccessPage';
+
+
+
   static const String appRegisterFirstStepPage = '/registerFirstStepPage';
   static const String appRegisterSecondStepPage = '/registerSecondStepPage';
   static const String appRegisterThirdStepPage = '/registerThirdStepPage';

@@ -37,8 +37,22 @@ class AuthenticationDatasourceImpl
   }
 
   @override
-  Future recoverPassword(AuthenticationParams authenticationParams) {
-    // TODO: implement recoverPassword
-    throw UnimplementedError();
+  Future recoverPassword(AuthenticationParams authenticationParams) async {
+    final String url = mountUrl(
+      AppEndpoints.baseUrlProtocolWithSecurity,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.recoverPasswordEndpoint,
+    );
+
+    final HttpRequest request = HttpRequest.post(path:url, payload: {
+      'username' : authenticationParams.username,
+    });
+
+    final result = await httpClient.execute(request);
+
+    switch (result.statusCode) {
+      case 200 : return 200;
+      default : mountServerErrorInstance(request: request, response: result);
+    }
   }
 }

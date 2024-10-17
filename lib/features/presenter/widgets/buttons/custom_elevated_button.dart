@@ -8,11 +8,13 @@ class CustomElevatedButton extends StatelessWidget {
   final String label;
   final Color backgroundColor;
   final Color textColor;
+  final bool? isLoading;
 
   const CustomElevatedButton({
     super.key,
     required this.onPressed,
     required this.label,
+    this.isLoading,
     this.backgroundColor = AppColors.greenColor,
     this.textColor = AppColors.trueWhiteColor
   });
@@ -25,10 +27,13 @@ class CustomElevatedButton extends StatelessWidget {
           minimumSize: const Size(150, 38),
           backgroundColor: backgroundColor,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
-      child: Text(
+      child: !isLoading! ? Text(
         label,
         style: AppTextStyles.labelTextButtonStyle(color: textColor),
-      ),
+      ) : Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: CircularProgressIndicator(color: AppColors.whiteColor,),
+      )
     );
   }
 }

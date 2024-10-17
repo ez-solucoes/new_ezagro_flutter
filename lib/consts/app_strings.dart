@@ -11,6 +11,7 @@ class AppStrings {
   static const String firstTypeYourCpfString = 'Primeiro digite seu CPF';
   static const String forwardString = 'Avançar';
   static const String backString = 'Voltar';
+  static const String backToLoginString = 'Voltar ao Login';
   static const String weSentTheConfirmationCodeToYourPhone = 'Enviamos em seu telefone\num código de confirmação de seu\ncadastro';
   static const String typeTheNumberBellow = 'Digite o número abaixo:';
   static const String nowTypeNewPassword = 'Agora, digite sua nova\nsenha:';
@@ -23,7 +24,12 @@ class AppStrings {
 
   static const String loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
-  static const String forgotPasswordFirstStep = 'Esqueceu sua senha?\nDigite seu CPF e vamos enviar uma senha provisória em seu telefone:';
+  static const String forgotPasswordCpf = 'Esqueceu sua senha?\nDigite seu CPF e vamos enviar uma senha provisória em seu telefone:';
+  static const String tempPassword = 'Agora digite abaixo a senha provisória que enviamos para seu telefone:';
+  static const String createNewPasswordString = 'Crie sua nova senha:';
+  static const String repeatYourNewPasswordString = 'Repita sua nova senha:';
+  static const String recoverPasswordSuccessString = 'Pronto!\nSua nova senha foi criada\nAgora você pode voltar para a área de Login e acessar novamente.';
+
 
   ///Service Order Module
   //Service Order List Strings
@@ -115,7 +121,10 @@ class AppStrings {
       'Usuário não autenticado.';
 
   ///Shared Preferences keys
+  static const String storageTypeSecure = 'Secure Storage';
+  static const String storageTypeLocal = 'Local Storage';
   static const String tokenKey = 'Token';
+  static const String nameKey = 'Name';
   static const String idKey = 'id';
   static const String directoryKey = 'Directory';
 }

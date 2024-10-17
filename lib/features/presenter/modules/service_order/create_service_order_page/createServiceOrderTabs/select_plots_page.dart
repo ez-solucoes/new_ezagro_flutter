@@ -13,7 +13,6 @@ class SelectPlotsPage extends StatelessWidget {
 
   const SelectPlotsPage({super.key});
 
-  @override
   void dispose() {
     Modular.get<CreateServiceOrderController>().scrollController.dispose();
     dispose();

@@ -4,15 +4,16 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../../../../../consts/app_colors.dart';
 import '../../../../../consts/app_strings.dart';
 import '../../../../../consts/app_text_styles.dart';
-import '../../../../../modules/presenter/widgets/buttons/custom_outlined_button.dart';
-import '../../../../../modules/presenter/widgets/customCheckableListItem/custom_checkable_list_item_widget.dart';
-import '../../controllers/create_service_order_controller/create_service_order_controller.dart';
+import '../../modules/service_order/controller/create_service_order_controller/create_service_order_controller.dart';
+import '../../widgets/buttons/custom_outlined_button.dart';
+import '../../widgets/customCheckableListItem/custom_checkable_list_item_widget.dart';
+
 
 class SelectPlotsPage extends StatefulWidget {
   @override
   SelectPlotPageState createState() => SelectPlotPageState();
 
-  const SelectPlotsPage({super.key, required this.controller});
+  const SelectPlotsPage({super.key});
 }
 
 class SelectPlotPageState extends State<SelectPlotsPage> {
@@ -54,8 +55,8 @@ class SelectPlotPageState extends State<SelectPlotsPage> {
 
       final start = itemIndex.clamp(0, plots.length - 1);
 
-      if (!widget.controller.selectedPlots.contains(plots[start][0])) {
-        widget.controller.selectedPlots.add(plots[start][0]);
+      if (!controller.selectedPlots.contains(plots[start][0])) {
+        controller.selectedPlots.add(plots[start][0]);
       }
       _isSelecting = true;
     });
@@ -76,8 +77,7 @@ class SelectPlotPageState extends State<SelectPlotsPage> {
         builder: (context) =>
             Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               CustomOutlinedButton(
-                  onPressed: () {
-                    widget.controller.toggleSelectAll();
+                  onPressed: () {controller.toggleSelectAll();
                   },
                   label: AppStrings.selectAllButton,
                   textStyle: AppTextStyles.smallBoldTextOnCardStyle(
@@ -117,8 +117,8 @@ class SelectPlotPageState extends State<SelectPlotsPage> {
 
                                   if (end > start) {
                                     for (int i = start; i < end; i++) {
-                                      if (!widget.controller.selectedPlots.contains(plots[i][0])) {
-                                        widget.controller.selectedPlots.add(plots[i][0]);
+                                      if (!controller.selectedPlots.contains(plots[i][0])) {
+                                        controller.selectedPlots.add(plots[i][0]);
                                       }
                                     }
                                     final deltaScroll = _scrollController.offset == 0 ? 130 : 30;
@@ -127,8 +127,8 @@ class SelectPlotPageState extends State<SelectPlotsPage> {
                                     _autoScroll();
                                   } else {
                                     for (int i = end; i > start; i--) {
-                                      if (!widget.controller.selectedPlots.contains(plots[i][0])) {
-                                        widget.controller.selectedPlots.add(plots[i][0]);
+                                      if (!controller.selectedPlots.contains(plots[i][0])) {
+                                        controller.selectedPlots.add(plots[i][0]);
                                       }
                                     }
                                     _scrollController.jumpTo(
@@ -147,22 +147,22 @@ class SelectPlotPageState extends State<SelectPlotsPage> {
                                     builder: (context) => SizedBox(
                                           height: _itemHeight,
                                           child: CustomCheckableListItemWidget(
-                                              indexIsChecked: widget
-                                                  .controller.selectedPlots
+                                              indexIsChecked:
+                                                  controller.selectedPlots
                                                   .contains(plots[index][0]),
                                               firstColumn: plots[index][0],
                                               secondColumn: plots[index][1],
                                               thirdColumn: plots[index][2],
                                               index: index,
                                               onCheckBoxTap: (index) {
-                                                if (widget.controller.selectedPlots
+                                                if (controller.selectedPlots
                                                     .contains(
                                                         plots[index][0])) {
-                                                  widget.controller.selectedPlots
+                                                  controller.selectedPlots
                                                       .removeWhere((e) =>
                                                           plots[index][0] == e);
                                                 } else {
-                                                  widget.controller.selectedPlots
+                                                  controller.selectedPlots
                                                       .add(plots[index][0]);
                                                 }
                                               }),

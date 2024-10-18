@@ -6,7 +6,7 @@ enum PurchaseOrderStatusEnum {
   completed,
 }
 
-purchaseOrderStatus(String type) {
+purchaseOrderStatusEnum(String type) {
   switch (type) {
     case 'IN_ANALYSIS':
       return PurchaseOrderStatusEnum.inAnalysis;
@@ -17,7 +17,7 @@ purchaseOrderStatus(String type) {
   }
 }
 
-plantingCycleString(type) {
+purchaseOrderStatusString(type) {
   switch (type) {
     case PurchaseOrderStatusEnum.inAnalysis:
       return 'IN_ANALYSIS';

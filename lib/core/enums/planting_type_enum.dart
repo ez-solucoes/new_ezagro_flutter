@@ -1,25 +1,25 @@
-//PERENE, NAO_PERENE
+//PERENNIAL, NON_PERENNIAL
 
 enum PlantingTypeEnum {
-  perene,
-  naoPerene,
+  perennial,
+  nonPerennial,
 }
 
 plantingTypeEnum(String plantingType) {
   switch (plantingType) {
-    case 'PERENE':
-      return PlantingTypeEnum.perene;
-    case 'NAO_PERENE':
-      return PlantingTypeEnum.naoPerene;
+    case 'PERENNIAL':
+      return PlantingTypeEnum.perennial;
+    case 'NON_PERENNIAL':
+      return PlantingTypeEnum.nonPerennial;
   }
 }
 
 plantingTypeString(type) {
   switch (type) {
-    case PlantingTypeEnum.perene:
-      return 'PERENE';
-    case PlantingTypeEnum.naoPerene:
-      return 'NAO_PERENE';
+    case PlantingTypeEnum.perennial:
+      return 'PERENNIAL';
+    case PlantingTypeEnum.nonPerennial:
+      return 'NON_PERENNIAL';
     default:
       return '';
   }

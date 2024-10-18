@@ -6,6 +6,7 @@ import 'package:new_ezagro_flutter/consts/app_drawables.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/authentication_controller/authentication_controller.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/home/home_page.dart';
 import '../../../../../core/utils/text_input_formatter_mask.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/background/background_widget.dart';
@@ -59,11 +60,14 @@ class LoginPage extends StatelessWidget {
             const SizedBox(height: 37),
             Observer(
               builder: (context) => CustomElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   controller.username = usernameController.text;
                   controller.password = passwordController.text;
 
-                  controller.authenticate();
+                  await controller.authenticate();
+                  if (controller.token != '') {
+                    HomePage.navigate();
+                  }
                 },
                 label: AppStrings.enterString,
                 isLoading: controller.isLoading,

@@ -31,6 +31,7 @@ import 'package:new_ezagro_flutter/features/presenter/modules/authentication_mod
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/repeat_password_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/temp_password_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/username_input_page.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/home/home_page.dart';
 import 'core/http_client/http_client.dart';
 import 'core/http_client/http_client_dio_imp.dart';
 import 'core/local_storage/local_storage_client_secure_impl.dart';
@@ -173,6 +174,7 @@ class AppModule extends Module {
     r.child(AppRoutes.appRegisterFifthStepPage, child: (context) => const RegisterFifthStepPage());
     r.child(AppRoutes.appDocumentsPage, child: (context) => const DocumentsPage());
     r.child(AppRoutes.appChangePasswordFirstStepPage, child: (context) => const ChangePasswordStepPage());
+    r.child(AppRoutes.appHomePage, child: (context) => const HomePage());
     r.child(AppRoutes.appServiceOrderPage, child: (context) => const ServiceOrderPage());
     r.child(AppRoutes.appServiceOrderListPage, child: (context) => const ServiceOrderListPage());
     r.child(AppRoutes.appCreateServiceOrderPage, child: (context) => const CreateServiceOrderPage());

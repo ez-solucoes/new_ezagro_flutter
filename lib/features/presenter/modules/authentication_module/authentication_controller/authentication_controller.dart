@@ -50,6 +50,7 @@ abstract class AuthenticationControllerAbstract with Store {
 
     final authenticationUsecase = Modular.get<AuthenticateUsecase>();
 
+    print(username.unmask);
     final result = await authenticationUsecase(
         AuthenticationParams(password: password, username: username.unmask));
 
@@ -93,7 +94,7 @@ abstract class AuthenticationControllerAbstract with Store {
         Modular.get<LocalStorageClient>(key: AppStrings.storageTypeSecure);
 
     await localStorage.writeData(LocalStorageItem(
-        key: AppStrings.idKey, value: success.client.id.toString()));
+        key: AppStrings.idKey, value: success.client!.id.toString()));
     await localStorage.writeData(
         LocalStorageItem(key: AppStrings.tokenKey, value: success.token));
     await localStorage.writeData(LocalStorageItem(

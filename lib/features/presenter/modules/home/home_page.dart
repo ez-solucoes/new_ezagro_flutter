@@ -1,15 +1,26 @@
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_colors.dart';
 import 'package:new_ezagro_flutter/consts/app_text_styles.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/appbar/custom_appbar_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/background/background_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/buttons/custom_elevated_button.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/buttons/custom_outlined_button.dart';
-
+import '../../../../consts/app_routes.dart';
 import '../../../../consts/app_strings.dart';
+import '../../../domain/params/arg_params/arg_params.dart';
 
 class HomePage extends StatelessWidget {
+
+  final ArgParams? args;
+  static const String routePath = AppRoutes.appHomePage;
+
+  static navigate() => Modular.to.navigate(routePath);
+
+  static push() => Modular.to.pushNamed(routePath);
+
+  const HomePage({super.key, this.args});
 
   @override
   Widget build(BuildContext context) {

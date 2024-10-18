@@ -6,7 +6,7 @@ enum FirstAccessEnum {
   passwordChange,
 }
 
-firstAccessEnum(String firstAccessVerification) {
+firstAccessEnum(String? firstAccessVerification) {
   switch (firstAccessVerification) {
     case 'PENDING':
       return FirstAccessEnum.pending;

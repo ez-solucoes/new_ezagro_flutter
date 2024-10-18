@@ -1,25 +1,25 @@
-// [ MAQUINARIO, IMPLEMENTO ]
+// [ MACHINE, IMPLEMENT ]
 
 enum MachineImplementTypeEnum {
-  maquinario,
-  implemento,
+  machine,
+  implement,
 }
 
 machineImplementTypeEnum(String machineImplementType) {
   switch (machineImplementType) {
-    case 'MAQUINARIO':
-      return MachineImplementTypeEnum.maquinario;
-    case 'IMPLEMENTO':
-      return MachineImplementTypeEnum.implemento;
+    case 'MACHINE':
+      return MachineImplementTypeEnum.machine;
+    case 'IMPLEMENT':
+      return MachineImplementTypeEnum.implement;
   }
 }
 
 machineImplementTypeString(type) {
   switch (type) {
-    case MachineImplementTypeEnum.maquinario:
-      return 'MAQUINARIO';
-    case MachineImplementTypeEnum.implemento:
-      return 'IMPLEMENTO';
+    case MachineImplementTypeEnum.machine:
+      return 'MACHINE';
+    case MachineImplementTypeEnum.implement:
+      return 'IMPLEMENT';
     default:
       return '';
   }

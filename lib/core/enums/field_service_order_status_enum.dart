@@ -1,45 +1,45 @@
-//[ A_INICIAR, EM_ANDAMENTO, SUSPENSA, FINALIZADA, PENDENTE_APROVACAO, CANCELADA ]
+//[ TO_START, IN_PROGRESS, SUSPENDED, COMPLETED, PENDING_APPROVAL, CANCELLED ]
 
 enum FieldServiceOrderStatusEnum {
-  aIniciar,
-  emAndamento,
-  suspensa,
-  finalizada,
-  pendenteAprovacao,
-  cancelada,
+  toStart,
+  inProgress,
+  suspended,
+  completed,
+  pendingApproval,
+  cancelled,
 }
 
-fieldServiceOrderStatusEnum(String fieldServiceOrderStatus) {
-  switch (fieldServiceOrderStatus) {
-    case 'A_INICIAR':
-      return FieldServiceOrderStatusEnum.aIniciar;
-    case 'EM_ANDAMENTO':
-      return FieldServiceOrderStatusEnum.emAndamento;
-    case 'SUSPENSA':
-      return FieldServiceOrderStatusEnum.suspensa;
-    case 'FINALIZADA':
-      return FieldServiceOrderStatusEnum.finalizada;
-    case 'PENDENTE_APROVACAO':
-      return FieldServiceOrderStatusEnum.pendenteAprovacao;
-    case 'CANCELADA':
-      return FieldServiceOrderStatusEnum.cancelada;
+fieldServiceOrderStatusEnum(String type) {
+  switch (type) {
+    case 'TO_START':
+      return FieldServiceOrderStatusEnum.toStart;
+    case 'IN_PROGRESS':
+      return FieldServiceOrderStatusEnum.inProgress;
+    case 'SUSPENDED':
+      return FieldServiceOrderStatusEnum.suspended;
+    case 'COMPLETED':
+      return FieldServiceOrderStatusEnum.completed;
+    case 'PENDING_APPROVAL':
+      return FieldServiceOrderStatusEnum.pendingApproval;
+    case 'CANCELLED':
+      return FieldServiceOrderStatusEnum.cancelled;
   }
 }
 
 fieldServiceOrderStatusString(type) {
   switch (type) {
-    case FieldServiceOrderStatusEnum.aIniciar:
-      return 'A_INICIAR';
-    case FieldServiceOrderStatusEnum.emAndamento:
-      return 'EM_ANDAMENTO';
-    case FieldServiceOrderStatusEnum.suspensa:
-      return 'SUSPENSA';
-    case FieldServiceOrderStatusEnum.finalizada:
-      return 'FINALIZADA';
-    case FieldServiceOrderStatusEnum.pendenteAprovacao:
-      return 'PENDENTE_APROVACAO';
-    case FieldServiceOrderStatusEnum.cancelada:
-      return 'CANCELADA';
+    case FieldServiceOrderStatusEnum.toStart:
+      return 'TO_START';
+    case FieldServiceOrderStatusEnum.inProgress:
+      return 'IN_PROGRESS';
+    case FieldServiceOrderStatusEnum.suspended:
+      return 'SUSPENDED';
+    case FieldServiceOrderStatusEnum.completed:
+      return 'COMPLETED';
+    case FieldServiceOrderStatusEnum.pendingApproval:
+      return 'PENDING_APPROVAL';
+    case FieldServiceOrderStatusEnum.cancelled:
+      return 'CANCELLED';
     default:
       return '';
   }

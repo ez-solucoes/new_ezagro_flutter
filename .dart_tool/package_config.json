@@ -69,7 +69,7 @@
     },
     {
       "name": "build_runner",
-      "rootUri": "file:///Users/lenincanuto/.pub-cache/hosted/pub.dev/build_runner-2.4.12",
+      "rootUri": "file:///Users/lenincanuto/.pub-cache/hosted/pub.dev/build_runner-2.4.13",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
@@ -752,7 +752,7 @@
       "languageVersion": "3.3"
     }
   ],
-  "generated": "2024-10-18T15:20:02.863555Z",
+  "generated": "2024-10-18T15:52:28.192176Z",
   "generator": "pub",
   "generatorVersion": "3.5.3",
   "flutterRoot": "file:///Users/lenincanuto/src/flutter",

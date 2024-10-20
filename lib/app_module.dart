@@ -103,9 +103,9 @@ class AppModule extends Module {
     //Core Binds
     i.addLazySingleton<LocalStorageClient>(
         LocalStorageClientSharedPrefsImpl.new,
-        key: AppStrings.storageTypeLocal);
+        key: AppStringsPortuguese.storageTypeLocal);
     i.addLazySingleton<LocalStorageClient>(LocalStorageClientSecureImpl.new,
-        key: AppStrings.storageTypeSecure);
+        key: AppStringsPortuguese.storageTypeSecure);
     i.addLazySingleton<LogInterceptor>(LogInterceptor.new);
     i.addSingleton<HttpClient>(HttpClientDioImp.new);
 

@@ -7,7 +7,7 @@ class GenericError extends ApplicationError {
     super.fingerprint,
     super.additionalInfo,
   }) : super(
-          friendlyMessage: AppStrings.genericErrorMessage,
+          friendlyMessage: AppStringsPortuguese.genericErrorMessage,
         );
 
   @override

@@ -13,17 +13,17 @@ extension ServiceOrderTypeEnumExtension on ServiceOrderTypeEnum {
   static enumServiceOrderTypeToString(type) {
     switch (type) {
       case ServiceOrderTypeEnum.toBeStarted:
-        return AppStrings.toBeStartedSOEnum;
+        return AppStringsPortuguese.toBeStartedSOEnum;
       case ServiceOrderTypeEnum.onGoing:
-        return AppStrings.onGoingSOEnum;
+        return AppStringsPortuguese.onGoingSOEnum;
       case ServiceOrderTypeEnum.paused:
-        return AppStrings.pausedSOEnum;
+        return AppStringsPortuguese.pausedSOEnum;
       case ServiceOrderTypeEnum.finished:
-        return AppStrings.finishedOSEnum;
+        return AppStringsPortuguese.finishedOSEnum;
       case ServiceOrderTypeEnum.approvalPending:
-        return AppStrings.approvalPendingOSWithLineBreakEnum;
+        return AppStringsPortuguese.approvalPendingOSWithLineBreakEnum;
       case ServiceOrderTypeEnum.canceled:
-        return AppStrings.canceledOSEnum;
+        return AppStringsPortuguese.canceledOSEnum;
       default:
         return '';
     }
@@ -31,18 +31,18 @@ extension ServiceOrderTypeEnumExtension on ServiceOrderTypeEnum {
 
   static getEnumServiceOrderTypeFromString(type) {
     switch (type) {
-      case AppStrings.toBeStartedSOKey || AppStrings.toBeStartedSOEnum:
+      case AppStringsPortuguese.toBeStartedSOKey || AppStringsPortuguese.toBeStartedSOEnum:
         return ServiceOrderTypeEnum.toBeStarted;
-      case AppStrings.onGoingSOKey || AppStrings.onGoingSOEnum:
+      case AppStringsPortuguese.onGoingSOKey || AppStringsPortuguese.onGoingSOEnum:
         return ServiceOrderTypeEnum.onGoing;
-      case AppStrings.pausedSOKey || AppStrings.pausedSOEnum:
+      case AppStringsPortuguese.pausedSOKey || AppStringsPortuguese.pausedSOEnum:
         return ServiceOrderTypeEnum.paused;
-      case AppStrings.finishedOSKey || AppStrings.finishedOSEnum:
+      case AppStringsPortuguese.finishedOSKey || AppStringsPortuguese.finishedOSEnum:
         return ServiceOrderTypeEnum.finished;
-      case AppStrings.approvalPendingOSKey ||
-            AppStrings.approvalPendingOSWithLineBreakEnum:
+      case AppStringsPortuguese.approvalPendingOSKey ||
+            AppStringsPortuguese.approvalPendingOSWithLineBreakEnum:
         return ServiceOrderTypeEnum.approvalPending;
-      case AppStrings.canceledOSKey || AppStrings.canceledOSEnum:
+      case AppStringsPortuguese.canceledOSKey || AppStringsPortuguese.canceledOSEnum:
         return ServiceOrderTypeEnum.canceled;
       default:
         return ServiceOrderTypeEnum.toBeStarted;

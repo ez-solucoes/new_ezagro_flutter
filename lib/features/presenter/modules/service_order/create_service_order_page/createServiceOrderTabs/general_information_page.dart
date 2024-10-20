@@ -27,8 +27,8 @@ class GeneralInformationPage extends StatelessWidget {
             items: controller.activityOptions
                 .map((activity) => activity.activityName)
                 .toList(),
-            title: AppStrings.activitySelectorTitle,
-            selectorHint: AppStrings.activitySelectorHint,
+            title: AppStringsPortuguese.activitySelectorTitle,
+            selectorHint: AppStringsPortuguese.activitySelectorHint,
             selectedValue: controller.activity?.activityName),
       ),
       const SizedBox(
@@ -46,8 +46,8 @@ class GeneralInformationPage extends StatelessWidget {
             items: controller.costCenterOptions
                 .map((costCenter) => costCenter.name ?? "")
                 .toList(),
-            title: AppStrings.costCenterSelectorTitle,
-            selectorHint: AppStrings.costCenterSelectorHint),
+            title: AppStringsPortuguese.costCenterSelectorTitle,
+            selectorHint: AppStringsPortuguese.costCenterSelectorHint),
       ),
       const SizedBox(
         height: 5,
@@ -58,8 +58,8 @@ class GeneralInformationPage extends StatelessWidget {
               controller.farmId = value;
             },
             items: const ["Fazenda 01", "Fazenda 02"],
-            title: AppStrings.farmSelectorTitle,
-            selectorHint: AppStrings.farmSelectorHint),
+            title: AppStringsPortuguese.farmSelectorTitle,
+            selectorHint: AppStringsPortuguese.farmSelectorHint),
       ),
       const SizedBox(
         height: 5,
@@ -69,8 +69,8 @@ class GeneralInformationPage extends StatelessWidget {
             controller.harvest = {"harvest": value};
           },
           items: const ["Safra 01", "Safra 02"],
-          title: AppStrings.harvestSelectorTitle,
-          selectorHint: AppStrings.harvestSelectorHint)
+          title: AppStringsPortuguese.harvestSelectorTitle,
+          selectorHint: AppStringsPortuguese.harvestSelectorHint)
     ]);
   }
 }

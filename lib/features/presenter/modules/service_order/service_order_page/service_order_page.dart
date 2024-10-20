@@ -32,7 +32,7 @@ class ServiceOrderPage extends StatelessWidget {
       scrollable: true,
       appBar: const CustomAppBarWidget(
         appBarType: AppBarType.hamburgerAndTitle,
-        title: AppStrings.serviceOrderTitle,
+        title: AppStringsPortuguese.serviceOrderTitle,
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -195,7 +195,7 @@ class ServiceOrderPage extends StatelessWidget {
               const SizedBox(
                 width: 6,
               ),
-              Text(AppStrings.finishedServiceOrder,
+              Text(AppStringsPortuguese.finishedServiceOrder,
                   style: AppTextStyles.boldMediumTextStyle(
                       color: AppColors.blackColor))
             ],
@@ -206,29 +206,29 @@ class ServiceOrderPage extends StatelessWidget {
   Widget _getAvailableButtons() {
     return isFinished
         ? CustomElevatedButton(
-            onPressed: () {}, label: AppStrings.resumeOSButton)
+            onPressed: () {}, label: AppStringsPortuguese.resumeOSButton)
         : Column(
             children: [
               CustomOutlinedButton(
                 onPressed: () {},
-                label: AppStrings.saveOSButton,
+                label: AppStringsPortuguese.saveOSButton,
                 textStyle: AppTextStyles.labelTextButtonStyle(
                     color: AppColors.blackColor),
               ),
               CustomElevatedButton(
                   onPressed: () {},
-                  label: AppStrings.suspendOSButton,
+                  label: AppStringsPortuguese.suspendOSButton,
                   backgroundColor: AppColors.darkGreyColor),
               CustomElevatedButton(
                 onPressed: () {},
-                label: AppStrings.cancelOSButton,
+                label: AppStringsPortuguese.cancelOSButton,
                 backgroundColor: AppColors.redCanceledColor,
               ),
               const SizedBox(
                 height: 15,
               ),
               CustomElevatedButton(
-                  onPressed: () {}, label: AppStrings.finishedOSButton)
+                  onPressed: () {}, label: AppStringsPortuguese.finishedOSButton)
             ],
           );
   }

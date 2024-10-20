@@ -38,7 +38,7 @@ class RegisterFourthStepPage extends StatelessWidget {
           children: [
             const SizedBox(height: 72),
             Text(
-              AppStrings.retypeYourPassword,
+              AppStringsPortuguese.retypeYourPassword,
               style: AppTextStyles.titleTextStyle(color: AppColors.blackColor),
             ),
             const SizedBox(height: 67),
@@ -51,7 +51,7 @@ class RegisterFourthStepPage extends StatelessWidget {
             Center(
               child: CustomElevatedButton(
                 onPressed: () {},
-                label: AppStrings.forwardString,
+                label: AppStringsPortuguese.forwardString,
               ),
             ),
           ],

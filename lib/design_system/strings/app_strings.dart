@@ -1,5 +1,5 @@
-class AppStrings {
-  AppStrings._();
+class AppStringsPortuguese {
+  AppStringsPortuguese._();
 
   static const String appTitle = 'Ez Agro';
 

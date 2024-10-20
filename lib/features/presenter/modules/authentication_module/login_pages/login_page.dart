@@ -44,7 +44,7 @@ class LoginPage extends StatelessWidget {
               builder: (context) => CustomOutlinedTextFormField(
                 controller: usernameController,
                 inputFormatters: [TextInputFormatterMask(mask: 'CPF')],
-                label: AppStrings.cpfString,
+                label: AppStringsPortuguese.cpfString,
                 inputType: TextInputType.number,
                 passwordField: false,
               ),
@@ -52,7 +52,7 @@ class LoginPage extends StatelessWidget {
             const SizedBox(height: 27),
             CustomOutlinedTextFormField(
               controller: passwordController,
-              label: AppStrings.passwordString,
+              label: AppStringsPortuguese.passwordString,
               passwordField: true,
             ),
             const SizedBox(height: 37),
@@ -64,7 +64,7 @@ class LoginPage extends StatelessWidget {
 
                   controller.authenticate();
                 },
-                label: AppStrings.enterString,
+                label: AppStringsPortuguese.enterString,
                 isLoading: controller.isLoading,
               ),
             ),
@@ -73,7 +73,7 @@ class LoginPage extends StatelessWidget {
                 onTap: () {
                   UsernameInputPage.navigate();
                 },
-                label: AppStrings.forgotPasswordString),
+                label: AppStringsPortuguese.forgotPasswordString),
           ],
         ),
       ),

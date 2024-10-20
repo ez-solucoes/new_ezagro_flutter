@@ -32,7 +32,7 @@ class AuthInterceptor extends Interceptor {
       final sharedPreferencesInstance =
           Modular.tryGet<LocalStorageClientSecureImpl>();
       final authenticated =
-          await sharedPreferencesInstance?.readData(AppStrings.tokenKey);
+          await sharedPreferencesInstance?.readData(AppStringsPortuguese.tokenKey);
       if (authenticated != null && authenticated != '') {
         options.headers
             .putIfAbsent('Authorization', () => 'Bearer $authenticated');
@@ -42,8 +42,8 @@ class AuthInterceptor extends Interceptor {
           requestOptions: options,
           type: DioExceptionType.unknown,
           error: AuthenticationError(
-            friendlyMessage: AppStrings.reautenticationNeededErrorMessage,
-            causedBy: AppStrings.unauthenticatedUserErrorCausedBy,
+            friendlyMessage: AppStringsPortuguese.reautenticationNeededErrorMessage,
+            causedBy: AppStringsPortuguese.unauthenticatedUserErrorCausedBy,
             fingerprint: 'AuthInterceptor.onRequest',
             additionalInfo:
                 'Trying to call [${options.method}] ${options.path}',

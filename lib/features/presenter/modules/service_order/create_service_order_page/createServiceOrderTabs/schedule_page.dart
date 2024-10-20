@@ -15,13 +15,13 @@ class SchedulePage extends StatelessWidget {
     return Column(
       children: [
         CustomDatePickerWidget(
-          title: AppStrings.expectedStartDate,
+          title: AppStringsPortuguese.expectedStartDate,
           getSelectedDate: (date) {
             controller.startDate = date;
           },
         ),
         CustomDatePickerWidget(
-            title: AppStrings.expectedFinishingDate,
+            title: AppStringsPortuguese.expectedFinishingDate,
             getSelectedDate: (date) {
               controller.endDate = date;
             }),
@@ -35,8 +35,8 @@ class SchedulePage extends StatelessWidget {
               "Responsável 03",
               "Responsável 04",
             ],
-            title: AppStrings.responsiveSelectorTitle,
-            selectorHint: AppStrings.responsibleSelectorHint)
+            title: AppStringsPortuguese.responsiveSelectorTitle,
+            selectorHint: AppStringsPortuguese.responsibleSelectorHint)
       ],
     );
   }

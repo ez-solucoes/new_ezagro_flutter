@@ -38,7 +38,7 @@ class RegisterSecondStepPage extends StatelessWidget {
           children: [
             const SizedBox(height: 72),
             const Text(
-              AppStrings.weSentTheConfirmationCodeToYourPhone,
+              AppStringsPortuguese.weSentTheConfirmationCodeToYourPhone,
               style: TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: 14,
@@ -46,7 +46,7 @@ class RegisterSecondStepPage extends StatelessWidget {
             ),
             const SizedBox(height: 18),
             Text(
-              AppStrings.typeTheNumberBellow,
+              AppStringsPortuguese.typeTheNumberBellow,
               textAlign: TextAlign.start,
               style:
                   AppTextStyles.subTitleTextStyle(color: AppColors.blackColor),
@@ -61,7 +61,7 @@ class RegisterSecondStepPage extends StatelessWidget {
             Center(
               child: CustomElevatedButton(
                 onPressed: () {},
-                label: AppStrings.forwardString,
+                label: AppStringsPortuguese.forwardString,
               ),
             ),
           ],

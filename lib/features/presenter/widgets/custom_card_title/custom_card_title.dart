@@ -54,13 +54,13 @@ class CustomCardTitleWidget extends StatelessWidget {
                 const SizedBox(height: 15),
                 Text(farm,
                     style: AppTextStyles.cardBodyTextStyle(color: textColor)),
-                Text(AppStrings.costCenterCardField + costCenter,
+                Text(AppStringsPortuguese.costCenterCardField + costCenter,
                     style: AppTextStyles.cardBodyTextStyle(color: textColor)),
-                Text(AppStrings.openingDateCardField + openingDate,
+                Text(AppStringsPortuguese.openingDateCardField + openingDate,
                     style: AppTextStyles.cardBodyTextStyle(color: textColor)),
                 closingDate.isEmpty
                     ? const SizedBox()
-                    : Text(AppStrings.closingDateCardField + closingDate,
+                    : Text(AppStringsPortuguese.closingDateCardField + closingDate,
                         style:
                             AppTextStyles.cardBodyTextStyle(color: textColor))
               ],

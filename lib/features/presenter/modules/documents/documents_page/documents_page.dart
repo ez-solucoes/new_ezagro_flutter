@@ -25,7 +25,7 @@ class DocumentsPage extends StatelessWidget {
     return BackgroundWidget(
       appBar: CustomAppBarWidget(
         appBarType: AppBarType.titleAndBackArrow,
-        title: AppStrings.privacyPolicy,
+        title: AppStringsPortuguese.privacyPolicy,
         callback: () {},
       ),
       scrollable: false,
@@ -40,7 +40,7 @@ class DocumentsPage extends StatelessWidget {
               border: Border.all(color: AppColors.softGreyColor)),
           child: const SingleChildScrollView(
             child: Text(
-                '${AppStrings.loremIpsum} ${AppStrings.loremIpsum} ${AppStrings.loremIpsum} ${AppStrings.loremIpsum} ${AppStrings.loremIpsum} ${AppStrings.loremIpsum}'),
+                '${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum}'),
           ),
         ),
       ),

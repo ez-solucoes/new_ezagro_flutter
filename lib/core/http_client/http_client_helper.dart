@@ -9,7 +9,7 @@ ServerError mountServerErrorInstance({
   String? friendlyMessage,
 }) {
   final causedBy = StringBuffer()
-    ..write(AppStrings.serverErrorCausedBy)
+    ..write(AppStringsPortuguese.serverErrorCausedBy)
     ..write(request.method.name)
     ..write(' on ${request.path}')
     ..write(' with status code ${response.statusCode}');
@@ -25,7 +25,7 @@ ServerError mountServerErrorInstance({
 
 String _replaceServerErrorMessage(String serverErrorMessage) {
   if (serverErrorMessage.toLowerCase().contains("unauthorized")) {
-    return AppStrings.reautenticationNeededErrorMessage;
+    return AppStringsPortuguese.reautenticationNeededErrorMessage;
   }
   return serverErrorMessage;
 }

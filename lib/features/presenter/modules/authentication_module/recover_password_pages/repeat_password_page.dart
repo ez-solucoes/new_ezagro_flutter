@@ -36,9 +36,9 @@ class RepeatPasswordPage extends StatelessWidget {
           padding: const EdgeInsets.all(19),
           child: PasswordFormWidget(
             isLoading: controller.isLoading,
-            title: AppStrings.repeatYourNewPasswordString,
+            title: AppStringsPortuguese.repeatYourNewPasswordString,
             controller: textController,
-            buttonText: AppStrings.forwardString,
+            buttonText: AppStringsPortuguese.forwardString,
             onButtonPressed: () {
               controller.retypePassword = textController.text;
               if (controller.comparePasswords(

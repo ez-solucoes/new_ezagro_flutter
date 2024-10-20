@@ -26,7 +26,7 @@ class RegisterThirdStepPage extends StatelessWidget {
           children: [
             const SizedBox(height: 72),
             Text(
-              AppStrings.nowTypeNewPassword,
+              AppStringsPortuguese.nowTypeNewPassword,
               style: AppTextStyles.titleTextStyle(color: AppColors.blackColor),
             ),
             const SizedBox(height: 67),
@@ -39,7 +39,7 @@ class RegisterThirdStepPage extends StatelessWidget {
             Center(
               child: CustomElevatedButton(
                 onPressed: () {},
-                label: AppStrings.forwardString,
+                label: AppStringsPortuguese.forwardString,
               ),
             ),
           ],

@@ -36,27 +36,27 @@ class LoginPage extends StatelessWidget {
           const SizedBox(height: 72),
           CustomOutlinedTextFormField(
             controller: _controller,
-            label: AppStrings.cpfString,
+            label: AppStringsPortuguese.cpfString,
             passwordField: false,
           ),
           const SizedBox(height: 27),
           CustomOutlinedTextFormField(
             controller: _controller,
-            label: AppStrings.passwordString,
+            label: AppStringsPortuguese.passwordString,
             passwordField: true,
           ),
           const SizedBox(height: 37),
           CustomElevatedButton(
             onPressed: () {},
-            label: AppStrings.enterString,
+            label: AppStringsPortuguese.enterString,
           ),
           const SizedBox(height: 37),
           CustomUnderlinedTextButton(
-              onTap: () {}, label: AppStrings.forgotPasswordString),
+              onTap: () {}, label: AppStringsPortuguese.forgotPasswordString),
           const SizedBox(height: 184),
           Center(
               child: CustomUnderlinedTextButton(
-                  onTap: () {}, label: AppStrings.firstAccessString)),
+                  onTap: () {}, label: AppStringsPortuguese.firstAccessString)),
         ]),
       ),
     );

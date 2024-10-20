@@ -25,8 +25,8 @@ class ExecutorsPage extends StatelessWidget {
                     items: controller.executorsOptions
                         .map((executors) => executors.employeeName ?? "")
                         .toList(),
-                    title: AppStrings.executorSelectorTitle,
-                    selectorHint: AppStrings.executorSelectorHint),
+                    title: AppStringsPortuguese.executorSelectorTitle,
+                    selectorHint: AppStringsPortuguese.executorSelectorHint),
                 const SizedBox(height: 6),
                 const Divider(
                   height: 1,
@@ -40,11 +40,11 @@ class ExecutorsPage extends StatelessWidget {
                     return CustomInfoCardWidget(
                       index: index,
                       infoCardType: InfoCardType.threeLabeledInfoWithIcon,
-                      labelOne: AppStrings.nameField,
+                      labelOne: AppStringsPortuguese.nameField,
                       textOne: controller.selectedExecutors[index],
-                      labelTwo: AppStrings.idField,
+                      labelTwo: AppStringsPortuguese.idField,
                       textTwo: "00.000.000-00",
-                      labelThree: AppStrings.shiftField,
+                      labelThree: AppStringsPortuguese.shiftField,
                       textThree: "Matutino",
                       icon: Icons.delete_outline,
                       onIconTap: (index) {

@@ -37,7 +37,7 @@ class RecoverPasswordSuccessPage extends StatelessWidget {
             children: [
               SizedBox(height: 72),
               Text(
-                AppStrings.recoverPasswordSuccessString,
+                AppStringsPortuguese.recoverPasswordSuccessString,
                 style:
                     AppTextStyles.titleTextStyle(color: AppColors.blackColor),
               ),
@@ -52,7 +52,7 @@ class RecoverPasswordSuccessPage extends StatelessWidget {
                         onTap: () {
                           LoginPage.navigate();
                         },
-                        label: AppStrings.backToLoginString),
+                        label: AppStringsPortuguese.backToLoginString),
                     const SizedBox(height: 60),
                   ],
                 ),

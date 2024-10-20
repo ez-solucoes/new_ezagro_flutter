@@ -66,7 +66,7 @@ class CustomAppBarWidget extends StatelessWidget
                 children: [
                   const Icon(Icons.arrow_back_ios, size: 19),
                   Text(
-                    AppStrings.backString,
+                    AppStringsPortuguese.backString,
                     style: AppTextStyles.labelTextButtonStyle(
                         color: AppColors.blackColor),
                   ),
@@ -94,7 +94,7 @@ class CustomAppBarWidget extends StatelessWidget
                 children: [
                   const Icon(Icons.arrow_back_ios, size: 19),
                   Text(
-                    AppStrings.backString,
+                    AppStringsPortuguese.backString,
                     style: AppTextStyles.labelTextButtonStyle(
                         color: AppColors.blackColor),
                   ),
@@ -120,7 +120,7 @@ class CustomAppBarWidget extends StatelessWidget
                     children: [
                       const Icon(Icons.arrow_back_ios, size: 19),
                       Text(
-                        AppStrings.backString,
+                        AppStringsPortuguese.backString,
                         style: AppTextStyles.labelTextButtonStyle(
                             color: AppColors.blackColor),
                       ),

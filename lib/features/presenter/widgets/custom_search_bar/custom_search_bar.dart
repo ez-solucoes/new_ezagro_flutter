@@ -29,7 +29,7 @@ class CustomSearchBar extends StatelessWidget {
               },
               style: const TextStyle(color: Colors.black),
               decoration: InputDecoration(
-                hintText: AppStrings.searchBarHint,
+                hintText: AppStringsPortuguese.searchBarHint,
                 hintStyle: TextStyle(color: Colors.grey.shade400),
                 border: InputBorder.none,
               ),

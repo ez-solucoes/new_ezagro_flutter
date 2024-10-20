@@ -39,9 +39,9 @@ class UsernameInputPage extends StatelessWidget {
             isLoading: controller.isLoading,
             inputType: TextInputType.number,
             inputFormatters: [TextInputFormatterMask(mask: 'CPF')],
-            title: AppStrings.forgotPasswordCpf,
+            title: AppStringsPortuguese.forgotPasswordCpf,
             controller: textController,
-            buttonText: AppStrings.forwardString,
+            buttonText: AppStringsPortuguese.forwardString,
             passwordField: false,
             onButtonPressed: () {
               controller.username = textController.text;

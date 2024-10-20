@@ -8,7 +8,7 @@ class ServerError extends ApplicationError {
     super.additionalInfo,
     String? friendlyMessage,
   }) : super(
-          friendlyMessage: friendlyMessage ?? AppStrings.serverErrorMessage,
+          friendlyMessage: friendlyMessage ?? AppStringsPortuguese.serverErrorMessage,
         );
 
   @override

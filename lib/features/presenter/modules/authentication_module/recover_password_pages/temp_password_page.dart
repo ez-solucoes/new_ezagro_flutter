@@ -35,9 +35,9 @@ class TempPasswordPage extends StatelessWidget {
           padding: const EdgeInsets.all(19),
           child: PasswordFormWidget(
             isLoading: controller.isLoading,
-            title: AppStrings.tempPassword,
+            title: AppStringsPortuguese.tempPassword,
             controller: textController,
-            buttonText: AppStrings.forwardString,
+            buttonText: AppStringsPortuguese.forwardString,
             onButtonPressed: () {
               controller.temporaryPassword = textController.text;
               NewPasswordPage.navigate();

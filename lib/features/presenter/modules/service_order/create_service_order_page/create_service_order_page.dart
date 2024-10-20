@@ -28,7 +28,7 @@ class CreateServiceOrderPage extends StatelessWidget {
         scrollable: false,
         appBar: const CustomAppBarWidget(
           appBarType: AppBarType.hamburgerAndTitle,
-          title: AppStrings.serviceOrderTitle,
+          title: AppStringsPortuguese.serviceOrderTitle,
         ),
         child: DefaultTabController(
             length: 7,
@@ -59,7 +59,7 @@ class CreateServiceOrderPage extends StatelessWidget {
                                         DefaultTabController.of(context)
                                             .animateTo(controller.page);
                                       },
-                                      label: AppStrings.previousButton,
+                                      label: AppStringsPortuguese.previousButton,
                                       textStyle:
                                           AppTextStyles.labelTextButtonStyle(
                                               color: AppColors.blackColor),
@@ -69,14 +69,14 @@ class CreateServiceOrderPage extends StatelessWidget {
                                       onPressed: () {
                                         controller.finishOSCreation;
                                       },
-                                      label: AppStrings.finishedOSButton)
+                                      label: AppStringsPortuguese.finishedOSButton)
                                   : CustomElevatedButton(
                                       onPressed: () {
                                         controller.incrementPage();
                                         DefaultTabController.of(context)
                                             .animateTo(controller.page);
                                       },
-                                      label: AppStrings.nextButton)
+                                      label: AppStringsPortuguese.nextButton)
                             ],
                           ))
                 ]))));

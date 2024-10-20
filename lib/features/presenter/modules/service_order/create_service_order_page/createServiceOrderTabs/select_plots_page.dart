@@ -23,7 +23,7 @@ class SelectPlotsPage extends StatelessWidget {
                   onPressed: () {
                     controller.toggleSelectAll();
                   },
-                  label: AppStrings.selectAllButton,
+                  label: AppStringsPortuguese.selectAllButton,
                   textStyle: AppTextStyles.smallBoldTextOnCardStyle(
                       color: AppColors.blackColor)),
               const SizedBox(
@@ -38,9 +38,9 @@ class SelectPlotsPage extends StatelessWidget {
                       child: Column(children: [
                         CustomCheckableListItemWidget(
                             isHeader: true,
-                            firstColumn: AppStrings.plotColumn,
-                            secondColumn: AppStrings.areaColumn,
-                            thirdColumn: AppStrings.cropColumn,
+                            firstColumn: AppStringsPortuguese.plotColumn,
+                            secondColumn: AppStringsPortuguese.areaColumn,
+                            thirdColumn: AppStringsPortuguese.cropColumn,
                             index: 0,
                             onCheckBoxTap: (index) {}),
                         Expanded(

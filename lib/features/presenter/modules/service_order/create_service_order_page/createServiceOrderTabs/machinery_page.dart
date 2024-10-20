@@ -22,8 +22,8 @@ class MachineryPage extends StatelessWidget {
                       controller.selectedMachinery.add(value);
                     },
                     items: const ["máquina 1", "máquina 2", "máquina 3"],
-                    title: AppStrings.machinerySelectorTitle,
-                    selectorHint: AppStrings.machinerySelectorHint),
+                    title: AppStringsPortuguese.machinerySelectorTitle,
+                    selectorHint: AppStringsPortuguese.machinerySelectorHint),
                 const SizedBox(height: 6),
                 const Divider(
                   height: 1,
@@ -37,13 +37,13 @@ class MachineryPage extends StatelessWidget {
                     return Observer(
                         builder: (context) => CustomCardLogoWidget(
                               index: index,
-                              labelOne: AppStrings.machineryField,
+                              labelOne: AppStringsPortuguese.machineryField,
                               textOne: controller.selectedMachinery[index],
-                              labelTwo: AppStrings.machineryAliasField,
+                              labelTwo: AppStringsPortuguese.machineryAliasField,
                               textTwo: controller.selectedMachinery[index],
-                              labelThree: AppStrings.hourMeterField,
+                              labelThree: AppStringsPortuguese.hourMeterField,
                               textThree: "Horímetro",
-                              labelFour: AppStrings.kiloMeterField,
+                              labelFour: AppStringsPortuguese.kiloMeterField,
                               textFour: "Quilometragem",
                               icon: Icons.delete_outline,
                               logo: Icons.agriculture_sharp,

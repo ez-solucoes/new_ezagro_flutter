@@ -36,9 +36,9 @@ class NewPasswordPage extends StatelessWidget {
           padding: const EdgeInsets.all(19),
           child: PasswordFormWidget(
             isLoading: controller.isLoading,
-            title: AppStrings.createNewPasswordString,
+            title: AppStringsPortuguese.createNewPasswordString,
             controller: textController,
-            buttonText: AppStrings.forwardString,
+            buttonText: AppStringsPortuguese.forwardString,
             onButtonPressed: () {
               controller.password = textController.text;
               RepeatPasswordPage.navigate();

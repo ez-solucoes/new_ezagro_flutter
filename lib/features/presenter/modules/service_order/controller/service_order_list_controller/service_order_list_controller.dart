@@ -48,12 +48,12 @@ abstract class ServiceOrderListControllerAbstract with Store {
 
   Future<void> _writeToken() async {
     final storage = Modular.get<LocalStorageClientSecureImpl>();
-    String? token = await storage.readData(AppStrings.tokenKey);
+    String? token = await storage.readData(AppStringsPortuguese.tokenKey);
     if (token != null) {
-      await storage.deleteData(AppStrings.tokenKey);
+      await storage.deleteData(AppStringsPortuguese.tokenKey);
     }
     await storage.writeData(LocalStorageItem(
-        key: AppStrings.tokenKey,
+        key: AppStringsPortuguese.tokenKey,
         value:
             'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTExMTExMTExMSIsImV4cCI6MTcyNzE4MzQwMiwiaWF0IjoxNzI3MDk3MDAyfQ.cY7cWJbH2UGeR8Oni-bW-IbBztdQCcLp4swVFGyn4PnUqWffe26yBhiD6YVMrBIUVp_TD05RRrdM-kjIC7TSNg'));
   }

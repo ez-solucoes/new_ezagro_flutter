@@ -51,7 +51,7 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
                         enabledBorder: OutlineInputBorder(
                             borderSide:
                                 BorderSide(color: AppColors.contourWhiteColor)),
-                        labelText: AppStrings.dateLabel,
+                        labelText: AppStringsPortuguese.dateLabel,
                         suffixIcon: Icon(Icons.calendar_today_outlined),
                         labelStyle: TextStyle(color: AppColors.greyColor)),
                   ))),

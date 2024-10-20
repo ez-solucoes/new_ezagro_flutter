@@ -8,7 +8,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: AppStrings.appTitle,
+      title: AppStringsPortuguese.appTitle,
       debugShowCheckedModeBanner: false,
       routerConfig: Modular.routerConfig,
     );

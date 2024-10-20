@@ -36,7 +36,7 @@ class ServiceOrderListPage extends StatelessWidget {
           resizeToAvoidBottomInset: false,
           appBar: const CustomAppBarWidget(
             appBarType: AppBarType.hamburgerAndTitle,
-            title: AppStrings.serviceOrderTitle,
+            title: AppStringsPortuguese.serviceOrderTitle,
           ),
           body: Stack(
             alignment: AlignmentDirectional.bottomCenter,

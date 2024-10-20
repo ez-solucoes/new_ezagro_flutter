@@ -22,12 +22,12 @@ class FinalInformationPage extends StatelessWidget {
               "C. de custo 02",
               "C. de custo 03"
             ],
-            titleOne: AppStrings.finalCostCenterSelector,
-            selectorHintOne: AppStrings.finalCostCenterSelectorHint,
+            titleOne: AppStringsPortuguese.finalCostCenterSelector,
+            selectorHintOne: AppStringsPortuguese.finalCostCenterSelectorHint,
             onSelectSecond: (value) {},
             itemsTwo: const ["Estoque 01", "Estoque 02"],
-            titleTwo: AppStrings.finalStorageSelector,
-            selectorHintTwo: AppStrings.finalStorageSelectorHint),
+            titleTwo: AppStringsPortuguese.finalStorageSelector,
+            selectorHintTwo: AppStringsPortuguese.finalStorageSelectorHint),
         const SizedBox(height: 12),
         const Divider(
           height: 1,
@@ -35,14 +35,14 @@ class FinalInformationPage extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         CustomTextInputWidget(
-          title: AppStrings.jobValueTextFieldTitle,
+          title: AppStringsPortuguese.jobValueTextFieldTitle,
           getText: (answer) {
             controller.activityValue = double.parse(answer);
           },
         ),
         const SizedBox(height: 6),
         CustomTextInputWidget(
-          title: AppStrings.notesTextFieldTitle,
+          title: AppStringsPortuguese.notesTextFieldTitle,
           getText: (answer) {
             controller.notes = answer;
           },

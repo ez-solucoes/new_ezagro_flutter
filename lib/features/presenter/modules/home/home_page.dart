@@ -25,10 +25,10 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: [
               CustomElevatedButton(
-                  onPressed: () {}, label: AppStrings.pluralServicesOrder),
+                  onPressed: () {}, label: AppStringsPortuguese.pluralServicesOrder),
               CustomOutlinedButton(
                   onPressed: () {},
-                  label: AppStrings.createServiceOrder,
+                  label: AppStringsPortuguese.createServiceOrder,
                   textStyle: AppTextStyles.boldMediumTextStyle(
                       color: AppColors.blackColor))
             ],

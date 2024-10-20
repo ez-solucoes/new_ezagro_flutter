@@ -26,7 +26,7 @@ class CustomDrawerWidget extends StatelessWidget {
                     : Padding(
                         padding: EdgeInsets.all(10),
                         child: Text(
-                          AppStrings.pluralServicesOrder,
+                          AppStringsPortuguese.pluralServicesOrder,
                           style: AppTextStyles.boldMediumTextStyle(
                               color: AppColors.whiteColor),
                         ));

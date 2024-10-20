@@ -91,13 +91,13 @@ abstract class AuthenticationControllerAbstract with Store {
 
   void saveToken(AuthenticationEntity success) async {
     final localStorage =
-        Modular.get<LocalStorageClient>(key: AppStrings.storageTypeSecure);
+        Modular.get<LocalStorageClient>(key: AppStringsPortuguese.storageTypeSecure);
 
     await localStorage.writeData(LocalStorageItem(
-        key: AppStrings.idKey, value: success.client.id.toString()));
+        key: AppStringsPortuguese.idKey, value: success.client.id.toString()));
     await localStorage.writeData(
-        LocalStorageItem(key: AppStrings.tokenKey, value: success.token));
+        LocalStorageItem(key: AppStringsPortuguese.tokenKey, value: success.token));
     await localStorage.writeData(LocalStorageItem(
-        key: AppStrings.nameKey, value: success.employee!.employeeName!));
+        key: AppStringsPortuguese.nameKey, value: success.employee!.employeeName!));
   }
 }

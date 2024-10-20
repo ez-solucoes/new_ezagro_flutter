@@ -55,19 +55,19 @@ class RegisterFifthStepPage extends StatelessWidget {
                 ),
                 RichText(
                     text: TextSpan(
-                        text: AppStrings.iHaveReadAndAgreeToThe,
+                        text: AppStringsPortuguese.iHaveReadAndAgreeToThe,
                         style: AppTextStyles.bodyTextStyle(
                             color: AppColors.blackColor),
                         children: [
                       TextSpan(
-                        text: AppStrings.privacySpacingPolicy,
+                        text: AppStringsPortuguese.privacySpacingPolicy,
                         style: AppTextStyles.underlinedTextButtonStyle(
                             color: AppColors.blackColor),
                         recognizer: TapGestureRecognizer()..onTap = () {},
                       ),
-                      const TextSpan(text: AppStrings.and),
+                      const TextSpan(text: AppStringsPortuguese.and),
                       TextSpan(
-                        text: AppStrings.userTerms,
+                        text: AppStringsPortuguese.userTerms,
                         style: AppTextStyles.underlinedTextButtonStyle(
                             color: AppColors.blackColor),
                         recognizer: TapGestureRecognizer()..onTap = () {},
@@ -79,7 +79,7 @@ class RegisterFifthStepPage extends StatelessWidget {
             Center(
               child: CustomElevatedButton(
                 onPressed: () {},
-                label: AppStrings.forwardString,
+                label: AppStringsPortuguese.forwardString,
               ),
             ),
           ],

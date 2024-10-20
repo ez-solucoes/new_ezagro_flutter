@@ -10,10 +10,10 @@ class InventoryTypeModel extends InventoryTypeEntity {
   });
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'name': name,
-    'description': description,
-  };
+        'id': id,
+        'name': name,
+        'description': description,
+      };
 
   factory InventoryTypeModel.fromMap(Map<String, dynamic> map) =>
       InventoryTypeModel(
@@ -26,5 +26,4 @@ class InventoryTypeModel extends InventoryTypeEntity {
 
   factory InventoryTypeModel.fromJson(String source) =>
       InventoryTypeModel.fromMap(json.decode(source));
-
 }

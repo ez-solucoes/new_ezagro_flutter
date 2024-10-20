@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:new_ezagro_flutter/consts/app_text_styles.dart';
+import 'package:new_ezagro_flutter/design_system/typography/app_text_styles.dart';
 
-import '../../../../consts/app_colors.dart';
+import '../../../../design_system/colors/app_colors.dart';
 
 class CustomSelectorWidget extends StatelessWidget {
-
   final Function(String) onSelect;
   final List<String> items;
   final String title;
   final String selectorHint;
   final String? selectedValue;
 
-  const CustomSelectorWidget({
-    super.key,
-    required this.onSelect,
-    required this.items,
-    required this.title,
-    required this.selectorHint,
-    this.selectedValue
-  });
+  const CustomSelectorWidget(
+      {super.key,
+      required this.onSelect,
+      required this.items,
+      required this.title,
+      required this.selectorHint,
+      this.selectedValue});
 
   @override
   Widget build(BuildContext context) {
@@ -36,30 +34,31 @@ class CustomSelectorWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 DropdownButtonFormField(
-                  value: selectedValue,
-                  dropdownColor: AppColors.trueWhiteColor,
-                  style: AppTextStyles.appBarSubTitleTextStyle(color: AppColors.blackColor),
-                  hint: Text(
-                    selectorHint,
-                    style: AppTextStyles.appBarTitleTextStyle(
-                        color: AppColors.formGreyColor),
-                  ),
-                  items: items.map((String item) {
-                    return DropdownMenuItem<String>(
-                        value: item, child: Text(item));
-                  }).toList(),
-                  onChanged: (value) {
-                    if (value != null) {
-                      onSelect(value);
-                    }
-                  },
-                  decoration: const InputDecoration(
+                    value: selectedValue,
+                    dropdownColor: AppColors.trueWhiteColor,
+                    style: AppTextStyles.appBarSubTitleTextStyle(
+                        color: AppColors.blackColor),
+                    hint: Text(
+                      selectorHint,
+                      style: AppTextStyles.appBarTitleTextStyle(
+                          color: AppColors.formGreyColor),
+                    ),
+                    items: items.map((String item) {
+                      return DropdownMenuItem<String>(
+                          value: item, child: Text(item));
+                    }).toList(),
+                    onChanged: (value) {
+                      if (value != null) {
+                        onSelect(value);
+                      }
+                    },
+                    decoration: const InputDecoration(
                       enabledBorder: UnderlineInputBorder(
                           borderSide:
                               BorderSide(color: AppColors.formGreyColor)),
-                          focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.greenColor)),
-                  )
-                ),
+                      focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.greenColor)),
+                    )),
               ],
             )));
   }

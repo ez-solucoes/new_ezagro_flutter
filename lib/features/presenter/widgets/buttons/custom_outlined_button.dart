@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
 
-import '../../../../consts/app_colors.dart';
+import '../../../../design_system/colors/app_colors.dart';
 
 class CustomOutlinedButton extends StatelessWidget {
   final Function() onPressed;
   final String label;
   final TextStyle textStyle;
 
-  const CustomOutlinedButton({
-    super.key,
-    required this.onPressed,
-    required this.label,
-    required this.textStyle
-  });
+  const CustomOutlinedButton(
+      {super.key,
+      required this.onPressed,
+      required this.label,
+      required this.textStyle});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {onPressed();},
+      onPressed: () {
+        onPressed();
+      },
       style: ElevatedButton.styleFrom(
           minimumSize: const Size(150, 38),
           backgroundColor: AppColors.transparent,
           shape: RoundedRectangleBorder(
               side: const BorderSide(color: AppColors.softGreyColor, width: 1),
               borderRadius: BorderRadius.circular(5)),
-        shadowColor: AppColors.transparent
-      ),
+          shadowColor: AppColors.transparent),
       child: Text(
         label,
         style: textStyle,

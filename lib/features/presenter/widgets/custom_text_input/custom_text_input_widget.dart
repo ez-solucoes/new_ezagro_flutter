@@ -1,25 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:new_ezagro_flutter/consts/app_text_styles.dart';
+import 'package:new_ezagro_flutter/design_system/typography/app_text_styles.dart';
 
-import '../../../../consts/app_colors.dart';
+import '../../../../design_system/colors/app_colors.dart';
 
 class CustomTextInputWidget extends StatefulWidget {
   final String title;
   final Function(String) getText;
 
-  const CustomTextInputWidget({
-    super.key,
-    required this.title,
-    required this.getText
-  });
+  const CustomTextInputWidget(
+      {super.key, required this.title, required this.getText});
 
   @override
   State<CustomTextInputWidget> createState() => _CustomTextInputWidgetState();
-
 }
 
 class _CustomTextInputWidgetState extends State<CustomTextInputWidget> {
-
   final TextEditingController _controller = TextEditingController();
 
   @override
@@ -41,15 +36,15 @@ class _CustomTextInputWidgetState extends State<CustomTextInputWidget> {
                   cursorColor: AppColors.greenColor,
                   controller: _controller,
                   decoration: const InputDecoration(
-                    enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                            color: AppColors.formGreyColor)),
-                    focusedBorder: UnderlineInputBorder(borderSide: BorderSide(
-                      color: AppColors.greenColor
-                    )),
-                    hoverColor: AppColors.greenColor
-                  ),
-                  onEditingComplete: (){widget.getText(_controller.text);},
+                      enabledBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(color: AppColors.formGreyColor)),
+                      focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.greenColor)),
+                      hoverColor: AppColors.greenColor),
+                  onEditingComplete: () {
+                    widget.getText(_controller.text);
+                  },
                 )
               ],
             )));

@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../../consts/app_strings.dart';
+import '../../../../design_system/strings/app_strings.dart';
 
 class CustomSearchBar extends StatelessWidget {
-
   final Function(String) onTextChanged;
 
-  const CustomSearchBar({
-    super.key,
-    required this.onTextChanged
-  });
+  const CustomSearchBar({super.key, required this.onTextChanged});
 
   //String _searchText = '';
   @override
@@ -29,7 +25,7 @@ class CustomSearchBar extends StatelessWidget {
           Expanded(
             child: TextField(
               onChanged: (text) {
-                  onTextChanged(text);
+                onTextChanged(text);
               },
               style: const TextStyle(color: Colors.black),
               decoration: InputDecoration(

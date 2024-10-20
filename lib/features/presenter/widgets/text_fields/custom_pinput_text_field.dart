@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:new_ezagro_flutter/consts/app_text_styles.dart';
+import 'package:new_ezagro_flutter/design_system/typography/app_text_styles.dart';
 import 'package:pinput/pinput.dart';
 
-import '../../../../consts/app_colors.dart';
+import '../../../../design_system/colors/app_colors.dart';
 
 class CustomPinputTextField extends StatelessWidget {
   final Function(String) onComplete;
-  const CustomPinputTextField({
-    super.key,
-    required this.onComplete
-  });
+
+  const CustomPinputTextField({super.key, required this.onComplete});
 
   @override
   Widget build(BuildContext context) {

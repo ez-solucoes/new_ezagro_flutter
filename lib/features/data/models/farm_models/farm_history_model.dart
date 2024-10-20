@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../../domain/entities/farm_entities/farm_history_entity.dart';
 
 class FarmHistoryModel extends FarmHistoryEntity {
@@ -12,13 +13,13 @@ class FarmHistoryModel extends FarmHistoryEntity {
   });
 
   Map<String, dynamic> toMap() => {
-    'farmHistoryId': farmHistoryId,
-    'farmId': farmId,
-    'nameLandowner': nameLandowner,
-    'recordLandowner': recordLandowner,
-    'farmName': farmName,
-    'areaAcre': areaAcre,
-  };
+        'farmHistoryId': farmHistoryId,
+        'farmId': farmId,
+        'nameLandowner': nameLandowner,
+        'recordLandowner': recordLandowner,
+        'farmName': farmName,
+        'areaAcre': areaAcre,
+      };
 
   factory FarmHistoryModel.fromMap(Map<String, dynamic> map) =>
       FarmHistoryModel(
@@ -34,5 +35,4 @@ class FarmHistoryModel extends FarmHistoryEntity {
 
   factory FarmHistoryModel.fromJson(String source) =>
       FarmHistoryModel.fromMap(json.decode(source));
-
 }

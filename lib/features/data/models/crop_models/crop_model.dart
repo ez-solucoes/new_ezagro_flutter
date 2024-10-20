@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../../domain/entities/crop_entities/crop_entity.dart';
 
 class CropModel extends CropEntity {
@@ -27,5 +28,4 @@ class CropModel extends CropEntity {
 
   factory CropModel.fromJson(String source) =>
       CropModel.fromMap(json.decode(source));
-
 }

@@ -15,9 +15,9 @@ class AccountTypeEntity extends Equatable {
 
   @override
   List<Object?> get props => [
-    id,
-    name,
-    description,
-    active,
-  ];
+        id,
+        name,
+        description,
+        active,
+      ];
 }

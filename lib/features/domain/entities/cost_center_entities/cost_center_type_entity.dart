@@ -13,10 +13,8 @@ class CostCenterTypeEntity extends Equatable {
 
   @override
   List<Object?> get props => [
-    id,
-    name,
-    description,
-  ];
-
-
+        id,
+        name,
+        description,
+      ];
 }

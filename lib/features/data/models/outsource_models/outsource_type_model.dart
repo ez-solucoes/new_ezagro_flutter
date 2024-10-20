@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../../domain/entities/outsource_entities/outsource_type_entity.dart';
 
 class OutsourceTypeModel extends OutsourceTypeEntity {

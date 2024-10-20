@@ -12,34 +12,35 @@ class AddressModel extends AddressEntity {
     super.city,
     super.neighbourhood,
     super.street,
-    super.number,super.complement,
+    super.number,
+    super.complement,
   });
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'country': country,
-    'referenceLocation': referenceLocation,
-    'state': state,
-    'cep': cep,
-    'city': city,
-    'neighbourhood': neighbourhood,
-    'street': street,
-    'number': number,
-    'complement': complement,
-  };
+        'id': id,
+        'country': country,
+        'referenceLocation': referenceLocation,
+        'state': state,
+        'cep': cep,
+        'city': city,
+        'neighbourhood': neighbourhood,
+        'street': street,
+        'number': number,
+        'complement': complement,
+      };
 
   factory AddressModel.fromMap(Map<String, dynamic> map) => AddressModel(
-    id: map['id'],
-    country: map['country'],
-    referenceLocation: map['referenceLocation'],
-    state: map['state'],
-    cep: map['cep'],
-    city: map['city'],
-    neighbourhood: map['neighbourhood'],
-    street: map['street'],
-    number: map['number'],
-    complement: map['complement'],
-  );
+        id: map['id'],
+        country: map['country'],
+        referenceLocation: map['referenceLocation'],
+        state: map['state'],
+        cep: map['cep'],
+        city: map['city'],
+        neighbourhood: map['neighbourhood'],
+        street: map['street'],
+        number: map['number'],
+        complement: map['complement'],
+      );
 
   String toJson() => json.encode(toMap());
 

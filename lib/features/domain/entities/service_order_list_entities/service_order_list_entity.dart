@@ -10,27 +10,25 @@ class ServiceOrderListEntity extends Equatable {
   final String activityEnd;
   final String costCenterName;
 
-  const ServiceOrderListEntity({
-      required this.id,
+  const ServiceOrderListEntity(
+      {required this.id,
       required this.activityName,
       required this.farmName,
       required this.employeeName,
       required this.status,
       required this.activityStart,
       this.activityEnd = "",
-      required this.costCenterName
-  });
+      required this.costCenterName});
 
   @override
   List<Object?> get props => [
-    id,
-    activityName,
-    farmName,
-    employeeName,
-    status,
-    activityStart,
-    activityEnd,
-    costCenterName
-  ];
-
+        id,
+        activityName,
+        farmName,
+        employeeName,
+        status,
+        activityStart,
+        activityEnd,
+        costCenterName
+      ];
 }

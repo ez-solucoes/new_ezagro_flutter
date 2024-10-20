@@ -4,7 +4,7 @@ import 'package:new_ezagro_flutter/features/domain/entities/employee_entities/em
 import 'package:new_ezagro_flutter/features/domain/entities/employee_entities/employee_contract_type_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/shift_entity/shift_entity.dart';
 
-class EmployeeContractEntity extends Equatable{
+class EmployeeContractEntity extends Equatable {
   final int id;
   final EmployeeContractTypeEntity? type;
   final int? number;
@@ -45,28 +45,28 @@ class EmployeeContractEntity extends Equatable{
     this.trustPosition,
     this.dismissalReason,
     this.employeeCompositionSalary,
-});
+  });
 
   @override
   List<Object?> get props => [
-  id,
-  type,
-  number,
-  file,
-  dtAdmission,
-  dtDismissal,
-  function,
-  department,
-  shift,
-  baseSalary,
-  combinedSalary,
-  variedSalary,
-  alimonyPercentage,
-  valueTicket,
-  additionalUnhealthy,
-  additionalDanger,
-  trustPosition,
-  dismissalReason,
-  employeeCompositionSalary,
-  ];
+        id,
+        type,
+        number,
+        file,
+        dtAdmission,
+        dtDismissal,
+        function,
+        department,
+        shift,
+        baseSalary,
+        combinedSalary,
+        variedSalary,
+        alimonyPercentage,
+        valueTicket,
+        additionalUnhealthy,
+        additionalDanger,
+        trustPosition,
+        dismissalReason,
+        employeeCompositionSalary,
+      ];
 }

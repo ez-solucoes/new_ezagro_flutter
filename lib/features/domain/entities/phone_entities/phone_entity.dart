@@ -1,4 +1,4 @@
-class PhoneEntity{
+class PhoneEntity {
   final int id;
   final String number;
   final String? whatsapp;

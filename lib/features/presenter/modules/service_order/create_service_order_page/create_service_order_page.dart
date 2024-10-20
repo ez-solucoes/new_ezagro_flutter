@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import '../../../../../consts/app_colors.dart';
-import '../../../../../consts/app_strings.dart';
-import '../../../../../consts/app_text_styles.dart';
+
+import '../../../../../design_system/colors/app_colors.dart';
+import '../../../../../design_system/strings/app_strings.dart';
+import '../../../../../design_system/typography/app_text_styles.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
 import '../../../widgets/buttons/custom_elevated_button.dart';

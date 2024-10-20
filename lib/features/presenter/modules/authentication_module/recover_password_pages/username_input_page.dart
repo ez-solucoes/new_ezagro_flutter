@@ -9,18 +9,16 @@ import 'package:new_ezagro_flutter/features/presenter/widgets/background/backgro
 import 'package:new_ezagro_flutter/features/presenter/widgets/custom_forms/password_form_widget.dart';
 
 import '../../../../../consts/app_routes.dart';
-import '../../../../../consts/app_strings.dart';
 import '../../../../../core/utils/text_input_formatter_mask.dart';
+import '../../../../../design_system/strings/app_strings.dart';
 
 class UsernameInputPage extends StatelessWidget {
   final ArgParams? args;
   static const String routePath = AppRoutes.appUsernameInputPage;
 
-  static navigate() =>
-      Modular.to.navigate(routePath);
+  static navigate() => Modular.to.navigate(routePath);
 
-  static push() =>
-      Modular.to.pushNamed(routePath);
+  static push() => Modular.to.pushNamed(routePath);
 
   const UsernameInputPage({super.key, this.args});
 
@@ -49,7 +47,6 @@ class UsernameInputPage extends StatelessWidget {
               controller.username = textController.text;
               controller.recoverPassword();
               TempPasswordPage.navigate();
-
             }),
       ),
     );

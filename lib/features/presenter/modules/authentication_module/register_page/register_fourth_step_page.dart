@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
 
-import '../../../../../consts/app_colors.dart';
-import '../../../../../consts/app_strings.dart';
-import '../../../../../consts/app_text_styles.dart';
+import '../../../../../design_system/colors/app_colors.dart';
+import '../../../../../design_system/strings/app_strings.dart';
+import '../../../../../design_system/typography/app_text_styles.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
@@ -44,7 +44,8 @@ class RegisterFourthStepPage extends StatelessWidget {
             const SizedBox(height: 67),
             CustomUnderlinedTextField(
               onPressed: () {},
-              controller: TextEditingController(), passwordField: true,
+              controller: TextEditingController(),
+              passwordField: true,
             ),
             const SizedBox(height: 40),
             Center(

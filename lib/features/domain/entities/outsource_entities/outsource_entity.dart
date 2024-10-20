@@ -20,7 +20,7 @@ class OutsourceEntity extends Equatable {
   final String name;
   final String contract;
 
- const OutsourceEntity({
+  const OutsourceEntity({
     required this.id,
     required this.address,
     required this.account,
@@ -38,5 +38,4 @@ class OutsourceEntity extends Equatable {
   @override
   // TODO: implement props
   List<Object?> get props => throw UnimplementedError();
-
 }

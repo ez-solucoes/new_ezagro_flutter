@@ -1,4 +1,4 @@
-import 'package:new_ezagro_flutter/consts/app_strings.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings.dart';
 
 enum ServiceOrderTypeEnum {
   toBeStarted,
@@ -39,7 +39,8 @@ extension ServiceOrderTypeEnumExtension on ServiceOrderTypeEnum {
         return ServiceOrderTypeEnum.paused;
       case AppStrings.finishedOSKey || AppStrings.finishedOSEnum:
         return ServiceOrderTypeEnum.finished;
-      case AppStrings.approvalPendingOSKey || AppStrings.approvalPendingOSWithLineBreakEnum:
+      case AppStrings.approvalPendingOSKey ||
+            AppStrings.approvalPendingOSWithLineBreakEnum:
         return ServiceOrderTypeEnum.approvalPending;
       case AppStrings.canceledOSKey || AppStrings.canceledOSEnum:
         return ServiceOrderTypeEnum.canceled;

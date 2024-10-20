@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import 'contract_entity.dart';
 
 class ContractCoverageEntity extends Equatable {

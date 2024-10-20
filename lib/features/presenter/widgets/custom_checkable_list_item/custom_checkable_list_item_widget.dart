@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../consts/app_colors.dart';
-import '../../../../consts/app_text_styles.dart';
+
+import '../../../../design_system/colors/app_colors.dart';
+import '../../../../design_system/typography/app_text_styles.dart';
 
 class CustomCheckableListItemWidget extends StatefulWidget {
   bool indexIsChecked;
@@ -38,18 +39,15 @@ class CustomCheckableListItemWidgetState
                 ? AppColors.trueWhiteColor
                 : AppColors.softGreenColor,
             border: const Border(
-                bottom:
-                    BorderSide(color: AppColors.contourWhiteColor, width: 2.0))
-        ),
+                bottom: BorderSide(
+                    color: AppColors.contourWhiteColor, width: 2.0))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+            Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               Checkbox(
-                  value: widget.isHeader? true : widget.indexIsChecked,
+                  value: widget.isHeader ? true : widget.indexIsChecked,
                   activeColor: AppColors.greenColor,
                   onChanged: (bool? value) {
                     setState(() {
@@ -62,7 +60,7 @@ class CustomCheckableListItemWidgetState
             ]),
             Expanded(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -80,18 +78,18 @@ class CustomCheckableListItemWidgetState
                       widget.secondColumn,
                       style: widget.isHeader
                           ? AppTextStyles.smallBoldTextOnCardStyle(
-                          color: AppColors.blackColor)
+                              color: AppColors.blackColor)
                           : AppTextStyles.cardBodyTextStyle(
-                          color: AppColors.blackColor),
+                              color: AppColors.blackColor),
                       textAlign: TextAlign.center,
                     ),
                     Text(
                       widget.thirdColumn,
                       style: widget.isHeader
                           ? AppTextStyles.smallBoldTextOnCardStyle(
-                          color: AppColors.blackColor)
+                              color: AppColors.blackColor)
                           : AppTextStyles.cardBodyTextStyle(
-                          color: AppColors.blackColor),
+                              color: AppColors.blackColor),
                       textAlign: TextAlign.center,
                     )
                   ].map((e) => Expanded(child: e)).toList(),

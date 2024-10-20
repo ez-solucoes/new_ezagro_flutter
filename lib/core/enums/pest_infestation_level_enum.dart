@@ -12,7 +12,7 @@ pestInfestationLevelEnum(String type) {
     case 'NO_RECORD':
       return PestInfestationLevelEnum.noRecord;
     case 'LOW':
-      return PestInfestationLevelEnum.low ;
+      return PestInfestationLevelEnum.low;
     case 'ATTENTION':
       return PestInfestationLevelEnum.attention;
     case 'HIGH':
@@ -24,7 +24,7 @@ pestInfestationLevelString(type) {
   switch (type) {
     case PestInfestationLevelEnum.noRecord:
       return 'NO_RECORD';
-    case PestInfestationLevelEnum.low :
+    case PestInfestationLevelEnum.low:
       return 'LOW';
     case PestInfestationLevelEnum.attention:
       return 'ATTENTION';

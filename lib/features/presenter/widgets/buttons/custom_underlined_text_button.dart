@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:new_ezagro_flutter/consts/app_text_styles.dart';
+import 'package:new_ezagro_flutter/design_system/typography/app_text_styles.dart';
 
-import '../../../../consts/app_colors.dart';
+import '../../../../design_system/colors/app_colors.dart';
 
 class CustomUnderlinedTextButton extends StatelessWidget {
   final Function() onTap;
@@ -19,7 +19,8 @@ class CustomUnderlinedTextButton extends StatelessWidget {
       onTap: onTap,
       child: Text(
         label,
-        style: AppTextStyles.underlinedTextButtonStyle(color: AppColors.blackColor),
+        style: AppTextStyles.underlinedTextButtonStyle(
+            color: AppColors.blackColor),
       ),
     );
   }

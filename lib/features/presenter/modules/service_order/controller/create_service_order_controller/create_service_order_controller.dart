@@ -20,13 +20,16 @@ import 'package:new_ezagro_flutter/features/domain/usecases/machinery_usecases/m
 import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase.dart';
-import '../../../../../../consts/app_strings.dart';
+
 import '../../../../../../core/local_storage/local_storage_client_secure_impl.dart';
 import '../../../../../../core/local_storage/local_storage_item.dart';
 import '../../../../../../core/usecase/usecase.dart';
+import '../../../../../../design_system/strings/app_strings.dart';
+
 part 'create_service_order_controller.g.dart';
 
-class CreateServiceOrderController = CreateServiceOrderControllerAbstract with _$CreateServiceOrderController;
+class CreateServiceOrderController = CreateServiceOrderControllerAbstract
+    with _$CreateServiceOrderController;
 
 abstract class CreateServiceOrderControllerAbstract with Store {
   @observable
@@ -83,7 +86,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   @observable
   AgriculturalActivityEntity? activity;
 
-  Map<String, dynamic>  harvest = {"harvest": null};
+  Map<String, dynamic> harvest = {"harvest": null};
 
   String startDate = "";
 
@@ -131,7 +134,10 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     if (token != null) {
       await storage.deleteData(AppStrings.tokenKey);
     }
-    await storage.writeData(LocalStorageItem(key: AppStrings.tokenKey, value: 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzMzMzMzMzMzMzMyIsImV4cCI6MTcyODY2ODUxOCwiaWF0IjoxNzI4NTgyMTE4fQ.XpTZT8Mb3lDthoiJqA49EoOz_NJZC_e76j7PnP3hyrZjpV9FoTnYQS8VB4VAWUHDwo1y0BIYE84Upin_ydxfaQ'));
+    await storage.writeData(LocalStorageItem(
+        key: AppStrings.tokenKey,
+        value:
+            'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzMzMzMzMzMzMzMyIsImV4cCI6MTcyODY2ODUxOCwiaWF0IjoxNzI4NTgyMTE4fQ.XpTZT8Mb3lDthoiJqA49EoOz_NJZC_e76j7PnP3hyrZjpV9FoTnYQS8VB4VAWUHDwo1y0BIYE84Upin_ydxfaQ'));
   }
 
   @action
@@ -179,7 +185,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getSimplifiedCrops = Modular.get<CropUsecase>();
     final result = await getSimplifiedCrops(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      cropOptions= success.content;
+      cropOptions = success.content;
       return success;
     });
 
@@ -267,16 +273,15 @@ abstract class CreateServiceOrderControllerAbstract with Store {
 
   finishOSCreation() {
     if (_validFields()) {
-    createServiceOrder();
+      createServiceOrder();
     }
   }
 
-
   @action
   toggleSelectAll() {
-    if(plotsOptions.length != selectedPlots.length) {
+    if (plotsOptions.length != selectedPlots.length) {
       for (int i = 0; i < plotsOptions.length; i++) {
-          selectedPlots.add(plotsOptions[i].id);
+        selectedPlots.add(plotsOptions[i].id);
       }
     } else {
       selectedPlots = [];
@@ -284,17 +289,17 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   }
 
   @action
-   incrementPage() {
-    if (page<=6) {
-      page+=1;
+  incrementPage() {
+    if (page <= 6) {
+      page += 1;
     }
     isLastPage = page == 6;
   }
 
   @action
   decrementPage() {
-    if (page>0) {
-      page-=1;
+    if (page > 0) {
+      page -= 1;
     }
     isLastPage = page == 6;
   }
@@ -303,7 +308,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     if (activity == null) {
       return false;
     }
-    if (costCenterId == null){
+    if (costCenterId == null) {
       return false;
     }
     return true;
@@ -312,8 +317,9 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   //Select Plots Actions
   @action
   void onLongPressEnd(LongPressEndDetails details) {
-      isSelecting = false;
+    isSelecting = false;
   }
+
   void autoScroll() {
     if (scrollController.position.pixels >=
         scrollController.position.maxScrollExtent - 30) {
@@ -325,7 +331,8 @@ abstract class CreateServiceOrderControllerAbstract with Store {
 
   void onLongPressStart(LongPressStartDetails details) {
     final offset = scrollController.offset;
-    final itemIndex = ((details.localPosition.dy + offset) / itemHeight).floor();
+    final itemIndex =
+        ((details.localPosition.dy + offset) / itemHeight).floor();
     startIndex = itemIndex;
 
     final start = itemIndex.clamp(0, plotsOptions.length - 1);
@@ -339,28 +346,24 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   @action
   void onLongPressUpdate(LongPressMoveUpdateDetails details) {
     if (isSelecting) {
-      final itemIndex =
-          (scrollController.offset / itemHeight)
-              .floor() +
-              (details.localPosition.dy / itemHeight)
-                  .floor();
+      final itemIndex = (scrollController.offset / itemHeight).floor() +
+          (details.localPosition.dy / itemHeight).floor();
       if (itemIndex >= 0 && itemIndex < plotsOptions.length) {
-          int start = startIndex;
-          int end = itemIndex;
+        int start = startIndex;
+        int end = itemIndex;
 
-          if (end > start) {
-            for (int i = start; i < end; i++) {
-              if (!selectedPlots.contains(plotsOptions[i].id)) {
-                selectedPlots.add(plotsOptions[i].id);
-              }
+        if (end > start) {
+          for (int i = start; i < end; i++) {
+            if (!selectedPlots.contains(plotsOptions[i].id)) {
+              selectedPlots.add(plotsOptions[i].id);
             }
-            final deltaScroll = scrollController.offset == 0 ? 130 : 30;
-            scrollController.jumpTo(
-                scrollController.position.pixels + deltaScroll);
-            autoScroll();
           }
+          final deltaScroll = scrollController.offset == 0 ? 130 : 30;
+          scrollController
+              .jumpTo(scrollController.position.pixels + deltaScroll);
+          autoScroll();
+        }
       }
     }
   }
-
 }

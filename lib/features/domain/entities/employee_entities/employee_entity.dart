@@ -11,8 +11,8 @@ import 'package:new_ezagro_flutter/features/domain/entities/employee_entities/em
 import 'package:new_ezagro_flutter/features/domain/entities/farm_entities/farm_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/multipart_file_custom_entities/multipart_file_custom_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/rural_producer_entities/rural_producer_entity.dart';
-import '../account_entities/account_entity.dart';
 
+import '../account_entities/account_entity.dart';
 
 class EmployeeEntity extends Equatable {
   final int id;
@@ -71,38 +71,39 @@ class EmployeeEntity extends Equatable {
     this.description,
     this.attachments,
     this.attachmentNames,
-    this.phoneNumber,this.whatsappNumber,
+    this.phoneNumber,
+    this.whatsappNumber,
   });
 
   @override
   List<Object?> get props => [
-    id,
-    address,
-    account,
-    employeeName,
-    farm,
-    company,
-    ruralProducer,
-    email,
-    costCenter,
-    dependents,
-    cpf,
-    pisPasep,
-    insuranceCode,
-    ceiNumber,
-    motherName,
-    rg,
-    status,
-    dtBirth,
-    contract,
-    healthPlanContract,
-    securityCode,
-    sindicalCode,
-    measureAndPerformances,
-    description,
-    attachments,
-    attachmentNames,
-    phoneNumber,
-    whatsappNumber,
-  ];
+        id,
+        address,
+        account,
+        employeeName,
+        farm,
+        company,
+        ruralProducer,
+        email,
+        costCenter,
+        dependents,
+        cpf,
+        pisPasep,
+        insuranceCode,
+        ceiNumber,
+        motherName,
+        rg,
+        status,
+        dtBirth,
+        contract,
+        healthPlanContract,
+        securityCode,
+        sindicalCode,
+        measureAndPerformances,
+        description,
+        attachments,
+        attachmentNames,
+        phoneNumber,
+        whatsappNumber,
+      ];
 }

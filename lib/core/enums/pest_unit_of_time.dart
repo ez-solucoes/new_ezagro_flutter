@@ -1,6 +1,6 @@
 //[ DAYS, WEEKS ]
 
-enum PestUnitOfTimeEnum{
+enum PestUnitOfTimeEnum {
   days,
   weeks,
 }

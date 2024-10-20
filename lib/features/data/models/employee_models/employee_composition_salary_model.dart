@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../../domain/entities/employee_entities/employee_composition_salary_entity.dart';
 
 class EmployeeCompositionSalaryModel extends EmployeeCompositionSalaryEntity {
@@ -20,7 +21,11 @@ class EmployeeCompositionSalaryModel extends EmployeeCompositionSalaryEntity {
       EmployeeCompositionSalaryModel(
         id: map['id'],
         salaryComposition: map['salaryComposition'],
-        salaryCompositionReference: map['salaryCompositionReference'] == null ? null : (map['salaryCompositionReference'] is double ? map['salaryCompositionReference'] : (map['salaryCompositionReference'] as int).toDouble()),
+        salaryCompositionReference: map['salaryCompositionReference'] == null
+            ? null
+            : (map['salaryCompositionReference'] is double
+                ? map['salaryCompositionReference']
+                : (map['salaryCompositionReference'] as int).toDouble()),
         salaryReferenceBase: map['salaryReferenceBase'],
       );
 

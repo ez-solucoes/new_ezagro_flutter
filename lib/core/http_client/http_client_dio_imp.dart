@@ -98,14 +98,14 @@ class HttpClientDioImp extends DioForNative implements HttpClient {
         message: dioError.message,
         request: request,
         response:
-        HttpResponse(statusCode: dioError.response?.statusCode ?? 500),
+            HttpResponse(statusCode: dioError.response?.statusCode ?? 500),
         error: dioError,
       );
     } catch (error) {
       throw HttpError(
         type: HttpErrorType.other,
         message:
-        'Unexpected error while executing ${request.method.name} ${request.path}\n${error.toString()}',
+            'Unexpected error while executing ${request.method.name} ${request.path}\n${error.toString()}',
         request: request,
         error: error,
       );

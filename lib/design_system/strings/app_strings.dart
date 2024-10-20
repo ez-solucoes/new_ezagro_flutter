@@ -12,7 +12,8 @@ class AppStrings {
   static const String forwardString = 'Avançar';
   static const String backString = 'Voltar';
   static const String backToLoginString = 'Voltar ao Login';
-  static const String weSentTheConfirmationCodeToYourPhone = 'Enviamos em seu telefone\num código de confirmação de seu\ncadastro';
+  static const String weSentTheConfirmationCodeToYourPhone =
+      'Enviamos em seu telefone\num código de confirmação de seu\ncadastro';
   static const String typeTheNumberBellow = 'Digite o número abaixo:';
   static const String nowTypeNewPassword = 'Agora, digite sua nova\nsenha:';
   static const String retypeYourPassword = 'Repita sua senha:';
@@ -22,14 +23,17 @@ class AppStrings {
   static const String and = ' e ';
   static const String userTerms = 'Termos do Usuário';
 
-  static const String loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+  static const String loremIpsum =
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
-  static const String forgotPasswordCpf = 'Esqueceu sua senha?\nDigite seu CPF e vamos enviar uma senha provisória em seu telefone:';
-  static const String tempPassword = 'Agora digite abaixo a senha provisória que enviamos para seu telefone:';
+  static const String forgotPasswordCpf =
+      'Esqueceu sua senha?\nDigite seu CPF e vamos enviar uma senha provisória em seu telefone:';
+  static const String tempPassword =
+      'Agora digite abaixo a senha provisória que enviamos para seu telefone:';
   static const String createNewPasswordString = 'Crie sua nova senha:';
   static const String repeatYourNewPasswordString = 'Repita sua nova senha:';
-  static const String recoverPasswordSuccessString = 'Pronto!\nSua nova senha foi criada\nAgora você pode voltar para a área de Login e acessar novamente.';
-
+  static const String recoverPasswordSuccessString =
+      'Pronto!\nSua nova senha foi criada\nAgora você pode voltar para a área de Login e acessar novamente.';
 
   ///Service Order Module
   //Service Order List Strings
@@ -47,19 +51,21 @@ class AppStrings {
   static const String pausedSOEnum = 'Suspensa';
   static const String finishedOSEnum = 'Finalizada';
   static const String approvalPendingOSEnum = 'Aguardando aprovação';
-  static const String approvalPendingOSWithLineBreakEnum = 'Aguardando\naprovação';
+  static const String approvalPendingOSWithLineBreakEnum =
+      'Aguardando\naprovação';
   static const String canceledOSEnum = 'Cancelada';
 
   //Service Order Type Backend Strings
   static const String toBeStartedSOKey = 'A_INICIAR';
   static const String onGoingSOKey = 'EM_ANDAMENTO';
-  static const String pausedSOKey= 'SUSPENSA';
+  static const String pausedSOKey = 'SUSPENSA';
   static const String finishedOSKey = 'FINALIZADA';
   static const String approvalPendingOSKey = 'PENDENTE_APROVACAO';
   static const String canceledOSKey = 'CANCELADA';
 
   //Service Order Details
-  static const String finishedServiceOrder = 'Essa Ordem de Serviço\nfoi finalizada';
+  static const String finishedServiceOrder =
+      'Essa Ordem de Serviço\nfoi finalizada';
   static const String saveOSButton = 'Salvar';
   static const String suspendOSButton = 'Suspender';
   static const String cancelOSButton = 'Cancelar';
@@ -78,7 +84,8 @@ class AppStrings {
   static const String machinerySelectorTitle = 'Maquinário:';
   static const String productSelectorTitle = 'Produto:';
   static const String responsiveSelectorTitle = 'Responsável:';
-  static const String finalCostCenterSelector = 'Centro de Custo de Estoque de Destino:';
+  static const String finalCostCenterSelector =
+      'Centro de Custo de Estoque de Destino:';
   static const String finalStorageSelector = 'Estoque de Destino:';
   static const String activitySelectorHint = 'Selecione uma atividade';
   static const String costCenterSelectorHint = 'Selecione um centro de custo';
@@ -88,8 +95,10 @@ class AppStrings {
   static const String machinerySelectorHint = 'Selecione um maquinário';
   static const String productSelectorHint = 'Selecione um produto';
   static const String responsibleSelectorHint = 'Selecione um responsável';
-  static const String finalCostCenterSelectorHint = 'Selecione um Centro de Custo do Estoque';
-  static const String finalStorageSelectorHint = 'Selecione um estoque de destino';
+  static const String finalCostCenterSelectorHint =
+      'Selecione um Centro de Custo do Estoque';
+  static const String finalStorageSelectorHint =
+      'Selecione um estoque de destino';
   static const String selectAllButton = 'Selecionar tudo';
   static const String plotColumn = 'Talhão';
   static const String areaColumn = 'Área';

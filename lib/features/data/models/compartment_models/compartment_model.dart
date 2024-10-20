@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../../domain/entities/compartment_entities/compartment_entity.dart';
 import '../products_models/product_compartment_model.dart';
 
@@ -15,11 +16,12 @@ class CompartmentModel extends CompartmentEntity {
       CompartmentModel.fromMap(json.decode(source));
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'code': code,
-    'products':
-    products.map((e) => (e as ProductCompartmentModel).toMap()).toList(),
-  };
+        'id': id,
+        'code': code,
+        'products': products
+            .map((e) => (e as ProductCompartmentModel).toMap())
+            .toList(),
+      };
 
   factory CompartmentModel.fromMap(Map<String, dynamic> map) =>
       CompartmentModel(

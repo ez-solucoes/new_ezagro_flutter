@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:new_ezagro_flutter/consts/app_strings.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings.dart';
 
-import '../../../../../consts/app_colors.dart';
-import '../../../../../consts/app_text_styles.dart';
+import '../../../../../design_system/colors/app_colors.dart';
+import '../../../../../design_system/typography/app_text_styles.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
 import '../../../widgets/buttons/custom_elevated_button.dart';
@@ -13,6 +13,7 @@ import '../../../widgets/list_title_card/list_title_card_widget.dart';
 
 class ServiceOrderPage extends StatelessWidget {
   const ServiceOrderPage({super.key});
+
   final isFinished = true;
 
   @override
@@ -38,7 +39,9 @@ class ServiceOrderPage extends StatelessWidget {
         child: Column(
           children: [
             _isFinished(),
-            const SizedBox(height: 15,),
+            const SizedBox(
+              height: 15,
+            ),
             const CustomInfoCardWidget(
                 labelOne: "Atividade",
                 textOne: "80548",
@@ -112,7 +115,8 @@ class ServiceOrderPage extends StatelessWidget {
                           rightIcon: Icons.delete_outline,
                           type: ListItemType.twoIconButtons);
                     },
-                  )],
+                  )
+                ],
               ),
             ),
             const SizedBox(height: 10.0),
@@ -138,7 +142,8 @@ class ServiceOrderPage extends StatelessWidget {
                           rightIcon: Icons.delete_outline,
                           type: ListItemType.twoIconButtons);
                     },
-                  )],
+                  )
+                ],
               ),
             ),
             const SizedBox(height: 10.0),
@@ -179,32 +184,52 @@ class ServiceOrderPage extends StatelessWidget {
   }
 
   Widget _isFinished() {
-    return isFinished ?
-        Row(
-          children: [
-            const Icon(Icons.check_circle, size: 35, color: AppColors.greenColor,),
-            const SizedBox(width: 6,),
-            Text(AppStrings.finishedServiceOrder,
-                style: AppTextStyles.boldMediumTextStyle(color: AppColors.blackColor))
-          ],
-        )
-        :
-        const SizedBox.shrink();
+    return isFinished
+        ? Row(
+            children: [
+              const Icon(
+                Icons.check_circle,
+                size: 35,
+                color: AppColors.greenColor,
+              ),
+              const SizedBox(
+                width: 6,
+              ),
+              Text(AppStrings.finishedServiceOrder,
+                  style: AppTextStyles.boldMediumTextStyle(
+                      color: AppColors.blackColor))
+            ],
+          )
+        : const SizedBox.shrink();
   }
 
   Widget _getAvailableButtons() {
-
-    return isFinished ?
-      CustomElevatedButton(onPressed: () {}, label: AppStrings.resumeOSButton)
-      :
-      Column(
-        children: [
-          CustomOutlinedButton(onPressed: (){}, label: AppStrings.saveOSButton, textStyle: AppTextStyles.labelTextButtonStyle(color: AppColors.blackColor),),
-          CustomElevatedButton(onPressed: (){}, label: AppStrings.suspendOSButton, backgroundColor: AppColors.darkGreyColor),
-          CustomElevatedButton(onPressed: (){}, label: AppStrings.cancelOSButton, backgroundColor: AppColors.redCanceledColor,),
-          const SizedBox(height: 15,),
-          CustomElevatedButton(onPressed: (){}, label: AppStrings.finishedOSButton)
-        ],
-      );
+    return isFinished
+        ? CustomElevatedButton(
+            onPressed: () {}, label: AppStrings.resumeOSButton)
+        : Column(
+            children: [
+              CustomOutlinedButton(
+                onPressed: () {},
+                label: AppStrings.saveOSButton,
+                textStyle: AppTextStyles.labelTextButtonStyle(
+                    color: AppColors.blackColor),
+              ),
+              CustomElevatedButton(
+                  onPressed: () {},
+                  label: AppStrings.suspendOSButton,
+                  backgroundColor: AppColors.darkGreyColor),
+              CustomElevatedButton(
+                onPressed: () {},
+                label: AppStrings.cancelOSButton,
+                backgroundColor: AppColors.redCanceledColor,
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              CustomElevatedButton(
+                  onPressed: () {}, label: AppStrings.finishedOSButton)
+            ],
+          );
   }
 }

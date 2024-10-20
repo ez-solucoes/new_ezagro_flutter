@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../../domain/entities/crop_entities/crop_diversity_history_entity.dart';
 import '../technology_models/technoloty_type_model.dart';
 import 'crop_model.dart';
@@ -16,15 +17,15 @@ class CropDiversityHistoryModel extends CropDiversityHistoryEntity {
   });
 
   Map<String, dynamic> toMap() => {
-    'cropDiversityHistoryId': cropDiversityHistoryId,
-    'cropDiversityId': cropDiversityId,
-    'name': name,
-    'crop': (crop as CropModel).toMap(),
-    'technologyType': (technologyType as TechnologyTypeModel).toMap(),
-    'plantingType': plantingType,
-    'plantingCycle': plantingCycle,
-    'plantingCycleDays': plantingCycleDays,
-  };
+        'cropDiversityHistoryId': cropDiversityHistoryId,
+        'cropDiversityId': cropDiversityId,
+        'name': name,
+        'crop': (crop as CropModel).toMap(),
+        'technologyType': (technologyType as TechnologyTypeModel).toMap(),
+        'plantingType': plantingType,
+        'plantingCycle': plantingCycle,
+        'plantingCycleDays': plantingCycleDays,
+      };
 
   factory CropDiversityHistoryModel.fromMap(Map<String, dynamic> map) =>
       CropDiversityHistoryModel(
@@ -42,5 +43,4 @@ class CropDiversityHistoryModel extends CropDiversityHistoryEntity {
 
   factory CropDiversityHistoryModel.fromJson(String source) =>
       CropDiversityHistoryModel.fromMap(json.decode(source));
-
 }

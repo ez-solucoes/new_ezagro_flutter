@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class EmployeeStatusEntity extends Equatable{
+class EmployeeStatusEntity extends Equatable {
   final int id;
   final String? name;
   final bool? active;
@@ -9,12 +9,12 @@ class EmployeeStatusEntity extends Equatable{
     required this.id,
     this.name,
     this.active,
-});
+  });
 
   @override
   List<Object?> get props => [
-    id,
-    name,
-    active,
-  ];
+        id,
+        name,
+        active,
+      ];
 }

@@ -1,7 +1,6 @@
 import 'dart:convert';
 import '../../../domain/entities/issuer_recipient_entities/issuer_recipient_entity.dart';
 
-
 class IssuerRecipientModel extends IssuerRecipientEntity {
   const IssuerRecipientModel({
     required super.id,
@@ -10,10 +9,10 @@ class IssuerRecipientModel extends IssuerRecipientEntity {
   });
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'name': name,
-    'issuerRecipientType': issuerRecipientType,
-  };
+        'id': id,
+        'name': name,
+        'issuerRecipientType': issuerRecipientType,
+      };
 
   factory IssuerRecipientModel.fromMap(Map<String, dynamic> map) =>
       IssuerRecipientModel(
@@ -24,6 +23,6 @@ class IssuerRecipientModel extends IssuerRecipientEntity {
 
   String toJson() => json.encode(toMap());
 
-  factory IssuerRecipientModel.fromJson(String source) =>IssuerRecipientModel.fromMap(json.decode(source));
-
+  factory IssuerRecipientModel.fromJson(String source) =>
+      IssuerRecipientModel.fromMap(json.decode(source));
 }

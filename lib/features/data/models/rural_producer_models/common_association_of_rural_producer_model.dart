@@ -31,5 +31,4 @@ class CommonAssociationOfRuralProducerModel
 
   factory CommonAssociationOfRuralProducerModel.fromJson(String source) =>
       CommonAssociationOfRuralProducerModel.fromMap(json.decode(source));
-
 }

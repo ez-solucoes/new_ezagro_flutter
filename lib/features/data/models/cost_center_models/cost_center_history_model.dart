@@ -15,14 +15,14 @@ class CostCenterHistoryModel extends CostCenterHistoryEntity {
   });
 
   Map<String, dynamic> toMap() => {
-    'costCenterHistoryId': costCenterHistoryId,
-    'costCenterId': costCenterId,
-    'costCenterName': costCenterName,
-    'costCenterType': (costCenterType as CostCenterTypeModel).toMap(),
-    'dtStart': dtStart,
-    'dtEnd': dtEnd,
-    'active': active,
-  };
+        'costCenterHistoryId': costCenterHistoryId,
+        'costCenterId': costCenterId,
+        'costCenterName': costCenterName,
+        'costCenterType': (costCenterType as CostCenterTypeModel).toMap(),
+        'dtStart': dtStart,
+        'dtEnd': dtEnd,
+        'active': active,
+      };
 
   factory CostCenterHistoryModel.fromMap(Map<String, dynamic> map) =>
       CostCenterHistoryModel(

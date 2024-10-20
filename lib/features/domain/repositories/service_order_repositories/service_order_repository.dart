@@ -8,8 +8,9 @@ import 'package:new_ezagro_flutter/features/domain/params/create_service_order_p
 import '../../../../core/usecase/usecase.dart';
 
 abstract class ServiceOrderRepository {
+  Future<Either<ApplicationError, PaginationEntity<ServiceOrderListEntity>>>
+      getServiceOrderList(NoParams noParams);
 
-  Future<Either<ApplicationError, PaginationEntity<ServiceOrderListEntity>>> getServiceOrderList(NoParams noParams);
-
-  Future<Either<ApplicationError, FieldServiceOrderEntity>> createServiceOrder(MockParams mockParams);
+  Future<Either<ApplicationError, FieldServiceOrderEntity>> createServiceOrder(
+      MockParams mockParams);
 }

@@ -21,5 +21,4 @@ class AppEndpoints {
   static const String getMachineryEndpoint = '/fleet/machinery';
   static const String getEmployees = '/employee';
   static const String postServiceOrderEndpoint = '/field-service-order';
-
 }

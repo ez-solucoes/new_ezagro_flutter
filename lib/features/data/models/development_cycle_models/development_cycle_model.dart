@@ -11,11 +11,11 @@ class DevelopmentCycleModel extends DevelopmentCycleEntity {
   });
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'name': name,
-    'description': description,
-    'pestType': pestType,
-  };
+        'id': id,
+        'name': name,
+        'description': description,
+        'pestType': pestType,
+      };
 
   factory DevelopmentCycleModel.fromMap(Map<String, dynamic> map) =>
       DevelopmentCycleModel(

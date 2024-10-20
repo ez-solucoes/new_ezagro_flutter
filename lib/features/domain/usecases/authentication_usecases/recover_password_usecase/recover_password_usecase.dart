@@ -5,7 +5,9 @@ import 'package:new_ezagro_flutter/features/domain/params/authentication_params/
 
 import '../../../../../core/errors/application_error.dart';
 
-abstract class RecoverPasswordUsecase implements Usecase<EmptyResult, AuthenticationParams> {
+abstract class RecoverPasswordUsecase
+    implements Usecase<EmptyResult, AuthenticationParams> {
   @override
-  Future<Either<ApplicationError, EmptyResult>> call(AuthenticationParams params);
+  Future<Either<ApplicationError, EmptyResult>> call(
+      AuthenticationParams params);
 }

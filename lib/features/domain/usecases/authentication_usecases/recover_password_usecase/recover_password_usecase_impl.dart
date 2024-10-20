@@ -11,9 +11,8 @@ class RecoverPasswordUsecaseImpl implements RecoverPasswordUsecase {
   const RecoverPasswordUsecaseImpl({required this.repository});
 
   @override
-  Future<Either<ApplicationError, EmptyResult>> call(AuthenticationParams params) async {
+  Future<Either<ApplicationError, EmptyResult>> call(
+      AuthenticationParams params) async {
     return await repository.recoverPassword(params);
   }
-
-
 }

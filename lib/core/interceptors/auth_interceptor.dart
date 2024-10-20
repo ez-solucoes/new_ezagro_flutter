@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../consts/app_strings.dart';
+import '../../design_system/strings/app_strings.dart';
 import '../../features/data/datasources/api_endpoints.dart';
 import '../errors/authentication_error.dart';
 import '../local_storage/local_storage_client_secure_impl.dart';
@@ -20,22 +20,22 @@ class AuthInterceptor extends Interceptor {
 
   @override
   void onRequest(
-      RequestOptions options,
-      RequestInterceptorHandler handler,
-      ) async {
-
+    RequestOptions options,
+    RequestInterceptorHandler handler,
+  ) async {
     bool isUnauthenticated =
-    unauthenticatedRoutes.any((element) => options.uri.path == element);
+        unauthenticatedRoutes.any((element) => options.uri.path == element);
 
     if (isUnauthenticated) {
       handler.next(options);
     } else {
       final sharedPreferencesInstance =
-      Modular.tryGet<LocalStorageClientSecureImpl>();
+          Modular.tryGet<LocalStorageClientSecureImpl>();
       final authenticated =
-      await sharedPreferencesInstance?.readData(AppStrings.tokenKey);
+          await sharedPreferencesInstance?.readData(AppStrings.tokenKey);
       if (authenticated != null && authenticated != '') {
-        options.headers.putIfAbsent('Authorization', () => 'Bearer $authenticated');
+        options.headers
+            .putIfAbsent('Authorization', () => 'Bearer $authenticated');
         handler.next(options);
       } else {
         DioException error = DioException(
@@ -46,7 +46,7 @@ class AuthInterceptor extends Interceptor {
             causedBy: AppStrings.unauthenticatedUserErrorCausedBy,
             fingerprint: 'AuthInterceptor.onRequest',
             additionalInfo:
-            'Trying to call [${options.method}] ${options.path}',
+                'Trying to call [${options.method}] ${options.path}',
           ),
         );
         debugPrint(error.toString());
@@ -60,9 +60,9 @@ class AuthInterceptor extends Interceptor {
     final responseStatusCode = err.response?.statusCode ?? 0;
     final requestPath = err.requestOptions.uri.path;
     final isUnauthenticated = _pathIsUnauthenticated(requestPath);
-    final isUnauthorizedCode = [403,401].contains(responseStatusCode);
+    final isUnauthorizedCode = [403, 401].contains(responseStatusCode);
 
-    if(!isUnauthenticated && isUnauthorizedCode) {
+    if (!isUnauthenticated && isUnauthorizedCode) {
       return;
     }
     handler.next(err);
@@ -74,8 +74,8 @@ class AuthInterceptor extends Interceptor {
 }
 
 List<String> get unauthenticatedRoutes => [
-  AppEndpoints.authenticateEndpoint,
-  AppEndpoints.firstAccessEndpoint,
-  AppEndpoints.validateTokenEndpoint,
-  AppEndpoints.recoverPasswordEndpoint,
-];
+      AppEndpoints.authenticateEndpoint,
+      AppEndpoints.firstAccessEndpoint,
+      AppEndpoints.validateTokenEndpoint,
+      AppEndpoints.recoverPasswordEndpoint,
+    ];

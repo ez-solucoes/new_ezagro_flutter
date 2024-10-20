@@ -4,7 +4,7 @@ import 'package:new_ezagro_flutter/features/presenter/modules/authentication_mod
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/recover_password_success_page.dart';
 
 import '../../../../../consts/app_routes.dart';
-import '../../../../../consts/app_strings.dart';
+import '../../../../../design_system/strings/app_strings.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
@@ -41,8 +41,8 @@ class RepeatPasswordPage extends StatelessWidget {
             buttonText: AppStrings.forwardString,
             onButtonPressed: () {
               controller.retypePassword = textController.text;
-              if(controller.comparePasswords(
-                  controller.password, controller.retypePassword)){
+              if (controller.comparePasswords(
+                  controller.password, controller.retypePassword)) {
                 controller.recoverPassword();
                 RecoverPasswordSuccessPage.navigate();
               }

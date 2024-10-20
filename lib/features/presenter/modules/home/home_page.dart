@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../consts/app_colors.dart';
-import '../../../../consts/app_strings.dart';
-import '../../../../consts/app_text_styles.dart';
+import '../../../../design_system/colors/app_colors.dart';
+import '../../../../design_system/strings/app_strings.dart';
+import '../../../../design_system/typography/app_text_styles.dart';
 import '../../widgets/appbar/custom_appbar_widget.dart';
 import '../../widgets/background/background_widget.dart';
 import '../../widgets/buttons/custom_elevated_button.dart';
@@ -24,8 +24,13 @@ class HomePage extends StatelessWidget {
           padding: EdgeInsets.all(20),
           child: Column(
             children: [
-              CustomElevatedButton(onPressed: (){}, label: AppStrings.pluralServicesOrder),
-              CustomOutlinedButton(onPressed: (){}, label: AppStrings.createServiceOrder, textStyle: AppTextStyles.boldMediumTextStyle(color: AppColors.blackColor))
+              CustomElevatedButton(
+                  onPressed: () {}, label: AppStrings.pluralServicesOrder),
+              CustomOutlinedButton(
+                  onPressed: () {},
+                  label: AppStrings.createServiceOrder,
+                  textStyle: AppTextStyles.boldMediumTextStyle(
+                      color: AppColors.blackColor))
             ],
           ),
         ));

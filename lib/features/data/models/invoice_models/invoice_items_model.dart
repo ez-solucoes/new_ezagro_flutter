@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../../domain/entities/invoice_entities/invoice_items_entity.dart';
 import '../farm_models/farm_model.dart';
 import '../inventory_models/inventory_model.dart';
@@ -22,7 +23,6 @@ class InvoiceItemsModel extends InvoiceItemsEntity {
     required super.farm,
     required super.purchaseOrderItems,
   });
-
 
   Map<String, dynamic> toMap() => {
         'id': id,

@@ -11,9 +11,8 @@ class AppRoutes {
   static const String appTempPasswordPage = '/tempPasswordPage';
   static const String appNewPasswordPage = '/newPasswordPage';
   static const String appRepeatPasswordPage = '/repeatPasswordPage';
-  static const String appRecoverPasswordSuccessPage = '/recoverPasswordSuccessPage';
-
-
+  static const String appRecoverPasswordSuccessPage =
+      '/recoverPasswordSuccessPage';
 
   static const String appRegisterFirstStepPage = '/registerFirstStepPage';
   static const String appRegisterSecondStepPage = '/registerSecondStepPage';
@@ -26,5 +25,6 @@ class AppRoutes {
   static const String appCreateServiceOrderPage = '/createServiceOrderPage';
 
   //Change Password
-  static const String appChangePasswordFirstStepPage = '/changePasswordFirstStepPage';
+  static const String appChangePasswordFirstStepPage =
+      '/changePasswordFirstStepPage';
 }

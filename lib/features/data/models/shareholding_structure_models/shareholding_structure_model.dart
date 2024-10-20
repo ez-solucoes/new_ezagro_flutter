@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../../domain/entities/shareholding_structure_entities/shareholding_structure_entity.dart';
 
 class ShareHoldingStructureModel extends ShareHoldingStructureEntity {

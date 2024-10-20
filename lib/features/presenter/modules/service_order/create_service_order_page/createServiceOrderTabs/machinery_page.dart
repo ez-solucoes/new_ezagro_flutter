@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import '../../../../../../consts/app_colors.dart';
-import '../../../../../../consts/app_strings.dart';
+
+import '../../../../../../design_system/colors/app_colors.dart';
+import '../../../../../../design_system/strings/app_strings.dart';
 import '../../../../widgets/custom_card_logo/custom_card_logo_widget.dart';
 import '../../../../widgets/custom_selector/custom_selector_widget.dart';
 import '../../controller/create_service_order_controller/create_service_order_controller.dart';
 
 class MachineryPage extends StatelessWidget {
-
   const MachineryPage({super.key});
 
   @override

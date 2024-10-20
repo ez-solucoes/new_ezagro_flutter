@@ -4,7 +4,6 @@ import '../../../domain/entities/machine_implement_entities/machine_implement_hi
 import '../local_time_model/local_time_model.dart';
 import '../year_models/year_model.dart';
 
-
 class MachineImplementHistoryModel extends MachineImplementHistoryEntity {
   const MachineImplementHistoryModel({
     required super.machineImplementHistoryId,
@@ -25,22 +24,22 @@ class MachineImplementHistoryModel extends MachineImplementHistoryEntity {
   });
 
   Map<String, dynamic> toMap() => {
-    'machineImplementHistoryId': machineImplementHistoryId,
-    'machineImplementId': machineImplementId,
-    'isExternal': isExternal,
-    'name': name,
-    'description': description,
-    'year': (year as YearModel).toMap(),
-    'hourMeter': hourMeter,
-    'yearOfManufacture': (yearOfManufacture as YearModel).toMap(),
-    'place': place,
-    'chassis': chassis,
-    'maintenanceHours': (maintenanceHours as LocalTimeModel).toMap(),
-    'kilometers': kilometers,
-    'maintenanceDate': maintenanceDate,
-    'insurancePolicy': insurancePolicy,
-    'nickname': nickname,
-  };
+        'machineImplementHistoryId': machineImplementHistoryId,
+        'machineImplementId': machineImplementId,
+        'isExternal': isExternal,
+        'name': name,
+        'description': description,
+        'year': (year as YearModel).toMap(),
+        'hourMeter': hourMeter,
+        'yearOfManufacture': (yearOfManufacture as YearModel).toMap(),
+        'place': place,
+        'chassis': chassis,
+        'maintenanceHours': (maintenanceHours as LocalTimeModel).toMap(),
+        'kilometers': kilometers,
+        'maintenanceDate': maintenanceDate,
+        'insurancePolicy': insurancePolicy,
+        'nickname': nickname,
+      };
 
   factory MachineImplementHistoryModel.fromMap(Map<String, dynamic> map) =>
       MachineImplementHistoryModel(
@@ -65,5 +64,4 @@ class MachineImplementHistoryModel extends MachineImplementHistoryEntity {
 
   factory MachineImplementHistoryModel.fromJson(String source) =>
       MachineImplementHistoryModel.fromMap(json.decode(source));
-
 }

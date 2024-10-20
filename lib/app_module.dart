@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
-import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_client.dart';
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_client_shared_prefs_impl.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/authentication_repository/authentication_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/authentication_repository/authentication_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
@@ -31,6 +31,7 @@ import 'package:new_ezagro_flutter/features/presenter/modules/authentication_mod
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/repeat_password_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/temp_password_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/username_input_page.dart';
+
 import 'core/http_client/http_client.dart';
 import 'core/http_client/http_client_dio_imp.dart';
 import 'core/local_storage/local_storage_client_secure_impl.dart';
@@ -97,20 +98,22 @@ import 'features/presenter/modules/service_order/service_order_page/service_orde
 import 'features/presenter/modules/splash/splash_page/splash_page.dart';
 
 class AppModule extends Module {
-
   @override
   void binds(Injector i) {
-
     //Core Binds
-    i.addLazySingleton<LocalStorageClient>(LocalStorageClientSharedPrefsImpl.new, key: AppStrings.storageTypeLocal);
-    i.addLazySingleton<LocalStorageClient>(LocalStorageClientSecureImpl.new, key: AppStrings.storageTypeSecure);
+    i.addLazySingleton<LocalStorageClient>(
+        LocalStorageClientSharedPrefsImpl.new,
+        key: AppStrings.storageTypeLocal);
+    i.addLazySingleton<LocalStorageClient>(LocalStorageClientSecureImpl.new,
+        key: AppStrings.storageTypeSecure);
     i.addLazySingleton<LogInterceptor>(LogInterceptor.new);
     i.addSingleton<HttpClient>(HttpClientDioImp.new);
 
     //Usecase
     i.addLazySingleton<AuthenticateUsecase>(AuthenticateUsecaseImpl.new);
     i.addLazySingleton<RecoverPasswordUsecase>(RecoverPasswordUsecaseImpl.new);
-    i.addLazySingleton<ServiceOrderListUsecase>(ServiceOrderListUsecaseImpl.new);
+    i.addLazySingleton<ServiceOrderListUsecase>(
+        ServiceOrderListUsecaseImpl.new);
     i.addLazySingleton<ActivityUsecase>(ActivityUsecaseImpl.new);
     i.addLazySingleton<CostCenterUsecase>(CostCenterUsecaseImpl.new);
     i.addLazySingleton<FarmUsecase>(FarmUsecaseImpl.new);
@@ -120,10 +123,12 @@ class AppModule extends Module {
     i.addLazySingleton<MachineryUsecase>(MachineryUsecaseImpl.new);
     i.addLazySingleton<ProductUsecase>(ProductUsecaseImpl.new);
     i.addLazySingleton<EmployeeUsecase>(EmployeeUsecaseImpl.new);
-    i.addLazySingleton<CreateServiceOrderUsecase>(CreateServiceOrderUsecaseImpl.new);
+    i.addLazySingleton<CreateServiceOrderUsecase>(
+        CreateServiceOrderUsecaseImpl.new);
 
     //Repository
-    i.addLazySingleton<AuthenticationRepository>(AuthenticationRepositoryImpl.new);
+    i.addLazySingleton<AuthenticationRepository>(
+        AuthenticationRepositoryImpl.new);
     i.addLazySingleton<ServiceOrderRepository>(ServiceOrderRepositoryImpl.new);
     i.addLazySingleton<ActivityRepository>(ActivityRepositoryImpl.new);
     i.addLazySingleton<CostCenterRepository>(CostCenterRepositoryImpl.new);
@@ -136,7 +141,8 @@ class AppModule extends Module {
     i.addLazySingleton<EmployeeRepository>(EmployeeRepositoryImpl.new);
 
     //Datasource
-    i.addLazySingleton<AuthenticationDatasource>(AuthenticationDatasourceImpl.new);
+    i.addLazySingleton<AuthenticationDatasource>(
+        AuthenticationDatasourceImpl.new);
     i.addLazySingleton<ServiceOrderDatasource>(ServiceOrderDatasourceImpl.new);
     i.addLazySingleton<ActivityDatasource>(ActivityDatasourceImpl.new);
     i.addLazySingleton<CostCenterDatasource>(CostCenterDatasourceImpl.new);
@@ -150,7 +156,8 @@ class AppModule extends Module {
 
     //Controllers
     i.addLazySingleton<AuthenticationController>(AuthenticationController.new);
-    i.addLazySingleton<CreateServiceOrderController>(CreateServiceOrderController.new);
+    i.addLazySingleton<CreateServiceOrderController>(
+        CreateServiceOrderController.new);
     super.binds(i);
   }
 
@@ -160,24 +167,35 @@ class AppModule extends Module {
     r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
 
     r.child(AppRoutes.appLoginPage, child: (context) => LoginPage());
-    r.child(AppRoutes.appUsernameInputPage, child: (context) => UsernameInputPage());
-    r.child(AppRoutes.appTempPasswordPage, child: (context) => TempPasswordPage());
-    r.child(AppRoutes.appRepeatPasswordPage, child: (context) => RepeatPasswordPage());
-    r.child(AppRoutes.appRecoverPasswordSuccessPage, child: (context) => RecoverPasswordSuccessPage());
+    r.child(AppRoutes.appUsernameInputPage,
+        child: (context) => UsernameInputPage());
+    r.child(AppRoutes.appTempPasswordPage,
+        child: (context) => TempPasswordPage());
+    r.child(AppRoutes.appRepeatPasswordPage,
+        child: (context) => RepeatPasswordPage());
+    r.child(AppRoutes.appRecoverPasswordSuccessPage,
+        child: (context) => RecoverPasswordSuccessPage());
 
-
-    r.child(AppRoutes.appRegisterFirstStepPage, child: (context) => const RegisterFirstStepPage());
-    r.child(AppRoutes.appRegisterSecondStepPage, child: (context) => const RegisterSecondStepPage());
-    r.child(AppRoutes.appRegisterThirdStepPage, child: (context) => const RegisterThirdStepPage());
-    r.child(AppRoutes.appRegisterFourthStepPage, child: (context) => const RegisterFourthStepPage());
-    r.child(AppRoutes.appRegisterFifthStepPage, child: (context) => const RegisterFifthStepPage());
-    r.child(AppRoutes.appDocumentsPage, child: (context) => const DocumentsPage());
-    r.child(AppRoutes.appChangePasswordFirstStepPage, child: (context) => const ChangePasswordStepPage());
-    r.child(AppRoutes.appServiceOrderPage, child: (context) => const ServiceOrderPage());
-    r.child(AppRoutes.appServiceOrderListPage, child: (context) => const ServiceOrderListPage());
-    r.child(AppRoutes.appCreateServiceOrderPage, child: (context) => const CreateServiceOrderPage());
+    r.child(AppRoutes.appRegisterFirstStepPage,
+        child: (context) => const RegisterFirstStepPage());
+    r.child(AppRoutes.appRegisterSecondStepPage,
+        child: (context) => const RegisterSecondStepPage());
+    r.child(AppRoutes.appRegisterThirdStepPage,
+        child: (context) => const RegisterThirdStepPage());
+    r.child(AppRoutes.appRegisterFourthStepPage,
+        child: (context) => const RegisterFourthStepPage());
+    r.child(AppRoutes.appRegisterFifthStepPage,
+        child: (context) => const RegisterFifthStepPage());
+    r.child(AppRoutes.appDocumentsPage,
+        child: (context) => const DocumentsPage());
+    r.child(AppRoutes.appChangePasswordFirstStepPage,
+        child: (context) => const ChangePasswordStepPage());
+    r.child(AppRoutes.appServiceOrderPage,
+        child: (context) => const ServiceOrderPage());
+    r.child(AppRoutes.appServiceOrderListPage,
+        child: (context) => const ServiceOrderListPage());
+    r.child(AppRoutes.appCreateServiceOrderPage,
+        child: (context) => const CreateServiceOrderPage());
     super.routes(r);
   }
-
-
 }

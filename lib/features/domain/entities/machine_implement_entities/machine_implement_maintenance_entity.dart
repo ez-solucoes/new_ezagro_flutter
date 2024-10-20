@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class MachineImplementMaintenanceEntity extends Equatable{
+class MachineImplementMaintenanceEntity extends Equatable {
   final int id;
   final String date;
   final String description;
@@ -21,18 +21,18 @@ class MachineImplementMaintenanceEntity extends Equatable{
     required this.currentKilometer,
     required this.requiredHourMeter,
     required this.requiredKilometer,
-});
+  });
 
   @override
   List<Object?> get props => [
-    id,
-    date,
-    description,
-    componentCode,
-    componentName,
-    currentHourMeter,
-    currentKilometer,
-    requiredHourMeter,
-    requiredKilometer,
-  ];
+        id,
+        date,
+        description,
+        componentCode,
+        componentName,
+        currentHourMeter,
+        currentKilometer,
+        requiredHourMeter,
+        requiredKilometer,
+      ];
 }

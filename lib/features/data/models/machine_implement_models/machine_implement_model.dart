@@ -10,7 +10,6 @@ import '../multipart_file_custom_model/multipart_file_custom_model.dart';
 import 'machine_implement_maintenance_model.dart';
 import 'machine_implement_type_model.dart';
 
-
 class MachineImplementModel extends MachineImplementEntity {
   const MachineImplementModel({
     required super.id,
@@ -52,43 +51,45 @@ class MachineImplementModel extends MachineImplementEntity {
       MachineImplementModel.fromMap(json.decode(source));
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'description': description,
-    'kilometers': kilometers,
-    'maintenanceHours': (maintenanceHours as LocalTimeModel).toMap(),
-    'maintenanceDate': maintenanceDate,
-    'nickname': nickname,
-    'chassis': chassis,
-    'invoice': invoice,
-    'insurancePolicy': (insurancePolicy as ContractModel).toMap(),
-    'brand': (brand as BrandModel).toMap(),
-    'machineImplementType':
-    (machineImplementType as MachineImplementTypeModel).toMap(),
-    'isExternal': isExternal,
-    'hourMeter': hourMeter,
-    'yearOfManufacture': (yearOfManufacture as YearOfManufactureModel).toMap(),
-    'place': place,
-    'department': (department as DepartmentModel).toMap(),
-    'subDepartment': (subDepartment as DepartmentModel).toMap(),
-    'costCenters':
-    costCenters.map((e) => (e as CostCenterModel).toMap()).toList(),
-    'model': model,
-    'renavan': renavan,
-    'assetNumber': assetNumber,
-    'telemetryData': telemetryData,
-    'documentNumber': documentNumber,
-    'documentType': documentType,
-    'tankCapacity': tankCapacity,
-    'dtInsuranceExpiration': dtInsuranceExpiration,
-    'dtAcquisition': dtAcquisition,
-    'acquisitionValue': acquisitionValue,
-    'machineImplementMaintenances': machineImplementMaintenances
-        .map((e) => (e as MachineImplementMaintenanceModel).toMap())
-        .toList(),
-    'attachments':
-    attachments.map((e) => (e as MultipartFileCustomModel).toMap()).toList(),
-    'attachmentNames': attachmentNames,
-  };
+        'id': id,
+        'description': description,
+        'kilometers': kilometers,
+        'maintenanceHours': (maintenanceHours as LocalTimeModel).toMap(),
+        'maintenanceDate': maintenanceDate,
+        'nickname': nickname,
+        'chassis': chassis,
+        'invoice': invoice,
+        'insurancePolicy': (insurancePolicy as ContractModel).toMap(),
+        'brand': (brand as BrandModel).toMap(),
+        'machineImplementType':
+            (machineImplementType as MachineImplementTypeModel).toMap(),
+        'isExternal': isExternal,
+        'hourMeter': hourMeter,
+        'yearOfManufacture':
+            (yearOfManufacture as YearOfManufactureModel).toMap(),
+        'place': place,
+        'department': (department as DepartmentModel).toMap(),
+        'subDepartment': (subDepartment as DepartmentModel).toMap(),
+        'costCenters':
+            costCenters.map((e) => (e as CostCenterModel).toMap()).toList(),
+        'model': model,
+        'renavan': renavan,
+        'assetNumber': assetNumber,
+        'telemetryData': telemetryData,
+        'documentNumber': documentNumber,
+        'documentType': documentType,
+        'tankCapacity': tankCapacity,
+        'dtInsuranceExpiration': dtInsuranceExpiration,
+        'dtAcquisition': dtAcquisition,
+        'acquisitionValue': acquisitionValue,
+        'machineImplementMaintenances': machineImplementMaintenances
+            .map((e) => (e as MachineImplementMaintenanceModel).toMap())
+            .toList(),
+        'attachments': attachments
+            .map((e) => (e as MultipartFileCustomModel).toMap())
+            .toList(),
+        'attachmentNames': attachmentNames,
+      };
 
   factory MachineImplementModel.fromMap(Map<String, dynamic> map) =>
       MachineImplementModel(
@@ -103,10 +104,11 @@ class MachineImplementModel extends MachineImplementEntity {
         insurancePolicy: ContractModel.fromMap(map['insurancePolicy']),
         brand: BrandModel.fromMap(map['brand']),
         machineImplementType:
-        MachineImplementTypeModel.fromMap(map['machineImplementType']),
+            MachineImplementTypeModel.fromMap(map['machineImplementType']),
         isExternal: map['isExternal'],
         hourMeter: map['hourMeter'],
-        yearOfManufacture: YearOfManufactureModel.fromMap(map['yearOfManufacture']),
+        yearOfManufacture:
+            YearOfManufactureModel.fromMap(map['yearOfManufacture']),
         place: map['place'],
         department: DepartmentModel.fromMap(map['department']),
         subDepartment: DepartmentModel.fromMap(map['subDepartment']),
@@ -122,11 +124,12 @@ class MachineImplementModel extends MachineImplementEntity {
         dtInsuranceExpiration: map['dtInsuranceExpiration'],
         dtAcquisition: map['dtAcquisition'],
         acquisitionValue: map['acquisitionValue'],
-        machineImplementMaintenances: List<MachineImplementMaintenanceModel>.from(
-            map['machineImplementMaintenances']
-                ?.map((x) => MachineImplementMaintenanceModel.fromMap(x))),
-        attachments: List<MultipartFileCustomModel>.from(
-            map['attachments']?.map((x) => MultipartFileCustomModel.fromMap(x))),
+        machineImplementMaintenances:
+            List<MachineImplementMaintenanceModel>.from(
+                map['machineImplementMaintenances']
+                    ?.map((x) => MachineImplementMaintenanceModel.fromMap(x))),
+        attachments: List<MultipartFileCustomModel>.from(map['attachments']
+            ?.map((x) => MultipartFileCustomModel.fromMap(x))),
         attachmentNames: map['attachmentNames'],
       );
 }
@@ -140,9 +143,9 @@ class YearOfManufactureModel extends YearOfManufacture {
       YearOfManufactureModel.fromMap(json.decode(source));
 
   Map<String, dynamic> toMap() => {
-    'value': value,
-    'leap': leap,
-  };
+        'value': value,
+        'leap': leap,
+      };
 
   factory YearOfManufactureModel.fromMap(Map<String, dynamic> map) =>
       YearOfManufactureModel(

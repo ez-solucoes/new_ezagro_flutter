@@ -6,8 +6,8 @@ import 'package:new_ezagro_flutter/core/local_storage/local_storage_client.dart'
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_item.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase.dart';
 
-import '../../../../../consts/app_strings.dart';
 import '../../../../../core/enums/first_access_verification_enum.dart';
+import '../../../../../design_system/strings/app_strings.dart';
 import '../../../../domain/entities/authentication_entities/authentication_entity.dart';
 import '../../../../domain/params/authentication_params/authentication_params.dart';
 import '../../../../domain/usecases/authentication_usecases/authenticate_usecase/authenticate_usecase.dart';
@@ -57,7 +57,8 @@ abstract class AuthenticationControllerAbstract with Store {
         (success) async {
       name = success.employee?.employeeName ?? '';
       token = success.token;
-      accessStatus = firstAccessVerificationEnum(success.firstAccessVerification);
+      accessStatus =
+          firstAccessVerificationEnum(success.firstAccessVerification);
 
       saveToken(success);
     });

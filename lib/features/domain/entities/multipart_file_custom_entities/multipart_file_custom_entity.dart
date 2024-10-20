@@ -8,11 +8,11 @@ class MultipartFileCustomEntity extends Equatable {
   final String? content;
 
   const MultipartFileCustomEntity({
-     this.name,
-     this.originalFilename,
-     this.contentType,
-     this.size,
-     this.content,
+    this.name,
+    this.originalFilename,
+    this.contentType,
+    this.size,
+    this.content,
   });
 
   @override

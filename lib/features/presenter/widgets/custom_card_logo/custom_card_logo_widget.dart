@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../consts/app_colors.dart';
-import '../../../../consts/app_text_styles.dart';
+
+import '../../../../design_system/colors/app_colors.dart';
+import '../../../../design_system/typography/app_text_styles.dart';
 
 class CustomCardLogoWidget extends StatelessWidget {
   final int index;
@@ -62,9 +63,7 @@ class CustomCardLogoWidget extends StatelessWidget {
                 height: rowHeight,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    _buildInformationLines(labelTwo, textTwo)
-                  ],
+                  children: [_buildInformationLines(labelTwo, textTwo)],
                 ),
               ),
               const SizedBox(height: 10),
@@ -132,8 +131,8 @@ class CustomCardLogoWidget extends StatelessWidget {
   Widget _putIconIfNeeded(double rowHeight) {
     if (icon != null) {
       return IconButton(
-        constraints: BoxConstraints(maxHeight: rowHeight),
-        padding: EdgeInsets.zero,
+          constraints: BoxConstraints(maxHeight: rowHeight),
+          padding: EdgeInsets.zero,
           onPressed: () {
             onIconTap(index);
           },

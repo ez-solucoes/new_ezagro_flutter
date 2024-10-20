@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import 'contract_entity.dart';
 import 'contract_payment_method_entity.dart';
 import 'contract_payment_periodicity_entity.dart';

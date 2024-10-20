@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/products_entities/product_type_entity.dart';
+
 import '../agricultural_entities/agricultural_input_classification_type_entity.dart';
 import '../business_category_entities/business_category_entity.dart';
 import '../crop_entities/crop_entity.dart';

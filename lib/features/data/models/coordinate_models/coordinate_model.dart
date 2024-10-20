@@ -10,16 +10,16 @@ class CoordinateModel extends CoordinateEntity {
   });
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'longitude': longitude,
-    'latitude': latitude,
-  };
+        'id': id,
+        'longitude': longitude,
+        'latitude': latitude,
+      };
 
   factory CoordinateModel.fromMap(Map<String, dynamic> map) => CoordinateModel(
-    id: map['id'],
-    longitude: map['longitude'],
-    latitude: map['latitude'],
-  );
+        id: map['id'],
+        longitude: map['longitude'],
+        latitude: map['latitude'],
+      );
 
   String toJson() => json.encode(toMap());
 

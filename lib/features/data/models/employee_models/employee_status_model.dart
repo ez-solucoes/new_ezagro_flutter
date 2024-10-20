@@ -1,6 +1,6 @@
 import 'dart:convert';
-import '../../../domain/entities/employee_entities/employee_status_entity.dart';
 
+import '../../../domain/entities/employee_entities/employee_status_entity.dart';
 
 class EmployeeStatusModel extends EmployeeStatusEntity {
   const EmployeeStatusModel({
@@ -10,9 +10,10 @@ class EmployeeStatusModel extends EmployeeStatusEntity {
   });
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'name': name,'active': active,
-  };
+        'id': id,
+        'name': name,
+        'active': active,
+      };
 
   factory EmployeeStatusModel.fromMap(Map<String, dynamic> map) =>
       EmployeeStatusModel(

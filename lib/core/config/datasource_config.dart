@@ -1,7 +1,8 @@
-abstract class DatasourceConfig{
+abstract class DatasourceConfig {
   String get apiScheme;
+
   String get apiAuthority;
 
   //Feature toggles variables
-bool get isSendFeedbackEnabled;
+  bool get isSendFeedbackEnabled;
 }

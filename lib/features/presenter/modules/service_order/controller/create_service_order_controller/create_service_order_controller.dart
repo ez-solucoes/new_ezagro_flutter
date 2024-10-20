@@ -27,9 +27,9 @@ import '../../../../../../core/usecase/usecase.dart';
 import '../../../../../data/models/agricultural_models/agricultural_activity_model.dart';
 part 'create_service_order_controller.g.dart';
 
-class CreateServiceOrderController = _CreateServiceOrderController with _$CreateServiceOrderController;
+class CreateServiceOrderController = CreateServiceOrderControllerAbstract with _$CreateServiceOrderController;
 
-abstract class _CreateServiceOrderController with Store {
+abstract class CreateServiceOrderControllerAbstract with Store {
   @observable
   bool isLoading = false;
 

@@ -18,7 +18,7 @@ class ProductDatasourceImpl with UriBuilder implements ProductDatasource {
   Future<PaginationModel<ProductModel>> getProducts(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrl,
+      AppEndpoints.mainBaseUrlDev,
       AppEndpoints.getProductsEndpoint,
     );
 

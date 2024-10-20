@@ -18,7 +18,7 @@ class EmployeeDatasourceImpl with UriBuilder implements EmployeeDatasource {
   Future<PaginationModel<EmployeeModel>> getEmployees(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrl,
+      AppEndpoints.mainBaseUrlDev,
       AppEndpoints.getEmployees,
     );
 

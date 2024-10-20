@@ -18,7 +18,7 @@ class MachineryDatasourceImpl with UriBuilder implements MachineryDatasource {
   Future<PaginationModel<MachineImplementModel>> getMachinery(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrl,
+      AppEndpoints.mainBaseUrlDev,
       AppEndpoints.getMachineryEndpoint,
     );
 

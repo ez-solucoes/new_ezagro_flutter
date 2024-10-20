@@ -22,7 +22,7 @@ class ServiceOrderDatasourceImpl
       NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrl,
+      AppEndpoints.mainBaseUrlDev,
       AppEndpoints.getServiceOrderListEndpoint,
     );
 
@@ -47,7 +47,7 @@ class ServiceOrderDatasourceImpl
   Future<FieldServiceOrderModel> createServiceOrder(MockParams mockParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrl,
+      AppEndpoints.mainBaseUrlDev,
       AppEndpoints.postServiceOrderEndpoint,
     );
 

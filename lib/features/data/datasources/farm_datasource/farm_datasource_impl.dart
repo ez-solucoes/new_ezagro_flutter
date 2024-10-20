@@ -18,7 +18,7 @@ class FarmDatasourceImpl with UriBuilder implements FarmDatasource {
   Future<PaginationModel<FarmModel>> getSimplifiedFarms(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrl,
+      AppEndpoints.mainBaseUrlDev,
       AppEndpoints.getFarmsSimplifiedEndpoint,
     );
 

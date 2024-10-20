@@ -17,7 +17,7 @@ class AuthenticationDatasourceImpl
   Future authenticate(AuthenticationParams authenticationParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrl,
+      AppEndpoints.mainBaseUrlDev,
       AppEndpoints.authenticateEndpoint,
     );
 
@@ -40,7 +40,7 @@ class AuthenticationDatasourceImpl
   Future recoverPassword(AuthenticationParams authenticationParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrl,
+      AppEndpoints.mainBaseUrlDev,
       AppEndpoints.recoverPasswordEndpoint,
     );
 

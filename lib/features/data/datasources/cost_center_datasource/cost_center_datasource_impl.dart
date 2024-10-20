@@ -18,7 +18,7 @@ class CostCenterDatasourceImpl with UriBuilder implements CostCenterDatasource {
   Future<PaginationModel<CostCenterModel>> getCostCenters(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrl,
+      AppEndpoints.mainBaseUrlDev,
       AppEndpoints.getCostCentersEndpoint,
     );
 

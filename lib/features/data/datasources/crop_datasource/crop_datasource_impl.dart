@@ -18,7 +18,7 @@ class CropDatasourceImpl with UriBuilder implements CropDatasource {
   Future<PaginationModel<CropModel>> getSimplifiedCrops(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrl,
+      AppEndpoints.mainBaseUrlDev,
       AppEndpoints.getSimplifiedCropsEndpoint,
     );
 

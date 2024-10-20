@@ -18,7 +18,7 @@ class ActivityDatasourceImpl with UriBuilder implements ActivityDatasource {
   Future<PaginationModel<AgriculturalActivityModel>> getActivities(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrl,
+      AppEndpoints.mainBaseUrlDev,
       AppEndpoints.getActivityTypesEndpoint,
     );
 

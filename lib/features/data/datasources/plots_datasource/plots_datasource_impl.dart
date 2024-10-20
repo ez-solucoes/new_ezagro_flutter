@@ -18,7 +18,7 @@ class PlotsDatasourceImpl with UriBuilder implements PlotsDatasource {
   Future<PaginationModel<PlotModel>> getPlots(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrl,
+      AppEndpoints.mainBaseUrlDev,
       AppEndpoints.getPlotsEndpoint,
     );
 

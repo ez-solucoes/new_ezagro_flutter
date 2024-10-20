@@ -9,7 +9,7 @@ import '../../controller/create_service_order_controller/create_service_order_co
 
 class MachineryPage extends StatelessWidget {
 
-  MachineryPage({super.key});
+  const MachineryPage({super.key});
 
   @override
   Widget build(BuildContext context) {

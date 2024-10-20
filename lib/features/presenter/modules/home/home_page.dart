@@ -1,15 +1,15 @@
+import 'package:flutter/material.dart';
 
-import 'package:flutter/cupertino.dart';
-import 'package:new_ezagro_flutter/consts/app_colors.dart';
-import 'package:new_ezagro_flutter/consts/app_text_styles.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/appbar/custom_appbar_widget.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/background/background_widget.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/buttons/custom_elevated_button.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/buttons/custom_outlined_button.dart';
-
+import '../../../../consts/app_colors.dart';
 import '../../../../consts/app_strings.dart';
+import '../../../../consts/app_text_styles.dart';
+import '../../widgets/appbar/custom_appbar_widget.dart';
+import '../../widgets/background/background_widget.dart';
+import '../../widgets/buttons/custom_elevated_button.dart';
+import '../../widgets/buttons/custom_outlined_button.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,5 +30,4 @@ class HomePage extends StatelessWidget {
           ),
         ));
   }
-
 }

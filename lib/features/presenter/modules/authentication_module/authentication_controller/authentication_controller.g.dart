@@ -89,6 +89,40 @@ mixin _$AuthenticationController on AuthenticationControllerAbstract, Store {
     });
   }
 
+  late final _$retypePasswordAtom = Atom(
+      name: 'AuthenticationControllerAbstract.retypePassword',
+      context: context);
+
+  @override
+  String get retypePassword {
+    _$retypePasswordAtom.reportRead();
+    return super.retypePassword;
+  }
+
+  @override
+  set retypePassword(String value) {
+    _$retypePasswordAtom.reportWrite(value, super.retypePassword, () {
+      super.retypePassword = value;
+    });
+  }
+
+  late final _$temporaryPasswordAtom = Atom(
+      name: 'AuthenticationControllerAbstract.temporaryPassword',
+      context: context);
+
+  @override
+  String get temporaryPassword {
+    _$temporaryPasswordAtom.reportRead();
+    return super.temporaryPassword;
+  }
+
+  @override
+  set temporaryPassword(String value) {
+    _$temporaryPasswordAtom.reportWrite(value, super.temporaryPassword, () {
+      super.temporaryPassword = value;
+    });
+  }
+
   late final _$accessStatusAtom = Atom(
       name: 'AuthenticationControllerAbstract.accessStatus', context: context);
 
@@ -129,6 +163,8 @@ token: ${token},
 name: ${name},
 username: ${username},
 password: ${password},
+retypePassword: ${retypePassword},
+temporaryPassword: ${temporaryPassword},
 accessStatus: ${accessStatus},
 errorMessage: ${errorMessage}
     ''';

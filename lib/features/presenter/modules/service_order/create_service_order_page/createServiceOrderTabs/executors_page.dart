@@ -10,7 +10,7 @@ import '../../controller/create_service_order_controller/create_service_order_co
 class ExecutorsPage extends StatelessWidget {
 
 
-  ExecutorsPage({
+  const ExecutorsPage({
     super.key
   });
 

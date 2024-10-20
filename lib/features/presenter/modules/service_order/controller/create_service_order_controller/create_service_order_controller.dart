@@ -24,12 +24,11 @@ import '../../../../../../consts/app_strings.dart';
 import '../../../../../../core/local_storage/local_storage_client_secure_impl.dart';
 import '../../../../../../core/local_storage/local_storage_item.dart';
 import '../../../../../../core/usecase/usecase.dart';
-import '../../../../../data/models/agricultural_models/agricultural_activity_model.dart';
 part 'create_service_order_controller.g.dart';
 
-class CreateServiceOrderController = _CreateServiceOrderController with _$CreateServiceOrderController;
+class CreateServiceOrderController = CreateServiceOrderControllerAbstract with _$CreateServiceOrderController;
 
-abstract class _CreateServiceOrderController with Store {
+abstract class CreateServiceOrderControllerAbstract with Store {
   @observable
   bool isLoading = false;
 
@@ -268,33 +267,6 @@ abstract class _CreateServiceOrderController with Store {
 
   finishOSCreation() {
     if (_validFields()) {
-    Map<String, dynamic> osPayload = {
-    "activityStart": "",
-    "activityEnd": "",
-    "farm": {
-    "farmId": farmId
-    },
-    "plots": plotsIds["plots"],
-    "areaTotal": totalArea,
-    "cropDiversity": {
-    "cropDiversityId" : cropDiversityId
-    },
-    "machineImplements": machineryIds["machineryImplements"],
-    "inventorySource": {
-    "inventoryId": inventoryId
-    },
-    "productRecommendations": productsId["productRecommendations"],
-    "agriculturalActivity": AgriculturalActivityModel.fromEntity(activity!).toMap(),
-    "costCenterLocal": {
-    "costCenterId": costCenterId
-    },
-    "employeeActivityHolder": activityHolder["employeeActivityHolder"],
-    "employees": responsible["employees"],
-    "description": notes,
-    "activityValue": activityValue,
-    "expectedStartDate": startDate,
-    "expectedEndDate": endDate,
-    };
     createServiceOrder();
     }
   }

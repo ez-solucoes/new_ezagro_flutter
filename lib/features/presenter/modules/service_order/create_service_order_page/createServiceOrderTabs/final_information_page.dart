@@ -8,7 +8,7 @@ import '../../controller/create_service_order_controller/create_service_order_co
 
 class FinalInformationPage extends StatelessWidget {
 
-  FinalInformationPage({super.key});
+  const FinalInformationPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -7,7 +7,7 @@ import '../../controller/create_service_order_controller/create_service_order_co
 
 class SchedulePage extends StatelessWidget {
 
-  SchedulePage({super.key});
+  const SchedulePage({super.key});
 
   @override
   Widget build(BuildContext context) {

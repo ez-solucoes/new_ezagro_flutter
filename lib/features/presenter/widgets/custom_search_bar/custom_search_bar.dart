@@ -4,9 +4,9 @@ import '../../../../consts/app_strings.dart';
 
 class CustomSearchBar extends StatelessWidget {
 
-  Function(String) onTextChanged;
+  final Function(String) onTextChanged;
 
-  CustomSearchBar({
+  const CustomSearchBar({
     super.key,
     required this.onTextChanged
   });

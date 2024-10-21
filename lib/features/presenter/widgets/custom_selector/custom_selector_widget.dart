@@ -9,9 +9,9 @@ class CustomSelectorWidget extends StatelessWidget {
   final List<String> items;
   final String title;
   final String selectorHint;
-  String? selectedValue;
+  final String? selectedValue;
 
-  CustomSelectorWidget({
+  const CustomSelectorWidget({
     super.key,
     required this.onSelect,
     required this.items,

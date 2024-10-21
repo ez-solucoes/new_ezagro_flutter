@@ -1,25 +1,25 @@
-//[ DIAS, SEMANAS ]
+//[ DAYS, WEEKS ]
 
 enum PestUnitOfTimeEnum{
-  dias,
-  semanas,
+  days,
+  weeks,
 }
 
 pestUnitOfTimeEnum(String pestUnitOfTime) {
   switch (pestUnitOfTime) {
-    case 'DIAS':
-      return PestUnitOfTimeEnum.dias;
-    case 'SEMANAS':
-      return PestUnitOfTimeEnum.semanas;
+    case 'DAYS':
+      return PestUnitOfTimeEnum.days;
+    case 'WEEKS':
+      return PestUnitOfTimeEnum.weeks;
   }
 }
 
 pestUnitOfTimeString(type) {
   switch (type) {
-    case PestUnitOfTimeEnum.dias:
-      return 'DIAS';
-    case PestUnitOfTimeEnum.semanas:
-      return 'SEMANAS';
+    case PestUnitOfTimeEnum.days:
+      return 'DAYS';
+    case PestUnitOfTimeEnum.weeks:
+      return 'WEEKS';
     default:
       return '';
   }

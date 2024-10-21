@@ -1,43 +1,56 @@
-//[ INSETO, FUNGOS, BACTERIA, VERMES, PLANTAS_DANINHAS ]
+//[ INSECT, FUNGI, BACTERIA, WORMS, WEEDS, MITE, NEMATODE, VIRUS ]
 
-enum PestTypeEnum{
- inseto,
-  fungos,
+enum PestTypeEnum {
+  insect,
+  fungi,
   bacteria,
-  vermes,
-  plantasDaninhas,
-
+  worms,
+  weeds,
+  mite,
+  nematode,
+  virus
 }
 
-pestTypeEnum(String pestType){
+pestTypeEnum(String pestType) {
   switch (pestType) {
-    case 'INSETO':
-      return PestTypeEnum.inseto;
-    case 'FUNGOS':
-      return PestTypeEnum.fungos;
-      case 'BACTERIA':
+    case 'INSECT':
+      return PestTypeEnum.insect;
+    case 'FUNGI':
+      return PestTypeEnum.fungi;
+    case 'BACTERIA':
       return PestTypeEnum.bacteria;
-      case 'VERMES':
-      return PestTypeEnum.vermes;
-      case 'PLANTAS_DANINHAS':
-      return PestTypeEnum.plantasDaninhas;
+    case 'WORMS':
+      return PestTypeEnum.worms;
+    case 'WEEDS':
+      return PestTypeEnum.weeds;
+    case 'MITE':
+      return PestTypeEnum.mite;
+    case 'NEMATODE':
+      return PestTypeEnum.nematode;
+    case 'VIRUS':
+      return PestTypeEnum.virus;
   }
 }
 
 pestTypeString(type) {
   switch (type) {
-    case PestTypeEnum.inseto:
-      return 'INSETO';
-    case PestTypeEnum.fungos:
-      return 'FUNGOS';
+    case PestTypeEnum.insect:
+      return 'INSECT';
+    case PestTypeEnum.fungi:
+      return 'FUNGI';
     case PestTypeEnum.bacteria:
       return 'BACTERIA';
-    case PestTypeEnum.vermes:
-      return 'VERMES';
-    case PestTypeEnum.plantasDaninhas:
-      return 'PLANTAS_DANINHAS';
+    case PestTypeEnum.worms:
+      return 'WORMS';
+    case PestTypeEnum.weeds:
+      return 'WEEDS';
+    case PestTypeEnum.mite:
+      return 'MITE';
+    case PestTypeEnum.nematode:
+      return 'NEMATODE';
+    case PestTypeEnum.virus:
+      return 'VIRUS';
     default:
       return '';
   }
 }
-

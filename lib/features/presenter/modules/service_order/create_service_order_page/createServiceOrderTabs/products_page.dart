@@ -9,7 +9,7 @@ import '../../controller/create_service_order_controller/create_service_order_co
 
 class ProductsPage extends StatelessWidget {
 
-  ProductsPage({super.key});
+  const ProductsPage({super.key});
 
   @override
   Widget build(BuildContext context) {

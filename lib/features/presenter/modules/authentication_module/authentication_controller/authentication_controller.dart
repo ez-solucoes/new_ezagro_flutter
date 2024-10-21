@@ -50,7 +50,6 @@ abstract class AuthenticationControllerAbstract with Store {
 
     final authenticationUsecase = Modular.get<AuthenticateUsecase>();
 
-    print(username.unmask);
     final result = await authenticationUsecase(
         AuthenticationParams(password: password, username: username.unmask));
 

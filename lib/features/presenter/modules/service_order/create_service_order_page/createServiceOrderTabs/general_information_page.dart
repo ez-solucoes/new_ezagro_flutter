@@ -8,7 +8,7 @@ import '../../controller/create_service_order_controller/create_service_order_co
 
 class GeneralInformationPage extends StatelessWidget {
 
-  GeneralInformationPage({
+  const GeneralInformationPage({
     super.key
   });
 

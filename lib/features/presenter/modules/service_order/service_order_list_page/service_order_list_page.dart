@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/core/enums/service_order_type_enum.dart';
+import 'package:new_ezagro_flutter/features/presenter/widgets/custom_drawer/custom_drawer_widget.dart';
 
 import '../../../../../consts/app_colors.dart';
 import '../../../../../consts/app_dimens.dart';
@@ -18,8 +19,8 @@ class ServiceOrderListPage extends StatelessWidget {
 
   static const String routePath = AppRoutes.appServiceOrderListPage;
 
-  static navigate(ArgParams args) =>
-      Modular.to.navigate(routePath, arguments: args);
+  static navigate() =>
+      Modular.to.navigate(routePath);
 
   static push(ArgParams args) =>
       Modular.to.pushNamed(routePath, arguments: args);
@@ -39,6 +40,7 @@ class ServiceOrderListPage extends StatelessWidget {
             appBarType: AppBarType.hamburgerAndTitle,
             title: AppStrings.serviceOrderTitle,
           ),
+          drawer: CustomDrawerWidget(),
           body: Stack(
             alignment: AlignmentDirectional.bottomCenter,
             children: [

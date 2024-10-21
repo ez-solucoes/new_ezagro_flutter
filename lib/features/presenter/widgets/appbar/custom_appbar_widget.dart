@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
 
 import '../../../../consts/app_colors.dart';
@@ -24,7 +23,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
   final bool showProgressIndicator;
   final bool showHamburgerMenu;
   final bool showNotificationIcon;
-
+  final Function()? onTap;
   final VoidCallback? callback;
 
 
@@ -38,6 +37,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
     this.showHamburgerMenu = false,
     this.showNotificationIcon = false,
     this.callback,
+    this.onTap,
     required this.appBarType,
   });
 
@@ -153,7 +153,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GestureDetector(
-                onTap: () => callback,
+                onTap: onTap,
                 child: Row(
                   children: [
                     const Icon(Icons.arrow_back_ios, size: 19),

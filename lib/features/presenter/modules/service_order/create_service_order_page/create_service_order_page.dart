@@ -10,6 +10,7 @@ import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
 import '../../../widgets/buttons/custom_elevated_button.dart';
 import '../../../widgets/buttons/custom_outlined_button.dart';
+import '../../home/home_page.dart';
 import '../controller/create_service_order_controller/create_service_order_controller.dart';
 import 'createServiceOrderTabs/executors_page.dart';
 import 'createServiceOrderTabs/final_information_page.dart';
@@ -27,8 +28,6 @@ class CreateServiceOrderPage extends StatelessWidget {
 
   static push() => Modular.to.pushNamed(routePath);
 
-  //static pop(BuildContext context){Modular.to.pop(context);}
-
   const CreateServiceOrderPage({super.key, this.args});
 
   @override
@@ -39,7 +38,9 @@ class CreateServiceOrderPage extends StatelessWidget {
         appBar: CustomAppBarWidget(
           appBarType: AppBarType.centeredTitleAndBackArrow,
           title: AppStrings.createServiceOrder,
-          callback: (){Modular.to.pop(context);},
+          onTap: (){
+            HomePage.navigate();
+          },
         ),
         child: DefaultTabController(
             length: 7,

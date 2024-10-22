@@ -24,7 +24,7 @@ import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_u
 import '../../../../../../core/local_storage/local_storage_client_secure_impl.dart';
 import '../../../../../../core/local_storage/local_storage_item.dart';
 import '../../../../../../core/usecase/usecase.dart';
-import '../../../../../../design_system/strings/app_strings.dart';
+import '../../../../../../design_system/strings/app_strings_portuguese.dart';
 
 part 'create_service_order_controller.g.dart';
 

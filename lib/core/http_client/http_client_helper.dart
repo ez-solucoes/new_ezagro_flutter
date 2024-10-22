@@ -1,7 +1,7 @@
 import 'package:new_ezagro_flutter/core/errors/server_error.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_response.dart';
-import 'package:new_ezagro_flutter/design_system/strings/app_strings.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 
 ServerError mountServerErrorInstance({
   required HttpRequest request,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../../../design_system/colors/app_colors.dart';
-import '../../../../../../design_system/strings/app_strings.dart';
+import '../../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../widgets/custom_double_selector/custom_double_selector_widget.dart';
 import '../../../../widgets/custom_text_input/custom_text_input_widget.dart';
 import '../../controller/create_service_order_controller/create_service_order_controller.dart';

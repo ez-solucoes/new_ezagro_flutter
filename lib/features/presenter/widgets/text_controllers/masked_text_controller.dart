@@ -40,8 +40,9 @@ class MaskedTextController extends TextEditingController {
     text = text.unmask;
     if (text.length > 3) text = '${text.substring(0, 3)}.${text.substring(3)}';
     if (text.length > 7) text = '${text.substring(0, 7)}.${text.substring(7)}';
-    if (text.length > 11)
+    if (text.length > 11) {
       text = '${text.substring(0, 11)}-${text.substring(11)}';
+    }
     return text;
   }
 
@@ -55,10 +56,12 @@ class MaskedTextController extends TextEditingController {
     text = text.unmask;
     if (text.length > 2) text = '${text.substring(0, 3)}.${text.substring(2)}';
     if (text.length > 6) text = '${text.substring(0, 6)}.${text.substring(6)}';
-    if (text.length > 10)
+    if (text.length > 10) {
       text = '${text.substring(0, 10)}/${text.substring(10)}';
-    if (text.length > 15)
+    }
+    if (text.length > 15) {
       text = '${text.substring(0, 15)}-${text.substring(15)}';
+    }
     return text;
   }
 

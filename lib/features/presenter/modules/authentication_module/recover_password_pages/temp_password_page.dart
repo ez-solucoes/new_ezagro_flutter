@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
-import 'package:new_ezagro_flutter/design_system/strings/app_strings.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/authentication_controller/authentication_controller.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/new_password_page.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../design_system/strings/app_strings.dart';
+import '../../../../design_system/strings/app_strings_portuguese.dart';
 
 class CustomSearchBar extends StatelessWidget {
   final Function(String) onTextChanged;

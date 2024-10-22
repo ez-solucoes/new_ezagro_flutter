@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/core/enums/service_order_type_enum.dart';
-import 'package:new_ezagro_flutter/design_system/strings/app_strings.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 
 import '../../../../../consts/app_routes.dart';
 import '../../../../../design_system/colors/app_colors.dart';

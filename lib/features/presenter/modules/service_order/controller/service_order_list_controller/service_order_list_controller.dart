@@ -10,7 +10,7 @@ import '../../../../../../core/local_storage/local_storage_client_secure_impl.da
 import '../../../../../../core/local_storage/local_storage_item.dart';
 import '../../../../../../core/usecase/usecase.dart';
 import '../../../../../../design_system/colors/app_colors.dart';
-import '../../../../../../design_system/strings/app_strings.dart';
+import '../../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../../domain/entities/service_order_list_entities/service_order_list_entity.dart';
 
 part 'service_order_list_controller.g.dart';

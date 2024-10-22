@@ -3,7 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
-import 'package:new_ezagro_flutter/design_system/strings/app_strings.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/authentication_controller/authentication_controller.dart';
 
 import '../../../../../core/utils/text_input_formatter_mask.dart';

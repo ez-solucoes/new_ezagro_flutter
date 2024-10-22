@@ -3,7 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_client.dart';
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_client_shared_prefs_impl.dart';
-import 'package:new_ezagro_flutter/design_system/strings/app_strings.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/authentication_repository/authentication_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/authentication_repository/authentication_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';

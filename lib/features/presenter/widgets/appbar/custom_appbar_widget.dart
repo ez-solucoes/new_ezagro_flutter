@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_ezagro_flutter/design_system/strings/app_strings.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 
 import '../../../../design_system/colors/app_colors.dart';
 import '../../../../design_system/typography/app_text_styles.dart';

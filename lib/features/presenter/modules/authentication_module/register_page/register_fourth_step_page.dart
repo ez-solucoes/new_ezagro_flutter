@@ -3,7 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
 
 import '../../../../../design_system/colors/app_colors.dart';
-import '../../../../../design_system/strings/app_strings.dart';
+import '../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../../design_system/typography/app_text_styles.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';

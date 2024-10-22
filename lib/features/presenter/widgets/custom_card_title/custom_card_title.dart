@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:new_ezagro_flutter/core/enums/service_order_type_enum.dart';
-import 'package:new_ezagro_flutter/design_system/strings/app_strings.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 import 'package:new_ezagro_flutter/design_system/typography/app_text_styles.dart';
 
 class CustomCardTitleWidget extends StatelessWidget {

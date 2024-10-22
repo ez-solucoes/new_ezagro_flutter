@@ -1,4 +1,4 @@
-import 'package:new_ezagro_flutter/design_system/strings/app_strings.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 
 enum ServiceOrderTypeEnum {
   toBeStarted,

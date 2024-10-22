@@ -5,7 +5,7 @@ import 'package:new_ezagro_flutter/consts/app_routes.dart';
 import 'package:new_ezagro_flutter/design_system/colors/app_colors.dart';
 import 'package:new_ezagro_flutter/design_system/typography/app_text_styles.dart';
 
-import '../../../../../design_system/strings/app_strings.dart';
+import '../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';

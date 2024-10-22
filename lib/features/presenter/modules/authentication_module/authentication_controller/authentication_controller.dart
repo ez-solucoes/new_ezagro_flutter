@@ -7,7 +7,7 @@ import 'package:new_ezagro_flutter/core/local_storage/local_storage_item.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase.dart';
 
 import '../../../../../core/enums/first_access_verification_enum.dart';
-import '../../../../../design_system/strings/app_strings.dart';
+import '../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../domain/entities/authentication_entities/authentication_entity.dart';
 import '../../../../domain/params/authentication_params/authentication_params.dart';
 import '../../../../domain/usecases/authentication_usecases/authenticate_usecase/authenticate_usecase.dart';

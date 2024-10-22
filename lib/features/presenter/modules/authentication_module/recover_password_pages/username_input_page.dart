@@ -10,7 +10,7 @@ import 'package:new_ezagro_flutter/features/presenter/widgets/custom_forms/passw
 
 import '../../../../../consts/app_routes.dart';
 import '../../../../../core/utils/text_input_formatter_mask.dart';
-import '../../../../../design_system/strings/app_strings.dart';
+import '../../../../../design_system/strings/app_strings_portuguese.dart';
 
 class UsernameInputPage extends StatelessWidget {
   final ArgParams? args;

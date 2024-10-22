@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:new_ezagro_flutter/design_system/typography/app_text_styles.dart';
 
 import '../../../../design_system/colors/app_colors.dart';
-import '../../../../design_system/strings/app_strings.dart';
+import '../../../../design_system/strings/app_strings_portuguese.dart';
 import '../custom_drawer_header/custom_drawer_header_widget.dart';
 
 class CustomDrawerWidget extends StatelessWidget {

@@ -12,9 +12,10 @@ class AppColors {
   static const Color greenColor = Color(0xff137C40);
   static const Color transparent = Color(0x00FFFFFF);
   static const Color muddyYellowColor = Color(0xffB28E18);
-  static const Color redCanceledColor = Color(0xffE54444);
+  static const Color redColor = Color(0xffE54444);
   static const Color darkGreyColor = Color(0xff5C5856);
   static const Color whiteBorderColor = Color(0xffF3F3F3);
   static const Color softGreenColor = Color(0xffF1F7F4);
   static const Color formGreyColor = Color(0xffBFBFBF);
+  static const Color yellowColor = Color(0xffDAAC15);
 }

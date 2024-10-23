@@ -26,6 +26,8 @@ class AppStringsPortuguese {
   static const String loremIpsum =
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
+
+  ///Authentication Module
   static const String forgotPasswordCpf =
       'Esqueceu sua senha?\nDigite seu CPF e vamos enviar uma senha provisória em seu telefone:';
   static const String tempPassword =
@@ -34,6 +36,10 @@ class AppStringsPortuguese {
   static const String repeatYourNewPasswordString = 'Repita sua nova senha:';
   static const String recoverPasswordSuccessString =
       'Pronto!\nSua nova senha foi criada\nAgora você pode voltar para a área de Login e acessar novamente.';
+
+  //Auth error alert
+  static const String authErrorAlertString = 'Usuário ou senha incorretos:';
+
 
   ///Service Order Module
   //Service Order List Strings
@@ -138,4 +144,8 @@ class AppStringsPortuguese {
   static const String nameKey = 'Name';
   static const String idKey = 'id';
   static const String directoryKey = 'Directory';
+
+  ///SnackBar
+  static const String successSnackBarString = '';
+  static const String errorSnackBarString = '';
 }

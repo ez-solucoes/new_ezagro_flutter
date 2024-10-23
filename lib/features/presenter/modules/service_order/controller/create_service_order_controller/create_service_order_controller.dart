@@ -330,7 +330,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
 
     final start = itemIndex.clamp(0, plotsOptions.length - 1);
 
-    if (!selectedPlots.contains(plotsOptions[start])) {
+    if (!selectedPlots.contains(plotsOptions[start].id)) {
       selectedPlots.add(plotsOptions[start].id);
     }
     isSelecting = true;

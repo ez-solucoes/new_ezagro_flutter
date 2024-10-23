@@ -8,8 +8,9 @@ class BackgroundWidget extends StatelessWidget {
   final PreferredSizeWidget? appBar;
   final bool scrollable;
   final Widget child;
+  final bool needsDrawer;
 
-  const BackgroundWidget({super.key, required this.scrollable, required this.child, this.appBar});
+  const BackgroundWidget({super.key, required this.scrollable, required this.child, this.appBar, this.needsDrawer = false});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class BackgroundWidget extends StatelessWidget {
       backgroundColor: AppColors.whiteColor,
       appBar: appBar,
       resizeToAvoidBottomInset: false,
-      drawer: CustomDrawerWidget(),
+      drawer: needsDrawer ? CustomDrawerWidget() : null,
       body: SafeArea(
         child: Stack(
           fit: StackFit.expand,

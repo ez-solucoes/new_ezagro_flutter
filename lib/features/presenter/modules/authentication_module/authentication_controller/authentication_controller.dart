@@ -93,7 +93,7 @@ abstract class AuthenticationControllerAbstract with Store {
         Modular.get<LocalStorageClient>(key: AppStrings.storageTypeSecure);
 
     await localStorage.writeData(LocalStorageItem(
-        key: AppStrings.idKey, value: success.client.id.toString()));
+        key: AppStrings.idKey, value: success.client!.id.toString()));
     await localStorage.writeData(
         LocalStorageItem(key: AppStrings.tokenKey, value: success.token));
     await localStorage.writeData(LocalStorageItem(

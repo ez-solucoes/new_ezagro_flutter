@@ -6,7 +6,7 @@ class PhoneModel extends PhoneEntity {
 
   PhoneModel({
     required super.id,
-    required super.number,
+    super.number,
     super.whatsapp,
     super.active});
 

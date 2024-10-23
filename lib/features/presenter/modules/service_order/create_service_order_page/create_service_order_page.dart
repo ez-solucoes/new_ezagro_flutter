@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import '../../../../../consts/app_colors.dart';
+import '../../../../../consts/app_routes.dart';
 import '../../../../../consts/app_strings.dart';
 import '../../../../../consts/app_text_styles.dart';
+import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
 import '../../../widgets/buttons/custom_elevated_button.dart';
 import '../../../widgets/buttons/custom_outlined_button.dart';
+import '../../home/home_page.dart';
 import '../controller/create_service_order_controller/create_service_order_controller.dart';
 import 'createServiceOrderTabs/executors_page.dart';
 import 'createServiceOrderTabs/final_information_page.dart';
@@ -18,16 +21,26 @@ import 'createServiceOrderTabs/schedule_page.dart';
 import 'createServiceOrderTabs/select_plots_page.dart';
 
 class CreateServiceOrderPage extends StatelessWidget {
-  const CreateServiceOrderPage({super.key});
+  final ArgParams? args;
+  static const String routePath = AppRoutes.appCreateServiceOrderPage;
+
+  static navigate() => Modular.to.navigate(routePath);
+
+  static push() => Modular.to.pushNamed(routePath);
+
+  const CreateServiceOrderPage({super.key, this.args});
 
   @override
   Widget build(BuildContext context) {
     final controller = Modular.get<CreateServiceOrderController>();
     return BackgroundWidget(
         scrollable: false,
-        appBar: const CustomAppBarWidget(
-          appBarType: AppBarType.hamburgerAndTitle,
-          title: AppStrings.serviceOrderTitle,
+        appBar: CustomAppBarWidget(
+          appBarType: AppBarType.centeredTitleAndBackArrow,
+          title: AppStrings.createServiceOrder,
+          onTap: (){
+            HomePage.navigate();
+          },
         ),
         child: DefaultTabController(
             length: 7,

@@ -109,7 +109,7 @@ abstract class ServiceOrderListControllerAbstract with Store {
       case ServiceOrderTypeEnum.approvalPending:
         return AppColors.muddyYellowColor;
       case ServiceOrderTypeEnum.canceled:
-        return AppColors.redCanceledColor;
+        return AppColors.redColor;
     }
   }
 }

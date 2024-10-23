@@ -222,7 +222,7 @@ class ServiceOrderPage extends StatelessWidget {
               CustomElevatedButton(
                 onPressed: () {},
                 label: AppStringsPortuguese.cancelOSButton,
-                backgroundColor: AppColors.redCanceledColor,
+                backgroundColor: AppColors.redColor,
               ),
               const SizedBox(
                 height: 15,

@@ -4,6 +4,7 @@ import 'package:mobx/mobx.dart';
 import 'package:new_ezagro_flutter/core/extensions/unmask_text_field_extension.dart';
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_client.dart';
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_item.dart';
+import 'package:new_ezagro_flutter/design_system/widgets/snackbars/custon_snack_bar_widget.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase.dart';
 
 import '../../../../../core/enums/first_access_verification_enum.dart';
@@ -45,7 +46,7 @@ abstract class AuthenticationControllerAbstract with Store {
   @observable
   String errorMessage = '';
 
-  Future authenticate() async {
+  Future authenticate(BuildContext context) async {
     isLoading = true;
 
     final authenticationUsecase = Modular.get<AuthenticateUsecase>();
@@ -53,8 +54,10 @@ abstract class AuthenticationControllerAbstract with Store {
     final result = await authenticationUsecase(
         AuthenticationParams(password: password, username: username.unmask));
 
-    result.fold((error) => errorMessage = error.friendlyMessage,
-        (success) async {
+    result.fold((error) {
+      errorMessage = error.friendlyMessage;
+      CustomSnackBarWidget.show(SnackBarType.success, context, 'Usuário ou senha incorretos!');
+    }, (success) async {
       name = success.employee?.employeeName ?? '';
       token = success.token;
       accessStatus =
@@ -73,8 +76,9 @@ abstract class AuthenticationControllerAbstract with Store {
 
     final result = await recoverPasswordUsecase(
         AuthenticationParams(username: username.unmask));
-    result.fold((error) => errorMessage = error.friendlyMessage,
-        (success) async {
+    result.fold((error) async {
+      errorMessage = error.friendlyMessage;
+    }, (success) async {
       debugPrint('Envio efetuado com sucesso');
       debugPrint(success.toString());
     });
@@ -90,14 +94,15 @@ abstract class AuthenticationControllerAbstract with Store {
   }
 
   void saveToken(AuthenticationEntity success) async {
-    final localStorage =
-        Modular.get<LocalStorageClient>(key: AppStringsPortuguese.storageTypeSecure);
+    final localStorage = Modular.get<LocalStorageClient>(
+        key: AppStringsPortuguese.storageTypeSecure);
 
     await localStorage.writeData(LocalStorageItem(
         key: AppStringsPortuguese.idKey, value: success.client.id.toString()));
-    await localStorage.writeData(
-        LocalStorageItem(key: AppStringsPortuguese.tokenKey, value: success.token));
     await localStorage.writeData(LocalStorageItem(
-        key: AppStringsPortuguese.nameKey, value: success.employee!.employeeName!));
+        key: AppStringsPortuguese.tokenKey, value: success.token));
+    await localStorage.writeData(LocalStorageItem(
+        key: AppStringsPortuguese.nameKey,
+        value: success.employee!.employeeName!));
   }
 }

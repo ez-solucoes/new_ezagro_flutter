@@ -62,7 +62,7 @@ class LoginPage extends StatelessWidget {
                   controller.username = usernameController.text;
                   controller.password = passwordController.text;
 
-                  controller.authenticate();
+                  controller.authenticate(context);
                 },
                 label: AppStringsPortuguese.enterString,
                 isLoading: controller.isLoading,

@@ -19,9 +19,9 @@ class MachineryPage extends StatelessWidget {
               children: [
                 CustomSelectorWidget(
                     onSelect: (value) {
-                      controller.selectedMachinery.add(value);
+                      controller.selectedMachinery.add(value.id);
                     },
-                    items: const ["máquina 1", "máquina 2", "máquina 3"],
+                    items: controller.machineryOptions,
                     title: AppStrings.machinerySelectorTitle,
                     selectorHint: AppStrings.machinerySelectorHint),
                 const SizedBox(height: 6),
@@ -38,9 +38,9 @@ class MachineryPage extends StatelessWidget {
                         builder: (context) => CustomCardLogoWidget(
                               index: index,
                               labelOne: AppStrings.machineryField,
-                              textOne: controller.selectedMachinery[index],
+                              textOne: "",//controller.selectedMachinery[index],
                               labelTwo: AppStrings.machineryAliasField,
-                              textTwo: controller.selectedMachinery[index],
+                              textTwo: "",//controller.selectedMachinery[index],
                               labelThree: AppStrings.hourMeterField,
                               textThree: "Horímetro",
                               labelFour: AppStrings.kiloMeterField,

@@ -22,10 +22,10 @@ class GeneralInformationPage extends StatelessWidget {
       Observer(
         builder: (context) => CustomSelectorWidget(
             onSelect: (value) {
-              controller.activity = controller.activityOptions.where((e) => e.activityName == value).toList().first;
+             //controller.activity = controller.activityOptions;
 
             },
-            items: controller.activityOptions.map((activity) => activity.activityName).toList(),
+            items: controller.activityOptions,
             title: AppStrings.activitySelectorTitle,
             selectorHint: AppStrings.activitySelectorHint,
             selectedValue: controller.activity?.activityName
@@ -39,7 +39,7 @@ class GeneralInformationPage extends StatelessWidget {
             onSelect: (value) {
               controller.costCenterId = controller.costCenterOptions.where((e) => e.name == value).toList().first.id;
             },
-            items: controller.costCenterOptions.map((costCenter) => costCenter.name ?? "").toList(),
+            items: controller.costCenterOptions,
             title: AppStrings.costCenterSelectorTitle,
             selectorHint: AppStrings.costCenterSelectorHint),
       ),
@@ -49,9 +49,9 @@ class GeneralInformationPage extends StatelessWidget {
       Observer(
         builder: (context) => CustomSelectorWidget(
             onSelect: (value) {
-              controller.farmId = value;
+              controller.farmId = value.id;
             },
-            items: const ["Fazenda 01", "Fazenda 02"],
+            items: controller.farmOptions,
             title: AppStrings.farmSelectorTitle,
             selectorHint: AppStrings.farmSelectorHint),
       ),
@@ -62,7 +62,7 @@ class GeneralInformationPage extends StatelessWidget {
           onSelect: (value) {
             controller.harvest = {"harvest": value};
           },
-          items: const ["Safra 01", "Safra 02"],
+          items: controller.cropOptions,
           title: AppStrings.harvestSelectorTitle,
           selectorHint: AppStrings.harvestSelectorHint)
     ]);

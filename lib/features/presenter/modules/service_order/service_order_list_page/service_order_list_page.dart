@@ -70,11 +70,11 @@ class ServiceOrderListPage extends StatelessWidget {
                                   final status = ServiceOrderTypeEnumExtension.getEnumServiceOrderTypeFromString(controller.serviceOrderListEntities[index].status);
                                   return CustomCardTitleWidget(
                                     id: controller.serviceOrderListEntities[index].id,
-                                    serviceOrderType: controller.serviceOrderListEntities[index].activityName,
-                                    farm: controller.serviceOrderListEntities[index].farmName,
+                                    serviceOrderType: controller.serviceOrderListEntities[index].activityName ?? "",
+                                    farm: controller.serviceOrderListEntities[index].farmName ?? "",
                                     costCenter: "",
-                                    openingDate: controller.serviceOrderListEntities[index].activityStart,
-                                    closingDate: controller.serviceOrderListEntities[index].activityEnd,
+                                    openingDate: controller.serviceOrderListEntities[index].activityStart ?? "",
+                                    closingDate: controller.serviceOrderListEntities[index].activityEnd ?? "",
                                     status: status,
                                     backgroundColor: controller.getBackgroundColor(status),
                                     borderColor: controller.getBorderColor(status),

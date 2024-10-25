@@ -127,13 +127,13 @@ mixin _$AuthenticationController on AuthenticationControllerAbstract, Store {
       name: 'AuthenticationControllerAbstract.accessStatus', context: context);
 
   @override
-  String get accessStatus {
+  FirstAccessVerificationEnum? get accessStatus {
     _$accessStatusAtom.reportRead();
     return super.accessStatus;
   }
 
   @override
-  set accessStatus(String value) {
+  set accessStatus(FirstAccessVerificationEnum? value) {
     _$accessStatusAtom.reportWrite(value, super.accessStatus, () {
       super.accessStatus = value;
     });

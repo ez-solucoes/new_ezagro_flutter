@@ -7,13 +7,13 @@ class ServiceOrderListModel extends ServiceOrderListEntity {
 
   const ServiceOrderListModel({
     required super.id,
-    required super.activityName,
-    required super.farmName,
-    required super.employeeName,
-    required super.status,
-    required super.activityStart,
-    required super.activityEnd,
-    required super.costCenterName
+    super.activityName,
+    super.farmName,
+    super.employeeName,
+    super.status,
+    super.activityStart,
+    super.activityEnd,
+    super.costCenterName
   });
 
   Map<String, dynamic> toMap() {
@@ -32,13 +32,13 @@ class ServiceOrderListModel extends ServiceOrderListEntity {
   factory ServiceOrderListModel.fromMap(Map<String, dynamic> map) {
     return ServiceOrderListModel(
       id: map['id'] as int,
-      activityName: map['activityName'] as String,
-      farmName: map['farmName'] as String,
-      employeeName: map['employeeName'] as String,
-      status: map['status'] as String,
-      activityStart: map['activityStart'] as String,
-      activityEnd: map['activityEnd'] as String,
-      costCenterName: map['costCenterName'] as String
+      activityName: map['activityName'],
+      farmName: map['farmName'],
+      employeeName: map['employeeName'],
+      status: map['status'],
+      activityStart: map['activityStart'],
+      activityEnd: map['activityEnd'],
+      costCenterName: map['costCenterName']
     );
   }
   

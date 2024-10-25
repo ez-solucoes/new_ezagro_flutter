@@ -29,12 +29,7 @@ class SchedulePage extends StatelessWidget {
             onSelect: (value) {
               controller.responsible["responsible"] = value;
             },
-            items: [
-              "Responsável 01",
-              "Responsávl 02",
-              "Responsável 03",
-              "Responsável 04",
-            ],
+            items: controller.employeeOptions,
             title: AppStrings.responsiveSelectorTitle,
             selectorHint: AppStrings.responsibleSelectorHint)
       ],

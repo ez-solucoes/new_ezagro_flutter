@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/company_entities/company_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/group_entitites/group_entity.dart';
 
 import '../client_entities/client_entity.dart';
 import '../employee_entities/employee_entity.dart';
@@ -15,7 +16,7 @@ class AuthenticationEntity extends Equatable {
   final String? dtLastLogin;
   final bool? isLocked;
   final String? firstAccessVerification;
-  final List<String>? group;
+  final List<GroupEntity>? group;
 
   const AuthenticationEntity({
     required this.token,

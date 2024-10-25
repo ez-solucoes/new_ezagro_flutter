@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:new_ezagro_flutter/consts/app_text_styles.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/selector_entities/selector_entity.dart';
 
 import '../../../../consts/app_colors.dart';
 
 class CustomSelectorWidget extends StatelessWidget {
 
-  final Function(String) onSelect;
-  final List<String> items;
+  final Function(SelectorEntity) onSelect;
+  final List<SelectorEntity> items;
   final String title;
   final String selectorHint;
   final String? selectedValue;
@@ -44,12 +45,12 @@ class CustomSelectorWidget extends StatelessWidget {
                     style: AppTextStyles.appBarTitleTextStyle(
                         color: AppColors.formGreyColor),
                   ),
-                  items: items.map((String item) {
-                    return DropdownMenuItem<String>(
-                        value: item, child: Text(item));
+                  items: items.map((SelectorEntity item) {
+                    return DropdownMenuItem<SelectorEntity>(
+                        value: item, child: Text(item.name ?? ""));
                   }).toList(),
                   onChanged: (value) {
-                    if (value != null) {
+                    if (value is SelectorEntity) { // Cast and null check
                       onSelect(value);
                     }
                   },

@@ -3,6 +3,7 @@ import '../../../domain/entities/authentication_entities/authentication_entity.d
 import '../client_models/client_model.dart';
 import '../company_models/company_model.dart';
 import '../employee_models/employee_model.dart';
+import '../group_models/group_model.dart';
 import '../outsource_models/outsource_model.dart';
 
 class AuthenticationModel extends AuthenticationEntity {
@@ -46,7 +47,8 @@ class AuthenticationModel extends AuthenticationEntity {
       dtLastLogin: map['dtLastLogin'] != null ? map['dtLastLogin'] as String : null,
       isLocked: map['isLocked'] as bool,
       firstAccessVerification: map['firstAccessVerification'] as String,
-      group: map['group'] == null ? null : List<String>.from(map['group'] as List<dynamic>),
+      group: map['group'] == null ? null : List<GroupModel>.from(
+          map['group'].map((x) => GroupModel.fromMap(x))),
     );
   }
 

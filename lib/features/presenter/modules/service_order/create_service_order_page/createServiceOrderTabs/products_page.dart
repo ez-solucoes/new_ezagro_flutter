@@ -19,9 +19,9 @@ class ProductsPage extends StatelessWidget {
             children: [
               CustomSelectorWidget(
                   onSelect: (value) {
-                    controller.selectedProducts.add(value);
+                    controller.selectedProducts.add(value.id);
                   },
-                  items: ["Produto 1", "Produto 2", "Produto 3"],
+                  items: controller.productsOptions,
                   title: AppStrings.productSelectorTitle,
                   selectorHint: AppStrings.productSelectorHint),
               const SizedBox(height: 6),
@@ -38,7 +38,7 @@ class ProductsPage extends StatelessWidget {
                           builder: (context) => CustomCardLogoWidget(
                             index: index,
                             labelOne: AppStrings.productField,
-                            textOne: controller.selectedProducts[index],
+                            textOne:"",// controller.selectedProducts[index],
                             labelTwo: AppStrings.quantityField,
                             textTwo: "Quantidade",
                             labelThree: AppStrings.recommendationField,

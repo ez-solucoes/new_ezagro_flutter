@@ -9,6 +9,7 @@ import 'package:new_ezagro_flutter/features/domain/entities/farm_entities/farm_e
 import 'package:new_ezagro_flutter/features/domain/entities/machine_implement_entities/machine_implement_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/plot_entities/plot_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/products_entities/product_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/selector_entities/selector_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/params/create_service_order_params/create_service_order_params.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase.dart';
@@ -42,28 +43,28 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   bool selectAll = false;
 
   @observable
-  List<AgriculturalActivityEntity> activityOptions = ObservableList();
+  List<SelectorEntity> activityOptions = ObservableList();
 
   @observable
-  List<CostCenterEntity> costCenterOptions = ObservableList();
+  List<SelectorEntity> costCenterOptions = ObservableList();
 
   @observable
-  List<FarmEntity> farmOptions = ObservableList();
+  List<SelectorEntity> farmOptions = ObservableList();
 
   @observable
-  List<CropEntity> cropOptions = ObservableList();
+  List<SelectorEntity> cropOptions = ObservableList();
 
   @observable
-  List<EmployeeEntity> executorsOptions = ObservableList();
+  List<SelectorEntity> executorsOptions = ObservableList();
 
   @observable
-  List<MachineImplementEntity> machineryOptions = ObservableList();
+  List<SelectorEntity> machineryOptions = ObservableList();
 
   @observable
-  List<ProductEntity> productsOptions = ObservableList();
+  List<SelectorEntity> productsOptions = ObservableList();
 
   @observable
-  List<EmployeeEntity> employeeOptions = ObservableList();
+  List<SelectorEntity> employeeOptions = ObservableList();
 
   @observable
   List<PlotEntity> plotsOptions = ObservableList();
@@ -72,13 +73,13 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   List<int> selectedPlots = ObservableList();
 
   @observable
-  List<String> selectedMachinery = ObservableList();
+  List<int> selectedMachinery = ObservableList();
 
   @observable
-  List<String> selectedProducts = ObservableList();
+  List<int> selectedProducts = ObservableList();
 
   @observable
-  List<String> selectedExecutors = ObservableList();
+  List<int> selectedExecutors = ObservableList();
 
   @observable
   AgriculturalActivityEntity? activity;
@@ -89,7 +90,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
 
   String? endDate;
 
-  String farmId = "";
+  int farmId = 0;
 
   Map<String, dynamic> plotsIds = {"plots": []};
 
@@ -140,7 +141,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getActivities = Modular.get<ActivityUsecase>();
     final result = await getActivities(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      activityOptions = success.content;
+      //activityOptions = success.content;
       return success;
     });
 
@@ -153,7 +154,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getCostCenters = Modular.get<CostCenterUsecase>();
     final result = await getCostCenters(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      costCenterOptions = success.content;
+      //costCenterOptions = success.content;
       return success;
     });
 
@@ -166,7 +167,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getSimplifiedFarms = Modular.get<FarmUsecase>();
     final result = await getSimplifiedFarms(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      farmOptions = success.content;
+      //farmOptions = success.content;
       return success;
     });
 
@@ -179,7 +180,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getSimplifiedCrops = Modular.get<CropUsecase>();
     final result = await getSimplifiedCrops(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      cropOptions= success.content;
+      //cropOptions= success.content;
       return success;
     });
 
@@ -206,7 +207,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getExecutors = Modular.get<ExecutorUsecase>();
     final result = await getExecutors(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      executorsOptions = success.content;
+      //executorsOptions = success.content;
       return success;
     });
 
@@ -219,7 +220,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getMachinery = Modular.get<MachineryUsecase>();
     final result = await getMachinery(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      machineryOptions = success.content;
+     // machineryOptions = success.content;
       return success;
     });
 
@@ -232,7 +233,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getProducts = Modular.get<ProductUsecase>();
     final result = await getProducts(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      productsOptions = success.content;
+      //productsOptions = success.content;
       return success;
     });
 
@@ -245,7 +246,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getEmployees = Modular.get<EmployeeUsecase>();
     final result = await getEmployees(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      employeeOptions = success.content;
+     // employeeOptions = success.content;
       return success;
     });
 

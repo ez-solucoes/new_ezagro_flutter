@@ -24,9 +24,9 @@ class ExecutorsPage extends StatelessWidget {
               children: [
                 CustomSelectorWidget(
                     onSelect: (value) {
-                      controller.selectedExecutors.add(value);
+                      controller.selectedExecutors.add(value.id);
                     },
-                    items: controller.executorsOptions.map((executors) => executors.employeeName ?? "").toList(),
+                    items: controller.executorsOptions,
                     title: AppStrings.executorSelectorTitle,
                     selectorHint: AppStrings.executorSelectorHint),
                 const SizedBox(height: 6),
@@ -43,7 +43,7 @@ class ExecutorsPage extends StatelessWidget {
                           index: index,
                           infoCardType: InfoCardType.threeLabeledInfoWithIcon,
                           labelOne: AppStrings.nameField,
-                          textOne: controller.selectedExecutors[index],
+                          textOne: "",//controller.selectedExecutors[index],
                           labelTwo: AppStrings.idField,
                           textTwo: "00.000.000-00",
                           labelThree: AppStrings.shiftField,

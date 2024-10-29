@@ -5,8 +5,8 @@ import '../../../domain/entities/employee_entities/employee_history_entity.dart'
 
 class EmployeeHistoryModel extends EmployeeHistoryEntity {
   const EmployeeHistoryModel({
-    required super.employeeHistoryId,
-    required super.employeeId,
+    super.employeeHistoryId,
+    super.employeeId,
     super.baseSalary,
     super.combinedSalary,
     super.variedSalary,

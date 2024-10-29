@@ -27,11 +27,14 @@ import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/pro
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecases_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/get_service_order_by_id_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/get_service_order_by_id_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/recover_password_success_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/repeat_password_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/temp_password_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/username_input_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/home/home_page.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/service_order/controller/service_order_list_controller/service_order_list_controller.dart';
 import 'core/http_client/http_client.dart';
 import 'core/http_client/http_client_dio_imp.dart';
 import 'core/local_storage/local_storage_client_secure_impl.dart';
@@ -92,6 +95,7 @@ import 'features/presenter/modules/authentication_module/register_page/register_
 import 'features/presenter/modules/authentication_module/register_page/register_third_step_page.dart';
 import 'features/presenter/modules/documents/documents_page/documents_page.dart';
 import 'features/presenter/modules/service_order/controller/create_service_order_controller/create_service_order_controller.dart';
+import 'features/presenter/modules/service_order/controller/service_order_controller/service_order_controller.dart';
 import 'features/presenter/modules/service_order/create_service_order_page/create_service_order_page.dart';
 import 'features/presenter/modules/service_order/service_order_list_page/service_order_list_page.dart';
 import 'features/presenter/modules/service_order/service_order_page/service_order_page.dart';
@@ -122,6 +126,7 @@ class AppModule extends Module {
     i.addLazySingleton<ProductUsecase>(ProductUsecaseImpl.new);
     i.addLazySingleton<EmployeeUsecase>(EmployeeUsecaseImpl.new);
     i.addLazySingleton<CreateServiceOrderUsecase>(CreateServiceOrderUsecaseImpl.new);
+    i.addLazySingleton<GetServiceOrderByIdUsecase>(GetServiceOrderByIdUsecaseImpl.new);
 
     //Repository
     i.addLazySingleton<AuthenticationRepository>(AuthenticationRepositoryImpl.new);
@@ -152,6 +157,8 @@ class AppModule extends Module {
     //Controllers
     i.addLazySingleton<AuthenticationController>(AuthenticationController.new);
     i.addLazySingleton<CreateServiceOrderController>(CreateServiceOrderController.new);
+    i.addLazySingleton<ServiceOrderListController>(ServiceOrderListController.new);
+    i.addLazySingleton<ServiceOrderController>(ServiceOrderController.new);
     super.binds(i);
   }
 
@@ -175,7 +182,7 @@ class AppModule extends Module {
     r.child(AppRoutes.appDocumentsPage, child: (context) => const DocumentsPage());
     r.child(AppRoutes.appChangePasswordFirstStepPage, child: (context) => const ChangePasswordStepPage());
     r.child(AppRoutes.appHomePage, child: (context) => const HomePage());
-    r.child(AppRoutes.appServiceOrderPage, child: (context) => const ServiceOrderPage());
+    r.child(AppRoutes.appServiceOrderPage, child: (context) => ServiceOrderPage(args: r.args.data,));
     r.child(AppRoutes.appServiceOrderListPage, child: (context) => const ServiceOrderListPage());
     r.child(AppRoutes.appCreateServiceOrderPage, child: (context) => const CreateServiceOrderPage());
     super.routes(r);

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
-
+import 'package:new_ezagro_flutter/features/presenter/modules/service_order/controller/service_order_controller/service_order_controller.dart';
 import '../../../../../consts/app_colors.dart';
+import '../../../../../consts/app_routes.dart';
 import '../../../../../consts/app_text_styles.dart';
+import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
 import '../../../widgets/buttons/custom_elevated_button.dart';
@@ -12,11 +15,19 @@ import '../../../widgets/custom_list_item/custom_list_item_widget.dart';
 import '../../../widgets/list_title_card/list_title_card_widget.dart';
 
 class ServiceOrderPage extends StatelessWidget {
-  const ServiceOrderPage({super.key});
+  final ArgParams args;
+  static const String routePath = AppRoutes.appServiceOrderPage;
   final isFinished = true;
+
+  static void navigate(ArgParams args) => Modular.to.navigate(routePath, arguments: args);
+
+  const ServiceOrderPage({super.key, required this.args});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Modular.get<ServiceOrderController>();
+    controller.serviceOrderId = args.firstArgs as int;
+    controller.getServiceOrder();
     final mockInfoList = [
       ["Fazenda: ", "Três Lagoas"],
       ["Safra: ", "29-25"],
@@ -30,7 +41,7 @@ class ServiceOrderPage extends StatelessWidget {
     return BackgroundWidget(
       scrollable: true,
       appBar: const CustomAppBarWidget(
-        appBarType: AppBarType.hamburgerAndTitle,
+        appBarType: AppBarType.centeredTitleAndBackArrow,
         title: AppStrings.serviceOrderTitle,
       ),
       child: Padding(

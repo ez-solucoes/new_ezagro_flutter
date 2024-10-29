@@ -4,13 +4,13 @@ import 'plot_crop_diversity_model.dart';
 
 class PlotHistoryModel extends PlotHistoryEntity {
   const PlotHistoryModel({
-    required super.plotHistoryId,
-    required super.plotId,
-    required super.groupName,
-    required super.number,
-    required super.plotSoilStage,required super.isLease,
-    required super.cropDiversity,
-    required super.area,
+    super.plotHistoryId,
+    super.plotId,
+    super.groupName,
+    super.number,
+    super.plotSoilStage,super.isLease,
+    super.cropDiversity,
+    super.area,
   });
 
   Map<String, dynamic> toMap() => {
@@ -31,7 +31,7 @@ class PlotHistoryModel extends PlotHistoryEntity {
     number: map['number'],
     plotSoilStage: map['plotSoilStage'],
     isLease: map['isLease'],
-    cropDiversity: PlotCropDiversityModel.fromMap(map['cropDiversity']),
+    cropDiversity: map['cropDiversity'] == null ? null : PlotCropDiversityModel.fromMap(map['cropDiversity']),
     area: map['area'],
   );
 

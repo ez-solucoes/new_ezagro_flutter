@@ -17,11 +17,11 @@ class CustomPinputTextField extends StatelessWidget {
         width: 55,
         height: 70,
         margin: const EdgeInsets.symmetric(horizontal: 5),
-        textStyle: AppTextStyles.titleTextStyle(color: AppColors.blackColor),
+        textStyle: AppTextStyles.titleTextStyle(color: AppColors.primaryBlackColor),
         decoration: BoxDecoration(
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(5),
-          border: Border.all(color: AppColors.softGreyColor),
+          border: Border.all(color: AppColors.dividerGreyColor),
         ),
       ),
       showCursor: true,

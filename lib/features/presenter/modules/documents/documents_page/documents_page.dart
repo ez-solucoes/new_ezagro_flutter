@@ -35,9 +35,9 @@ class DocumentsPage extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
-              color: AppColors.trueWhiteColor,
+              color: AppColors.primaryWhiteColor,
               borderRadius: BorderRadius.circular(5),
-              border: Border.all(color: AppColors.softGreyColor)),
+              border: Border.all(color: AppColors.dividerGreyColor)),
           child: const SingleChildScrollView(
             child: Text(
                 '${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum}'),

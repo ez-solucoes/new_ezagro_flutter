@@ -44,7 +44,7 @@ class RegisterFifthStepPage extends StatelessWidget {
                 Checkbox(
                   fillColor: WidgetStateProperty.all(Colors.white),
                   side: const BorderSide(
-                      color: AppColors.softGreyColor, width: 1),
+                      color: AppColors.dividerGreyColor, width: 1),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5)),
                   tristate: true,
@@ -57,19 +57,19 @@ class RegisterFifthStepPage extends StatelessWidget {
                     text: TextSpan(
                         text: AppStringsPortuguese.iHaveReadAndAgreeToThe,
                         style: AppTextStyles.bodyTextStyle(
-                            color: AppColors.blackColor),
+                            color: AppColors.primaryBlackColor),
                         children: [
                       TextSpan(
                         text: AppStringsPortuguese.privacySpacingPolicy,
                         style: AppTextStyles.underlinedTextButtonStyle(
-                            color: AppColors.blackColor),
+                            color: AppColors.primaryBlackColor),
                         recognizer: TapGestureRecognizer()..onTap = () {},
                       ),
                       const TextSpan(text: AppStringsPortuguese.and),
                       TextSpan(
                         text: AppStringsPortuguese.userTerms,
                         style: AppTextStyles.underlinedTextButtonStyle(
-                            color: AppColors.blackColor),
+                            color: AppColors.primaryBlackColor),
                         recognizer: TapGestureRecognizer()..onTap = () {},
                       ),
                     ])),

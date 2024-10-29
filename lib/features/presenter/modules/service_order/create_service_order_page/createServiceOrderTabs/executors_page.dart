@@ -30,7 +30,7 @@ class ExecutorsPage extends StatelessWidget {
                 const SizedBox(height: 6),
                 const Divider(
                   height: 1,
-                  color: AppColors.softGreyColor,
+                  color: AppColors.dividerGreyColor,
                 ),
                 const SizedBox(height: 6),
                 Expanded(

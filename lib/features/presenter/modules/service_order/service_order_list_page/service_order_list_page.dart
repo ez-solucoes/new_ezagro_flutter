@@ -119,11 +119,11 @@ class ServiceOrderListPage extends StatelessWidget {
             ],
           ),
           floatingActionButton: FloatingActionButton(
-            backgroundColor: AppColors.trueWhiteColor,
+            backgroundColor: AppColors.primaryWhiteColor,
             onPressed: () {},
             child: const Icon(
               Icons.add,
-              color: AppColors.greenColor,
+              color: AppColors.primaryGreenColor,
               size: 50,
             ),
           ),

@@ -36,7 +36,7 @@ class CustomCardLogoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     double rowHeight = 31;
     return Card(
-      color: AppColors.trueWhiteColor,
+      color: AppColors.primaryWhiteColor,
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Row(children: [
@@ -93,7 +93,7 @@ class CustomCardLogoWidget extends StatelessWidget {
             : const VerticalDivider(
                 width: 1,
                 thickness: 1,
-                color: AppColors.softGreyColor,
+                color: AppColors.dividerGreyColor,
               ),
         const SizedBox(
           width: 5,
@@ -104,12 +104,12 @@ class CustomCardLogoWidget extends StatelessWidget {
             Text(
               label,
               style:
-                  AppTextStyles.labelOnCardStyle(color: AppColors.blackColor),
+                  AppTextStyles.labelOnCardStyle(color: AppColors.primaryBlackColor),
             ),
             Text(
               text,
               style: AppTextStyles.smallBoldTextOnCardStyle(
-                  color: AppColors.blackColor),
+                  color: AppColors.primaryBlackColor),
             )
           ],
         )

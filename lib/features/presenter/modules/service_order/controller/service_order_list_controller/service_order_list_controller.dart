@@ -81,35 +81,35 @@ abstract class ServiceOrderListControllerAbstract with Store {
   Color getBackgroundColor(ServiceOrderTypeEnum status) {
     switch (status) {
       case ServiceOrderTypeEnum.finished:
-        return AppColors.greenColor;
+        return AppColors.primaryGreenColor;
       default:
-        return AppColors.trueWhiteColor;
+        return AppColors.primaryWhiteColor;
     }
   }
 
   Color getTextColor(ServiceOrderTypeEnum status) {
     switch (status) {
       case ServiceOrderTypeEnum.finished:
-        return AppColors.trueWhiteColor;
+        return AppColors.primaryWhiteColor;
       default:
-        return AppColors.blackColor;
+        return AppColors.primaryBlackColor;
     }
   }
 
   Color getBorderColor(ServiceOrderTypeEnum status) {
     switch (status) {
       case ServiceOrderTypeEnum.toBeStarted:
-        return AppColors.contourWhiteColor;
+        return AppColors.borderWhiteColor;
       case ServiceOrderTypeEnum.onGoing:
-        return AppColors.greenColor;
+        return AppColors.primaryGreenColor;
       case ServiceOrderTypeEnum.paused:
         return AppColors.darkGreyColor;
       case ServiceOrderTypeEnum.finished:
-        return AppColors.contourWhiteColor;
+        return AppColors.borderWhiteColor;
       case ServiceOrderTypeEnum.approvalPending:
         return AppColors.muddyYellowColor;
       case ServiceOrderTypeEnum.canceled:
-        return AppColors.redColor;
+        return AppColors.primaryRedColor;
     }
   }
 }

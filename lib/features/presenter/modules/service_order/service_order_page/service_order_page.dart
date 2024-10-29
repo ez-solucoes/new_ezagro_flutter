@@ -53,7 +53,7 @@ class ServiceOrderPage extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   border: Border.all(
-                    color: AppColors.contourWhiteColor,
+                    color: AppColors.borderWhiteColor,
                     width: 3,
                   )),
               child: ListView.builder(
@@ -65,7 +65,7 @@ class ServiceOrderPage extends StatelessWidget {
                       label: mockInfoList[index][0],
                       informationText: mockInfoList[index][1],
                       backgroundColor: index % 2 == 0
-                          ? AppColors.trueWhiteColor
+                          ? AppColors.primaryWhiteColor
                           : AppColors.softGreenColor,
                       rightIcon: mockInfoList[index][0] == "Talhões:"
                           ? Icons.navigate_next
@@ -95,7 +95,7 @@ class ServiceOrderPage extends StatelessWidget {
             const SizedBox(height: 10.0),
             Container(
               decoration: BoxDecoration(
-                  color: AppColors.contourWhiteColor,
+                  color: AppColors.borderWhiteColor,
                   borderRadius: BorderRadius.circular(5)),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -109,7 +109,7 @@ class ServiceOrderPage extends StatelessWidget {
                       return CustomListItemWidget(
                           informationText: mockExecutionList[index],
                           backgroundColor: index % 2 == 0
-                              ? AppColors.trueWhiteColor
+                              ? AppColors.primaryWhiteColor
                               : AppColors.softGreenColor,
                           leftIcon: Icons.edit_outlined,
                           rightIcon: Icons.delete_outline,
@@ -122,7 +122,7 @@ class ServiceOrderPage extends StatelessWidget {
             const SizedBox(height: 10.0),
             Container(
               decoration: BoxDecoration(
-                  color: AppColors.contourWhiteColor,
+                  color: AppColors.borderWhiteColor,
                   borderRadius: BorderRadius.circular(5)),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -136,7 +136,7 @@ class ServiceOrderPage extends StatelessWidget {
                       return CustomListItemWidget(
                           informationText: mockMachineryList[index],
                           backgroundColor: index % 2 == 0
-                              ? AppColors.trueWhiteColor
+                              ? AppColors.primaryWhiteColor
                               : AppColors.softGreenColor,
                           leftIcon: Icons.edit_outlined,
                           rightIcon: Icons.delete_outline,
@@ -190,14 +190,14 @@ class ServiceOrderPage extends StatelessWidget {
               const Icon(
                 Icons.check_circle,
                 size: 35,
-                color: AppColors.greenColor,
+                color: AppColors.primaryGreenColor,
               ),
               const SizedBox(
                 width: 6,
               ),
               Text(AppStringsPortuguese.finishedServiceOrder,
                   style: AppTextStyles.boldMediumTextStyle(
-                      color: AppColors.blackColor))
+                      color: AppColors.primaryBlackColor))
             ],
           )
         : const SizedBox.shrink();
@@ -213,7 +213,7 @@ class ServiceOrderPage extends StatelessWidget {
                 onPressed: () {},
                 label: AppStringsPortuguese.saveOSButton,
                 textStyle: AppTextStyles.labelTextButtonStyle(
-                    color: AppColors.blackColor),
+                    color: AppColors.primaryBlackColor),
               ),
               CustomElevatedButton(
                   onPressed: () {},
@@ -222,7 +222,7 @@ class ServiceOrderPage extends StatelessWidget {
               CustomElevatedButton(
                 onPressed: () {},
                 label: AppStringsPortuguese.cancelOSButton,
-                backgroundColor: AppColors.redColor,
+                backgroundColor: AppColors.primaryRedColor,
               ),
               const SizedBox(
                 height: 15,

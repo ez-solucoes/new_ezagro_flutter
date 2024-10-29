@@ -36,7 +36,7 @@ class _CustomDoubleSelectorWidgetState
     String? selectorValueOne;
     String? selectorValueTwo;
     return Card(
-        color: AppColors.trueWhiteColor,
+        color: AppColors.primaryWhiteColor,
         child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(
@@ -45,14 +45,14 @@ class _CustomDoubleSelectorWidgetState
                 Text(
                   widget.titleOne,
                   style: AppTextStyles.smallBoldTextOnCardStyle(
-                      color: AppColors.blackColor),
+                      color: AppColors.primaryBlackColor),
                 ),
                 const SizedBox(height: 16),
                 DropdownButtonFormField(
                     value: selectorValueOne,
-                    dropdownColor: AppColors.trueWhiteColor,
+                    dropdownColor: AppColors.primaryWhiteColor,
                     style: AppTextStyles.appBarSubTitleTextStyle(
-                        color: AppColors.blackColor),
+                        color: AppColors.primaryBlackColor),
                     hint: Text(
                       widget.selectorHintOne,
                       style: AppTextStyles.appBarTitleTextStyle(
@@ -75,7 +75,7 @@ class _CustomDoubleSelectorWidgetState
                           borderSide:
                               BorderSide(color: AppColors.formGreyColor)),
                       focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.greenColor)),
+                          borderSide: BorderSide(color: AppColors.primaryGreenColor)),
                     )),
                 const SizedBox(
                   height: 20,
@@ -83,14 +83,14 @@ class _CustomDoubleSelectorWidgetState
                 Text(
                   widget.titleTwo,
                   style: AppTextStyles.smallBoldTextOnCardStyle(
-                      color: AppColors.blackColor),
+                      color: AppColors.primaryBlackColor),
                 ),
                 const SizedBox(height: 16),
                 DropdownButtonFormField(
                     value: selectorValueTwo,
-                    dropdownColor: AppColors.trueWhiteColor,
+                    dropdownColor: AppColors.primaryWhiteColor,
                     style: AppTextStyles.appBarSubTitleTextStyle(
-                        color: AppColors.blackColor),
+                        color: AppColors.primaryBlackColor),
                     hint: Text(
                       widget.selectorHintTwo,
                       style: AppTextStyles.appBarTitleTextStyle(
@@ -113,7 +113,7 @@ class _CustomDoubleSelectorWidgetState
                           borderSide:
                               BorderSide(color: AppColors.formGreyColor)),
                       focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.greenColor)),
+                          borderSide: BorderSide(color: AppColors.primaryGreenColor)),
                     ))
               ],
             )));

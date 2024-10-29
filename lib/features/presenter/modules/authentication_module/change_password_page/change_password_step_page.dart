@@ -24,7 +24,7 @@ class ChangePasswordStepPage extends StatelessWidget {
             const SizedBox(height: 52),
             Text(
               '',
-              style: AppTextStyles.titleTextStyle(color: AppColors.blackColor),
+              style: AppTextStyles.titleTextStyle(color: AppColors.primaryBlackColor),
             ),
             const SizedBox(height: 45),
             CustomUnderlinedTextField(

@@ -39,7 +39,7 @@ class RecoverPasswordSuccessPage extends StatelessWidget {
               Text(
                 AppStringsPortuguese.recoverPasswordSuccessString,
                 style:
-                    AppTextStyles.titleTextStyle(color: AppColors.blackColor),
+                    AppTextStyles.titleTextStyle(color: AppColors.primaryBlackColor),
               ),
               const SizedBox(height: 47),
               SvgPicture.asset(AppDrawables.checkCircleColorIcon),

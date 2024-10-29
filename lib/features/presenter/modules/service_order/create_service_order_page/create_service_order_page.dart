@@ -62,7 +62,7 @@ class CreateServiceOrderPage extends StatelessWidget {
                                       label: AppStringsPortuguese.previousButton,
                                       textStyle:
                                           AppTextStyles.labelTextButtonStyle(
-                                              color: AppColors.blackColor),
+                                              color: AppColors.primaryBlackColor),
                                     ),
                               controller.isLastPage
                                   ? CustomElevatedButton(

@@ -31,7 +31,7 @@ class FinalInformationPage extends StatelessWidget {
         const SizedBox(height: 12),
         const Divider(
           height: 1,
-          color: AppColors.softGreyColor,
+          color: AppColors.dividerGreyColor,
         ),
         const SizedBox(height: 6),
         CustomTextInputWidget(

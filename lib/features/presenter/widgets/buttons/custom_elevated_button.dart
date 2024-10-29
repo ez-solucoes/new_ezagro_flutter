@@ -15,8 +15,8 @@ class CustomElevatedButton extends StatelessWidget {
       required this.onPressed,
       required this.label,
       this.isLoading,
-      this.backgroundColor = AppColors.greenColor,
-      this.textColor = AppColors.trueWhiteColor});
+      this.backgroundColor = AppColors.primaryGreenColor,
+      this.textColor = AppColors.primaryWhiteColor});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class CustomElevatedButton extends StatelessWidget {
             : Padding(
                 padding: const EdgeInsets.all(2.0),
                 child: CircularProgressIndicator(
-                  color: AppColors.whiteColor,
+                  color: AppColors.backgroundColor,
                 ),
               ));
   }

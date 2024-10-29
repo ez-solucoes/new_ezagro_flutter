@@ -77,12 +77,12 @@ class CustomInfoCardWidget extends StatelessWidget {
               Text(
                 labelOne,
                 style:
-                    AppTextStyles.labelOnCardStyle(color: AppColors.blackColor),
+                    AppTextStyles.labelOnCardStyle(color: AppColors.primaryBlackColor),
               ),
               Text(
                 textOne,
                 style: AppTextStyles.boldTextOnCardStyle(
-                    color: AppColors.blackColor),
+                    color: AppColors.primaryBlackColor),
               )
             ],
           ),
@@ -92,12 +92,12 @@ class CustomInfoCardWidget extends StatelessWidget {
               Text(
                 labelTwo,
                 style:
-                    AppTextStyles.labelOnCardStyle(color: AppColors.blackColor),
+                    AppTextStyles.labelOnCardStyle(color: AppColors.primaryBlackColor),
               ),
               Text(
                 textTwo,
                 style: AppTextStyles.smallBoldTextOnCardStyle(
-                    color: AppColors.blackColor),
+                    color: AppColors.primaryBlackColor),
               )
             ],
           )
@@ -127,12 +127,12 @@ class CustomInfoCardWidget extends StatelessWidget {
               Text(
                 labelOne,
                 style:
-                    AppTextStyles.labelOnCardStyle(color: AppColors.blackColor),
+                    AppTextStyles.labelOnCardStyle(color: AppColors.primaryBlackColor),
               ),
               Text(
                 textOne,
                 style: AppTextStyles.boldTextOnCardStyle(
-                    color: AppColors.blackColor),
+                    color: AppColors.primaryBlackColor),
               ),
             ],
           ),
@@ -165,12 +165,12 @@ class CustomInfoCardWidget extends StatelessWidget {
               Text(
                 labelOne,
                 style:
-                    AppTextStyles.labelOnCardStyle(color: AppColors.blackColor),
+                    AppTextStyles.labelOnCardStyle(color: AppColors.primaryBlackColor),
               ),
               Text(
                 textOne,
                 style: AppTextStyles.boldTextOnCardStyle(
-                    color: AppColors.blackColor),
+                    color: AppColors.primaryBlackColor),
               )
             ],
           ),
@@ -180,7 +180,7 @@ class CustomInfoCardWidget extends StatelessWidget {
                 const VerticalDivider(
                   width: 1,
                   thickness: 1,
-                  color: AppColors.softGreyColor,
+                  color: AppColors.dividerGreyColor,
                 ),
                 const SizedBox(width: 5),
                 Column(
@@ -189,12 +189,12 @@ class CustomInfoCardWidget extends StatelessWidget {
                     Text(
                       labelTwo,
                       style: AppTextStyles.labelOnCardStyle(
-                          color: AppColors.blackColor),
+                          color: AppColors.primaryBlackColor),
                     ),
                     Text(
                       textTwo,
                       style: AppTextStyles.boldTextOnCardStyle(
-                          color: AppColors.blackColor),
+                          color: AppColors.primaryBlackColor),
                     )
                   ],
                 )
@@ -228,19 +228,19 @@ class CustomInfoCardWidget extends StatelessWidget {
                 Text(
                   labelOne,
                   style: AppTextStyles.labelOnCardStyle(
-                      color: AppColors.blackColor),
+                      color: AppColors.primaryBlackColor),
                 ),
                 Text(
                   textOne,
                   style: AppTextStyles.smallBoldTextOnCardStyle(
-                      color: AppColors.blackColor),
+                      color: AppColors.primaryBlackColor),
                 )
               ],
             ),
             const VerticalDivider(
               width: 1,
               thickness: 1,
-              color: AppColors.softGreyColor,
+              color: AppColors.dividerGreyColor,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -248,19 +248,19 @@ class CustomInfoCardWidget extends StatelessWidget {
                 Text(
                   labelTwo,
                   style: AppTextStyles.labelOnCardStyle(
-                      color: AppColors.blackColor),
+                      color: AppColors.primaryBlackColor),
                 ),
                 Text(
                   textTwo,
                   style: AppTextStyles.smallBoldTextOnCardStyle(
-                      color: AppColors.blackColor),
+                      color: AppColors.primaryBlackColor),
                 )
               ],
             ),
             const VerticalDivider(
               width: 1,
               thickness: 1,
-              color: AppColors.softGreyColor,
+              color: AppColors.dividerGreyColor,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -268,12 +268,12 @@ class CustomInfoCardWidget extends StatelessWidget {
                 Text(
                   labelThree,
                   style: AppTextStyles.labelOnCardStyle(
-                      color: AppColors.blackColor),
+                      color: AppColors.primaryBlackColor),
                 ),
                 Text(
                   textThree,
                   style: AppTextStyles.smallBoldTextOnCardStyle(
-                      color: AppColors.blackColor),
+                      color: AppColors.primaryBlackColor),
                 )
               ],
             )
@@ -282,7 +282,7 @@ class CustomInfoCardWidget extends StatelessWidget {
       ));
 
   Card get _buildThreeLabeledInfoWithCard => Card(
-      color: AppColors.trueWhiteColor,
+      color: AppColors.primaryWhiteColor,
       child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: IntrinsicHeight(
@@ -299,12 +299,12 @@ class CustomInfoCardWidget extends StatelessWidget {
                             Text(
                               labelOne,
                               style: AppTextStyles.labelOnCardStyle(
-                                  color: AppColors.blackColor),
+                                  color: AppColors.primaryBlackColor),
                             ),
                             Text(
                               textOne,
                               style: AppTextStyles.boldMediumTextStyle(
-                                  color: AppColors.blackColor),
+                                  color: AppColors.primaryBlackColor),
                             )
                           ]),
                       Column(children: [_putIconIfNeeded()]),
@@ -316,12 +316,12 @@ class CustomInfoCardWidget extends StatelessWidget {
                         Text(
                           labelTwo,
                           style: AppTextStyles.labelOnCardStyle(
-                              color: AppColors.blackColor),
+                              color: AppColors.primaryBlackColor),
                         ),
                         Text(
                           textTwo,
                           style: AppTextStyles.boldMediumTextStyle(
-                              color: AppColors.blackColor),
+                              color: AppColors.primaryBlackColor),
                         )
                       ]),
                   const SizedBox(width: 30),
@@ -333,7 +333,7 @@ class CustomInfoCardWidget extends StatelessWidget {
                           const VerticalDivider(
                             width: 2,
                             thickness: 1,
-                            color: AppColors.softGreyColor,
+                            color: AppColors.dividerGreyColor,
                           ),
                           const SizedBox(width: 5),
                           Column(
@@ -342,12 +342,12 @@ class CustomInfoCardWidget extends StatelessWidget {
                                 Text(
                                   labelThree,
                                   style: AppTextStyles.labelOnCardStyle(
-                                      color: AppColors.blackColor),
+                                      color: AppColors.primaryBlackColor),
                                 ),
                                 Text(
                                   textThree,
                                   style: AppTextStyles.boldMediumTextStyle(
-                                      color: AppColors.blackColor),
+                                      color: AppColors.primaryBlackColor),
                                 )
                               ])
                         ]))

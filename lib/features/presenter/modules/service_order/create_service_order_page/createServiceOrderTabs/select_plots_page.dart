@@ -25,7 +25,7 @@ class SelectPlotsPage extends StatelessWidget {
                   },
                   label: AppStringsPortuguese.selectAllButton,
                   textStyle: AppTextStyles.smallBoldTextOnCardStyle(
-                      color: AppColors.blackColor)),
+                      color: AppColors.primaryBlackColor)),
               const SizedBox(
                 height: 5,
               ),
@@ -33,7 +33,7 @@ class SelectPlotsPage extends StatelessWidget {
                   child: Container(
                       padding: const EdgeInsets.all(2),
                       decoration: BoxDecoration(
-                          color: AppColors.contourWhiteColor,
+                          color: AppColors.borderWhiteColor,
                           borderRadius: BorderRadius.circular(8)),
                       child: Column(children: [
                         CustomCheckableListItemWidget(

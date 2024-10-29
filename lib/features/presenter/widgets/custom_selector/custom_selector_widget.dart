@@ -21,7 +21,7 @@ class CustomSelectorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        color: AppColors.trueWhiteColor,
+        color: AppColors.primaryWhiteColor,
         child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(
@@ -30,14 +30,14 @@ class CustomSelectorWidget extends StatelessWidget {
                 Text(
                   title,
                   style: AppTextStyles.smallBoldTextOnCardStyle(
-                      color: AppColors.blackColor),
+                      color: AppColors.primaryBlackColor),
                 ),
                 const SizedBox(height: 16),
                 DropdownButtonFormField(
                     value: selectedValue,
-                    dropdownColor: AppColors.trueWhiteColor,
+                    dropdownColor: AppColors.primaryWhiteColor,
                     style: AppTextStyles.appBarSubTitleTextStyle(
-                        color: AppColors.blackColor),
+                        color: AppColors.primaryBlackColor),
                     hint: Text(
                       selectorHint,
                       style: AppTextStyles.appBarTitleTextStyle(
@@ -57,7 +57,7 @@ class CustomSelectorWidget extends StatelessWidget {
                           borderSide:
                               BorderSide(color: AppColors.formGreyColor)),
                       focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.greenColor)),
+                          borderSide: BorderSide(color: AppColors.primaryGreenColor)),
                     )),
               ],
             )));

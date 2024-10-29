@@ -38,7 +38,7 @@ class _CustomUnderlinedTextFieldState extends State<CustomUnderlinedTextField> {
       decoration: InputDecoration(
           hintText: widget.hintText ?? '',
           hintStyle: AppTextStyles.hintTextFieldTextStyle(
-              color: AppColors.softGreyColor),
+              color: AppColors.dividerGreyColor),
           border: const UnderlineInputBorder(),
           suffixIcon: widget.passwordField
               ? IconButton(

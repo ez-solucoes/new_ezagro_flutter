@@ -30,7 +30,7 @@ class AuthInterceptor extends Interceptor {
       handler.next(options);
     } else {
       final sharedPreferencesInstance =
-          Modular.tryGet<LocalStorageClientSecureImpl>();
+          Modular.tryGet<LocalStorageClientSecureImpl>(key: AppStringsPortuguese.storageTypeSecure);
       final authenticated =
           await sharedPreferencesInstance?.readData(AppStringsPortuguese.tokenKey);
       if (authenticated != null && authenticated != '') {

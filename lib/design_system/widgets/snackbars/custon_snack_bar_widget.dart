@@ -22,15 +22,15 @@ class CustomSnackBarWidget {
     required this.icon,
   });
 
-  static show(SnackBarType type, BuildContext context, String message){
+  static show(SnackBarType type, BuildContext context, String message) {
     switch (type) {
-      case SnackBarType.error :
+      case SnackBarType.error:
         return _buildErrorSnackBar(context, message);
-      case SnackBarType.success :
+      case SnackBarType.success:
         return _buildSuccessSnackBar(context, message);
-      case SnackBarType.alert :
+      case SnackBarType.alert:
         return _buildAlertSnackBar(context, message);
-      default :
+      default:
         throw Exception('SnackBar type not supported');
     }
   }
@@ -44,10 +44,10 @@ class CustomSnackBarWidget {
         children: [
           Text(message),
           Spacer(),
-      SvgPicture.asset(AppDrawables.checkWhiteIcon),
+          SvgPicture.asset(AppDrawables.checkWhiteIcon),
         ],
       ),
-      backgroundColor: AppColors.greenColor,
+      backgroundColor: AppColors.primaryGreenColor,
     ));
   }
 
@@ -63,7 +63,7 @@ class CustomSnackBarWidget {
           SvgPicture.asset(AppDrawables.closeWhiteIcon),
         ],
       ),
-      backgroundColor: AppColors.redColor,
+      backgroundColor: AppColors.primaryRedColor,
     ));
   }
 
@@ -76,10 +76,10 @@ class CustomSnackBarWidget {
         children: [
           Text(message),
           Spacer(),
-          SvgPicture.asset(AppDrawables.warningWhiteIcon, color: Colors.white,),
+          SvgPicture.asset(AppDrawables.warningWhiteIcon, color: Colors.white),
         ],
       ),
-      backgroundColor: AppColors.yellowColor,
+      backgroundColor: AppColors.primaryYellowColor,
     ));
   }
 }

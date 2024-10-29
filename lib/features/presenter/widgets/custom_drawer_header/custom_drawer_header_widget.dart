@@ -21,12 +21,12 @@ class CustomDrawerHeaderWidget extends StatelessWidget {
               Text(
                 'Nome',
                 style: AppTextStyles.boldMediumTextStyle(
-                    color: AppColors.whiteColor),
+                    color: AppColors.backgroundColor),
               ),
               Text(
                 'xxx.xxxxx',
                 style: AppTextStyles.boldMediumTextStyle(
-                    color: AppColors.whiteColor),
+                    color: AppColors.backgroundColor),
               ),
             ],
           ),

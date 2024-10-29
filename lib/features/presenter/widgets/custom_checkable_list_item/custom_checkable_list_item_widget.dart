@@ -36,11 +36,11 @@ class CustomCheckableListItemWidgetState
         padding: const EdgeInsets.all(7.0),
         decoration: BoxDecoration(
             color: widget.index % 2 == 0
-                ? AppColors.trueWhiteColor
+                ? AppColors.primaryWhiteColor
                 : AppColors.softGreenColor,
             border: const Border(
                 bottom: BorderSide(
-                    color: AppColors.contourWhiteColor, width: 2.0))),
+                    color: AppColors.borderWhiteColor, width: 2.0))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,7 +48,7 @@ class CustomCheckableListItemWidgetState
             Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               Checkbox(
                   value: widget.isHeader ? true : widget.indexIsChecked,
-                  activeColor: AppColors.greenColor,
+                  activeColor: AppColors.primaryGreenColor,
                   onChanged: (bool? value) {
                     setState(() {
                       if (widget.isHeader) {
@@ -69,27 +69,27 @@ class CustomCheckableListItemWidgetState
                       widget.firstColumn,
                       style: widget.isHeader
                           ? AppTextStyles.smallBoldTextOnCardStyle(
-                              color: AppColors.blackColor)
+                              color: AppColors.primaryBlackColor)
                           : AppTextStyles.cardBodyTextStyle(
-                              color: AppColors.blackColor),
+                              color: AppColors.primaryBlackColor),
                       textAlign: TextAlign.center,
                     ),
                     Text(
                       widget.secondColumn,
                       style: widget.isHeader
                           ? AppTextStyles.smallBoldTextOnCardStyle(
-                              color: AppColors.blackColor)
+                              color: AppColors.primaryBlackColor)
                           : AppTextStyles.cardBodyTextStyle(
-                              color: AppColors.blackColor),
+                              color: AppColors.primaryBlackColor),
                       textAlign: TextAlign.center,
                     ),
                     Text(
                       widget.thirdColumn,
                       style: widget.isHeader
                           ? AppTextStyles.smallBoldTextOnCardStyle(
-                              color: AppColors.blackColor)
+                              color: AppColors.primaryBlackColor)
                           : AppTextStyles.cardBodyTextStyle(
-                              color: AppColors.blackColor),
+                              color: AppColors.primaryBlackColor),
                       textAlign: TextAlign.center,
                     )
                   ].map((e) => Expanded(child: e)).toList(),

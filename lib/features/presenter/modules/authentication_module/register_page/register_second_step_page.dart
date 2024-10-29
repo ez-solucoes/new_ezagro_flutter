@@ -42,14 +42,14 @@ class RegisterSecondStepPage extends StatelessWidget {
               style: TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: 14,
-                  color: AppColors.blackColor),
+                  color: AppColors.primaryBlackColor),
             ),
             const SizedBox(height: 18),
             Text(
               AppStringsPortuguese.typeTheNumberBellow,
               textAlign: TextAlign.start,
               style:
-                  AppTextStyles.subTitleTextStyle(color: AppColors.blackColor),
+                  AppTextStyles.subTitleTextStyle(color: AppColors.primaryBlackColor),
             ),
             const SizedBox(height: 18),
             Center(

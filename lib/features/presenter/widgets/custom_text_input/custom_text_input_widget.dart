@@ -20,7 +20,7 @@ class _CustomTextInputWidgetState extends State<CustomTextInputWidget> {
   @override
   Widget build(BuildContext context) {
     return Card(
-        color: AppColors.trueWhiteColor,
+        color: AppColors.primaryWhiteColor,
         child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(
@@ -29,19 +29,19 @@ class _CustomTextInputWidgetState extends State<CustomTextInputWidget> {
                 Text(
                   widget.title,
                   style: AppTextStyles.smallBoldTextOnCardStyle(
-                      color: AppColors.blackColor),
+                      color: AppColors.primaryBlackColor),
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
-                  cursorColor: AppColors.greenColor,
+                  cursorColor: AppColors.primaryGreenColor,
                   controller: _controller,
                   decoration: const InputDecoration(
                       enabledBorder: UnderlineInputBorder(
                           borderSide:
                               BorderSide(color: AppColors.formGreyColor)),
                       focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.greenColor)),
-                      hoverColor: AppColors.greenColor),
+                          borderSide: BorderSide(color: AppColors.primaryGreenColor)),
+                      hoverColor: AppColors.primaryGreenColor),
                   onEditingComplete: () {
                     widget.getText(_controller.text);
                   },

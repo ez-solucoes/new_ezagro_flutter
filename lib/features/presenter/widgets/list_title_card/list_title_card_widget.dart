@@ -15,7 +15,7 @@ class ListTitleCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.trueWhiteColor,
+      color: AppColors.primaryWhiteColor,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -24,7 +24,7 @@ class ListTitleCardWidget extends StatelessWidget {
               child: Text(
                 text,
                 style:
-                    AppTextStyles.labelOnCardStyle(color: AppColors.blackColor),
+                    AppTextStyles.labelOnCardStyle(color: AppColors.primaryBlackColor),
               )),
           Divider(
             color: borderColor,

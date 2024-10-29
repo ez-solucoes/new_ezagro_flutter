@@ -56,7 +56,7 @@ class CustomAppBarWidget extends StatelessWidget
   }
 
   AppBar get _buildStepsAndBackArrow => AppBar(
-        backgroundColor: AppColors.whiteColor,
+        backgroundColor: AppColors.backgroundColor,
         scrolledUnderElevation: 0,
         title: Column(
           children: [
@@ -68,7 +68,7 @@ class CustomAppBarWidget extends StatelessWidget
                   Text(
                     AppStringsPortuguese.backString,
                     style: AppTextStyles.labelTextButtonStyle(
-                        color: AppColors.blackColor),
+                        color: AppColors.primaryBlackColor),
                   ),
                 ],
               ),
@@ -76,7 +76,7 @@ class CustomAppBarWidget extends StatelessWidget
             const SizedBox(height: 22),
             LinearProgressIndicator(
               value: indicatorValue,
-              color: AppColors.greenColor,
+              color: AppColors.primaryGreenColor,
               borderRadius: BorderRadius.circular(8),
             )
           ],
@@ -84,7 +84,7 @@ class CustomAppBarWidget extends StatelessWidget
       );
 
   AppBar get _buildBackArrow => AppBar(
-        backgroundColor: AppColors.whiteColor,
+        backgroundColor: AppColors.backgroundColor,
         scrolledUnderElevation: 0,
         title: Column(
           children: [
@@ -96,7 +96,7 @@ class CustomAppBarWidget extends StatelessWidget
                   Text(
                     AppStringsPortuguese.backString,
                     style: AppTextStyles.labelTextButtonStyle(
-                        color: AppColors.blackColor),
+                        color: AppColors.primaryBlackColor),
                   ),
                 ],
               ),
@@ -107,7 +107,7 @@ class CustomAppBarWidget extends StatelessWidget
       );
 
   AppBar get _buildTitleAndBackArrow => AppBar(
-        backgroundColor: AppColors.whiteColor,
+        backgroundColor: AppColors.backgroundColor,
         scrolledUnderElevation: 0,
         title: Column(
           children: [
@@ -122,7 +122,7 @@ class CustomAppBarWidget extends StatelessWidget
                       Text(
                         AppStringsPortuguese.backString,
                         style: AppTextStyles.labelTextButtonStyle(
-                            color: AppColors.blackColor),
+                            color: AppColors.primaryBlackColor),
                       ),
                     ],
                   ),
@@ -130,10 +130,10 @@ class CustomAppBarWidget extends StatelessWidget
                 title != null
                     ? Text(title!,
                         style: AppTextStyles.appBarTitleTextStyle(
-                            color: AppColors.blackColor))
+                            color: AppColors.primaryBlackColor))
                     : Text('',
                         style: AppTextStyles.appBarTitleTextStyle(
-                            color: AppColors.blackColor)),
+                            color: AppColors.primaryBlackColor)),
               ],
             ),
           ],
@@ -141,7 +141,7 @@ class CustomAppBarWidget extends StatelessWidget
       );
 
   AppBar get _buildHamburgerAndTitle => AppBar(
-        backgroundColor: AppColors.whiteColor,
+        backgroundColor: AppColors.backgroundColor,
         scrolledUnderElevation: 0,
         automaticallyImplyLeading: false,
         centerTitle: true,
@@ -151,7 +151,7 @@ class CustomAppBarWidget extends StatelessWidget
                 child: Text('\n$title',
                     textAlign: TextAlign.center,
                     style: AppTextStyles.bodyTextStyle(
-                        color: AppColors.blackColor))),
+                        color: AppColors.primaryBlackColor))),
             Align(
                 alignment: Alignment.centerLeft,
                 child: IconButton(
@@ -161,7 +161,7 @@ class CustomAppBarWidget extends StatelessWidget
       );
 
   AppBar get _buildHamburgerAndEmployee => AppBar(
-        backgroundColor: AppColors.whiteColor,
+        backgroundColor: AppColors.backgroundColor,
         scrolledUnderElevation: 0,
         title: Align(
           alignment: Alignment.centerLeft,
@@ -169,7 +169,7 @@ class CustomAppBarWidget extends StatelessWidget
             'Olá,\n$employeeName',
             textAlign: TextAlign.start,
             style: AppTextStyles.appBarSubTitleTextStyle(
-                color: AppColors.blackColor),
+                color: AppColors.primaryBlackColor),
           ),
         ),
         leading: IconButton(

@@ -11,7 +11,7 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: AppColors.whiteColor,
+        color: AppColors.backgroundColor,
         child: Center(child: SvgPicture.asset(AppDrawables.ezAgroLogoIcon)));
   }
 }

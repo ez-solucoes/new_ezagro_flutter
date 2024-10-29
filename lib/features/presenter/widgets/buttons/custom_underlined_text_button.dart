@@ -20,7 +20,7 @@ class CustomUnderlinedTextButton extends StatelessWidget {
       child: Text(
         label,
         style: AppTextStyles.underlinedTextButtonStyle(
-            color: AppColors.blackColor),
+            color: AppColors.primaryBlackColor),
       ),
     );
   }

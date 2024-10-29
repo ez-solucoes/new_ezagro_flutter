@@ -39,7 +39,7 @@ class RegisterFourthStepPage extends StatelessWidget {
             const SizedBox(height: 72),
             Text(
               AppStringsPortuguese.retypeYourPassword,
-              style: AppTextStyles.titleTextStyle(color: AppColors.blackColor),
+              style: AppTextStyles.titleTextStyle(color: AppColors.primaryBlackColor),
             ),
             const SizedBox(height: 67),
             CustomUnderlinedTextField(

@@ -37,7 +37,7 @@ class AppTextStyles {
       fontSize: 14,
       color: color,
       decoration: TextDecoration.underline,
-      decorationColor: AppColors.blackColor,
+      decorationColor: AppColors.primaryBlackColor,
       decorationThickness: 2.0,
     );
   }

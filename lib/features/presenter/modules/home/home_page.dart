@@ -30,7 +30,7 @@ class HomePage extends StatelessWidget {
                   onPressed: () {},
                   label: AppStringsPortuguese.createServiceOrder,
                   textStyle: AppTextStyles.boldMediumTextStyle(
-                      color: AppColors.blackColor))
+                      color: AppColors.primaryBlackColor))
             ],
           ),
         ));

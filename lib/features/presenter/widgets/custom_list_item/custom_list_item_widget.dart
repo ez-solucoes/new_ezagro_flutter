@@ -36,7 +36,7 @@ class CustomListItemWidget extends StatelessWidget {
           color: backgroundColor,
           border: const Border(
               bottom:
-                  BorderSide(color: AppColors.contourWhiteColor, width: 2.0))),
+                  BorderSide(color: AppColors.borderWhiteColor, width: 2.0))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [_buildFirstColumn(), _buildSecondColumn()],
@@ -53,12 +53,12 @@ class CustomListItemWidget extends StatelessWidget {
             Text(
               label,
               style:
-                  AppTextStyles.labelOnCardStyle(color: AppColors.blackColor),
+                  AppTextStyles.labelOnCardStyle(color: AppColors.primaryBlackColor),
             ),
             Text(
               informationText,
               style: AppTextStyles.smallBoldTextOnCardStyle(
-                  color: AppColors.blackColor),
+                  color: AppColors.primaryBlackColor),
             )
           ],
         );
@@ -66,7 +66,7 @@ class CustomListItemWidget extends StatelessWidget {
         return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(
             informationText,
-            style: AppTextStyles.cardBodyTextStyle(color: AppColors.blackColor),
+            style: AppTextStyles.cardBodyTextStyle(color: AppColors.primaryBlackColor),
           )
         ]);
     }

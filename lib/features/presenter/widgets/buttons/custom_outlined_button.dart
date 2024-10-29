@@ -23,7 +23,7 @@ class CustomOutlinedButton extends StatelessWidget {
           minimumSize: const Size(150, 38),
           backgroundColor: AppColors.transparent,
           shape: RoundedRectangleBorder(
-              side: const BorderSide(color: AppColors.softGreyColor, width: 1),
+              side: const BorderSide(color: AppColors.dividerGreyColor, width: 1),
               borderRadius: BorderRadius.circular(5)),
           shadowColor: AppColors.transparent),
       child: Text(

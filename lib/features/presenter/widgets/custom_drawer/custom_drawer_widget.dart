@@ -13,7 +13,7 @@ class CustomDrawerWidget extends StatelessWidget {
     return Drawer(
       child: Container(
         width: MediaQuery.of(context).size.width * 0.55,
-        color: AppColors.blackColor, //
+        color: AppColors.primaryBlackColor, //
         child: Column(
           children: [
             const SizedBox(height: 25),
@@ -28,7 +28,7 @@ class CustomDrawerWidget extends StatelessWidget {
                         child: Text(
                           AppStringsPortuguese.pluralServicesOrder,
                           style: AppTextStyles.boldMediumTextStyle(
-                              color: AppColors.whiteColor),
+                              color: AppColors.backgroundColor),
                         ));
               },
               separatorBuilder: (context, index) {
@@ -36,7 +36,7 @@ class CustomDrawerWidget extends StatelessWidget {
                   thickness: 0.2,
                   indent: 0,
                   endIndent: 0,
-                  color: AppColors.contourWhiteColor,
+                  color: AppColors.borderWhiteColor,
                 );
               },
             ))

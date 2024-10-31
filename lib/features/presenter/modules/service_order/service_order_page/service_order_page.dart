@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/service_order/controller/service_order_controller/service_order_controller.dart';
@@ -13,6 +14,7 @@ import '../../../widgets/buttons/custom_outlined_button.dart';
 import '../../../widgets/custom_info_card/custom_info_card_widget.dart';
 import '../../../widgets/custom_list_item/custom_list_item_widget.dart';
 import '../../../widgets/list_title_card/list_title_card_widget.dart';
+import '../service_order_list_page/service_order_list_page.dart';
 
 class ServiceOrderPage extends StatelessWidget {
   final ArgParams args;
@@ -28,162 +30,158 @@ class ServiceOrderPage extends StatelessWidget {
     final controller = Modular.get<ServiceOrderController>();
     controller.serviceOrderId = args.firstArgs as int;
     controller.getServiceOrder();
-    final mockInfoList = [
-      ["Fazenda: ", "Três Lagoas"],
-      ["Safra: ", "29-25"],
-      ["Centro de Custo Local: ", "562824"],
-      ["Talhões:", "1, 2, 3, 4, 5, 6, 7"],
-      ["Área total: ", "1500 ha"]
-    ];
-    final mockExecutionList = ["José Junior", "Lucas Souza"];
-    final mockMachineryList = ["Máquina 1", "Máquina 2"];
 
     return BackgroundWidget(
       scrollable: true,
-      appBar: const CustomAppBarWidget(
+      appBar: CustomAppBarWidget(
         appBarType: AppBarType.centeredTitleAndBackArrow,
         title: AppStrings.serviceOrderTitle,
+         onTap: (){
+            ServiceOrderListPage.navigate();
+         }
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            _isFinished(),
-            const SizedBox(height: 15,),
-            const CustomInfoCardWidget(
-                labelOne: "Atividade",
-                textOne: "80548",
-                labelTwo: "Abertura: 21/04/203",
-                textTwo: "Plantio",
-                infoCardType: InfoCardType.activityType),
-            const SizedBox(height: 10.0),
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  border: Border.all(
+        child: Observer(
+          builder: (context) => Column(
+            children: [
+              _isFinished(),
+              const SizedBox(height: 15,),
+              CustomInfoCardWidget(
+                  labelOne: "Atividade",
+                  textOne: controller.serviceOrder?.id.toString() ?? "",
+                  labelTwo: "Abertura: ${controller.serviceOrder?.activityStart ?? ""}",
+                  textTwo: controller.serviceOrder?.agriculturalActivity?.activityName ?? "",
+                  infoCardType: InfoCardType.activityType),
+              const SizedBox(height: 10.0),
+              Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                      color: AppColors.contourWhiteColor,
+                      width: 3,
+                    )),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: controller.informationList.length,
+                  itemBuilder: (context, index) {
+                    return CustomListItemWidget(
+                        label: controller.informationList[index][0],
+                        informationText: controller.informationList[index][1],
+                        backgroundColor: index % 2 == 0
+                            ? AppColors.trueWhiteColor
+                            : AppColors.softGreenColor,
+                        rightIcon: controller.informationList[index][0] == "Talhões:"
+                            ? Icons.navigate_next
+                            : null,
+                        type: controller.informationList[index][0] == "Talhões:"
+                            ? ListItemType.oneIconButton
+                            : ListItemType.regular);
+                  },
+                ),
+              ),
+              const SizedBox(height: 10),
+              CustomInfoCardWidget(
+                  labelOne: "Responsável",
+                  textOne: controller.serviceOrder?.employeeActivityHolder?.employeeName ?? "",
+                  icon: Icons.edit_outlined,
+                  infoCardType: InfoCardType.oneLabeledInfo),
+              const SizedBox(height: 10),
+              CustomInfoCardWidget(
+                  labelOne: "Cultura:",
+                  textOne: controller.serviceOrder?.cropDiversity?.name ?? "",
+                  labelTwo: "Variedade:",
+                  textTwo: controller.serviceOrder?.cropDiversity?.crop?.name ?? "",
+                  labelThree: "Tecnologia",
+                  textThree: controller.serviceOrder?.cropDiversity?.technologyType?.name ?? "",
+                  icon: Icons.edit_outlined,
+                  infoCardType: InfoCardType.threeLabeledInfo),
+              const SizedBox(height: 10.0),
+              Container(
+                decoration: BoxDecoration(
                     color: AppColors.contourWhiteColor,
-                    width: 3,
-                  )),
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: mockInfoList.length,
-                itemBuilder: (context, index) {
-                  return CustomListItemWidget(
-                      label: mockInfoList[index][0],
-                      informationText: mockInfoList[index][1],
-                      backgroundColor: index % 2 == 0
-                          ? AppColors.trueWhiteColor
-                          : AppColors.softGreenColor,
-                      rightIcon: mockInfoList[index][0] == "Talhões:"
-                          ? Icons.navigate_next
-                          : null,
-                      type: mockInfoList[index][0] == "Talhões:"
-                          ? ListItemType.oneIconButton
-                          : ListItemType.regular);
-                },
+                    borderRadius: BorderRadius.circular(5)),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const ListTitleCardWidget(text: "Executores:"),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: (controller.serviceOrder?.employees?.map((e) => e.employeeName) ?? []).toList().length,
+                      itemBuilder: (context, index) {
+                        return CustomListItemWidget(
+                            informationText: controller.serviceOrder?.employees?.map((e) => e.employeeName).toList()[index] ?? "",
+                            backgroundColor: index % 2 == 0
+                                ? AppColors.trueWhiteColor
+                                : AppColors.softGreenColor,
+                            leftIcon: Icons.edit_outlined,
+                            rightIcon: Icons.delete_outline,
+                            type: ListItemType.twoIconButtons);
+                      },
+                    )],
+                ),
               ),
-            ),
-            const SizedBox(height: 10),
-            const CustomInfoCardWidget(
-                labelOne: "Responsável",
-                textOne: "Alan Brito",
-                icon: Icons.edit_outlined,
-                infoCardType: InfoCardType.oneLabeledInfo),
-            const SizedBox(height: 10),
-            const CustomInfoCardWidget(
-                labelOne: "Cultura:",
-                textOne: "Milho",
-                labelTwo: "Variedade:",
-                textTwo: "Milho dentado",
-                labelThree: "Tecnologia",
-                textThree: "Não Utilizada",
-                icon: Icons.edit_outlined,
-                infoCardType: InfoCardType.threeLabeledInfo),
-            const SizedBox(height: 10.0),
-            Container(
-              decoration: BoxDecoration(
-                  color: AppColors.contourWhiteColor,
-                  borderRadius: BorderRadius.circular(5)),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const ListTitleCardWidget(text: "Executores:"),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: mockExecutionList.length,
-                    itemBuilder: (context, index) {
-                      return CustomListItemWidget(
-                          informationText: mockExecutionList[index],
-                          backgroundColor: index % 2 == 0
-                              ? AppColors.trueWhiteColor
-                              : AppColors.softGreenColor,
-                          leftIcon: Icons.edit_outlined,
-                          rightIcon: Icons.delete_outline,
-                          type: ListItemType.twoIconButtons);
-                    },
-                  )],
+              const SizedBox(height: 10.0),
+              Container(
+                decoration: BoxDecoration(
+                    color: AppColors.contourWhiteColor,
+                    borderRadius: BorderRadius.circular(5)),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const ListTitleCardWidget(text: "Maquinário:"),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: (controller.serviceOrder?.machineImplements?.map((e) => e.machineImplementType?.name).toList() ?? []).length,
+                      itemBuilder: (context, index) {
+                        return CustomListItemWidget(
+                            informationText: (controller.serviceOrder?.machineImplements?.map((e) => e.machineImplementType?.name).toList() ?? [])[index] ?? "",
+                            backgroundColor: index % 2 == 0
+                                ? AppColors.trueWhiteColor
+                                : AppColors.softGreenColor,
+                            leftIcon: Icons.edit_outlined,
+                            rightIcon: Icons.delete_outline,
+                            type: ListItemType.twoIconButtons);
+                      },
+                    )],
+                ),
               ),
-            ),
-            const SizedBox(height: 10.0),
-            Container(
-              decoration: BoxDecoration(
-                  color: AppColors.contourWhiteColor,
-                  borderRadius: BorderRadius.circular(5)),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const ListTitleCardWidget(text: "Maquinário:"),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: mockMachineryList.length,
-                    itemBuilder: (context, index) {
-                      return CustomListItemWidget(
-                          informationText: mockMachineryList[index],
-                          backgroundColor: index % 2 == 0
-                              ? AppColors.trueWhiteColor
-                              : AppColors.softGreenColor,
-                          leftIcon: Icons.edit_outlined,
-                          rightIcon: Icons.delete_outline,
-                          type: ListItemType.twoIconButtons);
-                    },
-                  )],
+              const SizedBox(height: 10.0),
+              CustomInfoCardWidget(
+                  labelOne: "Estoque",
+                  textOne: "Estoque",
+                  infoCardType: InfoCardType.oneLabeledInfo),
+              const SizedBox(height: 10.0),
+              CustomInfoCardWidget(
+                  labelOne: "Previsão de início",
+                  textOne: controller.serviceOrder?.expectedStartDate ?? "",
+                  labelTwo: "Previsão de término",
+                  textTwo: controller.serviceOrder?.expectedEndDate ?? "",
+                  icon: Icons.edit_outlined,
+                  infoCardType: InfoCardType.twoLabeledInfo),
+              const SizedBox(
+                height: 10.0,
               ),
-            ),
-            const SizedBox(height: 10.0),
-            const CustomInfoCardWidget(
-                labelOne: "Estoque",
-                textOne: "Estoque",
-                infoCardType: InfoCardType.oneLabeledInfo),
-            const SizedBox(height: 10.0),
-            const CustomInfoCardWidget(
-                labelOne: "Previsão de início",
-                textOne: "21/08/2024",
-                labelTwo: "Previsão de término",
-                textTwo: "22/08/2024",
-                icon: Icons.edit_outlined,
-                infoCardType: InfoCardType.twoLabeledInfo),
-            const SizedBox(
-              height: 10.0,
-            ),
-            const CustomInfoCardWidget(
-                labelOne: "Valor do Serviço",
-                textOne: "R\$1.500,00",
-                infoCardType: InfoCardType.oneLabeledInfo),
-            const SizedBox(
-              height: 10.0,
-            ),
-            const CustomInfoCardWidget(
-                labelOne: "Observações",
-                textOne: "Sem observação",
-                infoCardType: InfoCardType.oneLabeledInfo),
-            const SizedBox(
-              height: 15,
-            ),
-            _getAvailableButtons()
-          ],
+              CustomInfoCardWidget(
+                  labelOne: "Valor do Serviço",
+                  textOne:  "R\$ ${controller.serviceOrder?.activityValue?.toString() ?? ""}",
+                  infoCardType: InfoCardType.oneLabeledInfo),
+              const SizedBox(
+                height: 10.0,
+              ),
+              CustomInfoCardWidget(
+                  labelOne: "Observações",
+                  textOne: controller.serviceOrder?.description ?? "",
+                  infoCardType: InfoCardType.oneLabeledInfo),
+              const SizedBox(
+                height: 15,
+              ),
+              _getAvailableButtons()
+            ],
+          ),
         ),
       ),
     );

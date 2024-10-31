@@ -18,6 +18,7 @@ abstract class ServiceOrderControllerAbstract with Store {
   @observable
   FieldServiceOrderEntity? serviceOrder;
 
+  List<List<String>> informationList = [];
 
   @action
   Future getServiceOrder() async {
@@ -26,9 +27,27 @@ abstract class ServiceOrderControllerAbstract with Store {
     final result = await getServiceOrder(ArgParams(firstArgs: serviceOrderId));
     result.fold((error) => error.friendlyMessage, (success) {
       serviceOrder = success;
+      _buildDataLists();
       return success;
     });
 
     isLoading = false;
+  }
+
+  _buildDataLists() {
+      informationList = [
+        ["Fazenda: ", serviceOrder?.farm?.farmName ?? ""],
+        ["Safra: ", serviceOrder?.cropDiversity?.crop?.name ?? ""],
+        ["Centro de Custo Local: ", serviceOrder?.costCenter?.costCenterName ?? ""],
+        ["Talhões:", _buildPlotStringPreview(serviceOrder?.plots?.map((e) => e.groupName).toList() ?? [])],
+        ["Área total: ", serviceOrder?.areaTotal?.toString() ?? ""]
+      ];
+  }
+
+  String _buildPlotStringPreview(List<String?> plots) {
+    String plot = plots
+        .where((plot) => plot != null)
+        .cast<String>().join(', '); // Join the remaining elements
+    return plot == "" ? "Sem talhões cadastrados" : plot;
   }
 }

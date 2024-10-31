@@ -7,7 +7,7 @@ enum FieldServiceOrderTypeEnum {
   generic,
 }
 
-FieldServiceOrderTypeEnum getFieldServiceOrderTypeEnumFromString(String type) {
+FieldServiceOrderTypeEnum getFieldServiceOrderTypeEnum(String type) {
   if (type.contains('Pulverização')) {
     return FieldServiceOrderTypeEnum.spraying;
   }

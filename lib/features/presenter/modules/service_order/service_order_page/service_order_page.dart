@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_strings.dart';
+import 'package:new_ezagro_flutter/core/enums/field_service_order_type_enum.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/service_order/controller/service_order_controller/service_order_controller.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/service_order/controller/service_order_controller/ui_service_order_controller.dart';
 import '../../../../../consts/app_colors.dart';
 import '../../../../../consts/app_routes.dart';
 import '../../../../../consts/app_text_styles.dart';
+import '../../../../../core/enums/field_service_order_status_enum.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
@@ -19,7 +22,6 @@ import '../service_order_list_page/service_order_list_page.dart';
 class ServiceOrderPage extends StatelessWidget {
   final ArgParams args;
   static const String routePath = AppRoutes.appServiceOrderPage;
-  final isFinished = true;
 
   static void navigate(ArgParams args) => Modular.to.navigate(routePath, arguments: args);
 
@@ -30,7 +32,10 @@ class ServiceOrderPage extends StatelessWidget {
     final controller = Modular.get<ServiceOrderController>();
     controller.serviceOrderId = args.firstArgs as int;
     controller.getServiceOrder();
-
+    final uiController = UiServiceOrderController(
+        type: getFieldServiceOrderTypeEnum(controller.serviceOrder?.agriculturalActivity?.activityType ?? ""),
+        status: fieldServiceOrderStatusEnum(controller.serviceOrder?.status ?? "")
+    );
     return BackgroundWidget(
       scrollable: true,
       appBar: CustomAppBarWidget(
@@ -45,7 +50,7 @@ class ServiceOrderPage extends StatelessWidget {
         child: Observer(
           builder: (context) => Column(
             children: [
-              _isFinished(),
+              _isFinished(uiController.isFinished()),
               const SizedBox(height: 15,),
               CustomInfoCardWidget(
                   labelOne: "Atividade",
@@ -179,7 +184,7 @@ class ServiceOrderPage extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              _getAvailableButtons()
+              _getAvailableButtons(uiController.isFinished())
             ],
           ),
         ),
@@ -187,7 +192,7 @@ class ServiceOrderPage extends StatelessWidget {
     );
   }
 
-  Widget _isFinished() {
+  Widget _isFinished(bool isFinished) {
     return isFinished ?
         Row(
           children: [
@@ -201,7 +206,7 @@ class ServiceOrderPage extends StatelessWidget {
         const SizedBox.shrink();
   }
 
-  Widget _getAvailableButtons() {
+  Widget _getAvailableButtons(bool isFinished) {
 
     return isFinished ?
       CustomElevatedButton(onPressed: () {}, label: AppStrings.resumeOSButton)

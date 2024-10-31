@@ -7,6 +7,15 @@ class UiServiceOrderController {
   FieldServiceOrderTypeEnum? type;
   FieldServiceOrderStatusEnum? status;
 
+  UiServiceOrderController({this.type, this.status});
 
+  bool isFinished() {
+     switch (status) {
+       case FieldServiceOrderStatusEnum.completed:
+         return true;
+       default:
+         return false;
+     }
+  }
 }
 

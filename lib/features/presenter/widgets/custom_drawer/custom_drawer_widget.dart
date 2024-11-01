@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:new_ezagro_flutter/consts/app_text_styles.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/service_order/service_order_list_page/service_order_list_page.dart';
-import '../../../../consts/app_colors.dart';
-import '../../../../consts/app_strings.dart';
+import '../../../../design_system/colors/app_colors.dart';
+import '../../../../design_system/typography/app_text_styles.dart';
 import '../../modules/home/home_page.dart';
 import '../custom_drawer_header/custom_drawer_header_widget.dart';
 
@@ -14,7 +14,7 @@ class CustomDrawerWidget extends StatelessWidget {
     return Drawer(
       child: Container(
         width: MediaQuery.of(context).size.width * 0.55,
-        color: AppColors.blackColor, //
+        color: AppColors.primaryBlackColor, //
         child: Column(
           children: [
             const SizedBox(height: 25),
@@ -32,7 +32,7 @@ class CustomDrawerWidget extends StatelessWidget {
                       padding: EdgeInsets.all(10),
                       child: Text(
                         "Home",
-                        style: AppTextStyles.boldMediumTextStyle(color: AppColors.whiteColor),
+                        style: AppTextStyles.boldMediumTextStyle(color: AppColors.backgroundColor),
                       ),
                     ),
                   );
@@ -44,8 +44,8 @@ class CustomDrawerWidget extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.all(10),
                       child: Text(
-                        AppStrings.pluralServicesOrder,
-                        style: AppTextStyles.boldMediumTextStyle(color: AppColors.whiteColor),
+                        AppStringsPortuguese.pluralServicesOrder,
+                        style: AppTextStyles.boldMediumTextStyle(color: AppColors.backgroundColor),
                       ),
                     ),
                   );
@@ -56,7 +56,7 @@ class CustomDrawerWidget extends StatelessWidget {
                   thickness: 0.2,
                   indent: 0,
                   endIndent: 0,
-                  color: AppColors.contourWhiteColor,
+                  color: AppColors.borderWhiteColor,
                 );
               },
             ))

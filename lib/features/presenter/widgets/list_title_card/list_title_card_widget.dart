@@ -10,7 +10,7 @@ class ListTitleCardWidget extends StatelessWidget {
   const ListTitleCardWidget(
       {super.key,
       required this.text,
-      this.borderColor = AppColors.whiteBorderColor});
+      this.borderColor = AppColors.borderWhiteColor});
 
   @override
   Widget build(BuildContext context) {

@@ -63,7 +63,7 @@ class LoginPage extends StatelessWidget {
                   controller.password = passwordController.text;
 
                   controller.authenticate(context);
-                  await controller.authenticate();
+                  await controller.authenticate(context);
                   if (controller.token != '') {
                     HomePage.navigate();
                   }

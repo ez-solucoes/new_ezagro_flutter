@@ -98,7 +98,7 @@ abstract class AuthenticationControllerAbstract with Store {
         key: AppStringsPortuguese.storageTypeSecure);
 
     await localStorage.writeData(LocalStorageItem(
-        key: AppStringsPortuguese.idKey, value: success.client.id.toString()));
+        key: AppStringsPortuguese.idKey, value: success.client!.id.toString()));
     await localStorage.writeData(LocalStorageItem(
         key: AppStringsPortuguese.tokenKey, value: success.token));
     await localStorage.writeData(LocalStorageItem(

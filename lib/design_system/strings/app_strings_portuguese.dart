@@ -2,6 +2,7 @@ class AppStringsPortuguese {
   AppStringsPortuguese._();
 
   static const String appTitle = 'Ez Agro';
+  static const String appCapitalTile = "EZ AGRO";
 
   static const String cpfString = 'Cpf';
   static const String passwordString = 'Senha';

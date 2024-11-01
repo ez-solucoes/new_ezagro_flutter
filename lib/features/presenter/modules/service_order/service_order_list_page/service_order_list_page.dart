@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/core/enums/service_order_type_enum.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/custom_drawer/custom_drawer_widget.dart';
-
-import '../../../../../consts/app_colors.dart';
-import '../../../../../consts/app_dimens.dart';
 import '../../../../../consts/app_routes.dart';
+import '../../../../../design_system/colors/app_colors.dart';
+import '../../../../../design_system/spacing/app_dimens.dart';
+import '../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
@@ -39,7 +38,7 @@ class ServiceOrderListPage extends StatelessWidget {
           resizeToAvoidBottomInset: false,
           appBar: const CustomAppBarWidget(
             appBarType: AppBarType.hamburgerAndTitle,
-            title: AppStrings.serviceOrderTitle,
+            title: AppStringsPortuguese.serviceOrderTitle,
           ),
           drawer: CustomDrawerWidget(),
           body: Stack(
@@ -108,11 +107,11 @@ class ServiceOrderListPage extends StatelessWidget {
             ],
           ),
           floatingActionButton: FloatingActionButton(
-            backgroundColor: AppColors.trueWhiteColor,
+            backgroundColor: AppColors.primaryWhiteColor,
             onPressed: () {},
             child: const Icon(
               Icons.add,
-              color: AppColors.greenColor,
+              color: AppColors.primaryGreenColor,
               size: 50,
             ),
           ),

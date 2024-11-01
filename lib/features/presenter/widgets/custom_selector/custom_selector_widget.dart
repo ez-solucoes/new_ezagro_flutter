@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:new_ezagro_flutter/consts/app_text_styles.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/selector_entities/selector_entity.dart';
-
-import '../../../../consts/app_colors.dart';
+import '../../../../design_system/colors/app_colors.dart';
+import '../../../../design_system/typography/app_text_styles.dart';
 
 class CustomSelectorWidget extends StatelessWidget {
 
@@ -24,7 +23,7 @@ class CustomSelectorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        color: AppColors.trueWhiteColor,
+        color: AppColors.primaryWhiteColor,
         child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(
@@ -33,13 +32,13 @@ class CustomSelectorWidget extends StatelessWidget {
                 Text(
                   title,
                   style: AppTextStyles.smallBoldTextOnCardStyle(
-                      color: items.isEmpty ? AppColors.softGreyColor : AppColors.blackColor),
+                      color: items.isEmpty ? AppColors.dividerGreyColor : AppColors.primaryBlackColor),
                 ),
                 const SizedBox(height: 16),
                 DropdownButtonFormField(
                   value: selectedValue,
-                  dropdownColor: AppColors.trueWhiteColor,
-                  style: AppTextStyles.appBarSubTitleTextStyle(color: AppColors.blackColor),
+                  dropdownColor: AppColors.primaryWhiteColor,
+                  style: AppTextStyles.appBarSubTitleTextStyle(color: AppColors.primaryBlackColor),
                   hint: Text(
                     selectorHint,
                     style: AppTextStyles.appBarTitleTextStyle(
@@ -58,7 +57,7 @@ class CustomSelectorWidget extends StatelessWidget {
                       enabledBorder: UnderlineInputBorder(
                           borderSide:
                               BorderSide(color: AppColors.formGreyColor)),
-                          focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.greenColor)),
+                          focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.primaryGreenColor)),
                   )
                 ),
               ],

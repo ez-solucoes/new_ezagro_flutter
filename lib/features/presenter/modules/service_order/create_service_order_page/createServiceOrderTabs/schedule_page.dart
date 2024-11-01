@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import '../../../../../../consts/app_strings.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 import '../../../../widgets/custom_date_picker/custom_date_picker_widget.dart';
 import '../../../../widgets/custom_selector/custom_selector_widget.dart';
 import '../../controller/create_service_order_controller/create_service_order_controller.dart';
@@ -15,13 +15,13 @@ class SchedulePage extends StatelessWidget {
     return Column(
       children: [
         CustomDatePickerWidget(
-          title: AppStrings.expectedStartDate,
+          title: AppStringsPortuguese.expectedStartDate,
           getSelectedDate: (date) {
             controller.startDate = date;
           },
         ),
         CustomDatePickerWidget(
-            title: AppStrings.expectedFinishingDate,
+            title: AppStringsPortuguese.expectedFinishingDate,
             getSelectedDate: (date) {
               controller.endDate = date;
             }),
@@ -30,8 +30,8 @@ class SchedulePage extends StatelessWidget {
               controller.responsible["responsible"] = value;
             },
             items: controller.employeeOptions,
-            title: AppStrings.responsiveSelectorTitle,
-            selectorHint: AppStrings.responsibleSelectorHint)
+            title: AppStringsPortuguese.responsiveSelectorTitle,
+            selectorHint: AppStringsPortuguese.responsibleSelectorHint)
       ],
     );
   }

@@ -16,7 +16,7 @@ class BackgroundWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.whiteColor,
+      backgroundColor: AppColors.backgroundColor,
       appBar: appBar,
       resizeToAvoidBottomInset: false,
       drawer: needsDrawer ? CustomDrawerWidget() : null,

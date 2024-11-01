@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 class AgriculturalActivityEntity extends Equatable {
   final int id;
-  final String activityName;
+  final String? activityName;
   final String? description;
   final bool? needsApproval;
   final bool? isDefault;
@@ -10,7 +10,7 @@ class AgriculturalActivityEntity extends Equatable {
 
   const AgriculturalActivityEntity({
     required this.id,
-    required this.activityName,
+    this.activityName,
     this.description,
     this.needsApproval,
     this.isDefault,

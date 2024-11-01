@@ -33,7 +33,7 @@ class CustomSelectorWidget extends StatelessWidget {
                 Text(
                   title,
                   style: AppTextStyles.smallBoldTextOnCardStyle(
-                      color: AppColors.blackColor),
+                      color: items.isEmpty ? AppColors.softGreyColor : AppColors.blackColor),
                 ),
                 const SizedBox(height: 16),
                 DropdownButtonFormField(

@@ -123,7 +123,10 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getActivities = Modular.get<ActivityUsecase>();
     final result = await getActivities(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      //activityOptions = success.content;
+      activityOptions = success.content.map((e) {
+        return SelectorEntity(id: e.id, name: e.activityName);
+      }).toList();
+
       return success;
     });
 
@@ -136,7 +139,9 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getCostCenters = Modular.get<CostCenterUsecase>();
     final result = await getCostCenters(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      //costCenterOptions = success.content;
+      costCenterOptions = success.content.map((e) {
+        return SelectorEntity(id: e.id, name: e.costCenterName);
+      }).toList();
       return success;
     });
 

@@ -6,7 +6,7 @@ import '../../../domain/entities/agricultural_entities/agricultural_activity_ent
 class AgriculturalActivityModel extends AgriculturalActivityEntity {
   const AgriculturalActivityModel({
     required super.id,
-    required super.activityName,
+    super.activityName,
     super.description,
     super.needsApproval,
     super.isDefault,

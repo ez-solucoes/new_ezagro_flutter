@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:new_ezagro_flutter/core/enums/field_service_order_type_enum.dart';
 import '../../../../../consts/app_colors.dart';
 import '../../../../../consts/app_routes.dart';
 import '../../../../../consts/app_strings.dart';
@@ -33,6 +34,8 @@ class CreateServiceOrderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Modular.get<CreateServiceOrderController>();
+    controller.getActivities();
+    controller.getCostCenters();
     return BackgroundWidget(
         scrollable: false,
         appBar: CustomAppBarWidget(
@@ -43,21 +46,16 @@ class CreateServiceOrderPage extends StatelessWidget {
           },
         ),
         child: DefaultTabController(
-            length: 7,
+            length: getFieldServiceOrderTypeEnum(controller.activity?.activityType ?? "")
+                    == FieldServiceOrderTypeEnum.transfer
+                    ? 6
+                    : 7,
             child: Padding(
                 padding: const EdgeInsets.all(14.0),
                 child: Column(children: [
                   SizedBox(
                       height: MediaQuery.sizeOf(context).height * 0.75,
-                      child: TabBarView(children: <Widget>[
-                        GeneralInformationPage(),
-                        SelectPlotsPage(),
-                        ExecutorsPage(),
-                        MachineryPage(),
-                        ProductsPage(),
-                        SchedulePage(),
-                        FinalInformationPage()
-                      ])),
+                      child: TabBarView(children: _getPages(getFieldServiceOrderTypeEnum(controller.activity?.activityType ?? "")))),
                   const SizedBox(height: 5),
                   Observer(
                       builder: (context) => Row(
@@ -94,3 +92,28 @@ class CreateServiceOrderPage extends StatelessWidget {
                 ]))));
   }
 }
+
+List<Widget> _getPages(FieldServiceOrderTypeEnum type) {
+  switch (type) {
+    case FieldServiceOrderTypeEnum.transfer:
+      return [
+        GeneralInformationPage(),
+        SelectPlotsPage(),
+        ExecutorsPage(),
+        MachineryPage(),
+        ProductsPage(),
+        SchedulePage(),
+        FinalInformationPage()
+      ];
+    default:
+      return [
+        GeneralInformationPage(),
+        ExecutorsPage(),
+        MachineryPage(),
+        ProductsPage(),
+        SchedulePage(),
+        FinalInformationPage()
+      ];
+  }
+}
+

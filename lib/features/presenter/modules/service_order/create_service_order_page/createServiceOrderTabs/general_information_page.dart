@@ -22,7 +22,6 @@ class GeneralInformationPage extends StatelessWidget {
       Observer(
         builder: (context) => CustomSelectorWidget(
             onSelect: (value) {
-             //controller.activity = controller.activityOptions;
 
             },
             items: controller.activityOptions,

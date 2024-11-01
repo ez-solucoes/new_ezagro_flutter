@@ -5,12 +5,14 @@ class CoordinateEntity extends Equatable {
   final int? longitude;
   final int? latitude;
 
-  const CoordinateEntity(
-      {required this.id, this.longitude, this.latitude,});
+  const CoordinateEntity({
+    required this.id,
+    this.longitude,
+    this.latitude,
+  });
 
   @override
-  List<Object?> get props =>
-      [
+  List<Object?> get props => [
         id,
         longitude,
         latitude,

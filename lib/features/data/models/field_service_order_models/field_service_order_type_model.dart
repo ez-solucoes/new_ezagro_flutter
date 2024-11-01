@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../../domain/entities/field_service_order_entities/field_service_order_type_entity.dart';
 
 class FieldServiceOrderTypeModel extends FieldServiceOrderTypeEntity {
@@ -9,20 +10,23 @@ class FieldServiceOrderTypeModel extends FieldServiceOrderTypeEntity {
     required super.active,
   });
 
-  String toJson() => json.encode(toMap());factory FieldServiceOrderTypeModel.fromJson(String source) =>
+  String toJson() => json.encode(toMap());
+
+  factory FieldServiceOrderTypeModel.fromJson(String source) =>
       FieldServiceOrderTypeModel.fromMap(json.decode(source));
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'name': name,
-    'description': description,
-    'active': active,
-  };
+        'id': id,
+        'name': name,
+        'description': description,
+        'active': active,
+      };
 
   factory FieldServiceOrderTypeModel.fromMap(Map<String, dynamic> map) =>
       FieldServiceOrderTypeModel(
         id: map['id'],
         name: map['name'],
-        description: map['description'],active: map['active'],
+        description: map['description'],
+        active: map['active'],
       );
 }

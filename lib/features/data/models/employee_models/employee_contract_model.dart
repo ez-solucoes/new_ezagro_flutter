@@ -24,45 +24,55 @@ class EmployeeContractModel extends EmployeeContractEntity {
     super.valueTicket,
     super.additionalUnhealthy,
     super.additionalDanger,
-    super.trustPosition,super.dismissalReason,
+    super.trustPosition,
+    super.dismissalReason,
     super.employeeCompositionSalary,
   });
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'type': (type as EmployeeContractTypeModel).toMap(),
-    'number': number,
-    'file': file,
-    'dtAdmission': dtAdmission,
-    'dtDismissal': dtDismissal,
-    'function': function,
-    'department': (department as DepartmentModel).toMap(),
-    'shift': (shift as ShiftModel).toMap(),
-    'baseSalary': baseSalary,
-    'combinedSalary': combinedSalary,
-    'variedSalary': variedSalary,
-    'alimonyPercentage': alimonyPercentage,
-    'valueTicket': valueTicket,
-    'additionalUnhealthy': additionalUnhealthy,
-    'additionalDanger': additionalDanger,
-    'trustPosition': trustPosition,
-    'dismissalReason': dismissalReason,
-    'employeeCompositionSalary': employeeCompositionSalary?.map((e) => (e as EmployeeCompositionSalaryModel).toMap())
-        .toList(),
-  };
+        'id': id,
+        'type': (type as EmployeeContractTypeModel).toMap(),
+        'number': number,
+        'file': file,
+        'dtAdmission': dtAdmission,
+        'dtDismissal': dtDismissal,
+        'function': function,
+        'department': (department as DepartmentModel).toMap(),
+        'shift': (shift as ShiftModel).toMap(),
+        'baseSalary': baseSalary,
+        'combinedSalary': combinedSalary,
+        'variedSalary': variedSalary,
+        'alimonyPercentage': alimonyPercentage,
+        'valueTicket': valueTicket,
+        'additionalUnhealthy': additionalUnhealthy,
+        'additionalDanger': additionalDanger,
+        'trustPosition': trustPosition,
+        'dismissalReason': dismissalReason,
+        'employeeCompositionSalary': employeeCompositionSalary
+            ?.map((e) => (e as EmployeeCompositionSalaryModel).toMap())
+            .toList(),
+      };
 
   factory EmployeeContractModel.fromMap(Map<String, dynamic> map) =>
       EmployeeContractModel(
         id: map['id'],
-        type: map['type'] == null ? null : EmployeeContractTypeModel.fromMap(map['type']),
+        type: map['type'] == null
+            ? null
+            : EmployeeContractTypeModel.fromMap(map['type']),
         number: map['number'],
         file: map['file'],
         dtAdmission: map['dtAdmission'],
         dtDismissal: map['dtDismissal'],
         function: map['function'],
-        department: map['department'] == null ? null : DepartmentModel.fromMap(map['department']),
+        department: map['department'] == null
+            ? null
+            : DepartmentModel.fromMap(map['department']),
         shift: map['shift'] == null ? null : ShiftModel.fromMap(map['shift']),
-        baseSalary: map['baseSalary'] == null ? null : (map['baseSalary'] is double ? map['baseSalary'] : (map['baseSalary'] as int).toDouble()),
+        baseSalary: map['baseSalary'] == null
+            ? null
+            : (map['baseSalary'] is double
+                ? map['baseSalary']
+                : (map['baseSalary'] as int).toDouble()),
         combinedSalary: map['combinedSalary'],
         variedSalary: map['variedSalary'],
         alimonyPercentage: map['alimonyPercentage'],

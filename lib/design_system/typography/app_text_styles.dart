@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:new_ezagro_flutter/consts/app_dimens.dart';
-import 'package:new_ezagro_flutter/consts/app_fonts.dart';
+import 'package:new_ezagro_flutter/design_system/spacing/app_dimens.dart';
+import 'package:new_ezagro_flutter/design_system/typography/app_fonts.dart';
 
-import 'app_colors.dart';
+import '../colors/app_colors.dart';
 
 class AppTextStyles {
   AppTextStyles._();
@@ -37,7 +37,7 @@ class AppTextStyles {
       fontSize: 14,
       color: color,
       decoration: TextDecoration.underline,
-      decorationColor: AppColors.blackColor,
+      decorationColor: AppColors.primaryBlackColor,
       decorationThickness: 2.0,
     );
   }
@@ -92,8 +92,7 @@ class AppTextStyles {
         fontFamily: AppFonts.montserratFont,
         fontWeight: FontWeight.bold,
         fontSize: AppDimens.smallTextDimen,
-        color: color
-    );
+        color: color);
   }
 
   static TextStyle labelOnCardStyle({
@@ -133,11 +132,10 @@ class AppTextStyles {
     required Color color,
   }) {
     return TextStyle(
-      fontFamily: AppFonts.montserratFont,
-      fontWeight: FontWeight.bold,
-      fontSize: AppDimens.subTitleDimen,
-      color: color
-    );
+        fontFamily: AppFonts.montserratFont,
+        fontWeight: FontWeight.bold,
+        fontSize: AppDimens.subTitleDimen,
+        color: color);
   }
 
   static TextStyle cardBodyTextStyle({
@@ -172,5 +170,4 @@ class AppTextStyles {
       color: color,
     );
   }
-
 }

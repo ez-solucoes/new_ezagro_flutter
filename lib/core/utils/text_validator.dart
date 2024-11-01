@@ -1,5 +1,4 @@
 class TextValidator {
-
   bool emailValidator(String email) {
     if (RegExp(
             r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)+\.*$")
@@ -18,10 +17,8 @@ class TextValidator {
     }
   }
 
-
   bool cpfValidator(String cpf) {
-    if (RegExp(
-        r"^(\d{3}\.\d{3}\.\d{3}-\d{2}|\d{3}\d{3}\d{3}\d{2})$")
+    if (RegExp(r"^(\d{3}\.\d{3}\.\d{3}-\d{2}|\d{3}\d{3}\d{3}\d{2})$")
         .hasMatch(cpf)) {
       return true;
     } else {
@@ -36,8 +33,5 @@ class TextValidator {
     } else {
       return false;
     }
-
   }
-
-
 }

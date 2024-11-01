@@ -5,29 +5,26 @@ import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/cost_center_datasource/cost_center_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/models/cost_center_models/cost_center_model.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/cost_center_repositories/cost_center_repository.dart';
+
 import '../../models/pagination_model/pagination_model.dart';
 
 class CostCenterRepositoryImpl implements CostCenterRepository {
-
   final CostCenterDatasource datasource;
 
   CostCenterRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<ApplicationError, PaginationModel<CostCenterModel>>> getCostCenters(NoParams noParams) async {
-    try{
+  Future<Either<ApplicationError, PaginationModel<CostCenterModel>>>
+      getCostCenters(NoParams noParams) async {
+    try {
       final result = await datasource.getCostCenters(noParams);
       return Right(result);
-    } on ApplicationError catch(e) {
+    } on ApplicationError catch (e) {
       return Left(e);
-    } catch(e, stacktrace) {
-      return Left(
-          GenericError(
-              fingerprint: '$CostCenterRepositoryImpl.getCostCenters',
-              additionalInfo: stacktrace.toString()
-          )
-      );
+    } catch (e, stacktrace) {
+      return Left(GenericError(
+          fingerprint: '$CostCenterRepositoryImpl.getCostCenters',
+          additionalInfo: stacktrace.toString()));
     }
   }
-
 }

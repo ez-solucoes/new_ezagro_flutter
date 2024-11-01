@@ -9,18 +9,16 @@ import 'package:new_ezagro_flutter/features/presenter/widgets/background/backgro
 import 'package:new_ezagro_flutter/features/presenter/widgets/custom_forms/password_form_widget.dart';
 
 import '../../../../../consts/app_routes.dart';
-import '../../../../../consts/app_strings.dart';
 import '../../../../../core/utils/text_input_formatter_mask.dart';
+import '../../../../../design_system/strings/app_strings_portuguese.dart';
 
 class UsernameInputPage extends StatelessWidget {
   final ArgParams? args;
   static const String routePath = AppRoutes.appUsernameInputPage;
 
-  static navigate() =>
-      Modular.to.navigate(routePath);
+  static navigate() => Modular.to.navigate(routePath);
 
-  static push() =>
-      Modular.to.pushNamed(routePath);
+  static push() => Modular.to.pushNamed(routePath);
 
   const UsernameInputPage({super.key, this.args});
 
@@ -41,15 +39,14 @@ class UsernameInputPage extends StatelessWidget {
             isLoading: controller.isLoading,
             inputType: TextInputType.number,
             inputFormatters: [TextInputFormatterMask(mask: 'CPF')],
-            title: AppStrings.forgotPasswordCpf,
+            title: AppStringsPortuguese.forgotPasswordCpf,
             controller: textController,
-            buttonText: AppStrings.forwardString,
+            buttonText: AppStringsPortuguese.forwardString,
             passwordField: false,
             onButtonPressed: () {
               controller.username = textController.text;
               controller.recoverPassword();
               TempPasswordPage.navigate();
-
             }),
       ),
     );

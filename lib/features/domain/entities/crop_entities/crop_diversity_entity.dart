@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import '../technology_entities/technology_type_entity.dart';
 
 class CropDiversityEntity extends Equatable {

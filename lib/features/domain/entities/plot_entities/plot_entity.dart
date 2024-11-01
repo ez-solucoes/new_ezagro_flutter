@@ -12,14 +12,13 @@ class PlotEntity extends Equatable {
   final int? number;
   final int? area;
 
-  const PlotEntity({
-    required this.id,
-    this.plotGroup,
-    this.coordinate,
-    this.plotOwnerShipType,
-    this.number,
-    this.area
-  });
+  const PlotEntity(
+      {required this.id,
+      this.plotGroup,
+      this.coordinate,
+      this.plotOwnerShipType,
+      this.number,
+      this.area});
 
   @override
   List<Object?> get props => [

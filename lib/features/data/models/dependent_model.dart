@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../domain/entities/dependent_entities/dependent_entity.dart';
 import 'employee_models/employee_model.dart';
 
@@ -12,20 +13,23 @@ class DependentModel extends DependentEntity {
   });
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'employee': employee == null ? null : (employee as EmployeeModel).toMap(),
-    'name': name,
-    'relationship': relationship,
-    'dateOfBirth': dateOfBirth,
-  };
+        'id': id,
+        'employee':
+            employee == null ? null : (employee as EmployeeModel).toMap(),
+        'name': name,
+        'relationship': relationship,
+        'dateOfBirth': dateOfBirth,
+      };
 
   factory DependentModel.fromMap(Map<String, dynamic> map) => DependentModel(
-    id: map['id'],
-    employee: map['employee'] == null ? null : EmployeeModel.fromMap(map['employee']),
-    name: map['name'],
-    relationship: map['relationship'],
-    dateOfBirth: map['dateOfBirth'],
-  );
+        id: map['id'],
+        employee: map['employee'] == null
+            ? null
+            : EmployeeModel.fromMap(map['employee']),
+        name: map['name'],
+        relationship: map['relationship'],
+        dateOfBirth: map['dateOfBirth'],
+      );
 
   String toJson() => json.encode(toMap());
 

@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../../domain/entities/crop_entities/crop_diversity_entity.dart';
 import '../technology_models/technoloty_type_model.dart';
 
@@ -10,10 +11,10 @@ class CropDiversityModel extends CropDiversityEntity {
   });
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'name': name,
-    'technologyType': (technologyType as TechnologyTypeModel).toMap(),
-  };
+        'id': id,
+        'name': name,
+        'technologyType': (technologyType as TechnologyTypeModel).toMap(),
+      };
 
   factory CropDiversityModel.fromMap(Map<String, dynamic> map) =>
       CropDiversityModel(
@@ -26,5 +27,4 @@ class CropDiversityModel extends CropDiversityEntity {
 
   factory CropDiversityModel.fromJson(String source) =>
       CropDiversityModel.fromMap(json.decode(source));
-
 }

@@ -23,7 +23,9 @@ class CostCenterModel extends CostCenterEntity {
   factory CostCenterModel.fromMap(Map<String, dynamic> map) => CostCenterModel(
         id: map['id'],
         name: map['name'],
-        costCenterType: map['costCenterType'] == null ? null : CostCenterTypeModel.fromMap(map['costCenterType']),
+        costCenterType: map['costCenterType'] == null
+            ? null
+            : CostCenterTypeModel.fromMap(map['costCenterType']),
         dtStart: map['dtStart'],
         dtEnd: map['dtEnd'],
       );

@@ -1,6 +1,6 @@
 import 'dart:convert';
-import '../../../domain/entities/plot_entities/plot_group_entity.dart';
 
+import '../../../domain/entities/plot_entities/plot_group_entity.dart';
 
 class PlotGroupModel extends PlotGroupEntity {
   const PlotGroupModel({
@@ -14,12 +14,12 @@ class PlotGroupModel extends PlotGroupEntity {
       PlotGroupModel.fromMap(json.decode(source));
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'name': name,
-  };
+        'id': id,
+        'name': name,
+      };
 
   factory PlotGroupModel.fromMap(Map<String, dynamic> map) => PlotGroupModel(
-    id: map['id'],
-    name: map['name'],
-  );
+        id: map['id'],
+        name: map['name'],
+      );
 }

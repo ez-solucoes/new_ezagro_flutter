@@ -10,16 +10,16 @@ class ShiftModel extends ShiftEntity {
   });
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'name': name,
-    'active':active,
-  };
+        'id': id,
+        'name': name,
+        'active': active,
+      };
 
   factory ShiftModel.fromMap(Map<String, dynamic> map) => ShiftModel(
-    id: map['id'],
-    name: map['name'],
-    active: map['active'],
-  );
+        id: map['id'],
+        name: map['name'],
+        active: map['active'],
+      );
 
   String toJson() => json.encode(toMap());
 

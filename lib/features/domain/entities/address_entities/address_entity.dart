@@ -13,8 +13,7 @@ class AddressEntity extends Equatable {
   final String? complement;
 
   const AddressEntity(
-      {
-        required this.id,
+      {required this.id,
       this.country,
       this.referenceLocation,
       this.state,

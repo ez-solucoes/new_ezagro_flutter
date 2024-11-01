@@ -1,5 +1,5 @@
-import 'package:equatable/equatable.dart';
 import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 import 'package:new_ezagro_flutter/core/errors/application_error.dart';
 
 abstract class Usecase<Output, Input> {
@@ -9,5 +9,4 @@ abstract class Usecase<Output, Input> {
 class NoParams extends Equatable {
   @override
   List<Object?> get props => [];
-
 }

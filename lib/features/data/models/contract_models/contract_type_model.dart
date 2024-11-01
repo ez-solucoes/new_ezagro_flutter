@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../../domain/entities/contract_entities/contract_type_entity.dart';
 
 class ContractTypeModel extends ContractTypeEntity {
@@ -8,12 +9,11 @@ class ContractTypeModel extends ContractTypeEntity {
     required super.description,
   });
 
-
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'name': name,
-    'description': description,
-  };
+        'id': id,
+        'name': name,
+        'description': description,
+      };
 
   factory ContractTypeModel.fromMap(Map<String, dynamic> map) =>
       ContractTypeModel(

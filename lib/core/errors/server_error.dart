@@ -1,5 +1,5 @@
-import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/core/errors/application_error.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 
 class ServerError extends ApplicationError {
   ServerError({
@@ -8,8 +8,8 @@ class ServerError extends ApplicationError {
     super.additionalInfo,
     String? friendlyMessage,
   }) : super(
-    friendlyMessage: friendlyMessage ?? AppStrings.serverErrorMessage,
-  );
+          friendlyMessage: friendlyMessage ?? AppStringsPortuguese.serverErrorMessage,
+        );
 
   @override
   String get name => throw '$ServerError';

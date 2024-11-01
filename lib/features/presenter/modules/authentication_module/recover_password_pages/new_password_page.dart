@@ -4,7 +4,7 @@ import 'package:new_ezagro_flutter/features/presenter/modules/authentication_mod
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/temp_password_page.dart';
 
 import '../../../../../consts/app_routes.dart';
-import '../../../../../consts/app_strings.dart';
+import '../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
@@ -15,11 +15,9 @@ class NewPasswordPage extends StatelessWidget {
   final ArgParams? args;
   static const String routePath = AppRoutes.appNewPasswordPage;
 
-  static navigate() =>
-      Modular.to.navigate(routePath);
+  static navigate() => Modular.to.navigate(routePath);
 
-  static push() =>
-      Modular.to.pushNamed(routePath);
+  static push() => Modular.to.pushNamed(routePath);
 
   const NewPasswordPage({super.key, this.args});
 
@@ -38,16 +36,15 @@ class NewPasswordPage extends StatelessWidget {
           padding: const EdgeInsets.all(19),
           child: PasswordFormWidget(
             isLoading: controller.isLoading,
-            title: AppStrings.createNewPasswordString,
+            title: AppStringsPortuguese.createNewPasswordString,
             controller: textController,
-            buttonText: AppStrings.forwardString,
-            onButtonPressed: (){
+            buttonText: AppStringsPortuguese.forwardString,
+            onButtonPressed: () {
               controller.password = textController.text;
               RepeatPasswordPage.navigate();
             },
             passwordField: true,
           ),
-        )
-    );
+        ));
   }
 }

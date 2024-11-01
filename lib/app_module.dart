@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
-import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_client.dart';
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_client_shared_prefs_impl.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/authentication_repository/authentication_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/authentication_repository/authentication_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
@@ -107,8 +107,10 @@ class AppModule extends Module {
   void binds(Injector i) {
 
     //Core Binds
-    i.addLazySingleton<LocalStorageClient>(LocalStorageClientSharedPrefsImpl.new, key: AppStrings.storageTypeLocal);
-    i.addLazySingleton<LocalStorageClient>(LocalStorageClientSecureImpl.new, key: AppStrings.storageTypeSecure);
+    i.addLazySingleton<LocalStorageClient>(LocalStorageClientSharedPrefsImpl.new,
+        key: AppStringsPortuguese.storageTypeLocal);
+    i.addLazySingleton<LocalStorageClient>(LocalStorageClientSecureImpl.new,
+        key: AppStringsPortuguese.storageTypeSecure);
     i.addLazySingleton<LogInterceptor>(LogInterceptor.new);
     i.addSingleton<HttpClient>(HttpClientDioImp.new);
 
@@ -172,7 +174,6 @@ class AppModule extends Module {
     r.child(AppRoutes.appTempPasswordPage, child: (context) => TempPasswordPage());
     r.child(AppRoutes.appRepeatPasswordPage, child: (context) => RepeatPasswordPage());
     r.child(AppRoutes.appRecoverPasswordSuccessPage, child: (context) => RecoverPasswordSuccessPage());
-
 
     r.child(AppRoutes.appRegisterFirstStepPage, child: (context) => const RegisterFirstStepPage());
     r.child(AppRoutes.appRegisterSecondStepPage, child: (context) => const RegisterSecondStepPage());

@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../../../consts/app_colors.dart';
-import '../../../../consts/app_text_styles.dart';
 
-enum ListItemType {
-  regular,
-  oneIconButton,
-  twoIconButtons
-}
+import '../../../../design_system/colors/app_colors.dart';
+import '../../../../design_system/typography/app_text_styles.dart';
+
+enum ListItemType { regular, oneIconButton, twoIconButtons }
 
 class CustomListItemWidget extends StatelessWidget {
-
   final ListItemType type;
 
   final String label;
@@ -39,17 +35,11 @@ class CustomListItemWidget extends StatelessWidget {
       decoration: BoxDecoration(
           color: backgroundColor,
           border: const Border(
-            bottom: BorderSide(
-              color: AppColors.contourWhiteColor,
-              width: 2.0
-            )
-          )),
+              bottom:
+                  BorderSide(color: AppColors.borderWhiteColor, width: 2.0))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          _buildFirstColumn(),
-          _buildSecondColumn()
-        ],
+        children: [_buildFirstColumn(), _buildSecondColumn()],
       ),
     );
   }
@@ -60,22 +50,25 @@ class CustomListItemWidget extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text( label,
-              style: AppTextStyles.labelOnCardStyle(color: AppColors.blackColor),
+            Text(
+              label,
+              style:
+                  AppTextStyles.labelOnCardStyle(color: AppColors.primaryBlackColor),
             ),
             Text(
               informationText,
-              style: AppTextStyles.smallBoldTextOnCardStyle(color: AppColors.blackColor),
+              style: AppTextStyles.smallBoldTextOnCardStyle(
+                  color: AppColors.primaryBlackColor),
             )
           ],
         );
       case ListItemType.twoIconButtons:
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-          Text(informationText,
-          style: AppTextStyles.cardBodyTextStyle(color: AppColors.blackColor),
-        )]);
+        return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text(
+            informationText,
+            style: AppTextStyles.cardBodyTextStyle(color: AppColors.primaryBlackColor),
+          )
+        ]);
     }
   }
 
@@ -84,10 +77,12 @@ class CustomListItemWidget extends StatelessWidget {
       case ListItemType.regular:
         return const SizedBox.shrink();
       case ListItemType.oneIconButton:
-        return Column(
-          children: [
-            IconButton(onPressed: onRightIconTap, icon: Icon(rightIcon),)]
-        );
+        return Column(children: [
+          IconButton(
+            onPressed: onRightIconTap,
+            icon: Icon(rightIcon),
+          )
+        ]);
       case ListItemType.twoIconButtons:
         return Column(
           children: [
@@ -102,5 +97,5 @@ class CustomListItemWidget extends StatelessWidget {
     }
   }
 
-    static void _defaultIconAction() {}
+  static void _defaultIconAction() {}
 }

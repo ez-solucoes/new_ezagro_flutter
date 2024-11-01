@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../../domain/entities/products_entities/product_usage_recommendation_entity.dart';
 import 'product_history_model.dart';
 
@@ -18,13 +19,15 @@ class ProductUsageRecommendationModel extends ProductUsageRecommendationEntity {
       ProductUsageRecommendationModel.fromMap(json.decode(source));
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'product': (product as ProductHistoryModel).toMap(),
-    'recommendedQuantity': recommendedQuantity,
-    'usageTotal': usageTotal,
-    'recommendationPerHectare': recommendationPerHectare,
-    'quantity': quantity,
-  };factory ProductUsageRecommendationModel.fromMap(Map<String, dynamic> map) =>
+        'id': id,
+        'product': (product as ProductHistoryModel).toMap(),
+        'recommendedQuantity': recommendedQuantity,
+        'usageTotal': usageTotal,
+        'recommendationPerHectare': recommendationPerHectare,
+        'quantity': quantity,
+      };
+
+  factory ProductUsageRecommendationModel.fromMap(Map<String, dynamic> map) =>
       ProductUsageRecommendationModel(
         id: map['id'],
         product: ProductHistoryModel.fromMap(map['product']),

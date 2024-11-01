@@ -12,14 +12,14 @@ class AgriculturalInputClassificationTypeModel
   });
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'name': name,
-    'description': description,
-    'active':active,
-  };
+        'id': id,
+        'name': name,
+        'description': description,
+        'active': active,
+      };
 
   factory AgriculturalInputClassificationTypeModel.fromMap(
-      Map<String, dynamic> map) =>
+          Map<String, dynamic> map) =>
       AgriculturalInputClassificationTypeModel(
         id: map['id'],
         name: map['name'],

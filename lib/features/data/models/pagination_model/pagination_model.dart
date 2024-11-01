@@ -1,9 +1,9 @@
 import 'dart:convert';
+
 import '../../../domain/entities/pagination_entity/pagination_entity.dart';
 import '../sort_info_model/sort_info_model.dart';
 
 class PaginationModel<T> extends PaginationEntity<T> {
-
   const PaginationModel({
     super.totalPages,
     super.totalElements,

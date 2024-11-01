@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../../domain/entities/contract_entities/contract_coverage_entity.dart';
 import 'contract_model.dart';
 
@@ -10,10 +11,10 @@ class ContractCoverageModel extends ContractCoverageEntity {
   });
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'description': description,
-    'contract': (contract as ContractModel).toMap(),
-  };
+        'id': id,
+        'description': description,
+        'contract': (contract as ContractModel).toMap(),
+      };
 
   factory ContractCoverageModel.fromMap(Map<String, dynamic> map) =>
       ContractCoverageModel(

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import '../agricultural_entities/agricultural_activity_entity.dart';
 import '../company_entities/company_history_entity.dart';
 import '../contract_entities/contract_entity.dart';

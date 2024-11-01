@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../../domain/entities/multipart_file_custom_entities/multipart_file_custom_entity.dart';
 
 class MultipartFileCustomModel extends MultipartFileCustomEntity {

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/custom_drawer/custom_drawer_widget.dart';
-import '../../../../consts/app_colors.dart';
-import '../../../../consts/app_drawables.dart';
+
+import '../../../../design_system/colors/app_colors.dart';
+import '../../../../design_system/drawables/app_drawables.dart';
 
 class BackgroundWidget extends StatelessWidget {
   final PreferredSizeWidget? appBar;

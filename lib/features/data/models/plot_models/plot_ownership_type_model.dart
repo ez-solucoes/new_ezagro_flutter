@@ -23,5 +23,4 @@ class PlotOwnershipTypeModel extends PlotOwnershipTypeEntity {
 
   factory PlotOwnershipTypeModel.fromJson(String source) =>
       PlotOwnershipTypeModel.fromMap(json.decode(source));
-
 }

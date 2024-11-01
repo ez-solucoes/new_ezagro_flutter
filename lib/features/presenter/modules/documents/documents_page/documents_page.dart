@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:new_ezagro_flutter/consts/app_colors.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
-import 'package:new_ezagro_flutter/consts/app_strings.dart';
+import 'package:new_ezagro_flutter/design_system/colors/app_colors.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
@@ -25,7 +25,7 @@ class DocumentsPage extends StatelessWidget {
     return BackgroundWidget(
       appBar: CustomAppBarWidget(
         appBarType: AppBarType.titleAndBackArrow,
-        title: AppStrings.privacyPolicy,
+        title: AppStringsPortuguese.privacyPolicy,
         callback: () {},
       ),
       scrollable: false,
@@ -35,12 +35,12 @@ class DocumentsPage extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
-              color: AppColors.trueWhiteColor,
+              color: AppColors.primaryWhiteColor,
               borderRadius: BorderRadius.circular(5),
-              border: Border.all(color: AppColors.softGreyColor)),
+              border: Border.all(color: AppColors.dividerGreyColor)),
           child: const SingleChildScrollView(
             child: Text(
-                '${AppStrings.loremIpsum} ${AppStrings.loremIpsum} ${AppStrings.loremIpsum} ${AppStrings.loremIpsum} ${AppStrings.loremIpsum} ${AppStrings.loremIpsum}'),
+                '${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum}'),
           ),
         ),
       ),

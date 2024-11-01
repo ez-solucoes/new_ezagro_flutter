@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
-import 'package:new_ezagro_flutter/consts/app_strings.dart';
-import 'package:new_ezagro_flutter/consts/app_text_styles.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
+import 'package:new_ezagro_flutter/design_system/typography/app_text_styles.dart';
 
-import '../../../../../consts/app_colors.dart';
+import '../../../../../design_system/colors/app_colors.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
@@ -38,18 +38,18 @@ class RegisterSecondStepPage extends StatelessWidget {
           children: [
             const SizedBox(height: 72),
             const Text(
-              AppStrings.weSentTheConfirmationCodeToYourPhone,
+              AppStringsPortuguese.weSentTheConfirmationCodeToYourPhone,
               style: TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: 14,
-                  color: AppColors.blackColor),
+                  color: AppColors.primaryBlackColor),
             ),
             const SizedBox(height: 18),
             Text(
-              AppStrings.typeTheNumberBellow,
+              AppStringsPortuguese.typeTheNumberBellow,
               textAlign: TextAlign.start,
               style:
-                  AppTextStyles.subTitleTextStyle(color: AppColors.blackColor),
+                  AppTextStyles.subTitleTextStyle(color: AppColors.primaryBlackColor),
             ),
             const SizedBox(height: 18),
             Center(
@@ -61,7 +61,7 @@ class RegisterSecondStepPage extends StatelessWidget {
             Center(
               child: CustomElevatedButton(
                 onPressed: () {},
-                label: AppStrings.forwardString,
+                label: AppStringsPortuguese.forwardString,
               ),
             ),
           ],

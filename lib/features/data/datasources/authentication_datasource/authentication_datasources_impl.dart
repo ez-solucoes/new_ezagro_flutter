@@ -3,6 +3,7 @@ import 'package:new_ezagro_flutter/core/http_client/http_client_helper.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
 import 'package:new_ezagro_flutter/core/mixins/uri_builder_mixin.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/api_endpoints.dart';
+
 import '../../../domain/params/authentication_params/authentication_params.dart';
 import '../../models/authentication_models/authentication_model.dart';
 import 'authentication_datasource.dart';
@@ -18,7 +19,7 @@ class AuthenticationDatasourceImpl
   Future authenticate(AuthenticationParams authenticationParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrl,
+      AppEndpoints.mainBaseUrlDev,
       AppEndpoints.authenticateEndpoint,
     );
 
@@ -45,19 +46,21 @@ class AuthenticationDatasourceImpl
   Future recoverPassword(AuthenticationParams authenticationParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrl,
+      AppEndpoints.mainBaseUrlDev,
       AppEndpoints.recoverPasswordEndpoint,
     );
 
-    final HttpRequest request = HttpRequest.post(path:url, payload: {
-      'username' : authenticationParams.username,
+    final HttpRequest request = HttpRequest.post(path: url, payload: {
+      'username': authenticationParams.username,
     });
 
     final result = await httpClient.execute(request);
 
     switch (result.statusCode) {
-      case 200 : return 200;
-      default : mountServerErrorInstance(request: request, response: result);
+      case 200:
+        return 200;
+      default:
+        mountServerErrorInstance(request: request, response: result);
     }
   }
 }

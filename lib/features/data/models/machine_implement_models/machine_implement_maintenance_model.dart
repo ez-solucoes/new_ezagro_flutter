@@ -1,7 +1,9 @@
 import 'dart:convert';
+
 import '../../../domain/entities/machine_implement_entities/machine_implement_maintenance_entity.dart';
 
-class MachineImplementMaintenanceModel extends MachineImplementMaintenanceEntity {
+class MachineImplementMaintenanceModel
+    extends MachineImplementMaintenanceEntity {
   const MachineImplementMaintenanceModel({
     required super.id,
     super.date,

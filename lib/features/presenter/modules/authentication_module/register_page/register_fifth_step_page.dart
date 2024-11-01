@@ -1,11 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:new_ezagro_flutter/consts/app_colors.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
-import 'package:new_ezagro_flutter/consts/app_text_styles.dart';
+import 'package:new_ezagro_flutter/design_system/colors/app_colors.dart';
+import 'package:new_ezagro_flutter/design_system/typography/app_text_styles.dart';
 
-import '../../../../../consts/app_strings.dart';
+import '../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
@@ -44,7 +44,7 @@ class RegisterFifthStepPage extends StatelessWidget {
                 Checkbox(
                   fillColor: WidgetStateProperty.all(Colors.white),
                   side: const BorderSide(
-                      color: AppColors.softGreyColor, width: 1),
+                      color: AppColors.dividerGreyColor, width: 1),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5)),
                   tristate: true,
@@ -55,21 +55,21 @@ class RegisterFifthStepPage extends StatelessWidget {
                 ),
                 RichText(
                     text: TextSpan(
-                        text: AppStrings.iHaveReadAndAgreeToThe,
+                        text: AppStringsPortuguese.iHaveReadAndAgreeToThe,
                         style: AppTextStyles.bodyTextStyle(
-                            color: AppColors.blackColor),
+                            color: AppColors.primaryBlackColor),
                         children: [
                       TextSpan(
-                        text: AppStrings.privacySpacingPolicy,
+                        text: AppStringsPortuguese.privacySpacingPolicy,
                         style: AppTextStyles.underlinedTextButtonStyle(
-                            color: AppColors.blackColor),
+                            color: AppColors.primaryBlackColor),
                         recognizer: TapGestureRecognizer()..onTap = () {},
                       ),
-                      const TextSpan(text: AppStrings.and),
+                      const TextSpan(text: AppStringsPortuguese.and),
                       TextSpan(
-                        text: AppStrings.userTerms,
+                        text: AppStringsPortuguese.userTerms,
                         style: AppTextStyles.underlinedTextButtonStyle(
-                            color: AppColors.blackColor),
+                            color: AppColors.primaryBlackColor),
                         recognizer: TapGestureRecognizer()..onTap = () {},
                       ),
                     ])),
@@ -79,7 +79,7 @@ class RegisterFifthStepPage extends StatelessWidget {
             Center(
               child: CustomElevatedButton(
                 onPressed: () {},
-                label: AppStrings.forwardString,
+                label: AppStringsPortuguese.forwardString,
               ),
             ),
           ],

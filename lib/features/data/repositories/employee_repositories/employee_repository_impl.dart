@@ -4,30 +4,27 @@ import 'package:new_ezagro_flutter/core/errors/generic_error.dart';
 import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/Employee_datasources/Employee_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/models/employee_models/employee_model.dart';
+
 import '../../../domain/repositories/employee_repositories/employee_repository.dart';
 import '../../models/pagination_model/pagination_model.dart';
 
 class EmployeeRepositoryImpl implements EmployeeRepository {
-
   final EmployeeDatasource datasource;
 
   EmployeeRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<ApplicationError, PaginationModel<EmployeeModel>>> getEmployees(NoParams noParams) async {
-    try{
+  Future<Either<ApplicationError, PaginationModel<EmployeeModel>>> getEmployees(
+      NoParams noParams) async {
+    try {
       final result = await datasource.getEmployees(noParams);
       return Right(result);
-    } on ApplicationError catch(e) {
+    } on ApplicationError catch (e) {
       return Left(e);
-    } catch(e, stacktrace) {
-      return Left(
-          GenericError(
-              fingerprint: '$EmployeeRepositoryImpl.getEmployees',
-              additionalInfo: stacktrace.toString()
-          )
-      );
+    } catch (e, stacktrace) {
+      return Left(GenericError(
+          fingerprint: '$EmployeeRepositoryImpl.getEmployees',
+          additionalInfo: stacktrace.toString()));
     }
   }
-
 }

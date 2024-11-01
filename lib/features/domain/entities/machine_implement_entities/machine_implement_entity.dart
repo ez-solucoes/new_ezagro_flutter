@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import '../brand_entities/brand_entity.dart';
 import '../contract_entities/contract_entity.dart';
 import '../cost_center_entities/cost_center_entity.dart';

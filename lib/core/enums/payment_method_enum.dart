@@ -13,7 +13,7 @@ paymentMethodEnum(String type) {
     case 'CASH':
       return PaymentMethodEnum.cash;
     case 'PIX':
-      return PaymentMethodEnum.pix ;
+      return PaymentMethodEnum.pix;
     case 'PAYMENT_SLIP':
       return PaymentMethodEnum.paymentSlip;
     case 'CREDIT':
@@ -27,7 +27,7 @@ paymentMethodString(type) {
   switch (type) {
     case PaymentMethodEnum.cash:
       return 'CASH';
-    case PaymentMethodEnum.pix :
+    case PaymentMethodEnum.pix:
       return 'PIX';
     case PaymentMethodEnum.paymentSlip:
       return 'PAYMENT_SLIP';

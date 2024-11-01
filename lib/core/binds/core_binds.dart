@@ -7,17 +7,15 @@ import 'package:new_ezagro_flutter/core/local_storage/local_storage_client_secur
 import '../local_storage/local_storage_client.dart';
 
 class CoreBinds extends Module {
-@override
+  @override
   void exportedBinds(Injector i) {
-  i.addSingleton<HttpClient>(HttpClientDioImp.new);
+    i.addSingleton<HttpClient>(HttpClientDioImp.new);
 
-  i.addSingleton<LocalStorageClient>(LocalStorageClientSecureImpl.new);
+    i.addSingleton<LocalStorageClient>(LocalStorageClientSecureImpl.new);
 
-  i.addSingleton<LogInterceptor>(LogInterceptor.new);
+    i.addSingleton<LogInterceptor>(LogInterceptor.new);
     super.exportedBinds(i);
   }
-
-
 }
 
 //

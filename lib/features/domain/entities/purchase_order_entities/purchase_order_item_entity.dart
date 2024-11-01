@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import '../products_entities/product_entity.dart';
 
 class PurchaseOrderItemEntity extends Equatable {

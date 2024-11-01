@@ -11,7 +11,7 @@ class YearEntity extends Equatable {
 
   @override
   List<Object?> get props => [
-    value,
-    leap,
-  ];
+        value,
+        leap,
+      ];
 }

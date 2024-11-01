@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../../domain/entities/tax_entities/tax_entity.dart';
 
 class TaxModel extends TaxEntity {

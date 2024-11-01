@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../../../../consts/app_colors.dart';
-import '../../../../consts/app_strings.dart';
-import '../../../../consts/app_text_styles.dart';
+import '../../../../design_system/colors/app_colors.dart';
+import '../../../../design_system/strings/app_strings_portuguese.dart';
+import '../../../../design_system/typography/app_text_styles.dart';
 import 'package:intl/intl.dart';
 
 class CustomDatePickerWidget extends StatefulWidget {
   final String title;
   final Function(String) getSelectedDate;
 
-  const CustomDatePickerWidget({super.key, required this.title, required this.getSelectedDate});
+  const CustomDatePickerWidget(
+      {super.key, required this.title, required this.getSelectedDate});
 
   @override
   State<CustomDatePickerWidget> createState() => _CustomDatePickerWidgetState();
@@ -22,10 +23,11 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    _controller.value = TextEditingValue(text: df.format(selectedDate).toString());
+    _controller.value =
+        TextEditingValue(text: df.format(selectedDate).toString());
     _controller.text = df.format(selectedDate);
     return Card(
-        color: AppColors.trueWhiteColor,
+        color: AppColors.primaryWhiteColor,
         child: Padding(
             padding: const EdgeInsets.all(16.0),
             child:
@@ -33,7 +35,7 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
               Text(
                 widget.title,
                 style: AppTextStyles.smallBoldTextOnCardStyle(
-                    color: AppColors.blackColor),
+                    color: AppColors.primaryBlackColor),
               ),
               const SizedBox(height: 16),
               InkWell(
@@ -42,13 +44,14 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
                   },
                   child: IgnorePointer(
                       child: TextFormField(
-                        controller: _controller,
-                        keyboardType: TextInputType.datetime,
-                        textAlign: TextAlign.center,
-                        decoration: const InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: AppColors.contourWhiteColor)),
-                        labelText: AppStrings.dateLabel,
+                    controller: _controller,
+                    keyboardType: TextInputType.datetime,
+                    textAlign: TextAlign.center,
+                    decoration: const InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: AppColors.borderWhiteColor)),
+                        labelText: AppStringsPortuguese.dateLabel,
                         suffixIcon: Icon(Icons.calendar_today_outlined),
                         labelStyle: TextStyle(color: AppColors.greyColor)),
                   ))),
@@ -58,10 +61,10 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
   _showCalendar(DateTime now) async {
     FocusScope.of(context).requestFocus(FocusNode());
     DateTime? date = await showDatePicker(
-            context: context,
-            initialDate: now,
-            firstDate: DateTime(2023),
-            lastDate: now.add(const Duration(days: 1827)));
+        context: context,
+        initialDate: now,
+        firstDate: DateTime(2023),
+        lastDate: now.add(const Duration(days: 1827)));
     setState(() {
       selectedDate = date ?? DateTime.now();
       String formattedDate = df.format(selectedDate).toString();

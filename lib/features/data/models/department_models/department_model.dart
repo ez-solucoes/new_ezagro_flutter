@@ -3,7 +3,6 @@ import 'dart:convert';
 import '../../../domain/entities/departmentEntities/department_entity.dart';
 
 class DepartmentModel extends DepartmentEntity {
-
   const DepartmentModel({
     required super.id,
     super.subDepartments,
@@ -20,7 +19,8 @@ class DepartmentModel extends DepartmentEntity {
 
   factory DepartmentModel.fromMap(Map<String, dynamic> map) => DepartmentModel(
         id: map['id'],
-        subDepartments: null,//map['subDepartments'] == null ? null : List<String>.from(map['subDepartments']),
+        subDepartments: null,
+        //map['subDepartments'] == null ? null : List<String>.from(map['subDepartments']),
         name: map['name'],
         description: map['description'],
       );

@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import '../../../domain/entities/employee_entities/employee_history_entity.dart';
 
-
 class EmployeeHistoryModel extends EmployeeHistoryEntity {
   const EmployeeHistoryModel({
     super.employeeHistoryId,
@@ -33,32 +32,32 @@ class EmployeeHistoryModel extends EmployeeHistoryEntity {
   });
 
   Map<String, dynamic> toMap() => {
-    'employeeHistoryId': employeeHistoryId,
-    'employeeId': employeeId,
-    'baseSalary': baseSalary,
-    'combinedSalary': combinedSalary,
-    'variedSalary': variedSalary,
-    'alimonyPercentage': alimonyPercentage,
-    'alimonyPercentageWithdrawFgts': alimonyPercentageWithdrawFgts,
-    'cpf': cpf,
-    'pisPasep': pisPasep,
-    'timeRegisterCode': timeRegisterCode,
-    'insuranceCode': insuranceCode,
-    'valueTicket': valueTicket,
-    'ceiNumber': ceiNumber,
-    'healthPlanCode': healthPlanCode,
-    'function': function,
-    'motherName': motherName,
-    'numberRegistration': numberRegistration,
-    'dtAdmission': dtAdmission,
-    'dtDismissal': dtDismissal,
-    'dtBirth': dtBirth,
-    'additionalUnhealthy': additionalUnhealthy,
-    'additionalDanger': additionalDanger,
-    'additionalTrustPosition': additionalTrustPosition,
-    'unionLaborCode': unionLaborCode,
-    'employeeName': employeeName,
-  };
+        'employeeHistoryId': employeeHistoryId,
+        'employeeId': employeeId,
+        'baseSalary': baseSalary,
+        'combinedSalary': combinedSalary,
+        'variedSalary': variedSalary,
+        'alimonyPercentage': alimonyPercentage,
+        'alimonyPercentageWithdrawFgts': alimonyPercentageWithdrawFgts,
+        'cpf': cpf,
+        'pisPasep': pisPasep,
+        'timeRegisterCode': timeRegisterCode,
+        'insuranceCode': insuranceCode,
+        'valueTicket': valueTicket,
+        'ceiNumber': ceiNumber,
+        'healthPlanCode': healthPlanCode,
+        'function': function,
+        'motherName': motherName,
+        'numberRegistration': numberRegistration,
+        'dtAdmission': dtAdmission,
+        'dtDismissal': dtDismissal,
+        'dtBirth': dtBirth,
+        'additionalUnhealthy': additionalUnhealthy,
+        'additionalDanger': additionalDanger,
+        'additionalTrustPosition': additionalTrustPosition,
+        'unionLaborCode': unionLaborCode,
+        'employeeName': employeeName,
+      };
 
   factory EmployeeHistoryModel.fromMap(Map<String, dynamic> map) =>
       EmployeeHistoryModel(
@@ -93,5 +92,4 @@ class EmployeeHistoryModel extends EmployeeHistoryEntity {
 
   factory EmployeeHistoryModel.fromJson(String source) =>
       EmployeeHistoryModel.fromMap(json.decode(source));
-
 }

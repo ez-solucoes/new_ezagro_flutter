@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../../domain/entities/measurement_unit_entities/measurement_unit_type_entity.dart';
 
 class MeasurementUnitTypeModel extends MeasurementUnitTypeEntity {
@@ -25,5 +26,4 @@ class MeasurementUnitTypeModel extends MeasurementUnitTypeEntity {
 
   factory MeasurementUnitTypeModel.fromJson(String source) =>
       MeasurementUnitTypeModel.fromMap(json.decode(source));
-
 }

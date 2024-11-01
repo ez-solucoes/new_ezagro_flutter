@@ -11,7 +11,7 @@ pestQuantityByAreaTypeEnum(String type) {
     case 'NO_RECORD':
       return PestQuantityByAreaTypeEnum.linearMeter;
     case 'LOW':
-      return PestQuantityByAreaTypeEnum.hectares ;
+      return PestQuantityByAreaTypeEnum.hectares;
     case 'ATTENTION':
       return PestQuantityByAreaTypeEnum.bySampling;
   }
@@ -21,7 +21,7 @@ pestQuantityByAreaTypeString(type) {
   switch (type) {
     case PestQuantityByAreaTypeEnum.linearMeter:
       return 'NO_RECORD';
-    case PestQuantityByAreaTypeEnum.hectares :
+    case PestQuantityByAreaTypeEnum.hectares:
       return 'LOW';
     case PestQuantityByAreaTypeEnum.bySampling:
       return 'ATTENTION';

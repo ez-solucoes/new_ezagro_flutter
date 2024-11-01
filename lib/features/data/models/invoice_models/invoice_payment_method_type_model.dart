@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../../domain/entities/invoice_entities/invoice_payment_method_type_entity.dart';
 
 class InvoicePaymentMethodTypeModel extends InvoicePaymentMethodTypeEntity {
@@ -14,10 +15,10 @@ class InvoicePaymentMethodTypeModel extends InvoicePaymentMethodTypeEntity {
       InvoicePaymentMethodTypeModel.fromMap(json.decode(source));
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'description': description,
-    'name': name,
-  };
+        'id': id,
+        'description': description,
+        'name': name,
+      };
 
   factory InvoicePaymentMethodTypeModel.fromMap(Map<String, dynamic> map) =>
       InvoicePaymentMethodTypeModel(

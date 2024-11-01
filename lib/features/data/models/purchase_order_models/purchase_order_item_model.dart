@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../../domain/entities/purchase_order_entities/purchase_order_item_entity.dart';
 import '../products_models/product_model.dart';
 
@@ -9,7 +10,8 @@ class PurchaseOrderItemModel extends PurchaseOrderItemEntity {
     required super.quantity,
     required super.brand,
     required super.observation,
-    required super.unitPrice,required super.totalPrice,
+    required super.unitPrice,
+    required super.totalPrice,
     required super.unit,
   });
 
@@ -19,14 +21,15 @@ class PurchaseOrderItemModel extends PurchaseOrderItemEntity {
       PurchaseOrderItemModel.fromMap(json.decode(source));
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'product': (product as ProductModel).toMap(),
-    'quantity': quantity,
-    'brand': brand,
-    'observation': observation,
-    'unitPrice': unitPrice,
-    'totalPrice': totalPrice,'unit': unit,
-  };
+        'id': id,
+        'product': (product as ProductModel).toMap(),
+        'quantity': quantity,
+        'brand': brand,
+        'observation': observation,
+        'unitPrice': unitPrice,
+        'totalPrice': totalPrice,
+        'unit': unit,
+      };
 
   factory PurchaseOrderItemModel.fromMap(Map<String, dynamic> map) =>
       PurchaseOrderItemModel(

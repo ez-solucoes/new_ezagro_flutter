@@ -1,5 +1,5 @@
 class AppEndpoints {
-  static const mainBaseUrl = 'api-dev.ezagro.com.br';
+  static const mainBaseUrlDev = 'api-dev.ezagro.com.br';
   static const String baseUrlProtocolWithSecurity = 'https';
   static const String baseUrlProtocol = 'http';
 
@@ -22,5 +22,4 @@ class AppEndpoints {
   static const String getMachineryEndpoint = '/fleet/machinery';
   static const String getEmployees = '/employee';
   static const String postServiceOrderEndpoint = '/field-service-order';
-
 }

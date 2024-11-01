@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../consts/app_colors.dart';
-import '../../../../consts/app_text_styles.dart';
+
+import '../../../../design_system/colors/app_colors.dart';
+import '../../../../design_system/typography/app_text_styles.dart';
 
 class CustomCheckableListItemWidget extends StatefulWidget {
   bool indexIsChecked;
@@ -35,22 +36,19 @@ class CustomCheckableListItemWidgetState
         padding: const EdgeInsets.all(7.0),
         decoration: BoxDecoration(
             color: widget.index % 2 == 0
-                ? AppColors.trueWhiteColor
+                ? AppColors.primaryWhiteColor
                 : AppColors.softGreenColor,
             border: const Border(
-                bottom:
-                    BorderSide(color: AppColors.contourWhiteColor, width: 2.0))
-        ),
+                bottom: BorderSide(
+                    color: AppColors.borderWhiteColor, width: 2.0))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+            Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               Checkbox(
-                  value: widget.isHeader? true : widget.indexIsChecked,
-                  activeColor: AppColors.greenColor,
+                  value: widget.isHeader ? true : widget.indexIsChecked,
+                  activeColor: AppColors.primaryGreenColor,
                   onChanged: (bool? value) {
                     setState(() {
                       if (widget.isHeader) {
@@ -62,7 +60,7 @@ class CustomCheckableListItemWidgetState
             ]),
             Expanded(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -71,27 +69,27 @@ class CustomCheckableListItemWidgetState
                       widget.firstColumn,
                       style: widget.isHeader
                           ? AppTextStyles.smallBoldTextOnCardStyle(
-                              color: AppColors.blackColor)
+                              color: AppColors.primaryBlackColor)
                           : AppTextStyles.cardBodyTextStyle(
-                              color: AppColors.blackColor),
+                              color: AppColors.primaryBlackColor),
                       textAlign: TextAlign.center,
                     ),
                     Text(
                       widget.secondColumn,
                       style: widget.isHeader
                           ? AppTextStyles.smallBoldTextOnCardStyle(
-                          color: AppColors.blackColor)
+                              color: AppColors.primaryBlackColor)
                           : AppTextStyles.cardBodyTextStyle(
-                          color: AppColors.blackColor),
+                              color: AppColors.primaryBlackColor),
                       textAlign: TextAlign.center,
                     ),
                     Text(
                       widget.thirdColumn,
                       style: widget.isHeader
                           ? AppTextStyles.smallBoldTextOnCardStyle(
-                          color: AppColors.blackColor)
+                              color: AppColors.primaryBlackColor)
                           : AppTextStyles.cardBodyTextStyle(
-                          color: AppColors.blackColor),
+                              color: AppColors.primaryBlackColor),
                       textAlign: TextAlign.center,
                     )
                   ].map((e) => Expanded(child: e)).toList(),

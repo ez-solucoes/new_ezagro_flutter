@@ -1,4 +1,3 @@
-
 class AppDrawables {
   AppDrawables._();
 
@@ -12,4 +11,7 @@ class AppDrawables {
 
   //Icons
   static const String checkCircleColorIcon = '${iconBaseDir}check_circle_color_icon.svg';
+  static const String closeWhiteIcon = '${iconBaseDir}close_white_icon.svg';
+  static const String warningWhiteIcon = '${iconBaseDir}warning_white_icon.svg';
+  static const String checkWhiteIcon = '${iconBaseDir}check_white_icon.svg';
 }

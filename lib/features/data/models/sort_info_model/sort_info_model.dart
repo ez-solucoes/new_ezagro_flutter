@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../../domain/entities/sort_info_entity/sort_info_entity.dart';
 
 class SortInfoModel extends SortInfoEntity {

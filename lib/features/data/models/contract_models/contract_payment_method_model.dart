@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../../domain/entities/contract_entities/contract_payment_method_entity.dart';
 
 class ContractPaymentMethodModel extends ContractPaymentMethodEntity {
@@ -25,5 +26,4 @@ class ContractPaymentMethodModel extends ContractPaymentMethodEntity {
 
   factory ContractPaymentMethodModel.fromJson(String source) =>
       ContractPaymentMethodModel.fromMap(json.decode(source));
-
 }

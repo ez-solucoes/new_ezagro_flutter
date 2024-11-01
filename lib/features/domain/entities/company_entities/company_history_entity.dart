@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import '../account_entities/account_entity.dart';
 import '../address_entities/address_entity.dart';
 import '../business_category_entities/business_category_entity.dart';
@@ -42,19 +43,19 @@ class CompanyHistoryEntity extends Equatable {
 
   @override
   List<Object?> get props => [
-    id,
-    name,
-    cnpj,
-    exempt,
-    isAssigned,
-    ownedByUser,
-    stateRegistration,
-    companyType,
-    phone,
-    email,
-    address,
-    account,
-    businessCategories,
-    costCenter,
-  ];
+        id,
+        name,
+        cnpj,
+        exempt,
+        isAssigned,
+        ownedByUser,
+        stateRegistration,
+        companyType,
+        phone,
+        email,
+        address,
+        account,
+        businessCategories,
+        costCenter,
+      ];
 }

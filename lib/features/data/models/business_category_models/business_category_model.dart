@@ -9,9 +9,9 @@ class BusinessCategoryModel extends BusinessCategoryEntity {
   });
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'description': description,
-  };
+        'id': id,
+        'description': description,
+      };
 
   factory BusinessCategoryModel.fromMap(Map<String, dynamic> map) =>
       BusinessCategoryModel(

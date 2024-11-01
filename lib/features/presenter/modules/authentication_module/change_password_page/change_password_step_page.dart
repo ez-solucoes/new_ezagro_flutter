@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../../consts/app_colors.dart';
-import '../../../../../consts/app_strings.dart';
-import '../../../../../consts/app_text_styles.dart';
+import '../../../../../design_system/colors/app_colors.dart';
+import '../../../../../design_system/strings/app_strings_portuguese.dart';
+import '../../../../../design_system/typography/app_text_styles.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
 import '../../../widgets/buttons/custom_elevated_button.dart';
@@ -14,7 +14,8 @@ class ChangePasswordStepPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BackgroundWidget(
       scrollable: true,
-      appBar: const CustomAppBarWidget(appBarType: AppBarType.titleAndBackArrow),
+      appBar:
+          const CustomAppBarWidget(appBarType: AppBarType.titleAndBackArrow),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 19.0),
         child: Column(
@@ -23,7 +24,7 @@ class ChangePasswordStepPage extends StatelessWidget {
             const SizedBox(height: 52),
             Text(
               '',
-              style: AppTextStyles.titleTextStyle(color: AppColors.blackColor),
+              style: AppTextStyles.titleTextStyle(color: AppColors.primaryBlackColor),
             ),
             const SizedBox(height: 45),
             CustomUnderlinedTextField(
@@ -36,7 +37,7 @@ class ChangePasswordStepPage extends StatelessWidget {
             Center(
               child: CustomElevatedButton(
                 onPressed: () {},
-                label: AppStrings.forwardString,
+                label: AppStringsPortuguese.forwardString,
               ),
             ),
           ],

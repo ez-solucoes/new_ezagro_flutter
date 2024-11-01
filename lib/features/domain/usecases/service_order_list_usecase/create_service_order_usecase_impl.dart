@@ -7,13 +7,13 @@ import 'package:new_ezagro_flutter/features/domain/repositories/service_order_re
 import 'create_service_order_usecase.dart';
 
 class CreateServiceOrderUsecaseImpl implements CreateServiceOrderUsecase {
-
   ServiceOrderRepository repository;
 
   CreateServiceOrderUsecaseImpl(this.repository);
 
   @override
-  Future<Either<ApplicationError, FieldServiceOrderEntity>> call(MockParams mockParams) async {
+  Future<Either<ApplicationError, FieldServiceOrderEntity>> call(
+      MockParams mockParams) async {
     return await repository.createServiceOrder(mockParams);
   }
 }

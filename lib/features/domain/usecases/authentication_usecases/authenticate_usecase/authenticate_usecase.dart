@@ -10,6 +10,4 @@ abstract class AuthenticateUsecase
   @override
   Future<Either<ApplicationError, AuthenticationEntity>> call(
       AuthenticationParams authenticationParams);
-
-
 }

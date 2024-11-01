@@ -15,5 +15,4 @@ class ClientEntity {
     this.phone,
     this.email,
   });
-
 }

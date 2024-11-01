@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:new_ezagro_flutter/consts/app_drawables.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
-import 'package:new_ezagro_flutter/consts/app_strings.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/authentication_controller/authentication_controller.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/home/home_page.dart';
 import '../../../../../core/utils/text_input_formatter_mask.dart';
+import '../../../../../design_system/drawables/app_drawables.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/background/background_widget.dart';
 import '../../../widgets/buttons/custom_elevated_button.dart';
@@ -19,11 +19,9 @@ class LoginPage extends StatelessWidget {
   final ArgParams? args;
   static const String routePath = AppRoutes.appLoginPage;
 
-  static navigate() =>
-      Modular.to.navigate(routePath);
+  static navigate() => Modular.to.navigate(routePath);
 
-  static push() =>
-      Modular.to.pushNamed(routePath);
+  static push() => Modular.to.pushNamed(routePath);
 
   const LoginPage({super.key, this.args});
 
@@ -46,7 +44,7 @@ class LoginPage extends StatelessWidget {
               builder: (context) => CustomOutlinedTextFormField(
                 controller: usernameController,
                 inputFormatters: [TextInputFormatterMask(mask: 'CPF')],
-                label: AppStrings.cpfString,
+                label: AppStringsPortuguese.cpfString,
                 inputType: TextInputType.number,
                 passwordField: false,
               ),
@@ -54,7 +52,7 @@ class LoginPage extends StatelessWidget {
             const SizedBox(height: 27),
             CustomOutlinedTextFormField(
               controller: passwordController,
-              label: AppStrings.passwordString,
+              label: AppStringsPortuguese.passwordString,
               passwordField: true,
             ),
             const SizedBox(height: 37),
@@ -64,12 +62,13 @@ class LoginPage extends StatelessWidget {
                   controller.username = usernameController.text;
                   controller.password = passwordController.text;
 
+                  controller.authenticate(context);
                   await controller.authenticate();
                   if (controller.token != '') {
                     HomePage.navigate();
                   }
                 },
-                label: AppStrings.enterString,
+                label: AppStringsPortuguese.enterString,
                 isLoading: controller.isLoading,
               ),
             ),
@@ -78,7 +77,7 @@ class LoginPage extends StatelessWidget {
                 onTap: () {
                   UsernameInputPage.navigate();
                 },
-                label: AppStrings.forgotPasswordString),
+                label: AppStringsPortuguese.forgotPasswordString),
           ],
         ),
       ),

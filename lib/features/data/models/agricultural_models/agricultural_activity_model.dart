@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 import '../../../domain/entities/agricultural_entities/agricultural_activity_entity.dart';
@@ -14,13 +13,13 @@ class AgriculturalActivityModel extends AgriculturalActivityEntity {
   });
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'activityName': activityName,
-    'description': description,
-    'needsApproval': needsApproval,
-    'isDefault': isDefault,
-    'activityType': activityType,
-  };
+        'id': id,
+        'activityName': activityName,
+        'description': description,
+        'needsApproval': needsApproval,
+        'isDefault': isDefault,
+        'activityType': activityType,
+      };
 
   factory AgriculturalActivityModel.fromMap(Map<String, dynamic> map) =>
       AgriculturalActivityModel(
@@ -38,7 +37,7 @@ class AgriculturalActivityModel extends AgriculturalActivityEntity {
       AgriculturalActivityModel.fromMap(json.decode(source));
 
   factory AgriculturalActivityModel.fromEntity(
-      AgriculturalActivityEntity entity) =>
+          AgriculturalActivityEntity entity) =>
       AgriculturalActivityModel(
         id: entity.id,
         activityName: entity.activityName,

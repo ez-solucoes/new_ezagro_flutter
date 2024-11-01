@@ -16,7 +16,7 @@ abstract class ApplicationError implements Exception {
   @override
   String toString() {
     var b = StringBuffer()..write('$name: $friendlyMessage');
-    if(causedBy != null) {
+    if (causedBy != null) {
       b.write('\n');
       b.write('Caused by: $causedBy');
     }

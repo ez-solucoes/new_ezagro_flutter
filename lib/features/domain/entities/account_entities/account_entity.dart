@@ -14,13 +14,13 @@ class AccountEntity extends Equatable {
   final PixTypeEntity? pixType;
 
   const AccountEntity(
-      { required this.id,
-       this.agency,
-       this.account,
-       this.bank,
-       this.accountType,
-       this.pix,
-       this.pixType});
+      {required this.id,
+      this.agency,
+      this.account,
+      this.bank,
+      this.accountType,
+      this.pix,
+      this.pixType});
 
   @override
   List<Object?> get props => [

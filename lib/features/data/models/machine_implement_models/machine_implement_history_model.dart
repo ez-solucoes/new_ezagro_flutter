@@ -4,42 +4,43 @@ import '../../../domain/entities/machine_implement_entities/machine_implement_hi
 import '../local_time_model/local_time_model.dart';
 import '../year_models/year_model.dart';
 
+
 class MachineImplementHistoryModel extends MachineImplementHistoryEntity {
   const MachineImplementHistoryModel({
     required super.machineImplementHistoryId,
-    required super.machineImplementId,
-    required super.isExternal,
-    required super.name,
-    required super.description,
-    required super.year,
-    required super.hourMeter,
-    required super.yearOfManufacture,
-    required super.place,
-    required super.chassis,
-    required super.maintenanceHours,
-    required super.kilometers,
-    required super.maintenanceDate,
-    required super.insurancePolicy,
-    required super.nickname,
+    super.machineImplementId,
+    super.isExternal,
+    super.name,
+    super.description,
+    super.year,
+    super.hourMeter,
+    super.yearOfManufacture,
+    super.place,
+    super.chassis,
+    super.maintenanceHours,
+    super.kilometers,
+    super.maintenanceDate,
+    super.insurancePolicy,
+    super.nickname,
   });
 
   Map<String, dynamic> toMap() => {
-        'machineImplementHistoryId': machineImplementHistoryId,
-        'machineImplementId': machineImplementId,
-        'isExternal': isExternal,
-        'name': name,
-        'description': description,
-        'year': (year as YearModel).toMap(),
-        'hourMeter': hourMeter,
-        'yearOfManufacture': (yearOfManufacture as YearModel).toMap(),
-        'place': place,
-        'chassis': chassis,
-        'maintenanceHours': (maintenanceHours as LocalTimeModel).toMap(),
-        'kilometers': kilometers,
-        'maintenanceDate': maintenanceDate,
-        'insurancePolicy': insurancePolicy,
-        'nickname': nickname,
-      };
+    'machineImplementHistoryId': machineImplementHistoryId,
+    'machineImplementId': machineImplementId,
+    'isExternal': isExternal,
+    'name': name,
+    'description': description,
+    'year': year == null ? null :(year as YearModel).toMap(),
+    'hourMeter': hourMeter,
+    'yearOfManufacture': yearOfManufacture == null ? null : (yearOfManufacture as YearModel).toMap(),
+    'place': place,
+    'chassis': chassis,
+    'maintenanceHours': maintenanceHours == null ? null : (maintenanceHours as LocalTimeModel).toMap(),
+    'kilometers': kilometers,
+    'maintenanceDate': maintenanceDate,
+    'insurancePolicy': insurancePolicy,
+    'nickname': nickname,
+  };
 
   factory MachineImplementHistoryModel.fromMap(Map<String, dynamic> map) =>
       MachineImplementHistoryModel(
@@ -48,12 +49,12 @@ class MachineImplementHistoryModel extends MachineImplementHistoryEntity {
         isExternal: map['isExternal'],
         name: map['name'],
         description: map['description'],
-        year: YearModel.fromMap(map['year']),
+        year: map['year'] == null ? null : YearModel.fromMap(map['year']),
         hourMeter: map['hourMeter'],
-        yearOfManufacture: YearModel.fromMap(map['yearOfManufacture']),
+        yearOfManufacture: map['yearOfManufacture'] == null ? null : YearModel.fromMap(map['yearOfManufacture']),
         place: map['place'],
         chassis: map['chassis'],
-        maintenanceHours: LocalTimeModel.fromMap(map['maintenanceHours']),
+        maintenanceHours: map['maintenanceHours'] == null ? null : LocalTimeModel.fromMap(map['maintenanceHours']),
         kilometers: map['kilometers'],
         maintenanceDate: map['maintenanceDate'],
         insurancePolicy: map['insurancePolicy'],
@@ -64,4 +65,5 @@ class MachineImplementHistoryModel extends MachineImplementHistoryEntity {
 
   factory MachineImplementHistoryModel.fromJson(String source) =>
       MachineImplementHistoryModel.fromMap(json.decode(source));
+
 }

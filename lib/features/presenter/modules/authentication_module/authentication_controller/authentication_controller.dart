@@ -61,7 +61,7 @@ abstract class AuthenticationControllerAbstract with Store {
       name = success.employee?.employeeName ?? '';
       token = success.token;
       accessStatus =
-          firstAccessVerificationEnum(success.firstAccessVerification);
+          firstAccessVerificationEnum(success.firstAccessVerification!);
 
       saveToken(success);
     });

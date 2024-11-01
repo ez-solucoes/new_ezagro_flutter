@@ -6,14 +6,14 @@ import 'crop_model.dart';
 
 class CropDiversityHistoryModel extends CropDiversityHistoryEntity {
   const CropDiversityHistoryModel({
-    required super.cropDiversityHistoryId,
-    required super.cropDiversityId,
-    required super.name,
-    required super.crop,
-    required super.technologyType,
-    required super.plantingType,
-    required super.plantingCycle,
-    required super.plantingCycleDays,
+    super.cropDiversityHistoryId,
+    super.cropDiversityId,
+    super.name,
+    super.crop,
+    super.technologyType,
+    super.plantingType,
+    super.plantingCycle,
+    super.plantingCycleDays,
   });
 
   Map<String, dynamic> toMap() => {
@@ -32,8 +32,8 @@ class CropDiversityHistoryModel extends CropDiversityHistoryEntity {
         cropDiversityHistoryId: map['cropDiversityHistoryId'],
         cropDiversityId: map['cropDiversityId'],
         name: map['name'],
-        crop: CropModel.fromMap(map['crop']),
-        technologyType: TechnologyTypeModel.fromMap(map['technologyType']),
+        crop: map['crop'] == null ? null : CropModel.fromMap(map['crop']),
+        technologyType: map['technologyType'] == null ? null : TechnologyTypeModel.fromMap(map['technologyType']),
         plantingType: map['plantingType'],
         plantingCycle: map['plantingCycle'],
         plantingCycleDays: map['plantingCycleDays'],

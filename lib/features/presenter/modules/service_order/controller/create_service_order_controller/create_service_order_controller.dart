@@ -2,13 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/agricultural_entities/agricultural_activity_entity.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/cost_center_entities/cost_center_entity.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/crop_entities/crop_entity.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/employee_entities/employee_entity.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/farm_entities/farm_entity.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/machine_implement_entities/machine_implement_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/plot_entities/plot_entity.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/products_entities/product_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/selector_entities/selector_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/params/create_service_order_params/create_service_order_params.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase.dart';
@@ -20,16 +15,10 @@ import 'package:new_ezagro_flutter/features/domain/usecases/machinery_usecases/m
 import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase.dart';
-
-import '../../../../../../core/local_storage/local_storage_client_secure_impl.dart';
-import '../../../../../../core/local_storage/local_storage_item.dart';
 import '../../../../../../core/usecase/usecase.dart';
-import '../../../../../../design_system/strings/app_strings_portuguese.dart';
-
 part 'create_service_order_controller.g.dart';
 
-class CreateServiceOrderController = CreateServiceOrderControllerAbstract
-    with _$CreateServiceOrderController;
+class CreateServiceOrderController = CreateServiceOrderControllerAbstract with _$CreateServiceOrderController;
 
 abstract class CreateServiceOrderControllerAbstract with Store {
   @observable
@@ -45,28 +34,28 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   bool selectAll = false;
 
   @observable
-  List<AgriculturalActivityEntity> activityOptions = ObservableList();
+  List<SelectorEntity> activityOptions = ObservableList();
 
   @observable
-  List<CostCenterEntity> costCenterOptions = ObservableList();
+  List<SelectorEntity> costCenterOptions = ObservableList();
 
   @observable
-  List<FarmEntity> farmOptions = ObservableList();
+  List<SelectorEntity> farmOptions = ObservableList();
 
   @observable
-  List<CropEntity> cropOptions = ObservableList();
+  List<SelectorEntity> cropOptions = ObservableList();
 
   @observable
-  List<EmployeeEntity> executorsOptions = ObservableList();
+  List<SelectorEntity> executorsOptions = ObservableList();
 
   @observable
-  List<MachineImplementEntity> machineryOptions = ObservableList();
+  List<SelectorEntity> machineryOptions = ObservableList();
 
   @observable
-  List<ProductEntity> productsOptions = ObservableList();
+  List<SelectorEntity> productsOptions = ObservableList();
 
   @observable
-  List<EmployeeEntity> employeeOptions = ObservableList();
+  List<SelectorEntity> employeeOptions = ObservableList();
 
   @observable
   List<PlotEntity> plotsOptions = ObservableList();
@@ -75,24 +64,24 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   List<int> selectedPlots = ObservableList();
 
   @observable
-  List<String> selectedMachinery = ObservableList();
+  List<int> selectedMachinery = ObservableList();
 
   @observable
-  List<String> selectedProducts = ObservableList();
+  List<int> selectedProducts = ObservableList();
 
   @observable
-  List<String> selectedExecutors = ObservableList();
+  List<int> selectedExecutors = ObservableList();
 
   @observable
   AgriculturalActivityEntity? activity;
 
-  Map<String, dynamic> harvest = {"harvest": null};
+  Map<String, dynamic>  harvest = {"harvest": null};
 
   String startDate = "";
 
   String? endDate;
 
-  String farmId = "";
+  int farmId = 0;
 
   Map<String, dynamic> plotsIds = {"plots": []};
 
@@ -128,25 +117,13 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   @observable
   int startIndex = 0;
 
-  Future<void> _writeToken() async {
-    final storage = Modular.get<LocalStorageClientSecureImpl>();
-    String? token = await storage.readData(AppStringsPortuguese.tokenKey);
-    if (token != null) {
-      await storage.deleteData(AppStringsPortuguese.tokenKey);
-    }
-    await storage.writeData(LocalStorageItem(
-        key: AppStringsPortuguese.tokenKey,
-        value:
-            'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzMzMzMzMzMzMzMyIsImV4cCI6MTcyODY2ODUxOCwiaWF0IjoxNzI4NTgyMTE4fQ.XpTZT8Mb3lDthoiJqA49EoOz_NJZC_e76j7PnP3hyrZjpV9FoTnYQS8VB4VAWUHDwo1y0BIYE84Upin_ydxfaQ'));
-  }
-
   @action
   Future getActivities() async {
     isLoading = true;
     final getActivities = Modular.get<ActivityUsecase>();
     final result = await getActivities(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      activityOptions = success.content;
+      //activityOptions = success.content;
       return success;
     });
 
@@ -159,7 +136,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getCostCenters = Modular.get<CostCenterUsecase>();
     final result = await getCostCenters(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      costCenterOptions = success.content;
+      //costCenterOptions = success.content;
       return success;
     });
 
@@ -172,7 +149,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getSimplifiedFarms = Modular.get<FarmUsecase>();
     final result = await getSimplifiedFarms(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      farmOptions = success.content;
+      //farmOptions = success.content;
       return success;
     });
 
@@ -185,7 +162,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getSimplifiedCrops = Modular.get<CropUsecase>();
     final result = await getSimplifiedCrops(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      cropOptions = success.content;
+      //cropOptions= success.content;
       return success;
     });
 
@@ -195,7 +172,6 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   @action
   Future getPlotsOptions() async {
     isLoading = true;
-    await _writeToken();
     final getPlots = Modular.get<PlotsUsecase>();
     final result = await getPlots(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
@@ -212,7 +188,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getExecutors = Modular.get<ExecutorUsecase>();
     final result = await getExecutors(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      executorsOptions = success.content;
+      //executorsOptions = success.content;
       return success;
     });
 
@@ -225,7 +201,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getMachinery = Modular.get<MachineryUsecase>();
     final result = await getMachinery(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      machineryOptions = success.content;
+     // machineryOptions = success.content;
       return success;
     });
 
@@ -238,7 +214,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getProducts = Modular.get<ProductUsecase>();
     final result = await getProducts(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      productsOptions = success.content;
+      //productsOptions = success.content;
       return success;
     });
 
@@ -251,7 +227,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getEmployees = Modular.get<EmployeeUsecase>();
     final result = await getEmployees(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      employeeOptions = success.content;
+     // employeeOptions = success.content;
       return success;
     });
 
@@ -273,15 +249,16 @@ abstract class CreateServiceOrderControllerAbstract with Store {
 
   finishOSCreation() {
     if (_validFields()) {
-      createServiceOrder();
+    createServiceOrder();
     }
   }
 
+
   @action
   toggleSelectAll() {
-    if (plotsOptions.length != selectedPlots.length) {
+    if(plotsOptions.length != selectedPlots.length) {
       for (int i = 0; i < plotsOptions.length; i++) {
-        selectedPlots.add(plotsOptions[i].id);
+          selectedPlots.add(plotsOptions[i].id);
       }
     } else {
       selectedPlots = [];
@@ -289,17 +266,17 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   }
 
   @action
-  incrementPage() {
-    if (page <= 6) {
-      page += 1;
+   incrementPage() {
+    if (page<=6) {
+      page+=1;
     }
     isLastPage = page == 6;
   }
 
   @action
   decrementPage() {
-    if (page > 0) {
-      page -= 1;
+    if (page>0) {
+      page-=1;
     }
     isLastPage = page == 6;
   }
@@ -308,7 +285,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     if (activity == null) {
       return false;
     }
-    if (costCenterId == null) {
+    if (costCenterId == null){
       return false;
     }
     return true;
@@ -317,9 +294,8 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   //Select Plots Actions
   @action
   void onLongPressEnd(LongPressEndDetails details) {
-    isSelecting = false;
+      isSelecting = false;
   }
-
   void autoScroll() {
     if (scrollController.position.pixels >=
         scrollController.position.maxScrollExtent - 30) {
@@ -331,13 +307,12 @@ abstract class CreateServiceOrderControllerAbstract with Store {
 
   void onLongPressStart(LongPressStartDetails details) {
     final offset = scrollController.offset;
-    final itemIndex =
-        ((details.localPosition.dy + offset) / itemHeight).floor();
+    final itemIndex = ((details.localPosition.dy + offset) / itemHeight).floor();
     startIndex = itemIndex;
 
     final start = itemIndex.clamp(0, plotsOptions.length - 1);
 
-    if (!selectedPlots.contains(plotsOptions[start])) {
+    if (!selectedPlots.contains(plotsOptions[start].id)) {
       selectedPlots.add(plotsOptions[start].id);
     }
     isSelecting = true;
@@ -346,24 +321,28 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   @action
   void onLongPressUpdate(LongPressMoveUpdateDetails details) {
     if (isSelecting) {
-      final itemIndex = (scrollController.offset / itemHeight).floor() +
-          (details.localPosition.dy / itemHeight).floor();
+      final itemIndex =
+          (scrollController.offset / itemHeight)
+              .floor() +
+              (details.localPosition.dy / itemHeight)
+                  .floor();
       if (itemIndex >= 0 && itemIndex < plotsOptions.length) {
-        int start = startIndex;
-        int end = itemIndex;
+          int start = startIndex;
+          int end = itemIndex;
 
-        if (end > start) {
-          for (int i = start; i < end; i++) {
-            if (!selectedPlots.contains(plotsOptions[i].id)) {
-              selectedPlots.add(plotsOptions[i].id);
+          if (end > start) {
+            for (int i = start; i < end; i++) {
+              if (!selectedPlots.contains(plotsOptions[i].id)) {
+                selectedPlots.add(plotsOptions[i].id);
+              }
             }
+            final deltaScroll = scrollController.offset == 0 ? 130 : 30;
+            scrollController.jumpTo(
+                scrollController.position.pixels + deltaScroll);
+            autoScroll();
           }
-          final deltaScroll = scrollController.offset == 0 ? 130 : 30;
-          scrollController
-              .jumpTo(scrollController.position.pixels + deltaScroll);
-          autoScroll();
-        }
       }
     }
   }
+
 }

@@ -80,13 +80,13 @@ mixin _$CreateServiceOrderController
       context: context);
 
   @override
-  List<AgriculturalActivityEntity> get activityOptions {
+  List<SelectorEntity> get activityOptions {
     _$activityOptionsAtom.reportRead();
     return super.activityOptions;
   }
 
   @override
-  set activityOptions(List<AgriculturalActivityEntity> value) {
+  set activityOptions(List<SelectorEntity> value) {
     _$activityOptionsAtom.reportWrite(value, super.activityOptions, () {
       super.activityOptions = value;
     });
@@ -97,13 +97,13 @@ mixin _$CreateServiceOrderController
       context: context);
 
   @override
-  List<CostCenterEntity> get costCenterOptions {
+  List<SelectorEntity> get costCenterOptions {
     _$costCenterOptionsAtom.reportRead();
     return super.costCenterOptions;
   }
 
   @override
-  set costCenterOptions(List<CostCenterEntity> value) {
+  set costCenterOptions(List<SelectorEntity> value) {
     _$costCenterOptionsAtom.reportWrite(value, super.costCenterOptions, () {
       super.costCenterOptions = value;
     });
@@ -114,13 +114,13 @@ mixin _$CreateServiceOrderController
       context: context);
 
   @override
-  List<FarmEntity> get farmOptions {
+  List<SelectorEntity> get farmOptions {
     _$farmOptionsAtom.reportRead();
     return super.farmOptions;
   }
 
   @override
-  set farmOptions(List<FarmEntity> value) {
+  set farmOptions(List<SelectorEntity> value) {
     _$farmOptionsAtom.reportWrite(value, super.farmOptions, () {
       super.farmOptions = value;
     });
@@ -131,13 +131,13 @@ mixin _$CreateServiceOrderController
       context: context);
 
   @override
-  List<CropEntity> get cropOptions {
+  List<SelectorEntity> get cropOptions {
     _$cropOptionsAtom.reportRead();
     return super.cropOptions;
   }
 
   @override
-  set cropOptions(List<CropEntity> value) {
+  set cropOptions(List<SelectorEntity> value) {
     _$cropOptionsAtom.reportWrite(value, super.cropOptions, () {
       super.cropOptions = value;
     });
@@ -148,13 +148,13 @@ mixin _$CreateServiceOrderController
       context: context);
 
   @override
-  List<EmployeeEntity> get executorsOptions {
+  List<SelectorEntity> get executorsOptions {
     _$executorsOptionsAtom.reportRead();
     return super.executorsOptions;
   }
 
   @override
-  set executorsOptions(List<EmployeeEntity> value) {
+  set executorsOptions(List<SelectorEntity> value) {
     _$executorsOptionsAtom.reportWrite(value, super.executorsOptions, () {
       super.executorsOptions = value;
     });
@@ -165,13 +165,13 @@ mixin _$CreateServiceOrderController
       context: context);
 
   @override
-  List<MachineImplementEntity> get machineryOptions {
+  List<SelectorEntity> get machineryOptions {
     _$machineryOptionsAtom.reportRead();
     return super.machineryOptions;
   }
 
   @override
-  set machineryOptions(List<MachineImplementEntity> value) {
+  set machineryOptions(List<SelectorEntity> value) {
     _$machineryOptionsAtom.reportWrite(value, super.machineryOptions, () {
       super.machineryOptions = value;
     });
@@ -182,13 +182,13 @@ mixin _$CreateServiceOrderController
       context: context);
 
   @override
-  List<ProductEntity> get productsOptions {
+  List<SelectorEntity> get productsOptions {
     _$productsOptionsAtom.reportRead();
     return super.productsOptions;
   }
 
   @override
-  set productsOptions(List<ProductEntity> value) {
+  set productsOptions(List<SelectorEntity> value) {
     _$productsOptionsAtom.reportWrite(value, super.productsOptions, () {
       super.productsOptions = value;
     });
@@ -199,13 +199,13 @@ mixin _$CreateServiceOrderController
       context: context);
 
   @override
-  List<EmployeeEntity> get employeeOptions {
+  List<SelectorEntity> get employeeOptions {
     _$employeeOptionsAtom.reportRead();
     return super.employeeOptions;
   }
 
   @override
-  set employeeOptions(List<EmployeeEntity> value) {
+  set employeeOptions(List<SelectorEntity> value) {
     _$employeeOptionsAtom.reportWrite(value, super.employeeOptions, () {
       super.employeeOptions = value;
     });
@@ -250,13 +250,13 @@ mixin _$CreateServiceOrderController
       context: context);
 
   @override
-  List<String> get selectedMachinery {
+  List<int> get selectedMachinery {
     _$selectedMachineryAtom.reportRead();
     return super.selectedMachinery;
   }
 
   @override
-  set selectedMachinery(List<String> value) {
+  set selectedMachinery(List<int> value) {
     _$selectedMachineryAtom.reportWrite(value, super.selectedMachinery, () {
       super.selectedMachinery = value;
     });
@@ -267,13 +267,13 @@ mixin _$CreateServiceOrderController
       context: context);
 
   @override
-  List<String> get selectedProducts {
+  List<int> get selectedProducts {
     _$selectedProductsAtom.reportRead();
     return super.selectedProducts;
   }
 
   @override
-  set selectedProducts(List<String> value) {
+  set selectedProducts(List<int> value) {
     _$selectedProductsAtom.reportWrite(value, super.selectedProducts, () {
       super.selectedProducts = value;
     });
@@ -284,13 +284,13 @@ mixin _$CreateServiceOrderController
       context: context);
 
   @override
-  List<String> get selectedExecutors {
+  List<int> get selectedExecutors {
     _$selectedExecutorsAtom.reportRead();
     return super.selectedExecutors;
   }
 
   @override
-  set selectedExecutors(List<String> value) {
+  set selectedExecutors(List<int> value) {
     _$selectedExecutorsAtom.reportWrite(value, super.selectedExecutors, () {
       super.selectedExecutors = value;
     });

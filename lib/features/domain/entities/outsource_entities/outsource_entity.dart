@@ -8,31 +8,31 @@ import 'outsource_type_entity.dart';
 
 class OutsourceEntity extends Equatable {
   final int id;
-  final AddressEntity address;
-  final OutsourceEntity account;
-  final PhoneEntity phone;
-  final EmailEntity email;
-  final OutsourceTypeEntity type;
-  final OutsourceStatusEntity status;
-  final bool lessee;
-  final String cnpj;
-  final String cpf;
-  final String name;
-  final String contract;
+  final AddressEntity? address;
+  final OutsourceEntity? account;
+  final PhoneEntity? phone;
+  final EmailEntity? email;
+  final OutsourceTypeEntity? type;
+  final OutsourceStatusEntity? status;
+  final bool? lessee;
+  final String? cnpj;
+  final String? cpf;
+  final String? name;
+  final String? contract;
 
   const OutsourceEntity({
     required this.id,
-    required this.address,
-    required this.account,
-    required this.phone,
-    required this.email,
-    required this.type,
-    required this.status,
-    required this.lessee,
-    required this.cnpj,
-    required this.cpf,
-    required this.name,
-    required this.contract,
+    this.address,
+    this.account,
+    this.phone,
+    this.email,
+    this.type,
+    this.status,
+    this.lessee,
+    this.cnpj,
+    this.cpf,
+    this.name,
+    this.contract,
   });
 
   @override

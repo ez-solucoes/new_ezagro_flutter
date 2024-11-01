@@ -5,16 +5,16 @@ import '../sort_info_model/sort_info_model.dart';
 
 class PaginationModel<T> extends PaginationEntity<T> {
   const PaginationModel({
-    required super.totalPages,
-    required super.totalElements,
-    required super.size,
+    super.totalPages,
+    super.totalElements,
+    super.size,
     required super.content,
-    required super.number,
-    required super.first,
-    required super.last,
-    required super.empty,
-    required super.sort,
-    required super.numberOfElements,
+    super.number,
+    super.first,
+    super.last,
+    super.empty,
+    super.sort,
+    super.numberOfElements,
   });
 
   Map<String, dynamic> toMap() {
@@ -34,18 +34,18 @@ class PaginationModel<T> extends PaginationEntity<T> {
   factory PaginationModel.fromMap(Map<String, dynamic> map,
       T Function(Map<String, dynamic>) fromMapFunction) {
     return PaginationModel(
-      totalPages: map['totalPages'] as int,
-      totalElements: map['totalElements'] as int,
-      size: map['size'] as int,
+      totalPages: map['totalPages'] != null ? map['totalPages'] as int : null,
+      totalElements: map['totalElements']!= null ? map['totalElements'] as int : null,
+      size: map['size'] != null ? map['size'] as int : null,
       content: (map['content'] as List<dynamic>)
-          .map((e) => fromMapFunction(e))
+          .map((e) => fromMapFunction(e as Map<String, dynamic>))
           .toList(),
-      number: map['number'] as int,
-      first: map['first'] as bool,
-      last: map['last'] as bool,
-      empty: map['empty'] as bool,
-      sort: SortInfoModel.fromMap(map['sort'] as Map<String, dynamic>),
-      numberOfElements: map['numberOfElements'] as int,
+      number: map['number'] != null ? map['number'] as int : null,
+      first: map['first'] != null ? map['first'] as bool : null,
+      last: map['last'] != null ? map['last'] as bool : null,
+      empty: map['empty'] != null ? map['empty'] as bool : null,
+      sort: map['sort'] != null ? SortInfoModel.fromMap(map['sort'] as Map<String, dynamic>) : null,
+      numberOfElements: map['numberOfElements'] != null ? map['numberOfElements'] as int : null,
     );
   }
 

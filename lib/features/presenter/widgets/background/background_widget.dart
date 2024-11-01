@@ -9,17 +9,17 @@ class BackgroundWidget extends StatelessWidget {
   final PreferredSizeWidget? appBar;
   final bool scrollable;
   final Widget child;
+  final bool needsDrawer;
 
-  const BackgroundWidget(
-      {super.key, required this.scrollable, required this.child, this.appBar});
+  const BackgroundWidget({super.key, required this.scrollable, required this.child, this.appBar, this.needsDrawer = false});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
+      backgroundColor: AppColors.whiteColor,
       appBar: appBar,
       resizeToAvoidBottomInset: false,
-      drawer: CustomDrawerWidget(),
+      drawer: needsDrawer ? CustomDrawerWidget() : null,
       body: SafeArea(
         child: Stack(
           fit: StackFit.expand,
@@ -29,8 +29,7 @@ class BackgroundWidget extends StatelessWidget {
                 right: -140,
                 child: SvgPicture.asset(
                   AppDrawables.ezAgroLogoIcon,
-                  colorFilter: const ColorFilter.mode(
-                      Color(0xffFDFDFD), BlendMode.srcIn),
+                  colorFilter: const ColorFilter.mode(Color(0xffFDFDFD), BlendMode.srcIn),
                   width: 399,
                   height: 445,
                 )),

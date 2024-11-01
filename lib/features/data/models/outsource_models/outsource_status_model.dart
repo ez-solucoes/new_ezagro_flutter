@@ -5,7 +5,7 @@ import '../../../domain/entities/outsource_entities/outsource_status_entity.dart
 class OutsourceStatusModel extends OutsourceStatusEntity {
   const OutsourceStatusModel({
     required super.id,
-    required super.name,
+    super.name,
   });
 
   String toJson() => json.encode(toMap());

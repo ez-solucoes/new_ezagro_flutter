@@ -5,6 +5,7 @@ import 'package:new_ezagro_flutter/core/mixins/uri_builder_mixin.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/api_endpoints.dart';
 
 import '../../../domain/params/authentication_params/authentication_params.dart';
+import '../../models/authentication_models/authentication_model.dart';
 import 'authentication_datasource.dart';
 
 class AuthenticationDatasourceImpl
@@ -31,7 +32,11 @@ class AuthenticationDatasourceImpl
 
     switch (result.statusCode) {
       case 200:
-        return 200;
+        return mountModelInstanceFromResponse(
+          response: result,
+          fromMap: (map) => AuthenticationModel.fromMap(map),
+          fromJson: (jsonString) => AuthenticationModel.fromJson(jsonString),
+        );
       default:
         throw mountServerErrorInstance(request: request, response: result);
     }

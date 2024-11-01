@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-
-import '../../../../../../design_system/colors/app_colors.dart';
-import '../../../../../../design_system/strings/app_strings_portuguese.dart';
+import '../../../../../../consts/app_colors.dart';
+import '../../../../../../consts/app_strings.dart';
 import '../../../../widgets/custom_card_logo/custom_card_logo_widget.dart';
 import '../../../../widgets/custom_selector/custom_selector_widget.dart';
 import '../../controller/create_service_order_controller/create_service_order_controller.dart';
 
 class MachineryPage extends StatelessWidget {
+
   const MachineryPage({super.key});
 
   @override
@@ -19,15 +19,15 @@ class MachineryPage extends StatelessWidget {
               children: [
                 CustomSelectorWidget(
                     onSelect: (value) {
-                      controller.selectedMachinery.add(value);
+                      controller.selectedMachinery.add(value.id);
                     },
-                    items: const ["máquina 1", "máquina 2", "máquina 3"],
-                    title: AppStringsPortuguese.machinerySelectorTitle,
-                    selectorHint: AppStringsPortuguese.machinerySelectorHint),
+                    items: controller.machineryOptions,
+                    title: AppStrings.machinerySelectorTitle,
+                    selectorHint: AppStrings.machinerySelectorHint),
                 const SizedBox(height: 6),
                 const Divider(
                   height: 1,
-                  color: AppColors.dividerGreyColor,
+                  color: AppColors.softGreyColor,
                 ),
                 const SizedBox(height: 6),
                 Expanded(
@@ -37,13 +37,13 @@ class MachineryPage extends StatelessWidget {
                     return Observer(
                         builder: (context) => CustomCardLogoWidget(
                               index: index,
-                              labelOne: AppStringsPortuguese.machineryField,
-                              textOne: controller.selectedMachinery[index],
-                              labelTwo: AppStringsPortuguese.machineryAliasField,
-                              textTwo: controller.selectedMachinery[index],
-                              labelThree: AppStringsPortuguese.hourMeterField,
+                              labelOne: AppStrings.machineryField,
+                              textOne: "",//controller.selectedMachinery[index],
+                              labelTwo: AppStrings.machineryAliasField,
+                              textTwo: "",//controller.selectedMachinery[index],
+                              labelThree: AppStrings.hourMeterField,
                               textThree: "Horímetro",
-                              labelFour: AppStringsPortuguese.kiloMeterField,
+                              labelFour: AppStrings.kiloMeterField,
                               textFour: "Quilometragem",
                               icon: Icons.delete_outline,
                               logo: Icons.agriculture_sharp,

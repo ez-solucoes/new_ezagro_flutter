@@ -4,12 +4,12 @@ import '../../../domain/entities/farm_entities/farm_history_entity.dart';
 
 class FarmHistoryModel extends FarmHistoryEntity {
   const FarmHistoryModel({
-    required super.farmHistoryId,
-    required super.farmId,
-    required super.nameLandowner,
-    required super.recordLandowner,
-    required super.farmName,
-    required super.areaAcre,
+    super.farmHistoryId,
+    super.farmId,
+    super.nameLandowner,
+    super.recordLandowner,
+    super.farmName,
+    super.areaAcre,
   });
 
   Map<String, dynamic> toMap() => {

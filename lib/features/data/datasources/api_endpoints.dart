@@ -11,6 +11,7 @@ class AppEndpoints {
 
   //Service Order
   static const String getServiceOrderListEndpoint = '/field-service-order';
+  static const String getServiceOrderById = 'field-service-order/';
   static const String getActivityTypesEndpoint = '/activity-type';
   static const String getCostCentersEndpoint = '/cost-center';
   static const String getFarmsSimplifiedEndpoint = '/farm/simplified';

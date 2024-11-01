@@ -4,9 +4,9 @@ import '../technology_models/technoloty_type_model.dart';
 
 class CropDiversityModel extends CropDiversityEntity {
   const CropDiversityModel({
-    required super.name,
     required super.id,
-    required super.technologyType,
+    super.name,
+    super.technologyType,
   });
 
   Map<String, dynamic> toMap() => {
@@ -19,7 +19,7 @@ class CropDiversityModel extends CropDiversityEntity {
       CropDiversityModel(
         id: map['id'],
         name: map['name'],
-        technologyType: TechnologyTypeModel.fromMap(map['technologyType']),
+        technologyType: map['technologyType'] == null ? null : TechnologyTypeModel.fromMap(map['technologyType']),
       );
 
   String toJson() => json.encode(toMap());

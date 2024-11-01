@@ -9,6 +9,7 @@ import '../employee_models/employee_history_model.dart';
 import '../farm_models/farm_history_model.dart';
 import '../inventory_models/inventory_history_model.dart';
 import '../machine_implement_models/machine_implement_history_model.dart';
+import '../machine_implement_models/machine_implement_model.dart';
 import '../pest_models/pest_model.dart';
 import '../plot_models/plot_history_model.dart';
 import '../products_models/product_usage_recommendation_model.dart';
@@ -17,28 +18,28 @@ import 'field_service_order_type_model.dart';
 class FieldServiceOrderModel extends FieldServiceOrderEntity {
   const FieldServiceOrderModel({
     required super.id,
-    required super.activityStart,
-    required super.activityEnd,
-    required super.farm,
-    required super.plots,
-    required super.areaTotal,
-    required super.cropDiversity,
-    required super.machineImplements,
-    required super.inventories,
-    required super.productRecommendations,
-    required super.agriculturalActivity,
-    required super.costCenter,
-    required super.expectedStartDate,
-    required super.expectedEndDate,
-    required super.employeeActivityHolder,
-    required super.employees,
-    required super.companies,
-    required super.contract,
-    required super.description,
-    required super.activityValue,
-    required super.status,
-    required super.fieldServiceOrderType,
-    required super.pests,
+    super.activityStart,
+    super.activityEnd,
+    super.farm,
+    super.plots,
+    super.areaTotal,
+    super.cropDiversity,
+    super.machineImplements,
+    super.inventories,
+    super.productRecommendations,
+    super.agriculturalActivity,
+    super.costCenter,
+    super.expectedStartDate,
+    super.expectedEndDate,
+    super.employeeActivityHolder,
+    super.employees,
+    super.companies,
+    super.contract,
+    super.description,
+    super.activityValue,
+    super.status,
+    super.fieldServiceOrderType,
+    super.pests,
   });
 
   Map<String, dynamic> toMap() => {
@@ -46,17 +47,17 @@ class FieldServiceOrderModel extends FieldServiceOrderEntity {
     'activityStart': activityStart,
     'activityEnd': activityEnd,
     'farm': (farm as FarmHistoryModel).toMap(),
-    'plots': plots.map((e) => (e as PlotHistoryModel).toMap()).toList(),
+    'plots': plots?.map((e) => (e as PlotHistoryModel).toMap()).toList(),
     'areaTotal': areaTotal,
     'cropDiversity': (cropDiversity as CropDiversityHistoryModel).toMap(),
     'machineImplements': machineImplements
-        .map((e) => (e as MachineImplementHistoryModel).toMap())
+        ?.map((e) => (e as MachineImplementHistoryModel).toMap())
         .toList(),
     'inventories': inventories
-        .map((e) => (e as InventoryHistoryModel).toMap())
+        ?.map((e) => (e as InventoryHistoryModel).toMap())
         .toList(),
     'productRecommendations': productRecommendations
-        .map((e) => (e as ProductUsageRecommendationModel).toMap())
+        ?.map((e) => (e as ProductUsageRecommendationModel).toMap())
         .toList(),
     'agriculturalActivity':
     (agriculturalActivity as AgriculturalActivityModel).toMap(),
@@ -66,55 +67,50 @@ class FieldServiceOrderModel extends FieldServiceOrderEntity {
     'employeeActivityHolder':
     (employeeActivityHolder as EmployeeHistoryModel).toMap(),
     'employees':
-    employees.map((e) => (e as EmployeeHistoryModel).toMap()).toList(),
+    employees?.map((e) => (e as EmployeeHistoryModel).toMap()).toList(),
     'companies':
-    companies.map((e) => (e as CompanyHistoryModel).toMap()).toList(),
+    companies?.map((e) => (e as CompanyHistoryModel).toMap()).toList(),
     'contract': (contract as ContractModel).toMap(),
     'description': description,
     'activityValue': activityValue,
     'status': status,
     'fieldServiceOrderType':
     (fieldServiceOrderType as FieldServiceOrderTypeModel).toMap(),
-    'pests': pests.map((e) => (e as PestModel).toMap()).toList(),
+    'pests': pests?.map((e) => (e as PestModel).toMap()).toList(),
   };
 
   factory FieldServiceOrderModel.fromMap(Map<String, dynamic> map) =>
       FieldServiceOrderModel(
-        id: map['id'],
-        activityStart: map['activityStart'],
-        activityEnd: map['activityEnd'],
-        farm: FarmHistoryModel.fromMap(map['farm']),
-        plots: List<PlotHistoryModel>.from(
-            map['plots']?.map((x) => PlotHistoryModel.fromMap(x))),
-        areaTotal: map['areaTotal'],
-        cropDiversity: CropDiversityHistoryModel.fromMap(map['cropDiversity']),
-        machineImplements: List<MachineImplementHistoryModel>.from(
-            map['machineImplements']
-                ?.map((x) => MachineImplementHistoryModel.fromMap(x))),
-        inventories: List<InventoryHistoryModel>.from(
-            map['inventories']?.map((x) => InventoryHistoryModel.fromMap(x))),
-        productRecommendations: List<ProductUsageRecommendationModel>.from(
-            map['productRecommendations']
-                ?.map((x) => ProductUsageRecommendationModel.fromMap(x))),
-        agriculturalActivity:
-        AgriculturalActivityModel.fromMap(map['agriculturalActivity']),
-        costCenter: CostCenterHistoryModel.fromMap(map['costCenter']),
-        expectedStartDate: map['expectedStartDate'],
-        expectedEndDate: map['expectedEndDate'],
-        employeeActivityHolder:
-        EmployeeHistoryModel.fromMap(map['employeeActivityHolder']),
-        employees: List<EmployeeHistoryModel>.from(
-            map['employees']?.map((x) => EmployeeHistoryModel.fromMap(x))),
-        companies: List<CompanyHistoryModel>.from(
-            map['companies']?.map((x) => CompanyHistoryModel.fromMap(x))),
-        contract: ContractModel.fromMap(map['contract']),
-        description: map['description'],
-        activityValue: map['activityValue'],
-        status: map['status'],
-        fieldServiceOrderType:
-        FieldServiceOrderTypeModel.fromMap(map['fieldServiceOrderType']),
-        pests:
-        List<PestModel>.from(map['pests']?.map((x) => PestModel.fromMap(x))),
+        id: map['id'] as int,
+        activityStart: map['activityStart'] != null ? map['activityStart'] as String : null,
+        activityEnd: map['activityEnd'] != null ? map['activityEnd'] as String : null,
+        farm: map['farm'] != null ? FarmHistoryModel.fromMap(map['farm'] as Map<String, dynamic>) : null,
+        plots: map['plots'] != null ? List<PlotHistoryModel>.from(
+            (map['plots'] as List).map((x) => PlotHistoryModel.fromMap(x as Map<String, dynamic>))) : null,
+        areaTotal: map['areaTotal'] != null ? map['areaTotal'] as double : null,
+        cropDiversity: map['cropDiversity'] != null ? CropDiversityHistoryModel.fromMap(map['cropDiversity'] as Map<String, dynamic>) : null,
+        machineImplements: map['machineImplements'] != null ? List<MachineImplementModel>.from(
+            (map['machineImplements'] as List).map((x) => MachineImplementModel.fromMap(x as Map<String, dynamic>))) : null,
+        inventories: map['inventories'] != null ? List<InventoryHistoryModel>.from(
+            (map['inventories'] as List).map((x) => InventoryHistoryModel.fromMap(x as Map<String, dynamic>))) : null,
+        productRecommendations: map['productRecommendations'] != null ? List<ProductUsageRecommendationModel>.from(
+            (map['productRecommendations'] as List).map((x) => ProductUsageRecommendationModel.fromMap(x as Map<String, dynamic>))) : null,
+        agriculturalActivity: map['agriculturalActivity'] != null ? AgriculturalActivityModel.fromMap(map['agriculturalActivity'] as Map<String, dynamic>) : null,
+        costCenter: map['costCenter'] != null ? CostCenterHistoryModel.fromMap(map['costCenter'] as Map<String, dynamic>) : null,
+        expectedStartDate: map['expectedStartDate'] != null ? map['expectedStartDate'] as String : null,
+        expectedEndDate: map['expectedEndDate'] != null ? map['expectedEndDate'] as String : null,
+        employeeActivityHolder: map['employeeActivityHolder'] != null ? EmployeeHistoryModel.fromMap(map['employeeActivityHolder'] as Map<String, dynamic>) : null,
+        employees: map['employees'] != null ? List<EmployeeHistoryModel>.from(
+            (map['employees'] as List).map((x) => EmployeeHistoryModel.fromMap(x as Map<String, dynamic>))) : null,
+        companies: map['companies'] != null ? List<CompanyHistoryModel>.from(
+            (map['companies'] as List).map((x) => CompanyHistoryModel.fromMap(x as Map<String, dynamic>))) : null,
+        contract: map['contract'] != null ? ContractModel.fromMap(map['contract'] as Map<String, dynamic>) : null,
+        description: map['description'] != null ? map['description'] as String : null,
+        activityValue: map['activityValue'] != null ? map['activityValue'] as double : null,
+        status: map['status'] != null ? map['status'] as String : null,
+        fieldServiceOrderType: map['fieldServiceOrderType'] != null ? FieldServiceOrderTypeModel.fromMap(map['fieldServiceOrderType'] as Map<String, dynamic>) : null,
+        pests: map['pests'] != null ? List<PestModel>.from(
+            (map['pests'] as List).map((x) => PestModel.fromMap(x as Map<String, dynamic>))) : null,
       );
 
   String toJson() => json.encode(toMap());

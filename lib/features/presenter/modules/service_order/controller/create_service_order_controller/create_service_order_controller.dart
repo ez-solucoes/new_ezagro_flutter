@@ -2,13 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/agricultural_entities/agricultural_activity_entity.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/cost_center_entities/cost_center_entity.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/crop_entities/crop_entity.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/employee_entities/employee_entity.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/farm_entities/farm_entity.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/machine_implement_entities/machine_implement_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/plot_entities/plot_entity.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/products_entities/product_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/selector_entities/selector_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/params/create_service_order_params/create_service_order_params.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
@@ -21,9 +15,6 @@ import 'package:new_ezagro_flutter/features/domain/usecases/machinery_usecases/m
 import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase.dart';
-import '../../../../../../consts/app_strings.dart';
-import '../../../../../../core/local_storage/local_storage_client_secure_impl.dart';
-import '../../../../../../core/local_storage/local_storage_item.dart';
 import '../../../../../../core/usecase/usecase.dart';
 part 'create_service_order_controller.g.dart';
 
@@ -126,15 +117,6 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   @observable
   int startIndex = 0;
 
-  Future<void> _writeToken() async {
-    final storage = Modular.get<LocalStorageClientSecureImpl>();
-    String? token = await storage.readData(AppStrings.tokenKey);
-    if (token != null) {
-      await storage.deleteData(AppStrings.tokenKey);
-    }
-    await storage.writeData(LocalStorageItem(key: AppStrings.tokenKey, value: 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzMzMzMzMzMzMzMyIsImV4cCI6MTcyODY2ODUxOCwiaWF0IjoxNzI4NTgyMTE4fQ.XpTZT8Mb3lDthoiJqA49EoOz_NJZC_e76j7PnP3hyrZjpV9FoTnYQS8VB4VAWUHDwo1y0BIYE84Upin_ydxfaQ'));
-  }
-
   @action
   Future getActivities() async {
     isLoading = true;
@@ -190,7 +172,6 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   @action
   Future getPlotsOptions() async {
     isLoading = true;
-    await _writeToken();
     final getPlots = Modular.get<PlotsUsecase>();
     final result = await getPlots(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {

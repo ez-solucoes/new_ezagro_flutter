@@ -40,7 +40,7 @@ abstract class AuthenticationControllerAbstract with Store {
   String temporaryPassword = '';
 
   @observable
-  String accessStatus = '';
+  FirstAccessVerificationEnum? accessStatus;
 
   @observable
   String errorMessage = '';

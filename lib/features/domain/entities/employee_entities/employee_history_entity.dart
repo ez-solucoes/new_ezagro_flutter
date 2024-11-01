@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 
 class EmployeeHistoryEntity extends Equatable {
-  final int employeeHistoryId;
-  final int employeeId;
+  final int? employeeHistoryId;
+  final int? employeeId;
   final double? baseSalary;
   final double? combinedSalary;
   final double? variedSalary;
@@ -28,8 +28,8 @@ class EmployeeHistoryEntity extends Equatable {
   final String? employeeName;
 
   const EmployeeHistoryEntity({
-    required this.employeeHistoryId,
-    required this.employeeId,
+    this.employeeHistoryId,
+    this.employeeId,
     this.baseSalary,
     this.combinedSalary,
     this.variedSalary,

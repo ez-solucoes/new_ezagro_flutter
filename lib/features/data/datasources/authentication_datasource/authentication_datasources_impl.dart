@@ -55,8 +55,8 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
     final result = await httpClient.execute(request);
 
     switch (result.statusCode) {
-      case 200:
-        return 200;
+      case 204:
+        return 204;
       default:
         mountServerErrorInstance(request: request, response: result);
     }

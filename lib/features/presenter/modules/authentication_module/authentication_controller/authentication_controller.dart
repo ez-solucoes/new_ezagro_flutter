@@ -59,7 +59,7 @@ abstract class AuthenticationControllerAbstract with Store {
       CustomSnackBarWidget.show(SnackBarType.success, context, 'Usuário ou senha incorretos!');
     }, (success) async {
       name = success.employee?.employeeName ?? '';
-      token = success.token;
+      token = success.token!;
       accessStatus =
           firstAccessVerificationEnum(success.firstAccessVerification!);
 
@@ -100,7 +100,7 @@ abstract class AuthenticationControllerAbstract with Store {
     await localStorage.writeData(LocalStorageItem(
         key: AppStringsPortuguese.idKey, value: success.client!.id.toString()));
     await localStorage.writeData(LocalStorageItem(
-        key: AppStringsPortuguese.tokenKey, value: success.token));
+        key: AppStringsPortuguese.tokenKey, value: success.token.toString()));
     await localStorage.writeData(LocalStorageItem(
         key: AppStringsPortuguese.nameKey,
         value: success.employee!.employeeName!));

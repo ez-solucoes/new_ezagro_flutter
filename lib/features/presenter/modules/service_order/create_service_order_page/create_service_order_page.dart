@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/core/enums/field_service_order_type_enum.dart';
 import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/service_order/create_service_order_page/createServiceOrderTabs/pests_page.dart';
 import '../../../../../consts/app_routes.dart';
 import '../../../../../design_system/colors/app_colors.dart';
 import '../../../../../design_system/typography/app_text_styles.dart';
@@ -48,8 +49,8 @@ class CreateServiceOrderPage extends StatelessWidget {
         child: DefaultTabController(
             length: getFieldServiceOrderTypeEnum(controller.activity?.activityType ?? "")
                     == FieldServiceOrderTypeEnum.transfer
-                    ? 6
-                    : 7,
+                    ? 7
+                    : 8,
             child: Padding(
                 padding: const EdgeInsets.all(14.0),
                 child: Column(children: [
@@ -111,6 +112,7 @@ List<Widget> _getPages(FieldServiceOrderTypeEnum type) {
     case FieldServiceOrderTypeEnum.transfer:
       return [
         GeneralInformationPage(),
+        PestsPage(),
         ExecutorsPage(),
         MachineryPage(),
         ProductsPage(),
@@ -121,6 +123,7 @@ List<Widget> _getPages(FieldServiceOrderTypeEnum type) {
       return [
         GeneralInformationPage(),
         SelectPlotsPage(),
+        PestsPage(),
         ExecutorsPage(),
         MachineryPage(),
         ProductsPage(),

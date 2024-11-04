@@ -188,6 +188,19 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   }
 
   @action
+  Future getPests() async {
+    isLoading = true;
+    final getSimplifiedFarms = Modular.get<FarmUsecase>();
+    final result = await getSimplifiedFarms(NoParams());
+    result.fold((error) => error.friendlyMessage, (success) {
+      //farmOptions = success.content;
+      return success;
+    });
+
+    isLoading = false;
+  }
+
+  @action
   Future getExecutorOptions() async {
     isLoading = true;
     final getExecutors = Modular.get<ExecutorUsecase>();

@@ -6,6 +6,7 @@ import 'package:new_ezagro_flutter/core/local_storage/local_storage_client.dart'
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_item.dart';
 import 'package:new_ezagro_flutter/design_system/widgets/snackbars/custon_snack_bar_widget.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/update_password/update_password_usecase.dart';
 
 import '../../../../../core/enums/first_access_verification_enum.dart';
 import '../../../../../design_system/strings/app_strings_portuguese.dart';
@@ -15,8 +16,7 @@ import '../../../../domain/usecases/authentication_usecases/authenticate_usecase
 
 part 'authentication_controller.g.dart';
 
-class AuthenticationController = AuthenticationControllerAbstract
-    with _$AuthenticationController;
+class AuthenticationController = AuthenticationControllerAbstract with _$AuthenticationController;
 
 abstract class AuthenticationControllerAbstract with Store {
   @observable
@@ -56,7 +56,7 @@ abstract class AuthenticationControllerAbstract with Store {
 
     result.fold((error) {
       errorMessage = error.friendlyMessage;
-      CustomSnackBarWidget.show(SnackBarType.success, context, 'Usuário ou senha incorretos!');
+      CustomSnackBarWidget.show(SnackBarType.error, context, 'Usuário ou senha incorretos!');
     }, (success) async {
       name = success.employee?.employeeName ?? '';
       token = success.token!;
@@ -84,6 +84,22 @@ abstract class AuthenticationControllerAbstract with Store {
     });
     isLoading = false;
   }
+
+  Future updatePassword(BuildContext context) async {
+    isLoading = true;
+
+    final updatePasswordUsecase = Modular.get<UpdatePasswordUsecase>();
+
+    final result = await updatePasswordUsecase(
+        AuthenticationParams(username: username.unmask, password: password));
+
+    result.fold((error) async {
+      errorMessage = error.friendlyMessage;
+    }, (success) async {
+      CustomSnackBarWidget.show(SnackBarType.success, context, 'Senha alterada com sucesso!');
+    });
+  }
+
 
   bool comparePasswords(String password, String retypedPassword) {
     if (password.compareTo(retypedPassword) == 0) {

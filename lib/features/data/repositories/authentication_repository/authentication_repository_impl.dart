@@ -14,8 +14,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   AuthenticationRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<ApplicationError, AuthenticationEntity>> authenticate(
-      AuthenticationParams authenticationParams) async {
+  Future<Either<ApplicationError, AuthenticationEntity>> authenticate(AuthenticationParams authenticationParams) async {
     try {
       final result = await datasource.authenticate(authenticationParams);
       return Right(result);
@@ -30,8 +29,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Future<Either<ApplicationError, EmptyResult>> recoverPassword(
-      AuthenticationParams authenticationParams) async {
+  Future<Either<ApplicationError, EmptyResult>> recoverPassword(AuthenticationParams authenticationParams) async {
     try {
       final result = await datasource.recoverPassword(authenticationParams);
       return Right(result);
@@ -40,6 +38,22 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     } catch (e, stacktrace) {
       return Left(GenericError(
         fingerprint: '$AuthenticationRepositoryImpl.recoverPassword',
+        additionalInfo: stacktrace.toString(),
+      ));
+    }
+  }
+
+  @override
+  Future<Either<ApplicationError, AuthenticationEntity>> updatePassword(
+      AuthenticationParams authenticationParams) async {
+    try {
+      final result = await datasource.updatePassword(authenticationParams);
+      return Right(result);
+    } on ApplicationError catch (e) {
+      return Left(e);
+    } catch (e, stacktrace) {
+      return Left(GenericError(
+        fingerprint: '$AuthenticationRepositoryImpl.updatePassword',
         additionalInfo: stacktrace.toString(),
       ));
     }

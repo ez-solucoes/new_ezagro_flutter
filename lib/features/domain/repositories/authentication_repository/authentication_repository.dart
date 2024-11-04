@@ -11,4 +11,7 @@ abstract class AuthenticationRepository {
 
   Future<Either<ApplicationError, EmptyResult>> recoverPassword(
       AuthenticationParams authenticationParams);
+
+  Future<Either<ApplicationError, AuthenticationEntity>> updatePassword(
+      AuthenticationParams authenticationParams);
 }

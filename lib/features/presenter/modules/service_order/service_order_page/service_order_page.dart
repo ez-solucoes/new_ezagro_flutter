@@ -54,7 +54,7 @@ class ServiceOrderPage extends StatelessWidget {
               const SizedBox(height: 15,),
               CustomInfoCardWidget(
                   labelOne: AppStringsPortuguese.activityLabel,
-                  textOne: controller.serviceOrder?.id.toString() ?? "",
+                  textOne: controller.getNewPlantingString(),
                   labelTwo: "${AppStringsPortuguese.openingDateLabel} ${controller.serviceOrder?.activityStart ?? ""}",
                   textTwo: controller.serviceOrder?.agriculturalActivity?.activityName ?? "",
                   infoCardType: InfoCardType.activityType),
@@ -144,6 +144,32 @@ class ServiceOrderPage extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return CustomListItemWidget(
                             informationText: (controller.serviceOrder?.machineImplements?.map((e) => e.machineImplementType?.name).toList() ?? [])[index] ?? "",
+                            backgroundColor: index % 2 == 0
+                                ? AppColors.primaryWhiteColor
+                                : AppColors.softGreenColor,
+                            leftIcon: Icons.edit_outlined,
+                            rightIcon: Icons.delete_outline,
+                            type: ListItemType.twoIconButtons);
+                      },
+                    )],
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              Container(
+                decoration: BoxDecoration(
+                    color: AppColors.borderWhiteColor,
+                    borderRadius: BorderRadius.circular(5)),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const ListTitleCardWidget(text: AppStringsPortuguese.pestsLabel),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: (controller.serviceOrder?.pests?.map((e) => e.commonName1).toList() ?? []).length,
+                      itemBuilder: (context, index) {
+                        return CustomListItemWidget(
+                            informationText: (controller.serviceOrder?.pests?.map((e) => e.commonName1).toList() ?? [])[index] ?? "",
                             backgroundColor: index % 2 == 0
                                 ? AppColors.primaryWhiteColor
                                 : AppColors.softGreenColor,

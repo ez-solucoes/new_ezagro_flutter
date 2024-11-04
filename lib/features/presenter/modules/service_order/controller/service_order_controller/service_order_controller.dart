@@ -4,6 +4,8 @@ import 'package:mobx/mobx.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/field_service_order_entities/field_service_order_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/get_service_order_by_id_usecase.dart';
+
+import '../../../../../../design_system/strings/app_strings_portuguese.dart';
 part 'service_order_controller.g.dart';
 
 class ServiceOrderController = ServiceOrderControllerAbstract with _$ServiceOrderController;
@@ -42,6 +44,12 @@ abstract class ServiceOrderControllerAbstract with Store {
         ["Talhões:", _buildPlotStringPreview(serviceOrder?.plots?.map((e) => e.groupName).toList() ?? [])],
         ["Área total: ", serviceOrder?.areaTotal?.toString() ?? ""]
       ];
+  }
+
+  String getNewPlantingString () {
+    String type = serviceOrder?.agriculturalActivity?.activityType ?? "";
+    String newPlanting = (serviceOrder?.newPlanting ?? false) ? AppStringsPortuguese.newPlanting : "";
+    return type + newPlanting;
   }
 
   String _buildPlotStringPreview(List<String?> plots) {

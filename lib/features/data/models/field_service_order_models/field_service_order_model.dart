@@ -40,6 +40,7 @@ class FieldServiceOrderModel extends FieldServiceOrderEntity {
     super.status,
     super.fieldServiceOrderType,
     super.pests,
+    super.newPlanting
   });
 
   Map<String, dynamic> toMap() => {
@@ -77,6 +78,7 @@ class FieldServiceOrderModel extends FieldServiceOrderEntity {
     'fieldServiceOrderType':
     (fieldServiceOrderType as FieldServiceOrderTypeModel).toMap(),
     'pests': pests?.map((e) => (e as PestModel).toMap()).toList(),
+    'newPlanting': newPlanting
   };
 
   factory FieldServiceOrderModel.fromMap(Map<String, dynamic> map) =>
@@ -111,6 +113,7 @@ class FieldServiceOrderModel extends FieldServiceOrderEntity {
         fieldServiceOrderType: map['fieldServiceOrderType'] != null ? FieldServiceOrderTypeModel.fromMap(map['fieldServiceOrderType'] as Map<String, dynamic>) : null,
         pests: map['pests'] != null ? List<PestModel>.from(
             (map['pests'] as List).map((x) => PestModel.fromMap(x as Map<String, dynamic>))) : null,
+        newPlanting: map['newPlanting']
       );
 
   String toJson() => json.encode(toMap());

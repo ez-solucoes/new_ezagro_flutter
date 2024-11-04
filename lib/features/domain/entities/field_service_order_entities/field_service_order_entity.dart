@@ -38,6 +38,7 @@ class FieldServiceOrderEntity extends Equatable {
   final String? status;
   final FieldServiceOrderTypeEntity? fieldServiceOrderType;
   final List<PestEntity>? pests;
+  final bool? newPlanting;
 
   const FieldServiceOrderEntity({
     required this.id,
@@ -63,6 +64,7 @@ class FieldServiceOrderEntity extends Equatable {
     this.status,
     this.fieldServiceOrderType,
     this.pests,
+    this.newPlanting
   });
 
   @override

@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../../../../../consts/app_strings.dart';
+import '../../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../widgets/custom_selector/custom_selector_widget.dart';
 import '../../controller/create_service_order_controller/create_service_order_controller.dart';
 
 class GeneralInformationPage extends StatelessWidget {
-
-  const GeneralInformationPage({
-    super.key
-  });
+  const GeneralInformationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +19,12 @@ class GeneralInformationPage extends StatelessWidget {
       Observer(
         builder: (context) => CustomSelectorWidget(
             onSelect: (value) {
-             //controller.activity = controller.activityOptions;
-
+              //controller.activity = controller.activityOptions;
             },
             items: controller.activityOptions,
-            title: AppStrings.activitySelectorTitle,
-            selectorHint: AppStrings.activitySelectorHint,
-            selectedValue: controller.activity?.activityName
-          ),
+            title: AppStringsPortuguese.activitySelectorTitle,
+            selectorHint: AppStringsPortuguese.activitySelectorHint,
+            selectedValue: controller.activity?.activityName),
       ),
       const SizedBox(
         height: 5,
@@ -37,11 +32,11 @@ class GeneralInformationPage extends StatelessWidget {
       Observer(
         builder: (context) => CustomSelectorWidget(
             onSelect: (value) {
-              controller.costCenterId = controller.costCenterOptions.where((e) => e.name == value).toList().first.id;
+              controller.costCenterId = controller.costCenterOptions.where((e) => e.name == value.name).toList().first.id;
             },
             items: controller.costCenterOptions,
-            title: AppStrings.costCenterSelectorTitle,
-            selectorHint: AppStrings.costCenterSelectorHint),
+            title: AppStringsPortuguese.costCenterSelectorTitle,
+            selectorHint: AppStringsPortuguese.costCenterSelectorHint),
       ),
       const SizedBox(
         height: 5,
@@ -52,8 +47,8 @@ class GeneralInformationPage extends StatelessWidget {
               controller.farmId = value.id;
             },
             items: controller.farmOptions,
-            title: AppStrings.farmSelectorTitle,
-            selectorHint: AppStrings.farmSelectorHint),
+            title: AppStringsPortuguese.farmSelectorTitle,
+            selectorHint: AppStringsPortuguese.farmSelectorHint),
       ),
       const SizedBox(
         height: 5,
@@ -63,8 +58,8 @@ class GeneralInformationPage extends StatelessWidget {
             controller.harvest = {"harvest": value};
           },
           items: controller.cropOptions,
-          title: AppStrings.harvestSelectorTitle,
-          selectorHint: AppStrings.harvestSelectorHint)
+          title: AppStringsPortuguese.harvestSelectorTitle,
+          selectorHint: AppStringsPortuguese.harvestSelectorHint)
     ]);
   }
 }

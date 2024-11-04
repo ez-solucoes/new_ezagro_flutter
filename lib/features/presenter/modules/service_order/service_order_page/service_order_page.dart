@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/core/enums/field_service_order_type_enum.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/service_order/controller/service_order_controller/service_order_controller.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/service_order/controller/service_order_controller/ui_service_order_controller.dart';
-import '../../../../../consts/app_colors.dart';
 import '../../../../../consts/app_routes.dart';
-import '../../../../../consts/app_text_styles.dart';
 import '../../../../../core/enums/field_service_order_status_enum.dart';
+import '../../../../../design_system/colors/app_colors.dart';
+import '../../../../../design_system/strings/app_strings_portuguese.dart';
+import '../../../../../design_system/typography/app_text_styles.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
@@ -40,8 +40,8 @@ class ServiceOrderPage extends StatelessWidget {
       scrollable: true,
       appBar: CustomAppBarWidget(
         appBarType: AppBarType.centeredTitleAndBackArrow,
-        title: AppStrings.serviceOrderTitle,
-         onTap: (){
+        title: AppStringsPortuguese.serviceOrderTitle,
+         callback: (){
             ServiceOrderListPage.navigate();
          }
       ),
@@ -63,7 +63,7 @@ class ServiceOrderPage extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     border: Border.all(
-                      color: AppColors.contourWhiteColor,
+                      color: AppColors.borderWhiteColor,
                       width: 3,
                     )),
                 child: ListView.builder(
@@ -75,7 +75,7 @@ class ServiceOrderPage extends StatelessWidget {
                         label: controller.informationList[index][0],
                         informationText: controller.informationList[index][1],
                         backgroundColor: index % 2 == 0
-                            ? AppColors.trueWhiteColor
+                            ? AppColors.primaryWhiteColor
                             : AppColors.softGreenColor,
                         rightIcon: controller.informationList[index][0] == "Talhões:"
                             ? Icons.navigate_next
@@ -105,7 +105,7 @@ class ServiceOrderPage extends StatelessWidget {
               const SizedBox(height: 10.0),
               Container(
                 decoration: BoxDecoration(
-                    color: AppColors.contourWhiteColor,
+                    color: AppColors.borderWhiteColor,
                     borderRadius: BorderRadius.circular(5)),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -119,7 +119,7 @@ class ServiceOrderPage extends StatelessWidget {
                         return CustomListItemWidget(
                             informationText: controller.serviceOrder?.employees?.map((e) => e.employeeName).toList()[index] ?? "",
                             backgroundColor: index % 2 == 0
-                                ? AppColors.trueWhiteColor
+                                ? AppColors.primaryWhiteColor
                                 : AppColors.softGreenColor,
                             leftIcon: Icons.edit_outlined,
                             rightIcon: Icons.delete_outline,
@@ -131,7 +131,7 @@ class ServiceOrderPage extends StatelessWidget {
               const SizedBox(height: 10.0),
               Container(
                 decoration: BoxDecoration(
-                    color: AppColors.contourWhiteColor,
+                    color: AppColors.borderWhiteColor,
                     borderRadius: BorderRadius.circular(5)),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -145,7 +145,7 @@ class ServiceOrderPage extends StatelessWidget {
                         return CustomListItemWidget(
                             informationText: (controller.serviceOrder?.machineImplements?.map((e) => e.machineImplementType?.name).toList() ?? [])[index] ?? "",
                             backgroundColor: index % 2 == 0
-                                ? AppColors.trueWhiteColor
+                                ? AppColors.primaryWhiteColor
                                 : AppColors.softGreenColor,
                             leftIcon: Icons.edit_outlined,
                             rightIcon: Icons.delete_outline,
@@ -196,10 +196,10 @@ class ServiceOrderPage extends StatelessWidget {
     return isFinished ?
         Row(
           children: [
-            const Icon(Icons.check_circle, size: 35, color: AppColors.greenColor,),
+            Icon(Icons.check_circle, size: 35, color: AppColors.primaryGreenColor,),
             const SizedBox(width: 6,),
-            Text(AppStrings.finishedServiceOrder,
-                style: AppTextStyles.boldMediumTextStyle(color: AppColors.blackColor))
+            Text(AppStringsPortuguese.finishedServiceOrder,
+                style: AppTextStyles.boldMediumTextStyle(color: AppColors.primaryBlackColor))
           ],
         )
         :
@@ -209,15 +209,15 @@ class ServiceOrderPage extends StatelessWidget {
   Widget _getAvailableButtons(bool isFinished) {
 
     return isFinished ?
-      CustomElevatedButton(onPressed: () {}, label: AppStrings.resumeOSButton)
+      CustomElevatedButton(onPressed: () {}, label: AppStringsPortuguese.resumeOSButton)
       :
       Column(
         children: [
-          CustomOutlinedButton(onPressed: (){}, label: AppStrings.saveOSButton, textStyle: AppTextStyles.labelTextButtonStyle(color: AppColors.blackColor),),
-          CustomElevatedButton(onPressed: (){}, label: AppStrings.suspendOSButton, backgroundColor: AppColors.darkGreyColor),
-          CustomElevatedButton(onPressed: (){}, label: AppStrings.cancelOSButton, backgroundColor: AppColors.redCanceledColor,),
+          CustomOutlinedButton(onPressed: (){}, label: AppStringsPortuguese.saveOSButton, textStyle: AppTextStyles.labelTextButtonStyle(color: AppColors.primaryBlackColor),),
+          CustomElevatedButton(onPressed: (){}, label: AppStringsPortuguese.suspendOSButton, backgroundColor: AppColors.darkGreyColor),
+          CustomElevatedButton(onPressed: (){}, label: AppStringsPortuguese.cancelOSButton, backgroundColor: AppColors.primaryRedColor,),
           const SizedBox(height: 15,),
-          CustomElevatedButton(onPressed: (){}, label: AppStrings.finishedOSButton)
+          CustomElevatedButton(onPressed: (){}, label: AppStringsPortuguese.finishedOSButton)
         ],
       );
   }

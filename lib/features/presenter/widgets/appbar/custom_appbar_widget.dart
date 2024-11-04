@@ -10,6 +10,7 @@ enum AppBarType {
   titleAndBackArrow,
   hamburgerAndTitle,
   hamburgerAndEmployee,
+  centeredTitleAndBackArrow,
 }
 
 class CustomAppBarWidget extends StatelessWidget

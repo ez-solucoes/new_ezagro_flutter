@@ -4,4 +4,6 @@ abstract class AuthenticationDatasource {
   Future authenticate(AuthenticationParams authenticationParams);
 
   Future recoverPassword(AuthenticationParams authenticationParams);
+
+  Future updatePassword(AuthenticationParams authenticationParams);
 }

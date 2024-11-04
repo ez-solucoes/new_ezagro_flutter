@@ -7,7 +7,8 @@ import '../employee_entities/employee_entity.dart';
 import '../outsource_entities/outsource_entity.dart';
 
 class AuthenticationEntity extends Equatable {
-  final String token;
+  final int? id;
+  final String? token;
   final String? username;
   final ClientEntity? client;
   final EmployeeEntity? employee;
@@ -19,7 +20,8 @@ class AuthenticationEntity extends Equatable {
   final List<GroupEntity>? group;
 
   const AuthenticationEntity({
-    required this.token,
+    this.id,
+    this.token,
     this.client,
     this.username,
     this.employee,
@@ -33,6 +35,7 @@ class AuthenticationEntity extends Equatable {
 
   @override
   List<Object?> get props => [
+        id,
         token,
         client,
         username,

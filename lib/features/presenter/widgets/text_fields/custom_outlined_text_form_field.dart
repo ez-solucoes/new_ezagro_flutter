@@ -38,12 +38,12 @@ class _CustomOutlinedTextFormFieldState
       decoration: InputDecoration(
         labelText: widget.label,
         labelStyle:
-            AppTextStyles.labelTextFieldStyle(color: AppColors.greyColor),
+            AppTextStyles.labelTextFieldStyle(color: AppColors.formGreyColor),
         border: OutlineInputBorder(
-            borderSide: const BorderSide(color: AppColors.greyColor),
+            borderSide: const BorderSide(color: AppColors.formGreyColor),
             borderRadius: BorderRadius.circular(5)),
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.greyColor),
+          borderSide: const BorderSide(color: AppColors.formGreyColor),
           borderRadius: BorderRadius.circular(5),
         ),
         suffixIcon: widget.passwordField

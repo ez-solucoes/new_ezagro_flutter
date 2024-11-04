@@ -4,8 +4,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:new_ezagro_flutter/core/enums/service_order_type_enum.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/service_order_list_usecase.dart';
-import '../../../../../../consts/app_colors.dart';
 import '../../../../../../core/usecase/usecase.dart';
+import '../../../../../../design_system/colors/app_colors.dart';
 import '../../../../../domain/entities/service_order_list_entities/service_order_list_entity.dart';
 part 'service_order_list_controller.g.dart';
 
@@ -59,9 +59,9 @@ abstract class ServiceOrderListControllerAbstract with Store {
   Color getBackgroundColor(ServiceOrderTypeEnum status) {
     switch(status) {
       case ServiceOrderTypeEnum.finished:
-        return AppColors.greenColor;
+        return AppColors.primaryGreenColor;
       default:
-        return AppColors.trueWhiteColor;
+        return AppColors.primaryWhiteColor;
 
     }
   }
@@ -69,26 +69,26 @@ abstract class ServiceOrderListControllerAbstract with Store {
   Color getTextColor(ServiceOrderTypeEnum status) {
     switch(status) {
       case ServiceOrderTypeEnum.finished:
-        return AppColors.trueWhiteColor;
+        return AppColors.primaryWhiteColor;
       default:
-        return AppColors.blackColor;
+        return AppColors.primaryBlackColor;
     }
   }
 
   Color getBorderColor(ServiceOrderTypeEnum status) {
     switch (status) {
       case ServiceOrderTypeEnum.toBeStarted:
-        return AppColors.contourWhiteColor;
+        return AppColors.borderWhiteColor;
       case ServiceOrderTypeEnum.onGoing:
-        return AppColors.greenColor;
+        return AppColors.primaryGreenColor;
       case ServiceOrderTypeEnum.paused:
         return AppColors.darkGreyColor;
       case ServiceOrderTypeEnum.finished:
-        return AppColors.contourWhiteColor;
+        return AppColors.borderWhiteColor;
       case ServiceOrderTypeEnum.approvalPending:
         return AppColors.muddyYellowColor;
       case ServiceOrderTypeEnum.canceled:
-        return AppColors.redCanceledColor;
+        return AppColors.primaryRedColor;
     }
 
   }

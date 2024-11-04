@@ -47,13 +47,13 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
                     controller: _controller,
                     keyboardType: TextInputType.datetime,
                     textAlign: TextAlign.center,
-                    decoration: const InputDecoration(
-                        enabledBorder: OutlineInputBorder(
+                    decoration: InputDecoration(
+                        enabledBorder: const OutlineInputBorder(
                             borderSide:
                                 BorderSide(color: AppColors.borderWhiteColor)),
                         labelText: AppStringsPortuguese.dateLabel,
-                        suffixIcon: Icon(Icons.calendar_today_outlined),
-                        labelStyle: TextStyle(color: AppColors.greyColor)),
+                        suffixIcon: const Icon(Icons.calendar_today_outlined),
+                        labelStyle: TextStyle(color: AppColors.formGreyColor)),
                   ))),
             ])));
   }

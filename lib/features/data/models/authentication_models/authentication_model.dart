@@ -8,7 +8,8 @@ import '../outsource_models/outsource_model.dart';
 
 class AuthenticationModel extends AuthenticationEntity {
   const AuthenticationModel({
-    required super.token,
+    super.id,
+    super.token,
     super.client,
     super.username,
     super.employee,
@@ -21,6 +22,7 @@ class AuthenticationModel extends AuthenticationEntity {
   });
 
   Map<String, dynamic> toMap() {return <String, dynamic>{
+    'id': id,
     'token': token,
     'username': username,
     'client': (client as ClientModel).toMap(),
@@ -36,6 +38,7 @@ class AuthenticationModel extends AuthenticationEntity {
 
   factory AuthenticationModel.fromMap(Map<String, dynamic> map) {
     return AuthenticationModel(
+      id: map['id'] as int,
       token: map['token'] as String,
       username: map['username'] as String,
       client: map['client'] == null ? null : ClientModel.fromMap(map['client'] as Map<String, dynamic>),

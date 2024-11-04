@@ -27,7 +27,7 @@ class CustomElevatedButton extends StatelessWidget {
             backgroundColor: backgroundColor,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
-        child: !isLoading!
+        child: !(isLoading ?? false)
             ? Text(
                 label,
                 style: AppTextStyles.labelTextButtonStyle(color: textColor),

@@ -58,37 +58,50 @@ class CreateServiceOrderPage extends StatelessWidget {
                       child: TabBarView(children: _getPages(getFieldServiceOrderTypeEnum(controller.activity?.activityType ?? "")))),
                   const SizedBox(height: 5),
                   Observer(
-                      builder: (context) => Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              controller.page == 0
-                                  ? const SizedBox.shrink()
-                                  : CustomOutlinedButton(
-                                      onPressed: () {
-                                        controller.decrementPage();
-                                        DefaultTabController.of(context)
-                                            .animateTo(controller.page);
-                                      },
-                                      label: AppStringsPortuguese.previousButton,
-                                      textStyle:
-                                          AppTextStyles.labelTextButtonStyle(
-                                              color: AppColors.primaryBlackColor),
+                      builder: (context) => Expanded(
+                        child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                controller.page == 0
+                                    ? const SizedBox.shrink()
+                                    : Flexible(
+                                  flex: 1,
+                                      child: CustomOutlinedButton(
+                                          onPressed: () {
+                                            controller.decrementPage();
+                                            DefaultTabController.of(context)
+                                                .animateTo(controller.page);
+                                          },
+                                          label: AppStringsPortuguese.previousButton,
+                                          textStyle:
+                                              AppTextStyles.labelTextButtonStyle(
+                                                  color: AppColors.primaryBlackColor),
+                                        ),
                                     ),
-                              controller.isLastPage
-                                  ? CustomElevatedButton(
-                                      onPressed: () {
+                                controller.isLastPage
+                                    ? Flexible(
+                                  flex: 1,
+                                      child: CustomElevatedButton(
+                                          isLoading: controller.isLoading,
+                                          onPressed: () {
                                         controller.finishOSCreation;
                                       },
-                                      label: AppStringsPortuguese.finishedOSButton)
-                                  : CustomElevatedButton(
-                                      onPressed: () {
-                                        controller.incrementPage();
-                                        DefaultTabController.of(context)
-                                            .animateTo(controller.page);
-                                      },
-                                      label: AppStringsPortuguese.nextButton)
-                            ],
-                          ))
+                                          label: AppStringsPortuguese.finishedOSButton),
+                                    )
+                                    : Flexible(
+                                  flex: 1,
+                                      child: CustomElevatedButton(
+                                        isLoading: controller.isLoading,
+                                          onPressed: () {
+                                            controller.incrementPage();
+                                            DefaultTabController.of(context)
+                                                .animateTo(controller.page);
+                                          },
+                                          label: AppStringsPortuguese.nextButton),
+                                    )
+                              ],
+                            ),
+                      ))
                 ]))));
   }
 }
@@ -98,7 +111,6 @@ List<Widget> _getPages(FieldServiceOrderTypeEnum type) {
     case FieldServiceOrderTypeEnum.transfer:
       return [
         GeneralInformationPage(),
-        SelectPlotsPage(),
         ExecutorsPage(),
         MachineryPage(),
         ProductsPage(),
@@ -108,6 +120,7 @@ List<Widget> _getPages(FieldServiceOrderTypeEnum type) {
     default:
       return [
         GeneralInformationPage(),
+        SelectPlotsPage(),
         ExecutorsPage(),
         MachineryPage(),
         ProductsPage(),

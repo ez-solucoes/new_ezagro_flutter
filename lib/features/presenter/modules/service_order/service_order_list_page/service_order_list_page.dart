@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/core/enums/service_order_type_enum.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/service_order/create_service_order_page/create_service_order_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/custom_drawer/custom_drawer_widget.dart';
 import '../../../../../consts/app_routes.dart';
 import '../../../../../design_system/colors/app_colors.dart';
@@ -108,7 +109,9 @@ class ServiceOrderListPage extends StatelessWidget {
           ),
           floatingActionButton: FloatingActionButton(
             backgroundColor: AppColors.primaryWhiteColor,
-            onPressed: () {},
+            onPressed: () {
+              CreateServiceOrderPage.navigate();
+            },
             child: const Icon(
               Icons.add,
               color: AppColors.primaryGreenColor,

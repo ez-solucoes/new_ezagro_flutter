@@ -43,10 +43,16 @@ class UsernameInputPage extends StatelessWidget {
             controller: textController,
             buttonText: AppStringsPortuguese.forwardString,
             passwordField: false,
-            onButtonPressed: () {
+            onButtonPressed: () async {
+
               controller.username = textController.text;
-              controller.recoverPassword();
-              TempPasswordPage.navigate();
+
+              if (await controller.recoverPassword(context)) {
+                TempPasswordPage.navigate();
+              } else {
+                textController.clear();
+                controller.username = '';
+              }
             }),
       ),
     );

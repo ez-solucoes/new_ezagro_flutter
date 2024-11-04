@@ -30,7 +30,7 @@ class SchedulePage extends StatelessWidget {
               controller.responsible["responsible"] = value;
             },
             items: controller.employeeOptions,
-            title: AppStringsPortuguese.responsiveSelectorTitle,
+            title: AppStringsPortuguese.responsibleSelectorTitle,
             selectorHint: AppStringsPortuguese.responsibleSelectorHint)
       ],
     );

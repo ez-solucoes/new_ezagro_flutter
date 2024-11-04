@@ -78,6 +78,19 @@ class AppStringsPortuguese {
   static const String cancelOSButton = 'Cancelar';
   static const String finishedOSButton = 'Finalizar';
   static const String resumeOSButton = 'Retomar';
+  static const String activityLabel = "Atividade";
+  static const String openingDateLabel = "Abertura:";
+  static const String responsibleLabel = "Responsável";
+  static const String cropLabel = "Cultura:";
+  static const String varietyLabel = "Variedade";
+  static const String technologyLabel = "Tecnologia";
+  static const String executorsLabel = "Executores";
+  static const String machineryLabel = "Maquinário";
+  static const String storageLabel = "Estoque";
+  static const String estimatedStartDateLabel = "Previsão de início";
+  static const String estimatedEndDateLabel = "Previsão de término";
+  static const String servicePriceLabel = "Valor do Serviço";
+  static const String notesLabel = "Observações";
 
   //Create Service Order
   static const String createServiceOrder = 'Criar Ordem de Serviço';
@@ -90,7 +103,7 @@ class AppStringsPortuguese {
   static const String executorSelectorTitle = 'Executores:';
   static const String machinerySelectorTitle = 'Maquinário:';
   static const String productSelectorTitle = 'Produto:';
-  static const String responsiveSelectorTitle = 'Responsável:';
+  static const String responsibleSelectorTitle = 'Responsável:';
   static const String finalCostCenterSelector =
       'Centro de Custo de Estoque de Destino:';
   static const String finalStorageSelector = 'Estoque de Destino:';

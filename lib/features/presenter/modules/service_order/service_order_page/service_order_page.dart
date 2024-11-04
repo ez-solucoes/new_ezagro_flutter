@@ -53,9 +53,9 @@ class ServiceOrderPage extends StatelessWidget {
               _isFinished(uiController.isFinished()),
               const SizedBox(height: 15,),
               CustomInfoCardWidget(
-                  labelOne: "Atividade",
+                  labelOne: AppStringsPortuguese.activityLabel,
                   textOne: controller.serviceOrder?.id.toString() ?? "",
-                  labelTwo: "Abertura: ${controller.serviceOrder?.activityStart ?? ""}",
+                  labelTwo: "${AppStringsPortuguese.openingDateLabel} ${controller.serviceOrder?.activityStart ?? ""}",
                   textTwo: controller.serviceOrder?.agriculturalActivity?.activityName ?? "",
                   infoCardType: InfoCardType.activityType),
               const SizedBox(height: 10.0),
@@ -88,17 +88,17 @@ class ServiceOrderPage extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               CustomInfoCardWidget(
-                  labelOne: "Responsável",
+                  labelOne: AppStringsPortuguese.responsibleLabel,
                   textOne: controller.serviceOrder?.employeeActivityHolder?.employeeName ?? "",
                   icon: Icons.edit_outlined,
                   infoCardType: InfoCardType.oneLabeledInfo),
               const SizedBox(height: 10),
               CustomInfoCardWidget(
-                  labelOne: "Cultura:",
+                  labelOne: AppStringsPortuguese.cropLabel,
                   textOne: controller.serviceOrder?.cropDiversity?.name ?? "",
-                  labelTwo: "Variedade:",
+                  labelTwo: AppStringsPortuguese.varietyLabel,
                   textTwo: controller.serviceOrder?.cropDiversity?.crop?.name ?? "",
-                  labelThree: "Tecnologia",
+                  labelThree: AppStringsPortuguese.technologyLabel,
                   textThree: controller.serviceOrder?.cropDiversity?.technologyType?.name ?? "",
                   icon: Icons.edit_outlined,
                   infoCardType: InfoCardType.threeLabeledInfo),
@@ -110,7 +110,7 @@ class ServiceOrderPage extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const ListTitleCardWidget(text: "Executores:"),
+                    const ListTitleCardWidget(text: AppStringsPortuguese.executorsLabel),
                     ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
@@ -136,7 +136,7 @@ class ServiceOrderPage extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const ListTitleCardWidget(text: "Maquinário:"),
+                    const ListTitleCardWidget(text: AppStringsPortuguese.machineryLabel),
                     ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
@@ -156,14 +156,14 @@ class ServiceOrderPage extends StatelessWidget {
               ),
               const SizedBox(height: 10.0),
               CustomInfoCardWidget(
-                  labelOne: "Estoque",
+                  labelOne: AppStringsPortuguese.storageLabel,
                   textOne: "Estoque",
                   infoCardType: InfoCardType.oneLabeledInfo),
               const SizedBox(height: 10.0),
               CustomInfoCardWidget(
-                  labelOne: "Previsão de início",
+                  labelOne: AppStringsPortuguese.estimatedStartDateLabel,
                   textOne: controller.serviceOrder?.expectedStartDate ?? "",
-                  labelTwo: "Previsão de término",
+                  labelTwo: AppStringsPortuguese.estimatedEndDateLabel,
                   textTwo: controller.serviceOrder?.expectedEndDate ?? "",
                   icon: Icons.edit_outlined,
                   infoCardType: InfoCardType.twoLabeledInfo),
@@ -171,14 +171,14 @@ class ServiceOrderPage extends StatelessWidget {
                 height: 10.0,
               ),
               CustomInfoCardWidget(
-                  labelOne: "Valor do Serviço",
+                  labelOne: AppStringsPortuguese.servicePriceLabel,
                   textOne:  "R\$ ${controller.serviceOrder?.activityValue?.toString() ?? ""}",
                   infoCardType: InfoCardType.oneLabeledInfo),
               const SizedBox(
                 height: 10.0,
               ),
               CustomInfoCardWidget(
-                  labelOne: "Observações",
+                  labelOne: AppStringsPortuguese.notesLabel,
                   textOne: controller.serviceOrder?.description ?? "",
                   infoCardType: InfoCardType.oneLabeledInfo),
               const SizedBox(

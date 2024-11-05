@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:new_ezagro_flutter/core/enums/field_service_order_type_enum.dart';
 import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/service_order/create_service_order_page/createServiceOrderTabs/pests_page.dart';
 import '../../../../../consts/app_routes.dart';
 import '../../../../../design_system/colors/app_colors.dart';
 import '../../../../../design_system/typography/app_text_styles.dart';
@@ -33,64 +35,110 @@ class CreateServiceOrderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Modular.get<CreateServiceOrderController>();
+    controller.getActivities();
+    controller.getCostCenters();
     return BackgroundWidget(
         scrollable: false,
         appBar: CustomAppBarWidget(
           appBarType: AppBarType.centeredTitleAndBackArrow,
           title: AppStringsPortuguese.createServiceOrder,
-          callback: (){
+          onTap: (){
             HomePage.navigate();
           },
         ),
         child: DefaultTabController(
-            length: 7,
+            length: getFieldServiceOrderTypeEnum(controller.activity?.activityType ?? "")
+                    == FieldServiceOrderTypeEnum.transfer
+                    ? 7
+                    : 8,
             child: Padding(
                 padding: const EdgeInsets.all(14.0),
                 child: Column(children: [
                   SizedBox(
                       height: MediaQuery.sizeOf(context).height * 0.75,
-                      child: TabBarView(children: <Widget>[
-                        GeneralInformationPage(),
-                        SelectPlotsPage(),
-                        ExecutorsPage(),
-                        MachineryPage(),
-                        ProductsPage(),
-                        SchedulePage(),
-                        FinalInformationPage()
-                      ])),
+                      child: TabBarView(children: _getPages(FieldServiceOrderTypeEnum.monitoring/*getFieldServiceOrderTypeEnum(controller.activity?.activityType ?? "")*/))),
                   const SizedBox(height: 5),
                   Observer(
-                      builder: (context) => Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              controller.page == 0
-                                  ? const SizedBox.shrink()
-                                  : CustomOutlinedButton(
-                                      onPressed: () {
-                                        controller.decrementPage();
-                                        DefaultTabController.of(context)
-                                            .animateTo(controller.page);
-                                      },
-                                      label: AppStringsPortuguese.previousButton,
-                                      textStyle:
-                                          AppTextStyles.labelTextButtonStyle(
-                                              color: AppColors.primaryBlackColor),
+                      builder: (context) => Expanded(
+                        child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                controller.page == 0
+                                    ? const SizedBox.shrink()
+                                    : Flexible(
+                                  flex: 1,
+                                      child: CustomOutlinedButton(
+                                          onPressed: () {
+                                            controller.decrementPage();
+                                            DefaultTabController.of(context)
+                                                .animateTo(controller.page);
+                                          },
+                                          label: AppStringsPortuguese.previousButton,
+                                          textStyle:
+                                              AppTextStyles.labelTextButtonStyle(
+                                                  color: AppColors.primaryBlackColor),
+                                        ),
                                     ),
-                              controller.isLastPage
-                                  ? CustomElevatedButton(
-                                      onPressed: () {
+                                controller.isLastPage
+                                    ? Flexible(
+                                  flex: 1,
+                                      child: CustomElevatedButton(
+                                          isLoading: controller.isLoading,
+                                          onPressed: () {
                                         controller.finishOSCreation;
                                       },
-                                      label: AppStringsPortuguese.finishedOSButton)
-                                  : CustomElevatedButton(
-                                      onPressed: () {
-                                        controller.incrementPage();
-                                        DefaultTabController.of(context)
-                                            .animateTo(controller.page);
-                                      },
-                                      label: AppStringsPortuguese.nextButton)
-                            ],
-                          ))
+                                          label: AppStringsPortuguese.finishedOSButton),
+                                    )
+                                    : Flexible(
+                                  flex: 1,
+                                      child: CustomElevatedButton(
+                                        isLoading: controller.isLoading,
+                                          onPressed: () {
+                                            controller.incrementPage();
+                                            DefaultTabController.of(context)
+                                                .animateTo(controller.page);
+                                          },
+                                          label: AppStringsPortuguese.nextButton),
+                                    )
+                              ],
+                            ),
+                      ))
                 ]))));
   }
 }
+
+List<Widget> _getPages(FieldServiceOrderTypeEnum type) {
+  switch (type) {
+    case FieldServiceOrderTypeEnum.transfer:
+      return [
+        GeneralInformationPage(),
+        ExecutorsPage(),
+        MachineryPage(),
+        ProductsPage(),
+        SchedulePage(),
+        FinalInformationPage()
+      ];
+    case FieldServiceOrderTypeEnum.monitoring:
+      return [
+        GeneralInformationPage(),
+        SelectPlotsPage(),
+        PestsPage(),
+        ExecutorsPage(),
+        MachineryPage(),
+        ProductsPage(),
+        SchedulePage(),
+        FinalInformationPage()
+      ];
+    default:
+      return [
+        GeneralInformationPage(),
+        SelectPlotsPage(),
+        ExecutorsPage(),
+        MachineryPage(),
+        ProductsPage(),
+        SchedulePage(),
+        FinalInformationPage()
+      ];
+  }
+}
+

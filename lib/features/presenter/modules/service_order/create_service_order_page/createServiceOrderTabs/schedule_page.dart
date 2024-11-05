@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import '../../../../../../design_system/strings/app_strings_portuguese.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 import '../../../../widgets/custom_date_picker/custom_date_picker_widget.dart';
 import '../../../../widgets/custom_selector/custom_selector_widget.dart';
 import '../../controller/create_service_order_controller/create_service_order_controller.dart';
@@ -30,7 +30,7 @@ class SchedulePage extends StatelessWidget {
               controller.responsible["responsible"] = value;
             },
             items: controller.employeeOptions,
-            title: AppStringsPortuguese.responsiveSelectorTitle,
+            title: AppStringsPortuguese.responsibleSelectorTitle,
             selectorHint: AppStringsPortuguese.responsibleSelectorHint)
       ],
     );

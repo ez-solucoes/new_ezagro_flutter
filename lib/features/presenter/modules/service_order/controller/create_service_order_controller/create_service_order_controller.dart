@@ -12,10 +12,13 @@ import 'package:new_ezagro_flutter/features/domain/usecases/employee_usecase/emp
 import 'package:new_ezagro_flutter/features/domain/usecases/executor_usecases/executor_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/machinery_usecases/machinery_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/pest_usecases/pest_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase.dart';
+import '../../../../../../core/enums/field_service_order_type_enum.dart';
 import '../../../../../../core/usecase/usecase.dart';
+import '../../../../../domain/entities/pest_entities/pest_entity.dart';
 part 'create_service_order_controller.g.dart';
 
 class CreateServiceOrderController = CreateServiceOrderControllerAbstract with _$CreateServiceOrderController;
@@ -35,6 +38,9 @@ abstract class CreateServiceOrderControllerAbstract with Store {
 
   @observable
   List<SelectorEntity> activityOptions = ObservableList();
+
+  @observable
+  List<PestEntity> pestsOptions = ObservableList();
 
   @observable
   List<SelectorEntity> costCenterOptions = ObservableList();
@@ -71,6 +77,9 @@ abstract class CreateServiceOrderControllerAbstract with Store {
 
   @observable
   List<int> selectedExecutors = ObservableList();
+
+  @observable
+  List<PestEntity> selectedPests = ObservableList();
 
   @observable
   AgriculturalActivityEntity? activity;
@@ -123,11 +132,26 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getActivities = Modular.get<ActivityUsecase>();
     final result = await getActivities(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      //activityOptions = success.content;
+      activityOptions = success.content.map((e) {
+        return SelectorEntity(id: e.id, name: e.activityName);
+      }).toList();
+
       return success;
     });
 
     isLoading = false;
+  }
+
+  @action
+  int getPageNumber() {
+    switch (getFieldServiceOrderTypeEnum(activity?.activityType ?? "")) {
+      case FieldServiceOrderTypeEnum.transfer:
+        return 6;
+      case FieldServiceOrderTypeEnum.monitoring:
+        return 8;
+      default:
+        return 7;
+    }
   }
 
   @action
@@ -136,7 +160,9 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getCostCenters = Modular.get<CostCenterUsecase>();
     final result = await getCostCenters(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      //costCenterOptions = success.content;
+      costCenterOptions = success.content.map((e) {
+        return SelectorEntity(id: e.id, name: e.costCenterName);
+      }).toList();
       return success;
     });
 
@@ -176,6 +202,19 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final result = await getPlots(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
       plotsOptions = success.content;
+      return success;
+    });
+
+    isLoading = false;
+  }
+
+  @action
+  Future getPests() async {
+    isLoading = true;
+    final getPests = Modular.get<PestUsecase>();
+    final result = await getPests(NoParams());
+    result.fold((error) => error.friendlyMessage, (success) {
+      pestsOptions = success.content;
       return success;
     });
 

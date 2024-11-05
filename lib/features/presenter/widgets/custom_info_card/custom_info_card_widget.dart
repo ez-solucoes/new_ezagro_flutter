@@ -330,10 +330,10 @@ class CustomInfoCardWidget extends StatelessWidget {
                       children: [
                         IntrinsicHeight(
                             child: Row(children: [
-                          const VerticalDivider(
+                          VerticalDivider(
                             width: 2,
                             thickness: 1,
-                            color: AppColors.dividerGreyColor,
+                            color: labelThree == "" ? AppColors.primaryWhiteColor : AppColors.dividerGreyColor,
                           ),
                           const SizedBox(width: 5),
                           Column(

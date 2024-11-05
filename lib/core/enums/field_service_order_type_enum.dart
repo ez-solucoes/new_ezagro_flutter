@@ -8,17 +8,17 @@ enum FieldServiceOrderTypeEnum {
 }
 
 FieldServiceOrderTypeEnum getFieldServiceOrderTypeEnum(String type) {
-  if (type.contains('Pulverização')) {
+  if (type.contains('pulverizacao')) {
     return FieldServiceOrderTypeEnum.spraying;
   }
   switch (type) {
-    case 'Plantio':
+    case 'plantio':
       return FieldServiceOrderTypeEnum.planting;
-    case 'Colheita':
+    case 'colheita':
       return FieldServiceOrderTypeEnum.harvesting;
-    case 'Monitoramento':
+    case 'monitoramento':
       return FieldServiceOrderTypeEnum.monitoring;
-    case 'Transferência':
+    case 'transferencia':
       return FieldServiceOrderTypeEnum.transfer;
     default:
       return FieldServiceOrderTypeEnum.generic;

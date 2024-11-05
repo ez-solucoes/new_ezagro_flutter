@@ -2,6 +2,7 @@ class AppStringsPortuguese {
   AppStringsPortuguese._();
 
   static const String appTitle = 'Ez Agro';
+  static const String appCapitalTile = 'EZ AGRO';
 
   static const String cpfString = 'Cpf';
   static const String passwordString = 'Senha';
@@ -44,7 +45,7 @@ class AppStringsPortuguese {
   ///Service Order Module
   //Service Order List Strings
   static const String serviceOrderTitle = 'Ordem de Serviço';
-  static const String pluralServicesOrder = "Ordens de Serviços";
+  static const String pluralServicesOrder = 'Ordens de Serviços';
   static const String costCenterCardField = 'Centro de Custo: ';
   static const String openingDateCardField = 'Abertura: ';
   static const String closingDateCardField = 'Conclusão: ';
@@ -77,6 +78,21 @@ class AppStringsPortuguese {
   static const String cancelOSButton = 'Cancelar';
   static const String finishedOSButton = 'Finalizar';
   static const String resumeOSButton = 'Retomar';
+  static const String activityLabel = 'Atividade';
+  static const String openingDateLabel = 'Abertura:';
+  static const String responsibleLabel = 'Responsável';
+  static const String cropLabel = 'Cultura:';
+  static const String varietyLabel = 'Variedade';
+  static const String technologyLabel = 'Tecnologia';
+  static const String executorsLabel = 'Executores';
+  static const String machineryLabel = 'Maquinário';
+  static const String pestsLabel = 'Praga';
+  static const String storageLabel = 'Estoque';
+  static const String estimatedStartDateLabel = 'Previsão de início';
+  static const String estimatedEndDateLabel = 'Previsão de término';
+  static const String servicePriceLabel = 'Valor do Serviço';
+  static const String notesLabel = 'Observações';
+  static const String newPlanting = ' - Novo Plantio';
 
   //Create Service Order
   static const String createServiceOrder = 'Criar Ordem de Serviço';
@@ -86,10 +102,11 @@ class AppStringsPortuguese {
   static const String costCenterSelectorTitle = 'Centro de Custo:';
   static const String farmSelectorTitle = 'Fazenda:';
   static const String harvestSelectorTitle = 'Safra:';
+  static const String pestsSelectorTitle = 'Pragas:';
   static const String executorSelectorTitle = 'Executores:';
   static const String machinerySelectorTitle = 'Maquinário:';
   static const String productSelectorTitle = 'Produto:';
-  static const String responsiveSelectorTitle = 'Responsável:';
+  static const String responsibleSelectorTitle = 'Responsável:';
   static const String finalCostCenterSelector =
       'Centro de Custo de Estoque de Destino:';
   static const String finalStorageSelector = 'Estoque de Destino:';
@@ -97,6 +114,7 @@ class AppStringsPortuguese {
   static const String costCenterSelectorHint = 'Selecione um centro de custo';
   static const String farmSelectorHint = 'Selecione uma fazenda';
   static const String harvestSelectorHint = 'Selecione uma safra';
+  static const String pestSelectorHint = 'Selecione uma praga';
   static const String executorSelectorHint = 'Selecione um executor';
   static const String machinerySelectorHint = 'Selecione um maquinário';
   static const String productSelectorHint = 'Selecione um produto';
@@ -116,6 +134,7 @@ class AppStringsPortuguese {
   static const String notesTextFieldTitle = 'Observações:';
   static const String nameField = 'Nome:';
   static const String idField = 'ID:';
+  static const String scientificNameField = 'Nome Científico:';
   static const String shiftField = 'Turno:';
   static const String machineryField = 'Máquina:';
   static const String machineryAliasField = 'Apelido:';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/service_order/service_order_list_page/service_order_list_page.dart';
 import '../../../../design_system/colors/app_colors.dart';
-import '../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../design_system/typography/app_text_styles.dart';
 import '../../modules/home/home_page.dart';
 import '../custom_drawer_header/custom_drawer_header_widget.dart';

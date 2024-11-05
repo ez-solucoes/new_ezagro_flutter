@@ -7,13 +7,13 @@ import 'package:new_ezagro_flutter/features/presenter/widgets/appbar/custom_appb
 import 'package:new_ezagro_flutter/features/presenter/widgets/background/background_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/buttons/custom_elevated_button.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/buttons/custom_outlined_button.dart';
-
 import '../../../../consts/app_routes.dart';
 import '../../../../design_system/colors/app_colors.dart';
 import '../../../../design_system/typography/app_text_styles.dart';
 import '../../../domain/params/arg_params/arg_params.dart';
 
 class HomePage extends StatelessWidget {
+
   final ArgParams? args;
   static const String routePath = AppRoutes.appHomePage;
 
@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
     return BackgroundWidget(
         appBar: CustomAppBarWidget(
           indicatorValue: 0.8,
-          title: "EZ AGRO",
+          title: AppStringsPortuguese.appCapitalTile,
           appBarType: AppBarType.hamburgerAndTitle,
         ),
         scrollable: true,
@@ -37,19 +37,11 @@ class HomePage extends StatelessWidget {
           padding: EdgeInsets.all(20),
           child: Column(
             children: [
-              CustomElevatedButton(
-                  onPressed: () {
-                    ServiceOrderListPage.navigate();
-                  },
-                  label: AppStringsPortuguese.pluralServicesOrder),
-              CustomOutlinedButton(
-                  onPressed: () {
-                    CreateServiceOrderPage.navigate();
-                  },
-                  label: AppStringsPortuguese.createServiceOrder,
-                  textStyle: AppTextStyles.boldMediumTextStyle(color: AppColors.primaryBlackColor))
+              CustomElevatedButton(onPressed: (){ServiceOrderListPage.navigate();}, label: AppStringsPortuguese.pluralServicesOrder),
+              CustomOutlinedButton(onPressed: (){CreateServiceOrderPage.navigate();}, label: AppStringsPortuguese.createServiceOrder, textStyle: AppTextStyles.boldMediumTextStyle(color: AppColors.primaryBlackColor))
             ],
           ),
         ));
   }
+
 }

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/selector_entities/selector_entity.dart';
-
 import '../../../../design_system/colors/app_colors.dart';
 import '../../../../design_system/typography/app_text_styles.dart';
-
 
 class CustomSelectorWidget extends StatelessWidget {
 
@@ -34,7 +32,7 @@ class CustomSelectorWidget extends StatelessWidget {
                 Text(
                   title,
                   style: AppTextStyles.smallBoldTextOnCardStyle(
-                      color: AppColors.primaryBlackColor),
+                      color: items.isEmpty ? AppColors.dividerGreyColor : AppColors.primaryBlackColor),
                 ),
                 const SizedBox(height: 16),
                 DropdownButtonFormField(
@@ -55,8 +53,8 @@ class CustomSelectorWidget extends StatelessWidget {
                       onSelect(value);
                     }
                   },
-                  decoration: InputDecoration(
-                      enabledBorder: const UnderlineInputBorder(
+                  decoration: const InputDecoration(
+                      enabledBorder: UnderlineInputBorder(
                           borderSide:
                               BorderSide(color: AppColors.formGreyColor)),
                           focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.primaryGreenColor)),

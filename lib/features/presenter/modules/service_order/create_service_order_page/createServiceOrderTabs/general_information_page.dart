@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-
 import '../../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../widgets/custom_selector/custom_selector_widget.dart';
 import '../../controller/create_service_order_controller/create_service_order_controller.dart';
 
 class GeneralInformationPage extends StatelessWidget {
-  const GeneralInformationPage({super.key});
+
+  const GeneralInformationPage({
+    super.key
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +21,13 @@ class GeneralInformationPage extends StatelessWidget {
       Observer(
         builder: (context) => CustomSelectorWidget(
             onSelect: (value) {
-              //controller.activity = controller.activityOptions;
+
             },
             items: controller.activityOptions,
             title: AppStringsPortuguese.activitySelectorTitle,
             selectorHint: AppStringsPortuguese.activitySelectorHint,
-            selectedValue: controller.activity?.activityName),
+            selectedValue: controller.activity?.activityName
+          ),
       ),
       const SizedBox(
         height: 5,
@@ -32,7 +35,7 @@ class GeneralInformationPage extends StatelessWidget {
       Observer(
         builder: (context) => CustomSelectorWidget(
             onSelect: (value) {
-              controller.costCenterId = controller.costCenterOptions.where((e) => e.name == value.name).toList().first.id;
+              controller.costCenterId = controller.costCenterOptions.where((e) => e.name == value).toList().first.id;
             },
             items: controller.costCenterOptions,
             title: AppStringsPortuguese.costCenterSelectorTitle,

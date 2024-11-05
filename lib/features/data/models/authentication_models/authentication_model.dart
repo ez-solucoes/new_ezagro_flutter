@@ -38,7 +38,7 @@ class AuthenticationModel extends AuthenticationEntity {
 
   factory AuthenticationModel.fromMap(Map<String, dynamic> map) {
     return AuthenticationModel(
-      id: map['id'] as int,
+      id: map['id'] == null ? null : map['id'] as int,
       token: map['token'] as String,
       username: map['username'] as String,
       client: map['client'] == null ? null : ClientModel.fromMap(map['client'] as Map<String, dynamic>),

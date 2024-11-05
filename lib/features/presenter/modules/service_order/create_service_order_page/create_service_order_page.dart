@@ -56,7 +56,7 @@ class CreateServiceOrderPage extends StatelessWidget {
                 child: Column(children: [
                   SizedBox(
                       height: MediaQuery.sizeOf(context).height * 0.75,
-                      child: TabBarView(children: _getPages(getFieldServiceOrderTypeEnum(controller.activity?.activityType ?? "")))),
+                      child: TabBarView(children: _getPages(FieldServiceOrderTypeEnum.monitoring/*getFieldServiceOrderTypeEnum(controller.activity?.activityType ?? "")*/))),
                   const SizedBox(height: 5),
                   Observer(
                       builder: (context) => Expanded(
@@ -112,6 +112,16 @@ List<Widget> _getPages(FieldServiceOrderTypeEnum type) {
     case FieldServiceOrderTypeEnum.transfer:
       return [
         GeneralInformationPage(),
+        ExecutorsPage(),
+        MachineryPage(),
+        ProductsPage(),
+        SchedulePage(),
+        FinalInformationPage()
+      ];
+    case FieldServiceOrderTypeEnum.monitoring:
+      return [
+        GeneralInformationPage(),
+        SelectPlotsPage(),
         PestsPage(),
         ExecutorsPage(),
         MachineryPage(),
@@ -123,7 +133,6 @@ List<Widget> _getPages(FieldServiceOrderTypeEnum type) {
       return [
         GeneralInformationPage(),
         SelectPlotsPage(),
-        PestsPage(),
         ExecutorsPage(),
         MachineryPage(),
         ProductsPage(),

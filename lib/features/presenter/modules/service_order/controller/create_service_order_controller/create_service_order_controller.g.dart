@@ -92,6 +92,23 @@ mixin _$CreateServiceOrderController
     });
   }
 
+  late final _$pestsOptionsAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.pestsOptions',
+      context: context);
+
+  @override
+  List<PestEntity> get pestsOptions {
+    _$pestsOptionsAtom.reportRead();
+    return super.pestsOptions;
+  }
+
+  @override
+  set pestsOptions(List<PestEntity> value) {
+    _$pestsOptionsAtom.reportWrite(value, super.pestsOptions, () {
+      super.pestsOptions = value;
+    });
+  }
+
   late final _$costCenterOptionsAtom = Atom(
       name: 'CreateServiceOrderControllerAbstract.costCenterOptions',
       context: context);
@@ -296,6 +313,23 @@ mixin _$CreateServiceOrderController
     });
   }
 
+  late final _$selectedPestsAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.selectedPests',
+      context: context);
+
+  @override
+  List<PestEntity> get selectedPests {
+    _$selectedPestsAtom.reportRead();
+    return super.selectedPests;
+  }
+
+  @override
+  set selectedPests(List<PestEntity> value) {
+    _$selectedPestsAtom.reportWrite(value, super.selectedPests, () {
+      super.selectedPests = value;
+    });
+  }
+
   late final _$activityAtom = Atom(
       name: 'CreateServiceOrderControllerAbstract.activity', context: context);
 
@@ -393,6 +427,15 @@ mixin _$CreateServiceOrderController
     return _$getPlotsOptionsAsyncAction.run(() => super.getPlotsOptions());
   }
 
+  late final _$getPestsAsyncAction = AsyncAction(
+      'CreateServiceOrderControllerAbstract.getPests',
+      context: context);
+
+  @override
+  Future<dynamic> getPests() {
+    return _$getPestsAsyncAction.run(() => super.getPests());
+  }
+
   late final _$getExecutorOptionsAsyncAction = AsyncAction(
       'CreateServiceOrderControllerAbstract.getExecutorOptions',
       context: context);
@@ -445,6 +488,19 @@ mixin _$CreateServiceOrderController
   late final _$CreateServiceOrderControllerAbstractActionController =
       ActionController(
           name: 'CreateServiceOrderControllerAbstract', context: context);
+
+  @override
+  int getPageNumber() {
+    final _$actionInfo =
+        _$CreateServiceOrderControllerAbstractActionController.startAction(
+            name: 'CreateServiceOrderControllerAbstract.getPageNumber');
+    try {
+      return super.getPageNumber();
+    } finally {
+      _$CreateServiceOrderControllerAbstractActionController
+          .endAction(_$actionInfo);
+    }
+  }
 
   @override
   dynamic toggleSelectAll() {
@@ -519,6 +575,7 @@ isLastPage: ${isLastPage},
 page: ${page},
 selectAll: ${selectAll},
 activityOptions: ${activityOptions},
+pestsOptions: ${pestsOptions},
 costCenterOptions: ${costCenterOptions},
 farmOptions: ${farmOptions},
 cropOptions: ${cropOptions},
@@ -531,6 +588,7 @@ selectedPlots: ${selectedPlots},
 selectedMachinery: ${selectedMachinery},
 selectedProducts: ${selectedProducts},
 selectedExecutors: ${selectedExecutors},
+selectedPests: ${selectedPests},
 activity: ${activity},
 isSelecting: ${isSelecting},
 startIndex: ${startIndex}

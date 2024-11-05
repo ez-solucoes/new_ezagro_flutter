@@ -114,6 +114,7 @@ class AppStringsPortuguese {
   static const String costCenterSelectorHint = 'Selecione um centro de custo';
   static const String farmSelectorHint = 'Selecione uma fazenda';
   static const String harvestSelectorHint = 'Selecione uma safra';
+  static const String pestSelectorHint = 'Selecione uma praga';
   static const String executorSelectorHint = 'Selecione um executor';
   static const String machinerySelectorHint = 'Selecione um maquinário';
   static const String productSelectorHint = 'Selecione um produto';
@@ -133,6 +134,7 @@ class AppStringsPortuguese {
   static const String notesTextFieldTitle = 'Observações:';
   static const String nameField = 'Nome:';
   static const String idField = 'ID:';
+  static const String scientificNameField = 'Nome Científico:';
   static const String shiftField = 'Turno:';
   static const String machineryField = 'Máquina:';
   static const String machineryAliasField = 'Apelido:';

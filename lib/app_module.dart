@@ -4,8 +4,12 @@ import 'package:new_ezagro_flutter/consts/app_routes.dart';
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_client.dart';
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_client_shared_prefs_impl.dart';
 import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/pest_datasources/pest_datasource.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/pest_datasources/pest_datasource_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/authentication_repository/authentication_repository_impl.dart';
+import 'package:new_ezagro_flutter/features/data/repositories/pest_repositories/pest_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/authentication_repository/authentication_repository.dart';
+import 'package:new_ezagro_flutter/features/domain/repositories/pest_repositories/pest_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/authenticate_usecase/authenticate_usecase_impl.dart';
@@ -21,6 +25,8 @@ import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_u
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/machinery_usecases/machinery_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/machinery_usecases/machinery_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/pest_usecases/pest_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/pest_usecases/pest_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecase.dart';
@@ -129,6 +135,7 @@ class AppModule extends Module {
     i.addLazySingleton<EmployeeUsecase>(EmployeeUsecaseImpl.new);
     i.addLazySingleton<CreateServiceOrderUsecase>(CreateServiceOrderUsecaseImpl.new);
     i.addLazySingleton<GetServiceOrderByIdUsecase>(GetServiceOrderByIdUsecaseImpl.new);
+    i.addLazySingleton<PestUsecase>(PestUsecaseImpl.new);
 
     //Repository
     i.addLazySingleton<AuthenticationRepository>(AuthenticationRepositoryImpl.new);
@@ -142,6 +149,7 @@ class AppModule extends Module {
     i.addLazySingleton<MachineryRepository>(MachineryRepositoryImpl.new);
     i.addLazySingleton<ProductRepository>(ProductRepositoryImpl.new);
     i.addLazySingleton<EmployeeRepository>(EmployeeRepositoryImpl.new);
+    i.addLazySingleton<PestRepository>(PestRepositoryImpl.new);
 
     //Datasource
     i.addLazySingleton<AuthenticationDatasource>(AuthenticationDatasourceImpl.new);
@@ -155,6 +163,7 @@ class AppModule extends Module {
     i.addLazySingleton<MachineryDatasource>(MachineryDatasourceImpl.new);
     i.addLazySingleton<ProductDatasource>(ProductDatasourceImpl.new);
     i.addLazySingleton<EmployeeDatasource>(EmployeeDatasourceImpl.new);
+    i.addLazySingleton<PestDatasource>(PestDatasourceImpl.new);
 
     //Controllers
     i.addLazySingleton<AuthenticationController>(AuthenticationController.new);
@@ -166,7 +175,7 @@ class AppModule extends Module {
 
   @override
   void routes(RouteManager r) {
-    r.child(AppRoutes.appDefaultPage, child: (context) => CreateServiceOrderPage());
+    r.child(AppRoutes.appDefaultPage, child: (context) => LoginPage());
     r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
 
     r.child(AppRoutes.appLoginPage, child: (context) => LoginPage());

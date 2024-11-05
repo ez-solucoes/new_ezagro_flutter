@@ -15,6 +15,7 @@ import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/act
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/authenticate_usecase/authenticate_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/update_password/update_password_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_usecase.dart';
@@ -87,12 +88,12 @@ import 'features/domain/repositories/plots_repositories/plots_repository.dart';
 import 'features/domain/repositories/product_repositories/product_repository.dart';
 import 'features/domain/repositories/service_order_repositories/service_order_repository.dart';
 import 'features/domain/usecases/authentication_usecases/authenticate_usecase/authenticate_usecase.dart';
+import 'features/domain/usecases/authentication_usecases/update_password/update_password_usecase_impl.dart';
 import 'features/domain/usecases/employee_usecase/employee_usecase.dart';
 import 'features/domain/usecases/employee_usecase/employee_usecase_impl.dart';
 import 'features/domain/usecases/service_order_list_usecase/service_order_list_usecase.dart';
 import 'features/domain/usecases/service_order_list_usecase/service_order_list_usecase_impl.dart';
 import 'features/presenter/modules/authentication_module/authentication_controller/authentication_controller.dart';
-import 'features/presenter/modules/authentication_module/change_password_page/change_password_step_page.dart';
 import 'features/presenter/modules/authentication_module/login_pages/login_page.dart';
 import 'features/presenter/modules/authentication_module/register_page/register_fifth_step_page.dart';
 import 'features/presenter/modules/authentication_module/register_page/register_first_step_page.dart';
@@ -123,6 +124,7 @@ class AppModule extends Module {
     //Usecase
     i.addLazySingleton<AuthenticateUsecase>(AuthenticateUsecaseImpl.new);
     i.addLazySingleton<RecoverPasswordUsecase>(RecoverPasswordUsecaseImpl.new);
+    i.addLazySingleton<UpdatePasswordUsecase>(UpdatePasswordUsecaseImpl.new);
     i.addLazySingleton<ServiceOrderListUsecase>(ServiceOrderListUsecaseImpl.new);
     i.addLazySingleton<ActivityUsecase>(ActivityUsecaseImpl.new);
     i.addLazySingleton<CostCenterUsecase>(CostCenterUsecaseImpl.new);
@@ -190,7 +192,6 @@ class AppModule extends Module {
     r.child(AppRoutes.appRegisterFourthStepPage, child: (context) => const RegisterFourthStepPage());
     r.child(AppRoutes.appRegisterFifthStepPage, child: (context) => const RegisterFifthStepPage());
     r.child(AppRoutes.appDocumentsPage, child: (context) => const DocumentsPage());
-    r.child(AppRoutes.appChangePasswordFirstStepPage, child: (context) => const ChangePasswordStepPage());
     r.child(AppRoutes.appHomePage, child: (context) => const HomePage());
     r.child(AppRoutes.appServiceOrderPage, child: (context) => ServiceOrderPage(args: r.args.data,));
     r.child(AppRoutes.appServiceOrderListPage, child: (context) => const ServiceOrderListPage());

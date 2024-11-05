@@ -5,6 +5,7 @@ import 'package:new_ezagro_flutter/features/presenter/modules/authentication_mod
 
 import '../../../../../consts/app_routes.dart';
 import '../../../../../design_system/strings/app_strings_portuguese.dart';
+import '../../../../../design_system/widgets/snackbars/custon_snack_bar_widget.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
@@ -41,10 +42,15 @@ class RepeatPasswordPage extends StatelessWidget {
             buttonText: AppStringsPortuguese.forwardString,
             onButtonPressed: () {
               controller.retypePassword = textController.text;
-              if (controller.comparePasswords(
-                  controller.password, controller.retypePassword)) {
-                controller.recoverPassword();
+              if (controller.comparePasswords(controller.password, controller.retypePassword)) {
+                controller.updatePassword(context);
                 RecoverPasswordSuccessPage.navigate();
+              } else {
+                CustomSnackBarWidget.show(SnackBarType.error, context, 'As senhas são diferentes!');
+                textController.clear();
+                controller.password = '';
+                controller.retypePassword = '';
+                NewPasswordPage.navigate();
               }
             },
             passwordField: true,

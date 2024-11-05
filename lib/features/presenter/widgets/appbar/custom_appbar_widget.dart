@@ -10,6 +10,7 @@ enum AppBarType {
   centeredTitleAndBackArrow,
   hamburgerAndTitle,
   hamburgerAndEmployee,
+  centeredTitleAndBackArrow,
 }
 
 class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget {

@@ -53,7 +53,7 @@ class _CustomUnderlinedTextFieldState extends State<CustomUnderlinedTextField> {
                 )
               : null,
           focusedBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(color: AppColors.darkGreyColor))),
+              borderSide: BorderSide(color: AppColors.formGreyColor))),
       obscureText: (widget.passwordField && !sufixIconPressed),
     );
   }

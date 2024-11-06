@@ -13,7 +13,7 @@ class AppColors {
   static const Color transparent = Color(0x00FFFFFF);
 
   ///ESPECIFIC COLORS
-  static const Color backgroundColor = Color(0xffFDF6ED);
+  static const Color backgroundColor = Color(0xffECECEC);
   static const Color borderWhiteColor = Color(0xffF3F3F3);
   static const Color formGreyColor = Color(0xffBFBFBF);
   static const Color dividerGreyColor = Color(0xffD7D7D7);

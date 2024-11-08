@@ -5,4 +5,6 @@ import '../../models/pagination_model/pagination_model.dart';
 
 abstract class FarmDatasource {
   Future<PaginationModel<FarmModel>> getSimplifiedFarms(NoParams noParams);
+
+  Future<List<FarmModel>> getCostCenterFarmsById(String costCenterId);
 }

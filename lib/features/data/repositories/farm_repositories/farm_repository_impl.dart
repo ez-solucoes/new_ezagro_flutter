@@ -27,4 +27,19 @@ class FarmRepositoryImpl implements FarmRepository {
           additionalInfo: stacktrace.toString()));
     }
   }
+
+  @override
+  Future<Either<ApplicationError, List<FarmModel>>>
+  getCostCenterFarms(String costCenterId) async {
+    try {
+      final result = await datasource.getCostCenterFarmsById(costCenterId);
+      return Right(result);
+    } on ApplicationError catch (e) {
+      return Left(e);
+    } catch (e, stacktrace) {
+      return Left(GenericError(
+          fingerprint: '$FarmRepositoryImpl.getCostCenterFarms',
+          additionalInfo: stacktrace.toString()));
+    }
+  }
 }

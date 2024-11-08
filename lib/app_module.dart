@@ -22,6 +22,8 @@ import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_u
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/executor_usecases/executor_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/executor_usecases/executor_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/cost_center_farm_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/cost_center_farm_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/machinery_usecases/machinery_usecase.dart';
@@ -30,6 +32,8 @@ import 'package:new_ezagro_flutter/features/domain/usecases/pest_usecases/pest_u
 import 'package:new_ezagro_flutter/features/domain/usecases/pest_usecases/pest_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots_with_farm_id_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots_with_farm_id_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecases_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase.dart';
@@ -138,6 +142,8 @@ class AppModule extends Module {
     i.addLazySingleton<CreateServiceOrderUsecase>(CreateServiceOrderUsecaseImpl.new);
     i.addLazySingleton<GetServiceOrderByIdUsecase>(GetServiceOrderByIdUsecaseImpl.new);
     i.addLazySingleton<PestUsecase>(PestUsecaseImpl.new);
+    i.addLazySingleton<CostCenterFarmUsecase>(CostCenterFarmUsecaseImpl.new);
+    i.addLazySingleton<PlotsWithFarmIdUsecase>(PlotsWithFarmIdUsecaseImpl.new);
 
     //Repository
     i.addLazySingleton<AuthenticationRepository>(AuthenticationRepositoryImpl.new);

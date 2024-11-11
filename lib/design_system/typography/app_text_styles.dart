@@ -181,4 +181,15 @@ class AppTextStyles {
       color: color,
     );
   }
+
+  static TextStyle bodyCardTextStyle({
+    required Color color
+}) {
+    return TextStyle(
+      fontFamily: AppFonts.montserratFont,
+      fontWeight: FontWeight.normal,
+      fontSize: AppDimens.buttonTextDimen,
+      color: color
+    );
+  }
 }

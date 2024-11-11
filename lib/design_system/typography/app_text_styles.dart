@@ -170,4 +170,15 @@ class AppTextStyles {
       color: color,
     );
   }
+
+  static TextStyle smallBoldTextStyle({
+    required Color color,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.montserratFont,
+      fontWeight: FontWeight.w800,
+      fontSize: AppDimens.smallTextDimen,
+      color: color,
+    );
+  }
 }

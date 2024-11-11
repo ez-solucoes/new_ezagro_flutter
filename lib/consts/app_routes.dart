@@ -23,6 +23,7 @@ class AppRoutes {
   static const String appServiceOrderListPage = '/serviceOrderListPage';
   static const String appServiceOrderPage = '/serviceOrderPage';
   static const String appCreateServiceOrderPage = '/createServiceOrderPage';
+  static const String appCompanyPage = '/companyPage';
 
   //Change Password
   static const String appChangePasswordFirstStepPage =

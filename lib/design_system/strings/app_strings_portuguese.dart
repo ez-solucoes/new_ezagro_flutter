@@ -144,6 +144,13 @@ class AppStringsPortuguese {
   static const String quantityField = 'Quantidade:';
   static const String recommendationField = 'Recomendação:';
 
+  ///Register Module
+  static const String pluralCompanyTitle = "Empresas";
+  static const String singularCompanyTitle = "Empresa";
+  static const String hashtagSymbol = "#";
+  static const String companyNameColumn = "Nome";
+  static const String companyIdentifierColumn = "CNPJ";
+
   ///Errors
   static const String genericErrorMessage =
       'Ocorreu um erro inesperado. Por favor, tente novamente mais tarde ou entre em contato conosco para relatar o problema.';

@@ -47,7 +47,8 @@ class CustomStripedTable extends StatelessWidget {
                     flex: 3,
                     child: Text(columnNames[2],
                         style: AppTextStyles.smallBoldTextStyle(
-                            color: AppColors.primaryBlackColor)),
+                            color: AppColors.primaryBlackColor),
+                      textAlign: TextAlign.center,),
                   ),
                 ],
               ),
@@ -69,19 +70,23 @@ class CustomStripedTable extends StatelessWidget {
                             flex: 1,
                             child: Text(data[index][0],
                                 style: AppTextStyles.appBarSubTitleTextStyle(
-                                    color: AppColors.primaryBlackColor)),
+                                    color: AppColors.primaryBlackColor),
+                                textAlign: TextAlign.center,
+                            ),
                           ),
                           Expanded(
                             flex: 3,
                             child: Text(data[index][1],
                                 style: AppTextStyles.appBarSubTitleTextStyle(
-                                    color: AppColors.primaryBlackColor)),
+                                    color: AppColors.primaryBlackColor),
+                                textAlign: TextAlign.start,),
                           ),
                           Expanded(
                             flex: 3,
                             child: Text(data[index][2],
                                 style: AppTextStyles.appBarSubTitleTextStyle(
-                                    color: AppColors.primaryBlackColor)),
+                                    color: AppColors.primaryBlackColor),
+                                textAlign: TextAlign.center,),
                           ),
                         ]),
                       ),

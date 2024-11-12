@@ -150,6 +150,10 @@ class AppStringsPortuguese {
   static const String hashtagSymbol = "#";
   static const String companyNameColumn = "Nome";
   static const String companyIdentifierColumn = "CNPJ";
+  static const String pluralContractTitle = "Contratos";
+  static const String singularContractTitle = "Contrato";
+  static const String contractNameColumn = "Contrato";
+  static const String contractTypeColumn = "Tipo";
 
   ///Errors
   static const String genericErrorMessage =

@@ -154,6 +154,19 @@ class AppStringsPortuguese {
   static const String singularContractTitle = "Contrato";
   static const String contractNameColumn = "Contrato";
   static const String contractTypeColumn = "Tipo";
+  static const String contractLabel = "Contrato:";
+  static const String typeLabel = "Tipo:";
+  static const String externalCodeLabel = "Códgio Externo:";
+  static const String costCenterLabel = "Centro de Custo:";
+  static const String startingDateLabel = "Data de Início:";
+  static const String endingDateLabel = "Data do Fim:";
+  static const String ruralProducerLabel = "Produtor Rural:";
+  static const String farmLabel = "Fazenda:";
+  static const String credorCompanyLabel = "Empresa Credora:";
+  static const String globalValueLabel = "Valor Global:";
+  static const String itemsSectionTitle = "Itens";
+  static const String itemColumn = "Item";
+  static const String valueColumn = "Valor";
 
   ///Errors
   static const String genericErrorMessage =

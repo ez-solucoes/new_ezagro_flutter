@@ -40,13 +40,13 @@ class CompanyPage extends StatelessWidget {
         Padding(
           padding: EdgeInsets.all(12),
           child: Column(children: [
-            SingleInfoCard(title: "Lucas Transportes", data: "Moisés da Silva"),
+            BoldTitleInfoCard(titleOne: "Lucas Transportes", dataOne: "Moisés da Silva"),
             const SizedBox(height: 10,),
-            SingleInfoCard(title: "CNPJ", data: "00.00.00/000-00"),
+            BoldTitleInfoCard(titleOne: "CNPJ", dataOne: "00.00.00/000-00"),
             const SizedBox(height: 10,),
-            SingleInfoCard(title: "Tipo", data: "Própria"),
+            BoldTitleInfoCard(titleOne: "Tipo", dataOne: "Própria"),
             const SizedBox(height: 10,),
-            SingleInfoCard(title: "Segmento", data: "Fretes"),
+            BoldTitleInfoCard(titleOne: "Segmento", dataOne: "Fretes"),
             const SizedBox(height: 10,),
             ThreeInfoCard(
                 title: "Contato",

@@ -108,6 +108,7 @@ import 'features/presenter/modules/authentication_module/register_page/register_
 import 'features/presenter/modules/documents/documents_page/documents_page.dart';
 import 'features/presenter/modules/register/company/company_list_page.dart';
 import 'features/presenter/modules/register/company/company_page.dart';
+import 'features/presenter/modules/register/contracts/contract_page.dart';
 import 'features/presenter/modules/service_order/controller/create_service_order_controller/create_service_order_controller.dart';
 import 'features/presenter/modules/service_order/controller/service_order_controller/service_order_controller.dart';
 import 'features/presenter/modules/service_order/create_service_order_page/create_service_order_page.dart';
@@ -186,7 +187,7 @@ class AppModule extends Module {
 
   @override
   void routes(RouteManager r) {
-    r.child(AppRoutes.appDefaultPage, child: (context) => ContractListPage());
+    r.child(AppRoutes.appDefaultPage, child: (context) => ContractPage());
     r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
 
     r.child(AppRoutes.appLoginPage, child: (context) => LoginPage());
@@ -208,7 +209,7 @@ class AppModule extends Module {
     r.child(AppRoutes.appCompanyListPage, child: (context) => CompanyListPage());
     r.child(AppRoutes.appCompanyPage, child: (context) => CompanyPage());
     r.child(AppRoutes.appContractListPage, child: (context) => ContractListPage());
-    r.child(AppRoutes.appContractPage, child: (context) => CompanyPage());
+    r.child(AppRoutes.appContractPage, child: (context) => ContractPage());
 
     super.routes(r);
   }

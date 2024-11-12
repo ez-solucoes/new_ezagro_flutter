@@ -24,7 +24,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
   final bool showNotificationIcon;
   final Function()? onTap;
   final VoidCallback? callback;
-
+  final PreferredSizeWidget? bottom;
 
   const CustomAppBarWidget({
     super.key,
@@ -37,6 +37,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
     this.showNotificationIcon = false,
     this.callback,
     this.onTap,
+    this.bottom,
     required this.appBarType,
   });
 
@@ -63,6 +64,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
   AppBar get _buildStepsAndBackArrow => AppBar(
     backgroundColor: AppColors.backgroundColor,
     scrolledUnderElevation: 0,
+    bottom: bottom,
     title: Column(
       children: [
         GestureDetector(
@@ -90,6 +92,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
   AppBar get _buildBackArrow => AppBar(
     backgroundColor: AppColors.backgroundColor,
     scrolledUnderElevation: 0,
+    bottom: bottom,
     title: Column(
       children: [
         GestureDetector(
@@ -114,6 +117,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
     return AppBar(
       backgroundColor: AppColors.backgroundColor,
       scrolledUnderElevation: 0,
+      bottom: bottom,
       title: Column(
         children: [
           Row(
@@ -146,6 +150,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
     return AppBar(
       backgroundColor: AppColors.backgroundColor,
       scrolledUnderElevation: 0,
+      bottom: bottom,
       title: Column(
         children: [
           Row(
@@ -181,6 +186,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
       scrolledUnderElevation: 0,
       automaticallyImplyLeading: false,
       centerTitle: true,
+      bottom: bottom,
       title: Stack(
         children: [
           Center(
@@ -201,6 +207,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
   AppBar get _buildHamburgerAndEmployee => AppBar(
     backgroundColor: AppColors.backgroundColor,
     scrolledUnderElevation: 0,
+    bottom: bottom,
     title: Align(
       alignment: Alignment.centerLeft,
       child: Text(

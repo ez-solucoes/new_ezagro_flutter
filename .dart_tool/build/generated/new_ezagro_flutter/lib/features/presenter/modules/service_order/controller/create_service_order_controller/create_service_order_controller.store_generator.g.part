@@ -4,9 +4,10 @@
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
-  late final _$isLoadingAtom =
-      Atom(name: '_CreateServiceOrderController.isLoading', context: context);
+mixin _$CreateServiceOrderController
+    on CreateServiceOrderControllerAbstract, Store {
+  late final _$isLoadingAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -21,8 +22,9 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     });
   }
 
-  late final _$isLastPageAtom =
-      Atom(name: '_CreateServiceOrderController.isLastPage', context: context);
+  late final _$isLastPageAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.isLastPage',
+      context: context);
 
   @override
   bool get isLastPage {
@@ -38,7 +40,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$pageAtom =
-      Atom(name: '_CreateServiceOrderController.page', context: context);
+      Atom(name: 'CreateServiceOrderControllerAbstract.page', context: context);
 
   @override
   int get page {
@@ -53,8 +55,8 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     });
   }
 
-  late final _$selectAllAtom =
-      Atom(name: '_CreateServiceOrderController.selectAll', context: context);
+  late final _$selectAllAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.selectAll', context: context);
 
   @override
   bool get selectAll {
@@ -70,7 +72,8 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$activityOptionsAtom = Atom(
-      name: '_CreateServiceOrderController.activityOptions', context: context);
+      name: 'CreateServiceOrderControllerAbstract.activityOptions',
+      context: context);
 
   @override
   List<AgriculturalActivityEntity> get activityOptions {
@@ -85,25 +88,43 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     });
   }
 
-  late final _$costCenterOptionsAtom = Atom(
-      name: '_CreateServiceOrderController.costCenterOptions',
+  late final _$pestsOptionsAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.pestsOptions',
       context: context);
 
   @override
-  List<CostCenterEntity> get costCenterOptions {
+  List<PestEntity> get pestsOptions {
+    _$pestsOptionsAtom.reportRead();
+    return super.pestsOptions;
+  }
+
+  @override
+  set pestsOptions(List<PestEntity> value) {
+    _$pestsOptionsAtom.reportWrite(value, super.pestsOptions, () {
+      super.pestsOptions = value;
+    });
+  }
+
+  late final _$costCenterOptionsAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.costCenterOptions',
+      context: context);
+
+  @override
+  List<SelectorEntity> get costCenterOptions {
     _$costCenterOptionsAtom.reportRead();
     return super.costCenterOptions;
   }
 
   @override
-  set costCenterOptions(List<CostCenterEntity> value) {
+  set costCenterOptions(List<SelectorEntity> value) {
     _$costCenterOptionsAtom.reportWrite(value, super.costCenterOptions, () {
       super.costCenterOptions = value;
     });
   }
 
-  late final _$farmOptionsAtom =
-      Atom(name: '_CreateServiceOrderController.farmOptions', context: context);
+  late final _$farmOptionsAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.farmOptions',
+      context: context);
 
   @override
   List<FarmEntity> get farmOptions {
@@ -118,88 +139,94 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     });
   }
 
-  late final _$cropOptionsAtom =
-      Atom(name: '_CreateServiceOrderController.cropOptions', context: context);
+  late final _$cropOptionsAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.cropOptions',
+      context: context);
 
   @override
-  List<CropEntity> get cropOptions {
+  List<SelectorEntity> get cropOptions {
     _$cropOptionsAtom.reportRead();
     return super.cropOptions;
   }
 
   @override
-  set cropOptions(List<CropEntity> value) {
+  set cropOptions(List<SelectorEntity> value) {
     _$cropOptionsAtom.reportWrite(value, super.cropOptions, () {
       super.cropOptions = value;
     });
   }
 
   late final _$executorsOptionsAtom = Atom(
-      name: '_CreateServiceOrderController.executorsOptions', context: context);
+      name: 'CreateServiceOrderControllerAbstract.executorsOptions',
+      context: context);
 
   @override
-  List<EmployeeEntity> get executorsOptions {
+  List<SelectorEntity> get executorsOptions {
     _$executorsOptionsAtom.reportRead();
     return super.executorsOptions;
   }
 
   @override
-  set executorsOptions(List<EmployeeEntity> value) {
+  set executorsOptions(List<SelectorEntity> value) {
     _$executorsOptionsAtom.reportWrite(value, super.executorsOptions, () {
       super.executorsOptions = value;
     });
   }
 
   late final _$machineryOptionsAtom = Atom(
-      name: '_CreateServiceOrderController.machineryOptions', context: context);
+      name: 'CreateServiceOrderControllerAbstract.machineryOptions',
+      context: context);
 
   @override
-  List<MachineImplementEntity> get machineryOptions {
+  List<SelectorEntity> get machineryOptions {
     _$machineryOptionsAtom.reportRead();
     return super.machineryOptions;
   }
 
   @override
-  set machineryOptions(List<MachineImplementEntity> value) {
+  set machineryOptions(List<SelectorEntity> value) {
     _$machineryOptionsAtom.reportWrite(value, super.machineryOptions, () {
       super.machineryOptions = value;
     });
   }
 
   late final _$productsOptionsAtom = Atom(
-      name: '_CreateServiceOrderController.productsOptions', context: context);
+      name: 'CreateServiceOrderControllerAbstract.productsOptions',
+      context: context);
 
   @override
-  List<ProductEntity> get productsOptions {
+  List<SelectorEntity> get productsOptions {
     _$productsOptionsAtom.reportRead();
     return super.productsOptions;
   }
 
   @override
-  set productsOptions(List<ProductEntity> value) {
+  set productsOptions(List<SelectorEntity> value) {
     _$productsOptionsAtom.reportWrite(value, super.productsOptions, () {
       super.productsOptions = value;
     });
   }
 
   late final _$employeeOptionsAtom = Atom(
-      name: '_CreateServiceOrderController.employeeOptions', context: context);
+      name: 'CreateServiceOrderControllerAbstract.employeeOptions',
+      context: context);
 
   @override
-  List<EmployeeEntity> get employeeOptions {
+  List<SelectorEntity> get employeeOptions {
     _$employeeOptionsAtom.reportRead();
     return super.employeeOptions;
   }
 
   @override
-  set employeeOptions(List<EmployeeEntity> value) {
+  set employeeOptions(List<SelectorEntity> value) {
     _$employeeOptionsAtom.reportWrite(value, super.employeeOptions, () {
       super.employeeOptions = value;
     });
   }
 
   late final _$plotsOptionsAtom = Atom(
-      name: '_CreateServiceOrderController.plotsOptions', context: context);
+      name: 'CreateServiceOrderControllerAbstract.plotsOptions',
+      context: context);
 
   @override
   List<PlotEntity> get plotsOptions {
@@ -215,7 +242,8 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$selectedPlotsAtom = Atom(
-      name: '_CreateServiceOrderController.selectedPlots', context: context);
+      name: 'CreateServiceOrderControllerAbstract.selectedPlots',
+      context: context);
 
   @override
   List<int> get selectedPlots {
@@ -231,57 +259,75 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$selectedMachineryAtom = Atom(
-      name: '_CreateServiceOrderController.selectedMachinery',
+      name: 'CreateServiceOrderControllerAbstract.selectedMachinery',
       context: context);
 
   @override
-  List<String> get selectedMachinery {
+  List<int> get selectedMachinery {
     _$selectedMachineryAtom.reportRead();
     return super.selectedMachinery;
   }
 
   @override
-  set selectedMachinery(List<String> value) {
+  set selectedMachinery(List<int> value) {
     _$selectedMachineryAtom.reportWrite(value, super.selectedMachinery, () {
       super.selectedMachinery = value;
     });
   }
 
   late final _$selectedProductsAtom = Atom(
-      name: '_CreateServiceOrderController.selectedProducts', context: context);
+      name: 'CreateServiceOrderControllerAbstract.selectedProducts',
+      context: context);
 
   @override
-  List<String> get selectedProducts {
+  List<int> get selectedProducts {
     _$selectedProductsAtom.reportRead();
     return super.selectedProducts;
   }
 
   @override
-  set selectedProducts(List<String> value) {
+  set selectedProducts(List<int> value) {
     _$selectedProductsAtom.reportWrite(value, super.selectedProducts, () {
       super.selectedProducts = value;
     });
   }
 
   late final _$selectedExecutorsAtom = Atom(
-      name: '_CreateServiceOrderController.selectedExecutors',
+      name: 'CreateServiceOrderControllerAbstract.selectedExecutors',
       context: context);
 
   @override
-  List<String> get selectedExecutors {
+  List<int> get selectedExecutors {
     _$selectedExecutorsAtom.reportRead();
     return super.selectedExecutors;
   }
 
   @override
-  set selectedExecutors(List<String> value) {
+  set selectedExecutors(List<int> value) {
     _$selectedExecutorsAtom.reportWrite(value, super.selectedExecutors, () {
       super.selectedExecutors = value;
     });
   }
 
-  late final _$activityAtom =
-      Atom(name: '_CreateServiceOrderController.activity', context: context);
+  late final _$selectedPestsAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.selectedPests',
+      context: context);
+
+  @override
+  List<PestEntity> get selectedPests {
+    _$selectedPestsAtom.reportRead();
+    return super.selectedPests;
+  }
+
+  @override
+  set selectedPests(List<PestEntity> value) {
+    _$selectedPestsAtom.reportWrite(value, super.selectedPests, () {
+      super.selectedPests = value;
+    });
+  }
+
+  late final _$activityAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.activity', context: context);
 
   @override
   AgriculturalActivityEntity? get activity {
@@ -296,8 +342,26 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     });
   }
 
-  late final _$isSelectingAtom =
-      Atom(name: '_CreateServiceOrderController.isSelecting', context: context);
+  late final _$harvestNameAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.harvestName',
+      context: context);
+
+  @override
+  String get harvestName {
+    _$harvestNameAtom.reportRead();
+    return super.harvestName;
+  }
+
+  @override
+  set harvestName(String value) {
+    _$harvestNameAtom.reportWrite(value, super.harvestName, () {
+      super.harvestName = value;
+    });
+  }
+
+  late final _$isSelectingAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.isSelecting',
+      context: context);
 
   @override
   bool get isSelecting {
@@ -312,8 +376,9 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     });
   }
 
-  late final _$startIndexAtom =
-      Atom(name: '_CreateServiceOrderController.startIndex', context: context);
+  late final _$startIndexAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.startIndex',
+      context: context);
 
   @override
   int get startIndex {
@@ -329,7 +394,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$getActivitiesAsyncAction = AsyncAction(
-      '_CreateServiceOrderController.getActivities',
+      'CreateServiceOrderControllerAbstract.getActivities',
       context: context);
 
   @override
@@ -338,7 +403,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$getCostCentersAsyncAction = AsyncAction(
-      '_CreateServiceOrderController.getCostCenters',
+      'CreateServiceOrderControllerAbstract.getCostCenters',
       context: context);
 
   @override
@@ -346,18 +411,18 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     return _$getCostCentersAsyncAction.run(() => super.getCostCenters());
   }
 
-  late final _$getSimplifiedFarmsAsyncAction = AsyncAction(
-      '_CreateServiceOrderController.getSimplifiedFarms',
+  late final _$getCostCenterFarmsAsyncAction = AsyncAction(
+      'CreateServiceOrderControllerAbstract.getCostCenterFarms',
       context: context);
 
   @override
-  Future<dynamic> getSimplifiedFarms() {
-    return _$getSimplifiedFarmsAsyncAction
-        .run(() => super.getSimplifiedFarms());
+  Future<dynamic> getCostCenterFarms(String costCenterId) {
+    return _$getCostCenterFarmsAsyncAction
+        .run(() => super.getCostCenterFarms(costCenterId));
   }
 
   late final _$getSimplifiedCropsAsyncAction = AsyncAction(
-      '_CreateServiceOrderController.getSimplifiedCrops',
+      'CreateServiceOrderControllerAbstract.getSimplifiedCrops',
       context: context);
 
   @override
@@ -367,7 +432,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$getPlotsOptionsAsyncAction = AsyncAction(
-      '_CreateServiceOrderController.getPlotsOptions',
+      'CreateServiceOrderControllerAbstract.getPlotsOptions',
       context: context);
 
   @override
@@ -375,8 +440,17 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
     return _$getPlotsOptionsAsyncAction.run(() => super.getPlotsOptions());
   }
 
+  late final _$getPestsAsyncAction = AsyncAction(
+      'CreateServiceOrderControllerAbstract.getPests',
+      context: context);
+
+  @override
+  Future<dynamic> getPests() {
+    return _$getPestsAsyncAction.run(() => super.getPests());
+  }
+
   late final _$getExecutorOptionsAsyncAction = AsyncAction(
-      '_CreateServiceOrderController.getExecutorOptions',
+      'CreateServiceOrderControllerAbstract.getExecutorOptions',
       context: context);
 
   @override
@@ -386,7 +460,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$getMachineryAsyncAction = AsyncAction(
-      '_CreateServiceOrderController.getMachinery',
+      'CreateServiceOrderControllerAbstract.getMachinery',
       context: context);
 
   @override
@@ -395,7 +469,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$getProductsOptionsAsyncAction = AsyncAction(
-      '_CreateServiceOrderController.getProductsOptions',
+      'CreateServiceOrderControllerAbstract.getProductsOptions',
       context: context);
 
   @override
@@ -405,7 +479,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$getEmployeeOptionsAsyncAction = AsyncAction(
-      '_CreateServiceOrderController.getEmployeeOptions',
+      'CreateServiceOrderControllerAbstract.getEmployeeOptions',
       context: context);
 
   @override
@@ -415,7 +489,7 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
   }
 
   late final _$createServiceOrderAsyncAction = AsyncAction(
-      '_CreateServiceOrderController.createServiceOrder',
+      'CreateServiceOrderControllerAbstract.createServiceOrder',
       context: context);
 
   @override
@@ -424,61 +498,85 @@ mixin _$CreateServiceOrderController on _CreateServiceOrderController, Store {
         .run(() => super.createServiceOrder());
   }
 
-  late final _$_CreateServiceOrderControllerActionController =
-      ActionController(name: '_CreateServiceOrderController', context: context);
+  late final _$CreateServiceOrderControllerAbstractActionController =
+      ActionController(
+          name: 'CreateServiceOrderControllerAbstract', context: context);
+
+  @override
+  int getPageNumber() {
+    final _$actionInfo =
+        _$CreateServiceOrderControllerAbstractActionController.startAction(
+            name: 'CreateServiceOrderControllerAbstract.getPageNumber');
+    try {
+      return super.getPageNumber();
+    } finally {
+      _$CreateServiceOrderControllerAbstractActionController
+          .endAction(_$actionInfo);
+    }
+  }
 
   @override
   dynamic toggleSelectAll() {
-    final _$actionInfo = _$_CreateServiceOrderControllerActionController
-        .startAction(name: '_CreateServiceOrderController.toggleSelectAll');
+    final _$actionInfo =
+        _$CreateServiceOrderControllerAbstractActionController.startAction(
+            name: 'CreateServiceOrderControllerAbstract.toggleSelectAll');
     try {
       return super.toggleSelectAll();
     } finally {
-      _$_CreateServiceOrderControllerActionController.endAction(_$actionInfo);
+      _$CreateServiceOrderControllerAbstractActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   dynamic incrementPage() {
-    final _$actionInfo = _$_CreateServiceOrderControllerActionController
-        .startAction(name: '_CreateServiceOrderController.incrementPage');
+    final _$actionInfo =
+        _$CreateServiceOrderControllerAbstractActionController.startAction(
+            name: 'CreateServiceOrderControllerAbstract.incrementPage');
     try {
       return super.incrementPage();
     } finally {
-      _$_CreateServiceOrderControllerActionController.endAction(_$actionInfo);
+      _$CreateServiceOrderControllerAbstractActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   dynamic decrementPage() {
-    final _$actionInfo = _$_CreateServiceOrderControllerActionController
-        .startAction(name: '_CreateServiceOrderController.decrementPage');
+    final _$actionInfo =
+        _$CreateServiceOrderControllerAbstractActionController.startAction(
+            name: 'CreateServiceOrderControllerAbstract.decrementPage');
     try {
       return super.decrementPage();
     } finally {
-      _$_CreateServiceOrderControllerActionController.endAction(_$actionInfo);
+      _$CreateServiceOrderControllerAbstractActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void onLongPressEnd(LongPressEndDetails details) {
-    final _$actionInfo = _$_CreateServiceOrderControllerActionController
-        .startAction(name: '_CreateServiceOrderController.onLongPressEnd');
+    final _$actionInfo =
+        _$CreateServiceOrderControllerAbstractActionController.startAction(
+            name: 'CreateServiceOrderControllerAbstract.onLongPressEnd');
     try {
       return super.onLongPressEnd(details);
     } finally {
-      _$_CreateServiceOrderControllerActionController.endAction(_$actionInfo);
+      _$CreateServiceOrderControllerAbstractActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void onLongPressUpdate(LongPressMoveUpdateDetails details) {
-    final _$actionInfo = _$_CreateServiceOrderControllerActionController
-        .startAction(name: '_CreateServiceOrderController.onLongPressUpdate');
+    final _$actionInfo =
+        _$CreateServiceOrderControllerAbstractActionController.startAction(
+            name: 'CreateServiceOrderControllerAbstract.onLongPressUpdate');
     try {
       return super.onLongPressUpdate(details);
     } finally {
-      _$_CreateServiceOrderControllerActionController.endAction(_$actionInfo);
+      _$CreateServiceOrderControllerAbstractActionController
+          .endAction(_$actionInfo);
     }
   }
 
@@ -490,6 +588,7 @@ isLastPage: ${isLastPage},
 page: ${page},
 selectAll: ${selectAll},
 activityOptions: ${activityOptions},
+pestsOptions: ${pestsOptions},
 costCenterOptions: ${costCenterOptions},
 farmOptions: ${farmOptions},
 cropOptions: ${cropOptions},
@@ -502,7 +601,9 @@ selectedPlots: ${selectedPlots},
 selectedMachinery: ${selectedMachinery},
 selectedProducts: ${selectedProducts},
 selectedExecutors: ${selectedExecutors},
+selectedPests: ${selectedPests},
 activity: ${activity},
+harvestName: ${harvestName},
 isSelecting: ${isSelecting},
 startIndex: ${startIndex}
     ''';

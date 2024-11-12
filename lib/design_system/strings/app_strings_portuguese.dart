@@ -167,6 +167,10 @@ class AppStringsPortuguese {
   static const String itemsSectionTitle = "Itens";
   static const String itemColumn = "Item";
   static const String valueColumn = "Valor";
+  static const String pluralEmployeeTitle = "Funcionários";
+  static const String singularEmployeeTitle = "Funcionário";
+  static const String employeesNameColumn = "Nome";
+  static const String positionColumn = "Cargo";
 
   ///Errors
   static const String genericErrorMessage =

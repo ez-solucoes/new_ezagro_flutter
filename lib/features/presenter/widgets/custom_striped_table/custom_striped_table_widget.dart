@@ -7,12 +7,14 @@ class CustomStripedTable extends StatelessWidget {
     super.key,
     required this.columnNames,
     required this.data,
-    required this.maxHeight
+    required this.maxHeight,
+    this.equalColumnProportions = false
   });
 
   final List<String> columnNames;
   final List<List<String>> data;
   final double maxHeight;
+  final bool equalColumnProportions;
 
   @override
   Widget build(BuildContext context) {
@@ -35,16 +37,20 @@ class CustomStripedTable extends StatelessWidget {
                     flex: 1,
                     child: Text(columnNames[0],
                         style: AppTextStyles.smallBoldTextStyle(
-                            color: AppColors.primaryBlackColor)),
+                            color: AppColors.primaryBlackColor),
+                        textAlign: equalColumnProportions ? TextAlign.center : TextAlign.start,
+                    ),
                   ),
                   Expanded(
-                    flex: 3,
+                    flex: equalColumnProportions ? 1 : 3,
                     child: Text(columnNames[1],
                         style: AppTextStyles.smallBoldTextStyle(
-                            color: AppColors.primaryBlackColor)),
+                            color: AppColors.primaryBlackColor),
+                        textAlign: equalColumnProportions ? TextAlign.center : TextAlign.start,
+                    )
                   ),
                   Expanded(
-                    flex: 3,
+                    flex: equalColumnProportions ? 1 : 3,
                     child: Text(columnNames[2],
                         style: AppTextStyles.smallBoldTextStyle(
                             color: AppColors.primaryBlackColor),
@@ -71,18 +77,18 @@ class CustomStripedTable extends StatelessWidget {
                             child: Text(data[index][0],
                                 style: AppTextStyles.appBarSubTitleTextStyle(
                                     color: AppColors.primaryBlackColor),
-                                textAlign: TextAlign.center,
+                                textAlign: equalColumnProportions ? TextAlign.center : TextAlign.start,
                             ),
                           ),
                           Expanded(
-                            flex: 3,
+                            flex: equalColumnProportions ? 1 : 3,
                             child: Text(data[index][1],
                                 style: AppTextStyles.appBarSubTitleTextStyle(
                                     color: AppColors.primaryBlackColor),
-                                textAlign: TextAlign.start,),
+                                textAlign: equalColumnProportions ? TextAlign.center : TextAlign.start,),
                           ),
                           Expanded(
-                            flex: 3,
+                            flex: equalColumnProportions ? 1 : 3,
                             child: Text(data[index][2],
                                 style: AppTextStyles.appBarSubTitleTextStyle(
                                     color: AppColors.primaryBlackColor),

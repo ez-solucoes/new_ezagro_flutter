@@ -49,7 +49,8 @@ class MultInfoCard extends StatelessWidget {
             ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Coluna 1
               Column(
@@ -64,7 +65,6 @@ class MultInfoCard extends StatelessWidget {
                   );
                 }).toList(),
               ),
-              // Coluna 2
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: column2Data.map((data) {

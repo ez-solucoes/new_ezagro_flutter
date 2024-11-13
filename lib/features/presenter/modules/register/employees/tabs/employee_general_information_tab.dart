@@ -37,7 +37,7 @@ class EmployeeGeneralInformationTab extends StatelessWidget {
             MultInfoCard(
                 title: AppStringsPortuguese.employeeContractLabel,
                 column1Data: [(AppStringsPortuguese.employeeAdmissionDateLabel, "02/03/2024"),(AppStringsPortuguese.employeePositionLabel, "Operador"),(AppStringsPortuguese.employeeContractTypeLabel, "Temporário"), (AppStringsPortuguese.employeeBaseSalaryLabel, "R\$2.000,00"), (AppStringsPortuguese.employeeFiringReasonLabel, "")],
-                column2Data: [(AppStringsPortuguese.employeeWorkerIdLabel, "000.0000.000-00"),(AppStringsPortuguese.employeeDepartmentLabel, "Agrícola"),(AppStringsPortuguese.employeeShiftLabel, "Matutino"), (AppStringsPortuguese.employeeFiringDateLabel, "08/08/2024"), ("","")]),
+                column2Data: [(AppStringsPortuguese.employeeWorkerIdLabel, "000.0000.000-00"),(AppStringsPortuguese.employeeDepartmentLabel, "Agrícola"),(AppStringsPortuguese.employeeShiftLabel, "Matutino"), (AppStringsPortuguese.employeeFiringDateLabel, "08/08/2024")]),
             const SizedBox(height: 10,)
           ],),
       );

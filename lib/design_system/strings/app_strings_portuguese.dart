@@ -184,12 +184,6 @@ class AppStringsPortuguese {
   static const String employeePhoneLabel = "Telefone:";
   static const String employeeWhatsAppLabel = "What'sApp:";
   static const String employeeEmailLabel = "E-mail:";
-  static const String employeeCepLabel = "CEP:";
-  static const String employeeCityLabel = "Cidade:";
-  static const String employeeStreetLabel = "Logradouro";
-  static const String employeeNeighborhoodLabel = "Bairro:";
-  static const String employeeStateLabel = "Estado:";
-  static const String employeeCountryLabel = "País:";
   static const String employeeAccountTypeLabel = "Tipo de conta";
   static const String employeeBankLabel = "Banco:";
   static const String employeeAgencyLabel = "Agência:";
@@ -223,6 +217,16 @@ class AppStringsPortuguese {
   static const String employeeBirthdayColumn = "Nascimento";
   static const String employeeAttachmentsLabel = "Anexos:";
 
+  static const String addressCepLabel = "CEP:";
+  static const String addressCityLabel = "Cidade:";
+  static const String addressStreetLabel = "Logradouro";
+  static const String addressNeighborhoodLabel = "Bairro:";
+  static const String addressStateLabel = "Estado:";
+  static const String addressCountryLabel = "País:";
+
+  static const String pluralFarmTitle = "Fazendas";
+  static const String farmColumnName = "Fazenda";
+  static const String farmCostCenterColumn = "Centro de Custo";
   ///Errors
   static const String genericErrorMessage =
       'Ocorreu um erro inesperado. Por favor, tente novamente mais tarde ou entre em contato conosco para relatar o problema.';

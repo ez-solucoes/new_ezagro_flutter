@@ -26,8 +26,8 @@ class EmployeeGeneralInformationTab extends StatelessWidget {
             const SizedBox(height: 10,),
             MultInfoCard(
                 title: AppStringsPortuguese.addressLabel,
-                column1Data: [(AppStringsPortuguese.employeeCepLabel, "00000-000"),(AppStringsPortuguese.employeeStreetLabel, "Rua das Nações, 124"),(AppStringsPortuguese.employeeStateLabel, "São Paulo")],
-                column2Data: [(AppStringsPortuguese.employeeCityLabel, "São Paulo"),(AppStringsPortuguese.employeeNeighborhoodLabel, "Ipiranga"),(AppStringsPortuguese.employeeCountryLabel, "Brasil")]),
+                column1Data: [(AppStringsPortuguese.addressCepLabel, "00000-000"),(AppStringsPortuguese.addressStreetLabel, "Rua das Nações, 124"),(AppStringsPortuguese.addressStateLabel, "São Paulo")],
+                column2Data: [(AppStringsPortuguese.addressCityLabel, "São Paulo"),(AppStringsPortuguese.addressNeighborhoodLabel, "Ipiranga"),(AppStringsPortuguese.addressCountryLabel, "Brasil")]),
             const SizedBox(height: 10,),
             MultInfoCard(
                 title: AppStringsPortuguese.bankDataLabel,

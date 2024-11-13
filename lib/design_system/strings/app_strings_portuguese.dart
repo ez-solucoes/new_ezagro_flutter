@@ -221,12 +221,32 @@ class AppStringsPortuguese {
   static const String addressCityLabel = "Cidade:";
   static const String addressStreetLabel = "Logradouro";
   static const String addressNeighborhoodLabel = "Bairro:";
+  static const String addressReferenceLabel = "Referência:";
   static const String addressStateLabel = "Estado:";
   static const String addressCountryLabel = "País:";
 
   static const String pluralFarmTitle = "Fazendas";
   static const String farmColumnName = "Fazenda";
   static const String farmCostCenterColumn = "Centro de Custo";
+  static const String singularFarmTitle = "Fazenda";
+
+  static const String farmNameLabel = "Nome:";
+  static const String farmOwnerLabel = "Proprietário:";
+  static const String farmCostCenterLabel = "Centro de Custo:";
+  static const String farmExternalCodeLabel = "Código Externo:";
+  static const String farmCaepfLabel = "CAREPF:";
+  static const String farmAreaLabel = "Área:";
+  static const String farmStateSubscriptionLabel = "Inscrição Estadual:";
+  static const String farmOwnerRegisterLabel = "Registro do Proprietário:";
+  static const String farmCompanyLabel = "Empresa:";
+  static const String farmCarLabel = "CAR:";
+  static const String farmCnaeLabel = "CNAE:";
+  static const String farmPlotColumn = "Talhões";
+  static const String farmAreaColumn = "Área";
+  static const String farmCropColumn = "Cultura";
+  static const String contractsTableTitle = "Contratos";
+  static const String attachmentsTableTitle = "Anexos";
+
   ///Errors
   static const String genericErrorMessage =
       'Ocorreu um erro inesperado. Por favor, tente novamente mais tarde ou entre em contato conosco para relatar o problema.';

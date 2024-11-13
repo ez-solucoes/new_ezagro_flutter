@@ -2,6 +2,7 @@ import 'package:new_ezagro_flutter/core/http_client/http_client.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_client_helper.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
 import 'package:new_ezagro_flutter/core/mixins/uri_builder_mixin.dart';
+import 'package:new_ezagro_flutter/core/usecase/empty_result.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/api_endpoints.dart';
 
 import '../../../domain/params/authentication_params/authentication_params.dart';
@@ -56,7 +57,7 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
 
     switch (result.statusCode) {
       case 204:
-        return 204;
+        return EmptyResult();
       default:
         mountServerErrorInstance(request: request, response: result);
     }

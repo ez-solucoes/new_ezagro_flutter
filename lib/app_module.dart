@@ -168,7 +168,7 @@ class AppModule extends Module {
 
   @override
   void routes(RouteManager r) {
-    r.child(AppRoutes.appDefaultPage, child: (context) => LoginPage());
+    r.child(AppRoutes.appDefaultPage, child: (context) => SplashPage());
     r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
 
     r.child(AppRoutes.appLoginPage, child: (context) => LoginPage());

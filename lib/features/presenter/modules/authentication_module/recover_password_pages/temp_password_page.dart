@@ -26,9 +26,9 @@ class TempPasswordPage extends StatelessWidget {
     final TextEditingController textController = TextEditingController();
 
     return BackgroundWidget(
-        appBar: const CustomAppBarWidget(
+        appBar: CustomAppBarWidget(
           appBarType: AppBarType.backArrow,
-          callback: UsernameInputPage.navigate,
+          callback: () => UsernameInputPage.navigate,
         ),
         scrollable: true,
         child: Padding(

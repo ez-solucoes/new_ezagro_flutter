@@ -2,7 +2,6 @@ import 'package:new_ezagro_flutter/core/http_client/http_client.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_client_helper.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/pest_datasources/pest_datasource.dart';
-import 'package:new_ezagro_flutter/features/data/models/machine_implement_models/machine_implement_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/pest_models/pest_model.dart';
 import '../../../../core/mixins/uri_builder_mixin.dart';
 import '../../../../core/usecase/usecase.dart';

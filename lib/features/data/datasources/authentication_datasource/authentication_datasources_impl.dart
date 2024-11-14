@@ -19,7 +19,7 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.authenticateEndpoint,
+      AppEndpoints.loginEndpoint,
     );
 
     final HttpRequest request = HttpRequest.post(path: url, payload: {
@@ -46,7 +46,7 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.recoverPasswordEndpoint,
+      AppEndpoints.forgotPasswordEndpoint,
     );
 
     final HttpRequest request = HttpRequest.post(path: url, payload: {

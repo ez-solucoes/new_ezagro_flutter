@@ -29,7 +29,7 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
 
     final result = await httpClient.execute(request);
 
-    switch (result.statusCode) {
+    switch (result.status) {
       case 200:
         return mountModelInstanceFromResponse(
           response: result,
@@ -55,7 +55,7 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
 
     final result = await httpClient.execute(request);
 
-    switch (result.statusCode) {
+    switch (result.status) {
       case 204:
         return EmptyResult();
       default:
@@ -78,7 +78,7 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
 
     final result = await httpClient.execute(request);
 
-    switch (result.statusCode) {
+    switch (result.status) {
       case 200:
         return mountModelInstanceFromResponse(
           response: result,

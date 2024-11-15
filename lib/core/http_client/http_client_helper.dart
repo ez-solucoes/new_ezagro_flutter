@@ -12,12 +12,12 @@ ServerError mountServerErrorInstance({
     ..write(AppStringsPortuguese.serverErrorCausedBy)
     ..write(request.method.name)
     ..write(' on ${request.path}')
-    ..write(' with status code ${response.statusCode}');
+    ..write(' with status code ${response.status}');
   return ServerError(
     causedBy: causedBy.toString(),
     additionalInfo: response.data?.toString(),
     friendlyMessage: friendlyMessage ??
-        (response.statusCode == 401
+        (response.status == 401
             ? _replaceServerErrorMessage(response.data.toString())
             : null),
   );

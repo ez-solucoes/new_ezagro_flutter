@@ -25,7 +25,7 @@ class PestDatasourceImpl with UriBuilder implements PestDatasource {
     final HttpRequest request = HttpRequest.get(path: url);
     final result = await httpClient.execute(request);
 
-    switch (result.statusCode) {
+    switch (result.status) {
       case 200:
         return mountModelInstanceFromResponse(
           response: result,

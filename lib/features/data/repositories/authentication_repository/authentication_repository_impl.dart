@@ -4,6 +4,7 @@ import 'package:new_ezagro_flutter/core/errors/generic_error.dart';
 import 'package:new_ezagro_flutter/core/usecase/empty_result.dart';
 
 import '../../../domain/entities/authentication_entities/authentication_entity.dart';
+import '../../../domain/entities/response_entities/response_entity.dart';
 import '../../../domain/params/authentication_params/authentication_params.dart';
 import '../../../domain/repositories/authentication_repository/authentication_repository.dart';
 import '../../datasources/authentication_datasource/authentication_datasource.dart';
@@ -14,7 +15,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   AuthenticationRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<ApplicationError, AuthenticationEntity>> authenticate(AuthenticationParams authenticationParams) async {
+  Future<Either<ApplicationError, ResponseEntity<AuthenticationEntity>>> authenticate(AuthenticationParams authenticationParams) async {
     try {
       final result = await datasource.authenticate(authenticationParams);
       return Right(result);
@@ -44,7 +45,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Future<Either<ApplicationError, AuthenticationEntity>> updatePassword(
+  Future<Either<ApplicationError, ResponseEntity<AuthenticationEntity>>> updatePassword(
       AuthenticationParams authenticationParams) async {
     try {
       final result = await datasource.updatePassword(authenticationParams);

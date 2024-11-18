@@ -4,10 +4,11 @@ import 'package:new_ezagro_flutter/features/domain/params/authentication_params/
 
 import '../../../../../core/usecase/usecase.dart';
 import '../../../entities/authentication_entities/authentication_entity.dart';
+import '../../../entities/response_entities/response_entity.dart';
 
 abstract class UpdatePasswordUsecase
-    implements Usecase<AuthenticationEntity, AuthenticationParams> {
+    implements Usecase<ResponseEntity<AuthenticationEntity>, AuthenticationParams> {
   @override
-  Future<Either<ApplicationError, AuthenticationEntity>> call(
+  Future<Either<ApplicationError, ResponseEntity<AuthenticationEntity>>> call(
       AuthenticationParams authenticationParams);
 }

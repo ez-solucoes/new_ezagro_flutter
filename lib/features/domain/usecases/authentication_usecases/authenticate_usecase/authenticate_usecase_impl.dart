@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:new_ezagro_flutter/core/errors/application_error.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/response_entities/response_entity.dart';
 
 import '../../../entities/authentication_entities/authentication_entity.dart';
 import '../../../params/authentication_params/authentication_params.dart';
@@ -12,7 +13,7 @@ class AuthenticateUsecaseImpl implements AuthenticateUsecase {
   const AuthenticateUsecaseImpl({required this.repository});
 
   @override
-  Future<Either<ApplicationError, AuthenticationEntity>> call(
+  Future<Either<ApplicationError, ResponseEntity<AuthenticationEntity>>> call(
       AuthenticationParams authenticationParams) async {
     return await repository.authenticate(authenticationParams);
   }

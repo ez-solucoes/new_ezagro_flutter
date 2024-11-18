@@ -4,22 +4,23 @@ import 'cost_center_type_entity.dart';
 
 class CostCenterEntity extends Equatable {
   final int id;
-  final String name;
-  final CostCenterTypeEntity costCenterType;
-  final String dtStart;
-  final String dtEnd;
+  final String? costCenterName;
+  final CostCenterTypeEntity? costCenterType;
+  final String? dtStart;
+  final String? dtEnd;
 
   const CostCenterEntity(
-      {required this.id,
-      required this.name,
-      required this.costCenterType,
-      required this.dtStart,
-      required this.dtEnd});
+      {
+        required this.id,
+      this.costCenterName,
+      this.costCenterType,
+      this.dtStart,
+      this.dtEnd});
 
   @override
   List<Object?> get props => [
         id,
-        name,
+        costCenterName,
         costCenterType,
         dtStart,
         dtEnd,

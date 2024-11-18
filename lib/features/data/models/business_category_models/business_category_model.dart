@@ -5,13 +5,13 @@ import '../../../domain/entities/business_category_entities/business_category_en
 class BusinessCategoryModel extends BusinessCategoryEntity {
   const BusinessCategoryModel({
     required super.id,
-    required super.description,
+    super.description,
   });
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'description': description,
-  };
+        'id': id,
+        'description': description,
+      };
 
   factory BusinessCategoryModel.fromMap(Map<String, dynamic> map) =>
       BusinessCategoryModel(

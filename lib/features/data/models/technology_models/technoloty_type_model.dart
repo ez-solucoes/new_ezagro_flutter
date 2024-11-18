@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../../../domain/entities/technology_entities/technology_type_entity.dart';
 
 class TechnologyTypeModel extends TechnologyTypeEntity {

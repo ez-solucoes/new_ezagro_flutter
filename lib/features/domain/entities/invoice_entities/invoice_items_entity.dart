@@ -7,7 +7,7 @@ import '../products_entities/product_entity.dart';
 import '../purchase_order_entities/purchase_order_item_entity.dart';
 import '../tax_entities/tax_entity.dart';
 
-class InvoiceItemsEntity extends Equatable{
+class InvoiceItemsEntity extends Equatable {
   final int id;
   final String unitOfMeasure;
   final ProductEntity product;
@@ -20,7 +20,7 @@ class InvoiceItemsEntity extends Equatable{
   final double totalPrice;
   final FarmEntity farm;
   final PurchaseOrderItemEntity purchaseOrderItems;
-  
+
   const InvoiceItemsEntity({
     required this.id,
     required this.unitOfMeasure,
@@ -34,22 +34,21 @@ class InvoiceItemsEntity extends Equatable{
     required this.totalPrice,
     required this.farm,
     required this.purchaseOrderItems,
-});
-
+  });
 
   @override
   List<Object?> get props => [
-    id,
-    unitOfMeasure,
-    product,
-    tax,
-    quantity,
-    machineImplement,
-    inventory,
-    discount,
-    unitPrice,
-    totalPrice,
-    farm,
-    purchaseOrderItems,
-  ];
+        id,
+        unitOfMeasure,
+        product,
+        tax,
+        quantity,
+        machineImplement,
+        inventory,
+        discount,
+        unitPrice,
+        totalPrice,
+        farm,
+        purchaseOrderItems,
+      ];
 }

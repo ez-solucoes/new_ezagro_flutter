@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import '../../../../../../consts/app_colors.dart';
-import '../../../../../../consts/app_strings.dart';
-import '../../../../widgets/customCardLogo/custom_card_logo_widget.dart';
-import '../../../../widgets/customSelector/custom_selector_widget.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
+import '../../../../../../design_system/colors/app_colors.dart';
+import '../../../../widgets/custom_card_logo/custom_card_logo_widget.dart';
+import '../../../../widgets/custom_selector/custom_selector_widget.dart';
 import '../../controller/create_service_order_controller/create_service_order_controller.dart';
 
 class MachineryPage extends StatelessWidget {
 
-  MachineryPage({super.key});
+  const MachineryPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +19,15 @@ class MachineryPage extends StatelessWidget {
               children: [
                 CustomSelectorWidget(
                     onSelect: (value) {
-                      controller.selectedMachinery.add(value);
+                      controller.selectedMachinery.add(value.id);
                     },
-                    items: const ["máquina 1", "máquina 2", "máquina 3"],
-                    title: AppStrings.machinerySelectorTitle,
-                    selectorHint: AppStrings.machinerySelectorHint),
+                    items: controller.machineryOptions,
+                    title: AppStringsPortuguese.machinerySelectorTitle,
+                    selectorHint: AppStringsPortuguese.machinerySelectorHint),
                 const SizedBox(height: 6),
                 const Divider(
                   height: 1,
-                  color: AppColors.softGreyColor,
+                  color: AppColors.dividerGreyColor,
                 ),
                 const SizedBox(height: 6),
                 Expanded(
@@ -37,13 +37,13 @@ class MachineryPage extends StatelessWidget {
                     return Observer(
                         builder: (context) => CustomCardLogoWidget(
                               index: index,
-                              labelOne: AppStrings.machineryField,
-                              textOne: controller.selectedMachinery[index],
-                              labelTwo: AppStrings.machineryAliasField,
-                              textTwo: controller.selectedMachinery[index],
-                              labelThree: AppStrings.hourMeterField,
+                              labelOne: AppStringsPortuguese.machineryField,
+                              textOne: "",//controller.selectedMachinery[index],
+                              labelTwo: AppStringsPortuguese.machineryAliasField,
+                              textTwo: "",//controller.selectedMachinery[index],
+                              labelThree: AppStringsPortuguese.hourMeterField,
                               textThree: "Horímetro",
-                              labelFour: AppStrings.kiloMeterField,
+                              labelFour: AppStringsPortuguese.kiloMeterField,
                               textFour: "Quilometragem",
                               icon: Icons.delete_outline,
                               logo: Icons.agriculture_sharp,

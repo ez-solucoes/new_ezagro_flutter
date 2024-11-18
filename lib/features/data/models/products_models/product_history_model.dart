@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import '../../../domain/entities/products_entities/product_history_entity.dart';
 
-
 class ProductHistoryModel extends ProductHistoryEntity {
   const ProductHistoryModel({
     required super.productHistoryId,
@@ -14,17 +13,17 @@ class ProductHistoryModel extends ProductHistoryEntity {
   });
 
   Map<String, dynamic> toMap() => {
-    'productHistoryId': productHistoryId,
-    'productId': productId,
-    'name': name,
-    'description': description,
-    'brand': brand,
-    'productCode': productCode,
-  };
+        'productHistoryId': productHistoryId,
+        'productId': productId,
+        'name': name,
+        'description': description,
+        'brand': brand,
+        'productCode': productCode,
+      };
 
   factory ProductHistoryModel.fromMap(Map<String, dynamic> map) =>
       ProductHistoryModel(
-        productHistoryId:map['productHistoryId'],
+        productHistoryId: map['productHistoryId'],
         productId: map['productId'],
         name: map['name'],
         description: map['description'],
@@ -36,5 +35,4 @@ class ProductHistoryModel extends ProductHistoryEntity {
 
   factory ProductHistoryModel.fromJson(String source) =>
       ProductHistoryModel.fromMap(json.decode(source));
-
 }

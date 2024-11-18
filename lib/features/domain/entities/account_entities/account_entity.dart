@@ -6,21 +6,21 @@ import 'account_type_entity.dart';
 
 class AccountEntity extends Equatable {
   final int id;
-  final String agency;
-  final String account;
-  final String bank;
-  final AccountTypeEntity accountType;
-  final PixEntity pix;
-  final PixTypeEntity pixType;
+  final String? agency;
+  final String? account;
+  final String? bank;
+  final AccountTypeEntity? accountType;
+  final List<PixEntity>? pix;
+  final PixTypeEntity? pixType;
 
   const AccountEntity(
       {required this.id,
-      required this.agency,
-      required this.account,
-      required this.bank,
-      required this.accountType,
-      required this.pix,
-      required this.pixType});
+      this.agency,
+      this.account,
+      this.bank,
+      this.accountType,
+      this.pix,
+      this.pixType});
 
   @override
   List<Object?> get props => [

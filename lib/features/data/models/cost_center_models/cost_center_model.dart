@@ -6,15 +6,15 @@ import 'cost_center_type_model.dart';
 class CostCenterModel extends CostCenterEntity {
   const CostCenterModel({
     required super.id,
-    required super.name,
-    required super.costCenterType,
-    required super.dtStart,
-    required super.dtEnd,
+    super.costCenterName,
+    super.costCenterType,
+    super.dtStart,
+    super.dtEnd,
   });
 
   Map<String, dynamic> toMap() => {
         'id': id,
-        'name': name,
+        'costCenterName': costCenterName,
         'costCenterType': (costCenterType as CostCenterTypeModel).toMap(),
         'dtStart': dtStart,
         'dtEnd': dtEnd,
@@ -22,8 +22,8 @@ class CostCenterModel extends CostCenterEntity {
 
   factory CostCenterModel.fromMap(Map<String, dynamic> map) => CostCenterModel(
         id: map['id'],
-        name: map['name'],
-        costCenterType: CostCenterTypeModel.fromMap(map['costCenterType']),
+        costCenterName: map['costCenterName'],
+        costCenterType: map['costCenterType'] == null ? null : CostCenterTypeModel.fromMap(map['costCenterType']),
         dtStart: map['dtStart'],
         dtEnd: map['dtEnd'],
       );

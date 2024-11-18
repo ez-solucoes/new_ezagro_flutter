@@ -4,6 +4,7 @@ import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/service_order_datasources/service_order_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/models/field_service_order_models/field_service_order_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/service_order_list_model/service_order_list_model.dart';
+import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 import '../../../../core/mixins/uri_builder_mixin.dart';
 import '../../../../core/usecase/usecase.dart';
 import '../api_endpoints.dart';
@@ -22,7 +23,7 @@ class ServiceOrderDatasourceImpl
       NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrl,
+      AppEndpoints.mainBaseUrlDev,
       AppEndpoints.getServiceOrderListEndpoint,
     );
 
@@ -47,7 +48,7 @@ class ServiceOrderDatasourceImpl
   Future<FieldServiceOrderModel> createServiceOrder(MockParams mockParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrl,
+      AppEndpoints.mainBaseUrlDev,
       AppEndpoints.postServiceOrderEndpoint,
     );
 
@@ -63,6 +64,30 @@ class ServiceOrderDatasourceImpl
             response: result,
             fromMap: FieldServiceOrderModel.fromMap,
             fromJson: FieldServiceOrderModel.fromJson);
+      default:
+        throw mountServerErrorInstance(request: request, response: result);
+    }
+  }
+
+  @override
+  Future<FieldServiceOrderModel> getServiceOrderById(ArgParams params) async {
+    final String url = mountUrl(
+      AppEndpoints.baseUrlProtocolWithSecurity,
+      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.getServiceOrderById + params.firstArgs.toString(),
+    );
+
+    final HttpRequest request = HttpRequest.get(path: url);
+    final result = await httpClient.execute(request);
+
+    switch (result.statusCode) {
+      case 200:
+        return mountModelInstanceFromResponse(
+          response: result,
+          fromMap: (map) =>
+              FieldServiceOrderModel.fromMap(map),
+          fromJson: (jsonString) => FieldServiceOrderModel.fromJson(jsonString),
+        );
       default:
         throw mountServerErrorInstance(request: request, response: result);
     }

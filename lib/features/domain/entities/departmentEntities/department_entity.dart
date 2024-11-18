@@ -2,15 +2,15 @@ import 'package:equatable/equatable.dart';
 
 class DepartmentEntity extends Equatable {
   final int id;
-  final String name;
-  final String description;
+  final String? name;
+  final String? description;
   final List<String>? subDepartments;
 
-  const DepartmentEntity(
-    this.subDepartments, {
+  const DepartmentEntity({
     required this.id,
-    required this.name,
-    required this.description,
+    this.subDepartments,
+    this.name,
+    this.description,
   });
 
   @override

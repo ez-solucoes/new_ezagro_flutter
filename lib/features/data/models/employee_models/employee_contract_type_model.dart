@@ -5,8 +5,8 @@ import '../../../domain/entities/employee_entities/employee_contract_type_entity
 class EmployeeContractTypeModel extends EmployeeContractTypeEntity {
   const EmployeeContractTypeModel({
     required super.id,
-    required super.name,
-    required super.description,
+    super.name,
+    super.description,
   });
 
   Map<String, dynamic> toMap() => {

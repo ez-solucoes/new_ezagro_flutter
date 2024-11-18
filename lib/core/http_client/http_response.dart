@@ -1,5 +1,9 @@
 class HttpResponse {
-  HttpResponse({required this.statusCode, this.statusMessage, this.data,});
+  HttpResponse({
+    required this.statusCode,
+    this.statusMessage,
+    this.data,
+  });
 
   final int statusCode;
   final String? statusMessage;

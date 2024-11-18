@@ -2,15 +2,15 @@ import 'package:equatable/equatable.dart';
 
 class CommonAssociationOfRuralProducerEntity extends Equatable {
   final int id;
-  final String name;
-  final String cpf;
-  final bool active;
+  final String? name;
+  final String? cpf;
+  final bool? active;
 
   const CommonAssociationOfRuralProducerEntity({
     required this.id,
-    required this.name,
-    required this.cpf,
-    required this.active,
+    this.name,
+    this.cpf,
+    this.active,
   });
 
   @override

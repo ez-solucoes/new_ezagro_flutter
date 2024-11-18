@@ -1,13 +1,14 @@
 import 'dart:convert';
+
 import '../../../domain/entities/multipart_file_custom_entities/multipart_file_custom_entity.dart';
 
 class MultipartFileCustomModel extends MultipartFileCustomEntity {
   const MultipartFileCustomModel({
-    required super.name,
-    required super.originalFilename,
-    required super.contentType,
-    required super.size,
-    required super.content,
+    super.name,
+    super.originalFilename,
+    super.contentType,
+    super.size,
+    super.content,
   });
 
   String toJson() => json.encode(toMap());
@@ -29,6 +30,6 @@ class MultipartFileCustomModel extends MultipartFileCustomEntity {
         originalFilename: map['originalFilename'],
         contentType: map['contentType'],
         size: map['size'],
-        content: List<String>.from(map['content']),
+        content: map['content'],
       );
 }

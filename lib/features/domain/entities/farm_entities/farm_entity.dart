@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import '../address_entities/address_entity.dart';
 import '../company_entities/company_entity.dart';
 import '../contract_entities/contract_entity.dart';
@@ -9,40 +10,40 @@ import '../plot_entities/plot_entity.dart';
 class FarmEntity extends Equatable {
   final int id;
   final AddressEntity? address;
-  final String car;
-  final String stateRegistration;
-  final String externalCode;
-  final String caepf;
-  final String cnae;
-  final String nameLandowner;
-  final String recordLandowner;
-  final CompanyEntity company;
-  final List<PlotEntity> plots;
-  final String name;
-  final int areaAcre;
-  final List<ContractEntity> contracts;
-  final List<MultipartFileCustomEntity> attachments;
-  final String attachmentNames;
-  final List<CostCenterEntity> costCenters;
+  final String? car;
+  final String? stateRegistration;
+  final String? externalCode;
+  final String? caepf;
+  final String? cnae;
+  final String? nameLandowner;
+  final String? recordLandowner;
+  final CompanyEntity? company;
+  final List<PlotEntity>? plots;
+  final String? name;
+  final int? areaAcre;
+  final List<ContractEntity>? contracts;
+  final List<MultipartFileCustomEntity>? attachments;
+  final String? attachmentNames;
+  final List<CostCenterEntity>? costCenters;
 
   const FarmEntity({
     required this.id,
-    required this.address,
-    required this.car,
-    required this.stateRegistration,
-    required this.externalCode,
-    required this.caepf,
-    required this.cnae,
-    required this.nameLandowner,
-    required this.recordLandowner,
-    required this.company,
-    required this.plots,
-    required this.name,
-    required this.areaAcre,
-    required this.contracts,
-    required this.attachments,
-    required this.costCenters,
-    required this.attachmentNames,
+    this.address,
+    this.car,
+    this.stateRegistration,
+    this.externalCode,
+    this.caepf,
+    this.cnae,
+    this.nameLandowner,
+    this.recordLandowner,
+    this.company,
+    this.plots,
+    this.name,
+    this.areaAcre,
+    this.contracts,
+    this.attachments,
+    this.costCenters,
+    this.attachmentNames,
   });
 
   @override

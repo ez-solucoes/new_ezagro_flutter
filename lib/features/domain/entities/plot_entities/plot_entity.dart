@@ -6,20 +6,19 @@ import '../coordinate_entities/coordinate_entity.dart';
 
 class PlotEntity extends Equatable {
   final int id;
-  final PlotGroupEntity plotGroup;
-  final CoordinateEntity coordinate;
-  final PlotOwnershipTypeEntity plotOwnerShipType;
-  final double number;
-  final double area;
+  final PlotGroupEntity? plotGroup;
+  final CoordinateEntity? coordinate;
+  final PlotOwnershipTypeEntity? plotOwnerShipType;
+  final int? number;
+  final int? area;
 
-  const PlotEntity({
-    required this.id,
-    required this.plotGroup,
-    required this.coordinate,
-    required this.plotOwnerShipType,
-    required this.number,
-    required this.area
-  });
+  const PlotEntity(
+      {required this.id,
+      this.plotGroup,
+      this.coordinate,
+      this.plotOwnerShipType,
+      this.number,
+      this.area});
 
   @override
   List<Object?> get props => [

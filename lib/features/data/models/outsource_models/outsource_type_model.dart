@@ -1,10 +1,11 @@
 import 'dart:convert';
+
 import '../../../domain/entities/outsource_entities/outsource_type_entity.dart';
 
 class OutsourceTypeModel extends OutsourceTypeEntity {
   const OutsourceTypeModel({
     required super.id,
-    required super.name,
+    super.name,
   });
 
   String toJson() => json.encode(toMap());

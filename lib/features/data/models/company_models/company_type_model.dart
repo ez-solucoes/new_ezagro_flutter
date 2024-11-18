@@ -1,19 +1,19 @@
 import 'dart:convert';
-import '../../../domain/entities/company_entities/company_type_entity.dart';
 
+import '../../../domain/entities/company_entities/company_type_entity.dart';
 
 class CompanyTypeModel extends CompanyTypeEntity {
   const CompanyTypeModel({
     required super.id,
-    required super.name,
-    required super.description,
+    super.name,
+    super.description,
   });
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'name': name,
-    'description': description,
-  };
+        'id': id,
+        'name': name,
+        'description': description,
+      };
 
   factory CompanyTypeModel.fromMap(Map<String, dynamic> map) =>
       CompanyTypeModel(
@@ -26,5 +26,4 @@ class CompanyTypeModel extends CompanyTypeEntity {
 
   factory CompanyTypeModel.fromJson(String source) =>
       CompanyTypeModel.fromMap(json.decode(source));
-
 }

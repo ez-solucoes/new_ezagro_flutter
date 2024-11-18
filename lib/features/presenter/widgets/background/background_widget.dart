@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../../consts/app_colors.dart';
-import '../../../../consts/app_drawables.dart';
+import 'package:new_ezagro_flutter/features/presenter/widgets/custom_drawer/custom_drawer_widget.dart';
+
+import '../../../../design_system/colors/app_colors.dart';
+import '../../../../design_system/drawables/app_drawables.dart';
 
 class BackgroundWidget extends StatelessWidget {
   final PreferredSizeWidget? appBar;
   final bool scrollable;
   final Widget child;
+  final bool needsDrawer;
 
-  const BackgroundWidget({super.key, required this.scrollable, required this.child, this.appBar});
+  const BackgroundWidget({super.key, required this.scrollable, required this.child, this.appBar, this.needsDrawer = false});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.whiteColor,
+      backgroundColor: AppColors.backgroundColor,
       appBar: appBar,
       resizeToAvoidBottomInset: false,
+      drawer: needsDrawer ? CustomDrawerWidget() : null,
       body: SafeArea(
         child: Stack(
           fit: StackFit.expand,

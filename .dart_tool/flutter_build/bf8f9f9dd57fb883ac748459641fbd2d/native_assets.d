@@ -1,1 +1,0 @@
- C:\\src\\Ez\ Agro\ Novo\\new_ezagro_flutter\\.dart_tool\\flutter_build\\bf8f9f9dd57fb883ac748459641fbd2d\\native_assets.yaml: 

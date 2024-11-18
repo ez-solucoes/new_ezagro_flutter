@@ -1,35 +1,35 @@
-//SUPERPRECOCE, PRECOCE, MEDIA, TARDIA
+//SUPER_EARLY, EARLY, MEDIUM, LATE
 
 enum PlantingCycleEnum {
-  superPrecoce,
-  precoce,
-  media,
-  tardia,
+  superEarly,
+  early,
+  medium,
+  late,
 }
 
 plantingCycleEnum(String plantingCycle) {
   switch (plantingCycle) {
-    case 'SUPERPRECOCE':
-      return PlantingCycleEnum.superPrecoce;
-    case 'PRECOCE':
-      return PlantingCycleEnum.precoce;
-    case 'MEDIA':
-      return PlantingCycleEnum.media;
-    case 'TARDIA':
-      return PlantingCycleEnum.tardia;
+    case 'SUPER_EARLY':
+      return PlantingCycleEnum.superEarly;
+    case 'EARLY':
+      return PlantingCycleEnum.early;
+    case 'MEDIUM':
+      return PlantingCycleEnum.medium;
+    case 'LATE':
+      return PlantingCycleEnum.late;
   }
 }
 
 plantingCycleString(type) {
   switch (type) {
-    case PlantingCycleEnum.superPrecoce:
-      return 'SUPERPRECOCE';
-    case PlantingCycleEnum.precoce:
-      return 'PRECOCE';
-    case PlantingCycleEnum.media:
-      return 'MEDIA';
-    case PlantingCycleEnum.tardia:
-      return 'TARDIA';
+    case PlantingCycleEnum.superEarly:
+      return 'SUPER_EARLY';
+    case PlantingCycleEnum.early:
+      return 'EARLY';
+    case PlantingCycleEnum.medium:
+      return 'MEDIUM';
+    case PlantingCycleEnum.late:
+      return 'LATE';
     default:
       return '';
   }

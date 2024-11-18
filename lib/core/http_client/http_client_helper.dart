@@ -1,7 +1,7 @@
-import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/core/errors/server_error.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_response.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 
 ServerError mountServerErrorInstance({
   required HttpRequest request,
@@ -9,9 +9,10 @@ ServerError mountServerErrorInstance({
   String? friendlyMessage,
 }) {
   final causedBy = StringBuffer()
-    ..write(AppStrings.serverErrorCausedBy)..write(request.method.name)..write(
-        ' on ${request.path}')..write(
-        ' with status code ${response.statusCode}');
+    ..write(AppStringsPortuguese.serverErrorCausedBy)
+    ..write(request.method.name)
+    ..write(' on ${request.path}')
+    ..write(' with status code ${response.statusCode}');
   return ServerError(
     causedBy: causedBy.toString(),
     additionalInfo: response.data?.toString(),
@@ -24,7 +25,7 @@ ServerError mountServerErrorInstance({
 
 String _replaceServerErrorMessage(String serverErrorMessage) {
   if (serverErrorMessage.toLowerCase().contains("unauthorized")) {
-    return AppStrings.reautenticationNeededErrorMessage;
+    return AppStringsPortuguese.reautenticationNeededErrorMessage;
   }
   return serverErrorMessage;
 }
@@ -37,7 +38,8 @@ T mountModelInstanceFromResponse<T>({
 }) {
   final data = response.data;
   if (data is Map) {
-    if (mountMapDataFromNodeName != null && data.containsKey(mountMapDataFromNodeName)) {
+    if (mountMapDataFromNodeName != null &&
+        data.containsKey(mountMapDataFromNodeName)) {
       return fromMap(data[mountMapDataFromNodeName]);
     }
     return fromMap(data as Map<String, dynamic>);

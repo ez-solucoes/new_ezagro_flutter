@@ -9,23 +9,22 @@ import '../email_model/email_model.dart';
 import '../phone_models/phone_model.dart';
 import 'company_type_model.dart';
 
-
 class CompanyHistoryModel extends CompanyHistoryEntity {
   const CompanyHistoryModel({
     required super.id,
-    required super.name,
-    required super.cnpj,
-    required super.exempt,
-    required super.isAssigned,
-    required super.ownedByUser,
-    required super.stateRegistration,
-    required super.companyType,
-    required super.phone,
-    required super.email,
-    required super.address,
-    required super.account,
-    required super.businessCategories,
-    required super.costCenter,
+    super.name,
+    super.cnpj,
+    super.exempt,
+    super.isAssigned,
+    super.ownedByUser,
+    super.stateRegistration,
+    super.companyType,
+    super.phone,
+    super.email,
+    super.address,
+    super.account,
+    super.businessCategories,
+    super.costCenter,
   });
 
   String toJson() => json.encode(toMap());
@@ -34,40 +33,53 @@ class CompanyHistoryModel extends CompanyHistoryEntity {
       CompanyHistoryModel.fromMap(json.decode(source));
 
   Map<String, dynamic> toMap() => {
-    'id': id,
-    'name': name,
-    'cnpj': cnpj,
-    'exempt': exempt,
-    'isAssigned': isAssigned,
-    'ownedByUser': ownedByUser,
-    'stateRegistration': stateRegistration,
-    'companyType': (companyType as CompanyTypeModel).toMap(),
-    'phone': (phone as PhoneModel).toMap(),
-    'email': (email as EmailModel).toMap(),
-    'address': (address as AddressModel).toMap(),
-    'account': (account as AccountModel).toMap(),
-    'businessCategories': businessCategories
-        .map((e) => (e as BusinessCategoryModel).toMap())
-        .toList(),
-    'costCenter': (costCenter as CostCenterModel).toMap(),
-  };
+        'id': id,
+        'name': name,
+        'cnpj': cnpj,
+        'exempt': exempt,
+        'isAssigned': isAssigned,
+        'ownedByUser': ownedByUser,
+        'stateRegistration': stateRegistration,
+        'companyType': companyType == null
+            ? null
+            : (companyType as CompanyTypeModel).toMap(),
+        'phone': phone == null ? null : (phone as PhoneModel).toMap(),
+        'email': email == null ? null : (email as EmailModel).toMap(),
+        'address': address == null ? null : (address as AddressModel).toMap(),
+        'account': account == null ? null : (account as AccountModel).toMap(),
+        'businessCategories': businessCategories
+            ?.map((e) => (e as BusinessCategoryModel).toMap())
+            .toList(),
+        'costCenter':
+            costCenter == null ? null : (costCenter as CostCenterModel).toMap(),
+      };
 
   factory CompanyHistoryModel.fromMap(Map<String, dynamic> map) =>
       CompanyHistoryModel(
         id: map['id'],
-        name:map['name'],
+        name: map['name'],
         cnpj: map['cnpj'],
         exempt: map['exempt'],
         isAssigned: map['isAssigned'],
         ownedByUser: map['ownedByUser'],
         stateRegistration: map['stateRegistration'],
-        companyType: CompanyTypeModel.fromMap(map['companyType']),
-        phone: PhoneModel.fromMap(map['phone']),
-        email: EmailModel.fromMap(map['email']),
-        address: AddressModel.fromMap(map['address']),
-        account: AccountModel.fromMap(map['account']),
-        businessCategories: List<BusinessCategoryModel>.from(map['businessCategories']
-            ?.map((x) => BusinessCategoryModel.fromMap(x))),
-        costCenter: CostCenterModel.fromMap(map['costCenter']),
+        companyType: map['companyType'] == null
+            ? null
+            : CompanyTypeModel.fromMap(map['companyType']),
+        phone: map['phone'] == null ? null : PhoneModel.fromMap(map['phone']),
+        email: map['email'] == null ? null : EmailModel.fromMap(map['email']),
+        address: map['address'] == null
+            ? null
+            : AddressModel.fromMap(map['address']),
+        account: map['account'] == null
+            ? null
+            : AccountModel.fromMap(map['account']),
+        businessCategories: map['businessCategories'] == null
+            ? null
+            : List<BusinessCategoryModel>.from(map['businessCategories']
+                ?.map((x) => BusinessCategoryModel.fromMap(x))),
+        costCenter: map['costCenter'] == null
+            ? null
+            : CostCenterModel.fromMap(map['costCenter']),
       );
 }

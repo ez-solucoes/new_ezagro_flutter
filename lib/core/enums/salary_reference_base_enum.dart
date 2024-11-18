@@ -1,27 +1,35 @@
-//[ VALOR_LIVRE, PORCENTAGEM_DO_SALARIO_BASE, PORCENTAGEM_DO_SALARIO_MINIMO, PORCENTAGEM_DA_COMPOSICAO ]
+//[ FREE_VALUE, PERCENTAGE_OF_BASE_SALARY, PERCENTAGE_OF_MINIMUM_WAGE, PERCENTAGE_OF_COMPOSITION ]
 
 enum SalaryReferenceBaseEnum {
-  valorLivre,
-  porcentagemDoSalarioBase,
-  porcentagemDoSalarioMinimo,
-  porcentagemDaComposicao,
+  freeValue,
+  percentageOfBaseSalary,
+  percentageOfMinimumWage,
+  percentageOfComposition,
 }
 
-plantingTypeEnum(String salaryReferenceBase) {
+salaryReferenceBaseEnum(String salaryReferenceBase) {
   switch (salaryReferenceBase) {
-    case 'VALOR_LIVRE': return SalaryReferenceBaseEnum.valorLivre;
-    case 'PORCENTAGEM_DO_SALARIO_BASE': return SalaryReferenceBaseEnum.porcentagemDoSalarioBase;
-    case 'PORCENTAGEM_DO_SALARIO_MINIMO': return SalaryReferenceBaseEnum.porcentagemDoSalarioMinimo;
-    case 'PORCENTAGEM_DA_COMPOSICAO': return SalaryReferenceBaseEnum.porcentagemDaComposicao;
+    case 'FREE_VALUE':
+      return SalaryReferenceBaseEnum.freeValue;
+    case 'PERCENTAGE_OF_BASE_SALARY':
+      return SalaryReferenceBaseEnum.percentageOfBaseSalary;
+    case 'PERCENTAGE_OF_MINIMUM_WAGE':
+      return SalaryReferenceBaseEnum.percentageOfMinimumWage;
+    case 'PERCENTAGE_OF_COMPOSITION':
+      return SalaryReferenceBaseEnum.percentageOfComposition;
   }
 }
 
-plantingTypeString(type) {
+salaryReferenceBaseString(type) {
   switch (type) {
-    case SalaryReferenceBaseEnum.valorLivre: return 'VALOR_LIVRE';
-    case SalaryReferenceBaseEnum.porcentagemDoSalarioBase: return 'PORCENTAGEM_DO_SALARIO_BASE';
-    case SalaryReferenceBaseEnum.porcentagemDoSalarioMinimo: return 'PORCENTAGEM_DO_SALARIO_MINIMO';
-    case SalaryReferenceBaseEnum.porcentagemDaComposicao: return 'PORCENTAGEM_DA_COMPOSICAO';
+    case SalaryReferenceBaseEnum.freeValue:
+      return 'FREE_VALUE';
+    case SalaryReferenceBaseEnum.percentageOfBaseSalary:
+      return 'PERCENTAGE_OF_BASE_SALARY';
+    case SalaryReferenceBaseEnum.percentageOfMinimumWage:
+      return 'PERCENTAGE_OF_MINIMUM_WAGE';
+    case SalaryReferenceBaseEnum.percentageOfComposition:
+      return 'PERCENTAGE_OF_COMPOSITION';
     default:
       return '';
   }

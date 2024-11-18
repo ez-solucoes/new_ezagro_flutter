@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:new_ezagro_flutter/consts/app_strings.dart';
 import 'package:new_ezagro_flutter/core/enums/service_order_type_enum.dart';
-
-import '../../../../../consts/app_colors.dart';
-import '../../../../../consts/app_dimens.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/service_order/create_service_order_page/create_service_order_page.dart';
+import 'package:new_ezagro_flutter/features/presenter/widgets/custom_drawer/custom_drawer_widget.dart';
 import '../../../../../consts/app_routes.dart';
+import '../../../../../design_system/colors/app_colors.dart';
+import '../../../../../design_system/spacing/app_dimens.dart';
+import '../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
-import '../../../widgets/customCardTitle/custom_card_title.dart';
-import '../../../widgets/customSearchBar/custom_search_bar.dart';
+import '../../../widgets/custom_card_title/custom_card_title.dart';
+import '../../../widgets/custom_search_bar/custom_search_bar.dart';
 import '../controller/service_order_list_controller/service_order_list_controller.dart';
+import '../service_order_page/service_order_page.dart';
 
 class ServiceOrderListPage extends StatelessWidget {
 
   static const String routePath = AppRoutes.appServiceOrderListPage;
 
-  static navigate(ArgParams args) =>
-      Modular.to.navigate(routePath, arguments: args);
+  static navigate() =>
+      Modular.to.navigate(routePath);
 
   static push(ArgParams args) =>
       Modular.to.pushNamed(routePath, arguments: args);
@@ -28,7 +30,7 @@ class ServiceOrderListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ServiceOrderListController controller = ServiceOrderListController();
+    final controller = Modular.get<ServiceOrderListController>();
     controller.getServiceOrderList();
     return BackgroundWidget(
         scrollable: false,
@@ -37,8 +39,9 @@ class ServiceOrderListPage extends StatelessWidget {
           resizeToAvoidBottomInset: false,
           appBar: const CustomAppBarWidget(
             appBarType: AppBarType.hamburgerAndTitle,
-            title: AppStrings.serviceOrderTitle,
+            title: AppStringsPortuguese.serviceOrderTitle,
           ),
+          drawer: CustomDrawerWidget(),
           body: Stack(
             alignment: AlignmentDirectional.bottomCenter,
             children: [
@@ -66,17 +69,20 @@ class ServiceOrderListPage extends StatelessWidget {
                                 itemCount: controller.filteredServiceOrders.length,
                                 itemBuilder: (context, index) {
                                   final status = ServiceOrderTypeEnumExtension.getEnumServiceOrderTypeFromString(controller.serviceOrderListEntities[index].status);
-                                  return CustomCardTitleWidget(
-                                    id: controller.serviceOrderListEntities[index].id,
-                                    serviceOrderType: controller.serviceOrderListEntities[index].activityName,
-                                    farm: controller.serviceOrderListEntities[index].farmName,
-                                    costCenter: "",
-                                    openingDate: controller.serviceOrderListEntities[index].activityStart,
-                                    closingDate: controller.serviceOrderListEntities[index].activityEnd,
-                                    status: status,
-                                    backgroundColor: controller.getBackgroundColor(status),
-                                    borderColor: controller.getBorderColor(status),
-                                    textColor: controller.getTextColor(status),
+                                  return GestureDetector(
+                                    onTap: (){ServiceOrderPage.navigate(ArgParams(firstArgs: controller.serviceOrderListEntities[index].id));},
+                                    child: CustomCardTitleWidget(
+                                      id: controller.serviceOrderListEntities[index].id,
+                                      serviceOrderType: controller.serviceOrderListEntities[index].activityName ?? "",
+                                      farm: controller.serviceOrderListEntities[index].farmName ?? "",
+                                      costCenter: controller.serviceOrderListEntities[index].costCenterName ?? "",
+                                      openingDate: controller.serviceOrderListEntities[index].activityStart ?? "",
+                                      closingDate: controller.serviceOrderListEntities[index].activityEnd ?? "",
+                                      status: status,
+                                      backgroundColor: controller.getBackgroundColor(status),
+                                      borderColor: controller.getBorderColor(status),
+                                      textColor: controller.getTextColor(status),
+                                    ),
                                   );
                                 },
                                 separatorBuilder: (context, index) {
@@ -102,11 +108,13 @@ class ServiceOrderListPage extends StatelessWidget {
             ],
           ),
           floatingActionButton: FloatingActionButton(
-            backgroundColor: AppColors.trueWhiteColor,
-            onPressed: () {},
+            backgroundColor: AppColors.primaryWhiteColor,
+            onPressed: () {
+              CreateServiceOrderPage.navigate();
+            },
             child: const Icon(
               Icons.add,
-              color: AppColors.greenColor,
+              color: AppColors.primaryGreenColor,
               size: 50,
             ),
           ),

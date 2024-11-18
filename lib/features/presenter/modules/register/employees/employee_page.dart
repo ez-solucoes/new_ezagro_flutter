@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/employees/tabs/employee_additional_information_tab.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/employees/tabs/employee_general_information_tab.dart';

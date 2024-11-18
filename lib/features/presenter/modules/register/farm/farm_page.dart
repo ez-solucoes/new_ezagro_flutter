@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:new_ezagro_flutter/design_system/colors/app_colors.dart';
-import 'package:new_ezagro_flutter/design_system/typography/app_text_styles.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/custom_striped_table/custom_striped_table_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/documents_list_widget/documents_list_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/mult_info_card/mult_info_card.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/single_info_card/single_info_card.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/three_info_card/three_info_card.dart';
 import '../../../../../consts/app_routes.dart';
 import '../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
@@ -44,7 +40,7 @@ class FarmPage extends StatelessWidget {
                   children: [
                     MultInfoCard(
                         title: AppStringsPortuguese.singularFarmTitle,
-                        column1Data: [
+                        columnOneData: [
                           (AppStringsPortuguese.farmNameLabel, "Três Lagoas"),
                           (AppStringsPortuguese.farmOwnerLabel, "Alan Brito"),
                           (AppStringsPortuguese.farmCostCenterLabel, "Uberaba"),
@@ -52,7 +48,7 @@ class FarmPage extends StatelessWidget {
                           (AppStringsPortuguese.farmCaepfLabel, "123456"),
                           (AppStringsPortuguese.farmAreaLabel, "150ha")
                         ],
-                        column2Data: [
+                        columnTwoData: [
                           (AppStringsPortuguese.farmStateSubscriptionLabel, "12345678"),
                           (AppStringsPortuguese.farmOwnerRegisterLabel, "12345678"),
                           (AppStringsPortuguese.farmCompanyLabel, "Nome da Empresa"),
@@ -62,8 +58,8 @@ class FarmPage extends StatelessWidget {
                     const SizedBox(height: 10,),
                     MultInfoCard(
                         title: AppStringsPortuguese.addressLabel,
-                        column1Data: [(AppStringsPortuguese.addressCepLabel, "00000-000"),(AppStringsPortuguese.addressStreetLabel, "Estrada das Nações, 123"),(AppStringsPortuguese.addressStateLabel, "São Paulo"), (AppStringsPortuguese.addressReferenceLabel, "Depois da Cachoeira")],
-                        column2Data: [(AppStringsPortuguese.addressCityLabel, "São Paulo"),(AppStringsPortuguese.addressNeighborhoodLabel, "Fazendas de Ouro"),(AppStringsPortuguese.addressCountryLabel, "Brasil")]),
+                        columnOneData: [(AppStringsPortuguese.addressCepLabel, "00000-000"),(AppStringsPortuguese.addressStreetLabel, "Estrada das Nações, 123"),(AppStringsPortuguese.addressStateLabel, "São Paulo"), (AppStringsPortuguese.addressReferenceLabel, "Depois da Cachoeira")],
+                        columnTwoData: [(AppStringsPortuguese.addressCityLabel, "São Paulo"),(AppStringsPortuguese.addressNeighborhoodLabel, "Fazendas de Ouro"),(AppStringsPortuguese.addressCountryLabel, "Brasil")]),
                     const SizedBox(height: 10,),const SizedBox(height: 10,),
                     CustomStripedTable(
                         columnNames: [AppStringsPortuguese.farmPlotColumn, AppStringsPortuguese.farmAreaColumn, AppStringsPortuguese.farmCropColumn],

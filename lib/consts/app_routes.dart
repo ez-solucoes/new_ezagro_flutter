@@ -31,7 +31,8 @@ class AppRoutes {
   static const String appEmployeePage = '/employeePage';
   static const String appFarmListPage = '/farmListPage';
   static const String appFarmPage = '/farmPage';
-
+  static const String appMachineryListPage= '/marchineryListPage';
+  static const String appMachineryPage = '/machineryPage';
   //Change Password
   static const String appChangePasswordFirstStepPage =
       '/changePasswordFirstStepPage';

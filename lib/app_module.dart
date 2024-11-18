@@ -48,6 +48,7 @@ import 'package:new_ezagro_flutter/features/presenter/modules/home/home_page.dar
 import 'package:new_ezagro_flutter/features/presenter/modules/register/contracts/contract_list_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/employees/employees_list_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/farm/farm_list_page.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/register/machinery/machinery_list_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/service_order/controller/service_order_list_controller/service_order_list_controller.dart';
 import 'core/http_client/http_client.dart';
 import 'core/http_client/http_client_dio_imp.dart';
@@ -113,6 +114,7 @@ import 'features/presenter/modules/register/company/company_page.dart';
 import 'features/presenter/modules/register/contracts/contract_page.dart';
 import 'features/presenter/modules/register/employees/employee_page.dart';
 import 'features/presenter/modules/register/farm/farm_page.dart';
+import 'features/presenter/modules/register/machinery/machinery_implements_page.dart';
 import 'features/presenter/modules/service_order/controller/create_service_order_controller/create_service_order_controller.dart';
 import 'features/presenter/modules/service_order/controller/service_order_controller/service_order_controller.dart';
 import 'features/presenter/modules/service_order/create_service_order_page/create_service_order_page.dart';
@@ -191,7 +193,7 @@ class AppModule extends Module {
 
   @override
   void routes(RouteManager r) {
-    r.child(AppRoutes.appDefaultPage, child: (context) => FarmPage());
+    r.child(AppRoutes.appDefaultPage, child: (context) => LoginPage());
     r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
 
     r.child(AppRoutes.appLoginPage, child: (context) => LoginPage());
@@ -218,6 +220,8 @@ class AppModule extends Module {
     r.child(AppRoutes.appEmployeePage, child: (context) => EmployeePage());
     r.child(AppRoutes.appFarmListPage, child: (context) => FarmListPage());
     r.child(AppRoutes.appFarmPage, child: (context) => FarmPage());
+    r.child(AppRoutes.appMachineryListPage, child: (context) => MachineryListPage());
+    r.child(AppRoutes.appMachineryPage, child: (context) => MachineryImplementsPage());
 
     super.routes(r);
   }

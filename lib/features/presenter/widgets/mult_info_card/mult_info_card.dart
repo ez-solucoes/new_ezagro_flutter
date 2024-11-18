@@ -7,13 +7,13 @@ class MultInfoCard extends StatelessWidget {
   const MultInfoCard({
     super.key,
     required this.title,
-    required this.column1Data,
-    required this.column2Data,
+    required this.columnOneData,
+    required this.columnTwoData,
   });
 
   final String title;
-  final List<(String label, String text)> column1Data;
-  final List<(String label, String text)> column2Data;
+  final List<(String label, String text)> columnOneData;
+  final List<(String label, String text)> columnTwoData;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +55,7 @@ class MultInfoCard extends StatelessWidget {
               // Coluna 1
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: column1Data.map((data) {
+                children: columnOneData.map((data) {
                   return Padding(
                     padding: EdgeInsets.symmetric(vertical: 5, horizontal: 7.5),
                     child: StackedDataWidget(
@@ -67,7 +67,7 @@ class MultInfoCard extends StatelessWidget {
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: column2Data.map((data) {
+                children: columnTwoData.map((data) {
                   return Padding(
                     padding: EdgeInsets.symmetric(vertical: 5, horizontal: 7.5),
                     child: StackedDataWidget(

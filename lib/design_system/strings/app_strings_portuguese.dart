@@ -247,6 +247,11 @@ class AppStringsPortuguese {
   static const String contractsTableTitle = "Contratos";
   static const String attachmentsTableTitle = "Anexos";
 
+  static const String machineryAndImplementsTitle = "Maquinários & Implementos";
+  static const String machineryNameColumn = "Maquinário";
+  static const String machineryBrandColumn = "Marca";
+  static const String machineryScreenTitle = "Maquinário";
+
   ///Errors
   static const String genericErrorMessage =
       'Ocorreu um erro inesperado. Por favor, tente novamente mais tarde ou entre em contato conosco para relatar o problema.';

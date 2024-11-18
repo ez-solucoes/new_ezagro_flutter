@@ -70,8 +70,8 @@ class HttpClientDioImp extends DioForNative implements HttpClient {
               '${request.method.name} is not implemented for this client. Feels bad bro. Good luck.');
       }
       return HttpResponse(
-        statusCode: response.statusCode!,
-        statusMessage: response.statusMessage,
+        status: response.statusCode!,
+        message: response.statusMessage,
         data: response.data,
       );
     } on DioException catch (dioError) {
@@ -80,8 +80,8 @@ class HttpClientDioImp extends DioForNative implements HttpClient {
         case DioExceptionType.badResponse:
           errorType = HttpErrorType.response;
           return HttpResponse(
-            statusCode: dioError.response!.statusCode!,
-            statusMessage: dioError.response?.statusMessage,
+            status: dioError.response!.statusCode!,
+            message: dioError.response?.statusMessage,
             data: dioError.response!.data,
           );
         case DioExceptionType.connectionTimeout:
@@ -98,7 +98,7 @@ class HttpClientDioImp extends DioForNative implements HttpClient {
         message: dioError.message,
         request: request,
         response:
-            HttpResponse(statusCode: dioError.response?.statusCode ?? 500),
+            HttpResponse(status: dioError.response?.statusCode ?? 500),
         error: dioError,
       );
     } catch (error) {

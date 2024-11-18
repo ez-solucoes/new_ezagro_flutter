@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
@@ -40,14 +39,12 @@ class LoginPage extends StatelessWidget {
           children: [
             SvgPicture.asset(AppDrawables.ezAgroLogoComplete),
             const SizedBox(height: 72),
-            Observer(
-              builder: (context) => CustomOutlinedTextFormField(
-                controller: usernameController,
-                inputFormatters: [TextInputFormatterMask(mask: 'CPF')],
-                label: AppStringsPortuguese.cpfString,
-                inputType: TextInputType.number,
-                passwordField: false,
-              ),
+            CustomOutlinedTextFormField(
+              controller: usernameController,
+              inputFormatters: [TextInputFormatterMask(mask: 'CPF')],
+              label: AppStringsPortuguese.cpfString,
+              inputType: TextInputType.number,
+              passwordField: false,
             ),
             const SizedBox(height: 27),
             CustomOutlinedTextFormField(
@@ -56,20 +53,18 @@ class LoginPage extends StatelessWidget {
               passwordField: true,
             ),
             const SizedBox(height: 37),
-            Observer(
-              builder: (context) => CustomElevatedButton(
-                onPressed: () async {
-                  controller.username = usernameController.text;
-                  controller.password = passwordController.text;
+            CustomElevatedButton(
+              onPressed: () async {
+                controller.username = usernameController.text;
+                controller.password = passwordController.text;
 
-                  await controller.authenticate(context);
-                  if (controller.token != '') {
-                    HomePage.navigate();
-                  }
-                },
-                label: AppStringsPortuguese.enterString,
-                isLoading: controller.isLoading,
-              ),
+                await controller.authenticate(context);
+                if (controller.token != '') {
+                  HomePage.navigate();
+                }
+              },
+              label: AppStringsPortuguese.enterString,
+              isLoading: controller.isLoading,
             ),
             const SizedBox(height: 37),
             CustomUnderlinedTextButton(

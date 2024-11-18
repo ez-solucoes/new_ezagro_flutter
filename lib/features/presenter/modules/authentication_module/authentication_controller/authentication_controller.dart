@@ -8,7 +8,6 @@ import 'package:new_ezagro_flutter/design_system/widgets/snackbars/custon_snack_
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/update_password/update_password_usecase.dart';
 
-import '../../../../../core/enums/first_access_verification_enum.dart';
 import '../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../domain/entities/authentication_entities/authentication_entity.dart';
 import '../../../../domain/params/authentication_params/authentication_params.dart';

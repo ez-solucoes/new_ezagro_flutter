@@ -76,7 +76,8 @@ class CustomSnackBarWidget {
         children: [
           Text(message),
           Spacer(),
-          SvgPicture.asset(AppDrawables.warningWhiteIcon, color: Colors.white),
+          SvgPicture.asset(AppDrawables.warningWhiteIcon,
+              colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn)),
         ],
       ),
       backgroundColor: AppColors.primaryYellowColor,

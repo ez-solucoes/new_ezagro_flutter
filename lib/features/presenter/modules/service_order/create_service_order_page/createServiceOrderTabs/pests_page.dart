@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/pest_entities/pest_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/selector_entities/selector_entity.dart';
 import '../../../../../../design_system/colors/app_colors.dart';
 import '../../../../../../design_system/strings/app_strings_portuguese.dart';

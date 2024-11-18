@@ -1,12 +1,12 @@
 class AppEndpoints {
-  static const mainBaseUrlDev = 'api-dev.ezagro.com.br';
+  static const mainBaseUrlDev = 'api.dev.temp.ezagro.com.br';
   static const String baseUrlProtocolWithSecurity = 'https';
   static const String baseUrlProtocol = 'http';
 
   //Authentication
-  static const String authenticateEndpoint = '/authenticate';
+  static const String loginEndpoint = '/authentication/login';
   static const String updatePasswordEndpoint = '/update-password';
-  static const String recoverPasswordEndpoint = '/recover-password';
+  static const String forgotPasswordEndpoint = '/authentication/forgot-password';
   static const String validateTokenEndpoint = '/validate-token';
 
   //Service Order

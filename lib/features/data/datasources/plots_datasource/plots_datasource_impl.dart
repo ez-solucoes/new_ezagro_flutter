@@ -25,7 +25,7 @@ class PlotsDatasourceImpl with UriBuilder implements PlotsDatasource {
     final HttpRequest request = HttpRequest.get(path: url);
     final result = await httpClient.execute(request);
 
-    switch (result.status) {
+    switch (result.statusCode) {
       case 200:
         return mountModelInstanceFromResponse(
           response: result,

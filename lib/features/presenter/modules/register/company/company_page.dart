@@ -52,13 +52,25 @@ class CompanyPage extends StatelessWidget {
             const SizedBox(height: 10,),
             MultInfoCard(
                 title: "Endereço",
-                columnOneData: [("CEP", "00000-000"),("Logadouro", "Rua das Nações, 124"),("Estado", "São Paulo")],
-                columnTwoData: [("Cidade", "São Paulo"),("Bairro", "Ipiranga"),("País", "Brasil")]),
+                sectionsData: [([
+                  ("CEP", "00000-000"),
+                  ("Logadouro", "Rua das Nações, 124"),
+                  ("Estado", "São Paulo")
+                ], [
+                  ("Cidade", "São Paulo"),
+                  ("Bairro", "Ipiranga"),
+                  ("País", "Brasil")]
+                )]),
             const SizedBox(height: 10,),
             MultInfoCard(
                 title: "Dados Bancários",
-                columnOneData: [("Tipo de Conta", "Corrente"),("Agência", "0001"),("Tipo de Chave Pix", "CNPJ")],
-                columnTwoData: [("Banco", "Nu Pagamentos"),("Conta", "00000-00"),("Chave Pix", "00.00.00/000-00")])
+                sectionsData: [([
+                  ("Tipo de Conta", "Corrente"),("Agência", "0001"),("Tipo de Chave Pix", "CNPJ")
+                ], [
+                  ("Banco", "Nu Pagamentos"),
+                  ("Conta", "00000-00"),
+                  ("Chave Pix", "00.00.00/000-00")]
+                )])
           ],),),
     ));
   }

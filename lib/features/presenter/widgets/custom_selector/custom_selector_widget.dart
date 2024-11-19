@@ -9,7 +9,7 @@ class CustomSelectorWidget extends StatelessWidget {
   final List<SelectorEntity> items;
   final String title;
   final String selectorHint;
-  final String? selectedValue;
+  final SelectorEntity? selectedValue;
 
   const CustomSelectorWidget({
     super.key,

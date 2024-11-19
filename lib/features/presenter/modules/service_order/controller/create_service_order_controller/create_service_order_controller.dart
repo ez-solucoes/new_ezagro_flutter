@@ -2,18 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/agricultural_entities/agricultural_activity_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/farm_entities/farm_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/plot_entities/plot_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/selector_entities/selector_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 import 'package:new_ezagro_flutter/features/domain/params/create_service_order_params/create_service_order_params.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/employee_usecase/employee_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/executor_usecases/executor_usecase.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/cost_center_farm_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/machinery_usecases/machinery_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/pest_usecases/pest_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots_with_farm_id_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase.dart';
 import '../../../../../../core/enums/field_service_order_type_enum.dart';
@@ -37,7 +40,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   bool selectAll = false;
 
   @observable
-  List<SelectorEntity> activityOptions = ObservableList();
+  List<AgriculturalActivityEntity> activityOptions = ObservableList();
 
   @observable
   List<PestEntity> pestsOptions = ObservableList();
@@ -46,7 +49,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   List<SelectorEntity> costCenterOptions = ObservableList();
 
   @observable
-  List<SelectorEntity> farmOptions = ObservableList();
+  List<FarmEntity> farmOptions = ObservableList();
 
   @observable
   List<SelectorEntity> cropOptions = ObservableList();
@@ -83,6 +86,9 @@ abstract class CreateServiceOrderControllerAbstract with Store {
 
   @observable
   AgriculturalActivityEntity? activity;
+
+  @observable
+  String harvestName = "";
 
   Map<String, dynamic>  harvest = {"harvest": null};
 
@@ -132,10 +138,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getActivities = Modular.get<ActivityUsecase>();
     final result = await getActivities(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      activityOptions = success.content.map((e) {
-        return SelectorEntity(id: e.id, name: e.activityName);
-      }).toList();
-
+      activityOptions = success.content;
       return success;
     });
 
@@ -170,12 +173,12 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   }
 
   @action
-  Future getSimplifiedFarms() async {
+  Future getCostCenterFarms(String costCenterId) async {
     isLoading = true;
-    final getSimplifiedFarms = Modular.get<FarmUsecase>();
-    final result = await getSimplifiedFarms(NoParams());
+    final getCostCenterFarms = Modular.get<CostCenterFarmUsecase>();
+    final result = await getCostCenterFarms(costCenterId);
     result.fold((error) => error.friendlyMessage, (success) {
-      //farmOptions = success.content;
+      farmOptions = success as List<FarmEntity>;
       return success;
     });
 
@@ -198,12 +201,14 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   @action
   Future getPlotsOptions() async {
     isLoading = true;
-    final getPlots = Modular.get<PlotsUsecase>();
-    final result = await getPlots(NoParams());
-    result.fold((error) => error.friendlyMessage, (success) {
-      plotsOptions = success.content;
-      return success;
-    });
+    final getPlots = Modular.get<PlotsWithFarmIdUsecase>();
+    if (farmId != 0 ) {
+      final result = await getPlots(ArgParams(firstArgs: farmId.toString()));
+      result.fold((error) => error.friendlyMessage, (success) {
+        plotsOptions = success.content;
+        return success;
+      });
+    }
 
     isLoading = false;
   }

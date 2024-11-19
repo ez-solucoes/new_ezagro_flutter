@@ -80,13 +80,13 @@ mixin _$CreateServiceOrderController
       context: context);
 
   @override
-  List<SelectorEntity> get activityOptions {
+  List<AgriculturalActivityEntity> get activityOptions {
     _$activityOptionsAtom.reportRead();
     return super.activityOptions;
   }
 
   @override
-  set activityOptions(List<SelectorEntity> value) {
+  set activityOptions(List<AgriculturalActivityEntity> value) {
     _$activityOptionsAtom.reportWrite(value, super.activityOptions, () {
       super.activityOptions = value;
     });
@@ -131,13 +131,13 @@ mixin _$CreateServiceOrderController
       context: context);
 
   @override
-  List<SelectorEntity> get farmOptions {
+  List<FarmEntity> get farmOptions {
     _$farmOptionsAtom.reportRead();
     return super.farmOptions;
   }
 
   @override
-  set farmOptions(List<SelectorEntity> value) {
+  set farmOptions(List<FarmEntity> value) {
     _$farmOptionsAtom.reportWrite(value, super.farmOptions, () {
       super.farmOptions = value;
     });
@@ -346,6 +346,23 @@ mixin _$CreateServiceOrderController
     });
   }
 
+  late final _$harvestNameAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.harvestName',
+      context: context);
+
+  @override
+  String get harvestName {
+    _$harvestNameAtom.reportRead();
+    return super.harvestName;
+  }
+
+  @override
+  set harvestName(String value) {
+    _$harvestNameAtom.reportWrite(value, super.harvestName, () {
+      super.harvestName = value;
+    });
+  }
+
   late final _$isSelectingAtom = Atom(
       name: 'CreateServiceOrderControllerAbstract.isSelecting',
       context: context);
@@ -398,14 +415,14 @@ mixin _$CreateServiceOrderController
     return _$getCostCentersAsyncAction.run(() => super.getCostCenters());
   }
 
-  late final _$getSimplifiedFarmsAsyncAction = AsyncAction(
-      'CreateServiceOrderControllerAbstract.getSimplifiedFarms',
+  late final _$getCostCenterFarmsAsyncAction = AsyncAction(
+      'CreateServiceOrderControllerAbstract.getCostCenterFarms',
       context: context);
 
   @override
-  Future<dynamic> getSimplifiedFarms() {
-    return _$getSimplifiedFarmsAsyncAction
-        .run(() => super.getSimplifiedFarms());
+  Future<dynamic> getCostCenterFarms(String costCenterId) {
+    return _$getCostCenterFarmsAsyncAction
+        .run(() => super.getCostCenterFarms(costCenterId));
   }
 
   late final _$getSimplifiedCropsAsyncAction = AsyncAction(
@@ -590,6 +607,7 @@ selectedProducts: ${selectedProducts},
 selectedExecutors: ${selectedExecutors},
 selectedPests: ${selectedPests},
 activity: ${activity},
+harvestName: ${harvestName},
 isSelecting: ${isSelecting},
 startIndex: ${startIndex}
     ''';

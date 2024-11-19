@@ -15,7 +15,6 @@ class SelectPlotsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Modular.get<CreateServiceOrderController>();
-    controller.getPlotsOptions();
     return Observer(
         builder: (context) =>
             Column(mainAxisAlignment: MainAxisAlignment.center, children: [

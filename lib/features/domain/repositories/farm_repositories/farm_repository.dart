@@ -8,4 +8,8 @@ import '../../../../core/usecase/usecase.dart';
 abstract class FarmRepository {
   Future<Either<ApplicationError, PaginationEntity<FarmEntity>>>
       getSimplifiedFarms(NoParams noParams);
+
+  Future<Either<ApplicationError, List<FarmEntity>>>
+  getCostCenterFarms(String costCenterId);
+
 }

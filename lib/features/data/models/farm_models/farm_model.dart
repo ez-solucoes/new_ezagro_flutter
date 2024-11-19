@@ -68,7 +68,7 @@ class FarmModel extends FarmEntity {
         company: map['company'] == null
             ? null
             : CompanyModel.fromMap(map['company']),
-        plots: List<PlotModel>.from(
+        plots: map['plots'] == null ? null : List<PlotModel>.from(
             map['plots']?.map((x) => PlotModel.fromMap(x))),
         name: map['name'],
         areaAcre: map['areaAcre'],

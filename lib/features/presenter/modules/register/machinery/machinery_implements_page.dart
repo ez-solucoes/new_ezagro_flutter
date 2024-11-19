@@ -38,44 +38,44 @@ class MachineryImplementsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                         MultInfoCard(
-                            title: "Informações Básicas",
+                            title: AppStringsPortuguese.machineryBasicInformation,
                             sectionsData: [(
-                              [("Tipo", "Colheitadeiras"), ("Apelido", "Apelido")],
+                              [(AppStringsPortuguese.machineryTypeLabel, "Colheitadeiras"), (AppStringsPortuguese.machineryAliasLabel, "Apelido")],
                               []
                             ),
                               (
-                              [("Modelo", "Modelo"), ("Centro de Custo", "Centro de Custo"), ("Departamento", "Agrícula")],
-                              [("Marca:", "Marca"), ("Ano:", "Ano"), ("Subdepartamento:", "Subdepartamento")]
+                              [(AppStringsPortuguese.machineryModelLabel, "Modelo"), (AppStringsPortuguese.machineryCostCenterLabel, "Centro de Custo"), (AppStringsPortuguese.machineryDepartmentLabel, "Agrícula")],
+                              [(AppStringsPortuguese.machineryBrandLabel, "Marca"), (AppStringsPortuguese.machineryYearLabel, "Ano"), (AppStringsPortuguese.machinerySubdepartmentLabel, "Subdepartamento")]
                               ),
                               (
-                              [("Número do Patrimônio", "123456789"), ("Número do Patrimônio", "123456789")],
+                              [(AppStringsPortuguese.machineryAssetNumberLabel, "123456789"), (AppStringsPortuguese.machineryTelemetryNumberLabel, "123456789")],
                               []
                               )]),
                     const SizedBox(height: 10,),
                     MultInfoCard(
-                        title: "Informações Específicas",
+                        title: AppStringsPortuguese.machinerySpecificInformation,
                         sectionsData: [
                           (
-                          [("Chassi:", "Chassi"), ("Horas de Trabalho Acumuladas:", "Horas")],
+                          [(AppStringsPortuguese.machineryChassisLabel, "Chassi"), (AppStringsPortuguese.machineryWorkingHours, "Horas")],
                           []
                           ),
                           (
-                          [("Quilômetro:", "Quilômetro")],
-                          [("Capacidade do Tanque:", "Capacidade")]
+                          [(AppStringsPortuguese.machineryKilometersLabel, "Quilômetro")],
+                          [(AppStringsPortuguese.machineryTankCapacityLabel, "Capacidade")]
                           ),
                           (
-                          [("Documento:", "Documento"), ("Nota Fiscal:", "Nota Fiscal"), ("Vencimento do Seguro:", "05/05/2025"), ("Apólice:","Contrato de Seguro")],
+                          [(AppStringsPortuguese.machineryDocumentLabel, "Documento"), (AppStringsPortuguese.machineryInvoiceLabel, "Nota Fiscal"), (AppStringsPortuguese.machineryInsuranceExpiringDateLabel, "05/05/2025"), (AppStringsPortuguese.machineryInvoiceLabel,"Contrato de Seguro")],
                           []
                           )
                         ]),
                     const SizedBox(height: 10,),
                     MultInfoCard(
-                        title: "Aquisição:",
-                        sectionsData: [([("Data da Aquisição:", "05/03/2021"), ("Valor da Aquisição:", "R\$500.000,00")],
+                        title: AppStringsPortuguese.machineryAcquisition,
+                        sectionsData: [([(AppStringsPortuguese.machineryAcquisitionDateLabel, "05/03/2021"), (AppStringsPortuguese.machineryAcquisitionValueLabel, "R\$500.000,00")],
                         [])]),
                     const SizedBox(height: 10,),
                     DocumentsListWidget(
-                        title: "Manutenção:",
+                        title: AppStringsPortuguese.machineryMaintenance,
                         data: ["Nota Fiscal", "Nota Fiscal"],
                         maxHeight: MediaQuery.of(context).size.height*0.2,
                         action: (){}),

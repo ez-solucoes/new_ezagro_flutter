@@ -31,7 +31,7 @@ class UsernameInputPage extends StatelessWidget {
     return BackgroundWidget(
       appBar: CustomAppBarWidget(
         appBarType: AppBarType.backArrow,
-        callback: () => LoginPage.navigate,
+        callback: () {LoginPage.navigate;}
       ),
       scrollable: true,
       child: Padding(

@@ -15,7 +15,6 @@ import 'package:new_ezagro_flutter/features/domain/usecases/executor_usecases/ex
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/cost_center_farm_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/machinery_usecases/machinery_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/pest_usecases/pest_usecase.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots_with_farm_id_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase.dart';
@@ -178,7 +177,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getCostCenterFarms = Modular.get<CostCenterFarmUsecase>();
     final result = await getCostCenterFarms(costCenterId);
     result.fold((error) => error.friendlyMessage, (success) {
-      farmOptions = success as List<FarmEntity>;
+      farmOptions = success;
       return success;
     });
 

@@ -5,10 +5,10 @@ import '../../../../design_system/colors/app_colors.dart';
 
 class StackedDataWidget extends StatelessWidget {
   const StackedDataWidget({
-    Key? key,
+    super.key,
     required this.label,
     required this.text,
-  }) : super(key: key);
+  });
 
   final String label;
   final String text;

@@ -30,8 +30,7 @@ class EmployeePage extends StatelessWidget {
           scrollable: false,
           appBar: const CustomAppBarWidget(
             appBarType: AppBarType.hamburgerAndTitle,
-            title: AppStringsPortuguese.singularEmployeeTitle,
-            bottom: null
+            title: AppStringsPortuguese.singularEmployeeTitle
           ),
           child: Padding(
             padding: EdgeInsets.all(12),

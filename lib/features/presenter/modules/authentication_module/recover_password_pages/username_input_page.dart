@@ -11,6 +11,7 @@ import 'package:new_ezagro_flutter/features/presenter/widgets/custom_forms/passw
 import '../../../../../consts/app_routes.dart';
 import '../../../../../core/utils/text_input_formatter_mask.dart';
 import '../../../../../design_system/strings/app_strings_portuguese.dart';
+import '../../../../../design_system/widgets/snackbars/custon_snack_bar_widget.dart';
 
 class UsernameInputPage extends StatelessWidget {
   final ArgParams? args;
@@ -30,7 +31,7 @@ class UsernameInputPage extends StatelessWidget {
     return BackgroundWidget(
       appBar: CustomAppBarWidget(
         appBarType: AppBarType.backArrow,
-        callback: () => LoginPage.navigate,
+        callback: () {LoginPage.navigate;}
       ),
       scrollable: true,
       child: Padding(
@@ -45,13 +46,16 @@ class UsernameInputPage extends StatelessWidget {
             passwordField: false,
             onButtonPressed: () async {
 
-              controller.username = textController.text;
-
-              if (await controller.recoverPassword(context)) {
-                TempPasswordPage.navigate();
+              if(textController.text.isEmpty) {
+                CustomSnackBarWidget.show(SnackBarType.error, context, 'Digite seu Usuário');
               } else {
-                textController.clear();
-                controller.username = '';
+                controller.username = textController.text;
+                if (await controller.recoverPassword(context)) {
+                  TempPasswordPage.navigate();
+                } else {
+                  textController.clear();
+                  controller.username = '';
+                }
               }
             }),
       ),

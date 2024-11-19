@@ -30,7 +30,7 @@ class ServiceOrderDatasourceImpl
     final HttpRequest request = HttpRequest.get(path: url);
     final result = await httpClient.execute(request);
 
-    switch (result.status) {
+    switch (result.statusCode) {
       case 200:
         return mountModelInstanceFromResponse(
           response: result,
@@ -58,7 +58,7 @@ class ServiceOrderDatasourceImpl
         HttpRequest.post(path: url, payload: postServiceOrderAsJson());
     final result = await httpClient.execute(request);
 
-    switch (result.status) {
+    switch (result.statusCode) {
       case 200:
         return mountModelInstanceFromResponse(
             response: result,
@@ -80,7 +80,7 @@ class ServiceOrderDatasourceImpl
     final HttpRequest request = HttpRequest.get(path: url);
     final result = await httpClient.execute(request);
 
-    switch (result.status) {
+    switch (result.statusCode) {
       case 200:
         return mountModelInstanceFromResponse(
           response: result,

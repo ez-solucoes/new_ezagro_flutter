@@ -1,27 +1,23 @@
 class HttpResponse {
   HttpResponse({
-    required this.status,
-    this.message,
+    required this.statusCode,
+    this.statusMessage,
     this.data,
-    this.path,
   });
 
-  final int status;
-  final String? message;
+  final int statusCode;
+  final String? statusMessage;
   final dynamic data;
-  final String? path;
 
   HttpResponse copyWith({
     int? statusCode,
     String? statusMessage,
     dynamic data,
-    String? path,
   }) {
     return HttpResponse(
-      status: statusCode ?? status,
-      message: statusMessage ?? message,
+      statusCode: statusCode ?? this.statusCode,
+      statusMessage: statusMessage ?? this.statusMessage,
       data: data ?? this.data,
-      path: path ?? path,
     );
   }
 }

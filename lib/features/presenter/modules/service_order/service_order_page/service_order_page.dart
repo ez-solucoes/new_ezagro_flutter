@@ -41,7 +41,7 @@ class ServiceOrderPage extends StatelessWidget {
       appBar: CustomAppBarWidget(
         appBarType: AppBarType.centeredTitleAndBackArrow,
         title: AppStringsPortuguese.serviceOrderTitle,
-         onTap: (){
+         callback: (){
             ServiceOrderListPage.navigate();
          }
       ),
@@ -169,7 +169,7 @@ class ServiceOrderPage extends StatelessWidget {
                       itemCount: (controller.serviceOrder?.pests?.map((e) => e.commonName1).toList() ?? []).length,
                       itemBuilder: (context, index) {
                         return CustomListItemWidget(
-                            informationText: (controller.serviceOrder?.pests?.map((e) => e.commonName1).toList() ?? [])[index] ?? "",
+                            informationText: (controller.serviceOrder?.pests?.map((e) => e.commonName1).toList() ?? [])[index],
                             backgroundColor: index % 2 == 0
                                 ? AppColors.primaryWhiteColor
                                 : AppColors.softGreenColor,

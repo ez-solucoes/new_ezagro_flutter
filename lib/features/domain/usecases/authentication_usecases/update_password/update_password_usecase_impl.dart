@@ -5,13 +5,15 @@ import 'package:new_ezagro_flutter/features/domain/params/authentication_params/
 import 'package:new_ezagro_flutter/features/domain/repositories/authentication_repository/authentication_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/update_password/update_password_usecase.dart';
 
+import '../../../entities/response_entities/response_entity.dart';
+
 class UpdatePasswordUsecaseImpl implements UpdatePasswordUsecase {
   final AuthenticationRepository repository;
 
   const UpdatePasswordUsecaseImpl({required this.repository});
 
   @override
-  Future<Either<ApplicationError, AuthenticationEntity>> call(
+  Future<Either<ApplicationError, ResponseEntity<AuthenticationEntity>>> call(
       AuthenticationParams authenticationParams) async {
     return await repository.updatePassword(authenticationParams);
   }

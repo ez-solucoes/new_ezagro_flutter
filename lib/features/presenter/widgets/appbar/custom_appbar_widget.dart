@@ -22,8 +22,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
   final bool showProgressIndicator;
   final bool showHamburgerMenu;
   final bool showNotificationIcon;
-  final Function()? onTap;
-  final VoidCallback? callback;
+  final Function()? callback;
 
 
   const CustomAppBarWidget({
@@ -36,7 +35,6 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
     this.showHamburgerMenu = false,
     this.showNotificationIcon = false,
     this.callback,
-    this.onTap,
     required this.appBarType,
   });
 
@@ -93,7 +91,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
     title: Column(
       children: [
         GestureDetector(
-          onTap: () => callback,
+          onTap: callback,
           child: Row(
             children: [
               const Icon(Icons.arrow_back_ios, size: 19),
@@ -152,7 +150,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GestureDetector(
-                onTap: onTap,
+                onTap: callback,
                 child: Row(
                   children: [
                     const Icon(Icons.arrow_back_ios, size: 19),

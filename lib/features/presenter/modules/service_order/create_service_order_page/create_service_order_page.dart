@@ -42,7 +42,7 @@ class CreateServiceOrderPage extends StatelessWidget {
         appBar: CustomAppBarWidget(
           appBarType: AppBarType.centeredTitleAndBackArrow,
           title: AppStringsPortuguese.createServiceOrder,
-          onTap: (){
+          callback: (){
             HomePage.navigate();
           },
         ),

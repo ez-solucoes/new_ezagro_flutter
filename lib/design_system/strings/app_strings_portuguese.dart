@@ -248,6 +248,7 @@ class AppStringsPortuguese {
   static const String attachmentsTableTitle = "Anexos";
 
   static const String machineryAndImplementsTitle = "Maquinários & Implementos";
+  static const String machineryPluralTitle = "Maquinários";
   static const String machineryNameColumn = "Maquinário";
   static const String machineryBrandColumn = "Marca";
   static const String machineryScreenTitle = "Maquinário";

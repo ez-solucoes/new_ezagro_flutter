@@ -10,7 +10,7 @@ import 'package:new_ezagro_flutter/features/presenter/modules/register/farm/farm
 import 'package:new_ezagro_flutter/features/presenter/modules/register/machinery/machinery_list_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/appbar/custom_appbar_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/background/background_widget.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/buttons/custom_navigation)button.dart';
+import 'package:new_ezagro_flutter/features/presenter/widgets/buttons/custom_navigation_button.dart';
 import '../../../../consts/app_routes.dart';
 import '../../../domain/params/arg_params/arg_params.dart';
 

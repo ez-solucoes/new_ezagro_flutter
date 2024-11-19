@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_ezagro_flutter/design_system/typography/app_text_styles.dart';
-
 import '../../../../design_system/colors/app_colors.dart';
 
-import 'package:flutter/material.dart';
-import 'package:new_ezagro_flutter/design_system/typography/app_text_styles.dart';
-
-import '../../../../design_system/colors/app_colors.dart';
 
 class BoldTitleInfoCard extends StatelessWidget {
   const BoldTitleInfoCard({

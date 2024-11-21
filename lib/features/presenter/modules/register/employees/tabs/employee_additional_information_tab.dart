@@ -16,18 +16,25 @@ class EmployeeAdditionalInformationTab extends StatelessWidget {
         children: [
           MultInfoCard(
             title: AppStringsPortuguese.employeeContactorLabel,
-            columnOneData: [(AppStringsPortuguese.employeeCostCenterLabel, "Uberaba"),(AppStringsPortuguese.employeeRuralProducerLabel, "Produtor Rural")],
-            columnTwoData: [(AppStringsPortuguese.employeeFarmLabel, "Três Lagoas"),(AppStringsPortuguese.employeeCompanyLabel, "Empresa")]),
+            sectionsData: [
+              (
+                  [(AppStringsPortuguese.employeeCostCenterLabel, "Uberaba"),(AppStringsPortuguese.employeeRuralProducerLabel, "Produtor Rural")],
+              [(AppStringsPortuguese.employeeFarmLabel, "Três Lagoas"),(AppStringsPortuguese.employeeCompanyLabel, "Empresa")]
+              )
+            ]),
           const SizedBox(height: 10,),
           MultInfoCard(
               title: AppStringsPortuguese.employeeSalaryCompositionLabel,
-              columnOneData: [(AppStringsPortuguese.employeeCompositionLabel, "Composição"),(AppStringsPortuguese.employeeReferenceBaseLabel, "Valor Livre")],
-              columnTwoData: [(AppStringsPortuguese.employeeReferenceLabel, "Referêcia")]),
+              sectionsData: [(
+              [(AppStringsPortuguese.employeeCompositionLabel, "Composição"),(AppStringsPortuguese.employeeReferenceBaseLabel, "Valor Livre")],
+              [(AppStringsPortuguese.employeeReferenceLabel, "Referêcia")])]),
           const SizedBox(height: 10,),
           MultInfoCard(
               title: AppStringsPortuguese.additionalInformationTab,
-              columnOneData: [(AppStringsPortuguese.employeeCeiLabel, "CEI"),(AppStringsPortuguese.employeeUnionCodeLabel, "Código Sindical")],
-              columnTwoData: [(AppStringsPortuguese.employeeInsuranceCodeLabel, "Código de Se."),(AppStringsPortuguese.employeeHealthCareLabel, "Plano de Saúde")]),
+              sectionsData: [(
+                [(AppStringsPortuguese.employeeCeiLabel, "CEI"),(AppStringsPortuguese.employeeUnionCodeLabel, "Código Sindical")],
+                [(AppStringsPortuguese.employeeInsuranceCodeLabel, "Código de Se."),(AppStringsPortuguese.employeeHealthCareLabel, "Plano de Saúde")]
+              )]),
           const SizedBox(height: 10,),
           CustomStripedTable(columnNames: ["Dependentes", "Relação","Nascimento"], data: [["Julio Costa","Filho","22/11/2005"],["Ana Costa","Esposa","15/09/1973"]], maxHeight: MediaQuery.of(context).size.height*0.2, equalColumnProportions: true,),
           const SizedBox(height: 10,),

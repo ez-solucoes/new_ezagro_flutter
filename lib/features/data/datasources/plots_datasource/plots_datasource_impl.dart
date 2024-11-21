@@ -39,6 +39,7 @@ class PlotsDatasourceImpl with UriBuilder implements PlotsDatasource {
     }
   }
 
+  @override
   Future<PaginationModel<PlotModel>> getPlotByFarmId(ArgParams params) async {
     final String id = params.firstArgs == null ? "" : params.firstArgs as String;
     final String url = mountUrl(

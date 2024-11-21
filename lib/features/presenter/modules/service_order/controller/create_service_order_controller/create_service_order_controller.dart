@@ -5,7 +5,6 @@ import 'package:new_ezagro_flutter/features/domain/entities/agricultural_entitie
 import 'package:new_ezagro_flutter/features/domain/entities/farm_entities/farm_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/plot_entities/plot_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/selector_entities/selector_entity.dart';
-import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 import 'package:new_ezagro_flutter/features/domain/params/create_service_order_params/create_service_order_params.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase.dart';
@@ -15,13 +14,13 @@ import 'package:new_ezagro_flutter/features/domain/usecases/executor_usecases/ex
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/cost_center_farm_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/machinery_usecases/machinery_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/pest_usecases/pest_usecase.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots_usecase.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots_with_farm_id_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase.dart';
 import '../../../../../../core/enums/field_service_order_type_enum.dart';
 import '../../../../../../core/usecase/usecase.dart';
 import '../../../../../domain/entities/pest_entities/pest_entity.dart';
+import '../../../../../domain/params/arg_params/arg_params.dart';
+import '../../../../../domain/usecases/plots_usecases/plots_with_farm_id_usecase.dart';
 part 'create_service_order_controller.g.dart';
 
 class CreateServiceOrderController = CreateServiceOrderControllerAbstract with _$CreateServiceOrderController;
@@ -178,7 +177,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getCostCenterFarms = Modular.get<CostCenterFarmUsecase>();
     final result = await getCostCenterFarms(costCenterId);
     result.fold((error) => error.friendlyMessage, (success) {
-      farmOptions = success as List<FarmEntity>;
+      farmOptions = success;
       return success;
     });
 

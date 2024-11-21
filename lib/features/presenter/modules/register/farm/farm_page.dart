@@ -39,28 +39,48 @@ class FarmPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     MultInfoCard(
-                        title: AppStringsPortuguese.singularFarmTitle,
-                        columnOneData: [
+                      title: AppStringsPortuguese.singularFarmTitle,
+                      sectionsData: [
+                        (
+                        [
                           (AppStringsPortuguese.farmNameLabel, "Três Lagoas"),
                           (AppStringsPortuguese.farmOwnerLabel, "Alan Brito"),
                           (AppStringsPortuguese.farmCostCenterLabel, "Uberaba"),
                           (AppStringsPortuguese.farmExternalCodeLabel, "123456"),
                           (AppStringsPortuguese.farmCaepfLabel, "123456"),
-                          (AppStringsPortuguese.farmAreaLabel, "150ha")
+                          (AppStringsPortuguese.farmAreaLabel, "150ha"),
                         ],
-                        columnTwoData: [
+                        [
                           (AppStringsPortuguese.farmStateSubscriptionLabel, "12345678"),
                           (AppStringsPortuguese.farmOwnerRegisterLabel, "12345678"),
                           (AppStringsPortuguese.farmCompanyLabel, "Nome da Empresa"),
                           (AppStringsPortuguese.farmCarLabel, "12345678"),
-                          (AppStringsPortuguese.farmCnaeLabel, "01113 - Cultivo de Cereais")
-                        ]),
+                          (AppStringsPortuguese.farmCnaeLabel, "01113 - Cultivo de Cereais"),
+                        ],
+                        )
+                      ],
+                    ),
                     const SizedBox(height: 10,),
                     MultInfoCard(
-                        title: AppStringsPortuguese.addressLabel,
-                        columnOneData: [(AppStringsPortuguese.addressCepLabel, "00000-000"),(AppStringsPortuguese.addressStreetLabel, "Estrada das Nações, 123"),(AppStringsPortuguese.addressStateLabel, "São Paulo"), (AppStringsPortuguese.addressReferenceLabel, "Depois da Cachoeira")],
-                        columnTwoData: [(AppStringsPortuguese.addressCityLabel, "São Paulo"),(AppStringsPortuguese.addressNeighborhoodLabel, "Fazendas de Ouro"),(AppStringsPortuguese.addressCountryLabel, "Brasil")]),
-                    const SizedBox(height: 10,),const SizedBox(height: 10,),
+                      title: AppStringsPortuguese.addressLabel,
+                      sectionsData: [
+                        (
+                        [
+                          (AppStringsPortuguese.addressCepLabel, "00000-000"),
+                          (AppStringsPortuguese.addressStreetLabel, "Estrada das Nações, 123"),
+                          (AppStringsPortuguese.addressStateLabel, "São Paulo"),
+                          (AppStringsPortuguese.addressReferenceLabel, "Depois da Cachoeira"),
+                        ],
+                        [
+                          (AppStringsPortuguese.addressCityLabel, "São Paulo"),
+                          (AppStringsPortuguese.addressNeighborhoodLabel, "Fazendas de Ouro"),
+                          (AppStringsPortuguese.addressCountryLabel, "Brasil"),
+                        ],
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: 10,),
+                    const SizedBox(height: 10,),
                     CustomStripedTable(
                         columnNames: [AppStringsPortuguese.farmPlotColumn, AppStringsPortuguese.farmAreaColumn, AppStringsPortuguese.farmCropColumn],
                         data: List.generate(30, (index) => ["$index", "100ha", "Milho"]),

@@ -46,7 +46,7 @@ class CustomSelectorWidget extends StatelessWidget {
                   ),
                   items: items.map((SelectorEntity item) {
                     return DropdownMenuItem<SelectorEntity>(
-                        value: item, child: Text(item.name ?? ""));
+                        value: item, child: Text(item.label ?? ""));
                   }).toList(),
                   onChanged: (value) {
                     if (value is SelectorEntity) { // Cast and null check

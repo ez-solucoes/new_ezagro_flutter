@@ -24,10 +24,10 @@ class GeneralInformationPage extends StatelessWidget {
       Observer(
         builder: (context) => CustomSelectorWidget(
             onSelect: (value) {
-                controller.activity = controller.activityOptions.firstWhere((e) => e.id == value.id);
+                controller.activity = controller.activityOptions.firstWhere((e) => e.id == value.value);
                 selectedActivity = value;
             },
-            items: controller.activityOptions.map((e) => SelectorEntity(id: e.id, name: e.activityName)).toList(),
+            items: controller.activityOptions.map((e) => SelectorEntity(value: e.id, label: e.activityName)).toList(),
             title: AppStringsPortuguese.activitySelectorTitle,
             selectorHint: AppStringsPortuguese.activitySelectorHint,
             selectedValue: selectedActivity
@@ -39,7 +39,7 @@ class GeneralInformationPage extends StatelessWidget {
       Observer(
         builder: (context) => CustomSelectorWidget(
             onSelect: (value) {
-              controller.costCenterId = controller.costCenterOptions.where((e) => e.name == value.name).toList().first.id;
+              controller.costCenterId = controller.costCenterOptions.where((e) => e.label == value.label).toList().first.value;
               if (controller.costCenterId != null) {
                 controller.getCostCenterFarms(controller.costCenterId.toString());
               }
@@ -54,15 +54,15 @@ class GeneralInformationPage extends StatelessWidget {
       Observer(
         builder: (context) => CustomSelectorWidget(
             onSelect: (value) {
-                controller.farmId = value.id;
-                CostCenterEntity? costCenter = controller.farmOptions.firstWhere((e) => e.id == value.id).costCenters?.firstWhere((e) => e.costCenterType?.name == "Safra");
+                controller.farmId = value.value;
+                CostCenterEntity? costCenter = controller.farmOptions.firstWhere((e) => e.id == value.value).costCenters?.firstWhere((e) => e.costCenterType?.name == "Safra");
                 if (costCenter != null) {
-                  harvest = SelectorEntity(id: costCenter.id, name: costCenter.costCenterName);
+                  harvest = SelectorEntity(value: costCenter.id, label: costCenter.costCenterName);
                 }
                 controller.getPlotsOptions();
               },
             items: controller.farmOptions.map((e) =>
-                SelectorEntity(id: e.id, name: e.name)
+                SelectorEntity(value: e.id, label: e.name)
             ).toList(),
             title: AppStringsPortuguese.farmSelectorTitle,
             selectorHint: AppStringsPortuguese.farmSelectorHint),

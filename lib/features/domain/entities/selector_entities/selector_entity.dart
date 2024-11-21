@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
 
 class SelectorEntity extends Equatable {
-  final int id;
-  final String? name;
+  final int value;
+  final String? label;
 
-  const SelectorEntity({required this.id, this.name});
+  const SelectorEntity({required this.value, this.label});
 
   @override
-  List<Object?> get props => [id, name];
+  List<Object?> get props => [value, label];
 }

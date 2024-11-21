@@ -25,9 +25,9 @@ class PestsPage extends StatelessWidget {
               children: [
                 CustomSelectorWidget(
                     onSelect: (value) {
-                      controller.selectedPests.add(controller.pestsOptions.firstWhere((e) => e.id == value.id));
+                      controller.selectedPests.add(controller.pestsOptions.firstWhere((e) => e.id == value.value));
                     },
-                    items: controller.pestsOptions.map((e) => SelectorEntity(id: e.id, name: e.commonName1)).toList(),
+                    items: controller.pestsOptions.map((e) => SelectorEntity(value: e.id, label: e.commonName1)).toList(),
                     title: AppStringsPortuguese.pestsSelectorTitle,
                     selectorHint: AppStringsPortuguese.pestSelectorHint),
                 const SizedBox(height: 6),

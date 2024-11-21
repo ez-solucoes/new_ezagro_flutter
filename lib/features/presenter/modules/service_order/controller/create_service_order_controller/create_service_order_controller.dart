@@ -20,6 +20,7 @@ import '../../../../../../core/enums/field_service_order_type_enum.dart';
 import '../../../../../../core/usecase/usecase.dart';
 import '../../../../../domain/entities/pest_entities/pest_entity.dart';
 import '../../../../../domain/params/arg_params/arg_params.dart';
+import '../../../../../domain/usecases/cost_center_usecases/cost_center_selector_usecase.dart';
 import '../../../../../domain/usecases/plots_usecases/plots_with_farm_id_usecase.dart';
 part 'create_service_order_controller.g.dart';
 
@@ -159,12 +160,10 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   @action
   Future getCostCenters() async {
     isLoading = true;
-    final getCostCenters = Modular.get<CostCenterUsecase>();
+    final getCostCenters = Modular.get<CostCenterSelectorUsecase>();
     final result = await getCostCenters(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      costCenterOptions = success.content.map((e) {
-        return SelectorEntity(id: e.id, name: e.costCenterName);
-      }).toList();
+      costCenterOptions = success;
       return success;
     });
 

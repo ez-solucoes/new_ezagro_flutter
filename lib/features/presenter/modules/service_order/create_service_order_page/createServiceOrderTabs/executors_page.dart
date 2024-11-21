@@ -24,7 +24,7 @@ class ExecutorsPage extends StatelessWidget {
               children: [
                 CustomSelectorWidget(
                     onSelect: (value) {
-                      controller.selectedExecutors.add(value.id);
+                      controller.selectedExecutors.add(value.value);
                     },
                     items: controller.executorsOptions,
                     title: AppStringsPortuguese.executorSelectorTitle,

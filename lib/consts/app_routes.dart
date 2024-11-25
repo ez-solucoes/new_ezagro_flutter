@@ -22,6 +22,7 @@ class AppRoutes {
   static const String appDocumentsPage = '/documentsPage';
   static const String appServiceOrderListPage = '/serviceOrderListPage';
   static const String appServiceOrderPage = '/serviceOrderPage';
+  static const String appPlotsList = '/plotListPage';
   static const String appCreateServiceOrderPage = '/createServiceOrderPage';
   static const String appCompanyPage = '/companyPage';
   static const String appCompanyListPage = '/companyListPage';

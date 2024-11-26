@@ -92,7 +92,7 @@ class AppStringsPortuguese {
   static const String estimatedEndDateLabel = 'Previsão de término';
   static const String servicePriceLabel = 'Valor do Serviço';
   static const String notesLabel = 'Observações';
-  static const String newPlanting = ' - Novo Plantio';
+  static const String newPlanting = 'Novo Plantio';
 
   //Create Service Order
   static const String createServiceOrder = 'Criar Ordem de Serviço';

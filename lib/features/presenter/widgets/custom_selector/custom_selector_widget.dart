@@ -11,13 +11,24 @@ class CustomSelectorWidget extends StatelessWidget {
   final String selectorHint;
   final SelectorEntity? selectedValue;
 
+  final Function(SelectorEntity)? onSelectSubCategory;
+  final List<SelectorEntity>? subItems;
+  final String? subSelectorHint;
+  final SelectorEntity? selectedSubValue;
+  final Function? reloadSubItems;
+
   const CustomSelectorWidget({
     super.key,
     required this.onSelect,
     required this.items,
     required this.title,
     required this.selectorHint,
-    this.selectedValue
+    this.selectedValue,
+    this.onSelectSubCategory,
+    this.subItems,
+    this.subSelectorHint,
+    this.selectedSubValue,
+    this.reloadSubItems
   });
 
   @override
@@ -49,8 +60,9 @@ class CustomSelectorWidget extends StatelessWidget {
                         value: item, child: Text(item.label ?? ""));
                   }).toList(),
                   onChanged: (value) {
-                    if (value is SelectorEntity) { // Cast and null check
+                    if (value is SelectorEntity) {
                       onSelect(value);
+                      reloadSubItems?.call();
                     }
                   },
                   decoration: const InputDecoration(
@@ -60,7 +72,38 @@ class CustomSelectorWidget extends StatelessWidget {
                           focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.primaryGreenColor)),
                   )
                 ),
+                (subItems ?? []).isNotEmpty ? SizedBox(height: 10,) : SizedBox.shrink(),
+                _buildSubSelector((subItems ?? []).isNotEmpty)
               ],
             )));
+  }
+
+  Widget _buildSubSelector(bool hasItems) {
+    return hasItems ?
+    DropdownButtonFormField(
+        value: selectedSubValue,
+        dropdownColor: AppColors.primaryWhiteColor,
+        style: AppTextStyles.appBarSubTitleTextStyle(color: AppColors.primaryBlackColor),
+        hint: Text(
+          subSelectorHint ?? "",
+          style: AppTextStyles.appBarTitleTextStyle(
+              color: AppColors.formGreyColor),
+        ),
+        items: (subItems ?? []).map((SelectorEntity item) {
+          return DropdownMenuItem<SelectorEntity>(
+              value: item, child: Text(item.label ?? ""));
+        }).toList(),
+        onChanged: (value) {
+          if (value is SelectorEntity) { // Cast and null check
+            onSelectSubCategory?.call(value);
+          }
+        },
+        decoration: const InputDecoration(
+          enabledBorder: UnderlineInputBorder(
+              borderSide:
+              BorderSide(color: AppColors.formGreyColor)),
+          focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.primaryGreenColor)),
+        )
+    ) : SizedBox.shrink();
   }
 }

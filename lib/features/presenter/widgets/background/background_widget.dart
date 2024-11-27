@@ -10,8 +10,9 @@ class BackgroundWidget extends StatelessWidget {
   final bool scrollable;
   final Widget child;
   final bool needsDrawer;
+  final Widget? floatButton;
 
-  const BackgroundWidget({super.key, required this.scrollable, required this.child, this.appBar, this.needsDrawer = false});
+  const BackgroundWidget({super.key, required this.scrollable, this.floatButton, required this.child, this.appBar, this.needsDrawer = false});
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +38,8 @@ class BackgroundWidget extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: floatButton,
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
     );
   }
 }

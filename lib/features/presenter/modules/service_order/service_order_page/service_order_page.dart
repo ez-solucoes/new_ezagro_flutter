@@ -53,10 +53,12 @@ class ServiceOrderPage extends StatelessWidget {
               _isFinished(uiController.isFinished()),
               const SizedBox(height: 15,),
               CustomInfoCardWidget(
-                  labelOne: AppStringsPortuguese.activityLabel,
-                  textOne: controller.getNewPlantingString(),
-                  labelTwo: "${AppStringsPortuguese.openingDateLabel} ${controller.serviceOrder?.activityStart ?? ""}",
-                  textTwo: controller.serviceOrder?.agriculturalActivity?.activityName ?? "",
+                  labelOne: controller.serviceOrderId.toString(),
+                  textOne: controller.serviceOrder?.agriculturalActivity?.activityName ?? "",
+                  labelTwo:"",
+                  textTwo: "Subatividade",
+                  labelThree: controller.getNewPlantingString(),
+                  textThree:  "${AppStringsPortuguese.openingDateLabel} ${controller.serviceOrder?.activityStart ?? ""}",
                   infoCardType: InfoCardType.activityType),
               const SizedBox(height: 10.0),
               Container(

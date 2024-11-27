@@ -92,6 +92,24 @@ mixin _$CreateServiceOrderController
     });
   }
 
+  late final _$subActivitiesOptionsAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.subActivitiesOptions',
+      context: context);
+
+  @override
+  List<SelectorEntity> get subActivitiesOptions {
+    _$subActivitiesOptionsAtom.reportRead();
+    return super.subActivitiesOptions;
+  }
+
+  @override
+  set subActivitiesOptions(List<SelectorEntity> value) {
+    _$subActivitiesOptionsAtom.reportWrite(value, super.subActivitiesOptions,
+        () {
+      super.subActivitiesOptions = value;
+    });
+  }
+
   late final _$pestsOptionsAtom = Atom(
       name: 'CreateServiceOrderControllerAbstract.pestsOptions',
       context: context);
@@ -346,6 +364,23 @@ mixin _$CreateServiceOrderController
     });
   }
 
+  late final _$subActivityAtom = Atom(
+      name: 'CreateServiceOrderControllerAbstract.subActivity',
+      context: context);
+
+  @override
+  SelectorEntity? get subActivity {
+    _$subActivityAtom.reportRead();
+    return super.subActivity;
+  }
+
+  @override
+  set subActivity(SelectorEntity? value) {
+    _$subActivityAtom.reportWrite(value, super.subActivity, () {
+      super.subActivity = value;
+    });
+  }
+
   late final _$harvestNameAtom = Atom(
       name: 'CreateServiceOrderControllerAbstract.harvestName',
       context: context);
@@ -404,6 +439,15 @@ mixin _$CreateServiceOrderController
   @override
   Future<dynamic> getActivities() {
     return _$getActivitiesAsyncAction.run(() => super.getActivities());
+  }
+
+  late final _$getSubActivitiesAsyncAction = AsyncAction(
+      'CreateServiceOrderControllerAbstract.getSubActivities',
+      context: context);
+
+  @override
+  Future<dynamic> getSubActivities() {
+    return _$getSubActivitiesAsyncAction.run(() => super.getSubActivities());
   }
 
   late final _$getCostCentersAsyncAction = AsyncAction(
@@ -592,6 +636,7 @@ isLastPage: ${isLastPage},
 page: ${page},
 selectAll: ${selectAll},
 activityOptions: ${activityOptions},
+subActivitiesOptions: ${subActivitiesOptions},
 pestsOptions: ${pestsOptions},
 costCenterOptions: ${costCenterOptions},
 farmOptions: ${farmOptions},
@@ -607,6 +652,7 @@ selectedProducts: ${selectedProducts},
 selectedExecutors: ${selectedExecutors},
 selectedPests: ${selectedPests},
 activity: ${activity},
+subActivity: ${subActivity},
 harvestName: ${harvestName},
 isSelecting: ${isSelecting},
 startIndex: ${startIndex}

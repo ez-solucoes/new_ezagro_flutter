@@ -19,7 +19,7 @@ class ProductsPage extends StatelessWidget {
             children: [
               CustomSelectorWidget(
                   onSelect: (value) {
-                    controller.selectedProducts.add(value.id);
+                    controller.selectedProducts.add(value.value);
                   },
                   items: controller.productsOptions,
                   title: AppStringsPortuguese.productSelectorTitle,

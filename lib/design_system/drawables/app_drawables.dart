@@ -14,4 +14,6 @@ class AppDrawables {
   static const String closeWhiteIcon = '${iconBaseDir}close_white_icon.svg';
   static const String warningWhiteIcon = '${iconBaseDir}warning_white_icon.svg';
   static const String checkWhiteIcon = '${iconBaseDir}check_white_icon.svg';
+  static const String companyIcon = '${iconBaseDir}company_icon.svg';
+  static const String farmIcon = '${iconBaseDir}farm_icon.svg';
 }

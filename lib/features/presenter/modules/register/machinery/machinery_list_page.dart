@@ -32,7 +32,7 @@ class MachineryListPage extends StatelessWidget {
             resizeToAvoidBottomInset: false,
             appBar: const CustomAppBarWidget(
               appBarType: AppBarType.hamburgerAndTitle,
-              title: AppStringsPortuguese.pluralEmployeeTitle,
+              title: AppStringsPortuguese.machineryAndImplementsTitle,
             ),
             drawer: CustomDrawerWidget(),
             body: Stack(

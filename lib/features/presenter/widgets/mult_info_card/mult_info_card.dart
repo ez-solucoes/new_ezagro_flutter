@@ -7,13 +7,11 @@ class MultInfoCard extends StatelessWidget {
   const MultInfoCard({
     super.key,
     required this.title,
-    required this.columnOneData,
-    required this.columnTwoData,
+    required this.sectionsData,
   });
 
   final String title;
-  final List<(String label, String text)> columnOneData;
-  final List<(String label, String text)> columnTwoData;
+  final List<(List<(String label, String text)>, List<(String label, String text)>)> sectionsData;
 
   @override
   Widget build(BuildContext context) {
@@ -48,37 +46,54 @@ class MultInfoCard extends StatelessWidget {
               color: AppColors.borderWhiteColor,
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Coluna 1
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: columnOneData.map((data) {
-                  return Padding(
-                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 7.5),
-                    child: StackedDataWidget(
-                      label: data.$1,
-                      text: data.$2,
+          ...sectionsData.map((sectionData) {
+            return Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Coluna 1
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: sectionData.$1.map((data) {
+                        return Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 7.5),
+                          child: StackedDataWidget(
+                            label: data.$1,
+                            text: data.$2,
+                          ),
+                        );
+                      }).toList(),
                     ),
-                  );
-                }).toList(),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: columnTwoData.map((data) {
-                  return Padding(
-                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 7.5),
-                    child: StackedDataWidget(
-                      label: data.$1,
-                      text: data.$2,
+                    // Coluna 2
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: sectionData.$2.map((data) {
+                        return Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 7.5),
+                          child: StackedDataWidget(
+                            label: data.$1,
+                            text: data.$2,
+                          ),
+                        );
+                      }).toList(),
                     ),
-                  );
-                }).toList(),
-              ),
-            ],
-          ),
+                  ],
+                ),
+                if (sectionsData.indexOf(sectionData) < sectionsData.length - 1)
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    child: const Divider(
+                      height: 1,
+                      color: AppColors.borderWhiteColor,
+                    ),
+                  ),
+              ],
+            );
+          }),
           const SizedBox(height: 7.5,)
         ],
       ),

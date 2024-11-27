@@ -248,9 +248,35 @@ class AppStringsPortuguese {
   static const String attachmentsTableTitle = "Anexos";
 
   static const String machineryAndImplementsTitle = "Maquinários & Implementos";
+  static const String machineryPluralTitle = "Maquinários";
   static const String machineryNameColumn = "Maquinário";
   static const String machineryBrandColumn = "Marca";
   static const String machineryScreenTitle = "Maquinário";
+  static const String machineryBasicInformation = "Informações Básicas";
+  static const String machineryTypeLabel = "Tipo:";
+  static const String machineryAliasLabel = "Apelido:";
+  static const String machineryModelLabel = "Modelo:";
+  static const String machineryBrandLabel = "Marca:";
+  static const String machineryCostCenterLabel = "Centro de Custo:";
+  static const String machineryYearLabel = "Ano:";
+  static const String machineryDepartmentLabel = "Departamento:";
+  static const String machinerySubdepartmentLabel = "Subdepartamento:";
+  static const String machineryAssetNumberLabel = "Número do Patrimônio:";
+  static const String machineryTelemetryNumberLabel = "Número de Telemetria:";
+  static const String machinerySpecificInformation = "Inforamções Específicas";
+  static const String machineryChassisLabel = "Chassi:";
+  static const String machineryWorkingHours = "Horas de Trabalho Acumuladas:";
+  static const String machineryKilometersLabel = "Quilômetro:";
+  static const String machineryTankCapacityLabel = "Capacidade do Tanque:";
+  static const String machineryDocumentLabel = "Documento:";
+  static const String machineryInvoiceLabel = "Nota Fiscal:";
+  static const String machineryInsuranceExpiringDateLabel = "Vencimento do Seguro:";
+  static const String machineryInsurancePolicyLabel = "Apólice:";
+  static const String machineryAcquisition = "Aquisição";
+  static const String machineryAcquisitionDateLabel = "Data da Aquisição";
+  static const String machineryAcquisitionValueLabel = "Valor da Aquisição:";
+  static const String machineryMaintenance = "Manutenção";
+
 
   ///Errors
   static const String genericErrorMessage =

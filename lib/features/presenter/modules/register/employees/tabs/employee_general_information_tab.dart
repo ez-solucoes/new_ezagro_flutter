@@ -25,19 +25,34 @@ class EmployeeGeneralInformationTab extends StatelessWidget {
             ThreeInfoCard(title: AppStringsPortuguese.contactLabel, info1: (AppStringsPortuguese.employeePhoneLabel, "(xx) xxxx-xxx"), info2: (AppStringsPortuguese.employeeWhatsAppLabel, "(xx) xxxx-xxxx"), info3: (AppStringsPortuguese.employeeEmailLabel, "pedrocosta@email.com")),
             const SizedBox(height: 10,),
             MultInfoCard(
-                title: AppStringsPortuguese.addressLabel,
-                columnOneData: [(AppStringsPortuguese.addressCepLabel, "00000-000"),(AppStringsPortuguese.addressStreetLabel, "Rua das Nações, 124"),(AppStringsPortuguese.addressStateLabel, "São Paulo")],
-                columnTwoData: [(AppStringsPortuguese.addressCityLabel, "São Paulo"),(AppStringsPortuguese.addressNeighborhoodLabel, "Ipiranga"),(AppStringsPortuguese.addressCountryLabel, "Brasil")]),
+              title: AppStringsPortuguese.addressLabel,
+              sectionsData: [
+                (
+                [(AppStringsPortuguese.addressCepLabel, "00000-000"), (AppStringsPortuguese.addressStreetLabel, "Rua das Nações, 124"), (AppStringsPortuguese.addressStateLabel, "São Paulo")],
+                [(AppStringsPortuguese.addressCityLabel, "São Paulo"), (AppStringsPortuguese.addressNeighborhoodLabel, "Ipiranga"), (AppStringsPortuguese.addressCountryLabel, "Brasil")]
+                )
+              ],
+            ),
             const SizedBox(height: 10,),
             MultInfoCard(
-                title: AppStringsPortuguese.bankDataLabel,
-                columnOneData: [(AppStringsPortuguese.employeeAccountTypeLabel, "Corrente"),(AppStringsPortuguese.employeeAgencyLabel, "0001"),(AppStringsPortuguese.employeePixKeyTypeLabel, "CPF")],
-                columnTwoData: [(AppStringsPortuguese.employeeBankLabel, "Nu Pagamentos"),(AppStringsPortuguese.employeeAccountLabel, "00000-00"),(AppStringsPortuguese.employeePixKeyLabel, "000.000.000-00")]),
+              title: AppStringsPortuguese.bankDataLabel,
+              sectionsData: [
+                (
+                [(AppStringsPortuguese.employeeAccountTypeLabel, "Corrente"), (AppStringsPortuguese.employeeAgencyLabel, "0001"), (AppStringsPortuguese.employeePixKeyTypeLabel, "CPF")],
+                [(AppStringsPortuguese.employeeBankLabel, "Nu Pagamentos"), (AppStringsPortuguese.employeeAccountLabel, "00000-00"), (AppStringsPortuguese.employeePixKeyLabel, "000.000.000-00")]
+                )
+              ],
+            ),
             const SizedBox(height: 25,),
             MultInfoCard(
-                title: AppStringsPortuguese.employeeContractLabel,
-                columnOneData: [(AppStringsPortuguese.employeeAdmissionDateLabel, "02/03/2024"),(AppStringsPortuguese.employeePositionLabel, "Operador"),(AppStringsPortuguese.employeeContractTypeLabel, "Temporário"), (AppStringsPortuguese.employeeBaseSalaryLabel, "R\$2.000,00"), (AppStringsPortuguese.employeeFiringReasonLabel, "")],
-                columnTwoData: [(AppStringsPortuguese.employeeWorkerIdLabel, "000.0000.000-00"),(AppStringsPortuguese.employeeDepartmentLabel, "Agrícola"),(AppStringsPortuguese.employeeShiftLabel, "Matutino"), (AppStringsPortuguese.employeeFiringDateLabel, "08/08/2024")]),
+              title: AppStringsPortuguese.employeeContractLabel,
+              sectionsData: [
+                (
+                [(AppStringsPortuguese.employeeAdmissionDateLabel, "02/03/2024"), (AppStringsPortuguese.employeePositionLabel, "Operador"), (AppStringsPortuguese.employeeContractTypeLabel, "Temporário"), (AppStringsPortuguese.employeeBaseSalaryLabel, "R\$2.000,00"), (AppStringsPortuguese.employeeFiringReasonLabel, "")],
+                [(AppStringsPortuguese.employeeWorkerIdLabel, "000.0000.000-00"), (AppStringsPortuguese.employeeDepartmentLabel, "Agrícola"), (AppStringsPortuguese.employeeShiftLabel, "Matutino"), (AppStringsPortuguese.employeeFiringDateLabel, "08/08/2024")]
+                )
+              ],
+            ),
             const SizedBox(height: 10,)
           ],),
       );

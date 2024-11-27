@@ -16,6 +16,8 @@ import 'package:new_ezagro_flutter/features/domain/usecases/authentication_useca
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/update_password/update_password_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_selector_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_selector_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_usecase.dart';
@@ -157,6 +159,7 @@ class AppModule extends Module {
     i.addLazySingleton<PestUsecase>(PestUsecaseImpl.new);
     i.addLazySingleton<CostCenterFarmUsecase>(CostCenterFarmUsecaseImpl.new);
     i.addLazySingleton<PlotsWithFarmIdUsecase>(PlotsWithFarmIdUsecaseImpl.new);
+    i.addLazySingleton<CostCenterSelectorUsecase>(CostCenterSelectorUsecaseImpl.new);
 
     //Repository
     i.addLazySingleton<AuthenticationRepository>(AuthenticationRepositoryImpl.new);

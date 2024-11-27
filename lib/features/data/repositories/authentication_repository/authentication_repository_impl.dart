@@ -6,7 +6,7 @@ import 'package:new_ezagro_flutter/features/data/models/authentication_models/au
 import 'package:new_ezagro_flutter/features/data/models/response_models/response_model.dart';
 import '../../../domain/params/authentication_params/authentication_params.dart';
 import '../../../domain/repositories/authentication_repository/authentication_repository.dart';
-import '../../datasources/remote_datasource//authentication_datasource/authentication_datasource.dart';
+import '../../datasources/remote_datasource/authentication_datasource/authentication_datasource.dart';
 
 class AuthenticationRepositoryImpl implements AuthenticationRepository {
   final AuthenticationDatasource datasource;

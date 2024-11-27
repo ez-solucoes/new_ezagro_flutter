@@ -18,7 +18,7 @@ class PestRepositoryImpl implements PestRepository {
   getPests(NoParams noParams) async {
     try {
       final result = await datasource.getPests(noParams);
-      return Right(result);
+      return Right(result.data!);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {

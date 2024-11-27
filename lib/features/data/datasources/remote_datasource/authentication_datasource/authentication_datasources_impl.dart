@@ -16,7 +16,8 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
   final HttpClient httpClient;
 
   @override
-  Future authenticate(AuthenticationParams authenticationParams) async {
+  Future<ResponseModel<AuthenticationModel>> authenticate(
+      AuthenticationParams authenticationParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,
@@ -34,8 +35,8 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
       case 201:
         return mountModelInstanceFromResponse(
           response: result,
-          fromMap: (map) => ResponseModel.fromMap(map, AuthenticationModel.fromMap),
-          fromJson: (jsonString) => ResponseModel.fromJson(jsonString, AuthenticationModel.fromMap),
+          fromMap: (map) => AuthenticationModel.fromMap(map),
+          fromJson: (jsonString) => AuthenticationModel.fromJson(jsonString),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -43,7 +44,7 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
   }
 
   @override
-  Future recoverPassword(AuthenticationParams authenticationParams) async {
+  Future<EmptyResult> recoverPassword(AuthenticationParams authenticationParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,
@@ -60,12 +61,12 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
       case 201:
         return EmptyResult();
       default:
-        mountServerErrorInstance(request: request, response: result);
+        throw mountServerErrorInstance(request: request, response: result);
     }
   }
 
   @override
-  Future updatePassword(AuthenticationParams authenticationParams) async {
+  Future<ResponseModel<AuthenticationModel>> updatePassword(AuthenticationParams authenticationParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,

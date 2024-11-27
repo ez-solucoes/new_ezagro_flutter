@@ -15,6 +15,6 @@ class ActivityUsecaseImpl implements ActivityUsecase {
   @override
   Future<Either<ApplicationError, PaginationEntity<AgriculturalActivityEntity>>>
       call(NoParams noParams) async {
-    return await repository.getActvities(noParams);
+    return await repository.getActivities(noParams);
   }
 }

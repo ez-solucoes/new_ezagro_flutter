@@ -6,6 +6,8 @@ import 'package:new_ezagro_flutter/core/connection_manager/connection_status_imp
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_client.dart';
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_client_shared_prefs_impl.dart';
 import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/authentication_datasource/authentication_datasource.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/authentication_datasource/authentication_datasources_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/authentication_repository/authentication_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/pest_repositories/pest_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/authentication_repository/authentication_repository.dart';
@@ -59,8 +61,6 @@ import 'features/data/datasources/remote_datasource/Employee_datasources/Employe
 import 'features/data/datasources/remote_datasource/Product_datasources/Product_datasource.dart';
 import 'features/data/datasources/remote_datasource/activity_datasources/activity_datasource.dart';
 import 'features/data/datasources/remote_datasource/activity_datasources/activity_datasource_impl.dart';
-import 'features/data/datasources/remote_datasource/authentication_datasource/authentication_datasource.dart';
-import 'features/data/datasources/remote_datasource/authentication_datasource/authentication_datasources_impl.dart';
 import 'features/data/datasources/remote_datasource/cost_center_datasource/cost_center_datasource.dart';
 import 'features/data/datasources/remote_datasource/cost_center_datasource/cost_center_datasource_impl.dart';
 import 'features/data/datasources/remote_datasource/crop_datasource/crop_datasource.dart';
@@ -199,7 +199,7 @@ class AppModule extends Module {
 
   @override
   void routes(RouteManager r) {
-    r.child(AppRoutes.appDefaultPage, child: (context) => SplashPage());
+    r.child(AppRoutes.appDefaultPage, child: (context) => LoginPage());
     r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
 
     r.child(AppRoutes.appLoginPage, child: (context) => LoginPage());

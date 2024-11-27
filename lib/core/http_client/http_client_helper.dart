@@ -2,6 +2,7 @@ import 'package:new_ezagro_flutter/core/errors/server_error.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_response.dart';
 import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
+import 'package:new_ezagro_flutter/features/data/models/response_models/response_model.dart';
 
 ServerError mountServerErrorInstance({
   required HttpRequest request,
@@ -30,7 +31,7 @@ String _replaceServerErrorMessage(String serverErrorMessage) {
   return serverErrorMessage;
 }
 
-T mountModelInstanceFromResponse<T>({
+ResponseModel<T> mountModelInstanceFromResponse<T>({
   required HttpResponse response,
   required T Function(Map<String, dynamic>) fromMap,
   required T Function(String) fromJson,
@@ -40,11 +41,11 @@ T mountModelInstanceFromResponse<T>({
   if (data is Map) {
     if (mountMapDataFromNodeName != null &&
         data.containsKey(mountMapDataFromNodeName)) {
-      return fromMap(data[mountMapDataFromNodeName]);
+      return ResponseModel.fromMap(data[mountMapDataFromNodeName], fromMap);
     }
-    return fromMap(data as Map<String, dynamic>);
+    return ResponseModel.fromMap(data as Map<String, dynamic>, fromMap);
   }
-  return fromJson(data);
+  return ResponseModel.fromJson(data, fromJson);
 }
 
 T mountListModelInstanceFromResponse<T>({

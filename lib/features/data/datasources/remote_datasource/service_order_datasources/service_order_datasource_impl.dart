@@ -3,6 +3,7 @@ import 'package:new_ezagro_flutter/core/http_client/http_client_helper.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/service_order_datasources/service_order_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/models/field_service_order_models/field_service_order_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/response_models/response_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/service_order_list_model/service_order_list_model.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 import '../../../../../core/mixins/uri_builder_mixin.dart';
@@ -19,7 +20,7 @@ class ServiceOrderDatasourceImpl
   ServiceOrderDatasourceImpl(this.httpClient);
 
   @override
-  Future<PaginationModel<ServiceOrderListModel>> getServiceOrderList(
+  Future<ResponseModel<PaginationModel<ServiceOrderListModel>>> getServiceOrderList(
       NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
@@ -45,7 +46,7 @@ class ServiceOrderDatasourceImpl
   }
 
   @override
-  Future<FieldServiceOrderModel> createServiceOrder(MockParams mockParams) async {
+  Future<ResponseModel<FieldServiceOrderModel>> createServiceOrder(MockParams mockParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,
@@ -70,7 +71,7 @@ class ServiceOrderDatasourceImpl
   }
 
   @override
-  Future<FieldServiceOrderModel> getServiceOrderById(ArgParams params) async {
+  Future<ResponseModel<FieldServiceOrderModel>> getServiceOrderById(ArgParams params) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,

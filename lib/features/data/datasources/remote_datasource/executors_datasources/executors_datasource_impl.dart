@@ -6,6 +6,7 @@ import 'package:new_ezagro_flutter/features/data/models/employee_models/employee
 import '../../../../../core/mixins/uri_builder_mixin.dart';
 import '../../../../../core/usecase/usecase.dart';
 import '../../../models/pagination_model/pagination_model.dart';
+import '../../../models/response_models/response_model.dart';
 import '../api_endpoints.dart';
 import 'executors_datasource.dart';
 
@@ -15,7 +16,7 @@ class ExecutorsDatasourceImpl with UriBuilder implements ExecutorsDatasource {
   ExecutorsDatasourceImpl(this.httpClient);
 
   @override
-  Future<PaginationModel<EmployeeModel>> getExecutors(NoParams noParams) async {
+  Future<ResponseModel<PaginationModel<EmployeeModel>>> getExecutors(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,

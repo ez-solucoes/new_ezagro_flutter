@@ -7,6 +7,7 @@ import 'package:new_ezagro_flutter/features/data/models/selector_models/selector
 import '../../../../../core/mixins/uri_builder_mixin.dart';
 import '../../../../../core/usecase/usecase.dart';
 import '../../../models/pagination_model/pagination_model.dart';
+import '../../../models/response_models/response_model.dart';
 import '../api_endpoints.dart';
 import 'cost_center_datasource.dart';
 
@@ -16,7 +17,7 @@ class CostCenterDatasourceImpl with UriBuilder implements CostCenterDatasource {
   CostCenterDatasourceImpl(this.httpClient);
 
   @override
-  Future<PaginationModel<CostCenterModel>> getCostCenters(
+  Future<ResponseModel<PaginationModel<CostCenterModel>>> getCostCenters(
       NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
@@ -42,7 +43,7 @@ class CostCenterDatasourceImpl with UriBuilder implements CostCenterDatasource {
   }
 
   @override
-  Future<List<SelectorModel>> getCostCentersSelectorOptions(
+  Future<ResponseModel<List<SelectorModel>>> getCostCentersSelectorOptions(
       NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,

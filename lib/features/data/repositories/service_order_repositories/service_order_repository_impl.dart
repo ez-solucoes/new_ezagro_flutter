@@ -21,7 +21,7 @@ class ServiceOrderRepositoryImpl implements ServiceOrderRepository {
   Future<Either<ApplicationError, PaginationModel<ServiceOrderListModel>>> getServiceOrderList(NoParams noParams) async {
     try{
       final result = await datasource.getServiceOrderList(noParams);
-      return Right(result);
+      return Right(result.data!);
     } on ApplicationError catch(e) {
       return Left(e);
     } catch(e, stacktrace) {
@@ -38,7 +38,7 @@ class ServiceOrderRepositoryImpl implements ServiceOrderRepository {
   Future<Either<ApplicationError, FieldServiceOrderModel>> createServiceOrder(MockParams mockParams) async {
     try {
       final result = await datasource.createServiceOrder(mockParams);
-      return Right(result);
+      return Right(result.data!);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {
@@ -55,7 +55,7 @@ class ServiceOrderRepositoryImpl implements ServiceOrderRepository {
   Future<Either<ApplicationError, FieldServiceOrderEntity>> getServiceOrderById(ArgParams params) async {
     try{
       final result = await datasource.getServiceOrderById(params);
-      return Right(result);
+      return Right(result.data!);
     } on ApplicationError catch(e) {
       return Left(e);
     } catch(e, stacktrace) {

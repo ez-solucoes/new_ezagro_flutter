@@ -18,7 +18,7 @@ class CropRepositoryImpl implements CropRepository {
       getSimplifiedCrops(NoParams noParams) async {
     try {
       final result = await datasource.getSimplifiedCrops(noParams);
-      return Right(result);
+      return Right(result.data!);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {

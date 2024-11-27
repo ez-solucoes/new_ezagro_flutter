@@ -6,6 +6,7 @@ import 'package:new_ezagro_flutter/features/data/models/pest_models/pest_model.d
 import '../../../../../core/mixins/uri_builder_mixin.dart';
 import '../../../../../core/usecase/usecase.dart';
 import '../../../models/pagination_model/pagination_model.dart';
+import '../../../models/response_models/response_model.dart';
 import '../api_endpoints.dart';
 
 class PestDatasourceImpl with UriBuilder implements PestDatasource {
@@ -14,7 +15,7 @@ class PestDatasourceImpl with UriBuilder implements PestDatasource {
   PestDatasourceImpl(this.httpClient);
 
   @override
-  Future<PaginationModel<PestModel>> getPests(
+  Future<ResponseModel<PaginationModel<PestModel>>> getPests(
       NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,

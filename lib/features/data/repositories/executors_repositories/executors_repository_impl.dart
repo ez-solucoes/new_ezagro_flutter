@@ -18,7 +18,7 @@ class ExecutorsRepositoryImpl implements ExecutorsRepository {
       NoParams noParams) async {
     try {
       final result = await datasource.getExecutors(noParams);
-      return Right(result);
+      return Right(result.data!);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {

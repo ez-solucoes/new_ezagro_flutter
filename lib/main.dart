@@ -11,6 +11,8 @@ void main() async {
     runApp(FlutterErrorWidget(details));
   };
 
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(
     ModularApp(
       module: AppModule(),

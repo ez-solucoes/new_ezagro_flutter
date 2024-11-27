@@ -9,6 +9,7 @@ class UserEntity extends Equatable {
   final String createdAt;
   final String updatedAt;
   final String? deletedAt;
+  final bool? isResetPassword;
 
   const UserEntity({
     this.id,
@@ -19,6 +20,7 @@ class UserEntity extends Equatable {
     required this.createdAt,
     required this.updatedAt,
     this.deletedAt,
+    this.isResetPassword
   });
 
   @override
@@ -31,5 +33,6 @@ class UserEntity extends Equatable {
     createdAt,
     updatedAt,
     deletedAt,
+    isResetPassword,
   ];
 }

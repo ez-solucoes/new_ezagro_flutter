@@ -8,7 +8,7 @@ import '../../../domain/entities/field_service_order_entities/field_service_orde
 import '../../../domain/params/arg_params/arg_params.dart';
 import '../../../domain/params/create_service_order_params/create_service_order_params.dart';
 import '../../../domain/repositories/service_order_repositories/service_order_repository.dart';
-import '../../datasources/service_order_datasources/service_order_datasource.dart';
+import '../../datasources/remote_datasource/service_order_datasources/service_order_datasource.dart';
 import '../../models/pagination_model/pagination_model.dart';
 
 class ServiceOrderRepositoryImpl implements ServiceOrderRepository {

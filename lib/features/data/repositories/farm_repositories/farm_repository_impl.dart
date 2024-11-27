@@ -2,10 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:new_ezagro_flutter/core/errors/application_error.dart';
 import 'package:new_ezagro_flutter/core/errors/generic_error.dart';
 import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
-import 'package:new_ezagro_flutter/features/data/datasources/farm_datasource/farm_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/models/farm_models/farm_model.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/farm_repositories/farm_repository.dart';
 
+import '../../datasources/remote_datasource/farm_datasource/farm_datasource.dart';
 import '../../models/pagination_model/pagination_model.dart';
 
 class FarmRepositoryImpl implements FarmRepository {

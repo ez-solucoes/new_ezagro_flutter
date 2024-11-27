@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
+import 'package:new_ezagro_flutter/core/connection_manager/connection_status.dart';
+import 'package:new_ezagro_flutter/core/connection_manager/connection_status_impl.dart';
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_client.dart';
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_client_shared_prefs_impl.dart';
 import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
-import 'package:new_ezagro_flutter/features/data/datasources/pest_datasources/pest_datasource.dart';
-import 'package:new_ezagro_flutter/features/data/datasources/pest_datasources/pest_datasource_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/authentication_repository/authentication_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/pest_repositories/pest_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/authentication_repository/authentication_repository.dart';
@@ -57,28 +57,30 @@ import 'package:new_ezagro_flutter/features/presenter/modules/service_order/serv
 import 'core/http_client/http_client.dart';
 import 'core/http_client/http_client_dio_imp.dart';
 import 'core/local_storage/local_storage_client_secure_impl.dart';
-import 'features/data/datasources/Employee_datasources/Employee_datasource.dart';
-import 'features/data/datasources/Product_datasources/Product_datasource.dart';
-import 'features/data/datasources/activity_datasources/activity_datasource.dart';
-import 'features/data/datasources/activity_datasources/activity_datasource_impl.dart';
-import 'features/data/datasources/authentication_datasource/authentication_datasource.dart';
-import 'features/data/datasources/authentication_datasource/authentication_datasources_impl.dart';
-import 'features/data/datasources/cost_center_datasource/cost_center_datasource.dart';
-import 'features/data/datasources/cost_center_datasource/cost_center_datasource_impl.dart';
-import 'features/data/datasources/crop_datasource/crop_datasource.dart';
-import 'features/data/datasources/crop_datasource/crop_datasource_impl.dart';
-import 'features/data/datasources/employee_datasources/employee_datasource_impl.dart';
-import 'features/data/datasources/executors_datasources/executors_datasource.dart';
-import 'features/data/datasources/executors_datasources/executors_datasource_impl.dart';
-import 'features/data/datasources/farm_datasource/farm_datasource.dart';
-import 'features/data/datasources/farm_datasource/farm_datasource_impl.dart';
-import 'features/data/datasources/machinery_datasources/machinery_datasource.dart';
-import 'features/data/datasources/machinery_datasources/machinery_datasource_impl.dart';
-import 'features/data/datasources/plots_datasource/plots_datasource.dart';
-import 'features/data/datasources/plots_datasource/plots_datasource_impl.dart';
-import 'features/data/datasources/product_datasources/product_datasource_impl.dart';
-import 'features/data/datasources/service_order_datasources/service_order_datasource.dart';
-import 'features/data/datasources/service_order_datasources/service_order_datasource_impl.dart';
+import 'features/data/datasources/remote_datasource/Employee_datasources/Employee_datasource.dart';
+import 'features/data/datasources/remote_datasource/Product_datasources/Product_datasource.dart';
+import 'features/data/datasources/remote_datasource/activity_datasources/activity_datasource.dart';
+import 'features/data/datasources/remote_datasource/activity_datasources/activity_datasource_impl.dart';
+import 'features/data/datasources/remote_datasource/authentication_datasource/authentication_datasource.dart';
+import 'features/data/datasources/remote_datasource/authentication_datasource/authentication_datasources_impl.dart';
+import 'features/data/datasources/remote_datasource/cost_center_datasource/cost_center_datasource.dart';
+import 'features/data/datasources/remote_datasource/cost_center_datasource/cost_center_datasource_impl.dart';
+import 'features/data/datasources/remote_datasource/crop_datasource/crop_datasource.dart';
+import 'features/data/datasources/remote_datasource/crop_datasource/crop_datasource_impl.dart';
+import 'features/data/datasources/remote_datasource/employee_datasources/employee_datasource_impl.dart';
+import 'features/data/datasources/remote_datasource/executors_datasources/executors_datasource.dart';
+import 'features/data/datasources/remote_datasource/executors_datasources/executors_datasource_impl.dart';
+import 'features/data/datasources/remote_datasource/farm_datasource/farm_datasource.dart';
+import 'features/data/datasources/remote_datasource/farm_datasource/farm_datasource_impl.dart';
+import 'features/data/datasources/remote_datasource/machinery_datasources/machinery_datasource.dart';
+import 'features/data/datasources/remote_datasource/machinery_datasources/machinery_datasource_impl.dart';
+import 'features/data/datasources/remote_datasource/pest_datasources/pest_datasource.dart';
+import 'features/data/datasources/remote_datasource/pest_datasources/pest_datasource_impl.dart';
+import 'features/data/datasources/remote_datasource/plots_datasource/plots_datasource.dart';
+import 'features/data/datasources/remote_datasource/plots_datasource/plots_datasource_impl.dart';
+import 'features/data/datasources/remote_datasource/product_datasources/product_datasource_impl.dart';
+import 'features/data/datasources/remote_datasource/service_order_datasources/service_order_datasource.dart';
+import 'features/data/datasources/remote_datasource/service_order_datasources/service_order_datasource_impl.dart';
 import 'features/data/repositories/activity_repositories/activity_repository_impl.dart';
 import 'features/data/repositories/cost_center_repositories/cost_center_repository_impl.dart';
 import 'features/data/repositories/crop_repositories/crop_repository_impl.dart';
@@ -138,6 +140,7 @@ class AppModule extends Module {
         key: AppStringsPortuguese.storageTypeSecure);
     i.addLazySingleton<LogInterceptor>(LogInterceptor.new);
     i.addSingleton<HttpClient>(HttpClientDioImp.new);
+    i.addSingleton<ConnectionStatus>(ConnectionStatusImpl.new);
 
     //Usecase
     i.addLazySingleton<AuthenticateUsecase>(AuthenticateUsecaseImpl.new);
@@ -199,7 +202,7 @@ class AppModule extends Module {
 
   @override
   void routes(RouteManager r) {
-    r.child(AppRoutes.appDefaultPage, child: (context) => LoginPage());
+    r.child(AppRoutes.appDefaultPage, child: (context) => SplashPage());
     r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
 
     r.child(AppRoutes.appLoginPage, child: (context) => LoginPage());

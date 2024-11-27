@@ -42,6 +42,9 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   List<AgriculturalActivityEntity> activityOptions = ObservableList();
 
   @observable
+  List<SelectorEntity> subActivitiesOptions = ObservableList();
+
+  @observable
   List<PestEntity> pestsOptions = ObservableList();
 
   @observable
@@ -85,6 +88,9 @@ abstract class CreateServiceOrderControllerAbstract with Store {
 
   @observable
   AgriculturalActivityEntity? activity;
+
+  @observable
+  SelectorEntity? subActivity;
 
   @observable
   String harvestName = "";
@@ -140,8 +146,13 @@ abstract class CreateServiceOrderControllerAbstract with Store {
       activityOptions = success.content;
       return success;
     });
-
+    
     isLoading = false;
+  }
+
+  @action
+  Future getSubActivities() async {
+
   }
 
   @action

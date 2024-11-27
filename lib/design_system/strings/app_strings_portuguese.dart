@@ -111,6 +111,7 @@ class AppStringsPortuguese {
       'Centro de Custo de Estoque de Destino:';
   static const String finalStorageSelector = 'Estoque de Destino:';
   static const String activitySelectorHint = 'Selecione uma atividade';
+  static const String subActivitySelectorHint = 'Selecione uma subatividade';
   static const String costCenterSelectorHint = 'Selecione um centro de custo';
   static const String farmSelectorHint = 'Selecione uma fazenda';
   static const String harvestSelectorHint = 'Selecione uma safra';
@@ -149,6 +150,7 @@ class AppStringsPortuguese {
   static const String areaFilter = 'Área';
   static const String cropFilter = 'Cultura';
   static const String statusFilter = 'Status';
+  static const String harvestKey = 'Safra';
 
   ///Register Module
   static const String pluralCompanyTitle = 'Empresas';

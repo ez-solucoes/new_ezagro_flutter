@@ -20,66 +20,75 @@ class GeneralInformationPage extends StatelessWidget {
     controller.getCostCenters();
     SelectorEntity? harvest;
     SelectorEntity? selectedActivity;
-    return Column(children: [
-      Observer(
-        builder: (context) => CustomSelectorWidget(
-            onSelect: (value) {
-                controller.activity = controller.activityOptions.firstWhere((e) => e.id == value.value);
-                selectedActivity = value;
-            },
-            items: controller.activityOptions.map((e) => SelectorEntity(value: e.id, label: e.activityName)).toList(),
-            title: AppStringsPortuguese.activitySelectorTitle,
-            selectorHint: AppStringsPortuguese.activitySelectorHint,
-            selectedValue: selectedActivity
-          ),
-      ),
-      const SizedBox(
-        height: 5,
-      ),
-      Observer(
-        builder: (context) => CustomSelectorWidget(
-            onSelect: (value) {
-              controller.costCenterId = controller.costCenterOptions.where((e) => e.label == value.label).toList().first.value;
-              if (controller.costCenterId != null) {
-                controller.getCostCenterFarms(controller.costCenterId.toString());
-              }
-            },
-            items: controller.costCenterOptions,
-            title: AppStringsPortuguese.costCenterSelectorTitle,
-            selectorHint: AppStringsPortuguese.costCenterSelectorHint),
-      ),
-      const SizedBox(
-        height: 5,
-      ),
-      Observer(
-        builder: (context) => CustomSelectorWidget(
-            onSelect: (value) {
-                controller.farmId = value.value;
-                CostCenterEntity? costCenter = controller.farmOptions.firstWhere((e) => e.id == value.value).costCenters?.firstWhere((e) => e.costCenterType?.name == "Safra");
-                if (costCenter != null) {
-                  harvest = SelectorEntity(value: costCenter.id, label: costCenter.costCenterName);
-                }
-                controller.getPlotsOptions();
+    return SingleChildScrollView(
+      child: Column(children: [
+        Observer(
+          builder: (context) => CustomSelectorWidget(
+              onSelect: (value) {
+                  controller.activity = controller.activityOptions.firstWhere((e) => e.id == value.value);
+                  selectedActivity = value;
               },
-            items: controller.farmOptions.map((e) =>
-                SelectorEntity(value: e.id, label: e.name)
-            ).toList(),
-            title: AppStringsPortuguese.farmSelectorTitle,
-            selectorHint: AppStringsPortuguese.farmSelectorHint),
-      ),
-      const SizedBox(
-        height: 5,
-      ),
-      Observer(
-          builder: (context) => IgnorePointer(
-          child: CustomSelectorWidget(
-              selectedValue: harvest,
-              onSelect: (value) { },
-              items: harvest == null ? [] : [harvest!],
-              title: AppStringsPortuguese.harvestSelectorTitle,
-              selectorHint: AppStringsPortuguese.harvestSelectorHint),
+              items: controller.activityOptions.map((e) => SelectorEntity(value: e.id, label: e.activityName)).toList(),
+              title: AppStringsPortuguese.activitySelectorTitle,
+              selectorHint: AppStringsPortuguese.activitySelectorHint,
+              selectedValue: selectedActivity,
+              onSelectSubCategory: (value){
+                controller.subActivity = value;
+              },
+              subItems: controller.subActivitiesOptions,
+              subSelectorHint: AppStringsPortuguese.subActivitySelectorHint,
+              selectedSubValue: controller.subActivity,
+              reloadSubItems: (){controller.getSubActivities();},
+            ),
         ),
-      )
-    ]);
+        const SizedBox(
+          height: 5,
+        ),
+        Observer(
+          builder: (context) => CustomSelectorWidget(
+              onSelect: (value) {
+                controller.costCenterId = controller.costCenterOptions.where((e) => e.label == value.label).toList().first.value;
+                if (controller.costCenterId != null) {
+                  controller.getCostCenterFarms(controller.costCenterId.toString());
+                }
+              },
+              items: controller.costCenterOptions,
+              title: AppStringsPortuguese.costCenterSelectorTitle,
+              selectorHint: AppStringsPortuguese.costCenterSelectorHint),
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        Observer(
+          builder: (context) => CustomSelectorWidget(
+              onSelect: (value) {
+                  controller.farmId = value.value;
+                  CostCenterEntity? costCenter = controller.farmOptions.firstWhere((e) => e.id == value.value).costCenters?.firstWhere((e) => e.costCenterType?.name == AppStringsPortuguese.harvestKey);
+                  if (costCenter != null) {
+                    harvest = SelectorEntity(value: costCenter.id, label: costCenter.costCenterName);
+                  }
+                  controller.getPlotsOptions();
+                },
+              items: controller.farmOptions.map((e) =>
+                  SelectorEntity(value: e.id, label: e.name)
+              ).toList(),
+              title: AppStringsPortuguese.farmSelectorTitle,
+              selectorHint: AppStringsPortuguese.farmSelectorHint),
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        Observer(
+            builder: (context) => IgnorePointer(
+            child: CustomSelectorWidget(
+                selectedValue: harvest,
+                onSelect: (value) { },
+                items: harvest == null ? [] : [harvest!],
+                title: AppStringsPortuguese.harvestSelectorTitle,
+                selectorHint: AppStringsPortuguese.harvestSelectorHint),
+          ),
+        )
+      ]),
+    );
   }
 }

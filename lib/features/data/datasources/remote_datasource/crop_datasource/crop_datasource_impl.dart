@@ -2,6 +2,7 @@ import 'package:new_ezagro_flutter/core/http_client/http_client.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_client_helper.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
 import 'package:new_ezagro_flutter/features/data/models/crop_models/crop_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/response_models/response_model.dart';
 
 
 import '../../../../../core/mixins/uri_builder_mixin.dart';
@@ -16,7 +17,7 @@ class CropDatasourceImpl with UriBuilder implements CropDatasource {
   CropDatasourceImpl(this.httpClient);
 
   @override
-  Future<PaginationModel<CropModel>> getSimplifiedCrops(
+  Future<ResponseModel<PaginationModel<CropModel>>> getSimplifiedCrops(
       NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,

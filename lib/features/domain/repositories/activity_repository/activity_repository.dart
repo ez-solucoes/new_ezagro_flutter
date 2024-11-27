@@ -7,5 +7,5 @@ import '../../../../core/usecase/usecase.dart';
 
 abstract class ActivityRepository {
   Future<Either<ApplicationError, PaginationEntity<AgriculturalActivityEntity>>>
-      getActvities(NoParams noParams);
+      getActivities(NoParams noParams);
 }

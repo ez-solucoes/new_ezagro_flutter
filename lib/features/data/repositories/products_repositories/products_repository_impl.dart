@@ -18,7 +18,7 @@ class ProductRepositoryImpl implements ProductRepository {
       NoParams noParams) async {
     try {
       final result = await datasource.getProducts(noParams);
-      return Right(result);
+      return Right(result.data!);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {

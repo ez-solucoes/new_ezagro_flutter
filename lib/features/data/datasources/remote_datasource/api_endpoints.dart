@@ -12,6 +12,10 @@ class AppEndpoints {
   static const String forgotPasswordEndpoint = '/authentication/forgot-password';
   static const String validateTokenEndpoint = '/validate-token';
 
+  //User
+  static const String userEndpoint = '/user';
+  static const String userByIdEndpoint = '/user/';
+
   //Service Order
   static const String getServiceOrderListEndpoint = '/field-service-order';
   static const String getServiceOrderById = 'field-service-order/';

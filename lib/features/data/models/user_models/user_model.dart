@@ -12,6 +12,7 @@ class UserModel extends UserEntity {
     required super.createdAt,
     required super.updatedAt,
     super.deletedAt,
+    super.isResetPassword,
   });
 
   Map<String, dynamic> toMap() {
@@ -24,6 +25,7 @@ class UserModel extends UserEntity {
       'createdAt': createdAt,
       'updatedAt': updatedAt,
       'deletedAt': deletedAt,
+      'isResetPassword': isResetPassword,
     };
   }
 
@@ -37,6 +39,7 @@ class UserModel extends UserEntity {
       createdAt: map['createdAt'] as String,
       updatedAt: map['updatedAt'] as String,
       deletedAt: map['deletedAt'] == null ? null : map['deletedAt'] as String,
+      isResetPassword: map['isResetPassword'] == null ? null : map['isResetPassword'] as bool,
     );
   }
 

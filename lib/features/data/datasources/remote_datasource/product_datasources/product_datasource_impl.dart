@@ -7,6 +7,7 @@ import 'package:new_ezagro_flutter/features/data/models/products_models/product_
 import '../../../../../core/mixins/uri_builder_mixin.dart';
 import '../../../../../core/usecase/usecase.dart';
 import '../../../models/pagination_model/pagination_model.dart';
+import '../../../models/response_models/response_model.dart';
 import '../api_endpoints.dart';
 
 class ProductDatasourceImpl with UriBuilder implements ProductDatasource {
@@ -15,7 +16,7 @@ class ProductDatasourceImpl with UriBuilder implements ProductDatasource {
   ProductDatasourceImpl(this.httpClient);
 
   @override
-  Future<PaginationModel<ProductModel>> getProducts(NoParams noParams) async {
+  Future<ResponseModel<PaginationModel<ProductModel>>> getProducts(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,

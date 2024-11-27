@@ -18,7 +18,7 @@ class FarmRepositoryImpl implements FarmRepository {
       getSimplifiedFarms(NoParams noParams) async {
     try {
       final result = await datasource.getSimplifiedFarms(noParams);
-      return Right(result);
+      return Right(result.data!);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {
@@ -33,7 +33,7 @@ class FarmRepositoryImpl implements FarmRepository {
   getCostCenterFarms(String costCenterId) async {
     try {
       final result = await datasource.getCostCenterFarmsById(costCenterId);
-      return Right(result);
+      return Right(result.data!);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {

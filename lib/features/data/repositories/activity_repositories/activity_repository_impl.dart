@@ -15,10 +15,10 @@ class ActivityRepositoryImpl implements ActivityRepository {
 
   @override
   Future<Either<ApplicationError, PaginationModel<AgriculturalActivityModel>>>
-      getActvities(NoParams noParams) async {
+      getActivities(NoParams noParams) async {
     try {
       final result = await datasource.getActivities(noParams);
-      return Right(result);
+      return Right(result.data!);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {

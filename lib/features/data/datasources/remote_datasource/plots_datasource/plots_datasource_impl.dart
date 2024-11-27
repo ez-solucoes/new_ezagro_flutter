@@ -8,6 +8,7 @@ import '../../../../../core/mixins/uri_builder_mixin.dart';
 import '../../../../../core/usecase/usecase.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../models/pagination_model/pagination_model.dart';
+import '../../../models/response_models/response_model.dart';
 import '../api_endpoints.dart';
 
 class PlotsDatasourceImpl with UriBuilder implements PlotsDatasource {
@@ -16,7 +17,7 @@ class PlotsDatasourceImpl with UriBuilder implements PlotsDatasource {
   PlotsDatasourceImpl(this.httpClient);
 
   @override
-  Future<PaginationModel<PlotModel>> getPlots(NoParams noParams) async {
+  Future<ResponseModel<PaginationModel<PlotModel>>> getPlots(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,
@@ -40,7 +41,7 @@ class PlotsDatasourceImpl with UriBuilder implements PlotsDatasource {
   }
 
   @override
-  Future<PaginationModel<PlotModel>> getPlotByFarmId(ArgParams params) async {
+  Future<ResponseModel<PaginationModel<PlotModel>>> getPlotByFarmId(ArgParams params) async {
     final String id = params.firstArgs == null ? "" : params.firstArgs as String;
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,

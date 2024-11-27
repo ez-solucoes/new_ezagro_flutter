@@ -8,6 +8,7 @@ import 'package:new_ezagro_flutter/features/data/models/farm_models/farm_model.d
 import '../../../../../core/mixins/uri_builder_mixin.dart';
 import '../../../../../core/usecase/usecase.dart';
 import '../../../models/pagination_model/pagination_model.dart';
+import '../../../models/response_models/response_model.dart';
 import '../api_endpoints.dart';
 import 'farm_datasource.dart';
 
@@ -17,7 +18,7 @@ class FarmDatasourceImpl with UriBuilder implements FarmDatasource {
   FarmDatasourceImpl(this.httpClient);
 
   @override
-  Future<PaginationModel<FarmModel>> getSimplifiedFarms(
+  Future<ResponseModel<PaginationModel<FarmModel>>> getSimplifiedFarms(
       NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
@@ -42,7 +43,7 @@ class FarmDatasourceImpl with UriBuilder implements FarmDatasource {
   }
 
   @override
-  Future<List<FarmModel>> getCostCenterFarmsById(String costCenterId) async {
+  Future<ResponseModel<List<FarmModel>>> getCostCenterFarmsById(String costCenterId) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,

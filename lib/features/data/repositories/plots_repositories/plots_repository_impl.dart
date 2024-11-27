@@ -19,7 +19,7 @@ class PlotsRepositoryImpl implements PlotsRepository {
       NoParams noParams) async {
     try {
       final result = await datasource.getPlots(noParams);
-      return Right(result);
+      return Right(result.data!);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {
@@ -34,7 +34,7 @@ class PlotsRepositoryImpl implements PlotsRepository {
       ArgParams params) async {
     try {
       final result = await datasource.getPlotByFarmId(params);
-      return Right(result);
+      return Right(result.data!);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {

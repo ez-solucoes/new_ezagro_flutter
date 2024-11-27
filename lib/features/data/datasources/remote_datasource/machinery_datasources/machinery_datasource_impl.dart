@@ -6,6 +6,7 @@ import 'package:new_ezagro_flutter/features/data/models/machine_implement_models
 import '../../../../../core/mixins/uri_builder_mixin.dart';
 import '../../../../../core/usecase/usecase.dart';
 import '../../../models/pagination_model/pagination_model.dart';
+import '../../../models/response_models/response_model.dart';
 import '../api_endpoints.dart';
 import 'machinery_datasource.dart';
 
@@ -15,7 +16,7 @@ class MachineryDatasourceImpl with UriBuilder implements MachineryDatasource {
   MachineryDatasourceImpl(this.httpClient);
 
   @override
-  Future<PaginationModel<MachineImplementModel>> getMachinery(
+  Future<ResponseModel<PaginationModel<MachineImplementModel>>> getMachinery(
       NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,

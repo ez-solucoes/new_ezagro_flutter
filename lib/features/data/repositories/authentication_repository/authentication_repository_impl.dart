@@ -7,7 +7,7 @@ import '../../../domain/entities/authentication_entities/authentication_entity.d
 import '../../../domain/entities/response_entities/response_entity.dart';
 import '../../../domain/params/authentication_params/authentication_params.dart';
 import '../../../domain/repositories/authentication_repository/authentication_repository.dart';
-import '../../datasources/authentication_datasource/authentication_datasource.dart';
+import '../../datasources/remote_datasource//authentication_datasource/authentication_datasource.dart';
 
 class AuthenticationRepositoryImpl implements AuthenticationRepository {
   final AuthenticationDatasource datasource;

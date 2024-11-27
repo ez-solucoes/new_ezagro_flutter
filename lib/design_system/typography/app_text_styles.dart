@@ -106,6 +106,17 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle boldSmallLabelStyle({
+    required Color color,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.montserratFont,
+      fontWeight: FontWeight.bold,
+      fontSize: AppDimens.labelOnCard,
+      color: color,
+    );
+  }
+
   static TextStyle appBarTitleTextStyle({
     required Color color,
   }) {

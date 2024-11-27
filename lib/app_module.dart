@@ -51,7 +51,9 @@ import 'package:new_ezagro_flutter/features/presenter/modules/register/contracts
 import 'package:new_ezagro_flutter/features/presenter/modules/register/employees/employees_list_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/farm/farm_list_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/machinery/machinery_list_page.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/service_order/controller/plots_list_controller/plots_list_controller.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/service_order/controller/service_order_list_controller/service_order_list_controller.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/service_order/service_order_page/plots_list_page.dart';
 import 'core/http_client/http_client.dart';
 import 'core/http_client/http_client_dio_imp.dart';
 import 'core/local_storage/local_storage_client_secure_impl.dart';
@@ -194,6 +196,7 @@ class AppModule extends Module {
     i.addLazySingleton<CreateServiceOrderController>(CreateServiceOrderController.new);
     i.addLazySingleton<ServiceOrderListController>(ServiceOrderListController.new);
     i.addLazySingleton<ServiceOrderController>(ServiceOrderController.new);
+    i.addLazySingleton<PlotsListController>(PlotsListController.new);
     super.binds(i);
   }
 
@@ -217,6 +220,7 @@ class AppModule extends Module {
     r.child(AppRoutes.appHomePage, child: (context) => const HomePage());
     r.child(AppRoutes.appServiceOrderPage, child: (context) => ServiceOrderPage(args: r.args.data,));
     r.child(AppRoutes.appServiceOrderListPage, child: (context) => const ServiceOrderListPage());
+    r.child(AppRoutes.appPlotsList, child : (context) => PlotsListPage());
     r.child(AppRoutes.appCreateServiceOrderPage, child: (context) => const CreateServiceOrderPage());
     r.child(AppRoutes.appCompanyListPage, child: (context) => CompanyListPage());
     r.child(AppRoutes.appCompanyPage, child: (context) => CompanyPage());

@@ -6,12 +6,14 @@ class CustomOutlinedButton extends StatelessWidget {
   final Function() onPressed;
   final String label;
   final TextStyle textStyle;
+  final Color? customColor;
 
   const CustomOutlinedButton(
       {super.key,
       required this.onPressed,
       required this.label,
-      required this.textStyle});
+      required this.textStyle,
+      this.customColor});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class CustomOutlinedButton extends StatelessWidget {
           minimumSize: const Size(150, 38),
           backgroundColor: AppColors.transparent,
           shape: RoundedRectangleBorder(
-              side: const BorderSide(color: AppColors.dividerGreyColor, width: 1),
+              side: BorderSide(color: customColor ?? AppColors.dividerGreyColor, width: 1),
               borderRadius: BorderRadius.circular(5)),
           shadowColor: AppColors.transparent),
       child: Text(

@@ -1,13 +1,17 @@
 import 'dart:convert';
 
+import 'package:new_ezagro_flutter/features/data/models/pagination_model/pagination_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/sort_model/sort_model.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/response_entities/response_entity.dart';
 
 class ResponseModel<T> extends ResponseEntity<T> {
   const ResponseModel({
-    required super.data,
-    required super.message,
-    required super.path,
-    required super.status,
+    super.data,
+    super.message,
+    super.path,
+    super.status,
+    super.pagination,
+    super.sort,
   });
 
   Map<String, dynamic> toMap() {
@@ -16,16 +20,20 @@ class ResponseModel<T> extends ResponseEntity<T> {
       'message': message,
       'path': path,
       'status': status,
+      'pagination': pagination,
+      'sort': sort,
     };
   }
 
   factory ResponseModel.fromMap(
       Map<String, dynamic> map, T Function(Map<String, dynamic>) fromMapFunction) {
     return ResponseModel(
-      status: map['status'] != null ? map['status'] as int : null,
       data: map['data'] != null ? fromMapFunction(map['data'] as Map<String, dynamic>) : null as T,
       message: map['message'] != null ? map['message'] as String : null,
       path: map['path'] != null ? map['path'] as String : null,
+      status: map['status'] != null ? map['status'] as int : null,
+      pagination: map['pagination'] != null ? map['pagination'] as PaginationModel : null,
+      sort: map['sort'] != null ? map['sort'] as SortModel : null,
     );
   }
 

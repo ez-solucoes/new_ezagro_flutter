@@ -143,7 +143,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getActivities = Modular.get<ActivityUsecase>();
     final result = await getActivities(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      activityOptions = success.content;
+      // activityOptions = success.content!;
       return success;
     });
     
@@ -213,7 +213,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     if (farmId != 0 ) {
       final result = await getPlots(ArgParams(firstArgs: farmId.toString()));
       result.fold((error) => error.friendlyMessage, (success) {
-        plotsOptions = success.content;
+        // plotsOptions = success.content!;
         return success;
       });
     }
@@ -227,7 +227,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     final getPests = Modular.get<PestUsecase>();
     final result = await getPests(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      pestsOptions = success.content;
+      // pestsOptions = success.content!;
       return success;
     });
 

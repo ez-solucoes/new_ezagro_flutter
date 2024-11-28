@@ -10,4 +10,6 @@ abstract class UserRepository {
   Future<Either<ApplicationError, ResponseEntity<UserEntity>>>getAllUsers(NoParams noParams);
 
   Future<Either<ApplicationError, ResponseEntity<UserEntity>>>getUserById(UserParams userParams);
+
+  Future<Either<ApplicationError, ResponseEntity<UserEntity>>> updateUserById(UserParams userParams);
 }

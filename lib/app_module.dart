@@ -8,10 +8,14 @@ import 'package:new_ezagro_flutter/core/local_storage/local_storage_client_share
 import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/authentication_datasource/authentication_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/authentication_datasource/authentication_datasources_impl.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/user_datasources/user_datasource.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/user_datasources/user_datasource_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/authentication_repository/authentication_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/pest_repositories/pest_repository_impl.dart';
+import 'package:new_ezagro_flutter/features/data/repositories/user_repositories/user_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/authentication_repository/authentication_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/pest_repositories/pest_repository.dart';
+import 'package:new_ezagro_flutter/features/domain/repositories/user_repositories/user_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/authenticate_usecase/authenticate_usecase_impl.dart';
@@ -44,6 +48,11 @@ import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_u
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/get_service_order_by_id_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/get_service_order_by_id_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/user_usecases/get_all_users_usecases/get_all_users_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/user_usecases/get_all_users_usecases/get_all_users_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/user_usecases/get_user_by_id_usecase/get_user_by_id_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/user_usecases/get_user_by_id_usecase/get_user_by_id_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/user_usecases/update_user_by_id_usecase/update_user_by_id_usecase.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/recover_password_success_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/repeat_password_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/temp_password_page.dart';
@@ -107,6 +116,7 @@ import 'features/domain/usecases/employee_usecase/employee_usecase.dart';
 import 'features/domain/usecases/employee_usecase/employee_usecase_impl.dart';
 import 'features/domain/usecases/service_order_list_usecase/service_order_list_usecase.dart';
 import 'features/domain/usecases/service_order_list_usecase/service_order_list_usecase_impl.dart';
+import 'features/domain/usecases/user_usecases/update_user_by_id_usecase/update_user_by_id_usecase_impl.dart';
 import 'features/presenter/modules/authentication_module/authentication_controller/authentication_controller.dart';
 import 'features/presenter/modules/authentication_module/login_pages/login_page.dart';
 import 'features/presenter/modules/authentication_module/register_page/register_fifth_step_page.dart';
@@ -161,7 +171,10 @@ class AppModule extends Module {
     i.addLazySingleton<PestUsecase>(PestUsecaseImpl.new);
     i.addLazySingleton<CostCenterFarmUsecase>(CostCenterFarmUsecaseImpl.new);
     i.addLazySingleton<PlotsWithFarmIdUsecase>(PlotsWithFarmIdUsecaseImpl.new);
-    i.addLazySingleton<CostCenterSelectorUsecase>(CostCenterSelectorUsecaseImpl.new);
+
+    i.addLazySingleton<GetAllUsersUsecase>(GetAllUsersUsecaseImpl.new);
+    i.addLazySingleton<GetUserByIdUsecase>(GetUserByIdUsecaseImpl.new);
+    i.addLazySingleton<UpdateUserByIdUsecase>(UpdateUserByIdUsecaseImpl.new);
 
     //Repository
     i.addLazySingleton<AuthenticationRepository>(AuthenticationRepositoryImpl.new);
@@ -176,6 +189,7 @@ class AppModule extends Module {
     i.addLazySingleton<ProductRepository>(ProductRepositoryImpl.new);
     i.addLazySingleton<EmployeeRepository>(EmployeeRepositoryImpl.new);
     i.addLazySingleton<PestRepository>(PestRepositoryImpl.new);
+    i.addLazySingleton<UserRepository>(UserRepositoryImpl.new);
 
     //Datasource
     i.addLazySingleton<AuthenticationDatasource>(AuthenticationDatasourceImpl.new);
@@ -190,6 +204,7 @@ class AppModule extends Module {
     i.addLazySingleton<ProductDatasource>(ProductDatasourceImpl.new);
     i.addLazySingleton<EmployeeDatasource>(EmployeeDatasourceImpl.new);
     i.addLazySingleton<PestDatasource>(PestDatasourceImpl.new);
+    i.addLazySingleton<UserDatasource>(UserDatasourceImpl.new);
 
     //Controllers
     i.addLazySingleton<AuthenticationController>(AuthenticationController.new);
@@ -235,6 +250,4 @@ class AppModule extends Module {
 
     super.routes(r);
   }
-
-
 }

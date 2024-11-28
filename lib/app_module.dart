@@ -8,12 +8,16 @@ import 'package:new_ezagro_flutter/core/local_storage/local_storage_client_share
 import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/authentication_datasource/authentication_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/authentication_datasource/authentication_datasources_impl.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/company_datasources/company_datasource.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/company_datasources/company_datasource_impl.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/user_datasources/user_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/user_datasources/user_datasource_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/authentication_repository/authentication_repository_impl.dart';
+import 'package:new_ezagro_flutter/features/data/repositories/company_repositories/company_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/pest_repositories/pest_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/user_repositories/user_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/authentication_repository/authentication_repository.dart';
+import 'package:new_ezagro_flutter/features/domain/repositories/company_repositories/company_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/pest_repositories/pest_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/user_repositories/user_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
@@ -22,6 +26,8 @@ import 'package:new_ezagro_flutter/features/domain/usecases/authentication_useca
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/update_password/update_password_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/company_usecases/get_all_companies_usecase/get_all_companies_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/company_usecases/get_all_companies_usecase/get_all_companies_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_usecase.dart';
@@ -56,6 +62,7 @@ import 'package:new_ezagro_flutter/features/presenter/modules/authentication_mod
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/temp_password_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/username_input_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/home/home_page.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/register/company/controller/company_controller.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/contracts/contract_list_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/employees/employees_list_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/farm/farm_list_page.dart';
@@ -173,6 +180,7 @@ class AppModule extends Module {
     i.addLazySingleton<GetAllUsersUsecase>(GetAllUsersUsecaseImpl.new);
     i.addLazySingleton<GetUserByIdUsecase>(GetUserByIdUsecaseImpl.new);
     i.addLazySingleton<UpdateUserByIdUsecase>(UpdateUserByIdUsecaseImpl.new);
+    i.addLazySingleton<GetAllCompaniesUsecase>(GetAllCompaniesUsecaseImpl.new);
 
     //Repository
     i.addLazySingleton<AuthenticationRepository>(AuthenticationRepositoryImpl.new);
@@ -188,6 +196,7 @@ class AppModule extends Module {
     i.addLazySingleton<EmployeeRepository>(EmployeeRepositoryImpl.new);
     i.addLazySingleton<PestRepository>(PestRepositoryImpl.new);
     i.addLazySingleton<UserRepository>(UserRepositoryImpl.new);
+    i.addLazySingleton<CompanyRepository>(CompanyRepositoryImpl.new);
 
     //Datasource
     i.addLazySingleton<AuthenticationDatasource>(AuthenticationDatasourceImpl.new);
@@ -203,6 +212,7 @@ class AppModule extends Module {
     i.addLazySingleton<EmployeeDatasource>(EmployeeDatasourceImpl.new);
     i.addLazySingleton<PestDatasource>(PestDatasourceImpl.new);
     i.addLazySingleton<UserDatasource>(UserDatasourceImpl.new);
+    i.addLazySingleton<CompanyDatasource>(CompanyDatasourceImpl.new);
 
     //Controllers
     i.addLazySingleton<AuthenticationController>(AuthenticationController.new);
@@ -210,6 +220,7 @@ class AppModule extends Module {
     i.addLazySingleton<ServiceOrderListController>(ServiceOrderListController.new);
     i.addLazySingleton<ServiceOrderController>(ServiceOrderController.new);
     i.addLazySingleton<PlotsListController>(PlotsListController.new);
+    i.addLazySingleton<CompanyController>(CompanyController.new);
     super.binds(i);
   }
 

@@ -100,4 +100,9 @@ class CompanyModel extends CompanyEntity {
   String toJson() => json.encode(toMap());
 
   factory CompanyModel.fromJson(String source) => CompanyModel.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  static List<List<String>> convertToTableList(List<CompanyEntity> companies) {
+    return companies.map((e) => [e.id.toString(), e.name ?? "", e.legalDocumentNumber ?? ""]).toList();
+  }
+
 }

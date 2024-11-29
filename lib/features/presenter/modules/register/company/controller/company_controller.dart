@@ -17,6 +17,9 @@ abstract class CompanyControllerAbstract with Store {
   @observable
   List<CompanyEntity> companies = ObservableList();
 
+  @observable
+  List<CompanyEntity> filteredCompanies = ObservableList();
+
   @action
   Future getCompaniesList() async {
     isLoading = true;
@@ -24,10 +27,19 @@ abstract class CompanyControllerAbstract with Store {
     final result = await getCompanies(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
       companies = success;
+      filteredCompanies = companies;
       return success;
     });
 
     isLoading = false;
+  }
+
+  @action
+  searchCompany(String searchText) {
+    filteredCompanies = companies.where((e) =>
+    (e.name?.toLowerCase() ?? "").contains(searchText.toLowerCase()) ||
+        (e.legalDocumentNumber?.toLowerCase() ?? "").contains(searchText.toLowerCase())
+    ).toList();
   }
 
 }

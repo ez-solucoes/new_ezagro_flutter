@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:new_ezagro_flutter/features/data/models/company_models/company_model.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/custom_drawer/custom_drawer_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/custom_striped_table/custom_striped_table_widget.dart';
 import '../../../../../consts/app_routes.dart';
@@ -48,11 +49,20 @@ class CompanyListPage extends StatelessWidget {
                     padding: const EdgeInsets.only(
                         top: 20, left: 20, right: 20, bottom: 0),
                     child: CustomSearchBar(
-                      onTextChanged: (search){},
+                      onTextChanged: (search){
+                        controller.searchCompany(search);
+                      },
                     ),
                   ),
                   Padding(padding: EdgeInsets.all(20),
-                      child: Observer(builder: (context) => CustomStripedTable(columnNames: ["#", "Nome", "CNPJ"], data: controller.companies.map((e) => [e.id.toString(), e.name ?? "", e.addressZipCode ?? ""]).toList(),maxHeight:0.7* MediaQuery.of(context).size.height,)))
+                      child: Observer(
+                          builder: (context) => CustomStripedTable(
+                            columnNames: [AppStringsPortuguese.hashtagSymbol,
+                              AppStringsPortuguese.companyNameColumn,
+                              AppStringsPortuguese.companyIdentifierColumn
+                            ],
+                            data: CompanyModel.convertToTableList(controller.filteredCompanies),
+                            maxHeight:0.7* MediaQuery.of(context).size.height,)))
                 ],
               ),
             ],

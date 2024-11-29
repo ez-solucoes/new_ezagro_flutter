@@ -5,7 +5,6 @@ import '../../../../../core/http_client/http_request.dart';
 import '../../../../../core/mixins/uri_builder_mixin.dart';
 import '../../../../../core/usecase/usecase.dart';
 import '../../../models/company_models/company_model.dart';
-import '../../../models/response_models/response_model.dart';
 import '../api_endpoints.dart';
 import 'company_datasource.dart';
 
@@ -15,7 +14,7 @@ class CompanyDatasourceImpl with UriBuilder implements CompanyDatasource {
   CompanyDatasourceImpl(this.httpClient);
 
   @override
-  Future<ResponseModel<List<CompanyModel>>> getAllCompanies(NoParams noParams) async {
+  Future<List<CompanyModel>> getAllCompanies(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,
@@ -27,10 +26,10 @@ class CompanyDatasourceImpl with UriBuilder implements CompanyDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountListModelInstanceFromResponse(
           response: result,
-          fromMap: (map) => (map as List<dynamic>).map((e) => CompanyModel.fromMap(e)).toList(),
-          fromJson: (jsonString) {
+          fromListMap: (map) => (map).map((e) => CompanyModel.fromMap(e)).toList(),
+          fromJsonList: (jsonString) {
             final List<dynamic> jsonList = jsonDecode(jsonString);
             return jsonList.map((json) => CompanyModel.fromJson(jsonEncode(json))).toList();
           },

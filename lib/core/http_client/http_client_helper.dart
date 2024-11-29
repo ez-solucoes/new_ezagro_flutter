@@ -54,7 +54,7 @@ T mountListModelInstanceFromResponse<T>({
   required T Function(String) fromJsonList,
   String? mountMapDataFromNodeName,
 }) {
-  final data = response.data;
+  final data = response.data['data'];
   if (data is List ||
       (mountMapDataFromNodeName != null &&
           data is Map &&

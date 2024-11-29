@@ -16,7 +16,7 @@ class CompanyRepositoryImpl implements CompanyRepository {
   getAllCompanies(NoParams noParams) async {
     try {
       final result = await datasource.getAllCompanies(noParams);
-      return Right(result as List<CompanyModel>);
+      return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {

@@ -41,6 +41,22 @@ mixin _$CompanyController on CompanyControllerAbstract, Store {
     });
   }
 
+  late final _$filteredCompaniesAtom = Atom(
+      name: 'CompanyControllerAbstract.filteredCompanies', context: context);
+
+  @override
+  List<CompanyEntity> get filteredCompanies {
+    _$filteredCompaniesAtom.reportRead();
+    return super.filteredCompanies;
+  }
+
+  @override
+  set filteredCompanies(List<CompanyEntity> value) {
+    _$filteredCompaniesAtom.reportWrite(value, super.filteredCompanies, () {
+      super.filteredCompanies = value;
+    });
+  }
+
   late final _$getCompaniesListAsyncAction = AsyncAction(
       'CompanyControllerAbstract.getCompaniesList',
       context: context);
@@ -50,11 +66,26 @@ mixin _$CompanyController on CompanyControllerAbstract, Store {
     return _$getCompaniesListAsyncAction.run(() => super.getCompaniesList());
   }
 
+  late final _$CompanyControllerAbstractActionController =
+      ActionController(name: 'CompanyControllerAbstract', context: context);
+
+  @override
+  dynamic searchCompany(String searchText) {
+    final _$actionInfo = _$CompanyControllerAbstractActionController
+        .startAction(name: 'CompanyControllerAbstract.searchCompany');
+    try {
+      return super.searchCompany(searchText);
+    } finally {
+      _$CompanyControllerAbstractActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
 isLoading: ${isLoading},
-companies: ${companies}
+companies: ${companies},
+filteredCompanies: ${filteredCompanies}
     ''';
   }
 }

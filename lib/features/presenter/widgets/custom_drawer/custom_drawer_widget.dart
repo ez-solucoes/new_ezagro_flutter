@@ -6,6 +6,7 @@ import 'package:new_ezagro_flutter/features/presenter/modules/register/employees
 import 'package:new_ezagro_flutter/features/presenter/modules/register/farm/farm_list_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/machinery/machinery_list_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/service_order/service_order_list_page/service_order_list_page.dart';
+import 'package:new_ezagro_flutter/features/presenter/widgets/logout_bottom_sheet/logout_bottom_sheet.dart';
 import '../../../../design_system/colors/app_colors.dart';
 import '../../../../design_system/typography/app_text_styles.dart';
 import '../../modules/home/home_page.dart';
@@ -64,6 +65,27 @@ class CustomDrawerWidget extends StatelessWidget {
                 },
               ),
             ),
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+                showBottomSheet(context: context, builder: (BuildContext context) {
+                  return LogoutBottomSheet();
+                });
+              },
+              child: Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(color: AppColors.primaryRedColor),
+                child: Row(
+                  children: [
+                    Icon(Icons.logout_outlined, color: AppColors.primaryWhiteColor,),
+                    Text("Sair",
+                      textAlign: TextAlign.start,
+                      style:AppTextStyles.boldMediumTextStyle(
+                          color: AppColors.backgroundColor),)
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),

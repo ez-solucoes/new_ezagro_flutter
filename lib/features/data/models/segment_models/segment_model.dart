@@ -1,12 +1,13 @@
 import 'dart:convert';
-import '../../../domain/entities/pix_entities/pix_type_entity.dart';
+import '../../../domain/entities/segment_entities/segment_entity.dart';
 
-
-class PixTypeModel extends PixTypeEntity {
-  const PixTypeModel({
+class SegmentModel extends SegmentEntity {
+  const SegmentModel({
     required super.id,
     super.name,
     super.slug,
+    super.isServiceProvider,
+    super.isProductSupplier,
     super.createdAt,
     super.updatedAt,
     super.deletedAt,
@@ -17,17 +18,21 @@ class PixTypeModel extends PixTypeEntity {
       'id': id,
       'name': name,
       'slug': slug,
+      'isServiceProvider': isServiceProvider,
+      'isProductSupplier': isProductSupplier,
       'createdAt': createdAt,
       'updatedAt': updatedAt,
       'deletedAt': deletedAt,
     };
   }
 
-  factory PixTypeModel.fromMap(Map<String, dynamic> map) {
-    return PixTypeModel(
+  factory SegmentModel.fromMap(Map<String, dynamic> map) {
+    return SegmentModel(
       id: map['id'] as int,
       name: map['name'] as String?,
       slug: map['slug'] as String?,
+      isServiceProvider: map['isServiceProvider'] as bool?,
+      isProductSupplier: map['isProductSupplier'] as bool?,
       createdAt: map['createdAt'] as String?,
       updatedAt: map['updatedAt'] as String?,
       deletedAt: map['deletedAt'] as String?,
@@ -36,6 +41,6 @@ class PixTypeModel extends PixTypeEntity {
 
   String toJson() => json.encode(toMap());
 
-  factory PixTypeModel.fromJson(String source) =>
-      PixTypeModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory SegmentModel.fromJson(String source) =>
+      SegmentModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

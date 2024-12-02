@@ -36,7 +36,12 @@ class EmployeeAdditionalInformationTab extends StatelessWidget {
                 [(AppStringsPortuguese.employeeInsuranceCodeLabel, "Código de Se."),(AppStringsPortuguese.employeeHealthCareLabel, "Plano de Saúde")]
               )]),
           const SizedBox(height: 10,),
-          CustomStripedTable(columnNames: ["Dependentes", "Relação","Nascimento"], data: [["Julio Costa","Filho","22/11/2005"],["Ana Costa","Esposa","15/09/1973"]], maxHeight: MediaQuery.of(context).size.height*0.2, equalColumnProportions: true,),
+          CustomStripedTable(
+            columnNames: ["Dependentes", "Relação","Nascimento"],
+            data: [["Julio Costa","Filho","22/11/2005"],["Ana Costa","Esposa","15/09/1973"]],
+            maxHeight: MediaQuery.of(context).size.height*0.2,
+            equalColumnProportions: true,
+              onTap: (id){}),
           const SizedBox(height: 10,),
           DocumentsListWidget(title: AppStringsPortuguese.employeeAttachmentsLabel, data: ["Contrato de Trabalho", "Contrato de Seguro"], maxHeight: MediaQuery.of(context).size.height*0.3, action: (){})
         ],),

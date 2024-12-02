@@ -49,7 +49,11 @@ class FarmListPage extends StatelessWidget {
                       ),
                     ),
                     Padding(padding: EdgeInsets.all(20),
-                        child: CustomStripedTable(columnNames: [AppStringsPortuguese.hashtagSymbol, AppStringsPortuguese.farmColumnName, AppStringsPortuguese.farmCostCenterColumn], data: List.generate(30, (index) => ["1", "Três Lagoas", "Centro de Custo"]),maxHeight:0.7* MediaQuery.of(context).size.height,))
+                        child: CustomStripedTable(
+                          columnNames: [AppStringsPortuguese.hashtagSymbol, AppStringsPortuguese.farmColumnName, AppStringsPortuguese.farmCostCenterColumn],
+                          data: List.generate(30, (index) => ["1", "Três Lagoas", "Centro de Custo"]),
+                          maxHeight:0.7* MediaQuery.of(context).size.height,
+                            onTap: (id){}))
                   ],
                 ),
               ],

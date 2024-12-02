@@ -8,6 +8,7 @@ class CustomStripedTable extends StatelessWidget {
     required this.columnNames,
     required this.data,
     required this.maxHeight,
+    required this.onTap,
     this.equalColumnProportions = false
   });
 
@@ -15,6 +16,7 @@ class CustomStripedTable extends StatelessWidget {
   final List<List<String>> data;
   final double maxHeight;
   final bool equalColumnProportions;
+  final Function(int) onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -65,36 +67,39 @@ class CustomStripedTable extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: data.length,
                   itemBuilder: (context, index) {
-                    return Container(
-                      color: index%2 == 0 ? AppColors.primaryWhiteColor : AppColors.softGreenColor,
-                      child: Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: Row(
-                            children: [
-                              index == 0 ? Divider(color: AppColors.borderWhiteColor) : SizedBox.shrink(),
-                          Expanded(
-                            flex: 1,
-                            child: Text(data[index][0],
-                                style: AppTextStyles.appBarSubTitleTextStyle(
-                                    color: AppColors.primaryBlackColor),
-                                textAlign: equalColumnProportions ? TextAlign.center : TextAlign.start,
+                    return GestureDetector(
+                      onTap: () {onTap;},
+                      child: Container(
+                        color: index%2 == 0 ? AppColors.primaryWhiteColor : AppColors.softGreenColor,
+                        child: Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Row(
+                              children: [
+                                index == 0 ? Divider(color: AppColors.borderWhiteColor) : SizedBox.shrink(),
+                            Expanded(
+                              flex: 1,
+                              child: Text(data[index][0],
+                                  style: AppTextStyles.appBarSubTitleTextStyle(
+                                      color: AppColors.primaryBlackColor),
+                                  textAlign: equalColumnProportions ? TextAlign.center : TextAlign.start,
+                              ),
                             ),
-                          ),
-                          Expanded(
-                            flex: equalColumnProportions ? 1 : 3,
-                            child: Text(data[index][1],
-                                style: AppTextStyles.appBarSubTitleTextStyle(
-                                    color: AppColors.primaryBlackColor),
-                                textAlign: equalColumnProportions ? TextAlign.center : TextAlign.start,),
-                          ),
-                          Expanded(
-                            flex: equalColumnProportions ? 1 : 3,
-                            child: Text(data[index][2],
-                                style: AppTextStyles.appBarSubTitleTextStyle(
-                                    color: AppColors.primaryBlackColor),
-                                textAlign: TextAlign.center,),
-                          ),
-                        ]),
+                            Expanded(
+                              flex: equalColumnProportions ? 1 : 3,
+                              child: Text(data[index][1],
+                                  style: AppTextStyles.appBarSubTitleTextStyle(
+                                      color: AppColors.primaryBlackColor),
+                                  textAlign: equalColumnProportions ? TextAlign.center : TextAlign.start,),
+                            ),
+                            Expanded(
+                              flex: equalColumnProportions ? 1 : 3,
+                              child: Text(data[index][2],
+                                  style: AppTextStyles.appBarSubTitleTextStyle(
+                                      color: AppColors.primaryBlackColor),
+                                  textAlign: TextAlign.center,),
+                            ),
+                          ]),
+                        ),
                       ),
                     );
                   }),

@@ -1,9 +1,10 @@
+
 import 'dart:convert';
-import '../../../domain/entities/pix_entities/pix_type_entity.dart';
 
+import '../../../domain/entities/bank_account_entities/bank_account_type_entity.dart';
 
-class PixTypeModel extends PixTypeEntity {
-  const PixTypeModel({
+class BankAccountTypeModel extends BankAccountTypeEntity {
+  const BankAccountTypeModel({
     required super.id,
     super.name,
     super.slug,
@@ -23,8 +24,8 @@ class PixTypeModel extends PixTypeEntity {
     };
   }
 
-  factory PixTypeModel.fromMap(Map<String, dynamic> map) {
-    return PixTypeModel(
+  factory BankAccountTypeModel.fromMap(Map<String, dynamic> map) {
+    return BankAccountTypeModel(
       id: map['id'] as int,
       name: map['name'] as String?,
       slug: map['slug'] as String?,
@@ -36,6 +37,6 @@ class PixTypeModel extends PixTypeEntity {
 
   String toJson() => json.encode(toMap());
 
-  factory PixTypeModel.fromJson(String source) =>
-      PixTypeModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory BankAccountTypeModel.fromJson(String source) =>
+      BankAccountTypeModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

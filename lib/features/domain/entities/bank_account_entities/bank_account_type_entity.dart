@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class PixTypeEntity extends Equatable {
+class BankAccountTypeEntity extends Equatable {
   final int id;
   final String? name;
   final String? slug;
@@ -8,7 +8,7 @@ class PixTypeEntity extends Equatable {
   final String? updatedAt;
   final String? deletedAt;
 
-  const PixTypeEntity({
+  const BankAccountTypeEntity({
     required this.id,
     this.name,
     this.slug,
@@ -19,11 +19,11 @@ class PixTypeEntity extends Equatable {
 
   @override
   List<Object?> get props => [
-        id,
-        name,
-        slug,
-        createdAt,
-        updatedAt,
-        deletedAt
-      ];
+    id,
+    name,
+    slug,
+    createdAt,
+    updatedAt,
+    deletedAt
+  ];
 }

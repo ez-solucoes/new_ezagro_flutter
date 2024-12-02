@@ -1,4 +1,7 @@
 import 'package:equatable/equatable.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/bank_account_entities/bank_account_entity.dart';
+
+import '../segment_entities/segment_entity.dart';
 
 class CompanyEntity extends Equatable {
   final int id;
@@ -28,6 +31,8 @@ class CompanyEntity extends Equatable {
   final String? createdAt;
   final String? updatedAt;
   final String? deletedAt;
+  final List<SegmentEntity>? segments;
+  final List<BankAccountEntity>? bankAccounts;
 
   const CompanyEntity({
     required this.id,
@@ -57,6 +62,8 @@ class CompanyEntity extends Equatable {
     this.createdAt,
     this.updatedAt,
     this.deletedAt,
+    this.segments,
+    this.bankAccounts
   });
 
   @override
@@ -88,5 +95,7 @@ class CompanyEntity extends Equatable {
     createdAt,
     updatedAt,
     deletedAt,
+    segments,
+    bankAccounts
   ];
 }

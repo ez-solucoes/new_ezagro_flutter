@@ -86,6 +86,7 @@ class FarmPage extends StatelessWidget {
                         data: List.generate(30, (index) => ["$index", "100ha", "Milho"]),
                         maxHeight: MediaQuery.of(context).size.height*0.75,
                         equalColumnProportions: true,
+                        onTap: (id){}
                         ),
                     const SizedBox(height: 10,),
                     DocumentsListWidget(

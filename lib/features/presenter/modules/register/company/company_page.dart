@@ -9,22 +9,24 @@ import '../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
+import 'controller/company_controller.dart';
 
 class CompanyPage extends StatelessWidget {
-
+  final ArgParams args;
   static const String routePath = AppRoutes.appCompanyPage;
 
-  static navigate() =>
-      Modular.to.navigate(routePath);
+  static void navigate(ArgParams args) =>
+      Modular.to.navigate(routePath, arguments: args);
 
   static push(ArgParams args) =>
       Modular.to.pushNamed(routePath, arguments: args);
 
-  const CompanyPage({super.key});
+  const CompanyPage({super.key, required this.args});
 
   @override
   Widget build(BuildContext context) {
-    //final controller = Modular.get<CompanyController>();
+    final controller = Modular.get<CompanyController>();
+    controller.getCompanyById(args);
     return BackgroundWidget(
         scrollable: true,
         appBar: const CustomAppBarWidget(
@@ -32,47 +34,74 @@ class CompanyPage extends StatelessWidget {
           title: AppStringsPortuguese.singularCompanyTitle,
         ),
         child: Observer(
-        builder: (context) =>
-        Padding(
-          padding: EdgeInsets.all(12),
-          child: Column(children: [
-            BoldTitleInfoCard(titleOne: "Lucas Transportes", dataOne: "Moisés da Silva"),
-            const SizedBox(height: 10,),
-            BoldTitleInfoCard(titleOne: "CNPJ", dataOne: "00.00.00/000-00"),
-            const SizedBox(height: 10,),
-            BoldTitleInfoCard(titleOne: "Tipo", dataOne: "Própria"),
-            const SizedBox(height: 10,),
-            BoldTitleInfoCard(titleOne: "Segmento", dataOne: "Fretes"),
-            const SizedBox(height: 10,),
-            ThreeInfoCard(
-                title: "Contato",
-                info1: ("Telefone","(XX) XXXXX-XXXX"),
-                info2: ("WhatsApp","(XX) XXXXX-XXXX"),
-                info3: ("E-mail","contato@lucastransportes.com.br")),
-            const SizedBox(height: 10,),
-            MultInfoCard(
-                title: "Endereço",
-                sectionsData: [([
-                  ("CEP", "00000-000"),
-                  ("Logadouro", "Rua das Nações, 124"),
-                  ("Estado", "São Paulo")
-                ], [
-                  ("Cidade", "São Paulo"),
-                  ("Bairro", "Ipiranga"),
-                  ("País", "Brasil")]
-                )]),
-            const SizedBox(height: 10,),
-            MultInfoCard(
-                title: "Dados Bancários",
-                sectionsData: [([
-                  ("Tipo de Conta", "Corrente"),("Agência", "0001"),("Tipo de Chave Pix", "CNPJ")
-                ], [
-                  ("Banco", "Nu Pagamentos"),
-                  ("Conta", "00000-00"),
-                  ("Chave Pix", "00.00.00/000-00")]
-                )])
-          ],),),
-    ));
+          builder: (context) => controller.isLoading
+              ? CircularProgressIndicator()
+              : Padding(
+                  padding: EdgeInsets.all(12),
+                  child: Column(
+                    children: [
+                      BoldTitleInfoCard(
+                          titleOne: controller.company?.name ?? "",
+                          dataOne: ""),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      BoldTitleInfoCard(
+                          titleOne: "CNPJ", dataOne: "00.00.00/000-00"),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      BoldTitleInfoCard(titleOne: "Tipo", dataOne: "Própria"),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      BoldTitleInfoCard(
+                          titleOne: "Segmento", dataOne: "Fretes"),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      ThreeInfoCard(
+                          title: "Contato",
+                          info1: ("Telefone", "(XX) XXXXX-XXXX"),
+                          info2: ("WhatsApp", "(XX) XXXXX-XXXX"),
+                          info3: ("E-mail", "contato@lucastransportes.com.br")),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      MultInfoCard(title: "Endereço", sectionsData: [
+                        (
+                          [
+                            ("CEP", "00000-000"),
+                            ("Logadouro", "Rua das Nações, 124"),
+                            ("Estado", "São Paulo")
+                          ],
+                          [
+                            ("Cidade", "São Paulo"),
+                            ("Bairro", "Ipiranga"),
+                            ("País", "Brasil")
+                          ]
+                        )
+                      ]),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      MultInfoCard(title: "Dados Bancários", sectionsData: [
+                        (
+                          [
+                            ("Tipo de Conta", "Corrente"),
+                            ("Agência", "0001"),
+                            ("Tipo de Chave Pix", "CNPJ")
+                          ],
+                          [
+                            ("Banco", "Nu Pagamentos"),
+                            ("Conta", "00000-00"),
+                            ("Chave Pix", "00.00.00/000-00")
+                          ]
+                        )
+                      ])
+                    ],
+                  ),
+                ),
+        ));
   }
-
 }

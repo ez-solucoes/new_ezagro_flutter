@@ -28,6 +28,8 @@ import 'package:new_ezagro_flutter/features/domain/usecases/authentication_useca
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/update_password/update_password_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/company_usecases/get_all_companies_usecase/get_all_companies_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/company_usecases/get_all_companies_usecase/get_all_companies_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/company_usecases/get_company_by_id_usecase/get_company_by_id_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/company_usecases/get_company_by_id_usecase/get_company_by_id_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_usecase.dart';
@@ -181,6 +183,7 @@ class AppModule extends Module {
     i.addLazySingleton<GetUserByIdUsecase>(GetUserByIdUsecaseImpl.new);
     i.addLazySingleton<UpdateUserByIdUsecase>(UpdateUserByIdUsecaseImpl.new);
     i.addLazySingleton<GetAllCompaniesUsecase>(GetAllCompaniesUsecaseImpl.new);
+    i.addLazySingleton<GetCompanyByIdUsecase>(GetCompanyByIdUsecaseImpl.new);
 
     //Repository
     i.addLazySingleton<AuthenticationRepository>(AuthenticationRepositoryImpl.new);
@@ -247,7 +250,7 @@ class AppModule extends Module {
     r.child(AppRoutes.appPlotsList, child : (context) => PlotsListPage());
     r.child(AppRoutes.appCreateServiceOrderPage, child: (context) => const CreateServiceOrderPage());
     r.child(AppRoutes.appCompanyListPage, child: (context) => CompanyListPage());
-    r.child(AppRoutes.appCompanyPage, child: (context) => CompanyPage());
+    r.child(AppRoutes.appCompanyPage, child: (context) => CompanyPage(args: r.args.data,));
     r.child(AppRoutes.appContractListPage, child: (context) => ContractListPage());
     r.child(AppRoutes.appContractPage, child: (context) => ContractPage());
     r.child(AppRoutes.appEmployeesListPage, child: (context) => EmployeesListPage());

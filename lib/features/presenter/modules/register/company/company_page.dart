@@ -53,12 +53,12 @@ class CompanyPage extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      BoldTitleInfoCard(titleOne: AppStringsPortuguese.typeLabel, dataOne: ""),
+                      BoldTitleInfoCard(titleOne: AppStringsPortuguese.typeLabel, dataOne: controller.getCompanyType()),
                       const SizedBox(
                         height: 10,
                       ),
                       BoldTitleInfoCard(
-                          titleOne: "Segmento", dataOne: (controller.company?.segments ?? [])
+                          titleOne: AppStringsPortuguese.companySegment, dataOne: (controller.company?.segments ?? [])
                           .map((segment) => segment.name)
                           .where((name) => name != null)
                           .cast<String>()

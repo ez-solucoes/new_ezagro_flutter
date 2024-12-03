@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/company_entities/company_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/segment_entities/segment_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
@@ -59,6 +60,16 @@ abstract class CompanyControllerAbstract with Store {
     (e.name?.toLowerCase() ?? "").contains(searchText.toLowerCase()) ||
         (e.legalDocumentNumber?.toLowerCase() ?? "").contains(searchText.toLowerCase())
     ).toList();
+  }
+
+  String getCompanyType() {
+    return (company?.isOwn ?? false) ?
+            AppStringsPortuguese.ownCompany :
+            (company?.isCreditor ?? false) ?
+                AppStringsPortuguese.creditorCompany :
+            (company?.isDebtor ?? false) ?
+                AppStringsPortuguese.debtorCompany :
+                "";
   }
 
 }

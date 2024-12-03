@@ -167,6 +167,10 @@ class AppStringsPortuguese {
   static const String contractNameColumn = 'Contrato';
   static const String contractTypeColumn = 'Tipo';
   static const String contractLabel = 'Contrato:';
+  static const String ownCompany = "Própria";
+  static const String creditorCompany = "Credora";
+  static const String debtorCompany = "Devedora";
+  static const String companySegment = "Segmento";
   static const String typeLabel = 'Tipo:';
   static const String phoneLabel = 'Telefone';
   static const String whatsAppLabel = "WhatsApp";

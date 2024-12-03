@@ -9,20 +9,20 @@ class ClientEntity extends Equatable {
   final String? deletedAt;
   final bool isActive;
   final String cpf;
-  final String phoneNumber;
-  final String whatsappPhone;
+  final String? phoneNumber;
+  final String? whatsappPhone;
 
 
   const ClientEntity({
     this.id,
-    required this.whatsappPhone,
+    this.whatsappPhone,
     required this.name,
     required this.isActive,
     required this.createdAt,
     required this.updatedAt,
     this.deletedAt,
     required this.cpf,
-    required this.phoneNumber,
+    this.phoneNumber,
   });
 
   @override

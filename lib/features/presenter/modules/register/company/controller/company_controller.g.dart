@@ -57,6 +57,22 @@ mixin _$CompanyController on CompanyControllerAbstract, Store {
     });
   }
 
+  late final _$companyAtom =
+      Atom(name: 'CompanyControllerAbstract.company', context: context);
+
+  @override
+  CompanyEntity? get company {
+    _$companyAtom.reportRead();
+    return super.company;
+  }
+
+  @override
+  set company(CompanyEntity? value) {
+    _$companyAtom.reportWrite(value, super.company, () {
+      super.company = value;
+    });
+  }
+
   late final _$getCompaniesListAsyncAction = AsyncAction(
       'CompanyControllerAbstract.getCompaniesList',
       context: context);
@@ -64,6 +80,14 @@ mixin _$CompanyController on CompanyControllerAbstract, Store {
   @override
   Future<dynamic> getCompaniesList() {
     return _$getCompaniesListAsyncAction.run(() => super.getCompaniesList());
+  }
+
+  late final _$getCompanyByIdAsyncAction =
+      AsyncAction('CompanyControllerAbstract.getCompanyById', context: context);
+
+  @override
+  Future<dynamic> getCompanyById(ArgParams args) {
+    return _$getCompanyByIdAsyncAction.run(() => super.getCompanyById(args));
   }
 
   late final _$CompanyControllerAbstractActionController =
@@ -85,7 +109,8 @@ mixin _$CompanyController on CompanyControllerAbstract, Store {
     return '''
 isLoading: ${isLoading},
 companies: ${companies},
-filteredCompanies: ${filteredCompanies}
+filteredCompanies: ${filteredCompanies},
+company: ${company}
     ''';
   }
 }

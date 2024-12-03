@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:new_ezagro_flutter/features/data/models/bank_account_models/bank_account_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/segment_models/segment_model.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/bank_account_entities/bank_account_entity.dart';
 import '../../../domain/entities/company_entities/company_entity.dart';
 
 class CompanyModel extends CompanyEntity {

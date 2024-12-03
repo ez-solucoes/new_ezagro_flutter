@@ -1,4 +1,7 @@
 import 'package:equatable/equatable.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/access_groups_entities/access_groups_entity.dart';
+
+import '../client_entities/client_entity.dart';
 
 class UserEntity extends Equatable {
   final int? id;
@@ -10,6 +13,8 @@ class UserEntity extends Equatable {
   final String updatedAt;
   final String? deletedAt;
   final bool? isResetPassword;
+  final ClientEntity? client;
+  final AccessGroupsEntity? accessGroups;
 
   const UserEntity({
     this.id,
@@ -20,7 +25,9 @@ class UserEntity extends Equatable {
     required this.createdAt,
     required this.updatedAt,
     this.deletedAt,
-    this.isResetPassword
+    this.isResetPassword,
+    this.client,
+    this.accessGroups,
   });
 
   @override
@@ -34,5 +41,7 @@ class UserEntity extends Equatable {
     updatedAt,
     deletedAt,
     isResetPassword,
+    client,
+    accessGroups,
   ];
 }

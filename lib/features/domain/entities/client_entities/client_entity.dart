@@ -1,18 +1,40 @@
-import '../email_entities/email_entity.dart';
-import '../phone_entities/phone_entity.dart';
 
-class ClientEntity {
-  final int id;
-  final String? name;
-  final String? cpf;
-  final PhoneEntity? phone;
-  final EmailEntity? email;
+import 'package:equatable/equatable.dart';
 
-  ClientEntity({
-    required this.id,
-    this.name,
-    this.cpf,
-    this.phone,
-    this.email,
+class ClientEntity extends Equatable {
+  final int? id;
+  final String name;
+  final String createdAt;
+  final String updatedAt;
+  final String? deletedAt;
+  final bool isActive;
+  final String cpf;
+  final String phoneNumber;
+  final String whatsappPhone;
+
+
+  const ClientEntity({
+    this.id,
+    required this.whatsappPhone,
+    required this.name,
+    required this.isActive,
+    required this.createdAt,
+    required this.updatedAt,
+    this.deletedAt,
+    required this.cpf,
+    required this.phoneNumber,
   });
+
+  @override
+  List<Object?> get props =>[
+    id,
+    whatsappPhone,
+    name,
+    isActive,
+    createdAt,
+    updatedAt,
+    deletedAt,
+    cpf,
+    phoneNumber,
+  ];
 }

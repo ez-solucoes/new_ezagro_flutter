@@ -66,7 +66,7 @@ class UserDatasourceImpl with UriBuilder implements UserDatasource {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.userEndpoint + userParams.id.toString(),
+      AppEndpoints.userByIdEndpoint + userParams.id.toString(),
     );
 
     final HttpRequest request = HttpRequest.patch(path: url, payload: {

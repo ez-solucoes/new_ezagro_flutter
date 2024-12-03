@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:new_ezagro_flutter/features/data/models/access_groups_models/access_groups_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/client_models/client_model.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/user_entities/user_entity.dart';
 
 class UserModel extends UserEntity {
@@ -13,10 +15,12 @@ class UserModel extends UserEntity {
     required super.updatedAt,
     super.deletedAt,
     super.isResetPassword,
+    super.client,
+    super.accessGroups,
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
+    return {
       'id': id,
       'whatsappPhone': whatsappPhone,
       'username': username,
@@ -26,6 +30,8 @@ class UserModel extends UserEntity {
       'updatedAt': updatedAt,
       'deletedAt': deletedAt,
       'isResetPassword': isResetPassword,
+      'client': client,
+      'accessGroups': accessGroups,
     };
   }
 
@@ -40,6 +46,8 @@ class UserModel extends UserEntity {
       updatedAt: map['updatedAt'] as String,
       deletedAt: map['deletedAt'] == null ? null : map['deletedAt'] as String,
       isResetPassword: map['isResetPassword'] == null ? null : map['isResetPassword'] as bool,
+      client: ClientModel.fromMap(map['client']),
+      accessGroups: AccessGroupsModel.fromMap(map['accessGroups']),
     );
   }
 

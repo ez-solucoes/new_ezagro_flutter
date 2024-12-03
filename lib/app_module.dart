@@ -126,6 +126,7 @@ import 'features/domain/usecases/service_order_list_usecase/service_order_list_u
 import 'features/domain/usecases/user_usecases/update_user_by_id_usecase/update_user_by_id_usecase_impl.dart';
 import 'features/presenter/modules/authentication_module/authentication_controller/authentication_controller.dart';
 import 'features/presenter/modules/authentication_module/login_pages/login_page.dart';
+import 'features/presenter/modules/authentication_module/recover_password_pages/new_password_page.dart';
 import 'features/presenter/modules/authentication_module/register_page/register_fifth_step_page.dart';
 import 'features/presenter/modules/authentication_module/register_page/register_first_step_page.dart';
 import 'features/presenter/modules/authentication_module/register_page/register_fourth_step_page.dart';
@@ -236,6 +237,7 @@ class AppModule extends Module {
     r.child(AppRoutes.appUsernameInputPage, child: (context) => UsernameInputPage());
     r.child(AppRoutes.appTempPasswordPage, child: (context) => TempPasswordPage());
     r.child(AppRoutes.appRepeatPasswordPage, child: (context) => RepeatPasswordPage());
+    r.child(AppRoutes.appNewPasswordPage, child: (context) => NewPasswordPage());
     r.child(AppRoutes.appRecoverPasswordSuccessPage, child: (context) => RecoverPasswordSuccessPage());
 
     r.child(AppRoutes.appRegisterFirstStepPage, child: (context) => const RegisterFirstStepPage());

@@ -3,14 +3,14 @@ import 'package:equatable/equatable.dart';
 class PermissionsEntity extends Equatable {
   final int id;
   final String? name;
-  final String? description;
+  final String? slug;
 
   const PermissionsEntity({
     required this.id,
     this.name,
-    this.description,
+    this.slug,
   });
 
   @override
-  List<Object?> get props => [id, name, description];
+  List<Object?> get props => [id, name, slug];
 }

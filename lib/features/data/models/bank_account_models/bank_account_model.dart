@@ -15,6 +15,7 @@ class BankAccountModel extends BankAccountEntity {
     super.bankAccountType,
     super.financialInstitution,
     super.pix,
+    super.pixList,
     super.companyId,
     super.employeeId,
   });
@@ -30,6 +31,7 @@ class BankAccountModel extends BankAccountEntity {
       'bankAccountType': (bankAccountType as BankAccountTypeModel).toMap(),
       'financialInstitution': (financialInstitution as FinancialInstitutionModel).toMap(),
       'pix': pix?.map((x) => (x as PixModel).toMap()).toList(),
+      'pixList': pixList?.map((x) => (x as PixModel).toMap()).toList(),
       'companyId': companyId,
       'employeeId': employeeId,
     };
@@ -46,6 +48,7 @@ class BankAccountModel extends BankAccountEntity {
       bankAccountType: map['bankAccountType'] != null ? BankAccountTypeModel.fromMap(map['bankAccountType'] as Map<String, dynamic>) : null,
       financialInstitution: map['financialInstitution'] != null ? FinancialInstitutionModel.fromMap(map['financialInstitution'] as Map<String, dynamic>) : null,
       pix: map['pix'] != null ? List<PixModel>.from(map['pix']?.map((x) => PixModel.fromMap(x as Map<String, dynamic>))) : null,
+      pixList: map['pixList'] != null ? List<PixModel>.from(map['pixList']?.map((x) => PixModel.fromMap(x as Map<String, dynamic>))) : null,
       companyId: map['companyId'] as int?,
       employeeId: map['employeeId'] as int?,
     );

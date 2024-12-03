@@ -13,6 +13,7 @@ class BankAccountEntity extends Equatable {
   final BankAccountTypeEntity?  bankAccountType;
   final FinancialInstitutionEntity? financialInstitution;
   final List<PixEntity>? pix;
+  final List<PixEntity>? pixList;
   final int? companyId;
   final int? employeeId;
 
@@ -26,6 +27,7 @@ class BankAccountEntity extends Equatable {
     this.bankAccountType,
     this.financialInstitution,
     this.pix,
+    this.pixList,
     this.companyId,
     this.employeeId,
   });

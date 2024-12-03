@@ -1,5 +1,7 @@
 import 'dart:convert';
-
+import 'package:new_ezagro_flutter/features/data/models/bank_account_models/bank_account_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/segment_models/segment_model.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/bank_account_entities/bank_account_entity.dart';
 import '../../../domain/entities/company_entities/company_entity.dart';
 
 class CompanyModel extends CompanyEntity {
@@ -31,6 +33,8 @@ class CompanyModel extends CompanyEntity {
     super.createdAt,
     super.updatedAt,
     super.deletedAt,
+    super.segments,
+    super.bankAccounts
   });
 
   Map<String, dynamic> toMap() {
@@ -62,6 +66,8 @@ class CompanyModel extends CompanyEntity {
       'createdAt': createdAt,
       'updatedAt': updatedAt,
       'deletedAt': deletedAt,
+      'segments': segments,
+      'bankAccounts': bankAccounts
     };
   }
 
@@ -94,6 +100,8 @@ class CompanyModel extends CompanyEntity {
       createdAt: map['createdAt'] as String?,
       updatedAt: map['updatedAt'] as String?,
       deletedAt: map['deletedAt'] as String?,
+      segments: map['segments'] != null ? (map['segments'] as List).map((e) => SegmentModel.fromMap(e)).toList() : null,
+      bankAccounts: map['bankAccounts'] != null ? (map['bankAccounts'] as List).map((e) => BankAccountModel.fromMap(e)).toList() : null
     );
   }
 

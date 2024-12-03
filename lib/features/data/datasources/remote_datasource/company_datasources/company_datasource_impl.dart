@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:new_ezagro_flutter/features/data/models/response_models/response_model.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 
 import '../../../../../core/http_client/http_client.dart';
@@ -42,7 +43,7 @@ class CompanyDatasourceImpl with UriBuilder implements CompanyDatasource {
   }
 
   @override
-  Future<CompanyModel> getCompanyById(ArgParams argParams) async {
+  Future<ResponseModel<CompanyModel>> getCompanyById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,
@@ -54,10 +55,10 @@ class CompanyDatasourceImpl with UriBuilder implements CompanyDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountModelInstanceFromResponse(
           response: result,
-          fromListMap: (map) => CompanyModel.fromMap(map as Map<String, dynamic>),
-          fromJsonList: (jsonString) => CompanyModel.fromJson(jsonString),
+          fromMap: (map) => CompanyModel.fromMap(map),
+          fromJson: (jsonString) => CompanyModel.fromJson(jsonString),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

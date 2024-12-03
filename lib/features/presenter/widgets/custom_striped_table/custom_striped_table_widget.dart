@@ -68,7 +68,7 @@ class CustomStripedTable extends StatelessWidget {
                   itemCount: data.length,
                   itemBuilder: (context, index) {
                     return GestureDetector(
-                      onTap: () {onTap;},
+                      onTap: () => onTap(index),
                       child: Container(
                         color: index%2 == 0 ? AppColors.primaryWhiteColor : AppColors.softGreenColor,
                         child: Padding(

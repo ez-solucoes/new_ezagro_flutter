@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/register/company/company_list_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/mult_info_card/mult_info_card.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/single_info_card/single_info_card.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/three_info_card/three_info_card.dart';
@@ -30,76 +31,82 @@ class CompanyPage extends StatelessWidget {
     return BackgroundWidget(
         scrollable: true,
         appBar: const CustomAppBarWidget(
-          appBarType: AppBarType.hamburgerAndTitle,
+          appBarType: AppBarType.centeredTitleAndBackArrow,
           title: AppStringsPortuguese.singularCompanyTitle,
+          callback: CompanyListPage.navigate,
         ),
         child: Observer(
           builder: (context) => controller.isLoading
-              ? CircularProgressIndicator()
+              ? Center(child: CircularProgressIndicator())
               : Padding(
                   padding: EdgeInsets.all(12),
                   child: Column(
                     children: [
                       BoldTitleInfoCard(
-                          titleOne: controller.company?.name ?? "",
-                          dataOne: ""),
+                          titleOne: AppStringsPortuguese.nameField,
+                          dataOne: controller.company?.name ?? ""),
                       const SizedBox(
                         height: 10,
                       ),
                       BoldTitleInfoCard(
-                          titleOne: "CNPJ", dataOne: "00.00.00/000-00"),
+                          titleOne: AppStringsPortuguese.companyIdentifierTitle, dataOne: controller.company?.legalDocumentNumber ?? ""),
                       const SizedBox(
                         height: 10,
                       ),
-                      BoldTitleInfoCard(titleOne: "Tipo", dataOne: "Própria"),
+                      BoldTitleInfoCard(titleOne: AppStringsPortuguese.typeLabel, dataOne: ""),
                       const SizedBox(
                         height: 10,
                       ),
                       BoldTitleInfoCard(
-                          titleOne: "Segmento", dataOne: "Fretes"),
+                          titleOne: "Segmento", dataOne: (controller.company?.segments ?? [])
+                          .map((segment) => segment.name)
+                          .where((name) => name != null)
+                          .cast<String>()
+                          .join('\n')),
                       const SizedBox(
                         height: 10,
                       ),
                       ThreeInfoCard(
-                          title: "Contato",
-                          info1: ("Telefone", "(XX) XXXXX-XXXX"),
-                          info2: ("WhatsApp", "(XX) XXXXX-XXXX"),
-                          info3: ("E-mail", "contato@lucastransportes.com.br")),
+                          title: AppStringsPortuguese.contactLabel,
+                          info1: (AppStringsPortuguese.employeePhoneLabel, controller.company?.phoneNumber ?? ""),
+                          info2: (AppStringsPortuguese.whatsAppLabel, controller.company?.whatsappNumber ?? ""),
+                          info3: (AppStringsPortuguese.emailLabel, controller.company?.email ?? "")),
                       const SizedBox(
                         height: 10,
                       ),
-                      MultInfoCard(title: "Endereço", sectionsData: [
+                      MultInfoCard(title: AppStringsPortuguese.addressLabel, sectionsData: [
                         (
                           [
-                            ("CEP", "00000-000"),
-                            ("Logadouro", "Rua das Nações, 124"),
-                            ("Estado", "São Paulo")
+                            (AppStringsPortuguese.addressCepLabel, controller.company?.addressZipCode ?? ""),
+                            (AppStringsPortuguese.addressStreetLabel, controller.company?.addressStreet ?? ""),
+                            (AppStringsPortuguese.addressStateLabel, controller.company?.addressState ?? "")
                           ],
                           [
-                            ("Cidade", "São Paulo"),
-                            ("Bairro", "Ipiranga"),
-                            ("País", "Brasil")
+                            (AppStringsPortuguese.addressCityLabel, controller.company?.addressCity ?? ""),
+                            (AppStringsPortuguese.addressNeighborhoodLabel, controller.company?.addressNeighborhood ?? ""),
+                            (AppStringsPortuguese.addressCountryLabel, controller.company?.addressCountry ?? "")
                           ]
                         )
                       ]),
                       const SizedBox(
                         height: 10,
                       ),
-                      MultInfoCard(title: "Dados Bancários", sectionsData: [
+                      MultInfoCard(title: AppStringsPortuguese.bankDataLabel, sectionsData: (controller.company?.bankAccounts ?? [])
+                      .map((e) =>
                         (
                           [
-                            ("Tipo de Conta", "Corrente"),
-                            ("Agência", "0001"),
-                            ("Tipo de Chave Pix", "CNPJ")
+                            (AppStringsPortuguese.accountTypeLabel, e.bankAccountType?.name ?? ""),
+                            (AppStringsPortuguese.agencyLabel, e.agencyNumber ?? ""),
+                            (AppStringsPortuguese.pixKeyTypeLabel, e.pixList?.first.pixType?.name ?? "")
                           ],
                           [
-                            ("Banco", "Nu Pagamentos"),
-                            ("Conta", "00000-00"),
-                            ("Chave Pix", "00.00.00/000-00")
+                            (AppStringsPortuguese.bankLabel, e.financialInstitution?.shortName ?? ""),
+                            (AppStringsPortuguese.accountLabel, e.accountNumber ?? ""),
+                            (AppStringsPortuguese.pixKeyLabel, e.pixList?.first.key ?? "")
                           ]
                         )
-                      ])
-                    ],
+                      ).toList()
+                      )],
                   ),
                 ),
         ));

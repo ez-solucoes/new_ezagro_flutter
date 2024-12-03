@@ -32,7 +32,7 @@ class CompanyRepositoryImpl implements CompanyRepository {
   getCompanyById(ArgParams argParams) async {
     try {
       final result = await datasource.getCompanyById(argParams);
-      return Right(result);
+      return Right(result.data!);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {

@@ -64,8 +64,8 @@ class CompanyListPage extends StatelessWidget {
                             ],
                             data: CompanyModel.convertToTableList(controller.filteredCompanies),
                             maxHeight:0.7* MediaQuery.of(context).size.height,
-                              onTap: (id){
-                                CompanyPage.navigate(ArgParams(firstArgs: id));
+                              onTap: (index){
+                                CompanyPage.navigate(ArgParams(firstArgs: controller.filteredCompanies[index].id.toString()));
                               })))
                 ],
               ),

@@ -18,7 +18,7 @@ class AppEndpoints {
 
   //Company
   static const String getCompanyListEndpoint = '/company';
-  static const String getCompanyById = '/company/:';
+  static const String getCompanyById = '/company/';
 
   //Service Order
   static const String getServiceOrderListEndpoint = '/field-service-order';

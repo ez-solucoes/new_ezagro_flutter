@@ -1,8 +1,8 @@
 import 'dart:convert';
-import '../../../domain/entities/cost_center_entities/cost_center_type_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/employee_entities/employee_contract_type_entity/employee_contract_type_entity.dart';
 
-class CostCenterTypeModel extends CostCenterTypeEntity {
-  const CostCenterTypeModel({
+class EmployeeContractTypeModel extends EmployeeContractTypeEntity {
+  const EmployeeContractTypeModel({
     required super.id,
     super.name,
     super.slug,
@@ -22,8 +22,8 @@ class CostCenterTypeModel extends CostCenterTypeEntity {
     };
   }
 
-  factory CostCenterTypeModel.fromMap(Map<String, dynamic> map) {
-    return CostCenterTypeModel(
+  factory EmployeeContractTypeModel.fromMap(Map<String, dynamic> map) {
+    return EmployeeContractTypeModel(
       id: map['id'] as int,
       name: map['name'] as String?,
       slug: map['slug'] as String?,
@@ -35,6 +35,6 @@ class CostCenterTypeModel extends CostCenterTypeEntity {
 
   String toJson() => json.encode(toMap());
 
-  factory CostCenterTypeModel.fromJson(String source) =>
-      CostCenterTypeModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory EmployeeContractTypeModel.fromJson(String source) =>
+      EmployeeContractTypeModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

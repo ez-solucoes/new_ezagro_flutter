@@ -1,10 +1,10 @@
 import 'dart:convert';
-
 import '../../../domain/entities/machine_implement_entities/machine_implement_entity.dart';
 import '../brand_models/brand_model.dart';
 import '../contract_models/contract_model.dart';
 import '../cost_center_models/cost_center_model.dart';
-import '../department_models/department_model.dart';
+import '../department_models/department_model/department_model.dart';
+import '../department_models/sub_department_model/sub_department_model.dart';
 import '../local_time_model/local_time_model.dart';
 import '../multipart_file_custom_model/multipart_file_custom_model.dart';
 import 'machine_implement_maintenance_model.dart';
@@ -107,7 +107,7 @@ class MachineImplementModel extends MachineImplementEntity {
         yearOfManufacture: map['yearOfManufacture'],
         place: map['place'],
         department: map['department'] == null ? null : DepartmentModel.fromMap(map['department']),
-        subDepartment: map['subDepartment'] == null ? null : DepartmentModel.fromMap(map['subDepartment']),
+        subDepartment: map['subDepartment'] == null ? null : SubDepartmentModel.fromMap(map['subDepartment']),
         costCenters: map['costCenters'] == null ? null : List<CostCenterModel>.from(
             map['costCenters']?.map((x) => CostCenterModel.fromMap(x))),
         model: map['model'],

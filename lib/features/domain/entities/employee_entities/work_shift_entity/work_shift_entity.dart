@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class CostCenterTypeEntity extends Equatable {
+class WorkShiftEntity extends Equatable {
   final int id;
   final String? name;
   final String? slug;
@@ -8,22 +8,22 @@ class CostCenterTypeEntity extends Equatable {
   final String? updatedAt;
   final String? deletedAt;
 
-  const CostCenterTypeEntity({
+  const WorkShiftEntity({
     required this.id,
     this.name,
     this.slug,
     this.createdAt,
     this.updatedAt,
-    this.deletedAt
+    this.deletedAt,
   });
 
   @override
   List<Object?> get props => [
-        id,
-        name,
-        slug,
-        createdAt,
-        updatedAt,
-        deletedAt
-      ];
+    id,
+    name,
+    slug,
+    createdAt,
+    updatedAt,
+    deletedAt,
+  ];
 }

@@ -1,8 +1,9 @@
 import 'dart:convert';
-import '../../../domain/entities/cost_center_entities/cost_center_type_entity.dart';
 
-class CostCenterTypeModel extends CostCenterTypeEntity {
-  const CostCenterTypeModel({
+import '../../../../domain/entities/employee_entities/work_shift_entity/work_shift_entity.dart';
+
+class WorkShiftModel extends WorkShiftEntity {
+  const WorkShiftModel({
     required super.id,
     super.name,
     super.slug,
@@ -22,8 +23,8 @@ class CostCenterTypeModel extends CostCenterTypeEntity {
     };
   }
 
-  factory CostCenterTypeModel.fromMap(Map<String, dynamic> map) {
-    return CostCenterTypeModel(
+  factory WorkShiftModel.fromMap(Map<String, dynamic> map) {
+    return WorkShiftModel(
       id: map['id'] as int,
       name: map['name'] as String?,
       slug: map['slug'] as String?,
@@ -35,6 +36,6 @@ class CostCenterTypeModel extends CostCenterTypeEntity {
 
   String toJson() => json.encode(toMap());
 
-  factory CostCenterTypeModel.fromJson(String source) =>
-      CostCenterTypeModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory WorkShiftModel.fromJson(String source) =>
+      WorkShiftModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

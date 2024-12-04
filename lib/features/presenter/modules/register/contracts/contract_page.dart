@@ -61,7 +61,11 @@ class ContractPage extends StatelessWidget {
                   const SizedBox(height: 10,),
                   Divider(height: 2,color: AppColors.dividerGreyColor,),
                   const SizedBox(height: 10,),
-                  CustomStripedTable(columnNames: ["#","Item","Valor"], data: [["1","Item","R\$1.000m00"],["1","Item","R\$1.000m00"],["1","Item","R\$1.000m00"]], maxHeight: MediaQuery.of(context).size.height*0.3)
+                  CustomStripedTable(
+                      columnNames: ["#","Item","Valor"],
+                      data: [["1","Item","R\$1.000m00"],["1","Item","R\$1.000m00"],["1","Item","R\$1.000m00"]],
+                      maxHeight: MediaQuery.of(context).size.height*0.3,
+                      onTap: (id){})
 
                 ],),),
         ));

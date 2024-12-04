@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/cost_center_entities/cost_center_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/selector_entities/selector_entity.dart';
 import '../../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../widgets/custom_selector/custom_selector_widget.dart';
@@ -62,12 +61,7 @@ class GeneralInformationPage extends StatelessWidget {
         Observer(
           builder: (context) => CustomSelectorWidget(
               onSelect: (value) {
-                  controller.farmId = value.value;
-                  CostCenterEntity? costCenter = controller.farmOptions.firstWhere((e) => e.id == value.value).costCenters?.firstWhere((e) => e.costCenterType?.name == AppStringsPortuguese.harvestKey);
-                  if (costCenter != null) {
-                    harvest = SelectorEntity(value: costCenter.id, label: costCenter.costCenterName);
-                  }
-                  controller.getPlotsOptions();
+
                 },
               items: controller.farmOptions.map((e) =>
                   SelectorEntity(value: e.id, label: e.name)
@@ -83,7 +77,7 @@ class GeneralInformationPage extends StatelessWidget {
             child: CustomSelectorWidget(
                 selectedValue: harvest,
                 onSelect: (value) { },
-                items: harvest == null ? [] : [harvest!],
+                items: [],
                 title: AppStringsPortuguese.harvestSelectorTitle,
                 selectorHint: AppStringsPortuguese.harvestSelectorHint),
           ),

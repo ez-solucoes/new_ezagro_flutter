@@ -6,7 +6,7 @@ class AccessGroupsEntity extends Equatable {
   final int id;
   final String name;
   final String slug;
-  final PermissionsEntity permissions;
+  final List<PermissionsEntity> permissions;
 
   const AccessGroupsEntity({
     required this.id,

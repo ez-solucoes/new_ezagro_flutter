@@ -3,22 +3,28 @@ import 'package:new_ezagro_flutter/features/domain/entities/pix_entities/pix_typ
 
 class PixEntity extends Equatable {
   final int id;
+  final String? key;
+  final String? createdAt;
+  final String? updatedAt;
+  final String? deletedAt;
   final PixTypeEntity? pixType;
-  final String? pixKey;
-  final bool? active;
 
   const PixEntity({
     required this.id,
-    this.pixType,
-    this.pixKey,
-    this.active,
+    this.key,
+    this.createdAt,
+    this.updatedAt,
+    this.deletedAt,
+    this.pixType
   });
 
   @override
   List<Object?> get props => [
         id,
-        pixType,
-        pixKey,
-        active,
+        key,
+        createdAt,
+        updatedAt,
+        deletedAt,
+        pixType
       ];
 }

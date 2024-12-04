@@ -14,6 +14,21 @@ class FarmRepositoryImpl implements FarmRepository {
   FarmRepositoryImpl(this.datasource);
 
   @override
+  Future<Either<ApplicationError, List<FarmModel>>>
+  getAllFarms(NoParams noParams) async {
+    try {
+      final result = await datasource.getAllFarms(noParams);
+      return Right(result);
+    } on ApplicationError catch (e) {
+      return Left(e);
+    } catch (e, stacktrace) {
+      return Left(GenericError(
+          fingerprint: '$FarmRepositoryImpl.getAllFarms',
+          additionalInfo: stacktrace.toString()));
+    }
+  }
+
+  @override
   Future<Either<ApplicationError, PaginationModel<FarmModel>>>
       getSimplifiedFarms(NoParams noParams) async {
     try {

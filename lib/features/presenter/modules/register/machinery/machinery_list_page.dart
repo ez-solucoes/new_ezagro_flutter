@@ -55,7 +55,9 @@ class MachineryListPage extends StatelessWidget {
                             AppStringsPortuguese.machineryNameColumn,
                             AppStringsPortuguese.machineryBrandColumn],
                           data: List.generate(30, (index) => ["$index", "Colheitadeira", "Marca"]),
-                          maxHeight:0.7* MediaQuery.of(context).size.height,))
+                          maxHeight:0.7* MediaQuery.of(context).size.height,
+                          onTap: (id){},
+                        ))
                   ],
                 ),
               ],

@@ -3,21 +3,27 @@ import 'package:equatable/equatable.dart';
 class PixTypeEntity extends Equatable {
   final int id;
   final String? name;
-  final String? description;
-  final bool? active;
+  final String? slug;
+  final String? createdAt;
+  final String? updatedAt;
+  final String? deletedAt;
 
   const PixTypeEntity({
     required this.id,
     this.name,
-    this.description,
-    this.active,
+    this.slug,
+    this.createdAt,
+    this.updatedAt,
+    this.deletedAt
   });
 
   @override
   List<Object?> get props => [
         id,
         name,
-        description,
-        active,
+        slug,
+        createdAt,
+        updatedAt,
+        deletedAt
       ];
 }

@@ -24,7 +24,7 @@ class AccessGroupsModel extends AccessGroupsEntity {
       id: map['id'] as int,
       name: map['name'] as String,
       slug: map['slug'] as String,
-      permissions: PermissionsModel.fromMap(map['permissions']),
+      permissions: (map['permissions'] as List).map((e) => PermissionsModel.fromMap(e)).toList(),
     );
   }
 }

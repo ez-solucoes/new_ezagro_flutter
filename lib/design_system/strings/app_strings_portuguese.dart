@@ -23,6 +23,9 @@ class AppStringsPortuguese {
   static const String privacyPolicy = 'Política de Privacidade';
   static const String and = ' e ';
   static const String userTerms = 'Termos do Usuário';
+  static const String logoutConfirmationMessage = 'Tem certeza de que deseja sair?';
+  static const String cancelButtonLabel = 'Cancelar';
+  static const String leaveButtonLabel = 'Sair';
 
   static const String loremIpsum =
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
@@ -158,12 +161,20 @@ class AppStringsPortuguese {
   static const String hashtagSymbol = '#';
   static const String companyNameColumn = 'Nome';
   static const String companyIdentifierColumn = 'CNPJ';
+  static const String companyIdentifierTitle = 'CNPJ:';
   static const String pluralContractTitle = 'Contratos';
   static const String singularContractTitle = 'Contrato';
   static const String contractNameColumn = 'Contrato';
   static const String contractTypeColumn = 'Tipo';
   static const String contractLabel = 'Contrato:';
+  static const String ownCompany = "Própria";
+  static const String creditorCompany = "Credora";
+  static const String debtorCompany = "Devedora";
+  static const String companySegment = "Segmento";
   static const String typeLabel = 'Tipo:';
+  static const String phoneLabel = 'Telefone';
+  static const String whatsAppLabel = "WhatsApp";
+  static const String emailLabel = "Email";
   static const String externalCodeLabel = 'Códgio Externo:';
   static const String costCenterLabel = 'Centro de Custo:';
   static const String startingDateLabel = 'Data de Início:';
@@ -192,12 +203,12 @@ class AppStringsPortuguese {
   static const String employeePhoneLabel = 'Telefone:';
   static const String employeeWhatsAppLabel = "What'sApp:'";
   static const String employeeEmailLabel = 'E-mail:';
-  static const String employeeAccountTypeLabel = 'Tipo de conta';
-  static const String employeeBankLabel = 'Banco:';
-  static const String employeeAgencyLabel = 'Agência:';
-  static const String employeeAccountLabel = 'Conta:';
-  static const String employeePixKeyTypeLabel = 'Tipo de Chave Pix:';
-  static const String employeePixKeyLabel = 'Chave Pix:';
+  static const String accountTypeLabel = 'Tipo de conta';
+  static const String bankLabel = 'Banco:';
+  static const String agencyLabel = 'Agência:';
+  static const String accountLabel = 'Conta:';
+  static const String pixKeyTypeLabel = 'Tipo de Chave Pix:';
+  static const String pixKeyLabel = 'Chave Pix:';
   static const String employeeAdmissionDateLabel = 'Data de Admissão:';
   static const String employeeWorkerIdLabel = 'Número da Carteira de trabalho:';
   static const String employeePositionLabel = 'Cargo:';

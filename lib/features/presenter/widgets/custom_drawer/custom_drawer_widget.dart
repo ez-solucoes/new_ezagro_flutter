@@ -10,6 +10,7 @@ import '../../../../design_system/colors/app_colors.dart';
 import '../../../../design_system/typography/app_text_styles.dart';
 import '../../modules/home/home_page.dart';
 import '../custom_drawer_header/custom_drawer_header_widget.dart';
+import '../logout_dialog/logout_dialog.dart';
 
 class CustomDrawerWidget extends StatelessWidget {
   const CustomDrawerWidget({super.key});
@@ -64,6 +65,32 @@ class CustomDrawerWidget extends StatelessWidget {
                 },
               ),
             ),
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+                showDialog(context: context, builder: (BuildContext context) {
+                  return Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: MediaQuery.of(context).size.height*0.35,
+                        horizontal: 20
+                      ),
+                      child: LogoutDialog());
+                });
+              },
+              child: Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(color: AppColors.primaryRedColor),
+                child: Row(
+                  children: [
+                    Icon(Icons.logout_outlined, color: AppColors.primaryWhiteColor,),
+                    Text("Sair",
+                      textAlign: TextAlign.start,
+                      style:AppTextStyles.boldMediumTextStyle(
+                          color: AppColors.backgroundColor),)
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),

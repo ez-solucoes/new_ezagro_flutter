@@ -203,4 +203,15 @@ class AppTextStyles {
       color: color
     );
   }
+
+  static TextStyle bottomSheetAlert({
+    required Color color
+  }) {
+    return TextStyle(
+        fontFamily: AppFonts.montserratFont,
+        fontWeight: FontWeight.bold,
+        fontSize: AppDimens.bottomSheetAlert,
+        color: color
+    );
+  }
 }

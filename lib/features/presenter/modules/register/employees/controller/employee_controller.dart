@@ -2,6 +2,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import '../../../../../../core/usecase/usecase.dart';
 import '../../../../../domain/entities/employee_entities/employee_entity/employee_entity.dart';
+import '../../../../../domain/params/arg_params/arg_params.dart';
+import '../../../../../domain/usecases/employee_usecase/get_employee_by_id_usecase/get_employee_by_id_usecase.dart';
 import '../../../../../domain/usecases/employee_usecase/get_employee_list_usecase/get_employee_list_usecase.dart';
 
 part 'employee_controller.g.dart';
@@ -31,6 +33,19 @@ abstract class EmployeeControllerAbstract with Store {
     result.fold((error) => error.friendlyMessage, (success) {
       employees = success;
       filteredEmployees = employees;
+      return success;
+    });
+
+    isLoading = false;
+  }
+
+  @action
+  Future getEmployeeById(ArgParams args) async {
+    isLoading = true;
+    final getCompany = Modular.get<GetEmployeeByIdUsecase>();
+    final result = await getCompany(args);
+    result.fold((error) => error.friendlyMessage, (success) {
+      employee = success;
       return success;
     });
 

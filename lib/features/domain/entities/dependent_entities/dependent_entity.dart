@@ -1,6 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/employee_entities/employee_entity/employee_entity.dart';
-
 class DependentEntity extends Equatable {
   final int id;
   final String? name;

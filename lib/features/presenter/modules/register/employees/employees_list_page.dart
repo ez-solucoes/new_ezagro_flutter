@@ -12,6 +12,7 @@ import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
 import '../../../widgets/custom_search_bar/custom_search_bar.dart';
 import 'controller/employee_controller.dart';
+import 'employee_page.dart';
 
 class EmployeesListPage extends StatelessWidget {
 
@@ -60,7 +61,9 @@ class EmployeesListPage extends StatelessWidget {
                             columnNames: [AppStringsPortuguese.hashtagSymbol, AppStringsPortuguese.employeesNameColumn, AppStringsPortuguese.positionColumn],
                             data: EmployeeModel.convertToTableList(controller.filteredEmployees),
                             maxHeight:0.7* MediaQuery.of(context).size.height,
-                              onTap: (id){}))
+                              onTap: (index){
+                                EmployeePage.navigate(ArgParams(firstArgs: controller.filteredEmployees[index].id.toString()));
+                              }))
                     ],
                   ),
                 ],

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/custom_striped_table/custom_striped_table_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/documents_list_widget/documents_list_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/mult_info_card/mult_info_card.dart';
 import '../../../../../../design_system/strings/app_strings_portuguese.dart';
+import '../controller/employee_controller.dart';
 
 class EmployeeAdditionalInformationTab extends StatelessWidget {
 
@@ -10,6 +12,7 @@ class EmployeeAdditionalInformationTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Modular.get<EmployeeController>();
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

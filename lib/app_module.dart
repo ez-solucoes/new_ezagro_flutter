@@ -34,6 +34,8 @@ import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/employee_usecase/get_employee_by_id_usecase/get_employee_by_id_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/employee_usecase/get_employee_by_id_usecase/get_employee_by_id_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/employee_usecase/get_employee_list_usecase/get_employee_list_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/employee_usecase/get_employee_list_usecase/get_employee_list_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/executor_usecases/executor_usecase.dart';
@@ -193,6 +195,7 @@ class AppModule extends Module {
     i.addLazySingleton<GetCompanyByIdUsecase>(GetCompanyByIdUsecaseImpl.new);
     i.addLazySingleton<GetFarmListUsecase>(GetFarmListUsecaseImpl.new);
     i.addLazySingleton<GetEmployeeListUsecase>(GetEmployeeListUsecaseImpl.new);
+    i.addLazySingleton<GetEmployeeByIdUsecase>(GetEmployeeByIdUsecaseImpl.new);
 
     //Repository
     i.addLazySingleton<AuthenticationRepository>(AuthenticationRepositoryImpl.new);
@@ -266,7 +269,7 @@ class AppModule extends Module {
     r.child(AppRoutes.appContractListPage, child: (context) => ContractListPage());
     r.child(AppRoutes.appContractPage, child: (context) => ContractPage());
     r.child(AppRoutes.appEmployeesListPage, child: (context) => EmployeesListPage());
-    r.child(AppRoutes.appEmployeePage, child: (context) => EmployeePage());
+    r.child(AppRoutes.appEmployeePage, child: (context) => EmployeePage(args: r.args.data,));
     r.child(AppRoutes.appFarmListPage, child: (context) => FarmListPage());
     r.child(AppRoutes.appFarmPage, child: (context) => FarmPage());
     r.child(AppRoutes.appMachineryListPage, child: (context) => MachineryListPage());

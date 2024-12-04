@@ -82,6 +82,15 @@ mixin _$EmployeeController on EmployeeControllerAbstract, Store {
     return _$getEmployeesListAsyncAction.run(() => super.getEmployeesList());
   }
 
+  late final _$getEmployeeByIdAsyncAction = AsyncAction(
+      'EmployeeControllerAbstract.getEmployeeById',
+      context: context);
+
+  @override
+  Future<dynamic> getEmployeeById(ArgParams args) {
+    return _$getEmployeeByIdAsyncAction.run(() => super.getEmployeeById(args));
+  }
+
   late final _$EmployeeControllerAbstractActionController =
       ActionController(name: 'EmployeeControllerAbstract', context: context);
 

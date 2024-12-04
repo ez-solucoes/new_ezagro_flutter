@@ -6,6 +6,7 @@ class ClientModel extends ClientEntity {
   const ClientModel({
     super.id,
     super.whatsappPhone,
+
     required super.name,
     required super.isActive,
     required super.createdAt,

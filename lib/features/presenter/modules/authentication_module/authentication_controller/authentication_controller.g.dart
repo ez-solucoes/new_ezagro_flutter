@@ -123,19 +123,19 @@ mixin _$AuthenticationController on AuthenticationControllerAbstract, Store {
     });
   }
 
-  late final _$accessStatusAtom = Atom(
-      name: 'AuthenticationControllerAbstract.accessStatus', context: context);
+  late final _$isFirstAccessAtom = Atom(
+      name: 'AuthenticationControllerAbstract.isFirstAccess', context: context);
 
   @override
-  String get accessStatus {
-    _$accessStatusAtom.reportRead();
-    return super.accessStatus;
+  bool get isFirstAccess {
+    _$isFirstAccessAtom.reportRead();
+    return super.isFirstAccess;
   }
 
   @override
-  set accessStatus(String value) {
-    _$accessStatusAtom.reportWrite(value, super.accessStatus, () {
-      super.accessStatus = value;
+  set isFirstAccess(bool value) {
+    _$isFirstAccessAtom.reportWrite(value, super.isFirstAccess, () {
+      super.isFirstAccess = value;
     });
   }
 
@@ -165,7 +165,7 @@ username: ${username},
 password: ${password},
 retypePassword: ${retypePassword},
 temporaryPassword: ${temporaryPassword},
-accessStatus: ${accessStatus},
+isFirstAccess: ${isFirstAccess},
 errorMessage: ${errorMessage}
     ''';
   }

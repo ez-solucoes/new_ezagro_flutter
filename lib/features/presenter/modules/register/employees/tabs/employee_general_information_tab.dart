@@ -38,8 +38,8 @@ class EmployeeGeneralInformationTab extends StatelessWidget {
               title: AppStringsPortuguese.bankDataLabel,
               sectionsData: [
                 (
-                [(AppStringsPortuguese.employeeAccountTypeLabel, "Corrente"), (AppStringsPortuguese.employeeAgencyLabel, "0001"), (AppStringsPortuguese.employeePixKeyTypeLabel, "CPF")],
-                [(AppStringsPortuguese.employeeBankLabel, "Nu Pagamentos"), (AppStringsPortuguese.employeeAccountLabel, "00000-00"), (AppStringsPortuguese.employeePixKeyLabel, "000.000.000-00")]
+                [(AppStringsPortuguese.accountTypeLabel, "Corrente"), (AppStringsPortuguese.agencyLabel, "0001"), (AppStringsPortuguese.pixKeyTypeLabel, "CPF")],
+                [(AppStringsPortuguese.bankLabel, "Nu Pagamentos"), (AppStringsPortuguese.accountLabel, "00000-00"), (AppStringsPortuguese.pixKeyLabel, "000.000.000-00")]
                 )
               ],
             ),

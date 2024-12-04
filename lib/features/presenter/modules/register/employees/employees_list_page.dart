@@ -49,7 +49,11 @@ class EmployeesListPage extends StatelessWidget {
                       ),
                     ),
                     Padding(padding: EdgeInsets.all(20),
-                        child: CustomStripedTable(columnNames: [AppStringsPortuguese.hashtagSymbol, AppStringsPortuguese.employeesNameColumn, AppStringsPortuguese.positionColumn], data: List.generate(30, (index) => ["1", "Pedro Costa", "Administrador"]),maxHeight:0.7* MediaQuery.of(context).size.height,))
+                        child: CustomStripedTable(
+                          columnNames: [AppStringsPortuguese.hashtagSymbol, AppStringsPortuguese.employeesNameColumn, AppStringsPortuguese.positionColumn],
+                          data: List.generate(30, (index) => ["1", "Pedro Costa", "Administrador"]),
+                          maxHeight:0.7* MediaQuery.of(context).size.height,
+                            onTap: (id){}))
                   ],
                 ),
               ],

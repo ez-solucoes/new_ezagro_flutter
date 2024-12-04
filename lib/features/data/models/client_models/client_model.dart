@@ -5,13 +5,14 @@ import '../../../domain/entities/client_entities/client_entity.dart';
 class ClientModel extends ClientEntity {
   const ClientModel({
     super.id,
-    required super.whatsappPhone,
+    super.whatsappPhone,
+
     required super.name,
     required super.isActive,
     required super.createdAt,
     required super.updatedAt,
     required super.cpf,
-    required super.phoneNumber,
+    super.phoneNumber,
     super.deletedAt,
   });
 
@@ -33,8 +34,8 @@ class ClientModel extends ClientEntity {
 
   factory ClientModel.fromMap(Map<String, dynamic> map) => ClientModel(
         id: map['id'] == null ? null : map['id'] as int,
-        whatsappPhone: map['whatsappPhone'] as String,
-        phoneNumber: map['phoneNumber'] as String,
+        whatsappPhone: map['whatsappPhone'] as String?,
+        phoneNumber: map['phoneNumber'] as String?,
         name: map['name'] as String,
         cpf: map['cpf'] as String,
         isActive: map['isActive'] as bool,

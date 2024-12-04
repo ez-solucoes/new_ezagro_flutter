@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/features/data/models/company_models/company_model.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/register/company/company_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/custom_drawer/custom_drawer_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/custom_striped_table/custom_striped_table_widget.dart';
 import '../../../../../consts/app_routes.dart';
@@ -62,7 +63,10 @@ class CompanyListPage extends StatelessWidget {
                               AppStringsPortuguese.companyIdentifierColumn
                             ],
                             data: CompanyModel.convertToTableList(controller.filteredCompanies),
-                            maxHeight:0.7* MediaQuery.of(context).size.height,)))
+                            maxHeight:0.7* MediaQuery.of(context).size.height,
+                              onTap: (index){
+                                CompanyPage.navigate(ArgParams(firstArgs: controller.filteredCompanies[index].id.toString()));
+                              })))
                 ],
               ),
             ],

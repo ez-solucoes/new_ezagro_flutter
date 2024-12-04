@@ -14,7 +14,7 @@ class UserEntity extends Equatable {
   final String? deletedAt;
   final bool? isResetPassword;
   final ClientEntity? client;
-  final AccessGroupsEntity? accessGroups;
+  final List<AccessGroupsEntity>? accessGroups;
 
   const UserEntity({
     this.id,

@@ -36,7 +36,7 @@ class EmployeeAdditionalInformationTab extends StatelessWidget {
           MultInfoCard(
               title: AppStringsPortuguese.additionalInformationTab,
               sectionsData: [(
-                [(AppStringsPortuguese.employeeCeiLabel, "CEI"),(AppStringsPortuguese.employeeUnionCodeLabel, "Código Sindical")],
+                [(AppStringsPortuguese.employeeCeiLabel, "CEI"),(AppStringsPortuguese.employeeUnionCodeLabel, controller.employee?.unionCode ?? "")],
                 [(AppStringsPortuguese.employeeInsuranceCodeLabel, "Código de Se."),(AppStringsPortuguese.employeeHealthCareLabel, "Plano de Saúde")]
               )]),
           const SizedBox(height: 10,),

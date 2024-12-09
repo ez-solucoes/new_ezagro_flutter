@@ -1,4 +1,9 @@
 import 'dart:convert';
+import 'package:new_ezagro_flutter/features/data/models/company_models/company_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/cost_center_models/cost_center_model.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/company_entities/company_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/cost_center_entities/cost_center_entity.dart';
+
 import '../../../domain/entities/farm_entities/farm_entity.dart';
 
 class FarmModel extends FarmEntity {
@@ -25,6 +30,8 @@ class FarmModel extends FarmEntity {
     super.createdAt,
     super.updatedAt,
     super.deletedAt,
+    super.localCostCenter,
+    super.company
   });
 
   Map<String, dynamic> toMap() {
@@ -51,6 +58,8 @@ class FarmModel extends FarmEntity {
       'createdAt': createdAt,
       'updatedAt': updatedAt,
       'deletedAt': deletedAt,
+      'localCostCenter': localCostCenter,
+      'company': company
     };
   }
 
@@ -78,6 +87,8 @@ class FarmModel extends FarmEntity {
       createdAt: map['createdAt'] as String?,
       updatedAt: map['updatedAt'] as String?,
       deletedAt: map['deletedAt'] as String?,
+      localCostCenter: map['localCostCenter'] == null ? null : CostCenterModel.fromMap(map['localCostCenter']),
+      company: map['company'] == null ? null : CompanyModel.fromMap(map['company'])
     );
   }
 
@@ -87,6 +98,6 @@ class FarmModel extends FarmEntity {
       FarmModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   static List<List<String>> convertToTableList(List<FarmEntity> farms) {
-    return farms.map((e) => [e.id.toString(), e.name ?? "", e.ownerName ?? ""]).toList();
+    return farms.map((e) => [e.id.toString(), e.name ?? "", e.localCostCenter?.name ?? ""]).toList();
   }
 }

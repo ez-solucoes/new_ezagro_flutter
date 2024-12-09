@@ -34,7 +34,7 @@ class FarmListPage extends StatelessWidget {
             resizeToAvoidBottomInset: false,
             appBar: const CustomAppBarWidget(
               appBarType: AppBarType.hamburgerAndTitle,
-              title: AppStringsPortuguese.pluralEmployeeTitle,
+              title: AppStringsPortuguese.pluralFarmTitle,
             ),
             drawer: CustomDrawerWidget(),
             body: Observer(

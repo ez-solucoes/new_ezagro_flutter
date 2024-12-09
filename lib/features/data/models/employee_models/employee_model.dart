@@ -1,137 +1,184 @@
 import 'dart:convert';
-
-import '../../../domain/entities/employee_entities/employee_entity.dart';
-import '../account_models/account_model.dart';
-import '../address_models/address_model.dart';
-import '../company_models/company_model.dart';
-import '../contract_models/contract_model.dart';
-import '../cost_center_models/cost_center_model.dart';
-import '../dependent_model.dart';
-import '../email_model/email_model.dart';
-import '../farm_models/farm_model.dart';
-import '../multipart_file_custom_model/multipart_file_custom_model.dart';
-import '../rural_producer_models/rural_producer_model.dart';
-import 'employee_contract_model.dart';
-import 'employee_measure_and_performance_model.dart';
-import 'employee_status_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/bank_account_models/bank_account_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/company_models/company_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/cost_center_models/cost_center_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/dependent_models/dependent_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/employee_models/salary_composition_model/salary_composition_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/employee_models/work_shift_model/work_shift_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/farm_models/farm_model.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/employee_entities/employee_entity/employee_entity.dart';
+import '../../../domain/entities/dependent_entities/dependent_entity.dart';
+import '../department_models/department_model/department_model.dart';
+import '../department_models/sub_department_model/sub_department_model.dart';
+import 'employee_contract_type_model/employee_contract_type_model.dart';
 
 class EmployeeModel extends EmployeeEntity {
   const EmployeeModel({
     required super.id,
-    super.address,
-    super.account,
-    super.employeeName,
-    super.farm,
-    super.company,
-    super.ruralProducer,
-    super.email,
-    super.costCenter,
-    super.dependents,
+    super.name,
+    super.birthDate,
     super.cpf,
-    super.pisPasep,
-    super.insuranceCode,
-    super.ceiNumber,
-    super.motherName,
     super.rg,
-    super.status,
-    super.dtBirth,
-    super.contract,
-    super.healthPlanContract,
-    super.securityCode,
-    super.sindicalCode,
-    super.measureAndPerformances,
-    super.description,
-    super.attachments,
-    super.attachmentNames,
     super.phoneNumber,
     super.whatsappNumber,
+    super.email,
+    super.pisPasep,
+    super.motherName,
+    super.admissionDate,
+    super.dismissalDate,
+    super.dismissalReason,
+    super.position,
+    super.isTrustPosition,
+    super.baseSalary,
+    super.unionCode,
+    super.observation,
+    super.isActive,
+    super.addressZipCode,
+    super.addressStreet,
+    super.addressNumber,
+    super.addressCountry,
+    super.addressNeighborhood,
+    super.addressCity,
+    super.addressState,
+    super.addressComplement,
+    super.addressReference,
+    super.createdAt,
+    super.updatedAt,
+    super.deletedAt,
+    super.healthInsuranceContract,
+    super.lifeInsuranceContract,
+    super.bankAccount,
+    super.contractorFarm,
+    super.contractorCompany,
+    super.contractorLocalCostCenter,
+    super.dependents,
+    super.contractType,
+    super.workShift,
+    super.salaryCompositions,
+    super.department,
+    super.subDepartment,
   });
 
-  Map<String, dynamic> toMap() => {
-        'id': id,
-        'address': (address as AddressModel).toMap(),
-        'account': (account as AccountModel).toMap(),
-        'employeeName': employeeName,
-        'farm': (farm as FarmModel).toMap(),
-        'company': (company as CompanyModel).toMap(),
-        'ruralProducer': (ruralProducer as RuralProducerModel).toMap(),
-        'email': (email as EmailModel).toMap(),
-        'costCenter': (costCenter as CostCenterModel).toMap(),
-        'dependents':
-            dependents?.map((e) => (e as DependentModel).toMap()).toList(),
-        'cpf': cpf,
-        'pisPasep': pisPasep,
-        'insuranceCode': insuranceCode,
-        'ceiNumber': ceiNumber,
-        'motherName': motherName,
-        'rg': rg,
-        'status': (status as EmployeeStatusModel).toMap(),
-        'dtBirth': dtBirth,
-        'contract': (contract as EmployeeContractModel).toMap(),
-        'healthPlanContract': (healthPlanContract as ContractModel).toMap(),
-        'securityCode': securityCode,
-        'sindicalCode': sindicalCode,
-        'measureAndPerformances': measureAndPerformances
-            ?.map((e) => (e as EmployeeMeasureAndPerformanceModel).toMap())
-            .toList(),
-        'description': description,
-        'attachments': attachments
-            ?.map((e) => (e as MultipartFileCustomModel).toMap())
-            .toList(),
-        'attachmentNames': attachmentNames,
-        'phoneNumber': phoneNumber,
-        'whatsappNumber': whatsappNumber,
-      };
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'birthDate': birthDate,
+      'cpf': cpf,
+      'rg': rg,
+      'phoneNumber': phoneNumber,
+      'whatsappNumber': whatsappNumber,
+      'email': email,
+      'pisPasep': pisPasep,
+      'motherName': motherName,
+      'admissionDate': admissionDate,
+      'dismissalDate': dismissalDate,
+      'dismissalReason': dismissalReason,
+      'position': position,
+      'isTrustPosition': isTrustPosition,
+      'baseSalary': baseSalary,
+      'unionCode': unionCode,
+      'observation': observation,
+      'isActive': isActive,
+      'addressZipCode': addressZipCode,
+      'addressStreet': addressStreet,
+      'addressNumber': addressNumber,
+      'addressCountry': addressCountry,
+      'addressNeighborhood': addressNeighborhood,
+      'addressCity': addressCity,
+      'addressState': addressState,
+      'addressComplement': addressComplement,
+      'addressReference': addressReference,
+      'createdAt': createdAt,
+      'updatedAt': updatedAt,
+      'deletedAt': deletedAt,
+      'healthInsuranceContract': healthInsuranceContract,
+      'lifeInsuranceContract': lifeInsuranceContract,
+      'bankAccount': bankAccount?.map((x) => (x as BankAccountModel).toMap()).toList(),
+      'contractorFarm': contractorFarm == null ? null : (contractorFarm as FarmModel).toMap(),
+      'contractorCompany': contractorCompany == null ? null : (contractorCompany as CompanyModel).toMap(),
+      'contractorLocalCostCenter': contractorLocalCostCenter == null ? null : (contractorLocalCostCenter as CostCenterModel).toMap(),
+      'dependents': dependents?.map((x) => (x as DependentModel).toMap()).toList(),
+      'contractType': contractType == null ? null : (contractType as EmployeeContractTypeModel).toMap(),
+      'workShift': workShift == null ? null : (workShift as WorkShiftModel).toMap(),
+      'salaryCompositions': salaryCompositions?.map((x) => (x as SalaryCompositionModel).toMap()).toList(),
+      'department': department == null ? null : (department as DepartmentModel).toMap(),
+      'subDepartment': subDepartment == null ? null : (subDepartment as SubDepartmentModel).toMap(),
+    };
+  }
 
-  factory EmployeeModel.fromMap(Map<String, dynamic> map) => EmployeeModel(
-        id: map['id'],
-        address: AddressModel.fromMap(map['address']),
-        account: AccountModel.fromMap(map['account']),
-        employeeName: map['employeeName'],
-        farm: map['farm'] == null ? null : FarmModel.fromMap(map['farm']),
-        company: map['company'] == null
-            ? null
-            : CompanyModel.fromMap(map['company']),
-        ruralProducer: map['ruralProducer'] == null
-            ? null
-            : RuralProducerModel.fromMap(map['ruralProducer']),
-        email: map['email'] == null ? null : EmailModel.fromMap(map['email']),
-        costCenter: map['costCenter'] == null
-            ? null
-            : CostCenterModel.fromMap(map['costCenter']),
-        dependents: List<DependentModel>.from(
-            map['dependents']?.map((x) => DependentModel.fromMap(x))),
-        cpf: map['cpf'],
-        pisPasep: map['pisPasep'],
-        insuranceCode: map['insuranceCode'],
-        ceiNumber: map['ceiNumber'],
-        motherName: map['motherName'],
-        rg: map['rg'],
-        status: map['status'] == null
-            ? null
-            : EmployeeStatusModel.fromMap(map['status']),
-        dtBirth: map['dtBirth'],
-        contract: map['contract'] == null
-            ? null
-            : EmployeeContractModel.fromMap(map['contract']),
-        healthPlanContract: map['healthPlanContract'] == null
-            ? null
-            : ContractModel.fromMap(map['healthPlanContract']),
-        securityCode: map['securityCode'],
-        sindicalCode: map['sindicalCode'],
-        measureAndPerformances: List<EmployeeMeasureAndPerformanceModel>.from(
-            map['measureAndPerformances']
-                ?.map((x) => EmployeeMeasureAndPerformanceModel.fromMap(x))),
-        description: map['description'],
-        attachments: List<MultipartFileCustomModel>.from(map['attachments']
-            ?.map((x) => MultipartFileCustomModel.fromMap(x))),
-        attachmentNames: map['attachmentNames'],
-        phoneNumber: map['phoneNumber'],
-        whatsappNumber: map['whatsappNumber'],
-      );
+  factory EmployeeModel.fromMap(Map<String, dynamic> map) {
+    return EmployeeModel(
+      id: map['id'] as int,
+      name: map['name'] as String?,
+      birthDate: map['birthDate'] as String?,
+      cpf: map['cpf'] as String?,
+      rg: map['rg'] as String?,
+      phoneNumber: map['phoneNumber'] as String?,
+      whatsappNumber: map['whatsappNumber'] as String?,
+      email: map['email'] as String?,
+      pisPasep: map['pisPasep'] as String?,
+      motherName: map['motherName'] as String?,
+      admissionDate: map['admissionDate'] as String?,
+      dismissalDate: map['dismissalDate'] as String?,
+      dismissalReason: map['dismissalReason'] as String?,
+      position: map['position'] as String?,
+      isTrustPosition: map['isTrustPosition'] as bool?,
+      baseSalary: map['baseSalary'] as String?,
+      unionCode: map['unionCode'] as String?,
+      observation: map['observation'] as String?,
+      isActive: map['isActive'] as bool?,
+      addressZipCode: map['addressZipCode'] as String?,
+      addressStreet: map['addressStreet'] as String?,
+      addressNumber: map['addressNumber'] as int?,
+      addressCountry: map['addressCountry'] as String?,
+      addressNeighborhood: map['addressNeighborhood'] as String?,
+      addressCity: map['addressCity'] as String?,
+      addressState: map['addressState'] as String?,
+      addressComplement: map['addressComplement'] as String?,
+      addressReference: map['addressReference'] as String?,
+      createdAt: map['createdAt'] as String?,
+      updatedAt: map['updatedAt'] as String?,
+      deletedAt: map['deletedAt'] as String?,
+      healthInsuranceContract: map['healthInsuranceContract'] as int?,
+      lifeInsuranceContract: map['lifeInsuranceContract'] as int?,
+      bankAccount: map['bankAccounts'] != null ? (map['bankAccounts'] as List).map((e) => BankAccountModel.fromMap(e)).toList() : null,
+      contractorFarm: map['contractorFarm'] != null
+          ? FarmModel.fromMap(map['contractorFarm'] as Map<String, dynamic>)
+          : null,
+      contractorCompany: map['contractorCompany'] != null
+          ? CompanyModel.fromMap(map['contractorCompany'] as Map<String, dynamic>)
+          : null,
+      contractorLocalCostCenter: map['contractorLocalCostCenter'] != null
+          ? CostCenterModel.fromMap(map['contractorLocalCostCenter'] as Map<String, dynamic>)
+          : null,
+      dependents: map['dependents'] != null
+          ? List<DependentEntity>.from(map['dependents']?.map((x) => DependentModel.fromMap(x as Map<String, dynamic>)))
+          : null,
+      contractType: map['contractType'] != null
+          ? EmployeeContractTypeModel.fromMap(map['contractType'] as Map<String, dynamic>)
+          : null,
+      workShift: map['workShift'] != null
+          ? WorkShiftModel.fromMap(map['workShift'] as Map<String, dynamic>)
+          : null,
+      salaryCompositions: map['salaryCompositions'] != null
+          ? List.from(map['salaryCompositions']?.map((x) => SalaryCompositionModel.fromMap(x as Map<String, dynamic>)))
+          : null,
+      department: map['department'] != null
+          ? DepartmentModel.fromMap(map['department'] as Map<String, dynamic>)
+          : null,
+      subDepartment: map['subDepartment'] != null
+          ? SubDepartmentModel.fromMap(map['subDepartment'] as Map<String, dynamic>)
+          : null,
+    );
+  }
 
   String toJson() => json.encode(toMap());
 
   factory EmployeeModel.fromJson(String source) =>
-      EmployeeModel.fromMap(json.decode(source));
+      EmployeeModel.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  static List<List<String>> convertToTableList(List<EmployeeEntity> employees) {
+    return employees.map((e) => [e.id.toString(), e.name ?? "", e.position ?? ""]).toList();
+  }
 }

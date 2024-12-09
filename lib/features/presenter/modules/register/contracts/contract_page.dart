@@ -4,12 +4,12 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/design_system/colors/app_colors.dart';
 import 'package:new_ezagro_flutter/design_system/typography/app_text_styles.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/custom_striped_table/custom_striped_table_widget.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/single_info_card/single_info_card.dart';
 import '../../../../../consts/app_routes.dart';
 import '../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
+import '../../../widgets/bold_title_info_card/bold_title_info_card.dart';
 
 class ContractPage extends StatelessWidget {
 

@@ -34,6 +34,7 @@ class AppEndpoints {
   static const String getProductsEndpoint = '/product';
   static const String getMachineryEndpoint = '/fleet/machinery';
   static const String getEmployees = '/employee';
+  static const String getEmployeeById = '/employee/';
   static const String postServiceOrderEndpoint = '/field-service-order';
   static const String getPestsEndpoint = '/pest';
   static const String getPlotsByFarmIdEndpoint = '/farm/plot/farm/';

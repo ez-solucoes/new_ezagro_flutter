@@ -1,4 +1,6 @@
 import 'package:equatable/equatable.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/company_entities/company_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/cost_center_entities/cost_center_entity.dart';
 
 class FarmEntity extends Equatable {
   final int id;
@@ -23,6 +25,8 @@ class FarmEntity extends Equatable {
   final String? createdAt;
   final String? updatedAt;
   final String? deletedAt;
+  final CostCenterEntity? localCostCenter;
+  final CompanyEntity? company;
 
 
   const FarmEntity({
@@ -48,6 +52,8 @@ class FarmEntity extends Equatable {
     this.createdAt,
     this.updatedAt,
     this.deletedAt,
+    this.localCostCenter,
+    this.company
   });
 
   @override
@@ -74,5 +80,7 @@ class FarmEntity extends Equatable {
     createdAt,
     updatedAt,
     deletedAt,
+    localCostCenter,
+    company
   ];
 }

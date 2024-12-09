@@ -7,7 +7,6 @@ import 'package:new_ezagro_flutter/features/data/models/employee_models/salary_c
 import 'package:new_ezagro_flutter/features/data/models/employee_models/work_shift_model/work_shift_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/farm_models/farm_model.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/employee_entities/employee_entity/employee_entity.dart';
-import '../../../domain/entities/bank_account_entities/bank_account_entity.dart';
 import '../../../domain/entities/dependent_entities/dependent_entity.dart';
 import '../department_models/department_model/department_model.dart';
 import '../department_models/sub_department_model/sub_department_model.dart';
@@ -143,9 +142,7 @@ class EmployeeModel extends EmployeeEntity {
       deletedAt: map['deletedAt'] as String?,
       healthInsuranceContract: map['healthInsuranceContract'] as int?,
       lifeInsuranceContract: map['lifeInsuranceContract'] as int?,
-      bankAccount: map['bankAccount'] != null
-          ? List<BankAccountEntity>.from(map['bankAccount']?.map((x) => BankAccountModel.fromMap(x as Map<String, dynamic>)))
-          : null,
+      bankAccount: map['bankAccounts'] != null ? (map['bankAccounts'] as List).map((e) => BankAccountModel.fromMap(e)).toList() : null,
       contractorFarm: map['contractorFarm'] != null
           ? FarmModel.fromMap(map['contractorFarm'] as Map<String, dynamic>)
           : null,

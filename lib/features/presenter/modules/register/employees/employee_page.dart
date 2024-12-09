@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/register/employees/employees_list_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/employees/tabs/employee_additional_information_tab.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/employees/tabs/employee_general_information_tab.dart';
 import '../../../../../consts/app_routes.dart';
@@ -33,8 +34,9 @@ class EmployeePage extends StatelessWidget {
       child: BackgroundWidget(
           scrollable: false,
           appBar: const CustomAppBarWidget(
-              appBarType: AppBarType.hamburgerAndTitle,
-              title: AppStringsPortuguese.singularEmployeeTitle),
+              appBarType: AppBarType.centeredTitleAndBackArrow,
+              title: AppStringsPortuguese.singularEmployeeTitle,
+              callback: EmployeesListPage.navigate,),
           child: Observer(
             builder: (context) => controller.isLoading
                 ? Center(child: CircularProgressIndicator())

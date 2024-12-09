@@ -43,4 +43,8 @@ class DependentModel extends DependentEntity {
 
   factory DependentModel.fromJson(String source) =>
       DependentModel.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  static List<List<String>> convertToTableList(List<DependentEntity> farms) {
+    return farms.map((e) => [e.name ?? "", e.dependentTypeId?.toString() ?? "", e.birthDate ?? ""]).toList();
+  }
 }

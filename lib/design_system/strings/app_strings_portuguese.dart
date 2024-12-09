@@ -265,6 +265,13 @@ class AppStringsPortuguese {
   static const String farmCropColumn = 'Cultura';
   static const String contractsTableTitle = 'Contratos';
   static const String attachmentsTableTitle = 'Anexos';
+  static const String contractStatusLabel = 'Status do contrato:';
+  static const String activeStatus = 'Ativo';
+  static const String inactiveStatus = 'Inativo';
+  static const String firingDateLabel = 'Data: ';
+  static const String dependentsColumn = "Dependentes";
+  static const String relationColumn = 'Relação';
+  static const String birthdayDateColumn = 'Nascimento';
 
   static const String machineryAndImplementsTitle = 'Maquinários & Implementos';
   static const String machineryPluralTitle = 'Maquinários';

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/mult_info_card/mult_info_card.dart';
+import 'package:new_ezagro_flutter/features/presenter/widgets/single_information_card/single_information_card.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/three_info_card/three_info_card.dart';
 import '../../../../../../design_system/strings/app_strings_portuguese.dart';
-import '../../../../widgets/single_info_card/single_info_card.dart';
+import '../../../../widgets/bold_title_info_card/bold_title_info_card.dart';
 import '../controller/employee_controller.dart';
 
 class EmployeeGeneralInformationTab extends StatelessWidget {
@@ -138,29 +139,49 @@ class EmployeeGeneralInformationTab extends StatelessWidget {
                     AppStringsPortuguese.employeeAdmissionDateLabel,
                     controller.employee?.admissionDate ?? ""
                   ),
-                  (AppStringsPortuguese.employeePositionLabel, controller.employee?.position ?? ""),
+                  (
+                    AppStringsPortuguese.employeePositionLabel,
+                    controller.employee?.position ?? ""
+                  ),
                   (
                     AppStringsPortuguese.employeeContractTypeLabel,
-                  controller.employee?.contractType?.name ?? ""
+                    controller.employee?.contractType?.name ?? ""
                   ),
-                  (AppStringsPortuguese.employeeBaseSalaryLabel, controller.employee?.baseSalary ?? ""),
-                  (AppStringsPortuguese.employeeFiringReasonLabel, "")
+                  (
+                    AppStringsPortuguese.employeeBaseSalaryLabel,
+                    controller.employee?.baseSalary ?? ""
+                  )
                 ],
                 [
                   (
                     AppStringsPortuguese.employeeWorkerIdLabel,
-                  controller.employee?.cpf ?? ""
+                    controller.employee?.cpf ?? ""
                   ),
-                  (AppStringsPortuguese.employeeDepartmentLabel, controller.employee?.department?.name ?? ""),
-                  (AppStringsPortuguese.employeeShiftLabel, controller.employee?.workShift?.name ?? ""),
-                  (AppStringsPortuguese.employeeFiringDateLabel, controller.employee?.dismissalDate ?? "")
+                  (
+                    AppStringsPortuguese.employeeDepartmentLabel,
+                    controller.employee?.department?.name ?? ""
+                  ),
+                  (
+                    AppStringsPortuguese.employeeShiftLabel,
+                    controller.employee?.workShift?.name ?? ""
+                  ),
+                  (
+                    AppStringsPortuguese.contractStatusLabel,
+                    controller.getContractStatus()
+                  )
                 ]
               )
             ],
           ),
           const SizedBox(
             height: 10,
-          )
+          ),
+          controller.employee?.dismissalDate == null
+              ? SizedBox.shrink()
+              : SingleInformationCard(
+                  titleOne: AppStringsPortuguese.employeeFiringReasonLabel,
+                  titleTwo: AppStringsPortuguese.firingDateLabel + (controller.employee?.dismissalDate ?? ""),
+                  information: controller.employee?.dismissalReason ?? "")
         ],
       ),
     );

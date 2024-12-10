@@ -44,6 +44,7 @@ import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/cost_c
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/cost_center_farm_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/get_farm_by_id_usecase/get_farm_by_id_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/get_farm_list_usecase/get_farm_list_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/machinery_usecases/machinery_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/machinery_usecases/machinery_usecase_impl.dart';
@@ -128,6 +129,7 @@ import 'features/domain/usecases/authentication_usecases/authenticate_usecase/au
 import 'features/domain/usecases/authentication_usecases/update_password/update_password_usecase_impl.dart';
 import 'features/domain/usecases/employee_usecase/employee_usecase.dart';
 import 'features/domain/usecases/employee_usecase/employee_usecase_impl.dart';
+import 'features/domain/usecases/farm_usecases/get_farm_by_id_usecase/get_farm_by_id_usecase_impl.dart';
 import 'features/domain/usecases/farm_usecases/get_farm_list_usecase/get_farm_list_usecase.dart';
 import 'features/domain/usecases/service_order_list_usecase/service_order_list_usecase.dart';
 import 'features/domain/usecases/service_order_list_usecase/service_order_list_usecase_impl.dart';
@@ -187,6 +189,7 @@ class AppModule extends Module {
     i.addLazySingleton<PestUsecase>(PestUsecaseImpl.new);
     i.addLazySingleton<CostCenterFarmUsecase>(CostCenterFarmUsecaseImpl.new);
     i.addLazySingleton<PlotsWithFarmIdUsecase>(PlotsWithFarmIdUsecaseImpl.new);
+    i.addLazySingleton<GetFarmByIdUsecase>(GetFarmByIdUsecaseImpl.new);
 
     i.addLazySingleton<GetAllUsersUsecase>(GetAllUsersUsecaseImpl.new);
     i.addLazySingleton<GetUserByIdUsecase>(GetUserByIdUsecaseImpl.new);
@@ -271,7 +274,7 @@ class AppModule extends Module {
     r.child(AppRoutes.appEmployeesListPage, child: (context) => EmployeesListPage());
     r.child(AppRoutes.appEmployeePage, child: (context) => EmployeePage(args: r.args.data,));
     r.child(AppRoutes.appFarmListPage, child: (context) => FarmListPage());
-    r.child(AppRoutes.appFarmPage, child: (context) => FarmPage());
+    r.child(AppRoutes.appFarmPage, child: (context) => FarmPage(args: r.args.data,));
     r.child(AppRoutes.appMachineryListPage, child: (context) => MachineryListPage());
     r.child(AppRoutes.appMachineryPage, child: (context) => MachineryImplementsPage());
 

@@ -5,6 +5,7 @@ import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/data/models/farm_models/farm_model.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/farm_repositories/farm_repository.dart';
 
+import '../../../domain/params/arg_params/arg_params.dart';
 import '../../datasources/remote_datasource/farm_datasource/farm_datasource.dart';
 import '../../models/pagination_model/pagination_model.dart';
 
@@ -24,6 +25,21 @@ class FarmRepositoryImpl implements FarmRepository {
     } catch (e, stacktrace) {
       return Left(GenericError(
           fingerprint: '$FarmRepositoryImpl.getAllFarms',
+          additionalInfo: stacktrace.toString()));
+    }
+  }
+
+  @override
+  Future<Either<ApplicationError, FarmModel>>
+  getFarmById(ArgParams argParams) async {
+    try {
+      final result = await datasource.getFarmById(argParams);
+      return Right(result.data!);
+    } on ApplicationError catch (e) {
+      return Left(e);
+    } catch (e, stacktrace) {
+      return Left(GenericError(
+          fingerprint: '$FarmRepositoryImpl.getFarmById',
           additionalInfo: stacktrace.toString()));
     }
   }

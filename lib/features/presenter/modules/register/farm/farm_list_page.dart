@@ -12,6 +12,7 @@ import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
 import '../../../widgets/custom_search_bar/custom_search_bar.dart';
 import 'controller/farm_controller.dart';
+import 'farm_page.dart';
 
 class FarmListPage extends StatelessWidget {
   static const String routePath = AppRoutes.appFarmListPage;
@@ -69,7 +70,9 @@ class FarmListPage extends StatelessWidget {
                                           controller.filteredFarms),
                                       maxHeight: 0.7 *
                                           MediaQuery.of(context).size.height,
-                                      onTap: (id) {}),
+                                      onTap: (index) {
+                                        FarmPage.navigate(ArgParams(firstArgs: controller.filteredFarms[index].id.toString()));
+                                      }),
                                 )
                           ],
                         ),

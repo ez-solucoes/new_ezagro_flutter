@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 class SalaryCompositionEntity extends Equatable {
   final int id;
   final String? composition;
-  final double? compositionReference;
+  final String? compositionReference;
   final int? baseReferenceId;
   final int? employeeId;
 

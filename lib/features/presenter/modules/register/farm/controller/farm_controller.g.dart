@@ -81,6 +81,14 @@ mixin _$FarmController on FarmControllerAbstract, Store {
     return _$getFarmsListAsyncAction.run(() => super.getFarmsList());
   }
 
+  late final _$getFarmByIdAsyncAction =
+      AsyncAction('FarmControllerAbstract.getFarmById', context: context);
+
+  @override
+  Future<dynamic> getFarmById(ArgParams args) {
+    return _$getFarmByIdAsyncAction.run(() => super.getFarmById(args));
+  }
+
   late final _$FarmControllerAbstractActionController =
       ActionController(name: 'FarmControllerAbstract', context: context);
 

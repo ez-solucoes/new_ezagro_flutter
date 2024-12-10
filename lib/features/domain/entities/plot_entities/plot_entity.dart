@@ -9,8 +9,8 @@ class PlotEntity extends Equatable {
   final PlotGroupEntity? plotGroup;
   final CoordinateEntity? coordinate;
   final PlotOwnershipTypeEntity? plotOwnerShipType;
-  final int? number;
-  final int? area;
+  final String? number;
+  final String? area;
 
   const PlotEntity(
       {required this.id,

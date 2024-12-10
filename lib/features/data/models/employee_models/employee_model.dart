@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:new_ezagro_flutter/features/data/models/bank_account_models/bank_account_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/company_models/company_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/contract_models/contract_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/cost_center_models/cost_center_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/dependent_models/dependent_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/employee_models/salary_composition_model/salary_composition_model.dart';
@@ -141,7 +142,7 @@ class EmployeeModel extends EmployeeEntity {
       updatedAt: map['updatedAt'] as String?,
       deletedAt: map['deletedAt'] as String?,
       healthInsuranceContract: map['healthInsuranceContract'] as int?,
-      lifeInsuranceContract: map['lifeInsuranceContract'] as int?,
+      lifeInsuranceContract: map['lifeInsuranceContract'] == null ? null : ContractModel.fromMap(map['lifeInsuranceContract']),
       bankAccount: map['bankAccounts'] != null ? (map['bankAccounts'] as List).map((e) => BankAccountModel.fromMap(e)).toList() : null,
       contractorFarm: map['contractorFarm'] != null
           ? FarmModel.fromMap(map['contractorFarm'] as Map<String, dynamic>)

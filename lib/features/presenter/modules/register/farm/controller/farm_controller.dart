@@ -3,6 +3,8 @@ import 'package:mobx/mobx.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/get_farm_list_usecase/get_farm_list_usecase.dart';
 import '../../../../../../core/usecase/usecase.dart';
 import '../../../../../domain/entities/farm_entities/farm_entity.dart';
+import '../../../../../domain/params/arg_params/arg_params.dart';
+import '../../../../../domain/usecases/farm_usecases/get_farm_by_id_usecase/get_farm_by_id_usecase.dart';
 part 'farm_controller.g.dart';
 
 class FarmController = FarmControllerAbstract with _$FarmController;
@@ -30,6 +32,19 @@ abstract class FarmControllerAbstract with Store {
     result.fold((error) => error.friendlyMessage, (success) {
       farms = success;
       filteredFarms = farms;
+      return success;
+    });
+
+    isLoading = false;
+  }
+
+  @action
+  Future getFarmById(ArgParams args) async {
+    isLoading = true;
+    final getFarm = Modular.get<GetFarmByIdUsecase>();
+    final result = await getFarm(args);
+    result.fold((error) => error.friendlyMessage, (success) {
+      farm = success;
       return success;
     });
 

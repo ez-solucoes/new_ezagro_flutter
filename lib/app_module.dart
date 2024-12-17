@@ -14,10 +14,12 @@ import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/u
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/user_datasources/user_datasource_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/authentication_repository/authentication_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/company_repositories/company_repository_impl.dart';
+import 'package:new_ezagro_flutter/features/data/repositories/contract_repositories/contract_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/pest_repositories/pest_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/user_repositories/user_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/authentication_repository/authentication_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/company_repositories/company_repository.dart';
+import 'package:new_ezagro_flutter/features/domain/repositories/contract_repositories/contract_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/pest_repositories/pest_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/user_repositories/user_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
@@ -30,6 +32,10 @@ import 'package:new_ezagro_flutter/features/domain/usecases/company_usecases/get
 import 'package:new_ezagro_flutter/features/domain/usecases/company_usecases/get_all_companies_usecase/get_all_companies_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/company_usecases/get_company_by_id_usecase/get_company_by_id_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/company_usecases/get_company_by_id_usecase/get_company_by_id_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/contract_usecases/get_contract_by_id_usecase/get_contract_by_id_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/contract_usecases/get_contract_by_id_usecase/get_contract_by_id_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/contract_usecases/get_contract_list_usecase/get_contract_list_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/contract_usecases/get_contract_list_usecase/get_contract_list_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/cost_center_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_usecase.dart';
@@ -72,6 +78,7 @@ import 'package:new_ezagro_flutter/features/presenter/modules/authentication_mod
 import 'package:new_ezagro_flutter/features/presenter/modules/home/home_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/company/controller/company_controller.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/contracts/contract_list_page.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/register/contracts/controller/contract_controller.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/employees/controller/employee_controller.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/employees/employees_list_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/farm/controller/farm_controller.dart';
@@ -85,6 +92,8 @@ import 'core/http_client/http_client_dio_imp.dart';
 import 'core/local_storage/local_storage_client_secure_impl.dart';
 import 'features/data/datasources/remote_datasource/employee_datasources/employee_datasource.dart';
 import 'features/data/datasources/remote_datasource/employee_datasources/employee_datasource_impl.dart';
+import 'features/data/datasources/remote_datasource/contract_datasources/contract_datasource.dart';
+import 'features/data/datasources/remote_datasource/contract_datasources/contract_datasource_impl.dart';
 import 'features/data/datasources/remote_datasource/product_datasources/Product_datasource.dart';
 import 'features/data/datasources/remote_datasource/activity_datasources/activity_datasource.dart';
 import 'features/data/datasources/remote_datasource/activity_datasources/activity_datasource_impl.dart';
@@ -199,6 +208,8 @@ class AppModule extends Module {
     i.addLazySingleton<GetFarmListUsecase>(GetFarmListUsecaseImpl.new);
     i.addLazySingleton<GetEmployeeListUsecase>(GetEmployeeListUsecaseImpl.new);
     i.addLazySingleton<GetEmployeeByIdUsecase>(GetEmployeeByIdUsecaseImpl.new);
+    i.addLazySingleton<GetContractListUsecase>(GetContractListUsecaseImpl.new);
+    i.addLazySingleton<GetContractByIdUsecase>(GetContractByIdUsecaseImpl.new);
 
     //Repository
     i.addLazySingleton<AuthenticationRepository>(AuthenticationRepositoryImpl.new);
@@ -215,6 +226,7 @@ class AppModule extends Module {
     i.addLazySingleton<PestRepository>(PestRepositoryImpl.new);
     i.addLazySingleton<UserRepository>(UserRepositoryImpl.new);
     i.addLazySingleton<CompanyRepository>(CompanyRepositoryImpl.new);
+    i.addLazySingleton<ContractRepository>(ContractRepositoryImpl.new);
 
     //Datasource
     i.addLazySingleton<AuthenticationDatasource>(AuthenticationDatasourceImpl.new);
@@ -231,6 +243,7 @@ class AppModule extends Module {
     i.addLazySingleton<PestDatasource>(PestDatasourceImpl.new);
     i.addLazySingleton<UserDatasource>(UserDatasourceImpl.new);
     i.addLazySingleton<CompanyDatasource>(CompanyDatasourceImpl.new);
+    i.addLazySingleton<ContractDatasource>(ContractDatasourceImpl.new);
 
     //Controllers
     i.addLazySingleton<AuthenticationController>(AuthenticationController.new);
@@ -241,6 +254,7 @@ class AppModule extends Module {
     i.addLazySingleton<CompanyController>(CompanyController.new);
     i.addLazySingleton<FarmController>(FarmController.new);
     i.addLazySingleton<EmployeeController>(EmployeeController.new);
+    i.addLazySingleton<ContractController>(ContractController.new);
     super.binds(i);
   }
 
@@ -270,7 +284,7 @@ class AppModule extends Module {
     r.child(AppRoutes.appCompanyListPage, child: (context) => CompanyListPage());
     r.child(AppRoutes.appCompanyPage, child: (context) => CompanyPage(args: r.args.data,));
     r.child(AppRoutes.appContractListPage, child: (context) => ContractListPage());
-    r.child(AppRoutes.appContractPage, child: (context) => ContractPage());
+    r.child(AppRoutes.appContractPage, child: (context) => ContractPage(args: r.args.data,));
     r.child(AppRoutes.appEmployeesListPage, child: (context) => EmployeesListPage());
     r.child(AppRoutes.appEmployeePage, child: (context) => EmployeePage(args: r.args.data,));
     r.child(AppRoutes.appFarmListPage, child: (context) => FarmListPage());

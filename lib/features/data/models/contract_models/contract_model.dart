@@ -79,4 +79,8 @@ class ContractModel extends ContractEntity {
   String toJson() => json.encode(toMap());
 
   factory ContractModel.fromJson(String source) => ContractModel.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  static List<List<String>> convertToTableList(List<ContractEntity> contracts) {
+    return contracts.map((e) => [e.id.toString(), e.contract ?? "", e.contractType?.name ?? ""]).toList();
+  }
 }

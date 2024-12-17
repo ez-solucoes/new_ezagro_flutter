@@ -44,6 +44,10 @@ class PlotModel extends PlotEntity {
       plotOwnerShipType: map['plotOwnerShipType'] == null
           ? null
           : PlotOwnershipTypeModel.fromMap(map['plotOwnerShipType']),
-      number: map['number'],
-      area: map['area']);
+      number: map['number'] as String?,
+      area: map['area'] as String?);
+
+  static List<List<String>> convertToTableList(List<PlotEntity> plots) {
+    return plots.map((e) => [e.id.toString(), e.area == null ? "" : "${e.area ?? ""}ha", e.plotGroup?.name ?? ""]).toList();
+  }
 }

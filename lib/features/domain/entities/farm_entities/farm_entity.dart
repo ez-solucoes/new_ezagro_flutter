@@ -1,6 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/company_entities/company_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/cost_center_entities/cost_center_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/plot_entities/plot_entity.dart';
+
+import '../rural_producer_entities/rural_producer_entity.dart';
 
 class FarmEntity extends Equatable {
   final int id;
@@ -22,12 +25,14 @@ class FarmEntity extends Equatable {
   final String? addressComplement;
   final String? addressReference;
   final bool? isFavorite;
+  final String? area;
   final String? createdAt;
   final String? updatedAt;
   final String? deletedAt;
   final CostCenterEntity? localCostCenter;
   final CompanyEntity? company;
-
+  final List<PlotEntity>? plots;
+  final List<RuralProducerEntity>? ruralProducers;
 
   const FarmEntity({
     required this.id,
@@ -49,11 +54,14 @@ class FarmEntity extends Equatable {
     this.addressComplement,
     this.addressReference,
     this.isFavorite,
+    this.area,
     this.createdAt,
     this.updatedAt,
     this.deletedAt,
     this.localCostCenter,
-    this.company
+    this.company,
+    this.plots,
+    this.ruralProducers
   });
 
   @override
@@ -77,10 +85,13 @@ class FarmEntity extends Equatable {
     addressComplement,
     addressReference,
     isFavorite,
+    area,
     createdAt,
     updatedAt,
     deletedAt,
     localCostCenter,
-    company
+    company,
+    plots,
+    ruralProducers
   ];
 }

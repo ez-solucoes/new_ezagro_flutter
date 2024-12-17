@@ -1,9 +1,8 @@
 import 'dart:convert';
 import 'package:new_ezagro_flutter/features/data/models/company_models/company_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/cost_center_models/cost_center_model.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/company_entities/company_entity.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/cost_center_entities/cost_center_entity.dart';
-
+import 'package:new_ezagro_flutter/features/data/models/plot_models/plot_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/rural_producer_models/rural_producer_model.dart';
 import '../../../domain/entities/farm_entities/farm_entity.dart';
 
 class FarmModel extends FarmEntity {
@@ -27,11 +26,14 @@ class FarmModel extends FarmEntity {
     super.addressComplement,
     super.addressReference,
     super.isFavorite,
+    super.area,
     super.createdAt,
     super.updatedAt,
     super.deletedAt,
     super.localCostCenter,
-    super.company
+    super.company,
+    super.plots,
+    super.ruralProducers
   });
 
   Map<String, dynamic> toMap() {
@@ -55,11 +57,14 @@ class FarmModel extends FarmEntity {
       'addressComplement': addressComplement,
       'addressReference': addressReference,
       'isFavorite': isFavorite,
+      'area': area,
       'createdAt': createdAt,
       'updatedAt': updatedAt,
       'deletedAt': deletedAt,
       'localCostCenter': localCostCenter,
-      'company': company
+      'company': company,
+      'plots': plots,
+      'ruralProducers': ruralProducers
     };
   }
 
@@ -84,11 +89,14 @@ class FarmModel extends FarmEntity {
       addressComplement: map['addressComplement'] as String?,
       addressReference: map['addressReference'] as String?,
       isFavorite: map['isFavorite'] as bool?,
+      area: map['area'] as String?,
       createdAt: map['createdAt'] as String?,
       updatedAt: map['updatedAt'] as String?,
       deletedAt: map['deletedAt'] as String?,
       localCostCenter: map['localCostCenter'] == null ? null : CostCenterModel.fromMap(map['localCostCenter']),
-      company: map['company'] == null ? null : CompanyModel.fromMap(map['company'])
+      company: map['company'] == null ? null : CompanyModel.fromMap(map['company']),
+      plots: map['plots'] == null ? null : (map['plots'] as List).map((e) => PlotModel.fromMap(e)).toList(),
+      ruralProducers: map['ruralProducers'] == null ? null : (map['ruralProducers'] as List).map((e) => RuralProducerModel.fromMap(e)).toList()
     );
   }
 

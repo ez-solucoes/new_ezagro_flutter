@@ -5,8 +5,8 @@ import '../../../domain/entities/contract_entities/contract_type_entity.dart';
 class ContractTypeModel extends ContractTypeEntity {
   const ContractTypeModel({
     required super.id,
-    required super.name,
-    required super.description,
+    super.name,
+    super.description,
   });
 
   Map<String, dynamic> toMap() => {

@@ -50,15 +50,15 @@ class RuralProducerModel extends RuralProducerEntity {
         stateRegistration: map['stateRegistration'],
         name: map['name'],
         cpf: map['cpf'],
-        accounts: List<AccountModel>.from(
+        accounts: map['accounts'] == null ? null : List<AccountModel>.from(
             map['accounts']?.map((x) => AccountModel.fromMap(x))),
-        contracts: List<ContractModel>.from(
+        contracts: map['contracts'] == null ? null : List<ContractModel>.from(
             map['contracts']?.map((x) => ContractModel.fromMap(x))),
-        attachmentNames: List<String>.from(map['attachmentNames']),
-        commonAssociation: List<CommonAssociationOfRuralProducerModel>.from(
+        attachmentNames: map['attachmentNames'] == null ? null : List<String>.from(map['attachmentNames']),
+        commonAssociation: map['commonAssociation'] == null ? null : List<CommonAssociationOfRuralProducerModel>.from(
             map['commonAssociation']
                 ?.map((x) => CommonAssociationOfRuralProducerModel.fromMap(x))),
-        farms: List<FarmModel>.from(
+        farms: map['farms'] == null ? null : List<FarmModel>.from(
             map['farms']?.map((x) => FarmModel.fromMap(x))),
         active: map['active'],
       );

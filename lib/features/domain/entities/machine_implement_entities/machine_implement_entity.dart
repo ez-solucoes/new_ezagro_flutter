@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
-
 import '../brand_entities/brand_entity.dart';
 import '../contract_entities/contract_entity.dart';
 import '../cost_center_entities/cost_center_entity.dart';
-import '../departmentEntities/department_entity.dart';
+import '../department_entities/department_entity/department_entity.dart';
+import '../department_entities/sub_department_entity/sub_department_entity.dart';
 import '../local_time_entities/local_time_entity.dart';
 import '../multipart_file_custom_entities/multipart_file_custom_entity.dart';
 import 'machine_implement_maintenance_entity.dart';
@@ -26,7 +26,7 @@ class MachineImplementEntity extends Equatable {
   final String? yearOfManufacture;
   final String? place;
   final DepartmentEntity? department;
-  final DepartmentEntity? subDepartment;
+  final SubDepartmentEntity? subDepartment;
   final List<CostCenterEntity>? costCenters;
   final String? model;
   final String? renavan;

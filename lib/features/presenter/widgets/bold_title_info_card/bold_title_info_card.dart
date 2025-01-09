@@ -38,7 +38,7 @@ class BoldTitleInfoCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween, // Distribui o espaço entre os títulos
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   titleOne,

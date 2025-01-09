@@ -20,12 +20,17 @@ class AppEndpoints {
   static const String getCompanyListEndpoint = '/company';
   static const String getCompanyById = '/company/';
 
+  //Contract
+  static const String getContractListEndpoint = '/contract';
+  static const String getContractByIdEndpoint = '/contract/';
+
   //Service Order
   static const String getServiceOrderListEndpoint = '/field-service-order';
   static const String getServiceOrderById = 'field-service-order/';
   static const String getActivityTypesEndpoint = '/activity-type';
   static const String getCostCentersEndpoint = '/cost-center';
   static const String getAllFarms = '/farm';
+  static const String getFarmById = '/farm/';
   static const String getFarmsSimplifiedEndpoint = '/farm/simplified';
   static const String getCostCenterFarmsEndpoint = '/farm/cost-center/';
   static const String getSimplifiedCropsEndpoint = '/crop/simplified';
@@ -34,6 +39,7 @@ class AppEndpoints {
   static const String getProductsEndpoint = '/product';
   static const String getMachineryEndpoint = '/fleet/machinery';
   static const String getEmployees = '/employee';
+  static const String getEmployeeById = '/employee/';
   static const String postServiceOrderEndpoint = '/field-service-order';
   static const String getPestsEndpoint = '/pest';
   static const String getPlotsByFarmIdEndpoint = '/farm/plot/farm/';

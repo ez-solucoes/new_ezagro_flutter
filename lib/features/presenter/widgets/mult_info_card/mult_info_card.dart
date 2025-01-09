@@ -53,21 +53,22 @@ class MultInfoCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Coluna 1
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: sectionData.$1.map((data) {
                         return Padding(
                           padding: EdgeInsets.symmetric(
                               vertical: 5, horizontal: 7.5),
-                          child: StackedDataWidget(
-                            label: data.$1,
-                            text: data.$2,
+                          child: FittedBox(
+                            fit: BoxFit.fitWidth,
+                            child: StackedDataWidget(
+                              label: data.$1,
+                              text: data.$2,
+                            ),
                           ),
                         );
                       }).toList(),
                     ),
-                    // Coluna 2
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: sectionData.$2.map((data) {

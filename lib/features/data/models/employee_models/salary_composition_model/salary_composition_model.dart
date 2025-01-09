@@ -30,7 +30,7 @@ class SalaryCompositionModel extends SalaryCompositionEntity {
     return SalaryCompositionModel(
       id: map['id'] as int,
       composition: map['composition'] as String?,
-      compositionReference: compositionReference as double?,
+      compositionReference: compositionReference as String?,
       baseReferenceId: map['baseReferenceId'] as int?,
       employeeId: map['employeeId'] as int?,
     );

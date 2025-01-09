@@ -20,7 +20,7 @@ class CustomStripedTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return data.isEmpty ? SizedBox.shrink() : Container(
       decoration: BoxDecoration(
         color: AppColors.primaryWhiteColor,
         border: Border.all(width: 3,color: AppColors.borderWhiteColor),

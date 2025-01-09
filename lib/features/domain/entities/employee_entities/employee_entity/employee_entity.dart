@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/bank_account_entities/bank_account_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/contract_entities/contract_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/department_entities/sub_department_entity/sub_department_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/dependent_entities/dependent_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/employee_entities/employee_contract_type_entity/employee_contract_type_entity.dart';
@@ -43,7 +44,7 @@ class EmployeeEntity extends Equatable {
   final String? updatedAt;
   final String? deletedAt;
   final int? healthInsuranceContract;
-  final int? lifeInsuranceContract;
+  final ContractEntity? lifeInsuranceContract;
   final List<BankAccountEntity>? bankAccount;
   final FarmEntity? contractorFarm;
   final CompanyEntity? contractorCompany;

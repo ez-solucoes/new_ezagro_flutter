@@ -8,12 +8,12 @@ import 'contract_payment_periodicity_model.dart';
 class ContractItemModel extends ContractItemEntity {
   const ContractItemModel({
     required super.id,
-    required super.name,
-    required super.unitPrice,
-    required super.dtPayment,
-    required super.paymentMethod,
-    required super.paymentPeriodicity,
-    required super.contract,
+    super.name,
+    super.unitPrice,
+    super.dtPayment,
+    super.paymentMethod,
+    super.paymentPeriodicity,
+    super.contract,
   });
 
   String toJson() => json.encode(toMap());

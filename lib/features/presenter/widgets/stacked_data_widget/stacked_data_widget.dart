@@ -26,22 +26,25 @@ class StackedDataWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 5,),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children:[
-            Text(
-              label,
-              style: AppTextStyles.labelOnCardStyle(color: AppColors.primaryBlackColor),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,
-            ),
-            Text(
-              text,
-              style: AppTextStyles.bodyCardTextStyle(color: AppColors.primaryBlackColor),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,
-            ),
-          ],
+        ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width*0.45),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children:[
+              Text(
+                label,
+                style: AppTextStyles.labelOnCardStyle(color: AppColors.primaryBlackColor),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+              ),
+              Text(
+                text,
+                style: AppTextStyles.bodyCardTextStyle(color: AppColors.primaryBlackColor),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+              ),
+            ],
+          ),
         ),
       ],
     );

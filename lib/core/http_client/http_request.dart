@@ -197,8 +197,6 @@ extension HttpRequestMethoExtension on HttpRequestMethod {
         return 'TRACE';
       case HttpRequestMethod.patch:
         return 'PATCH';
-      default:
-        return 'UNKNOWN';
-    }
+      }
   }
 }

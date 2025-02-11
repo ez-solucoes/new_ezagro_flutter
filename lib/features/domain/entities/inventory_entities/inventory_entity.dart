@@ -6,7 +6,7 @@ import '../compartment_entities/compartment_entity.dart';
 import '../cost_center_entities/cost_center_entity.dart';
 import '../email_entities/email_entity.dart';
 import '../farm_entities/farm_entity.dart';
-import '../machine_implement_entities/machine_implement_entity.dart';
+import '../machinery_implement_entities/machinery_implement_entity.dart';
 import '../phone_entities/phone_entity.dart';
 import 'inventory_type_entity.dart';
 
@@ -18,7 +18,7 @@ class InventoryEntity extends Equatable {
   final CompanyEntity company;
   final FarmEntity farm;
   final List<CostCenterEntity> costCenters;
-  final MachineImplementEntity machineImplement;
+  final MachineryImplementEntity machineImplement;
   final String name;
   final InventoryTypeEntity inventoryType;
   final bool isExternal;

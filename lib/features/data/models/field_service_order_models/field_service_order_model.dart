@@ -8,8 +8,8 @@ import '../crop_models/crop_diversity_history_model.dart';
 import '../employee_models/employee_history_model.dart';
 import '../farm_models/farm_history_model.dart';
 import '../inventory_models/inventory_history_model.dart';
-import '../machine_implement_models/machine_implement_history_model.dart';
-import '../machine_implement_models/machine_implement_model.dart';
+import '../machinery_implement_models/machinery_implement_history_model.dart';
+import '../machinery_implement_models/machinery_implement_model.dart';
 import '../pest_models/pest_model.dart';
 import '../plot_models/plot_history_model.dart';
 import '../products_models/product_usage_recommendation_model.dart';
@@ -24,7 +24,7 @@ class FieldServiceOrderModel extends FieldServiceOrderEntity {
     super.plots,
     super.areaTotal,
     super.cropDiversity,
-    super.machineImplements,
+    super.machineryImplements,
     super.inventories,
     super.productRecommendations,
     super.agriculturalActivity,
@@ -51,8 +51,8 @@ class FieldServiceOrderModel extends FieldServiceOrderEntity {
     'plots': plots?.map((e) => (e as PlotHistoryModel).toMap()).toList(),
     'areaTotal': areaTotal,
     'cropDiversity': (cropDiversity as CropDiversityHistoryModel).toMap(),
-    'machineImplements': machineImplements
-        ?.map((e) => (e as MachineImplementHistoryModel).toMap())
+    'machineryImplements': machineryImplements
+        ?.map((e) => (e as MachineryImplementHistoryModel).toMap())
         .toList(),
     'inventories': inventories
         ?.map((e) => (e as InventoryHistoryModel).toMap())
@@ -91,8 +91,8 @@ class FieldServiceOrderModel extends FieldServiceOrderEntity {
             (map['plots'] as List).map((x) => PlotHistoryModel.fromMap(x as Map<String, dynamic>))) : null,
         areaTotal: map['areaTotal'] != null ? map['areaTotal'] as double : null,
         cropDiversity: map['cropDiversity'] != null ? CropDiversityHistoryModel.fromMap(map['cropDiversity'] as Map<String, dynamic>) : null,
-        machineImplements: map['machineImplements'] != null ? List<MachineImplementModel>.from(
-            (map['machineImplements'] as List).map((x) => MachineImplementModel.fromMap(x as Map<String, dynamic>))) : null,
+        machineryImplements: map['machineryImplements'] != null ? List<MachineryImplementModel>.from(
+            (map['machineryImplements'] as List).map((x) => MachineryImplementModel.fromMap(x as Map<String, dynamic>))) : null,
         inventories: map['inventories'] != null ? List<InventoryHistoryModel>.from(
             (map['inventories'] as List).map((x) => InventoryHistoryModel.fromMap(x as Map<String, dynamic>))) : null,
         productRecommendations: map['productRecommendations'] != null ? List<ProductUsageRecommendationModel>.from(

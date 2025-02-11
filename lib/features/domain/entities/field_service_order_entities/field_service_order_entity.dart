@@ -8,7 +8,7 @@ import '../crop_entities/crop_diversity_history_entity.dart';
 import '../employee_entities/employee_history_entity.dart';
 import '../farm_entities/farm_history_entity.dart';
 import '../inventory_entities/inventory_history_entity.dart';
-import '../machine_implement_entities/machine_implement_entity.dart';
+import '../machinery_implement_entities/machinery_implement_entity.dart';
 import '../pest_entities/pest_entity.dart';
 import '../plot_entities/plot_history_entity.dart';
 import '../products_entities/product_usage_recommendation_entity.dart';
@@ -22,7 +22,7 @@ class FieldServiceOrderEntity extends Equatable {
   final List<PlotHistoryEntity>?plots;
   final double? areaTotal;
   final CropDiversityHistoryEntity? cropDiversity;
-  final List<MachineImplementEntity>? machineImplements;
+  final List<MachineryImplementEntity>? machineryImplements;
   final List<InventoryHistoryEntity>? inventories;
   final List<ProductUsageRecommendationEntity>? productRecommendations;
   final AgriculturalActivityEntity? agriculturalActivity;
@@ -48,7 +48,7 @@ class FieldServiceOrderEntity extends Equatable {
     this.plots,
     this.areaTotal,
     this.cropDiversity,
-    this.machineImplements,
+    this.machineryImplements,
     this.inventories,
     this.productRecommendations,
     this.agriculturalActivity,
@@ -76,7 +76,7 @@ class FieldServiceOrderEntity extends Equatable {
     plots,
     areaTotal,
     cropDiversity,
-    machineImplements,
+    machineryImplements,
     inventories,
     productRecommendations,
     agriculturalActivity,

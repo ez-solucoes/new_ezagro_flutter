@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import '../local_time_entities/local_time_entity.dart';
 import '../year_entities/year_entity.dart';
 
-class MachineImplementHistoryEntity extends Equatable {
+class MachineryImplementHistoryEntity extends Equatable {
   final int? machineImplementHistoryId;
   final int? machineImplementId;
   final bool? isExternal;
@@ -20,7 +20,7 @@ class MachineImplementHistoryEntity extends Equatable {
   final String? insurancePolicy;
   final String? nickname;
 
-  const MachineImplementHistoryEntity({
+  const MachineryImplementHistoryEntity({
     this.machineImplementHistoryId,
     this.machineImplementId,
     this.isExternal,

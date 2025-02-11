@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import '../../../domain/entities/machine_implement_entities/machine_implement_maintenance_entity.dart';
+import '../../../domain/entities/machinery_implement_entities/machinery_implement_maintenance_entity.dart';
 
-class MachineImplementMaintenanceModel
-    extends MachineImplementMaintenanceEntity {
-  const MachineImplementMaintenanceModel({
+class MachineryImplementMaintenanceModel
+    extends MachineryImplementMaintenanceEntity {
+  const MachineryImplementMaintenanceModel({
     required super.id,
     super.date,
     super.description,
@@ -28,8 +28,8 @@ class MachineImplementMaintenanceModel
         'requiredKilometer': requiredKilometer,
       };
 
-  factory MachineImplementMaintenanceModel.fromMap(Map<String, dynamic> map) =>
-      MachineImplementMaintenanceModel(
+  factory MachineryImplementMaintenanceModel.fromMap(Map<String, dynamic> map) =>
+      MachineryImplementMaintenanceModel(
         id: map['id'],
         date: map['date'],
         description: map['description'],
@@ -47,6 +47,6 @@ class MachineImplementMaintenanceModel
 
   String toJson() => json.encode(toMap());
 
-  factory MachineImplementMaintenanceModel.fromJson(String source) =>
-      MachineImplementMaintenanceModel.fromMap(json.decode(source));
+  factory MachineryImplementMaintenanceModel.fromJson(String source) =>
+      MachineryImplementMaintenanceModel.fromMap(json.decode(source));
 }

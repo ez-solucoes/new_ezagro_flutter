@@ -53,9 +53,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
         return _buildHamburgerAndTitle(context);
       case AppBarType.hamburgerAndEmployee:
         return _buildHamburgerAndEmployee;
-      default:
-        return AppBar();
-    }
+      }
   }
 
   AppBar get _buildStepsAndBackArrow => AppBar(

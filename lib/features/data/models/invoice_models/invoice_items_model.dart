@@ -3,7 +3,7 @@ import 'dart:convert';
 import '../../../domain/entities/invoice_entities/invoice_items_entity.dart';
 import '../farm_models/farm_model.dart';
 import '../inventory_models/inventory_model.dart';
-import '../machine_implement_models/machine_implement_model.dart';
+import '../machinery_implement_models/machinery_implement_model.dart';
 import '../products_models/product_model.dart';
 import '../purchase_order_models/purchase_order_item_model.dart';
 import '../tax_models/tax_model.dart';
@@ -30,7 +30,7 @@ class InvoiceItemsModel extends InvoiceItemsEntity {
         'product': (product as ProductModel).toMap(),
         'tax': (tax as TaxModel).toMap(),
         'quantity': quantity,
-        'machineImplement': (machineImplement as MachineImplementModel).toMap(),
+        'machineImplement': (machineImplement as MachineryImplementModel).toMap(),
         'inventory': (inventory as InventoryModel).toMap(),
         'discount': discount,
         'unitPrice': unitPrice,
@@ -48,7 +48,7 @@ class InvoiceItemsModel extends InvoiceItemsEntity {
         tax: TaxModel.fromMap(map['tax']),
         quantity: map['quantity'],
         machineImplement:
-            MachineImplementModel.fromMap(map['machineImplement']),
+            MachineryImplementModel.fromMap(map['machineImplement']),
         inventory: InventoryModel.fromMap(map['inventory']),
         discount: map['discount'],
         unitPrice: map['unitPrice'],

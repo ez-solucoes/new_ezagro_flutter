@@ -7,7 +7,7 @@ import '../compartment_models/compartment_model.dart';
 import '../cost_center_models/cost_center_model.dart';
 import '../email_model/email_model.dart';
 import '../farm_models/farm_model.dart';
-import '../machine_implement_models/machine_implement_model.dart';
+import '../machinery_implement_models/machinery_implement_model.dart';
 import '../phone_models/phone_model.dart';
 import 'inventory_type_model.dart';
 
@@ -39,7 +39,7 @@ class InventoryModel extends InventoryEntity {
         'farm': (farm as FarmModel).toMap(),
         'costCenters':
             costCenters.map((e) => (e as CostCenterModel).toMap()).toList(),
-        'machineImplement': (machineImplement as MachineImplementModel).toMap(),
+        'machineImplement': (machineImplement as MachineryImplementModel).toMap(),
         'name': name,
         'inventoryType': (inventoryType as InventoryTypeModel).toMap(),
         'isExternal': isExternal,
@@ -60,7 +60,7 @@ class InventoryModel extends InventoryEntity {
         costCenters: List<CostCenterModel>.from(
             map['costCenters']?.map((x) => CostCenterModel.fromMap(x))),
         machineImplement:
-            MachineImplementModel.fromMap(map['machineImplement']),
+            MachineryImplementModel.fromMap(map['machineImplement']),
         name: map['name'],
         inventoryType: InventoryTypeModel.fromMap(map['inventoryType']),
         isExternal: map['isExternal'],

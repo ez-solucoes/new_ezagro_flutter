@@ -275,7 +275,8 @@ class AppStringsPortuguese {
 
   static const String machineryAndImplementsTitle = 'Maquinários & Implementos';
   static const String machineryPluralTitle = 'Maquinários';
-  static const String machineryNameColumn = 'Maquinário';
+  static const String machineryNameColumn = 'Nome';
+  static const String machineryTypeColumn = 'Tipo';
   static const String machineryBrandColumn = 'Marca';
   static const String machineryScreenTitle = 'Maquinário';
   static const String machineryBasicInformation = 'Informações Básicas';
@@ -297,7 +298,7 @@ class AppStringsPortuguese {
   static const String machineryDocumentLabel = 'Documento:';
   static const String machineryInvoiceLabel = 'Nota Fiscal:';
   static const String machineryInsuranceExpiringDateLabel = 'Vencimento do Seguro:';
-  static const String machineryInsurancePolicyLabel = 'Apólice:';
+  static const String machineryInsurancePolicyLabel = 'Contrato de Seguro:';
   static const String machineryAcquisition = 'Aquisição';
   static const String machineryAcquisitionDateLabel = 'Data da Aquisição';
   static const String machineryAcquisitionValueLabel = 'Valor da Aquisição:';

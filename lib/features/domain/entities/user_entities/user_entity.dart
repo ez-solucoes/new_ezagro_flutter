@@ -13,6 +13,7 @@ class UserEntity extends Equatable {
   final String updatedAt;
   final String? deletedAt;
   final bool? isResetPassword;
+  final bool? isFirstLogin;
   final ClientEntity? client;
   final List<AccessGroupsEntity>? accessGroups;
 
@@ -26,6 +27,7 @@ class UserEntity extends Equatable {
     required this.updatedAt,
     this.deletedAt,
     this.isResetPassword,
+    this.isFirstLogin,
     this.client,
     this.accessGroups,
   });
@@ -41,6 +43,7 @@ class UserEntity extends Equatable {
     updatedAt,
     deletedAt,
     isResetPassword,
+    isFirstLogin,
     client,
     accessGroups,
   ];

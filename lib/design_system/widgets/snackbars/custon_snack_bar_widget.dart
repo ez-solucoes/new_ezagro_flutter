@@ -30,9 +30,7 @@ class CustomSnackBarWidget {
         return _buildSuccessSnackBar(context, message);
       case SnackBarType.alert:
         return _buildAlertSnackBar(context, message);
-      default:
-        throw Exception('SnackBar type not supported');
-    }
+      }
   }
 
   static _buildSuccessSnackBar(BuildContext context, String message) {

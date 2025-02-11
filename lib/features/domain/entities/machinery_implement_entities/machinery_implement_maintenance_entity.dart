@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class MachineImplementMaintenanceEntity extends Equatable{
+class MachineryImplementMaintenanceEntity extends Equatable{
   final int id;
   final String? date;
   final String? description;
@@ -11,7 +11,7 @@ class MachineImplementMaintenanceEntity extends Equatable{
   final double? requiredHourMeter;
   final double? requiredKilometer;
 
-  const MachineImplementMaintenanceEntity({
+  const MachineryImplementMaintenanceEntity({
     required this.id,
     this.date,
     this.description,

@@ -52,6 +52,7 @@ import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_u
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/get_farm_by_id_usecase/get_farm_by_id_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/get_farm_list_usecase/get_farm_list_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/machinery_usecases/get_machinery_implement_by_id/get_machinery_implement_by_id_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/machinery_usecases/machinery_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/machinery_usecases/machinery_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/pest_usecases/pest_usecase.dart';
@@ -140,6 +141,9 @@ import 'features/domain/usecases/employee_usecase/employee_usecase.dart';
 import 'features/domain/usecases/employee_usecase/employee_usecase_impl.dart';
 import 'features/domain/usecases/farm_usecases/get_farm_by_id_usecase/get_farm_by_id_usecase_impl.dart';
 import 'features/domain/usecases/farm_usecases/get_farm_list_usecase/get_farm_list_usecase.dart';
+import 'features/domain/usecases/machinery_usecases/get_all_machinery_usecases/get_all_machinery_usecase.dart';
+import 'features/domain/usecases/machinery_usecases/get_all_machinery_usecases/get_all_machinery_usecase_impl.dart';
+import 'features/domain/usecases/machinery_usecases/get_machinery_implement_by_id/get_machinery_implement_by_id_usecase_impl.dart';
 import 'features/domain/usecases/service_order_list_usecase/service_order_list_usecase.dart';
 import 'features/domain/usecases/service_order_list_usecase/service_order_list_usecase_impl.dart';
 import 'features/domain/usecases/user_usecases/update_user_by_id_usecase/update_user_by_id_usecase_impl.dart';
@@ -157,6 +161,7 @@ import 'features/presenter/modules/register/company/company_page.dart';
 import 'features/presenter/modules/register/contracts/contract_page.dart';
 import 'features/presenter/modules/register/employees/employee_page.dart';
 import 'features/presenter/modules/register/farm/farm_page.dart';
+import 'features/presenter/modules/register/machinery/machinery_controller.dart';
 import 'features/presenter/modules/register/machinery/machinery_implements_page.dart';
 import 'features/presenter/modules/service_order/controller/create_service_order_controller/create_service_order_controller.dart';
 import 'features/presenter/modules/service_order/controller/service_order_controller/service_order_controller.dart';
@@ -201,6 +206,8 @@ class AppModule extends Module {
     i.addLazySingleton<GetFarmByIdUsecase>(GetFarmByIdUsecaseImpl.new);
 
     i.addLazySingleton<GetAllUsersUsecase>(GetAllUsersUsecaseImpl.new);
+    i.addLazySingleton<GetAllMachineryUsecase>(GetAllMachineryUsecaseImpl.new);
+    i.addLazySingleton<GetMachineryImplementByIdUsecase>(GetMachineryImplementByIdUsecaseImpl.new);
     i.addLazySingleton<GetUserByIdUsecase>(GetUserByIdUsecaseImpl.new);
     i.addLazySingleton<UpdateUserByIdUsecase>(UpdateUserByIdUsecaseImpl.new);
     i.addLazySingleton<GetAllCompaniesUsecase>(GetAllCompaniesUsecaseImpl.new);
@@ -255,12 +262,13 @@ class AppModule extends Module {
     i.addLazySingleton<FarmController>(FarmController.new);
     i.addLazySingleton<EmployeeController>(EmployeeController.new);
     i.addLazySingleton<ContractController>(ContractController.new);
+    i.addLazySingleton<MachineryController>(MachineryController.new);
     super.binds(i);
   }
 
   @override
   void routes(RouteManager r) {
-    r.child(AppRoutes.appDefaultPage, child: (context) => LoginPage());
+    r.child(AppRoutes.appDefaultPage, child: (context) => LoginPage ());
     r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
 
     r.child(AppRoutes.appLoginPage, child: (context) => LoginPage());
@@ -290,7 +298,7 @@ class AppModule extends Module {
     r.child(AppRoutes.appFarmListPage, child: (context) => FarmListPage());
     r.child(AppRoutes.appFarmPage, child: (context) => FarmPage(args: r.args.data,));
     r.child(AppRoutes.appMachineryListPage, child: (context) => MachineryListPage());
-    r.child(AppRoutes.appMachineryPage, child: (context) => MachineryImplementsPage());
+    r.child(AppRoutes.appMachineryPage, child: (context) => MachineryImplementsPage(args: r.args.data,));
 
     super.routes(r);
   }

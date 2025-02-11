@@ -41,7 +41,7 @@ abstract class AuthenticationControllerAbstract with Store {
   String temporaryPassword = '';
 
   @observable
-  String accessStatus = '';
+  bool isFirstAccess = false;
 
   bool isResetPassword = false;
 
@@ -66,6 +66,7 @@ abstract class AuthenticationControllerAbstract with Store {
       username = success.data!.user!.client!.name;
       token = success.data!.token!;
       isResetPassword = success.data!.user!.isResetPassword!;
+      isFirstAccess = success.data!.user!.isFirstLogin!;
       userId = success.data!.user!.id!;
 
       // accessStatus = success.firstAccessVerification!;

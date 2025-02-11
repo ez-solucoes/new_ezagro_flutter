@@ -14,6 +14,7 @@ import '../../../widgets/buttons/custom_elevated_button.dart';
 import '../../../widgets/buttons/custom_underlined_text_button.dart';
 import '../../../widgets/text_fields/custom_outlined_text_form_field.dart';
 import '../recover_password_pages/username_input_page.dart';
+import '../register_page/register_first_step_page.dart';
 
 class LoginPage extends StatelessWidget {
   final ArgParams? args;
@@ -63,7 +64,9 @@ class LoginPage extends StatelessWidget {
                 await controller.authenticate(context);
                 if(controller.isResetPassword){
                   NewPasswordPage.navigate();
-                }else {
+                }else if(controller.isFirstAccess){
+                  RegisterFirstStepPage.navigate();
+                } else{
                   if (controller.token != '') {
                     HomePage.navigate();
                   }

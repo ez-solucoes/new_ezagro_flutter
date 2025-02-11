@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import '../../../domain/entities/machine_implement_entities/machine_implement_history_entity.dart';
+import '../../../domain/entities/machinery_implement_entities/machinery_implement_history_entity.dart';
 import '../local_time_model/local_time_model.dart';
 import '../year_models/year_model.dart';
 
 
-class MachineImplementHistoryModel extends MachineImplementHistoryEntity {
-  const MachineImplementHistoryModel({
+class MachineryImplementHistoryModel extends MachineryImplementHistoryEntity {
+  const MachineryImplementHistoryModel({
     required super.machineImplementHistoryId,
     super.machineImplementId,
     super.isExternal,
@@ -42,8 +42,8 @@ class MachineImplementHistoryModel extends MachineImplementHistoryEntity {
     'nickname': nickname,
   };
 
-  factory MachineImplementHistoryModel.fromMap(Map<String, dynamic> map) =>
-      MachineImplementHistoryModel(
+  factory MachineryImplementHistoryModel.fromMap(Map<String, dynamic> map) =>
+      MachineryImplementHistoryModel(
         machineImplementHistoryId: map['machineImplementHistoryId'],
         machineImplementId: map['machineImplementId'],
         isExternal: map['isExternal'],
@@ -63,7 +63,7 @@ class MachineImplementHistoryModel extends MachineImplementHistoryEntity {
 
   String toJson() => json.encode(toMap());
 
-  factory MachineImplementHistoryModel.fromJson(String source) =>
-      MachineImplementHistoryModel.fromMap(json.decode(source));
+  factory MachineryImplementHistoryModel.fromJson(String source) =>
+      MachineryImplementHistoryModel.fromMap(json.decode(source));
 
 }

@@ -142,10 +142,10 @@ class ServiceOrderPage extends StatelessWidget {
                     ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: (controller.serviceOrder?.machineImplements?.map((e) => e.machineImplementType?.name).toList() ?? []).length,
+                      itemCount: (controller.serviceOrder?.machineryImplements?.map((e) => e.type?.name).toList() ?? []).length,
                       itemBuilder: (context, index) {
                         return CustomListItemWidget(
-                            informationText: (controller.serviceOrder?.machineImplements?.map((e) => e.machineImplementType?.name).toList() ?? [])[index] ?? "",
+                            informationText: (controller.serviceOrder?.machineryImplements?.map((e) => e.type?.name).toList() ?? [])[index] ?? "",
                             backgroundColor: index % 2 == 0
                                 ? AppColors.primaryWhiteColor
                                 : AppColors.softGreenColor,

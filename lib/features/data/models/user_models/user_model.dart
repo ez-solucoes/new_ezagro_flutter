@@ -15,6 +15,7 @@ class UserModel extends UserEntity {
     required super.updatedAt,
     super.deletedAt,
     super.isResetPassword,
+    super.isFirstLogin,
     super.client,
     super.accessGroups,
   });
@@ -30,6 +31,7 @@ class UserModel extends UserEntity {
       'updatedAt': updatedAt,
       'deletedAt': deletedAt,
       'isResetPassword': isResetPassword,
+      'isFirstLogin': isFirstLogin,
       'client': client,
       'accessGroups': accessGroups,
     };
@@ -46,6 +48,7 @@ class UserModel extends UserEntity {
       updatedAt: map['updatedAt'] as String,
       deletedAt: map['deletedAt'] == null ? null : map['deletedAt'] as String,
       isResetPassword: map['isResetPassword'] == null ? null : map['isResetPassword'] as bool,
+      isFirstLogin: map['isFirstLogin'] == null ? null : map['isFirstLogin'] as bool,
       client: ClientModel.fromMap(map['client']),
       accessGroups: map['accessGroups'] != null ? (map['accessGroups'] as List).map((e) => AccessGroupsModel.fromMap(e)).toList() : null,
     );

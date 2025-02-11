@@ -51,7 +51,7 @@ class ContractListPage extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 20, left: 20, right: 20, bottom: 0),
+                            top: 10, left: 20, right: 20, bottom: 0),
                         child: CustomSearchBar(
                           onTextChanged: (search){
                             controller.searchContract(search);

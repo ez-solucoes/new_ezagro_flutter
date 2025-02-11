@@ -58,7 +58,7 @@ class MultInfoCard extends StatelessWidget {
                       children: sectionData.$1.map((data) {
                         return Padding(
                           padding: EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 7.5),
+                              vertical: 5, horizontal: 2.5),
                           child: FittedBox(
                             fit: BoxFit.fitWidth,
                             child: StackedDataWidget(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/register/machinery/machinery_list_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/documents_list_widget/documents_list_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/mult_info_card/mult_info_card.dart';
 
@@ -30,8 +31,9 @@ class MachineryImplementsPage extends StatelessWidget {
     return BackgroundWidget(
         scrollable: true,
         appBar: const CustomAppBarWidget(
-          appBarType: AppBarType.hamburgerAndTitle,
+          appBarType: AppBarType.centeredTitleAndBackArrow,
           title: AppStringsPortuguese.machineryScreenTitle,
+          callback: MachineryListPage.navigate,
         ),
         child: Observer(
           builder: (context) => Padding(

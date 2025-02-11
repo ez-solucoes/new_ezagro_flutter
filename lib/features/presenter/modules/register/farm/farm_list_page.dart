@@ -51,7 +51,7 @@ class FarmListPage extends StatelessWidget {
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(
-                                  top: 20, left: 20, right: 20, bottom: 0),
+                                  top: 10, left: 20, right: 20, bottom: 0),
                               child: CustomSearchBar(
                                 onTextChanged: (search) {
                                   controller.searchFarm(search);
@@ -68,8 +68,7 @@ class FarmListPage extends StatelessWidget {
                                       ],
                                       data: FarmModel.convertToTableList(
                                           controller.filteredFarms),
-                                      maxHeight: 0.7 *
-                                          MediaQuery.of(context).size.height,
+                                      maxHeight: 0.7 * MediaQuery.of(context).size.height,
                                       onTap: (index) {
                                         FarmPage.navigate(ArgParams(firstArgs: controller.filteredFarms[index].id.toString()));
                                       }),

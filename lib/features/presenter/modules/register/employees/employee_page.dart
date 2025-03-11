@@ -41,7 +41,7 @@ class EmployeePage extends StatelessWidget {
             builder: (context) => controller.isLoading
                 ? Center(child: CircularProgressIndicator())
                 : Padding(
-                    padding: EdgeInsets.all(12),
+                    padding: EdgeInsets.only(left: 12, right: 12, top: 12),
                     child: Column(
                       children: [
                         TabBar(tabs: <Widget>[
@@ -51,7 +51,7 @@ class EmployeePage extends StatelessWidget {
                           )
                         ]),
                         const SizedBox(
-                          height: 10,
+                          height: 4,
                         ),
                         SizedBox(
                           height: MediaQuery.sizeOf(context).height * 0.75,

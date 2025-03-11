@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/design_system/colors/app_colors.dart';
 import 'package:new_ezagro_flutter/design_system/typography/app_text_styles.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/register/contracts/contract_list_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/custom_striped_table/custom_striped_table_widget.dart';
 import '../../../../../consts/app_routes.dart';
 import '../../../../../design_system/strings/app_strings_portuguese.dart';
@@ -32,9 +33,12 @@ class ContractPage extends StatelessWidget {
     controller.getContractById(args);
     return BackgroundWidget(
         scrollable: true,
-        appBar: const CustomAppBarWidget(
-          appBarType: AppBarType.hamburgerAndTitle,
+        appBar: CustomAppBarWidget(
+          appBarType: AppBarType.centeredTitleAndBackArrow,
           title: AppStringsPortuguese.singularContractTitle,
+          callback: (){
+            ContractListPage.navigate();
+          },
         ),
         child: Observer(
           builder: (context) =>

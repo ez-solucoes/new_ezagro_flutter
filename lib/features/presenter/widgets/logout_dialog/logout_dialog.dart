@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/login_pages/login_page.dart';
 import '../../../../design_system/colors/app_colors.dart';
 import '../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../design_system/typography/app_text_styles.dart';
@@ -12,7 +13,7 @@ class LogoutDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20),
+      padding: EdgeInsets.only(left: 20, right: 20, top: 20),
       decoration: BoxDecoration(color: AppColors.backgroundColor, borderRadius: BorderRadius.circular(5)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -36,7 +37,7 @@ class LogoutDialog extends StatelessWidget {
               ),
               CustomElevatedButton(
                 onPressed: () {
-
+                  LoginPage.navigate();
                 },
                 label: AppStringsPortuguese.leaveButtonLabel,
                 backgroundColor: AppColors.primaryRedColor,

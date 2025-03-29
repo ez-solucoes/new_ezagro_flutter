@@ -27,8 +27,16 @@ class _SplashPageState extends State<SplashPage> {
     connectionStatus.initialize();
 
     Timer.periodic(Duration(seconds: 3), (timer){
+      timer.cancel();
       LoginPage.navigate();
+
     });
+  }
+
+  @override
+  dispose(){
+    Modular.dispose();
+    super.dispose();
   }
 
   @override

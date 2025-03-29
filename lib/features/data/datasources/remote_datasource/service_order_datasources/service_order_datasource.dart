@@ -7,9 +7,16 @@ import '../../../models/response_models/response_model.dart';
 import '../../../models/service_order_list_model/service_order_list_model.dart';
 
 abstract class ServiceOrderDatasource {
-  Future<ResponseModel<PaginationModel<ServiceOrderListModel>>> getServiceOrderList(NoParams noParams);
+  Future<ResponseModel<PaginationModel<FieldServiceOrderModel>>> getServiceOrderList(NoParams noParams);
 
   Future<ResponseModel<FieldServiceOrderModel>> createServiceOrder(MockParams mockParams);
 
-  Future<ResponseModel<FieldServiceOrderModel>> getServiceOrderById(ArgParams params);
+  Future<ResponseModel<ServiceOrderModel>> getServiceOrderById(ArgParams params);
+
+  Future<List<ServiceOrderModel>> getServiceOrderListByStatusId(ArgParams params);
+
+  Future<ResponseModel<ServiceOrderModel>> approveServiceOrderById(ArgParams params);
+
+  Future<ResponseModel<ServiceOrderModel>> cancelServiceOrderById(ArgParams params);
+
 }

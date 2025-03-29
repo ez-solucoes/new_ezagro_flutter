@@ -16,4 +16,11 @@ class AppDrawables {
   static const String checkWhiteIcon = '${iconBaseDir}check_white_icon.svg';
   static const String companyIcon = '${iconBaseDir}company_icon.svg';
   static const String farmIcon = '${iconBaseDir}farm_icon.svg';
+  static const String approvalIcon = '${iconBaseDir}approval_icon.svg';
+  static const String contractIcon = '${iconBaseDir}contract_icon.svg';
+  static const String requestIcon = '${iconBaseDir}request_icon.svg';
+  static const String registerIcon = '${iconBaseDir}register_icon.svg';
+  static const String serviceOrderIcon = '${iconBaseDir}service_order_icon.svg';
+
+
 }

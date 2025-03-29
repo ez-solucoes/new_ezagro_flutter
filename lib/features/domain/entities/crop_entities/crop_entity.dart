@@ -3,6 +3,11 @@ import 'package:equatable/equatable.dart';
 class CropEntity extends Equatable {
   final int id;
   final String? name;
+  final String? slug;
+  final bool? isPerennial;
+  final String? createdAt;
+  final String? updatedAt;
+  final String? deletedAt;
   final String? description;
   final bool? active;
 
@@ -11,6 +16,11 @@ class CropEntity extends Equatable {
     this.name,
     this.description,
     this.active,
+    this.slug,
+    this.isPerennial,
+    this.createdAt,
+    this.updatedAt,
+    this.deletedAt,
   });
 
   @override
@@ -19,5 +29,10 @@ class CropEntity extends Equatable {
         name,
         description,
         active,
+        slug,
+        isPerennial,
+        createdAt,
+        updatedAt,
+        deletedAt,
       ];
 }

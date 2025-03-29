@@ -6,6 +6,7 @@ class AppRoutes {
   static const String appOnboardingPage = '/onboardingPage';
   static const String appLoginPage = '/loginPage';
   static const String appHomePage = '/homePage';
+  static const String appHomeScreen = '/homeScreen';
 
   static const String appUsernameInputPage = '/usernameInputPage';
   static const String appTempPasswordPage = '/tempPasswordPage';
@@ -24,6 +25,9 @@ class AppRoutes {
   static const String appServiceOrderPage = '/serviceOrderPage';
   static const String appPlotsList = '/plotListPage';
   static const String appCreateServiceOrderPage = '/createServiceOrderPage';
+
+
+  static const String appRegistersPage = '/registersPage';
   static const String appCompanyPage = '/companyPage';
   static const String appCompanyListPage = '/companyListPage';
   static const String appContractPage = '/contractPage';
@@ -37,4 +41,9 @@ class AppRoutes {
   //Change Password
   static const String appChangePasswordFirstStepPage =
       '/changePasswordFirstStepPage';
+
+  //Approvals
+  static const String appApprovalsListPage = '/approvalsListPage';
+  static const String appApprovalsPurchaseRequestDetailPage = '/approvalsPurchaseRequestDetailPage';
+  static const String appApprovalsServiceOrderDetailPage = '/approvalsServiceOrderDetailPage';
 }

@@ -14,7 +14,7 @@ import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/cost_c
 import 'package:new_ezagro_flutter/features/domain/usecases/machinery_usecases/machinery_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/pest_usecases/pest_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecase.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/service_order_usecase/create_service_order_usecase.dart';
 import '../../../../../../core/enums/field_service_order_type_enum.dart';
 import '../../../../../../core/usecase/usecase.dart';
 import '../../../../../domain/entities/pest_entities/pest_entity.dart';
@@ -157,7 +157,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
 
   @action
   int getPageNumber() {
-    switch (getFieldServiceOrderTypeEnum(activity?.activityType ?? "")) {
+    switch (getFieldServiceOrderTypeEnum(activity?.activityType!.name ?? "")) {
       case FieldServiceOrderTypeEnum.transfer:
         return 6;
       case FieldServiceOrderTypeEnum.monitoring:

@@ -49,7 +49,7 @@ class UserModel extends UserEntity {
       deletedAt: map['deletedAt'] == null ? null : map['deletedAt'] as String,
       isResetPassword: map['isResetPassword'] == null ? null : map['isResetPassword'] as bool,
       isFirstLogin: map['isFirstLogin'] == null ? null : map['isFirstLogin'] as bool,
-      client: ClientModel.fromMap(map['client']),
+      client: map['client'] == null ? null : ClientModel.fromMap(map['client']),
       accessGroups: map['accessGroups'] != null ? (map['accessGroups'] as List).map((e) => AccessGroupsModel.fromMap(e)).toList() : null,
     );
   }

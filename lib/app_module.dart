@@ -21,6 +21,7 @@ import 'package:new_ezagro_flutter/features/domain/repositories/authentication_r
 import 'package:new_ezagro_flutter/features/domain/repositories/company_repositories/company_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/contract_repositories/contract_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/pest_repositories/pest_repository.dart';
+import 'package:new_ezagro_flutter/features/domain/repositories/purchase_request_repositories/purchase_request_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/user_repositories/user_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase_impl.dart';
@@ -63,10 +64,14 @@ import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots
 import 'package:new_ezagro_flutter/features/domain/usecases/plots_usecases/plots_with_farm_id_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecases_impl.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/create_service_order_usecase_impl.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/get_service_order_by_id_usecase.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/service_order_list_usecase/get_service_order_by_id_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/purchase_request_usecases/get_all_purchase_request_usecases/get_all_purchase_request_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/service_order_usecase/approve_service_order_by_id_usecase/approve_service_order_by_id_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/service_order_usecase/approve_service_order_by_id_usecase/approve_service_order_by_id_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/service_order_usecase/cancel_service_order_by_id_usecase/cancel_service_order_by_id_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/service_order_usecase/create_service_order_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/service_order_usecase/create_service_order_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/service_order_usecase/get_service_order_by_id_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/service_order_usecase/get_service_order_by_id_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/user_usecases/get_all_users_usecases/get_all_users_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/user_usecases/get_all_users_usecases/get_all_users_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/user_usecases/get_user_by_id_usecase/get_user_by_id_usecase.dart';
@@ -77,6 +82,7 @@ import 'package:new_ezagro_flutter/features/presenter/modules/authentication_mod
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/temp_password_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/username_input_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/home/home_page.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/home/home_screen.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/company/controller/company_controller.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/contracts/contract_list_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/contracts/controller/contract_controller.dart';
@@ -113,6 +119,8 @@ import 'features/data/datasources/remote_datasource/pest_datasources/pest_dataso
 import 'features/data/datasources/remote_datasource/plots_datasource/plots_datasource.dart';
 import 'features/data/datasources/remote_datasource/plots_datasource/plots_datasource_impl.dart';
 import 'features/data/datasources/remote_datasource/product_datasources/product_datasource_impl.dart';
+import 'features/data/datasources/remote_datasource/purchase_request_datasources/purchase_request_datasource.dart';
+import 'features/data/datasources/remote_datasource/purchase_request_datasources/purchase_request_datasource_impl.dart';
 import 'features/data/datasources/remote_datasource/service_order_datasources/service_order_datasource.dart';
 import 'features/data/datasources/remote_datasource/service_order_datasources/service_order_datasource_impl.dart';
 import 'features/data/repositories/activity_repositories/activity_repository_impl.dart';
@@ -124,6 +132,7 @@ import 'features/data/repositories/farm_repositories/farm_repository_impl.dart';
 import 'features/data/repositories/machinery_repositories/machinery_repository_impl.dart';
 import 'features/data/repositories/plots_repositories/plots_repository_impl.dart';
 import 'features/data/repositories/products_repositories/products_repository_impl.dart';
+import 'features/data/repositories/purchase_request_repositories/purchase_request_repository_impl.dart';
 import 'features/data/repositories/service_order_repositories/service_order_repository_impl.dart';
 import 'features/domain/repositories/activity_repository/activity_repository.dart';
 import 'features/domain/repositories/cost_center_repositories/cost_center_repository.dart';
@@ -144,9 +153,26 @@ import 'features/domain/usecases/farm_usecases/get_farm_list_usecase/get_farm_li
 import 'features/domain/usecases/machinery_usecases/get_all_machinery_usecases/get_all_machinery_usecase.dart';
 import 'features/domain/usecases/machinery_usecases/get_all_machinery_usecases/get_all_machinery_usecase_impl.dart';
 import 'features/domain/usecases/machinery_usecases/get_machinery_implement_by_id/get_machinery_implement_by_id_usecase_impl.dart';
-import 'features/domain/usecases/service_order_list_usecase/service_order_list_usecase.dart';
-import 'features/domain/usecases/service_order_list_usecase/service_order_list_usecase_impl.dart';
+import 'features/domain/usecases/purchase_request_usecases/approve_purchase_request_by_id_usecases/approve_purchase_request_by_id_usecase.dart';
+import 'features/domain/usecases/purchase_request_usecases/approve_purchase_request_by_id_usecases/approve_purchase_request_by_id_usecase_impl.dart';
+import 'features/domain/usecases/purchase_request_usecases/cancel_purchase_request_by_id_usecases/cancel_purchase_request_by_id_usecase.dart';
+import 'features/domain/usecases/purchase_request_usecases/cancel_purchase_request_by_id_usecases/cancel_purchase_request_by_id_usecase_impl.dart';
+import 'features/domain/usecases/purchase_request_usecases/get_all_purchase_request_usecases/get_all_purchase_request_usecase_impl.dart';
+import 'features/domain/usecases/purchase_request_usecases/get_purchase_request_by_id_usecases/get_purchase_request_by_id_usecase.dart';
+import 'features/domain/usecases/purchase_request_usecases/get_purchase_request_by_id_usecases/get_purchase_request_by_id_usecase_impl.dart';
+import 'features/domain/usecases/purchase_request_usecases/get_purchase_request_by_status_id_usecases/get_purchase_request_by_status_id_usecase.dart';
+import 'features/domain/usecases/purchase_request_usecases/get_purchase_request_by_status_id_usecases/get_purchase_request_by_status_id_usecases_impl.dart';
+import 'features/domain/usecases/service_order_usecase/cancel_service_order_by_id_usecase/cancel_service_order_by_id_usecase_impl.dart';
+import 'features/domain/usecases/service_order_usecase/get_service_order_by_status_id_usecase/get_service_order_by_status_id_usecase.dart';
+import 'features/domain/usecases/service_order_usecase/get_service_order_by_status_id_usecase/get_service_order_by_status_id_usecase_impl.dart';
+import 'features/domain/usecases/service_order_usecase/service_order_list_usecase.dart';
+import 'features/domain/usecases/service_order_usecase/service_order_list_usecase_impl.dart';
 import 'features/domain/usecases/user_usecases/update_user_by_id_usecase/update_user_by_id_usecase_impl.dart';
+import 'features/presenter/modules/approvals_module/approvals_detail/approvals_detail_controller.dart';
+import 'features/presenter/modules/approvals_module/approvals_detail/approvals_purchase_request_detail_page.dart';
+import 'features/presenter/modules/approvals_module/approvals_detail/approvals_service_order_detail_page.dart';
+import 'features/presenter/modules/approvals_module/approvals_list/approvals_list_controller.dart';
+import 'features/presenter/modules/approvals_module/approvals_list/approvals_list_page.dart';
 import 'features/presenter/modules/authentication_module/authentication_controller/authentication_controller.dart';
 import 'features/presenter/modules/authentication_module/login_pages/login_page.dart';
 import 'features/presenter/modules/authentication_module/recover_password_pages/new_password_page.dart';
@@ -163,6 +189,7 @@ import 'features/presenter/modules/register/employees/employee_page.dart';
 import 'features/presenter/modules/register/farm/farm_page.dart';
 import 'features/presenter/modules/register/machinery/machinery_controller.dart';
 import 'features/presenter/modules/register/machinery/machinery_implements_page.dart';
+import 'features/presenter/modules/register/registers_page.dart';
 import 'features/presenter/modules/service_order/controller/create_service_order_controller/create_service_order_controller.dart';
 import 'features/presenter/modules/service_order/controller/service_order_controller/service_order_controller.dart';
 import 'features/presenter/modules/service_order/create_service_order_page/create_service_order_page.dart';
@@ -200,6 +227,15 @@ class AppModule extends Module {
     i.addLazySingleton<EmployeeUsecase>(EmployeeUsecaseImpl.new);
     i.addLazySingleton<CreateServiceOrderUsecase>(CreateServiceOrderUsecaseImpl.new);
     i.addLazySingleton<GetServiceOrderByIdUsecase>(GetServiceOrderByIdUsecaseImpl.new);
+    i.addLazySingleton<GetServiceOrderByStatusIdUsecase>(GetServiceOrderByStatusIdUsecaseImpl.new);
+    i.addLazySingleton<GetAllPurchaseRequestUsecase>(GetAllPurchaseRequestUsecaseImpl.new);
+    i.addLazySingleton<GetPurchaseRequestByIdUsecase>(GetPurchaseRequestByIdUsecaseImpl.new);
+    i.addLazySingleton<ApprovePurchaseRequestByIdUsecase>(ApprovePurchaseRequestByIdUsecaseImpl.new);
+    i.addLazySingleton<CancelPurchaseRequestByIdUsecase>(CancelPurchaseRequestByIdUsecaseImpl.new);
+    i.addLazySingleton<GetPurchaseRequestByStatusIdUsecase>(GetPurchaseRequestByStatusIdUsecaseImpl.new);
+    i.addLazySingleton<ApproveServiceOrderByIdUsecase>(ApproveServiceOrderByIdUsecaseImpl.new);
+    i.addLazySingleton<CancelServiceOrderByIdUsecase>(CancelServiceOrderByIdUsecaseImpl.new);
+
     i.addLazySingleton<PestUsecase>(PestUsecaseImpl.new);
     i.addLazySingleton<CostCenterFarmUsecase>(CostCenterFarmUsecaseImpl.new);
     i.addLazySingleton<PlotsWithFarmIdUsecase>(PlotsWithFarmIdUsecaseImpl.new);
@@ -234,6 +270,7 @@ class AppModule extends Module {
     i.addLazySingleton<UserRepository>(UserRepositoryImpl.new);
     i.addLazySingleton<CompanyRepository>(CompanyRepositoryImpl.new);
     i.addLazySingleton<ContractRepository>(ContractRepositoryImpl.new);
+    i.addLazySingleton<PurchaseRequestRepository>(PurchaseRequestRepositoryImpl.new);
 
     //Datasource
     i.addLazySingleton<AuthenticationDatasource>(AuthenticationDatasourceImpl.new);
@@ -251,6 +288,7 @@ class AppModule extends Module {
     i.addLazySingleton<UserDatasource>(UserDatasourceImpl.new);
     i.addLazySingleton<CompanyDatasource>(CompanyDatasourceImpl.new);
     i.addLazySingleton<ContractDatasource>(ContractDatasourceImpl.new);
+    i.addLazySingleton<PurchaseRequestDatasource>(PurchaseRequestDatasourceImpl.new);
 
     //Controllers
     i.addLazySingleton<AuthenticationController>(AuthenticationController.new);
@@ -263,21 +301,22 @@ class AppModule extends Module {
     i.addLazySingleton<EmployeeController>(EmployeeController.new);
     i.addLazySingleton<ContractController>(ContractController.new);
     i.addLazySingleton<MachineryController>(MachineryController.new);
+    i.addLazySingleton<ApprovalsListController>(ApprovalsListController.new);
+    i.addLazySingleton<ApprovalsDetailController>(ApprovalsDetailController.new);
     super.binds(i);
   }
 
   @override
   void routes(RouteManager r) {
-    r.child(AppRoutes.appDefaultPage, child: (context) => LoginPage ());
+    r.child(AppRoutes.appDefaultPage, child: (context) => SplashPage ());
     r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
-
     r.child(AppRoutes.appLoginPage, child: (context) => LoginPage());
+    r.child(AppRoutes.appRegistersPage, child: (context) => RegistersPage());
     r.child(AppRoutes.appUsernameInputPage, child: (context) => UsernameInputPage());
     r.child(AppRoutes.appTempPasswordPage, child: (context) => TempPasswordPage());
     r.child(AppRoutes.appRepeatPasswordPage, child: (context) => RepeatPasswordPage());
     r.child(AppRoutes.appNewPasswordPage, child: (context) => NewPasswordPage());
     r.child(AppRoutes.appRecoverPasswordSuccessPage, child: (context) => RecoverPasswordSuccessPage());
-
     r.child(AppRoutes.appRegisterFirstStepPage, child: (context) => const RegisterFirstStepPage());
     r.child(AppRoutes.appRegisterSecondStepPage, child: (context) => const RegisterSecondStepPage());
     r.child(AppRoutes.appRegisterThirdStepPage, child: (context) => const RegisterThirdStepPage());
@@ -285,6 +324,7 @@ class AppModule extends Module {
     r.child(AppRoutes.appRegisterFifthStepPage, child: (context) => const RegisterFifthStepPage());
     r.child(AppRoutes.appDocumentsPage, child: (context) => const DocumentsPage());
     r.child(AppRoutes.appHomePage, child: (context) => const HomePage());
+    r.child(AppRoutes.appHomeScreen, child: (context) => const HomeScreen());
     r.child(AppRoutes.appServiceOrderPage, child: (context) => ServiceOrderPage(args: r.args.data,));
     r.child(AppRoutes.appServiceOrderListPage, child: (context) => const ServiceOrderListPage());
     r.child(AppRoutes.appPlotsList, child : (context) => PlotsListPage());
@@ -299,6 +339,9 @@ class AppModule extends Module {
     r.child(AppRoutes.appFarmPage, child: (context) => FarmPage(args: r.args.data,));
     r.child(AppRoutes.appMachineryListPage, child: (context) => MachineryListPage());
     r.child(AppRoutes.appMachineryPage, child: (context) => MachineryImplementsPage(args: r.args.data,));
+    r.child(AppRoutes.appApprovalsListPage, child: (context) => ApprovalsListPage());
+    r.child(AppRoutes.appApprovalsPurchaseRequestDetailPage, child: (context) => ApprovalsPurchaseRequestDetailPage(args: r.args.data,));
+    r.child(AppRoutes.appApprovalsServiceOrderDetailPage, child: (context) => ApprovalsServiceOrderDetailPage(args: r.args.data,));
 
     super.routes(r);
   }

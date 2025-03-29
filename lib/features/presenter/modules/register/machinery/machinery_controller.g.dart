@@ -25,44 +25,38 @@ mixin _$MachineryController on MachineryControllerAbstract, Store {
     });
   }
 
-  late final _$machineImplementEntityAtom = Atom(
-      name: 'MachineryControllerAbstract.machineImplementEntity',
+  late final _$machineryImplementEntityAtom = Atom(
+      name: 'MachineryControllerAbstract.machineryImplementEntity',
       context: context);
 
   @override
   MachineryImplementEntity get machineryImplementEntity {
-    _$machineImplementEntityAtom.reportRead();
+    _$machineryImplementEntityAtom.reportRead();
     return super.machineryImplementEntity;
   }
 
-  bool _machineImplementEntityIsInitialized = false;
-
   @override
   set machineryImplementEntity(MachineryImplementEntity value) {
-    _$machineImplementEntityAtom.reportWrite(
-        value,
-        _machineImplementEntityIsInitialized
-            ? super.machineryImplementEntity
-            : null, () {
+    _$machineryImplementEntityAtom
+        .reportWrite(value, super.machineryImplementEntity, () {
       super.machineryImplementEntity = value;
-      _machineImplementEntityIsInitialized = true;
     });
   }
 
-  late final _$machineImplementListAtom = Atom(
-      name: 'MachineryControllerAbstract.machineImplementList',
+  late final _$machineryImplementListAtom = Atom(
+      name: 'MachineryControllerAbstract.machineryImplementList',
       context: context);
 
   @override
   List<MachineryImplementEntity> get machineryImplementList {
-    _$machineImplementListAtom.reportRead();
+    _$machineryImplementListAtom.reportRead();
     return super.machineryImplementList;
   }
 
   @override
   set machineryImplementList(List<MachineryImplementEntity> value) {
-    _$machineImplementListAtom.reportWrite(value, super.machineryImplementList,
-        () {
+    _$machineryImplementListAtom
+        .reportWrite(value, super.machineryImplementList, () {
       super.machineryImplementList = value;
     });
   }
@@ -83,13 +77,13 @@ mixin _$MachineryController on MachineryControllerAbstract, Store {
     });
   }
 
-  late final _$getAllMachineImplementsAsyncAction = AsyncAction(
-      'MachineryControllerAbstract.getAllMachineImplements',
+  late final _$getAllMachineryImplementsAsyncAction = AsyncAction(
+      'MachineryControllerAbstract.getAllMachineryImplements',
       context: context);
 
   @override
   Future getAllMachineryImplements() {
-    return _$getAllMachineImplementsAsyncAction
+    return _$getAllMachineryImplementsAsyncAction
         .run(() => super.getAllMachineryImplements());
   }
 
@@ -97,8 +91,8 @@ mixin _$MachineryController on MachineryControllerAbstract, Store {
   String toString() {
     return '''
 isLoading: ${isLoading},
-machineImplementEntity: ${machineryImplementEntity},
-machineImplementList: ${machineryImplementList},
+machineryImplementEntity: ${machineryImplementEntity},
+machineryImplementList: ${machineryImplementList},
 errorMessage: ${errorMessage}
     ''';
   }

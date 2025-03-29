@@ -9,4 +9,22 @@ class ArgParams extends Equatable {
 
   @override
   List<Object?> get props => [firstArgs, secondArgs, thirdArgs];
+
+  Map<String, dynamic> toQueryParams() {
+    Map<String, dynamic> queryParams = {};
+
+    if (firstArgs != null) {
+      queryParams['firstArgs'] = firstArgs;
+    }
+
+    if (secondArgs != null) {
+      queryParams['secondArgs'] = secondArgs;
+    }
+
+    if (thirdArgs != null) {
+      queryParams['thirdArgs'] = thirdArgs;
+    }
+
+    return queryParams;
+  }
 }

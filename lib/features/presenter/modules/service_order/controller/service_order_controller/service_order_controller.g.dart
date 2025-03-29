@@ -29,13 +29,13 @@ mixin _$ServiceOrderController on ServiceOrderControllerAbstract, Store {
       name: 'ServiceOrderControllerAbstract.serviceOrder', context: context);
 
   @override
-  FieldServiceOrderEntity? get serviceOrder {
+  ServiceOrderEntity? get serviceOrder {
     _$serviceOrderAtom.reportRead();
     return super.serviceOrder;
   }
 
   @override
-  set serviceOrder(FieldServiceOrderEntity? value) {
+  set serviceOrder(ServiceOrderEntity? value) {
     _$serviceOrderAtom.reportWrite(value, super.serviceOrder, () {
       super.serviceOrder = value;
     });

@@ -80,7 +80,7 @@ class AppTextStyles {
     return TextStyle(
       fontFamily: AppFonts.montserratFont,
       fontWeight: FontWeight.bold,
-      fontSize: AppDimens.textOnCard,
+      fontSize: AppDimens.bodyTextDimen,
       color: color,
     );
   }

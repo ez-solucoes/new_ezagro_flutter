@@ -25,8 +25,10 @@ class AppEndpoints {
   static const String getContractByIdEndpoint = '/contract/';
 
   //Service Order
-  static const String getServiceOrderListEndpoint = '/field-service-order';
-  static const String getServiceOrderById = 'field-service-order/';
+  static const String getFieldServiceOrderListEndpoint = '/field-service-order';
+  static const String getServiceOrderListEndpoint = '/service-order';
+  static const String getServiceOrderEndpoint = '/service-order';
+  static const String getServiceOrderById = 'field-service-order';
   static const String getActivityTypesEndpoint = '/activity-type';
   static const String getCostCentersEndpoint = '/cost-center';
   static const String getAllFarms = '/farm';
@@ -46,4 +48,11 @@ class AppEndpoints {
   static const String getCostCenterSelectorOptions = '/cost-center/select';
 
   static const String getAllMachineryImplementEndpoint = '/machinery-implement';
+
+  ///Purchase Request
+  static const String getPurchaseRequest = '/purchase-request';
+
+  ///Approvals
+  static const String approvePurchaseRequest = '/approve';
+
 }

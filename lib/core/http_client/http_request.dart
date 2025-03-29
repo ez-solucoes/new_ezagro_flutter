@@ -153,10 +153,13 @@ class HttpRequest {
     final Map<String, dynamic>? headers,
     final Map<String, dynamic>? queryParams,
     final dynamic payload,
+    final id,
+    final sufix
   }) {
+    final modifiedPath = '$path/$id/$sufix';
     return HttpRequest(
       method: HttpRequestMethod.patch,
-      path: path,
+      path: (id != null  && sufix != null) ? modifiedPath : path,
       headers: headers,
       queryParams: queryParams,
       payload: payload,

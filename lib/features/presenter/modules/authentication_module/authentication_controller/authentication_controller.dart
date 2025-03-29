@@ -62,7 +62,7 @@ abstract class AuthenticationControllerAbstract with Store {
       errorMessage = error.friendlyMessage;
       CustomSnackBarWidget.show(SnackBarType.error, context, 'Usuário ou senha incorretos!');
     }, (success) async {
-      // name = success.employee?.employeeName ?? '';
+      name = success.data!.user!.client!.name;
       username = success.data!.user!.client!.name;
       token = success.data!.token!;
       isResetPassword = success.data!.user!.isResetPassword!;
@@ -125,7 +125,7 @@ abstract class AuthenticationControllerAbstract with Store {
 
   void saveToken(AuthenticationEntity success) async {
     final localStorage =
-        Modular.get<LocalStorageClient>(key: AppStringsPortuguese.storageTypeSecure);
+    Modular.get<LocalStorageClient>(key: AppStringsPortuguese.storageTypeSecure);
 
     await localStorage.writeData(
         LocalStorageItem(key: AppStringsPortuguese.idKey, value: success.user!.id.toString()));
@@ -135,7 +135,7 @@ abstract class AuthenticationControllerAbstract with Store {
     //Não possui mais o Nome do usuário na entidade UserEntity.
 
 
-    // await localStorage.writeData(LocalStorageItem(
-    //     key: AppStringsPortuguese.nameKey, value: success.user.));
+    await localStorage.writeData(LocalStorageItem(
+        key: AppStringsPortuguese.nameKey, value: name));
   }
 }

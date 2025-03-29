@@ -47,7 +47,7 @@ class CreateServiceOrderPage extends StatelessWidget {
           },
         ),
         child: DefaultTabController(
-            length: getFieldServiceOrderTypeEnum(controller.activity?.activityType ?? "")
+            length: getFieldServiceOrderTypeEnum(controller.activity?.activityType!.name ?? "")
                     == FieldServiceOrderTypeEnum.transfer
                     ? 7
                     : 8,

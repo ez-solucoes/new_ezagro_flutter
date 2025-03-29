@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:new_ezagro_flutter/core/http_client/http_client.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_client_helper.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
@@ -20,7 +22,7 @@ class ServiceOrderDatasourceImpl
   ServiceOrderDatasourceImpl(this.httpClient);
 
   @override
-  Future<ResponseModel<PaginationModel<ServiceOrderListModel>>> getServiceOrderList(
+  Future<ResponseModel<PaginationModel<FieldServiceOrderModel>>> getServiceOrderList(
       NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
@@ -36,9 +38,9 @@ class ServiceOrderDatasourceImpl
         return mountModelInstanceFromResponse(
           response: result,
           fromMap: (map) =>
-              PaginationModel.fromMap(map, ServiceOrderListModel.fromMap),
+              PaginationModel.fromMap(map, FieldServiceOrderModel.fromMap),
           fromJson: (jsonString) => PaginationModel.fromJson(
-              jsonString, ServiceOrderListModel.fromMap),
+              jsonString, FieldServiceOrderModel.fromMap),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -71,14 +73,14 @@ class ServiceOrderDatasourceImpl
   }
 
   @override
-  Future<ResponseModel<FieldServiceOrderModel>> getServiceOrderById(ArgParams params) async {
+  Future<ResponseModel<ServiceOrderModel>> getServiceOrderById(ArgParams params) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.getServiceOrderById + params.firstArgs.toString(),
+      AppEndpoints.getServiceOrderEndpoint,
     );
 
-    final HttpRequest request = HttpRequest.get(path: url);
+    final HttpRequest request = HttpRequest.get(path: url, id: params.firstArgs);
     final result = await httpClient.execute(request);
 
     switch (result.statusCode) {
@@ -86,10 +88,82 @@ class ServiceOrderDatasourceImpl
         return mountModelInstanceFromResponse(
           response: result,
           fromMap: (map) =>
-              FieldServiceOrderModel.fromMap(map),
-          fromJson: (jsonString) => FieldServiceOrderModel.fromJson(jsonString),
+              ServiceOrderModel.fromMap(map),
+          fromJson: (jsonString) => ServiceOrderModel.fromJson(jsonString),
         );
       default:
+        throw mountServerErrorInstance(request: request, response: result);
+    }
+  }
+
+  @override
+  Future<List<ServiceOrderModel>> getServiceOrderListByStatusId(ArgParams params) async {
+    final String url = mountUrl(
+      AppEndpoints.baseUrlProtocolWithSecurity,
+      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.getServiceOrderListEndpoint,
+    );
+
+    final HttpRequest request = HttpRequest.get(path: url,queryParams: {'statusId' : params.firstArgs.toString()});
+    final result = await httpClient.execute(request);
+
+    switch (result.statusCode) {
+      case 200:
+        return mountListModelInstanceFromResponse(
+          response: result,
+          fromListMap: (map) => (map).map((e) => ServiceOrderModel.fromMap(e)).toList(),
+          fromJsonList: (jsonString) {
+            final List<dynamic> jsonList = jsonDecode(jsonString);
+            return jsonList.map((json) => ServiceOrderModel.fromJson(jsonEncode(json))).toList();
+          },
+        );
+      default:
+        throw mountServerErrorInstance(request: request, response: result);
+    }
+  }
+
+  @override
+  Future<ResponseModel<ServiceOrderModel>> approveServiceOrderById(ArgParams params) async {
+    final String url = mountUrl(
+      AppEndpoints.baseUrlProtocolWithSecurity,
+      AppEndpoints.mainBaseUrlDev,
+        AppEndpoints.getServiceOrderEndpoint,
+    );
+
+    final HttpRequest request = HttpRequest.patch(path: url, id: params.firstArgs, sufix: 'approve');
+    final result = await httpClient.execute(request);
+
+    switch (result.statusCode) {
+      case 200:
+        return mountModelInstanceFromResponse(
+          response: result,
+          fromMap: (map) => ServiceOrderModel.fromMap(map),
+          fromJson: (jsonString) => ServiceOrderModel.fromJson(jsonString),
+        );
+        default:
+        throw mountServerErrorInstance(request: request, response: result);
+    }
+  }
+
+  @override
+  Future<ResponseModel<ServiceOrderModel>> cancelServiceOrderById(ArgParams params) async {
+    final String url = mountUrl(
+      AppEndpoints.baseUrlProtocolWithSecurity,
+      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.getServiceOrderEndpoint,
+    );
+
+    final HttpRequest request = HttpRequest.patch(path: url, id: params.firstArgs, sufix: 'cancel');
+    final result = await httpClient.execute(request);
+
+    switch (result.statusCode) {
+      case 200:
+        return mountModelInstanceFromResponse(
+          response: result,
+          fromMap: (map) => ServiceOrderModel.fromMap(map),
+          fromJson: (jsonString) => ServiceOrderModel.fromJson(jsonString),
+        );
+        default:
         throw mountServerErrorInstance(request: request, response: result);
     }
   }

@@ -31,13 +31,13 @@ mixin _$ServiceOrderListController
       context: context);
 
   @override
-  List<ServiceOrderListEntity> get serviceOrderListEntities {
+  List<ServiceOrderEntity> get serviceOrderListEntities {
     _$serviceOrderListEntitiesAtom.reportRead();
     return super.serviceOrderListEntities;
   }
 
   @override
-  set serviceOrderListEntities(List<ServiceOrderListEntity> value) {
+  set serviceOrderListEntities(List<ServiceOrderEntity> value) {
     _$serviceOrderListEntitiesAtom
         .reportWrite(value, super.serviceOrderListEntities, () {
       super.serviceOrderListEntities = value;
@@ -65,13 +65,13 @@ mixin _$ServiceOrderListController
       context: context);
 
   @override
-  List<ServiceOrderListEntity> get filteredServiceOrders {
+  List<ServiceOrderEntity> get filteredServiceOrders {
     _$filteredServiceOrdersAtom.reportRead();
     return super.filteredServiceOrders;
   }
 
   @override
-  set filteredServiceOrders(List<ServiceOrderListEntity> value) {
+  set filteredServiceOrders(List<ServiceOrderEntity> value) {
     _$filteredServiceOrdersAtom.reportWrite(value, super.filteredServiceOrders,
         () {
       super.filteredServiceOrders = value;

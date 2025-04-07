@@ -81,6 +81,7 @@ import 'package:new_ezagro_flutter/features/presenter/modules/authentication_mod
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/repeat_password_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/temp_password_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/username_input_page.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/home/home_controller.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/home/home_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/home/home_screen.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/company/controller/company_controller.dart';
@@ -182,6 +183,8 @@ import 'features/presenter/modules/authentication_module/register_page/register_
 import 'features/presenter/modules/authentication_module/register_page/register_second_step_page.dart';
 import 'features/presenter/modules/authentication_module/register_page/register_third_step_page.dart';
 import 'features/presenter/modules/documents/documents_page/documents_page.dart';
+import 'features/presenter/modules/purchase_request/purchase_request_controllers/purchase_request_list_controller.dart';
+import 'features/presenter/modules/purchase_request/purchase_request_list_page.dart';
 import 'features/presenter/modules/register/company/company_list_page.dart';
 import 'features/presenter/modules/register/company/company_page.dart';
 import 'features/presenter/modules/register/contracts/contract_page.dart';
@@ -303,12 +306,14 @@ class AppModule extends Module {
     i.addLazySingleton<MachineryController>(MachineryController.new);
     i.addLazySingleton<ApprovalsListController>(ApprovalsListController.new);
     i.addLazySingleton<ApprovalsDetailController>(ApprovalsDetailController.new);
+    i.addLazySingleton<HomeController>(HomeController.new);
+    i.addLazySingleton<PurchaseRequestListController>(PurchaseRequestListController.new);
     super.binds(i);
   }
 
   @override
   void routes(RouteManager r) {
-    r.child(AppRoutes.appDefaultPage, child: (context) => SplashPage ());
+    r.child(AppRoutes.appDefaultPage, child: (context) => PurchaseRequestListPage ());
     r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
     r.child(AppRoutes.appLoginPage, child: (context) => LoginPage());
     r.child(AppRoutes.appRegistersPage, child: (context) => RegistersPage());
@@ -343,6 +348,7 @@ class AppModule extends Module {
     r.child(AppRoutes.appApprovalsPurchaseRequestDetailPage, child: (context) => ApprovalsPurchaseRequestDetailPage(args: r.args.data,));
     r.child(AppRoutes.appApprovalsServiceOrderDetailPage, child: (context) => ApprovalsServiceOrderDetailPage(args: r.args.data,));
 
+    r.child(AppRoutes.appPurchaseRequestListPage, child: (context) => PurchaseRequestListPage());
     super.routes(r);
   }
 }

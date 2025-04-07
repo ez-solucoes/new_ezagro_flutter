@@ -73,7 +73,7 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
     );
 
     final HttpRequest request =
-        HttpRequest.get(path: url, queryParams: {'statusId': argParams.firstArgs as String});
+        HttpRequest.get(path: url, queryParams: {'statusId': argParams.firstArgs.toString()});
     final result = await httpClient.execute(request);
     switch (result.statusCode) {
       case 200:

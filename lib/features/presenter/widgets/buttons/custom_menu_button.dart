@@ -20,7 +20,7 @@ class CustomMenuButton extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 12),
       decoration: BoxDecoration(
-        color: AppColors.primaryBlackColor,
+        color: AppColors.primaryWhiteColor,
         borderRadius: BorderRadius.circular(5),
       ),
       child: TextButton(
@@ -32,7 +32,7 @@ class CustomMenuButton extends StatelessWidget {
             const SizedBox(width: 36),
             Text(
               title,
-              style: AppTextStyles.labelTextButtonStyle(color: AppColors.primaryWhiteColor),
+              style: AppTextStyles.labelTextButtonStyle(color: AppColors.primaryBlackColor),
             ),
           ],
         ),
@@ -44,7 +44,7 @@ class CustomMenuButton extends StatelessWidget {
     if (icon is IconData) {
       return Icon(
         icon,
-        color: AppColors.primaryWhiteColor,
+        color: AppColors.primaryBlackColor,
       );
     } else if (icon is SvgPicture) {
       return icon;

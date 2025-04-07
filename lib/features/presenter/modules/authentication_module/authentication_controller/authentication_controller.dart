@@ -132,10 +132,7 @@ abstract class AuthenticationControllerAbstract with Store {
     await localStorage.writeData(
         LocalStorageItem(key: AppStringsPortuguese.tokenKey, value: success.token.toString()));
 
-    //Não possui mais o Nome do usuário na entidade UserEntity.
-
-
-    await localStorage.writeData(LocalStorageItem(
-        key: AppStringsPortuguese.nameKey, value: name));
+    await localStorage.writeData(
+        LocalStorageItem(key: AppStringsPortuguese.nameKey, value: success.user!.client!.name));
   }
 }

@@ -6,6 +6,7 @@ import 'package:new_ezagro_flutter/design_system/colors/app_colors.dart';
 import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 import 'package:new_ezagro_flutter/design_system/typography/app_text_styles.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/approvals_module/approvals_detail/approvals_service_order_detail_page.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/home/home_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/appbar/custom_appbar_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/background/background_widget.dart';
 
@@ -40,8 +41,9 @@ class ApprovalsListPage extends StatelessWidget {
         backgroundColor: AppColors.transparent,
         resizeToAvoidBottomInset: false,
         appBar: CustomAppBarWidget(
-          appBarType: AppBarType.hamburgerAndTitle,
+          appBarType: AppBarType.centeredTitleAndBackArrow,
           title: AppStringsPortuguese.approvalsString,
+          callback: () => HomePage.navigate(),
         ),
         body: Stack(alignment: Alignment.bottomCenter, children: [
           Column(

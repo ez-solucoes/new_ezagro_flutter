@@ -46,4 +46,8 @@ class AppRoutes {
   static const String appApprovalsListPage = '/approvalsListPage';
   static const String appApprovalsPurchaseRequestDetailPage = '/approvalsPurchaseRequestDetailPage';
   static const String appApprovalsServiceOrderDetailPage = '/approvalsServiceOrderDetailPage';
+
+  //Purchase Request
+  static const String appPurchaseRequestListPage = '/purchaseRequestListPage';
+  static const String appPurchaseRequestDetailPage = '/purchaseRequestDetailPage';
 }

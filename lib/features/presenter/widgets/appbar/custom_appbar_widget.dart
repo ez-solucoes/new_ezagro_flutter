@@ -9,7 +9,8 @@ enum AppBarType {
   titleAndBackArrow,
   centeredTitleAndBackArrow,
   hamburgerAndTitle,
-  hamburgerAndEmployee
+  hamburgerAndEmployee,
+  welcomeAndEmployeeName,
 }
 
 class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -53,6 +54,8 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
         return _buildHamburgerAndTitle(context);
       case AppBarType.hamburgerAndEmployee:
         return _buildHamburgerAndEmployee;
+        case AppBarType.welcomeAndEmployeeName:
+          return _buildWelcomeAndEmployeeName(context);
       }
   }
 
@@ -206,6 +209,19 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
       ),
     ),
     leading: IconButton(onPressed: () {}, icon: const Icon(Icons.menu, size: 35)),
+  );
+
+  AppBar _buildWelcomeAndEmployeeName(BuildContext context) => AppBar(
+    backgroundColor: AppColors.backgroundColor,
+    scrolledUnderElevation: 0,
+    title: Align(
+      alignment: Alignment.centerLeft,
+      child: Text(
+        'Olá,\n$employeeName',
+        textAlign: TextAlign.start,
+        style: AppTextStyles.appBarSubTitleTextStyle(color: AppColors.primaryBlackColor),
+      ),
+    ),
   );
 
   @override

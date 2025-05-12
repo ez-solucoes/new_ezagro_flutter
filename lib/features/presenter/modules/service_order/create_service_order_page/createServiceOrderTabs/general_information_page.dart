@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/selector_entities/selector_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/select_entities/select_entity.dart';
 import '../../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../widgets/custom_selector/custom_selector_widget.dart';
 import '../../controller/create_service_order_controller/create_service_order_controller.dart';
@@ -17,8 +17,8 @@ class GeneralInformationPage extends StatelessWidget {
     final controller = Modular.get<CreateServiceOrderController>();
     controller.getActivities();
     controller.getCostCenters();
-    SelectorEntity? harvest;
-    SelectorEntity? selectedActivity;
+    SelectEntity? harvest;
+    SelectEntity? selectedActivity;
     return SingleChildScrollView(
       child: Column(children: [
         Observer(
@@ -27,7 +27,7 @@ class GeneralInformationPage extends StatelessWidget {
                   controller.activity = controller.activityOptions.firstWhere((e) => e.id == value.value);
                   selectedActivity = value;
               },
-              items: controller.activityOptions.map((e) => SelectorEntity(value: e.id, label: e.activityName)).toList(),
+              items: controller.activityOptions.map((e) => SelectEntity(value: e.id, label: e.activityName)).toList(),
               title: AppStringsPortuguese.activitySelectorTitle,
               selectorHint: AppStringsPortuguese.activitySelectorHint,
               selectedValue: selectedActivity,
@@ -46,10 +46,10 @@ class GeneralInformationPage extends StatelessWidget {
         Observer(
           builder: (context) => CustomSelectorWidget(
               onSelect: (value) {
-                controller.costCenterId = controller.costCenterOptions.where((e) => e.label == value.label).toList().first.value;
-                if (controller.costCenterId != null) {
-                  controller.getCostCenterFarms(controller.costCenterId.toString());
-                }
+                // controller.costCenterId = controller.costCenterOptions.where((e) => e?.label! == value.label).toList().first.value;
+                // if (controller.costCenterId != null) {
+                //   controller.getCostCenterFarms(controller.costCenterId.toString());
+                // }
               },
               items: controller.costCenterOptions,
               title: AppStringsPortuguese.costCenterSelectorTitle,
@@ -64,7 +64,7 @@ class GeneralInformationPage extends StatelessWidget {
 
                 },
               items: controller.farmOptions.map((e) =>
-                  SelectorEntity(value: e.id, label: e.name)
+                  SelectEntity(value: e.id, label: e.name)
               ).toList(),
               title: AppStringsPortuguese.farmSelectorTitle,
               selectorHint: AppStringsPortuguese.farmSelectorHint),

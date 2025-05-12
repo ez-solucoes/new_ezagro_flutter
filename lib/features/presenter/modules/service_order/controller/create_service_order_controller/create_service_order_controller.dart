@@ -4,22 +4,22 @@ import 'package:mobx/mobx.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/agricultural_entities/agricultural_activity_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/farm_entities/farm_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/plot_entities/plot_entity.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/selector_entities/selector_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/select_entities/select_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/params/create_service_order_params/create_service_order_params.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/employee_usecase/employee_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/executor_usecases/executor_usecase.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/cost_center_farm_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/get_farms_by_cost_center_id_usecases/get_farms_by_cost_center_id_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/machinery_usecases/machinery_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/pest_usecases/pest_usecase.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/product_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/get_all_products_usecase/get_all_products_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_usecase/create_service_order_usecase.dart';
 import '../../../../../../core/enums/field_service_order_type_enum.dart';
 import '../../../../../../core/usecase/usecase.dart';
 import '../../../../../domain/entities/pest_entities/pest_entity.dart';
 import '../../../../../domain/params/arg_params/arg_params.dart';
-import '../../../../../domain/usecases/cost_center_usecases/cost_center_selector_usecase.dart';
+import '../../../../../domain/usecases/cost_center_usecases/get_all_cost_center_to_select_usecase.dart';
 import '../../../../../domain/usecases/plots_usecases/plots_with_farm_id_usecase.dart';
 part 'create_service_order_controller.g.dart';
 
@@ -42,31 +42,31 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   List<AgriculturalActivityEntity> activityOptions = ObservableList();
 
   @observable
-  List<SelectorEntity> subActivitiesOptions = ObservableList();
+  List<SelectEntity> subActivitiesOptions = ObservableList();
 
   @observable
   List<PestEntity> pestsOptions = ObservableList();
 
   @observable
-  List<SelectorEntity> costCenterOptions = ObservableList();
+  List<SelectEntity> costCenterOptions = ObservableList();
 
   @observable
   List<FarmEntity> farmOptions = ObservableList();
 
   @observable
-  List<SelectorEntity> cropOptions = ObservableList();
+  List<SelectEntity> cropOptions = ObservableList();
 
   @observable
-  List<SelectorEntity> executorsOptions = ObservableList();
+  List<SelectEntity> executorsOptions = ObservableList();
 
   @observable
-  List<SelectorEntity> machineryOptions = ObservableList();
+  List<SelectEntity> machineryOptions = ObservableList();
 
   @observable
-  List<SelectorEntity> productsOptions = ObservableList();
+  List<SelectEntity> productsOptions = ObservableList();
 
   @observable
-  List<SelectorEntity> employeeOptions = ObservableList();
+  List<SelectEntity> employeeOptions = ObservableList();
 
   @observable
   List<PlotEntity> plotsOptions = ObservableList();
@@ -90,7 +90,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   AgriculturalActivityEntity? activity;
 
   @observable
-  SelectorEntity? subActivity;
+  SelectEntity? subActivity;
 
   @observable
   String harvestName = "";
@@ -170,7 +170,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   @action
   Future getCostCenters() async {
     isLoading = true;
-    final getCostCenters = Modular.get<CostCenterSelectorUsecase>();
+    final getCostCenters = Modular.get<GetAllCostCenterToSelectUsecase>();
     final result = await getCostCenters(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
       costCenterOptions = success;
@@ -183,7 +183,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   @action
   Future getCostCenterFarms(String costCenterId) async {
     isLoading = true;
-    final getCostCenterFarms = Modular.get<CostCenterFarmUsecase>();
+    final getCostCenterFarms = Modular.get<GetFarmsByCostCenterIdUsecase>();
     final result = await getCostCenterFarms(costCenterId);
     result.fold((error) => error.friendlyMessage, (success) {
       farmOptions = success;
@@ -263,7 +263,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   @action
   Future getProductsOptions() async {
     isLoading = true;
-    final getProducts = Modular.get<ProductUsecase>();
+    final getProducts = Modular.get<GetAllProductsUsecase>();
     final result = await getProducts(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
       //productsOptions = success.content;

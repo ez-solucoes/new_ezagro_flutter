@@ -23,6 +23,9 @@ class CustomSnackBarWidget {
   });
 
   static show(SnackBarType type, BuildContext context, String message) {
+    // Limpa quaisquer SnackBars anteriores para evitar sobreposição
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+
     switch (type) {
       case SnackBarType.error:
         return _buildErrorSnackBar(context, message);
@@ -30,7 +33,7 @@ class CustomSnackBarWidget {
         return _buildSuccessSnackBar(context, message);
       case SnackBarType.alert:
         return _buildAlertSnackBar(context, message);
-      }
+    }
   }
 
   static _buildSuccessSnackBar(BuildContext context, String message) {
@@ -40,8 +43,13 @@ class CustomSnackBarWidget {
       content: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(message),
-          Spacer(),
+          Expanded( // <--- Envolvido o Text com Expanded
+            child: Text(
+              message,
+              overflow: TextOverflow.ellipsis, // Adicionado para lidar com textos muito longos
+            ),
+          ),
+          SizedBox(width: 8.0), // Espaço entre o texto e o ícone
           SvgPicture.asset(AppDrawables.checkWhiteIcon),
         ],
       ),
@@ -56,8 +64,13 @@ class CustomSnackBarWidget {
       content: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(message),
-          Spacer(),
+          Expanded( // <--- Envolvido o Text com Expanded
+            child: Text(
+              message,
+              overflow: TextOverflow.ellipsis, // Adicionado para lidar com textos muito longos
+            ),
+          ),
+          SizedBox(width: 8.0), // Espaço entre o texto e o ícone
           SvgPicture.asset(AppDrawables.closeWhiteIcon),
         ],
       ),
@@ -72,8 +85,13 @@ class CustomSnackBarWidget {
       content: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(message),
-          Spacer(),
+          Expanded( // <--- Envolvido o Text com Expanded
+            child: Text(
+              message,
+              overflow: TextOverflow.ellipsis, // Adicionado para lidar com textos muito longos
+            ),
+          ),
+          SizedBox(width: 8.0), // Espaço entre o texto e o ícone
           SvgPicture.asset(AppDrawables.warningWhiteIcon,
               colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn)),
         ],

@@ -3,12 +3,13 @@ import '../../../../design_system/colors/app_colors.dart';
 import '../info_data_widget/info_data_widget.dart';
 
 class GenericInfoCard extends StatelessWidget {
+
   const GenericInfoCard({
     super.key,
     required this.sectionsData,
   });
 
-  final List<(List<(String label, String text)>, List<(String label, String text)>)> sectionsData;
+  final List<(List<(String label, String text, bool isUrgent)>, List<(String label, String text, bool isUrgent)>)> sectionsData;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +48,7 @@ class GenericInfoCard extends StatelessWidget {
                             child: InfoDataWidget(
                               label: data.$1,
                               text: data.$2,
+                              isUrgent: data.$3,
                             ),
                           ),
                         );
@@ -62,6 +64,7 @@ class GenericInfoCard extends StatelessWidget {
                           child: InfoDataWidget(
                             label: data.$1,
                             text: data.$2,
+                            isUrgent: data.$3,
                           ),
                         );
                       }).toList(),

@@ -15,7 +15,7 @@ import '../../../../design_system/drawables/app_drawables.dart';
 import '../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../domain/params/arg_params/arg_params.dart';
 import '../../widgets/buttons/custom_menu_button.dart';
-import '../purchase_request/purchase_request_list_page.dart';
+import '../purchase_request/purchase_request_list/purchase_request_list_page.dart';
 
 class HomePage extends StatelessWidget {
   final ArgParams? args;

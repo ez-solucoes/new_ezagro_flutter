@@ -11,11 +11,11 @@ class AgriculturalInputModel extends AgriculturalInputEntity {
     super.registrationHolder,
     super.activeIngredients,
     super.toxicityClass,
-    super.ambientalClass,
+    super.environmentalClass,
     super.createdAt,
     super.updatedAt,
     super.deletedAt,
-    super.classEntity,
+    super.classes,
 });
 
   Map<String, dynamic> toMap() {
@@ -25,11 +25,11 @@ class AgriculturalInputModel extends AgriculturalInputEntity {
       'registrationHolder': registrationHolder,
       'activeIngredients': activeIngredients,
       'toxicityClass': toxicityClass,
-      'ambientalClass': ambientalClass,
+      'environmentalClass': environmentalClass,
       'createdAt': createdAt,
       'updatedAt': updatedAt,
       'deletedAt': deletedAt,
-      'class': classEntity,
+      'classes': classes,
     };
   }
 
@@ -40,11 +40,13 @@ class AgriculturalInputModel extends AgriculturalInputEntity {
       registrationHolder: map['registrationHolder'] as String,
       activeIngredients: map['activeIngredients'] as String,
       toxicityClass: map['toxicityClass'] as String,
-      ambientalClass: map['ambientalClass'] as String,
+      environmentalClass: map['environmentalClass'] as String,
       createdAt: map['createdAt'] as String,
       updatedAt: map['updatedAt'] as String,
       deletedAt: map['deletedAt'] == null ? null : map['deletedAt'] as String,
-      classEntity: ClassModel.fromMap(map['class']),
+      classes: map['classes'] == null
+          ? null
+          : (map['classes'] as List<dynamic>).map((item) => ClassModel.fromMap(item)).toList(),
     );
   }
 

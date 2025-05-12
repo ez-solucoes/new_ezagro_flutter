@@ -8,10 +8,12 @@ class InfoDataWidget extends StatelessWidget {
     super.key,
     required this.label,
     required this.text,
+    required this.isUrgent,
   });
 
   final String label;
   final dynamic text;
+  final bool isUrgent;
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +26,33 @@ class InfoDataWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children:[
               const SizedBox(width: 5,),
-              Text(
-                label,
-                style: AppTextStyles.boldTextOnCardStyle(color: AppColors.primaryBlackColor),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    label,
+                    style: AppTextStyles.boldTextOnCardStyle(color: AppColors.primaryBlackColor),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
+                  isUrgent ? Container(
+                    padding: const EdgeInsets.all(3),
+                    margin: const EdgeInsets.only(left: 10),
+                    decoration: BoxDecoration(
+                      color: AppColors.primaryRedColor,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Icon(Icons.info_outline, color: AppColors.primaryWhiteColor, size: 12),
+                        Text('Urgente',
+                            style: AppTextStyles.labelOnCardStyle(color: AppColors.primaryWhiteColor)),
+                      ],
+                    ),
+                  )
+                  : SizedBox(),
+                ],
               ),
               label != 'Etapa'
                   ? Text(

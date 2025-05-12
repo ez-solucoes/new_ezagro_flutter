@@ -8,6 +8,7 @@ import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.
 import 'package:new_ezagro_flutter/features/domain/repositories/purchase_request_repositories/purchase_request_repository.dart';
 
 import '../../../../core/errors/generic_error.dart';
+import '../../../domain/entities/select_entities/select_entity.dart';
 
 class PurchaseRequestRepositoryImpl implements PurchaseRequestRepository {
   final PurchaseRequestDatasource datasource;
@@ -15,8 +16,7 @@ class PurchaseRequestRepositoryImpl implements PurchaseRequestRepository {
   PurchaseRequestRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<ApplicationError, List<PurchaseRequestModel>>> getAllPurchaseRequest(
-      NoParams noParams) async {
+  Future<Either<ApplicationError, List<PurchaseRequestModel>>> getAllPurchaseRequest(NoParams noParams) async {
     try {
       final result = await datasource.getAllPurchaseRequest(noParams);
       return Right(result);
@@ -24,14 +24,12 @@ class PurchaseRequestRepositoryImpl implements PurchaseRequestRepository {
       return Left(e);
     } catch (e, stacktrace) {
       return Left(GenericError(
-          fingerprint: '$PurchaseRequestRepositoryImpl.getAllPurchaseRequest',
-          additionalInfo: stacktrace.toString()));
+          fingerprint: '$PurchaseRequestRepositoryImpl.getAllPurchaseRequest', additionalInfo: stacktrace.toString()));
     }
   }
 
   @override
-  Future<Either<ApplicationError, PurchaseRequestModel>> getPurchaseRequestById(
-      ArgParams argParams) async {
+  Future<Either<ApplicationError, PurchaseRequestModel>> getPurchaseRequestById(ArgParams argParams) async {
     try {
       final result = await datasource.getPurchaseRequestById(argParams);
       return Right(result.data!);
@@ -39,14 +37,12 @@ class PurchaseRequestRepositoryImpl implements PurchaseRequestRepository {
       return Left(e);
     } catch (e, stacktrace) {
       return Left(GenericError(
-          fingerprint: '$PurchaseRequestRepositoryImpl.getPurchaseRequestById',
-          additionalInfo: stacktrace.toString()));
+          fingerprint: '$PurchaseRequestRepositoryImpl.getPurchaseRequestById', additionalInfo: stacktrace.toString()));
     }
   }
 
   @override
-  Future<Either<ApplicationError, List<PurchaseRequestModel>>> getPurchaseRequestByStatusId(
-      ArgParams argParams) async {
+  Future<Either<ApplicationError, List<PurchaseRequestModel>>> getPurchaseRequestByStatusId(ArgParams argParams) async {
     try {
       final result = await datasource.getPurchaseRequestByStatusId(argParams);
       return Right(result);
@@ -84,6 +80,30 @@ class PurchaseRequestRepositoryImpl implements PurchaseRequestRepository {
       return Left(GenericError(
           fingerprint: '$PurchaseRequestRepositoryImpl.cancelPurchaseRequestById',
           additionalInfo: stacktrace.toString()));
+    }
+  }
+
+  @override
+  Future<Either<ApplicationError, List<SelectEntity>>> getAllPurchaseRequestToSelect(NoParams noParams) async {
+    try {
+      final result = await datasource.getAllPurchaseRequestToSelect(noParams);
+      return Right(result);
+    } on ApplicationError catch (e) {
+      return Left(e);
+    } catch (e, stacktrace) {
+      return Left(GenericError(
+          fingerprint: '$PurchaseRequestRepositoryImpl.getAllPurchaseRequest', additionalInfo: stacktrace.toString()));
+    }
+  }
+
+  @override
+  Future<Either<ApplicationError, PurchaseRequestModel>> createPurchaseRequest(ArgParams argParams) async {
+    try {
+      final result = await datasource.createPurchaseRequest(argParams);
+      return Right(result.data!);
+    } on ApplicationError catch (e, stacktrace) {
+      return Left(GenericError(
+          fingerprint: '$PurchaseRequestRepositoryImpl.createPurchaseRequest', additionalInfo: stacktrace.toString()));
     }
   }
 }

@@ -8,6 +8,7 @@ import '../../../../../core/http_client/http_request.dart';
 import '../../../../../core/mixins/uri_builder_mixin.dart';
 import '../../../../../core/usecase/usecase.dart';
 import '../../../models/company_models/company_model.dart';
+import '../../../models/select_models/select_model.dart';
 import '../api_endpoints.dart';
 import 'company_datasource.dart';
 
@@ -21,7 +22,7 @@ class CompanyDatasourceImpl with UriBuilder implements CompanyDatasource {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.getCompanyListEndpoint,
+      AppEndpoints.companyEndpoint,
     );
 
     final HttpRequest request = HttpRequest.get(path: url);
@@ -47,7 +48,7 @@ class CompanyDatasourceImpl with UriBuilder implements CompanyDatasource {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.getCompanyById + (argParams.firstArgs as String),
+      AppEndpoints.companyEndpoint + (argParams.firstArgs as String),
     );
 
     final HttpRequest request = HttpRequest.get(path: url);
@@ -59,6 +60,32 @@ class CompanyDatasourceImpl with UriBuilder implements CompanyDatasource {
           response: result,
           fromMap: (map) => CompanyModel.fromMap(map),
           fromJson: (jsonString) => CompanyModel.fromJson(jsonString),
+        );
+      default:
+        throw mountServerErrorInstance(request: request, response: result);
+    }
+  }
+
+  @override
+  Future<List<SelectModel>> getAllCompaniesToSelect(NoParams noParams) async {
+    final String url = mountUrl(
+      AppEndpoints.baseUrlProtocolWithSecurity,
+      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.companyEndpoint + AppEndpoints.selectEndpoint,
+    );
+
+    final HttpRequest request = HttpRequest.get(path: url);
+    final result = await httpClient.execute(request);
+
+    switch (result.statusCode) {
+      case 200:
+        return mountListModelInstanceFromResponse(
+          response: result,
+          fromListMap: (map) => (map).map((e) => SelectModel.fromMap(e)).toList(),
+          fromJsonList: (jsonString) {
+            final List<dynamic> jsonList = jsonDecode(jsonString);
+            return jsonList.map((json) => SelectModel.fromJson(jsonEncode(json))).toList();
+          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

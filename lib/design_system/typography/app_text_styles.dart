@@ -195,12 +195,12 @@ class AppTextStyles {
 
   static TextStyle bodyCardTextStyle({
     required Color color
-}) {
+  }) {
     return TextStyle(
-      fontFamily: AppFonts.montserratFont,
-      fontWeight: FontWeight.normal,
-      fontSize: AppDimens.buttonTextDimen,
-      color: color
+        fontFamily: AppFonts.montserratFont,
+        fontWeight: FontWeight.normal,
+        fontSize: AppDimens.buttonTextDimen,
+        color: color
     );
   }
 
@@ -212,6 +212,18 @@ class AppTextStyles {
         fontWeight: FontWeight.bold,
         fontSize: AppDimens.bottomSheetAlert,
         color: color
+    );
+  }
+
+  static TextStyle underlinedTextStyle({
+    required Color color,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.montserratFont,
+      fontWeight: FontWeight.w400,
+      fontSize: AppDimens.smallTextDimen,
+      decoration: TextDecoration.underline,
+      color: color,
     );
   }
 }

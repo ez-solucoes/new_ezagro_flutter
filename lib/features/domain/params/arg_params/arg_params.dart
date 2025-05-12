@@ -10,19 +10,40 @@ class ArgParams extends Equatable {
   @override
   List<Object?> get props => [firstArgs, secondArgs, thirdArgs];
 
-  Map<String, dynamic> toQueryParams() {
+  // Map<String, dynamic> toQueryParams() {
+  //   Map<String, dynamic> queryParams = {};
+  //
+  //   if (firstArgs != null) {
+  //     queryParams['firstArgs'] = firstArgs;
+  //   }
+  //
+  //   if (secondArgs != null) {
+  //     queryParams['secondArgs'] = secondArgs;
+  //   }
+  //
+  //   if (thirdArgs != null) {
+  //     queryParams['thirdArgs'] = thirdArgs;
+  //   }
+  //
+  //   return queryParams;
+  // }
+
+  Map<String, dynamic> mountQueryParam({
+    required String firstParamName,
+    String? secondParamName,
+    String? thirdParamName,
+  }) {
     Map<String, dynamic> queryParams = {};
-
     if (firstArgs != null) {
-      queryParams['firstArgs'] = firstArgs;
+      queryParams[firstParamName] = firstArgs is List ? firstArgs.join(',') : firstArgs.toString();
     }
 
-    if (secondArgs != null) {
-      queryParams['secondArgs'] = secondArgs;
+    if (secondParamName != null && secondArgs != null) {
+      queryParams[secondParamName] = secondArgs is List ? secondArgs.join(',') : secondArgs.toString();
     }
 
-    if (thirdArgs != null) {
-      queryParams['thirdArgs'] = thirdArgs;
+    if (thirdParamName != null && thirdArgs != null) {
+      queryParams[thirdParamName] = thirdArgs is List ? thirdArgs.join(',') : thirdArgs.toString();
     }
 
     return queryParams;

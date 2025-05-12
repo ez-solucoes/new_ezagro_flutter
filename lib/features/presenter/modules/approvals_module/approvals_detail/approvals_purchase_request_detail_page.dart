@@ -61,17 +61,17 @@ class ApprovalsPurchaseRequestDetailPage extends StatelessWidget {
                       sectionsData: [
                         (
                         [
-                          ('Responsável',  controller.purchaseRequest?.responsibleEmployee?.name == null ? '' : controller.purchaseRequest!.responsibleEmployee!.name!),
-                          ('Data de Criação',  controller.purchaseRequest?.createdAt == null ? '' : controller.purchaseRequest!.createdAt!),
-                          ('Data de Expiração',  controller.purchaseRequest?.quotationExpirationDate == null ? '' : controller.purchaseRequest!.quotationExpirationDate!),
-                          ('Pagamento',  controller.purchaseRequest?.paymentMethod?.name == null ? '' : controller.purchaseRequest!.paymentMethod!.name),
-                          ('Data de Pagamento',  controller.purchaseRequest?.paymentDate == null ? '' : controller.purchaseRequest!.paymentDate!),
+                          ('Responsável',  controller.purchaseRequest?.responsibleEmployee?.name == null ? '' : controller.purchaseRequest!.responsibleEmployee!.name!, false),
+                          ('Data de Criação',  controller.purchaseRequest?.createdAt == null ? '' : controller.purchaseRequest!.createdAt!, false),
+                          ('Data de Expiração',  controller.purchaseRequest?.quotationExpirationDate == null ? '' : controller.purchaseRequest!.quotationExpirationDate!, false),
+                          ('Pagamento',  controller.purchaseRequest?.paymentMethod?.name == null ? '' : controller.purchaseRequest!.paymentMethod!.name, false),
+                          ('Data de Pagamento',  controller.purchaseRequest?.paymentDate == null ? '' : controller.purchaseRequest!.paymentDate!, false),
                         ],
                         [
-                          ('Id',  controller.purchaseRequest?.id == null ? '' : controller.purchaseRequest!.id.toString()),
-                          ('Centro de Custo',  controller.purchaseRequest?.costCenter?.name == null ? '' : controller.purchaseRequest!.costCenter!.name!),
-                          ('Fazenda', controller.purchaseRequest?.farm.name == null ? '' : controller.purchaseRequest!.farm.name!),
-                          ('Etapa',  controller.purchaseRequest?.step == null ? '' : controller.purchaseRequest!.step!.name!),
+                          ('Id',  controller.purchaseRequest?.id == null ? '' : controller.purchaseRequest!.id.toString(), false),
+                          ('Centro de Custo',  controller.purchaseRequest?.costCenter?.name == null ? '' : controller.purchaseRequest!.costCenter!.name!, false),
+                          ('Fazenda', controller.purchaseRequest?.farm.name == null ? '' : controller.purchaseRequest!.farm.name!, false),
+                          ('Etapa',  controller.purchaseRequest?.step == null ? '' : controller.purchaseRequest!.step!.name!, false),
                         ]
                         )
                       ]),
@@ -182,11 +182,11 @@ class ApprovalsPurchaseRequestDetailPage extends StatelessWidget {
                                                 [
                                                   (
                                                   [
-                                                    ('Marca',  '${item.product?.registrationHolder}'),
-                                                    ('Vinculado à maquinário', '${item.machineryImplement?.nickname == null ? '' : item.machineryImplement!.nickname}'),
+                                                    ('Marca',  '${item.product?.registrationHolder}', false),
+                                                    ('Vinculado à maquinário', '${item.machineryImplement?.nickname == null ? '' : item.machineryImplement!.nickname}', false),
                                                   ],
                                                   [
-                                                    ('Seguemento',  (item.product?.type?.name == null ? '' : item.product!.type!.name)),
+                                                    ('Seguemento',  (item.product?.type?.name == null ? '' : item.product!.type!.name), false),
                                                   ]
                                                   )
                                                 ],

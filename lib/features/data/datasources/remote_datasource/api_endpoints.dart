@@ -6,6 +6,8 @@ class AppEndpoints {
   //Swagger documentation
   static const String swaggerEndpoint = '/api';
 
+  static const String selectEndpoint = '/select';
+
   //Authentication
   static const String loginEndpoint = '/authentication/login';
   static const String updatePasswordEndpoint = '/update-password';
@@ -17,8 +19,8 @@ class AppEndpoints {
   static const String userByIdEndpoint = '/user/';
 
   //Company
-  static const String getCompanyListEndpoint = '/company';
-  static const String getCompanyById = '/company/';
+  static const String companyEndpoint = '/company';
+  static const String companySegmentEndpoint = '/company-segment';
 
   //Contract
   static const String getContractListEndpoint = '/contract';
@@ -30,17 +32,18 @@ class AppEndpoints {
   static const String getServiceOrderEndpoint = '/service-order';
   static const String getServiceOrderById = 'field-service-order';
   static const String getActivityTypesEndpoint = '/activity-type';
-  static const String getCostCentersEndpoint = '/cost-center';
-  static const String getAllFarms = '/farm';
+  static const String costCentersEndpoint = '/cost-center';
+  static const String farmEndpoint = '/farm';
   static const String getFarmById = '/farm/';
   static const String getFarmsSimplifiedEndpoint = '/farm/simplified';
   static const String getCostCenterFarmsEndpoint = '/farm/cost-center/';
   static const String getSimplifiedCropsEndpoint = '/crop/simplified';
   static const String getPlotsEndpoint = '/farm/plot';
   static const String getExecutorsEndpoint = '/employee';
-  static const String getProductsEndpoint = '/product';
+  static const String productEndpoint = '/product';
+  static const String productTypeEndpoint = '/product-type';
   static const String getMachineryEndpoint = '/fleet/machinery';
-  static const String getEmployees = '/employee';
+  static const String employeeEndpoint = '/employee';
   static const String getEmployeeById = '/employee/';
   static const String postServiceOrderEndpoint = '/field-service-order';
   static const String getPestsEndpoint = '/pest';
@@ -48,9 +51,11 @@ class AppEndpoints {
   static const String getCostCenterSelectorOptions = '/cost-center/select';
 
   static const String getAllMachineryImplementEndpoint = '/machinery-implement';
+  static const String paymentMethodEndpoint = '/payment-method';
 
   ///Purchase Request
   static const String getPurchaseRequest = '/purchase-request';
+  static const String purchaseRequestTypeEndpoint = '/purchase-request-type';
 
   ///Approvals
   static const String approvePurchaseRequest = '/approve';

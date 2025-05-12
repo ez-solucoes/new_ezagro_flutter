@@ -20,7 +20,8 @@ class StepBoxWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           child: Text(
             _buildStepText(step),
-            style: AppTextStyles.appBarSubTitleTextStyle(color: AppColors.primaryBlackColor),
+            textAlign: TextAlign.center,
+            style: AppTextStyles.smallBoldTextOnCardStyle(color: AppColors.primaryBlackColor),
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
           ),
@@ -40,7 +41,8 @@ class StepBoxWidget extends StatelessWidget {
   String _buildStepText(String stepName) {
     switch (stepName) {
       case 'Pedido de Compra' : return 'Compra';
-      case 'Cotação' : return 'Em Cotação';
+      case 'Cotação' : return 'Cotação';
+      case 'Solicitação' : return 'Aprovação';
       default: return stepName;
     }
   }

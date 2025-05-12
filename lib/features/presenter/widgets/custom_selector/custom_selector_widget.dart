@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/selector_entities/selector_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/select_entities/select_entity.dart';
 import '../../../../design_system/colors/app_colors.dart';
 import '../../../../design_system/typography/app_text_styles.dart';
 
 class CustomSelectorWidget extends StatelessWidget {
 
-  final Function(SelectorEntity) onSelect;
-  final List<SelectorEntity> items;
+  final Function(SelectEntity) onSelect;
+  final List<SelectEntity> items;
   final String title;
   final String selectorHint;
-  final SelectorEntity? selectedValue;
+  final SelectEntity? selectedValue;
 
-  final Function(SelectorEntity)? onSelectSubCategory;
-  final List<SelectorEntity>? subItems;
+  final Function(SelectEntity)? onSelectSubCategory;
+  final List<SelectEntity>? subItems;
   final String? subSelectorHint;
-  final SelectorEntity? selectedSubValue;
+  final SelectEntity? selectedSubValue;
   final Function? reloadSubItems;
 
   const CustomSelectorWidget({
@@ -55,12 +55,12 @@ class CustomSelectorWidget extends StatelessWidget {
                     style: AppTextStyles.appBarTitleTextStyle(
                         color: AppColors.formGreyColor),
                   ),
-                  items: items.map((SelectorEntity item) {
-                    return DropdownMenuItem<SelectorEntity>(
+                  items: items.map((SelectEntity item) {
+                    return DropdownMenuItem<SelectEntity>(
                         value: item, child: Text(item.label ?? ""));
                   }).toList(),
                   onChanged: (value) {
-                    if (value is SelectorEntity) {
+                    if (value is SelectEntity) {
                       onSelect(value);
                       reloadSubItems?.call();
                     }
@@ -89,12 +89,12 @@ class CustomSelectorWidget extends StatelessWidget {
           style: AppTextStyles.appBarTitleTextStyle(
               color: AppColors.formGreyColor),
         ),
-        items: (subItems ?? []).map((SelectorEntity item) {
-          return DropdownMenuItem<SelectorEntity>(
+        items: (subItems ?? []).map((SelectEntity item) {
+          return DropdownMenuItem<SelectEntity>(
               value: item, child: Text(item.label ?? ""));
         }).toList(),
         onChanged: (value) {
-          if (value is SelectorEntity) { // Cast and null check
+          if (value is SelectEntity) { // Cast and null check
             onSelectSubCategory?.call(value);
           }
         },

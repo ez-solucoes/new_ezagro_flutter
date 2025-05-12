@@ -15,11 +15,12 @@ import '../request_item_models/request_item_model.dart';
 
 class PurchaseRequestModel extends PurchaseRequestEntity {
   const PurchaseRequestModel({
-    required super.id,
+    super.id,
     super.quotationExpirationDate,
     super.paymentDate,
     super.notes,
     super.isUrgent,
+    super.hasErrorInQuotationItem,
     super.createdAt,
     super.updatedAt,
     super.deletedAt,
@@ -42,6 +43,7 @@ class PurchaseRequestModel extends PurchaseRequestEntity {
       'paymentDate': paymentDate,
       'notes': notes,
       'isUrgent': isUrgent,
+      'hasErrorInQuotationItem': hasErrorInQuotationItem,
       'createdAt': createdAt,
       'updatedAt': updatedAt,
       'deletedAt': deletedAt,
@@ -60,11 +62,12 @@ class PurchaseRequestModel extends PurchaseRequestEntity {
 
   factory PurchaseRequestModel.fromMap(Map<String, dynamic> map) {
     return PurchaseRequestModel(
-      id: map['id'] as int,
+      id: map['id'] as int?,
       quotationExpirationDate: map['quotationExpirationDate'] as String?,
       paymentDate: map['paymentDate'] as String?,
       notes: map['notes'] as String?,
       isUrgent: map['isUrgent'] as bool?,
+      hasErrorInQuotationItem: map['hasErrorInQuotationItem'] as bool?,
       createdAt: map['createdAt'] as String?,
       updatedAt: map['updatedAt'] as String?,
       deletedAt: map['deletedAt'] as String?,

@@ -333,10 +333,14 @@ class AppStringsPortuguese {
   ///SnackBar
   static const String successSnackBarString = '';
   static const String errorSnackBarString = '';
+
   ///Aprovações
   static const String approvalsString = 'Aprovações';
-
   static var  pendingString = 'pendente';
   static var  approvedString = 'aprovada';
 
+  ///Purchase Request
+  static const String purchaseRequestString = 'Solicitação';
+  static const String newPurchaseRequestString = 'Nova Solicitação';
+  static const String purchaseRequestTypeString = 'Tipo de Solicitação';
 }

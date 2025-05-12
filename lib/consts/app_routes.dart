@@ -47,7 +47,20 @@ class AppRoutes {
   static const String appApprovalsPurchaseRequestDetailPage = '/approvalsPurchaseRequestDetailPage';
   static const String appApprovalsServiceOrderDetailPage = '/approvalsServiceOrderDetailPage';
 
-  //Purchase Request
+
+  ///Purchase Request
+  //List and View
   static const String appPurchaseRequestListPage = '/purchaseRequestListPage';
   static const String appPurchaseRequestDetailPage = '/purchaseRequestDetailPage';
+
+  //Create
+  static const String appPurchaseRequestCreateGeneralInfoFirstPage = '/purchaseRequestCreateGeneralInfoFirstPage';
+  static const String appPurchaseRequestCreateListItemsPage = '/purchaseRequestCreateListItemsPage';
+  static const String addPurchaseRequestCreateAddItemsPage = '/purchaseRequestCreateAddItemsPage';
+  static const String addPurchaseRequestCreatePaymentMethodPage = '/purchaseRequestCreatePaymentMethodPage';
+
+
+  //Miscellaneous
+  static const String appViewListedItemsPage = '/viewListedItemsPage';
+  static const String appEditListedItemsPage = '/editListedItemsPage';
 }

@@ -113,6 +113,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
     return AppBar(
       backgroundColor: AppColors.backgroundColor,
       scrolledUnderElevation: 0,
+      automaticallyImplyLeading: false,
       title: Column(
         children: [
           Row(
@@ -145,6 +146,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
     return AppBar(
       backgroundColor: AppColors.backgroundColor,
       scrolledUnderElevation: 0,
+      automaticallyImplyLeading: false,
       title: Column(
         children: [
           Row(

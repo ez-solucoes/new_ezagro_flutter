@@ -53,14 +53,14 @@ class ApprovalsServiceOrderDetailPage extends StatelessWidget {
                 sectionsData: [
                   (
                     [
-                      ('Tipo', 'Ordem de Serviço'),
+                      ('Tipo', 'Ordem de Serviço', false),
                     ],
                     [
                       (
                         'ID',
                         controller.serviceOrder?.id == null
                             ? ''
-                            : controller.serviceOrder!.id.toString()
+                            : controller.serviceOrder!.id.toString(), false
                       ),
                     ]
                   )
@@ -75,13 +75,13 @@ class ApprovalsServiceOrderDetailPage extends StatelessWidget {
                         'Responsável',
                         controller.serviceOrder?.employees?.first.employee?.name == null
                             ? ''
-                            : controller.serviceOrder!.employees!.first.employee!.name!
+                            : controller.serviceOrder!.employees!.first.employee!.name!, false
                       ),
                       (
                         'Fazenda',
                         controller.serviceOrder?.farm?.name == null
                             ? ''
-                            : controller.serviceOrder!.farm!.name!
+                            : controller.serviceOrder!.farm!.name!, false
                       ),
                     ],
                     [
@@ -89,13 +89,13 @@ class ApprovalsServiceOrderDetailPage extends StatelessWidget {
                         'Data de Criação',
                         controller.serviceOrder?.createdAt == null
                             ? ''
-                            : controller.serviceOrder!.createdAt!
+                            : controller.serviceOrder!.createdAt!, false
                       ),
                       (
                         'Centro de Custo',
                         controller.serviceOrder?.localCostCenter?.name == null
                             ? ''
-                            : controller.serviceOrder!.localCostCenter!.name!
+                            : controller.serviceOrder!.localCostCenter!.name!, false
                       ),
                     ]
                   )

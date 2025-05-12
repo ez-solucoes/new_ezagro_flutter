@@ -3,16 +3,16 @@ import 'package:new_ezagro_flutter/features/data/models/purchase_request_models/
 import 'package:new_ezagro_flutter/features/data/models/response_models/response_model.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 
+import '../../../models/select_models/select_model.dart';
+
 abstract class PurchaseRequestDatasource {
   Future<List<PurchaseRequestModel>> getPurchaseRequestByStatusId(ArgParams argParams);
-
   Future<ResponseModel<PurchaseRequestModel>> getPurchaseRequestById(ArgParams argParams);
-
   Future<List<PurchaseRequestModel>> getAllPurchaseRequest(NoParams noParams);
-
+  Future<List<SelectModel>> getAllPurchaseRequestToSelect(NoParams noParams);
   Future<ResponseModel<PurchaseRequestModel>> approvePurchaseRequestById(ArgParams argParams);
-
   Future<ResponseModel<PurchaseRequestModel>> cancelPurchaseRequestById(ArgParams argParams);
+  Future<ResponseModel<PurchaseRequestModel>> createPurchaseRequest(ArgParams argParams);
 
 
 }

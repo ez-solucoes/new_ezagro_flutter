@@ -12,11 +12,12 @@ import '../delivery_location_entities/delivery_location_entity.dart';
 import '../request_items_entities/request_item_entity.dart';
 
 class PurchaseRequestEntity extends Equatable {
-  final int id;
+  final int? id;
   final String? quotationExpirationDate;
   final String? paymentDate;
   final String? notes;
   final bool? isUrgent;
+  final bool? hasErrorInQuotationItem;
   final String? createdAt;
   final String? updatedAt;
   final String? deletedAt;
@@ -32,11 +33,12 @@ class PurchaseRequestEntity extends Equatable {
   final EmployeeEntity? responsibleEmployee;
 
   const PurchaseRequestEntity(
-      {required this.id,
+      {this.id,
       this.quotationExpirationDate,
       this.paymentDate,
       this.notes,
       this.isUrgent,
+      this.hasErrorInQuotationItem,
       this.createdAt,
       this.updatedAt,
       this.deletedAt,
@@ -58,6 +60,7 @@ class PurchaseRequestEntity extends Equatable {
         paymentDate,
         notes,
         isUrgent,
+        hasErrorInQuotationItem,
         createdAt,
         updatedAt,
         deletedAt,

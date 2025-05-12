@@ -97,13 +97,13 @@ mixin _$CreateServiceOrderController
       context: context);
 
   @override
-  List<SelectorEntity> get subActivitiesOptions {
+  List<SelectEntity> get subActivitiesOptions {
     _$subActivitiesOptionsAtom.reportRead();
     return super.subActivitiesOptions;
   }
 
   @override
-  set subActivitiesOptions(List<SelectorEntity> value) {
+  set subActivitiesOptions(List<SelectEntity> value) {
     _$subActivitiesOptionsAtom.reportWrite(value, super.subActivitiesOptions,
         () {
       super.subActivitiesOptions = value;
@@ -132,13 +132,13 @@ mixin _$CreateServiceOrderController
       context: context);
 
   @override
-  List<SelectorEntity> get costCenterOptions {
+  List<SelectEntity> get costCenterOptions {
     _$costCenterOptionsAtom.reportRead();
     return super.costCenterOptions;
   }
 
   @override
-  set costCenterOptions(List<SelectorEntity> value) {
+  set costCenterOptions(List<SelectEntity> value) {
     _$costCenterOptionsAtom.reportWrite(value, super.costCenterOptions, () {
       super.costCenterOptions = value;
     });
@@ -166,13 +166,13 @@ mixin _$CreateServiceOrderController
       context: context);
 
   @override
-  List<SelectorEntity> get cropOptions {
+  List<SelectEntity> get cropOptions {
     _$cropOptionsAtom.reportRead();
     return super.cropOptions;
   }
 
   @override
-  set cropOptions(List<SelectorEntity> value) {
+  set cropOptions(List<SelectEntity> value) {
     _$cropOptionsAtom.reportWrite(value, super.cropOptions, () {
       super.cropOptions = value;
     });
@@ -183,13 +183,13 @@ mixin _$CreateServiceOrderController
       context: context);
 
   @override
-  List<SelectorEntity> get executorsOptions {
+  List<SelectEntity> get executorsOptions {
     _$executorsOptionsAtom.reportRead();
     return super.executorsOptions;
   }
 
   @override
-  set executorsOptions(List<SelectorEntity> value) {
+  set executorsOptions(List<SelectEntity> value) {
     _$executorsOptionsAtom.reportWrite(value, super.executorsOptions, () {
       super.executorsOptions = value;
     });
@@ -200,13 +200,13 @@ mixin _$CreateServiceOrderController
       context: context);
 
   @override
-  List<SelectorEntity> get machineryOptions {
+  List<SelectEntity> get machineryOptions {
     _$machineryOptionsAtom.reportRead();
     return super.machineryOptions;
   }
 
   @override
-  set machineryOptions(List<SelectorEntity> value) {
+  set machineryOptions(List<SelectEntity> value) {
     _$machineryOptionsAtom.reportWrite(value, super.machineryOptions, () {
       super.machineryOptions = value;
     });
@@ -217,13 +217,13 @@ mixin _$CreateServiceOrderController
       context: context);
 
   @override
-  List<SelectorEntity> get productsOptions {
+  List<SelectEntity> get productsOptions {
     _$productsOptionsAtom.reportRead();
     return super.productsOptions;
   }
 
   @override
-  set productsOptions(List<SelectorEntity> value) {
+  set productsOptions(List<SelectEntity> value) {
     _$productsOptionsAtom.reportWrite(value, super.productsOptions, () {
       super.productsOptions = value;
     });
@@ -234,13 +234,13 @@ mixin _$CreateServiceOrderController
       context: context);
 
   @override
-  List<SelectorEntity> get employeeOptions {
+  List<SelectEntity> get employeeOptions {
     _$employeeOptionsAtom.reportRead();
     return super.employeeOptions;
   }
 
   @override
-  set employeeOptions(List<SelectorEntity> value) {
+  set employeeOptions(List<SelectEntity> value) {
     _$employeeOptionsAtom.reportWrite(value, super.employeeOptions, () {
       super.employeeOptions = value;
     });
@@ -369,13 +369,13 @@ mixin _$CreateServiceOrderController
       context: context);
 
   @override
-  SelectorEntity? get subActivity {
+  SelectEntity? get subActivity {
     _$subActivityAtom.reportRead();
     return super.subActivity;
   }
 
   @override
-  set subActivity(SelectorEntity? value) {
+  set subActivity(SelectEntity? value) {
     _$subActivityAtom.reportWrite(value, super.subActivity, () {
       super.subActivity = value;
     });

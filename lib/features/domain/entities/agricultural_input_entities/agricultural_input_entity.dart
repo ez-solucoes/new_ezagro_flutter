@@ -7,11 +7,11 @@ class AgriculturalInputEntity extends Equatable {
   final String? registrationHolder;
   final String? activeIngredients;
   final String? toxicityClass;
-  final String? ambientalClass;
+  final String? environmentalClass;
   final String? createdAt;
   final String? updatedAt;
   final String? deletedAt;
-  final ClassEntity? classEntity;
+  final List<ClassEntity>? classes;
 
   const AgriculturalInputEntity ({
     required this.id,
@@ -19,11 +19,11 @@ class AgriculturalInputEntity extends Equatable {
     this.registrationHolder,
     this.activeIngredients,
     this.toxicityClass,
-    this.ambientalClass,
+    this.environmentalClass,
     this.createdAt,
     this.updatedAt,
     this.deletedAt,
-    this.classEntity,
+    this.classes,
 });
 
   @override
@@ -33,11 +33,11 @@ class AgriculturalInputEntity extends Equatable {
     registrationHolder,
     activeIngredients,
     toxicityClass,
-    ambientalClass,
+    environmentalClass,
     createdAt,
     updatedAt,
     deletedAt,
-    classEntity,
+    classes,
   ];
 
 }

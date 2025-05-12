@@ -28,10 +28,10 @@ class RequestItemEntity extends Equatable {
 
   const RequestItemEntity({
     required this.id,
-    required this.serviceName,
-    required this.description,
+    this.serviceName,
+    this.description,
     this.requestedQuantity,
-    required this.isSelectedForPurchase,
+    this.isSelectedForPurchase,
     this.createdAt,
     this.updatedAt,
     this.deletedAt,

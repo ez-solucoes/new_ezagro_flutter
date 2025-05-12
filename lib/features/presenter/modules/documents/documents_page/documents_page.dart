@@ -22,10 +22,12 @@ class DocumentsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     return BackgroundWidget(
       appBar: CustomAppBarWidget(
         appBarType: AppBarType.titleAndBackArrow,
-        title: AppStringsPortuguese.privacyPolicy,
+        title: documentTittleType(args!.firstArgs.toString()),
         callback: () {},
       ),
       scrollable: false,
@@ -38,12 +40,28 @@ class DocumentsPage extends StatelessWidget {
               color: AppColors.primaryWhiteColor,
               borderRadius: BorderRadius.circular(5),
               border: Border.all(color: AppColors.dividerGreyColor)),
-          child: const SingleChildScrollView(
-            child: Text(
-                '${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum}'),
+          child: SingleChildScrollView(
+            child: Text(documentType(args!.firstArgs.ToString())),
           ),
         ),
       ),
     );
+  }
+
+  String documentTittleType(String type){
+    if(type == AppStringsPortuguese.privacyPolicy) {
+      return AppStringsPortuguese.privacyPolicy;
+    } else {
+      return AppStringsPortuguese.userTerms;
+    }
+  }
+
+  //AQUI VAI O METODO PARA POPULAR O DOCUMENTO
+  String documentType(String type) {
+    if(type == AppStringsPortuguese.privacyPolicy) {
+      return '${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum}';
+    } else {
+      return '${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum} ${AppStringsPortuguese.loremIpsum}';
+    }
   }
 }

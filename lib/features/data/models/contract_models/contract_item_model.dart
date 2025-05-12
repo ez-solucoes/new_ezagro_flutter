@@ -8,12 +8,12 @@ import 'contract_payment_periodicity_model.dart';
 class ContractItemModel extends ContractItemEntity {
   const ContractItemModel({
     required super.id,
-    required super.name,
-    required super.unitPrice,
-    required super.dtPayment,
-    required super.paymentMethod,
-    required super.paymentPeriodicity,
-    required super.contract,
+    super.name,
+    super.unitPrice,
+    super.dtPayment,
+    super.paymentMethod,
+    super.paymentPeriodicity,
+    super.contract,
   });
 
   String toJson() => json.encode(toMap());
@@ -26,10 +26,10 @@ class ContractItemModel extends ContractItemEntity {
         'name': name,
         'unitPrice': unitPrice,
         'dtPayment': dtPayment,
-        'paymentMethod': (paymentMethod as ContractPaymentMethodModel).toMap(),
+        'paymentMethod': paymentMethod == null ? null : (paymentMethod as ContractPaymentMethodModel).toMap(),
         'paymentPeriodicity':
-            (paymentPeriodicity as ContractPaymentPeriodicityModel).toMap(),
-        'contract': (contract as ContractModel).toMap(),
+            paymentPeriodicity == null ? null : (paymentPeriodicity as ContractPaymentPeriodicityModel).toMap(),
+        'contract': contract == null ? null : (contract as ContractModel).toMap(),
       };
 
   factory ContractItemModel.fromMap(Map<String, dynamic> map) =>
@@ -38,9 +38,9 @@ class ContractItemModel extends ContractItemEntity {
         name: map['name'],
         unitPrice: map['unitPrice'],
         dtPayment: map['dtPayment'],
-        paymentMethod: ContractPaymentMethodModel.fromMap(map['paymentMethod']),
+        paymentMethod: map['paymentMethod'] == null ? null : ContractPaymentMethodModel.fromMap(map['paymentMethod']),
         paymentPeriodicity:
-            ContractPaymentPeriodicityModel.fromMap(map['paymentPeriodicity']),
-        contract: ContractModel.fromMap(map['contract']),
+        map['paymentPeriodicity'] == null ? null : ContractPaymentPeriodicityModel.fromMap(map['paymentPeriodicity']),
+        contract: map['contract'] == null ? null : ContractModel.fromMap(map['contract']),
       );
 }

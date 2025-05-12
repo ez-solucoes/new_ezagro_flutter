@@ -23,10 +23,18 @@ class AppStringsPortuguese {
   static const String privacyPolicy = 'Política de Privacidade';
   static const String and = ' e ';
   static const String userTerms = 'Termos do Usuário';
+  static const String logoutConfirmationMessage = 'Tem certeza de que deseja sair?';
+  static const String cancelButtonLabel = 'Cancelar';
+  static const String leaveButtonLabel = 'Sair';
 
   static const String loremIpsum =
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
+  ///Home Page Itens
+  static const String pluralApprovalsTitle = 'Aprovações';
+  static const String pluralRequestTitle = 'Solicitações';
+  static const String pluralServicesOrderTitle = 'Ordens de Serviço';
+  static const String pluralRegistersTitle = 'Cadastros';
 
   ///Authentication Module
   static const String forgotPasswordCpf =
@@ -92,7 +100,7 @@ class AppStringsPortuguese {
   static const String estimatedEndDateLabel = 'Previsão de término';
   static const String servicePriceLabel = 'Valor do Serviço';
   static const String notesLabel = 'Observações';
-  static const String newPlanting = ' - Novo Plantio';
+  static const String newPlanting = 'Novo Plantio';
 
   //Create Service Order
   static const String createServiceOrder = 'Criar Ordem de Serviço';
@@ -111,6 +119,7 @@ class AppStringsPortuguese {
       'Centro de Custo de Estoque de Destino:';
   static const String finalStorageSelector = 'Estoque de Destino:';
   static const String activitySelectorHint = 'Selecione uma atividade';
+  static const String subActivitySelectorHint = 'Selecione uma subatividade';
   static const String costCenterSelectorHint = 'Selecione um centro de custo';
   static const String farmSelectorHint = 'Selecione uma fazenda';
   static const String harvestSelectorHint = 'Selecione uma safra';
@@ -143,6 +152,163 @@ class AppStringsPortuguese {
   static const String productField = 'Produto:';
   static const String quantityField = 'Quantidade:';
   static const String recommendationField = 'Recomendação:';
+  static const String plotsPageTitle = 'Talhões';
+  static const String cleanFilterButton = 'Limpar Filtros';
+  static const String applyFilterButton = 'Aplicar';
+  static const String areaFilter = 'Área';
+  static const String cropFilter = 'Cultura';
+  static const String statusFilter = 'Status';
+  static const String harvestKey = 'Safra';
+
+  ///Register Module
+  static const String pluralCompanyTitle = 'Empresas';
+  static const String singularCompanyTitle = 'Empresa';
+  static const String hashtagSymbol = '#';
+  static const String companyNameColumn = 'Nome';
+  static const String companyIdentifierColumn = 'CNPJ';
+  static const String companyIdentifierTitle = 'CNPJ:';
+  static const String pluralContractTitle = 'Contratos';
+  static const String singularContractTitle = 'Contrato';
+  static const String contractNameColumn = 'Contrato';
+  static const String contractTypeColumn = 'Tipo';
+  static const String contractLabel = 'Contrato:';
+  static const String ownCompany = "Própria";
+  static const String creditorCompany = "Credora";
+  static const String debtorCompany = "Devedora";
+  static const String companySegment = "Segmento";
+  static const String typeLabel = 'Tipo:';
+  static const String phoneLabel = 'Telefone';
+  static const String whatsAppLabel = "WhatsApp";
+  static const String emailLabel = "Email";
+  static const String externalCodeLabel = 'Códgio Externo:';
+  static const String costCenterLabel = 'Centro de Custo:';
+  static const String startingDateLabel = 'Data de Início:';
+  static const String endingDateLabel = 'Data do Fim:';
+  static const String ruralProducerLabel = 'Produtor Rural:';
+  static const String farmLabel = 'Fazenda:';
+  static const String credorCompanyLabel = 'Empresa Credora:';
+  static const String globalValueLabel = 'Valor Global:';
+  static const String itemsSectionTitle = 'Itens';
+  static const String itemColumn = 'Item';
+  static const String valueColumn = 'Valor';
+  static const String pluralEmployeeTitle = 'Funcionários';
+  static const String singularEmployeeTitle = 'Funcionário';
+  static const String employeesNameColumn = 'Nome';
+  static const String positionColumn = 'Cargo';
+  static const String generalInformationTab = 'Informações Gerais';
+  static const String additionalInformationTab = 'Informações Adicionais';
+  static const String employeeNameLabel = 'Nome:';
+  static const String cpfLabel = 'CPF:';
+  static const String rgLabel = 'RG';
+  static const String pisPasepLabel  = 'PIS/PASEP:';
+  static const String contactLabel = 'Contato:';
+  static const String addressLabel = 'Endereço:';
+  static const String bankDataLabel = 'Dados Bancários:';
+  static const String employeeContractLabel = 'Contrato:';
+  static const String employeePhoneLabel = 'Telefone:';
+  static const String employeeWhatsAppLabel = "What'sApp:'";
+  static const String employeeEmailLabel = 'E-mail:';
+  static const String accountTypeLabel = 'Tipo de conta';
+  static const String bankLabel = 'Banco:';
+  static const String agencyLabel = 'Agência:';
+  static const String accountLabel = 'Conta:';
+  static const String pixKeyTypeLabel = 'Tipo de Chave Pix:';
+  static const String pixKeyLabel = 'Chave Pix:';
+  static const String employeeAdmissionDateLabel = 'Data de Admissão:';
+  static const String employeeWorkerIdLabel = 'Número da Carteira de trabalho:';
+  static const String employeePositionLabel = 'Cargo:';
+  static const String employeeDepartmentLabel = 'Departamento:';
+  static const String employeeContractTypeLabel = 'Tipo de contrato:';
+  static const String employeeShiftLabel = 'Turno:';
+  static const String employeeBaseSalaryLabel = 'Salário Base:';
+  static const String employeeFiringDateLabel = 'Data de Demissão';
+  static const String employeeFiringReasonLabel = 'Motivo da Demissão';
+  static const String employeeContactorLabel = 'Contatante:';
+  static const String employeeSalaryCompositionLabel = 'Composição Salarial:';
+  static const String employeeCostCenterLabel = 'Centro de Custo:';
+  static const String employeeFarmLabel = 'Fazenda:';
+  static const String employeeRuralProducerLabel = 'Produtor Rural:';
+  static const String employeeCompanyLabel = 'Empresa:';
+  static const String employeeCompositionLabel = 'Composição:';
+  static const String employeeReferenceLabel = 'Referência:';
+  static const String employeeReferenceBaseLabel = 'Base de Referência:';
+  static const String employeeCeiLabel = 'CEI:';
+  static const String employeeInsuranceCodeLabel = 'Código de Seguro:';
+  static const String employeeUnionCodeLabel = 'Código Sindical:';
+  static const String employeeHealthCareLabel = 'Plano de Saúde:';
+  static const String employeeDependentColumn = 'Dependentes';
+  static const String employeeRelationColumn = 'Relação';
+  static const String employeeBirthdayColumn = 'Nascimento';
+  static const String employeeAttachmentsLabel = 'Anexos:';
+
+  static const String addressCepLabel = 'CEP:';
+  static const String addressCityLabel = 'Cidade:';
+  static const String addressStreetLabel = 'Logradouro';
+  static const String addressNeighborhoodLabel = 'Bairro:';
+  static const String addressReferenceLabel = 'Referência:';
+  static const String addressStateLabel = 'Estado:';
+  static const String addressCountryLabel = 'País:';
+
+  static const String pluralFarmTitle = 'Fazendas';
+  static const String farmColumnName = 'Fazenda';
+  static const String farmCostCenterColumn = 'Centro de Custo';
+  static const String singularFarmTitle = 'Fazenda';
+
+  static const String farmNameLabel = 'Nome:';
+  static const String farmOwnerLabel = 'Proprietário:';
+  static const String farmCostCenterLabel = 'Centro de Custo:';
+  static const String farmExternalCodeLabel = 'Código Externo:';
+  static const String farmCaepfLabel = 'CAREPF:';
+  static const String farmAreaLabel = 'Área:';
+  static const String farmStateSubscriptionLabel = 'Inscrição Estadual:';
+  static const String farmOwnerRegisterLabel = 'Registro do Proprietário:';
+  static const String farmCompanyLabel = 'Empresa:';
+  static const String farmCarLabel = 'CAR:';
+  static const String farmCnaeLabel = 'CNAE:';
+  static const String farmPlotColumn = 'Talhões';
+  static const String farmAreaColumn = 'Área';
+  static const String farmCropColumn = 'Cultura';
+  static const String contractsTableTitle = 'Contratos';
+  static const String attachmentsTableTitle = 'Anexos';
+  static const String contractStatusLabel = 'Status do contrato:';
+  static const String activeStatus = 'Ativo';
+  static const String inactiveStatus = 'Inativo';
+  static const String firingDateLabel = 'Data: ';
+  static const String dependentsColumn = "Dependentes";
+  static const String relationColumn = 'Relação';
+  static const String birthdayDateColumn = 'Nascimento';
+
+  static const String machineryAndImplementsTitle = 'Maquinários & Implementos';
+  static const String machineryPluralTitle = 'Maquinários';
+  static const String machineryNameColumn = 'Nome';
+  static const String machineryTypeColumn = 'Tipo';
+  static const String machineryBrandColumn = 'Marca';
+  static const String machineryScreenTitle = 'Maquinário';
+  static const String machineryBasicInformation = 'Informações Básicas';
+  static const String machineryTypeLabel = 'Tipo:';
+  static const String machineryAliasLabel = 'Apelido:';
+  static const String machineryModelLabel = 'Modelo:';
+  static const String machineryBrandLabel = 'Marca:';
+  static const String machineryCostCenterLabel = 'Centro de Custo:';
+  static const String machineryYearLabel = 'Ano:';
+  static const String machineryDepartmentLabel = 'Departamento:';
+  static const String machinerySubdepartmentLabel = 'Subdepartamento:';
+  static const String machineryAssetNumberLabel = 'Número do Patrimônio:';
+  static const String machineryTelemetryNumberLabel = 'Número de Telemetria:';
+  static const String machinerySpecificInformation = 'Inforamções Específicas';
+  static const String machineryChassisLabel = 'Chassi:';
+  static const String machineryWorkingHours = 'Horas de Trabalho Acumuladas:';
+  static const String machineryKilometersLabel = 'Quilômetro:';
+  static const String machineryTankCapacityLabel = 'Capacidade do Tanque:';
+  static const String machineryDocumentLabel = 'Documento:';
+  static const String machineryInvoiceLabel = 'Nota Fiscal:';
+  static const String machineryInsuranceExpiringDateLabel = 'Vencimento do Seguro:';
+  static const String machineryInsurancePolicyLabel = 'Contrato de Seguro:';
+  static const String machineryAcquisition = 'Aquisição';
+  static const String machineryAcquisitionDateLabel = 'Data da Aquisição';
+  static const String machineryAcquisitionValueLabel = 'Valor da Aquisição:';
+  static const String machineryMaintenance = 'Manutenção';
+
 
   ///Errors
   static const String genericErrorMessage =
@@ -167,4 +333,14 @@ class AppStringsPortuguese {
   ///SnackBar
   static const String successSnackBarString = '';
   static const String errorSnackBarString = '';
+
+  ///Aprovações
+  static const String approvalsString = 'Aprovações';
+  static var  pendingString = 'pendente';
+  static var  approvedString = 'aprovada';
+
+  ///Purchase Request
+  static const String purchaseRequestString = 'Solicitação';
+  static const String newPurchaseRequestString = 'Nova Solicitação';
+  static const String purchaseRequestTypeString = 'Tipo de Solicitação';
 }

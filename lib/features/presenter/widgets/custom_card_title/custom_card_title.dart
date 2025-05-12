@@ -33,7 +33,8 @@ class CustomCardTitleWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(2.0),
       decoration: BoxDecoration(
-          color: backgroundColor, borderRadius: BorderRadius.circular(7.0)),
+          color: backgroundColor,
+          borderRadius: BorderRadius.circular(7.0)),
       child: Container(
           padding: const EdgeInsets.all(10.0),
           decoration: BoxDecoration(

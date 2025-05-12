@@ -6,14 +6,14 @@ class PermissionsModel extends PermissionsEntity {
   const PermissionsModel({
     required super.id,
     super.name,
-    super.description,
+    super.slug,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
       'name': name,
-      'description': description,
+      'slug': slug,
     };
   }
 
@@ -21,7 +21,7 @@ class PermissionsModel extends PermissionsEntity {
     return PermissionsModel(
       id: map['id'] as int,
       name: map['name'] as String?,
-      description: map['description'] as String?,
+      slug: map['slug'] as String?,
     );
   }
 

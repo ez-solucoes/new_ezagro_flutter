@@ -56,7 +56,7 @@ class SelectPlotsPage extends StatelessWidget {
                                     builder: (context) => SizedBox(
                                           height: controller.itemHeight,
                                           child: CustomCheckableListItemWidget(
-                                              indexIsChecked: controller
+                                              isChecked: controller
                                                   .selectedPlots
                                                   .contains(controller
                                                       .plotsOptions[index].id),

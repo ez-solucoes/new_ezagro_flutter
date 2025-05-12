@@ -9,6 +9,7 @@ class AppColors {
   static const Color primaryRedColor = Color(0xffE54444);
   static const Color primaryYellowColor = Color(0xffDAAC15);
   static const Color primaryBlackColor = Color(0xff1C1C1C);
+  static const Color primaryBlueColor = Color(0xffA5C5E3);
 
   static const Color transparent = Color(0x00FFFFFF);
 
@@ -18,6 +19,7 @@ class AppColors {
   static const Color formGreyColor = Color(0xffBFBFBF);
   static const Color dividerGreyColor = Color(0xffD7D7D7);
   static const Color softGreenColor = Color(0xffF1F7F4);
+  static const Color brighterGreenColor = Color(0xffA5E3AE);
 
   static const Color muddyYellowColor = Color(0xffB28E18);
   static const Color darkGreyColor = Color(0xff5C5856);

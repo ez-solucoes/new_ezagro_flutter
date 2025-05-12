@@ -9,7 +9,8 @@ enum AppBarType {
   titleAndBackArrow,
   centeredTitleAndBackArrow,
   hamburgerAndTitle,
-  hamburgerAndEmployee
+  hamburgerAndEmployee,
+  welcomeAndEmployeeName,
 }
 
 class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -22,8 +23,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
   final bool showProgressIndicator;
   final bool showHamburgerMenu;
   final bool showNotificationIcon;
-  final Function()? onTap;
-  final VoidCallback? callback;
+  final Function()? callback;
 
 
   const CustomAppBarWidget({
@@ -36,7 +36,6 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
     this.showHamburgerMenu = false,
     this.showNotificationIcon = false,
     this.callback,
-    this.onTap,
     required this.appBarType,
   });
 
@@ -55,9 +54,9 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
         return _buildHamburgerAndTitle(context);
       case AppBarType.hamburgerAndEmployee:
         return _buildHamburgerAndEmployee;
-      default:
-        return AppBar();
-    }
+        case AppBarType.welcomeAndEmployeeName:
+          return _buildWelcomeAndEmployeeName(context);
+      }
   }
 
   AppBar get _buildStepsAndBackArrow => AppBar(
@@ -93,7 +92,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
     title: Column(
       children: [
         GestureDetector(
-          onTap: () => callback,
+          onTap: callback,
           child: Row(
             children: [
               const Icon(Icons.arrow_back_ios, size: 19),
@@ -114,6 +113,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
     return AppBar(
       backgroundColor: AppColors.backgroundColor,
       scrolledUnderElevation: 0,
+      automaticallyImplyLeading: false,
       title: Column(
         children: [
           Row(
@@ -146,13 +146,14 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
     return AppBar(
       backgroundColor: AppColors.backgroundColor,
       scrolledUnderElevation: 0,
+      automaticallyImplyLeading: false,
       title: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GestureDetector(
-                onTap: onTap,
+                onTap: callback,
                 child: Row(
                   children: [
                     const Icon(Icons.arrow_back_ios, size: 19),
@@ -210,6 +211,19 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
       ),
     ),
     leading: IconButton(onPressed: () {}, icon: const Icon(Icons.menu, size: 35)),
+  );
+
+  AppBar _buildWelcomeAndEmployeeName(BuildContext context) => AppBar(
+    backgroundColor: AppColors.backgroundColor,
+    scrolledUnderElevation: 0,
+    title: Align(
+      alignment: Alignment.centerLeft,
+      child: Text(
+        'Olá,\n$employeeName',
+        textAlign: TextAlign.start,
+        style: AppTextStyles.appBarSubTitleTextStyle(color: AppColors.primaryBlackColor),
+      ),
+    ),
   );
 
   @override

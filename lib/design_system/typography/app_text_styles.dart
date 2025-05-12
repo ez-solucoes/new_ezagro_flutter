@@ -80,7 +80,7 @@ class AppTextStyles {
     return TextStyle(
       fontFamily: AppFonts.montserratFont,
       fontWeight: FontWeight.bold,
-      fontSize: AppDimens.textOnCard,
+      fontSize: AppDimens.bodyTextDimen,
       color: color,
     );
   }
@@ -101,6 +101,17 @@ class AppTextStyles {
     return TextStyle(
       fontFamily: AppFonts.montserratFont,
       fontWeight: FontWeight.w500,
+      fontSize: AppDimens.labelOnCard,
+      color: color,
+    );
+  }
+
+  static TextStyle boldSmallLabelStyle({
+    required Color color,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.montserratFont,
+      fontWeight: FontWeight.bold,
       fontSize: AppDimens.labelOnCard,
       color: color,
     );
@@ -167,6 +178,51 @@ class AppTextStyles {
       fontFamily: AppFonts.montserratFont,
       fontWeight: FontWeight.bold,
       fontSize: AppDimens.bodyTextDimen,
+      color: color,
+    );
+  }
+
+  static TextStyle smallBoldTextStyle({
+    required Color color,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.montserratFont,
+      fontWeight: FontWeight.w800,
+      fontSize: AppDimens.smallTextDimen,
+      color: color,
+    );
+  }
+
+  static TextStyle bodyCardTextStyle({
+    required Color color
+  }) {
+    return TextStyle(
+        fontFamily: AppFonts.montserratFont,
+        fontWeight: FontWeight.normal,
+        fontSize: AppDimens.buttonTextDimen,
+        color: color
+    );
+  }
+
+  static TextStyle bottomSheetAlert({
+    required Color color
+  }) {
+    return TextStyle(
+        fontFamily: AppFonts.montserratFont,
+        fontWeight: FontWeight.bold,
+        fontSize: AppDimens.bottomSheetAlert,
+        color: color
+    );
+  }
+
+  static TextStyle underlinedTextStyle({
+    required Color color,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.montserratFont,
+      fontWeight: FontWeight.w400,
+      fontSize: AppDimens.smallTextDimen,
+      decoration: TextDecoration.underline,
       color: color,
     );
   }

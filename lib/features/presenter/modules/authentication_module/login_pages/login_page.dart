@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
 import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/authentication_controller/authentication_controller.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/recover_password_pages/new_password_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/home/home_page.dart';
 import '../../../../../core/utils/text_input_formatter_mask.dart';
 import '../../../../../design_system/drawables/app_drawables.dart';
@@ -13,6 +14,7 @@ import '../../../widgets/buttons/custom_elevated_button.dart';
 import '../../../widgets/buttons/custom_underlined_text_button.dart';
 import '../../../widgets/text_fields/custom_outlined_text_form_field.dart';
 import '../recover_password_pages/username_input_page.dart';
+import '../register_page/register_first_step_page.dart';
 
 class LoginPage extends StatelessWidget {
   final ArgParams? args;
@@ -55,12 +57,19 @@ class LoginPage extends StatelessWidget {
             const SizedBox(height: 37),
             CustomElevatedButton(
               onPressed: () async {
+
                 controller.username = usernameController.text;
                 controller.password = passwordController.text;
 
                 await controller.authenticate(context);
-                if (controller.token != '') {
-                  HomePage.navigate();
+                if(controller.isResetPassword){
+                  NewPasswordPage.navigate();
+                }else if(controller.isFirstAccess){
+                  RegisterFirstStepPage.navigate();
+                } else{
+                  if (controller.token != '') {
+                    HomePage.navigate();
+                  }
                 }
               },
               label: AppStringsPortuguese.enterString,

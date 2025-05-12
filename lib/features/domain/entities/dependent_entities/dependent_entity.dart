@@ -1,27 +1,34 @@
 import 'package:equatable/equatable.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/employee_entities/employee_entity.dart';
-
 class DependentEntity extends Equatable {
   final int id;
-  final EmployeeEntity? employee;
   final String? name;
-  final String? relationship;
-  final String? dateOfBirth;
+  final String? birthDate;
+  final int? dependentTypeId;
+  final int? employeeId;
+  final String? createdAt;
+  final String? updatedAt;
+  final String? deletedAt;
 
   const DependentEntity({
     required this.id,
-    this.employee,
     this.name,
-    this.relationship,
-    this.dateOfBirth,
+    this.birthDate,
+    this.dependentTypeId,
+    this.employeeId,
+    this.createdAt,
+    this.updatedAt,
+    this.deletedAt
   });
 
   @override
   List<Object?> get props => [
         id,
-        employee,
         name,
-        relationship,
-        dateOfBirth,
+        birthDate,
+        dependentTypeId,
+        employeeId,
+        createdAt,
+        updatedAt,
+        deletedAt
       ];
 }

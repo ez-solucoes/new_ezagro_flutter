@@ -1,95 +1,111 @@
 import 'dart:convert';
-
+import 'package:new_ezagro_flutter/features/data/models/company_models/company_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/cost_center_models/cost_center_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/plot_models/plot_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/rural_producer_models/rural_producer_model.dart';
 import '../../../domain/entities/farm_entities/farm_entity.dart';
-import '../address_models/address_model.dart';
-import '../company_models/company_model.dart';
-import '../contract_models/contract_model.dart';
-import '../cost_center_models/cost_center_model.dart';
-import '../multipart_file_custom_model/multipart_file_custom_model.dart';
-import '../plot_models/plot_model.dart';
 
 class FarmModel extends FarmEntity {
   const FarmModel({
     required super.id,
-    super.address,
-    super.car,
+    super.name,
+    super.ownerName,
     super.stateRegistration,
-    super.externalCode,
+    super.car,
     super.caepf,
     super.cnae,
-    super.nameLandowner,
-    super.recordLandowner,
+    super.headquarterLatitude,
+    super.headquarterLongitude,
+    super.addressZipCode,
+    super.addressStreet,
+    super.addressNumber,
+    super.addressCountry,
+    super.addressNeighborhood,
+    super.addressCity,
+    super.addressState,
+    super.addressComplement,
+    super.addressReference,
+    super.isFavorite,
+    super.area,
+    super.createdAt,
+    super.updatedAt,
+    super.deletedAt,
+    super.localCostCenter,
     super.company,
     super.plots,
-    super.name,
-    super.areaAcre,
-    super.contracts,
-    super.attachments,
-    super.costCenters,
-    super.attachmentNames,
+    super.ruralProducers
   });
 
-  Map<String, dynamic> toMap() => {
-        'id': id,
-        'address': address == null ? null : (address as AddressModel).toMap(),
-        'car': car,
-        'stateRegistration': stateRegistration,
-        'externalCode': externalCode,
-        'caepf': caepf,
-        'cnae': cnae,
-        'nameLandowner': nameLandowner,
-        'recordLandowner': recordLandowner,
-        'company': (company as CompanyModel).toMap(),
-        'plots': plots?.map((e) => (e as PlotModel).toMap()).toList(),
-        'name': name,
-        'areaAcre': areaAcre,
-        'contracts':
-            contracts?.map((e) => (e as ContractModel).toMap()).toList(),
-        'attachments': attachments
-            ?.map((e) => (e as MultipartFileCustomModel).toMap())
-            .toList(),
-        'attachmentNames': attachmentNames,
-        'costCenters':
-            costCenters?.map((e) => (e as CostCenterModel).toMap()).toList(),
-      };
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'ownerName': ownerName,
+      'stateRegistration': stateRegistration,
+      'car': car,
+      'caepf': caepf,
+      'cnae': cnae,
+      'headquarterLatitude': headquarterLatitude,
+      'headquarterLongitude': headquarterLongitude,
+      'addressZipCode': addressZipCode,
+      'addressStreet': addressStreet,
+      'addressNumber': addressNumber,
+      'addressCountry': addressCountry,
+      'addressNeighborhood': addressNeighborhood,
+      'addressCity': addressCity,
+      'addressState': addressState,
+      'addressComplement': addressComplement,
+      'addressReference': addressReference,
+      'isFavorite': isFavorite,
+      'area': area,
+      'createdAt': createdAt,
+      'updatedAt': updatedAt,
+      'deletedAt': deletedAt,
+      'localCostCenter': localCostCenter,
+      'company': company,
+      'plots': plots,
+      'ruralProducers': ruralProducers
+    };
+  }
 
-  factory FarmModel.fromMap(Map<String, dynamic> map) => FarmModel(
-        id: map['id'],
-        address: map['address'] != null
-            ? AddressModel.fromMap(map['address'])
-            : null,
-        car: map['car'],
-        stateRegistration: map['stateRegistration'],
-        externalCode: map['externalCode'],
-        caepf: map['caepf'],
-        cnae: map['cnae'],
-        nameLandowner: map['nameLandowner'],
-        recordLandowner: map['recordLandowner'],
-        company: map['company'] == null
-            ? null
-            : CompanyModel.fromMap(map['company']),
-        plots: List<PlotModel>.from(
-            map['plots']?.map((x) => PlotModel.fromMap(x))),
-        name: map['name'],
-        areaAcre: map['areaAcre'],
-        contracts: map['contracts'] == null
-            ? null
-            : List<ContractModel>.from(
-                map['contracts']?.map((x) => ContractModel.fromMap(x))),
-        attachments: map['attachments'] == null
-            ? null
-            : List<MultipartFileCustomModel>.from(map['attachments']
-                ?.map((x) => MultipartFileCustomModel.fromMap(x))),
-        attachmentNames: "",
-        //map['attachmentNames'],
-        costCenters: map['costCenters'] == null
-            ? null
-            : List<CostCenterModel>.from(
-                map['costCenters']?.map((x) => CostCenterModel.fromMap(x))),
-      );
+  factory FarmModel.fromMap(Map<String, dynamic> map) {
+    return FarmModel(
+      id: map['id'] as int,
+      name: map['name'] as String?,
+      ownerName: map['ownerName'] as String?,
+      stateRegistration: map['stateRegistration'] as String?,
+      car: map['car'] as String?,
+      caepf: map['caepf'] as String?,
+      cnae: map['cnae'] as String?,
+      headquarterLatitude: map['headquarterLatitude'] as double?,
+      headquarterLongitude: map['headquarterLongitude'] as double?,
+      addressZipCode: map['addressZipCode'] as String?,
+      addressStreet: map['addressStreet'] as String?,
+      addressNumber: map['addressNumber'] as int?,
+      addressCountry: map['addressCountry'] as String?,
+      addressNeighborhood: map['addressNeighborhood'] as String?,
+      addressCity: map['addressCity'] as String?,
+      addressState: map['addressState'] as String?,
+      addressComplement: map['addressComplement'] as String?,
+      addressReference: map['addressReference'] as String?,
+      isFavorite: map['isFavorite'] as bool?,
+      area: map['area'] as String?,
+      createdAt: map['createdAt'] as String?,
+      updatedAt: map['updatedAt'] as String?,
+      deletedAt: map['deletedAt'] as String?,
+      localCostCenter: map['localCostCenter'] == null ? null : CostCenterModel.fromMap(map['localCostCenter']),
+      company: map['company'] == null ? null : CompanyModel.fromMap(map['company']),
+      plots: map['plots'] == null ? null : (map['plots'] as List).map((e) => PlotModel.fromMap(e)).toList(),
+      ruralProducers: map['ruralProducers'] == null ? null : (map['ruralProducers'] as List).map((e) => RuralProducerModel.fromMap(e)).toList()
+    );
+  }
 
   String toJson() => json.encode(toMap());
 
   factory FarmModel.fromJson(String source) =>
-      FarmModel.fromMap(json.decode(source));
+      FarmModel.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  static List<List<String>> convertToTableList(List<FarmEntity> farms) {
+    return farms.map((e) => [e.id.toString(), e.name ?? "", e.localCostCenter?.name ?? ""]).toList();
+  }
 }

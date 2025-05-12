@@ -31,9 +31,7 @@ class MaskedTextController extends TextEditingController {
       case MaskTypeEnum.usd:
         return _applyCurrencyMask(
             text.toUpperCase(), maskTypeString(MaskTypeEnum.usd));
-      default:
-        return text;
-    }
+      }
   }
 
   String _applyCPFMask(String text) {

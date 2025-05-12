@@ -43,8 +43,16 @@ class RepeatPasswordPage extends StatelessWidget {
             onButtonPressed: () {
               controller.retypePassword = textController.text;
               if (controller.comparePasswords(controller.password, controller.retypePassword)) {
-                controller.updatePassword(context);
-                RecoverPasswordSuccessPage.navigate();
+                try{
+                  controller.updatePassword(context);
+                  if(context.mounted) {
+                    RecoverPasswordSuccessPage.navigate();
+                  }
+                } catch (e) {
+                  if(context.mounted) {
+                    CustomSnackBarWidget.show(SnackBarType.error, context, 'As senhas são diferentes!');
+                  }
+                }
               } else {
                 CustomSnackBarWidget.show(SnackBarType.error, context, 'As senhas são diferentes!');
                 textController.clear();

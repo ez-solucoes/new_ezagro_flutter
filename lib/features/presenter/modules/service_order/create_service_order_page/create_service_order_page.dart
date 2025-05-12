@@ -42,12 +42,12 @@ class CreateServiceOrderPage extends StatelessWidget {
         appBar: CustomAppBarWidget(
           appBarType: AppBarType.centeredTitleAndBackArrow,
           title: AppStringsPortuguese.createServiceOrder,
-          onTap: (){
+          callback: (){
             HomePage.navigate();
           },
         ),
         child: DefaultTabController(
-            length: getFieldServiceOrderTypeEnum(controller.activity?.activityType ?? "")
+            length: getFieldServiceOrderTypeEnum(controller.activity?.activityType!.name ?? "")
                     == FieldServiceOrderTypeEnum.transfer
                     ? 7
                     : 8,

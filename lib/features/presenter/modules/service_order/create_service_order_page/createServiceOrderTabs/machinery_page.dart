@@ -19,7 +19,7 @@ class MachineryPage extends StatelessWidget {
               children: [
                 CustomSelectorWidget(
                     onSelect: (value) {
-                      controller.selectedMachinery.add(value.id);
+                      controller.selectedMachinery.add(value.value);
                     },
                     items: controller.machineryOptions,
                     title: AppStringsPortuguese.machinerySelectorTitle,

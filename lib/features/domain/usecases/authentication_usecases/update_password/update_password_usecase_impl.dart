@@ -7,6 +7,7 @@ import 'package:new_ezagro_flutter/features/domain/usecases/authentication_useca
 
 import '../../../entities/response_entities/response_entity.dart';
 
+
 class UpdatePasswordUsecaseImpl implements UpdatePasswordUsecase {
   final AuthenticationRepository repository;
 

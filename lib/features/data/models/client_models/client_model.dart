@@ -1,36 +1,46 @@
 import 'dart:convert';
 
 import '../../../domain/entities/client_entities/client_entity.dart';
-import '../email_model/email_model.dart';
-import '../phone_models/phone_model.dart';
 
 class ClientModel extends ClientEntity {
-  ClientModel({
-    required super.id,
-    super.name,
-    super.cpf,
-    super.phone,
-    super.email,
+  const ClientModel({
+    super.id,
+    super.whatsappPhone,
+
+    required super.name,
+    required super.isActive,
+    required super.createdAt,
+    required super.updatedAt,
+    required super.cpf,
+    super.phoneNumber,
+    super.deletedAt,
   });
 
   String toJson() => json.encode(toMap());
 
-  factory ClientModel.fromJson(String source) =>
-      ClientModel.fromMap(json.decode(source));
+  factory ClientModel.fromJson(String source) => ClientModel.fromMap(json.decode(source));
 
   Map<String, dynamic> toMap() => {
         'id': id,
+        'whatsappPhone': whatsappPhone,
+        'phoneNumber': phoneNumber,
         'name': name,
+        'isActive': isActive,
+        'createdAt': createdAt,
+        'updatedAt': updatedAt,
+        'deletedAt': deletedAt == null ? null : deletedAt as String,
         'cpf': cpf,
-        'phone': phone == null ? null : (phone as PhoneModel).toMap(),
-        'email': email == null ? null : (email as EmailModel).toMap(),
       };
 
   factory ClientModel.fromMap(Map<String, dynamic> map) => ClientModel(
-        id: map['id'],
-        name: map['name'],
-        cpf: map['cpf'],
-        phone: map['phone'] == null ? null : PhoneModel.fromMap(map['phone']),
-        email: map['email'] == null ? null : EmailModel.fromMap(map['email']),
+        id: map['id'] == null ? null : map['id'] as int,
+        whatsappPhone: map['whatsappPhone'] as String?,
+        phoneNumber: map['phoneNumber'] as String?,
+        name: map['name'] as String,
+        cpf: map['cpf'] as String,
+        isActive: map['isActive'] as bool,
+        createdAt: map['createdAt'] as String,
+        updatedAt: map['updatedAt'] as String,
+        deletedAt: map['deletedAt'] == null ? null : map['deletedAt'] as String,
       );
 }

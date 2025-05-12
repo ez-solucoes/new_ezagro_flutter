@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../design_system/strings/app_strings_portuguese.dart';
-import '../../features/data/datasources/api_endpoints.dart';
+import '../../features/data/datasources/remote_datasource/api_endpoints.dart';
 import '../errors/authentication_error.dart';
 import '../local_storage/local_storage_client_secure_impl.dart';
 

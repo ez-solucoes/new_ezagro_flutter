@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -11,7 +13,6 @@ import '../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
-import '../../../widgets/custom_card_title/custom_card_title.dart';
 import '../../../widgets/custom_search_bar/custom_search_bar.dart';
 import '../controller/service_order_list_controller/service_order_list_controller.dart';
 import '../service_order_page/service_order_page.dart';
@@ -68,21 +69,22 @@ class ServiceOrderListPage extends StatelessWidget {
                                 builder: (context) =>ListView.separated(
                                 itemCount: controller.filteredServiceOrders.length,
                                 itemBuilder: (context, index) {
-                                  final status = ServiceOrderTypeEnumExtension.getEnumServiceOrderTypeFromString(controller.serviceOrderListEntities[index].status);
+                                  // final status = ServiceOrderTypeEnumExtension.getEnumServiceOrderTypeFromString(controller.serviceOrderListEntities[index].status);
                                   return GestureDetector(
                                     onTap: (){ServiceOrderPage.navigate(ArgParams(firstArgs: controller.serviceOrderListEntities[index].id));},
-                                    child: CustomCardTitleWidget(
-                                      id: controller.serviceOrderListEntities[index].id,
-                                      serviceOrderType: controller.serviceOrderListEntities[index].activityName ?? "",
-                                      farm: controller.serviceOrderListEntities[index].farmName ?? "",
-                                      costCenter: controller.serviceOrderListEntities[index].costCenterName ?? "",
-                                      openingDate: controller.serviceOrderListEntities[index].activityStart ?? "",
-                                      closingDate: controller.serviceOrderListEntities[index].activityEnd ?? "",
-                                      status: status,
-                                      backgroundColor: controller.getBackgroundColor(status),
-                                      borderColor: controller.getBorderColor(status),
-                                      textColor: controller.getTextColor(status),
-                                    ),
+                                    child: Placeholder(),
+                                    // CustomCardTitleWidget(
+                                    //   id: controller.serviceOrderListEntities[index].id,
+                                    //   serviceOrderType: controller.serviceOrderListEntities[index].activityName ?? "",
+                                    //   farm: controller.serviceOrderListEntities[index].farmName ?? "",
+                                    //   costCenter: controller.serviceOrderListEntities[index].costCenterName ?? "",
+                                    //   openingDate: controller.serviceOrderListEntities[index].activityStart ?? "",
+                                    //   closingDate: controller.serviceOrderListEntities[index].activityEnd ?? "",
+                                    //   status: status,
+                                    //   backgroundColor: controller.getBackgroundColor(status),
+                                    //   borderColor: controller.getBorderColor(status),
+                                    //   textColor: controller.getTextColor(status),
+                                    // ),
                                   );
                                 },
                                 separatorBuilder: (context, index) {

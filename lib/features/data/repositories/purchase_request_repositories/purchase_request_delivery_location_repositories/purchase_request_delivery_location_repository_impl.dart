@@ -3,7 +3,6 @@ import 'package:new_ezagro_flutter/core/errors/application_error.dart';
 import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/data/models/select_models/select_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/type_models/type_model.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/response_entities/response_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/purchase_request_repositories/purchase_request_delivery_location_repositories/purchase_request_delivery_location_repository.dart';
 

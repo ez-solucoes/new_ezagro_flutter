@@ -24,7 +24,7 @@ class DateTimeFormatter {
       return _formatterDdMmYyyyDash.parseStrict(dateString);
     } catch (e) {
       // Lidar com erro de parsing, talvez logar ou retornar null
-      print('Erro ao parsear data "$dateString" no formato $_formatDdMmYyyyDash: $e');
+      debugPrint('Erro ao parsear data "$dateString" no formato $_formatDdMmYyyyDash: $e');
       return null;
     }
   }
@@ -39,7 +39,7 @@ class DateTimeFormatter {
       return _formatterDdMmYyyySlash.parseStrict(dateString);
     } catch (e) {
       // Lidar com erro de parsing
-      print('Erro ao parsear data "$dateString" no formato $_formatDdMmYyyySlash: $e');
+      debugPrint('Erro ao parsear data "$dateString" no formato $_formatDdMmYyyySlash: $e');
       return null;
     }
   }
@@ -77,7 +77,7 @@ class DateTimeFormatter {
     if (date != null) return date;
 
     // Se nenhum formato funcionou
-    print('Aviso: Não foi possível decodificar a string de data "$dateString" com formatos conhecidos.');
+    debugPrint('Aviso: Não foi possível decodificar a string de data "$dateString" com formatos conhecidos.');
     return null;
   }
 

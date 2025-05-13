@@ -6,31 +6,30 @@ import 'package:new_ezagro_flutter/features/presenter/modules/purchase_request/p
 import 'package:new_ezagro_flutter/features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_controller.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_delivery_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_general_info_first_page.dart';
-import 'package:new_ezagro_flutter/features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_payment_method_page.dart';
 
 import '../../../../../consts/app_routes.dart';
 import '../../../../../design_system/colors/app_colors.dart';
 import '../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../../design_system/typography/app_text_styles.dart';
 import '../../../../../design_system/widgets/snackbars/custon_snack_bar_widget.dart';
-import '../../../../domain/entities/items_entities/items_entity.dart'; // Importar ItemsEntity
-import '../../../../domain/entities/select_entities/select_entity.dart'; // Importar SelectEntity
-import '../../../../domain/entities/company_entities/company_entity.dart'; // Importar CompanyEntity para usar os detalhes
+import '../../../../domain/entities/items_entities/items_entity.dart';
+import '../../../../domain/entities/select_entities/select_entity.dart';
+import '../../../../domain/entities/company_entities/company_entity.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
 import '../../../widgets/buttons/custom_elevated_button.dart';
-import '../../../widgets/cards/custom_product_expanded_card_widget.dart'; // Manter por enquanto, mas precisa de adaptação para empresas
+import '../../../widgets/cards/custom_product_expanded_card_widget.dart';
 import '../../../widgets/custom_tiles/custom_two_items_alternate_color_label_widget.dart';
 import '../../../widgets/custom_tiles/custom_two_items_alternate_color_tile_widget.dart';
 import '../purchase_request_list/purchase_request_list_page.dart';
 
 class PurchaseRequestCreateListItemsPage extends StatelessWidget {
-  final ArgParams args; // Página agora espera argumentos
+  final ArgParams args;
   static const String routePath = AppRoutes.appPurchaseRequestCreateListItemsPage;
 
   static void navigate() => Modular.to.navigate(routePath);
 
-  // Metodo push agora requer ArgParams contendo o ItemType
+
   static void push({required ArgParams args}) => Modular.to.pushNamed(routePath, arguments: args);
 
   static void pop() => Modular.to.pop();
@@ -39,41 +38,34 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Recupera o ItemType dos argumentos
     final ItemType currentItemType = args.firstArgs;
     final controller = Modular.get<PurchaseRequestCreateController>();
 
-    // Decida os labels para o cabeçalho da lista com base no tipo de item
     final String firstLabel = currentItemType == ItemType.product ? 'Nome' : 'Nome da Empresa';
     final String secondLabel = currentItemType == ItemType.product ? 'Quantidade' : 'CNPJ';
-    // Note: CustomTwoItemsAlternateColorLabelWidget só suporta 2 labels.
-    // Se precisar de um terceiro label para empresas (ex: "Selecionado"),
-    // você precisará adaptar este widget ou criar uma versão para 3 colunas.
 
 
     return BackgroundWidget(
-        scrollable: false, // Mantido conforme sua instrução
+        scrollable: false,
         appBar: CustomAppBarWidget(
           appBarType: AppBarType.centeredTitleAndBackArrow,
-          // Título da AppBar pode ser adaptado se necessário
           title: AppStringsPortuguese.newPurchaseRequestString,
-          callback: () => PurchaseRequestListPage.navigate(), // Volta para a lista geral de requisições
+          callback: () => PurchaseRequestListPage.navigate(),
         ),
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
           child: Observer(builder: (context) {
-            // Observa o estado de loading apropriado (geral ou específico)
+
             final bool isLoading = currentItemType == ItemType.product
-                ? controller.isProductLoading // Observe o loading de produtos
-                : controller.isCompanyLoading; // Observe o loading de empresas
+                ? controller.isProductLoading
+                : controller.isCompanyLoading;
 
             if (isLoading) {
               return Center(child: CircularProgressIndicator());
             } else {
-              // Decide qual lista final observar e usar no ListView.builder
               final List finalItemsList = currentItemType == ItemType.product
-                  ? controller.finalRequestedProducts // Lista final de produtos selecionados
-                  : controller.finalRequestedCompanies; // Lista final de empresas selecionadas
+                  ? controller.finalRequestedProducts
+                  : controller.finalRequestedCompanies;
 
               return Column( // Coluna principal para organizar os elementos
                 crossAxisAlignment: CrossAxisAlignment.center,

@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/purchase_request_datasources/purchase_request_datasource.dart';
+import 'package:new_ezagro_flutter/features/data/models/purchase_request_models/send_purchase_request_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/select_models/select_model.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/purchase_request_entities/send_purchase_request_entity.dart';
 
 import '../../../../../core/http_client/http_client.dart';
 import '../../../../../core/http_client/http_client_helper.dart';
@@ -23,7 +25,7 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.getPurchaseRequest,
+      AppEndpoints.purchaseRequest,
     );
 
     final HttpRequest request = HttpRequest.get(path: url);
@@ -48,7 +50,7 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.getPurchaseRequest,
+      AppEndpoints.purchaseRequest,
     );
 
     final HttpRequest request = HttpRequest.get(path: url, id: argParams.firstArgs);
@@ -70,7 +72,7 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.getPurchaseRequest,
+      AppEndpoints.purchaseRequest,
     );
 
     final HttpRequest request =
@@ -96,7 +98,7 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.getPurchaseRequest,
+      AppEndpoints.purchaseRequest,
     );
 
     final HttpRequest request = HttpRequest.patch(path: url, id: argParams.firstArgs, sufix: 'approve');
@@ -118,7 +120,7 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.getPurchaseRequest,
+      AppEndpoints.purchaseRequest,
     );
 
     final HttpRequest request = HttpRequest.patch(path: url, id: argParams.firstArgs, sufix: 'cancel');
@@ -140,7 +142,7 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.getPurchaseRequest + AppEndpoints.selectEndpoint,
+      AppEndpoints.purchaseRequest + AppEndpoints.selectEndpoint,
     );
 
     final HttpRequest request = HttpRequest.get(path: url);
@@ -165,13 +167,19 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.getPurchaseRequest,
+      AppEndpoints.purchaseRequest,
     );
 
-    final HttpRequest request = HttpRequest.post(path: url, payload: argParams.firstArgs);
+    final SendPurchaseRequestEntity sendPurchaseRequestEntity = argParams.firstArgs as SendPurchaseRequestEntity;
+    final SendPurchaseRequestModel sendPurchaseRequestModel = SendPurchaseRequestModel.fromEntity(sendPurchaseRequestEntity);
+    final payload = sendPurchaseRequestModel.toMap();
+
+
+    final HttpRequest request = HttpRequest.post(path: url, payload: payload);
+
     final result = await httpClient.execute(request);
     switch(result.statusCode) {
-      case 200:
+      case 201:
         return mountModelInstanceFromResponse(
           response: result,
           fromMap: (map) => PurchaseRequestModel.fromMap(map),

@@ -3,7 +3,6 @@ import 'package:dartz/dartz.dart';
 import 'package:new_ezagro_flutter/core/errors/application_error.dart';
 
 import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
-import 'package:new_ezagro_flutter/features/data/models/response_models/response_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/segment_models/segment_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/select_models/select_model.dart';
 

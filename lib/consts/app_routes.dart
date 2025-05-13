@@ -58,6 +58,7 @@ class AppRoutes {
   static const String appPurchaseRequestCreateListItemsPage = '/purchaseRequestCreateListItemsPage';
   static const String addPurchaseRequestCreateAddItemsPage = '/purchaseRequestCreateAddItemsPage';
   static const String addPurchaseRequestCreatePaymentMethodPage = '/purchaseRequestCreatePaymentMethodPage';
+  static const String appPurchaseRequestCreateDeliveryPage = '/purchaseRequestCreateDeliveryPage';
 
 
   //Miscellaneous

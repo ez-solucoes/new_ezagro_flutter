@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_add_items_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_controller.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_delivery_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_general_info_first_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_payment_method_page.dart';
 
@@ -157,8 +158,8 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
                                                 itemType: currentItemType, // Passa o tipo de item
                                                 onRemove: () => controller.removeRequestedProduct(productItem.productId), // Callback Remover Produto
                                                 onEdit: () {
-                                                  // TODO: Implementar lógica de edição para produtos
-                                                  print('Editar Produto: ${productItem.productName}');
+                                                  //Implementar lógica de edição para produtos
+                                                  debugPrint('Editar Produto: ${productItem.productName}');
                                                 },
                                                 firstColumnData: [
                                                   {'title': 'Medida', 'conteudo': 'KG'}, // Placeholder - Obter do productItem
@@ -303,7 +304,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
                                 if(currentItemType == ItemType.product){
                                   PurchaseRequestCreateListItemsPage.push(args: ArgParams(firstArgs: ItemType.company));
                                 } else {
-                                  PurchaseRequestCreatePaymentMethodPage.push();
+                                  PurchaseRequestCreateDeliveryPage.push();
                                 }
                               }
                             },

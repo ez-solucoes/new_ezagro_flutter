@@ -73,7 +73,7 @@ class _PurchaseRequestCreateAddItemsPageState extends State<PurchaseRequestCreat
     final String firstLabel = currentItemType == ItemType.product ? 'Nome' : 'Nome';
     final String secondLabel = currentItemType == ItemType.product ? 'Quantidade' : 'CNPJ'; // Label agora é CNPJ
     // O terceiro label ('Selecionar') só faz sentido para empresas
-    final String thirdLabel = currentItemType == ItemType.company ? 'Selecionar' : '';
+    // final String thirdLabel = currentItemType == ItemType.company ? 'Selecionar' : '';
 
 
     return BackgroundWidget(
@@ -303,8 +303,8 @@ class _PurchaseRequestCreateAddItemsPageState extends State<PurchaseRequestCreat
                                             index: index,
                                             firstItem: productItem.productName!,
                                             secondItem: productItem.requestedQuantity.toString(),
-                                            addQuantity: () => controller.incrementRequestedProductQuantity(productItem.productId!),
-                                            removeQuantity: () => controller.decrementRequestedProductQuantity(productItem.productId!),
+                                            addQuantity: () => controller.incrementRequestedProductQuantity(productItem.productId),
+                                            removeQuantity: () => controller.decrementRequestedProductQuantity(productItem.productId),
                                           ),
                                           // children: [], // Pode adicionar detalhes do produto aqui se necessário
                                         ),

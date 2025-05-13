@@ -54,8 +54,9 @@ class AppEndpoints {
   static const String paymentMethodEndpoint = '/payment-method';
 
   ///Purchase Request
-  static const String getPurchaseRequest = '/purchase-request';
+  static const String purchaseRequest = '/purchase-request';
   static const String purchaseRequestTypeEndpoint = '/purchase-request-type';
+  static const String purchaseRequestDeliveryLocationEndpoint = '/purchase-request-delivery-location';
 
   ///Approvals
   static const String approvePurchaseRequest = '/approve';

@@ -31,11 +31,11 @@ class ItemsModel extends ItemsEntity {
     return ItemsModel(
       productId: map['productId'] as int,
       requestedQuantity: map['requestedQuantity'] as int,
-      agriculturalInputId: map['agriculturalInputId'] as int,
-      machineryImplementId: map['machineryImplementId'] as int,
+      agriculturalInputId: map['agriculturalInputId'] as int?,
+      machineryImplementId: map['machineryImplementId'] as int?,
       serviceName: map['serviceName'] as String?,
       description: map['description'] as String?,
-      attachmentUrls: map['attachmentUrls'] as List<String>?,
+      attachmentUrls: (map['attachmentUrls'] as List<dynamic>?)?.map((e) => e.toString()).toList(),
       productName: map['productName'] as String?,
     );
   }
@@ -44,5 +44,18 @@ class ItemsModel extends ItemsEntity {
 
   factory ItemsModel.fromJson(String source) =>
       ItemsModel.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  factory ItemsModel.fromEntity(ItemsEntity entity) {
+    return ItemsModel(
+      productId: entity.productId,
+      requestedQuantity: entity.requestedQuantity,
+      agriculturalInputId: entity.agriculturalInputId,
+      machineryImplementId: entity.machineryImplementId,
+      serviceName: entity.serviceName,
+      description: entity.description,
+      attachmentUrls: entity.attachmentUrls,
+      productName: entity.productName,
+    );
+  }
 
 }

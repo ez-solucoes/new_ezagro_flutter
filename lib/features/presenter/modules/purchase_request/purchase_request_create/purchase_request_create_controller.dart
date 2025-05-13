@@ -1,22 +1,23 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/company_entities/company_entity.dart'; // Importar CompanyEntity
+import 'package:new_ezagro_flutter/core/utils/datetime_formatter.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/company_entities/company_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/items_entities/items_entity.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/purchase_request_entities/purchase_request_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/purchase_request_entities/send_purchase_request_entity.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/company_usecases/get_all_companies_usecase/get_all_companies_usecase.dart'; // Importar GetAllCompaniesUsecase
+import 'package:new_ezagro_flutter/features/domain/usecases/company_usecases/get_all_companies_usecase/get_all_companies_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/employee_usecase/get_all_employees_by_farm_id_to_select_usecases/get_all_employees_by_farm_id_to_select_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/get_all_products_by_type_id_to_select_usecases/get_all_products_by_type_id_to_select_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/purchase_request_usecases/purchase_request_delivery_location_usecases/get_all_purchase_request_delivery_locations_to_select_usecases/get_all_purchase_request_delivery_locations_to_select_usecase.dart';
 
 import '../../../../../core/usecase/usecase.dart';
+import '../../../../../design_system/widgets/snackbars/custon_snack_bar_widget.dart';
 import '../../../../domain/entities/select_entities/select_entity.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../../domain/usecases/company_usecases/company_segment_usecases/get_all_company_segments_to_select_usecases/get_all_company_segments_to_select_usecases.dart';
 import '../../../../domain/usecases/company_usecases/get_all_companies_to_select_usecase/get_all_companies_to_select_usecase.dart';
-// Importar usecases para filtros de empresa (você precisará implementá-los)
-// import '../../../../domain/usecases/company_usecases/get_companies_by_segment_ids_usecase/get_companies_by_segment_ids_usecase.dart'; // Exemplo
-// import '../../../../domain/usecases/company_usecases/get_companies_by_city_usecase/get_companies_by_city_usecase.dart'; // Exemplo
-// import '../../../../domain/usecases/company_usecases/get_companies_by_segment_ids_and_city_usecase/get_companies_by_segment_ids_and_city_usecase.dart'; // Exemplo para combinação
+
+
 
 import '../../../../domain/usecases/cost_center_usecases/get_all_cost_center_to_select_usecase.dart';
 import '../../../../domain/usecases/farm_usecases/get_all_farms_by_cost_center_id_to_select_usecases/get_all_farms_by_cost_center_id_to_select_usecase.dart';
@@ -25,22 +26,19 @@ import '../../../../domain/usecases/product_usecases/get_all_products_to_select_
 import '../../../../domain/usecases/product_usecases/product_types_usecases/get_all_product_types_to_select_usecases/get_all_product_types_to_select_usecase.dart';
 import '../../../../domain/usecases/purchase_request_usecases/create_purchase_request_usecases/create_purchase_request_usecase.dart';
 import '../../../../domain/usecases/purchase_request_usecases/get_all_purchase_request_type_to_select_usecase/get_all_purchase_request_type_to_select_usecase.dart';
-// REMOVIDO: import '../../../../domain/entities/company_entities/company_item_entity.dart'; // Importar a entidade de item de empresa // Importar usecase para métodos de pagamento
 
-// Importar o pacote collection para usar firstWhereOrNull e sorted
-import 'package:collection/collection.dart'; // <--- Adicionado esta importação
+import 'package:collection/collection.dart';
 
 part 'purchase_request_create_controller.g.dart';
 
-// Enum para definir os tipos de item que podem ser adicionados
+
 enum ItemType { product, company }
 
 class PurchaseRequestCreateController = PurchaseRequestCreateControllerAbstract with _$PurchaseRequestCreateController;
 
 abstract class PurchaseRequestCreateControllerAbstract with Store {
-  // --- Estados de Carregamento ---
   @observable
-  bool isFirstLoading = false; // Loading inicial (pode ser usado para qualquer tipo)
+  bool isFirstLoading = false;
   @observable
   bool isCostCenterLoading = false;
   @observable
@@ -48,14 +46,14 @@ abstract class PurchaseRequestCreateControllerAbstract with Store {
   @observable
   bool isEmployeeLoading = false;
   @observable
-  bool isProductLoading = false; // Estado específico para carregamento/filtro de produtos
+  bool isProductLoading = false;
   @observable
-  bool isCompanyLoading = false; // Estado específico para carregamento/filtro de empresas
+  bool isCompanyLoading = false;
   @observable
-  bool isPaymentMethodLoading = false; // <--- Adicionado: Estado de loading para métodos de pagamento
+  bool isPaymentMethodLoading = false;
 
 
-  // --- Listas Gerais de Seleção ---
+
   @observable
   List<SelectEntity> purchaseRequestTypeListToSelect = ObservableList<SelectEntity>();
   @observable
@@ -65,54 +63,48 @@ abstract class PurchaseRequestCreateControllerAbstract with Store {
   @observable
   List<SelectEntity> employeeByFarmIdListToSelect = ObservableList<SelectEntity>();
   @observable
-  List<SelectEntity> paymentMethodListToSelect = ObservableList<SelectEntity>(); // <--- Adicionado: Lista de métodos de pagamento
+  List<SelectEntity> paymentMethodListToSelect = ObservableList<SelectEntity>();
+  @observable
+  List<SelectEntity> deliveryLocationListToSelect = ObservableList<SelectEntity>();
 
 
   // --- Listas Relacionadas a Produtos ---
   @observable
-  List<SelectEntity> productListToSelect = ObservableList<SelectEntity>(); // Lista de produtos exibida (baseada nos filtros)
-  List<SelectEntity> _allProducts = []; // Armazena todos os produtos buscados inicialmente
+  List<SelectEntity> productListToSelect = ObservableList<SelectEntity>();
+  List<SelectEntity> _allProducts = [];
   @observable
-  List<SelectEntity> productTypesListToSelect = ObservableList<SelectEntity>(); // Todos os tipos de produto
+  List<SelectEntity> productTypesListToSelect = ObservableList<SelectEntity>();
   @observable
-  List<SelectEntity> filteredProductTypeListToSelect = ObservableList<SelectEntity>(); // Tipos de produto selecionados para filtro
+  List<SelectEntity> filteredProductTypeListToSelect = ObservableList<SelectEntity>();
 
   // --- Listas Relacionadas a Empresas ---
   @observable
-  List<SelectEntity> companiesListToSelect = ObservableList<SelectEntity>(); // Lista de empresas exibida (baseada nos filtros)
-  List<SelectEntity> _allCompaniesToSelect = []; // Armazena todas as empresas (SelectEntity) buscadas inicialmente
+  List<SelectEntity> companiesListToSelect = ObservableList<SelectEntity>();
+  List<SelectEntity> _allCompaniesToSelect = [];
   @observable
-  List<CompanyEntity> companiesList = ObservableList<CompanyEntity>(); // Lista de CompanyEntity com detalhes completos (não filtrada na UI de seleção)
+  List<CompanyEntity> companiesList = ObservableList<CompanyEntity>();
   @observable
-  List<SelectEntity> companySegmentsListToSelect = ObservableList<SelectEntity>(); // Todos os segmentos de empresa
+  List<SelectEntity> companySegmentsListToSelect = ObservableList<SelectEntity>();
   @observable
-  List<SelectEntity> filteredCompanySegmentsListToSelect = ObservableList<SelectEntity>(); // Segmentos de empresa selecionados para filtro
+  List<SelectEntity> filteredCompanySegmentsListToSelect = ObservableList<SelectEntity>();
   @observable
-  String cityFilterText = ''; // Texto digitado para filtro por cidade
+  String cityFilterText = '';
   @observable
-  String stateFilterText = ''; // <--- Adicionado: Texto digitado para filtro por estado
+  String stateFilterText = '';
   @observable
-  ObservableSet<int> selectedCompanyIds = ObservableSet<int>(); // Set observável de IDs de empresas selecionadas
+  ObservableSet<int> selectedCompanyIds = ObservableSet<int>();
+
+  Map<int, String> companySegmentNames = {}; // Mapa privado
 
 
-  // Mapa para armazenar o nome do segmento por ID da empresa (para acesso rápido na UI)
-  // Assumindo que a API de empresas ou segmentos fornece essa relação
-  // Este mapa pode ser populado ao carregar companiesList ou companySegmentsListToSelect
-  Map<int, String> _companySegmentNames = {}; // Mapa privado
 
-
-  // --- Itens Requisitados (Lista para Produtos) ---
   @observable
-  List<ItemsEntity> requestedProductItems = ObservableList<ItemsEntity>(); // Produtos com quantidade requisitada (lista exibida na tela AddItems)
-  // REMOVIDO: @observable List<CompanyItemEntity> requestedCompanyItems = ObservableList<CompanyItemEntity>(); // Empresas com quantidade requisitada (lista exibida na tela AddItems)
+  List<ItemsEntity> requestedProductItems = ObservableList<ItemsEntity>();
 
-
-  // --- Itens Selecionados Finais (Itens com quantidade > 0) ---
   @observable
-  List<ItemsEntity> finalRequestedProducts = ObservableList<ItemsEntity>(); // Produtos selecionados (quantidade > 0)
-  // A lista final de empresas selecionadas é a computada finalRequestedCompanies
+  List<ItemsEntity> finalRequestedProducts = ObservableList<ItemsEntity>();
 
-  // --- Entidades Selecionadas (para dropdowns etc.) ---
+
   SelectEntity? employee;
   @observable
   SelectEntity? purchaseRequestType;
@@ -121,31 +113,35 @@ abstract class PurchaseRequestCreateControllerAbstract with Store {
   @observable
   SelectEntity? farm;
   @observable
-  SelectEntity? paymentMethod; // <--- Adicionado: Metodo de pagamento selecionado
+  SelectEntity? paymentMethod;
 
-
-  // --- Estado e Lógica de Busca ---
   @observable
-  String searchQuery = ''; // <--- Adicionado: Estado para o texto de busca (uso geral, incluindo Autocomplete)
+  String searchQuery = '';
   @observable
-  ItemType? currentLoadedItemType; // <--- Adicionado: Estado para o tipo de item carregado
+  ItemType? currentLoadedItemType;
 
-  // --- Estado de Urgência ---
   @observable
-  bool isUrgent = false; // <--- Adicionado: Estado para a flag de urgência
+  bool isUrgent = false;
+
+  @observable
+  String quotationExpirationDate = '';
+
+  @observable
+  String paymentDate = '';
 
 
-  // <--- Adicionado: Getters para as listas completas (para uso no Autocomplete)
+  @observable
+  SelectEntity? deliveryLocationId;
+
   List<SelectEntity> get allProducts => _allProducts;
   List<SelectEntity> get allCompaniesToSelect => _allCompaniesToSelect;
 
 
   @action
-  void updateSearchQuery(String query) { // <--- Adicionado: Action para atualizar o texto de busca
+  void updateSearchQuery(String query) {
     searchQuery = query;
   }
 
-  // <--- Adicionado: Lista computada que filtra os itens para a tela AddItems
   @computed
   List get filteredAddItemsList {
     if (currentLoadedItemType == null) {
@@ -692,7 +688,7 @@ abstract class PurchaseRequestCreateControllerAbstract with Store {
     isEmployeeLoading = false;
     isProductLoading = false;
     isCompanyLoading = false;
-    isPaymentMethodLoading = false; // <--- Adicionado: Resetar loading de método de pagamento
+    isPaymentMethodLoading = false;
 
 
     purchaseRequestTypeListToSelect.clear();
@@ -717,7 +713,7 @@ abstract class PurchaseRequestCreateControllerAbstract with Store {
     cityFilterText = '';
     stateFilterText = ''; // <--- Limpa o filtro de estado
     selectedCompanyIds.clear(); // Limpa os IDs de empresas selecionadas
-    _companySegmentNames.clear(); // Limpa o mapa de nomes de segmento
+    companySegmentNames.clear(); // Limpa o mapa de nomes de segmento
     // REMOVIDO: requestedCompanyItems.clear(); // <--- Limpa a lista de CompanyItemEntity
 
 
@@ -768,6 +764,19 @@ abstract class PurchaseRequestCreateControllerAbstract with Store {
     isFirstLoading = false;
   }
 
+  Future<void> getAllDeliveryLocationsToSelect() async {
+    isFirstLoading = true;
+
+    final getAllDeliveryLocationsToSelect = Modular.get<GetAllPurchaseRequestDeliveryLocationsToSelectUsecase>();
+    final result = await getAllDeliveryLocationsToSelect(NoParams());
+
+    result.fold((error) => error.friendlyMessage, (success) {
+      deliveryLocationListToSelect = ObservableList<SelectEntity>.of(success);
+      return success;
+    });
+    isFirstLoading = false;
+  }
+
   @action
   Future<void> getAllFarmsByCostCenterIdToSelect(int costCenterId) async {
     isFarmLoading = true; // Estado de loading específico
@@ -797,18 +806,21 @@ abstract class PurchaseRequestCreateControllerAbstract with Store {
   }
 
   @action
-  Future<void> createPurchaseRequest() async {
+  Future<void> createPurchaseRequest(BuildContext context) async {
     isPaymentMethodLoading = true;
 
     final argParams = ArgParams(
       firstArgs: SendPurchaseRequestEntity(
+        quotationExpirationDate: DateTimeFormatter.convertDdMmYyyySlashToIso8601(quotationExpirationDate),
+        paymentDate: DateTimeFormatter.convertDdMmYyyySlashToIso8601(paymentDate),
+        deliveryLocationId: deliveryLocationId?.value,
         isUrgent: isUrgent,
         typeId: purchaseRequestType?.value,
         farmId: farm?.value,
         costCenterId: costCenter?.value,
         responsibleEmployeeId: employee?.value,
         paymentMethodId: paymentMethod?.value,
-        companyIds: companiesListToSelect.map((company) => company.value).toList(),
+        companyIds: finalRequestedCompanies.map((company) => company.value).toList(),
         items: finalRequestedProducts.map((item) => ItemsEntity(
           productId: item.productId,
           requestedQuantity: item.requestedQuantity,
@@ -819,7 +831,14 @@ abstract class PurchaseRequestCreateControllerAbstract with Store {
 
     final createPurchaseRequest = Modular.get<CreatePurchaseRequestUsecase>();
     final result = await createPurchaseRequest(argParams);
+    result.fold((error) => error.friendlyMessage, (success) {
+      CustomSnackBarWidget.show(SnackBarType.success, context, 'Cotação de compra criada com sucesso.'
+      );
+    });
+    isPaymentMethodLoading = false;
+
   }
+
 }
 
 

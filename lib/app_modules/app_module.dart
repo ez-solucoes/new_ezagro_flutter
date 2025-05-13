@@ -16,6 +16,8 @@ import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/p
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/payment_method_datasources/payment_method_datasource_impl.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/product_datasources/product_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/product_datasources/product_datasource_impl.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/purchase_request_datasources/purchase_request_delivery_location_datasources/purchase_request_delivery_location_datasource.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/purchase_request_datasources/purchase_request_delivery_location_datasources/purchase_request_delivery_location_datasource_impl.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/purchase_request_datasources/purchase_request_type_datasource/purchase_request_type_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/user_datasources/user_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/user_datasources/user_datasource_impl.dart';
@@ -27,7 +29,6 @@ import 'package:new_ezagro_flutter/features/data/repositories/payment_method_rep
 import 'package:new_ezagro_flutter/features/data/repositories/pest_repositories/pest_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/products_repositories/product_type_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/user_repositories/user_repository_impl.dart';
-import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/authentication_repository/authentication_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/company_repositories/company_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/company_repositories/company_segment_repository/company_segment_repository.dart';
@@ -35,6 +36,7 @@ import 'package:new_ezagro_flutter/features/domain/repositories/contract_reposit
 import 'package:new_ezagro_flutter/features/domain/repositories/payment_method_repositories/payment_method_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/pest_repositories/pest_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/product_repositories/product_type_repository.dart';
+import 'package:new_ezagro_flutter/features/domain/repositories/purchase_request_repositories/purchase_request_delivery_location_repositories/purchase_request_delivery_location_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/purchase_request_repositories/purchase_request_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/user_repositories/user_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
@@ -98,6 +100,9 @@ import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/pro
 import 'package:new_ezagro_flutter/features/domain/usecases/purchase_request_usecases/create_purchase_request_usecases/create_purchase_request_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/purchase_request_usecases/create_purchase_request_usecases/create_purchase_request_usecases_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/purchase_request_usecases/get_all_purchase_request_usecases/get_all_purchase_request_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/purchase_request_usecases/purchase_request_delivery_location_usecases/get_all_purchase_request_delivery_locations_to_select_usecases/get_all_purchase_request_delivery_locations_to_select_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/purchase_request_usecases/purchase_request_delivery_location_usecases/get_all_purchase_request_delivery_locations_usecases/get_all_purchase_request_delivery_locations_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/purchase_request_usecases/purchase_request_delivery_location_usecases/get_purchase_request_delivery_location_by_id_usecases/get_purchase_request_delivery_location_by_id_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_usecase/approve_service_order_by_id_usecase/approve_service_order_by_id_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_usecase/approve_service_order_by_id_usecase/approve_service_order_by_id_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_usecase/cancel_service_order_by_id_usecase/cancel_service_order_by_id_usecase.dart';
@@ -168,6 +173,7 @@ import '../features/data/repositories/farm_repositories/farm_repository_impl.dar
 import '../features/data/repositories/machinery_repositories/machinery_repository_impl.dart';
 import '../features/data/repositories/plots_repositories/plots_repository_impl.dart';
 import '../features/data/repositories/products_repositories/products_repository_impl.dart';
+import '../features/data/repositories/purchase_request_repositories/purchase_request_delivery_location_repositories/purchase_request_delivery_location_repository_impl.dart';
 import '../features/data/repositories/purchase_request_repositories/purchase_request_repository_impl.dart';
 import '../features/data/repositories/purchase_request_repositories/purchase_request_type_repository/purchase_request_type_repository_impl.dart';
 import '../features/data/repositories/service_order_repositories/service_order_repository_impl.dart';
@@ -213,6 +219,9 @@ import '../features/domain/usecases/purchase_request_usecases/get_purchase_reque
 import '../features/domain/usecases/purchase_request_usecases/get_purchase_request_by_id_usecases/get_purchase_request_by_id_usecase_impl.dart';
 import '../features/domain/usecases/purchase_request_usecases/get_purchase_request_by_status_id_usecases/get_purchase_request_by_status_id_usecase.dart';
 import '../features/domain/usecases/purchase_request_usecases/get_purchase_request_by_status_id_usecases/get_purchase_request_by_status_id_usecases_impl.dart';
+import '../features/domain/usecases/purchase_request_usecases/purchase_request_delivery_location_usecases/get_all_purchase_request_delivery_locations_to_select_usecases/get_all_purchase_request_delivery_locations_to_select_usecase_impl.dart';
+import '../features/domain/usecases/purchase_request_usecases/purchase_request_delivery_location_usecases/get_all_purchase_request_delivery_locations_usecases/get_all_purchase_request_delivery_locations_usecase_impl.dart';
+import '../features/domain/usecases/purchase_request_usecases/purchase_request_delivery_location_usecases/get_purchase_request_delivery_location_by_id_usecases/get_purchase_request_delivery_location_by_id_usecase_impl.dart';
 import '../features/domain/usecases/service_order_usecase/cancel_service_order_by_id_usecase/cancel_service_order_by_id_usecase_impl.dart';
 import '../features/domain/usecases/service_order_usecase/get_service_order_by_status_id_usecase/get_service_order_by_status_id_usecase.dart';
 import '../features/domain/usecases/service_order_usecase/get_service_order_by_status_id_usecase/get_service_order_by_status_id_usecase_impl.dart';
@@ -238,6 +247,7 @@ import '../features/presenter/modules/authentication_module/register_page/regist
 import '../features/presenter/modules/documents/documents_page/documents_page.dart';
 import '../features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_add_items_page.dart';
 import '../features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_controller.dart';
+import '../features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_delivery_page.dart';
 import '../features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_general_info_first_page.dart';
 import '../features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_list_items_page.dart';
 import '../features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_payment_method_page.dart';
@@ -309,6 +319,9 @@ class AppModule extends Module {
     i.addLazySingleton<CancelPurchaseRequestByIdUsecase>(CancelPurchaseRequestByIdUsecaseImpl.new);
     i.addLazySingleton<GetPurchaseRequestByStatusIdUsecase>(GetPurchaseRequestByStatusIdUsecaseImpl.new);
     i.addLazySingleton<CreatePurchaseRequestUsecase>(CreatePurchaseRequestUsecaseImpl.new);
+    i.addLazySingleton<GetPurchaseRequestDeliveryLocationByIdUsecase>(GetPurchaseRequestDeliveryLocationByIdUsecaseImpl.new);
+    i.addLazySingleton<GetAllPurchaseRequestDeliveryLocationsUsecase>(GetAllPurchaseRequestDeliveryLocationsUsecaseImpl.new);
+    i.addLazySingleton<GetAllPurchaseRequestDeliveryLocationsToSelectUsecase>(GetAllPurchaseRequestDeliveryLocationsToSelectUsecaseImpl.new);
 
     i.addLazySingleton<ApproveServiceOrderByIdUsecase>(ApproveServiceOrderByIdUsecaseImpl.new);
     i.addLazySingleton<CancelServiceOrderByIdUsecase>(CancelServiceOrderByIdUsecaseImpl.new);
@@ -366,6 +379,7 @@ class AppModule extends Module {
 
     i.addLazySingleton<PurchaseRequestRepository>(PurchaseRequestRepositoryImpl.new);
     i.addLazySingleton<PurchaseRequestTypeRepository>(PurchaseRequestTypeRepositoryImpl.new);
+    i.addLazySingleton<PurchaseRequestDeliveryLocationRepository>(PurchaseRequestDeliveryLocationRepositoryImpl.new);
 
     //Datasource
     i.addLazySingleton<AuthenticationDatasource>(AuthenticationDatasourceImpl.new);
@@ -388,6 +402,7 @@ class AppModule extends Module {
     i.addLazySingleton<ProductTypeDatasource>(ProductTypeDatasourceImpl.new);
     i.addLazySingleton<PurchaseRequestDatasource>(PurchaseRequestDatasourceImpl.new);
     i.addLazySingleton<PurchaseRequestTypeDatasource>(PurchaseRequestTypeDatasourceImpl.new);
+    i.addLazySingleton<PurchaseRequestDeliveryLocationDatasource>(PurchaseRequestDeliveryLocationDatasourceImpl.new);
 
     //Controllers
     i.addLazySingleton<AuthenticationController>(AuthenticationController.new);
@@ -417,7 +432,7 @@ class AppModule extends Module {
 
   @override
   void routes(RouteManager r) {
-    r.child(AppRoutes.appDefaultPage, child: (context) => LoginPage());
+    r.child(AppRoutes.appDefaultPage, child: (context) => HomePage());
     r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
     r.child(AppRoutes.appLoginPage, child: (context) => LoginPage());
     r.child(AppRoutes.appRegistersPage, child: (context) => RegistersPage());
@@ -458,6 +473,7 @@ class AppModule extends Module {
     r.child(AppRoutes.appPurchaseRequestCreateListItemsPage, child: (context) => PurchaseRequestCreateListItemsPage(args: r.args.data,));
     r.child(AppRoutes.addPurchaseRequestCreateAddItemsPage, child: (context) => PurchaseRequestCreateAddItemsPage(args: r.args.data,));
     r.child(AppRoutes.addPurchaseRequestCreatePaymentMethodPage, child: (context) => PurchaseRequestCreatePaymentMethodPage());
+    r.child(AppRoutes.appPurchaseRequestCreateDeliveryPage, child: (context) => PurchaseRequestCreateDeliveryPage());
 
     //Miscellaneous
     r.child(AppRoutes.appEditListedItemsPage, child: (context) => EditListedItemsPage(args: r.args.data,));

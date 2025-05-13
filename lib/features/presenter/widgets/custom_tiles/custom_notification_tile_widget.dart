@@ -17,7 +17,7 @@ class CustomNotificationTileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ApprovalsListPage.navigate(),
+      onTap: () => ApprovalsListPage.navigate(),
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Container(

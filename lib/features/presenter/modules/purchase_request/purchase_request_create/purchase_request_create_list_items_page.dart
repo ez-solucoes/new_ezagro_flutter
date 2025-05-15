@@ -29,7 +29,6 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
 
   static void navigate() => Modular.to.navigate(routePath);
 
-
   static void push({required ArgParams args}) => Modular.to.pushNamed(routePath, arguments: args);
 
   static void pop() => Modular.to.pop();
@@ -44,7 +43,6 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
     final String firstLabel = currentItemType == ItemType.product ? 'Nome' : 'Nome da Empresa';
     final String secondLabel = currentItemType == ItemType.product ? 'Quantidade' : 'CNPJ';
 
-
     return BackgroundWidget(
         scrollable: false,
         appBar: CustomAppBarWidget(
@@ -55,10 +53,8 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
           child: Observer(builder: (context) {
-
-            final bool isLoading = currentItemType == ItemType.product
-                ? controller.isProductLoading
-                : controller.isCompanyLoading;
+            final bool isLoading =
+                currentItemType == ItemType.product ? controller.isProductLoading : controller.isCompanyLoading;
 
             if (isLoading) {
               return Center(child: CircularProgressIndicator());
@@ -67,28 +63,21 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
                   ? controller.finalRequestedProducts
                   : controller.finalRequestedCompanies;
 
-              return Column( // Coluna principal para organizar os elementos
+              return Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                // mainAxisAlignment: MainAxisAlignment.spaceBetween, // Não use spaceBetween se quiser que o Flexible ocupe o espaço
                 children: [
-                  // Botão para adicionar itens (navega para AddItemsPage com o tipo correto)
                   GestureDetector(
                     onTap: () {
-                      // Navega para a tela de adicionar itens do MESMO tipo
                       PurchaseRequestCreateAddItemsPage.push(args: ArgParams(firstArgs: currentItemType));
                     },
                     child: Text(
-                      // Texto do botão pode ser adaptado
                       currentItemType == ItemType.product ? 'Adicionar Produtos' : 'Adicionar Empresas',
                       style: AppTextStyles.underlinedTextButtonStyle(color: AppColors.primaryBlackColor),
                     ),
                   ),
                   SizedBox(height: 10),
-
-                  // Envolve o Container da lista com Flexible para que ele ocupe o espaço restante
-                  // Usando Flexible com FlexFit.loose para lidar com constraints unbounded
-                  Flexible( // <--- Alterado de Expanded para Flexible
-                    fit: FlexFit.loose, // <--- Adicionado fit: FlexFit.loose
+                  Flexible(
+                    fit: FlexFit.loose,
                     child: Container(
                         decoration: BoxDecoration(
                           color: AppColors.primaryWhiteColor,
@@ -106,133 +95,122 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
                           padding: EdgeInsets.only(top: 10, right: 10, left: 10),
                           child: Column(
                             children: [
-                              // Cabeçalho da lista com labels adaptados
                               CustomTwoItemsAlternateColorLabelWidget(
                                 firstLabel: firstLabel,
                                 secondLabel: secondLabel,
                               ),
                               SizedBox(height: 10),
                               Divider(color: AppColors.borderWhiteColor),
-                              // O ListView.builder interno
                               Observer(builder: (context) {
-                                // Observa a lista final correta
                                 if (finalItemsList.isNotEmpty) {
                                   return ListView.builder(
-                                    shrinkWrap: true, // Mantido para que o ListView ocupe apenas o espaço necessário dentro do Flexible/Container
-                                    physics: NeverScrollableScrollPhysics(), // Mantido para desabilitar o scroll interno
+                                    shrinkWrap: true,
+                                    physics: NeverScrollableScrollPhysics(),
                                     itemCount: finalItemsList.length,
                                     itemBuilder: (context, index) {
-                                      final selectedItem = finalItemsList[index]; // Pega o item da lista final correta
+                                      final selectedItem = finalItemsList[index];
 
-                                      // Renderiza o tile apropriado com base no tipo de item
                                       if (currentItemType == ItemType.product) {
-                                        // Item de Produto
-                                        final productItem = selectedItem as ItemsEntity; // Cast para o tipo correto
-                                        return Theme( // Mantém o Theme para remover a linha do ExpansionTile
+                                        final productItem = selectedItem as ItemsEntity;
+                                        return Theme(
                                           data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-                                          child: ExpansionTile( // Mantém ExpansionTile para consistência visual
+                                          child: ExpansionTile(
                                             initiallyExpanded: false,
                                             showTrailingIcon: false,
                                             tilePadding: const EdgeInsets.all(0),
                                             trailing: SizedBox(width: 0.0),
                                             title: CustomTwoItemsAlternateColorTileWidget(
                                                 itemType: currentItemType,
-                                                index: index, // Índice na lista final
-                                                firstItem: productItem.productName!, // Nome do produto
-                                                secondItem: productItem.requestedQuantity.toString()), // Quantidade
+                                                index: index,
+                                                firstItem: productItem.productName!,
+                                                secondItem: productItem.requestedQuantity.toString()),
                                             children: [
-                                              // Card expandido para detalhes do produto
-                                              // **Atenção:** Se CustomProductExpandedCardWidget tem lógica específica
-                                              // de produto além de exibir listas de dados, ele precisará ser adaptado
-                                              // ou você precisará criar um widget separado para empresas.
                                               CustomProductExpandedCardWidget(
-                                                index: index, // Índice na lista final
-                                                itemType: currentItemType, // Passa o tipo de item
-                                                onRemove: () => controller.removeRequestedProduct(productItem.productId), // Callback Remover Produto
+                                                index: index,
+                                                itemType: currentItemType,
+                                                // Passa o tipo de item
+                                                onRemove: () =>
+                                                    controller.removeRequestedProduct(productItem.productId),
+                                                // Callback Remover Produto
                                                 onEdit: () {
-                                                  //Implementar lógica de edição para produtos
                                                   debugPrint('Editar Produto: ${productItem.productName}');
                                                 },
                                                 firstColumnData: [
-                                                  {'title': 'Medida', 'conteudo': 'KG'}, // Placeholder - Obter do productItem
-                                                  {'title': 'Segmento', 'conteudo': 'Fertilizantes'}, // Placeholder - Obter do productItem
-                                                  {'title': 'Foto de anexo', 'conteudo': 'Foto'}, // Placeholder
+                                                  {'title': 'Medida', 'conteudo': 'KG'},
+                                                  {'title': 'Segmento', 'conteudo': 'Fertilizantes'},
+                                                  {'title': 'Foto de anexo', 'conteudo': 'Foto'},
                                                 ],
                                                 secondColumnData: [
-                                                  {'title': 'Marca', 'conteudo': 'Heringer'}, // Placeholder - Obter do productItem
-                                                  {'title': 'Maquinário vinculado', 'conteudo': 'Maquinário'}, // Placeholder
+                                                  {'title': 'Marca', 'conteudo': 'Heringer'},
+                                                  {'title': 'Maquinário vinculado', 'conteudo': 'Maquinário'},
                                                 ],
-                                                // listItems provavelmente não é necessário aqui se o card for adaptado
                                               )
                                             ],
                                           ),
                                         );
                                       } else if (currentItemType == ItemType.company) {
-                                        // Item de Empresa
-                                        final companySelectEntity = selectedItem as SelectEntity; // Cast para SelectEntity
+                                        final companySelectEntity =
+                                            selectedItem as SelectEntity; // Cast para SelectEntity
 
-                                        // Obtém os detalhes completos da empresa usando o metodo da controller
-                                        final CompanyEntity? companyDetails = controller.getCompanyDetails(companySelectEntity.value);
+                                        final CompanyEntity? companyDetails =
+                                            controller.getCompanyDetails(companySelectEntity.value);
 
-                                        // Prepara os dados para o card expandido da empresa
                                         final List<Map<String, String>> companyFirstColumnData = [];
                                         final List<Map<String, String>> companySecondColumnData = [];
 
                                         if (companyDetails != null) {
-                                          // Popula as listas com dados da CompanyEntity
                                           companyFirstColumnData.addAll([
                                             {'title': 'Nome', 'conteudo': companyDetails.name ?? 'N/A'},
-                                            {'title': 'Endereço', 'conteudo': '${companyDetails.addressStreet ?? ''} - ${companyDetails.addressNumber ?? ''}'}, // Assumindo que CompanyEntity tem 'addressStreet' e 'addressNumber'
-                                            {'title': 'Cidade', 'conteudo': companyDetails.addressCity ?? 'N/A'}, // Assumindo que CompanyEntity tem 'addressCity'
+                                            {
+                                              'title': 'Endereço',
+                                              'conteudo':
+                                                  '${companyDetails.addressStreet ?? ''} - ${companyDetails.addressNumber ?? ''}'
+                                            },
+                                            {'title': 'Cidade', 'conteudo': companyDetails.addressCity ?? 'N/A'},
                                           ]);
                                           companySecondColumnData.addAll([
-                                            // Obtém o nome do segmento usando o ID da CompanyEntity
-                                            {'title': 'Segmento', 'conteudo': controller.getCompanySegmentName(companyDetails.id)},
-                                            {'title': 'Bairro', 'conteudo': companyDetails.addressNeighborhood ?? 'N/A'}, // Assumindo que CompanyEntity tem 'addressNeighborhood'
+                                            {
+                                              'title': 'Segmento',
+                                              'conteudo': controller.getCompanySegmentName(companyDetails.id)
+                                            },
+                                            {
+                                              'title': 'Bairro',
+                                              'conteudo': companyDetails.addressNeighborhood ?? 'N/A'
+                                            },
                                             // CNPJ já está no tile, mas pode ser repetido aqui se necessário
                                             // {'title': 'CNPJ', 'conteudo': companyDetails.legalDocumentNumber ?? 'N/A'},
                                           ]);
                                           // Adicione outros campos da CompanyEntity conforme necessário
                                         } else {
                                           // Caso os detalhes da empresa não sejam encontrados
-                                          companyFirstColumnData.add({'title': 'Detalhes', 'conteudo': 'Detalhes da empresa não encontrados.'});
+                                          companyFirstColumnData.add({
+                                            'title': 'Detalhes',
+                                            'conteudo': 'Detalhes da empresa não encontrados.'
+                                          });
                                         }
 
-
-                                        // Obtém o nome do segmento usando o metodo público da controller para o tile
-                                        // (Usando o ID do SelectEntity, que deve ser o mesmo da CompanyEntity)
-                                        //final String segmentNameForTile = controller.getCompanySegmentName(companySelectEntity.value);
-
-
-                                        return Theme( // Mantém o Theme para consistência visual
+                                        return Theme(
                                           data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-                                          child: ExpansionTile( // Mantém ExpansionTile, pode adicionar detalhes da empresa nos children
+                                          child: ExpansionTile(
                                             initiallyExpanded: false,
                                             showTrailingIcon: false,
                                             tilePadding: const EdgeInsets.all(0),
                                             trailing: SizedBox(width: 0.0),
-                                            // Usa CustomTwoItemsAlternateColorTileWidget para exibir nome e CNPJ
                                             title: CustomTwoItemsAlternateColorTileWidget(
                                               itemType: currentItemType,
-                                              index: index, // Índice na lista final
-                                              firstItem: companySelectEntity.label ?? 'Nome da Empresa', // Nome da empresa (do SelectEntity)
-                                              secondItem: companyDetails?.legalDocumentNumber ?? 'N/A', // CNPJ para o tile
+                                              index: index,
+                                              firstItem: companySelectEntity.label ?? 'Nome da Empresa',
+                                              secondItem: companyDetails?.legalDocumentNumber ?? 'N/A',
                                             ),
                                             children: [
-                                              // Usa CustomProductExpandedCardWidget (ou um widget adaptado/novo para empresas)
-                                              // passando os dados preparados da CompanyEntity
-                                              // **Atenção:** Verifique se CustomProductExpandedCardWidget
-                                              // pode lidar corretamente com os dados de empresa.
-                                              // Se ele tiver lógica específica de produto, você precisará adaptá-lo
-                                              // ou criar um CustomCompanyExpandedCardWidget.
                                               CustomProductExpandedCardWidget(
-                                                index: index, // Índice na lista final
-                                                itemType: currentItemType, // Passa o tipo de item
-                                                onRemove: () => controller.removeSelectedCompany(companySelectEntity.value), // Callback Remover Empresa
-                                                onEdit: null, // Não passa callback de editar para empresas (conforme requisito)
-                                                firstColumnData: companyFirstColumnData, // Dados da empresa
-                                                secondColumnData: companySecondColumnData, // Dados da empresa
-                                                // Remova ou ajuste listItems, pois é específico de produtos
+                                                index: index,
+                                                itemType: currentItemType,
+                                                onRemove: () =>
+                                                    controller.removeSelectedCompany(companySelectEntity.value),
+                                                onEdit: null,
+                                                firstColumnData: companyFirstColumnData,
+                                                secondColumnData: companySecondColumnData,
                                               )
                                             ],
                                           ),
@@ -242,7 +220,6 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
                                     },
                                   );
                                 } else {
-                                  // Mensagem quando a lista final está vazia
                                   return Container(
                                     alignment: Alignment.center,
                                     padding: const EdgeInsets.symmetric(vertical: 20.0),
@@ -259,9 +236,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
                             ],
                           ),
                         )),
-                  ), // Fim do Flexible
-
-                  // Botões de ação (Voltar e Próximo) - Ficam abaixo do Flexible
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
                     child: Row(
@@ -270,9 +245,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
                         Expanded(
                           child: CustomElevatedButton(
                             onPressed: () {
-                              // Volta para a página anterior (geralmente a de informações iniciais)
                               PurchaseRequestCreateGeneralInfoFirstPage.pop();
-                              // Decida se o resetState da controller deve ser chamado aqui
                               // controller.resetState(); // Se voltar significa cancelar a criação atual
                             },
                             label: 'Voltar',
@@ -286,14 +259,15 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
                           child: CustomElevatedButton(
                             onPressed: () {
                               if (finalItemsList.isEmpty) {
-                                CustomSnackBarWidget.show(SnackBarType.alert, context,
+                                CustomSnackBarWidget.show(
+                                  SnackBarType.alert,
+                                  context,
                                   currentItemType == ItemType.product
                                       ? 'Selecione pelo menos um produto.'
                                       : 'Selecione pelo menos uma empresa.',
                                 );
                               } else {
-
-                                if(currentItemType == ItemType.product){
+                                if (currentItemType == ItemType.product) {
                                   PurchaseRequestCreateListItemsPage.push(args: ArgParams(firstArgs: ItemType.company));
                                 } else {
                                   PurchaseRequestCreateDeliveryPage.push();

@@ -26,7 +26,7 @@ class ServiceOrderDatasourceImpl
       NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.getServiceOrderListEndpoint,
     );
 
@@ -51,7 +51,7 @@ class ServiceOrderDatasourceImpl
   Future<ResponseModel<FieldServiceOrderModel>> createServiceOrder(MockParams mockParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.postServiceOrderEndpoint,
     );
 
@@ -76,7 +76,7 @@ class ServiceOrderDatasourceImpl
   Future<ResponseModel<ServiceOrderModel>> getServiceOrderById(ArgParams params) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.getServiceOrderEndpoint,
     );
 
@@ -100,7 +100,7 @@ class ServiceOrderDatasourceImpl
   Future<List<ServiceOrderModel>> getServiceOrderListByStatusId(ArgParams params) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.getServiceOrderListEndpoint,
     );
 
@@ -126,7 +126,7 @@ class ServiceOrderDatasourceImpl
   Future<ResponseModel<ServiceOrderModel>> approveServiceOrderById(ArgParams params) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
         AppEndpoints.getServiceOrderEndpoint,
     );
 
@@ -149,7 +149,7 @@ class ServiceOrderDatasourceImpl
   Future<ResponseModel<ServiceOrderModel>> cancelServiceOrderById(ArgParams params) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.getServiceOrderEndpoint,
     );
 

@@ -1,5 +1,8 @@
 class AppEndpoints {
+  static const mainBaseUrl = mainBaseUrlProd;
+  static const mainBaseUrlProd = 'api.ezagro.com.br';
   static const mainBaseUrlDev = 'api.dev.temp.ezagro.com.br';
+
   static const String baseUrlProtocolWithSecurity = 'https';
   static const String baseUrlProtocol = 'http';
 

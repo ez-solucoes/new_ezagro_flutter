@@ -20,7 +20,7 @@ class EmployeeDatasourceImpl with UriBuilder implements EmployeeDatasource {
   Future<List<EmployeeModel>> getEmployees(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.employeeEndpoint,
     );
 
@@ -46,7 +46,7 @@ class EmployeeDatasourceImpl with UriBuilder implements EmployeeDatasource {
   Future<ResponseModel<EmployeeModel>> getEmployeeById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.getEmployeeById + (argParams.firstArgs as String),
     );
 
@@ -69,7 +69,7 @@ class EmployeeDatasourceImpl with UriBuilder implements EmployeeDatasource {
   Future<List<SelectModel>> getEmployeesByFarmIdToSelect(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.employeeEndpoint + AppEndpoints.selectEndpoint,
     );
 

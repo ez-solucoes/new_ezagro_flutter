@@ -21,7 +21,7 @@ class CostCenterDatasourceImpl with UriBuilder implements CostCenterDatasource {
       NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.costCentersEndpoint,
     );
 
@@ -47,7 +47,7 @@ class CostCenterDatasourceImpl with UriBuilder implements CostCenterDatasource {
       NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.costCentersEndpoint + AppEndpoints.selectEndpoint,
     );
 

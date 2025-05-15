@@ -19,7 +19,7 @@ class PaymentMethodDatasourceImpl with UriBuilder implements PaymentMethodDataso
   Future<List<SelectModel>> getAllPaymentMethodsToSelect(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.paymentMethodEndpoint + AppEndpoints.selectEndpoint,
     );
 

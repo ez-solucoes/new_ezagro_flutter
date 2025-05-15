@@ -20,7 +20,7 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
       AuthenticationParams authenticationParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.loginEndpoint,
     );
 
@@ -47,7 +47,7 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
   Future<EmptyResult> recoverPassword(AuthenticationParams authenticationParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.forgotPasswordEndpoint,
     );
 
@@ -69,7 +69,7 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
   Future<ResponseModel<AuthenticationModel>> updatePassword(AuthenticationParams authenticationParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.updatePasswordEndpoint,
     );
 

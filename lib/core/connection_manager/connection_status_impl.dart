@@ -50,7 +50,7 @@ class ConnectionStatusImpl with UriBuilder implements ConnectionStatus {
 
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.swaggerEndpoint,
     );
 

@@ -19,7 +19,7 @@ class PestDatasourceImpl with UriBuilder implements PestDatasource {
       NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.getPestsEndpoint,
     );
 

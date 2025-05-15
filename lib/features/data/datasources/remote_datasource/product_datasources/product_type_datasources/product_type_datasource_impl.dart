@@ -22,7 +22,7 @@ class ProductTypeDatasourceImpl with UriBuilder implements ProductTypeDatasource
   Future<List<ProductTypeModel>> getAllProductTypes(NoParams noParams) async {
     final String url = mountUrl(
         AppEndpoints.baseUrlProtocolWithSecurity,
-        AppEndpoints.mainBaseUrlDev,
+        AppEndpoints.mainBaseUrl,
         AppEndpoints.productTypeEndpoint,
     );
 
@@ -48,7 +48,7 @@ class ProductTypeDatasourceImpl with UriBuilder implements ProductTypeDatasource
   Future<List<SelectModel>> getAllProductTypesToSelect(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.productTypeEndpoint + AppEndpoints.selectEndpoint,
     );
 
@@ -74,7 +74,7 @@ class ProductTypeDatasourceImpl with UriBuilder implements ProductTypeDatasource
   Future<ResponseModel<ProductTypeModel>> getProductTypeById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.productTypeEndpoint,
     );
 
@@ -97,7 +97,7 @@ class ProductTypeDatasourceImpl with UriBuilder implements ProductTypeDatasource
   Future<List<SelectModel>> getFilteredProductTypesToSelect(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.productTypeEndpoint + AppEndpoints.selectEndpoint,
     );
 

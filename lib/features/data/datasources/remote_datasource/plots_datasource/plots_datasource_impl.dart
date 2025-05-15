@@ -20,7 +20,7 @@ class PlotsDatasourceImpl with UriBuilder implements PlotsDatasource {
   Future<ResponseModel<PaginationModel<PlotModel>>> getPlots(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.getPlotsEndpoint,
     );
 
@@ -45,7 +45,7 @@ class PlotsDatasourceImpl with UriBuilder implements PlotsDatasource {
     final String id = params.firstArgs == null ? "" : params.firstArgs as String;
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.getPlotsByFarmIdEndpoint + id
     );
 

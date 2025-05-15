@@ -22,7 +22,7 @@ class PurchaseRequestDeliveryLocationDatasourceImpl with UriBuilder implements P
   Future<List<TypeModel>> getAllPurchaseRequestDeliveryLocations(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.purchaseRequestDeliveryLocationEndpoint,
     );
     final HttpRequest request = HttpRequest.get(path: url);
@@ -46,7 +46,7 @@ class PurchaseRequestDeliveryLocationDatasourceImpl with UriBuilder implements P
   Future<List<SelectModel>> getAllPurchaseRequestDeliveryLocationsToSelect(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.purchaseRequestDeliveryLocationEndpoint + AppEndpoints.selectEndpoint,
     );
 
@@ -71,7 +71,7 @@ class PurchaseRequestDeliveryLocationDatasourceImpl with UriBuilder implements P
   Future<ResponseModel<TypeModel>> getPurchaseRequestDeliveryLocationById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.purchaseRequestDeliveryLocationEndpoint,
     );
 

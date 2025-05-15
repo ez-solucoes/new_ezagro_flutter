@@ -20,7 +20,7 @@ class MachineryDatasourceImpl with UriBuilder implements MachineryDatasource {
       NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.getMachineryEndpoint,
     );
 
@@ -44,7 +44,7 @@ class MachineryDatasourceImpl with UriBuilder implements MachineryDatasource {
   Future<List<MachineryImplementModel>> getAllMachineryImplement(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.getAllMachineryImplementEndpoint,
     );
 
@@ -67,7 +67,7 @@ class MachineryDatasourceImpl with UriBuilder implements MachineryDatasource {
   Future<ResponseModel<MachineryImplementModel>> getMachineryImplementById(int id) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.getAllMachineryImplementEndpoint,
     );
 

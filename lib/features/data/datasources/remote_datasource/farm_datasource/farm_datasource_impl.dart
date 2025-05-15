@@ -21,7 +21,7 @@ class FarmDatasourceImpl with UriBuilder implements FarmDatasource {
   Future<List<FarmModel>> getAllFarms(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.farmEndpoint,
     );
 
@@ -47,7 +47,7 @@ class FarmDatasourceImpl with UriBuilder implements FarmDatasource {
   Future<ResponseModel<FarmModel>> getFarmById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.getFarmById + (argParams.firstArgs as String),
     );
 
@@ -71,7 +71,7 @@ class FarmDatasourceImpl with UriBuilder implements FarmDatasource {
       NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.getFarmsSimplifiedEndpoint,
     );
 
@@ -95,7 +95,7 @@ class FarmDatasourceImpl with UriBuilder implements FarmDatasource {
   Future<ResponseModel<List<FarmModel>>> getAllFarmsByCostCenterId(String costCenterId) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.getCostCenterFarmsEndpoint + costCenterId,
     );
 
@@ -122,7 +122,7 @@ class FarmDatasourceImpl with UriBuilder implements FarmDatasource {
   Future<List<SelectModel>> getAllFarmsToSelect(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.farmEndpoint + AppEndpoints.selectEndpoint,
     );
 
@@ -148,7 +148,7 @@ class FarmDatasourceImpl with UriBuilder implements FarmDatasource {
   Future<List<SelectModel>> getAllFarmsByCostCenterIdToSelect(ArgParams argParams) async {
     final String url = mountUrl(
         AppEndpoints.baseUrlProtocolWithSecurity,
-        AppEndpoints.mainBaseUrlDev,
+        AppEndpoints.mainBaseUrl,
         AppEndpoints.farmEndpoint + AppEndpoints.selectEndpoint,
     );
 

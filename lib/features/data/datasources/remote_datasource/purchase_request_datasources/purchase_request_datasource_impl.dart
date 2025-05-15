@@ -24,7 +24,7 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
   Future<List<PurchaseRequestModel>> getAllPurchaseRequest(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.purchaseRequest,
     );
 
@@ -49,7 +49,7 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
   Future<ResponseModel<PurchaseRequestModel>> getPurchaseRequestById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.purchaseRequest,
     );
 
@@ -71,7 +71,7 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
   Future<List<PurchaseRequestModel>> getPurchaseRequestByStatusId(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.purchaseRequest,
     );
 
@@ -97,7 +97,7 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
   Future<ResponseModel<PurchaseRequestModel>> approvePurchaseRequestById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.purchaseRequest,
     );
 
@@ -119,7 +119,7 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
   Future<ResponseModel<PurchaseRequestModel>> cancelPurchaseRequestById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.purchaseRequest,
     );
 
@@ -141,7 +141,7 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
   Future<List<SelectModel>> getAllPurchaseRequestToSelect(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.purchaseRequest + AppEndpoints.selectEndpoint,
     );
 
@@ -166,7 +166,7 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
   Future<ResponseModel<PurchaseRequestModel>> createPurchaseRequest(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.purchaseRequest,
     );
 

@@ -21,7 +21,7 @@ class CropDatasourceImpl with UriBuilder implements CropDatasource {
       NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.getSimplifiedCropsEndpoint,
     );
 

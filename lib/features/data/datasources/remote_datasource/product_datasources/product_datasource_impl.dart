@@ -24,7 +24,7 @@ class ProductDatasourceImpl with UriBuilder implements ProductDatasource {
   Future<List<ProductModel>> getAllProducts(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.productEndpoint,
     );
 
@@ -50,7 +50,7 @@ class ProductDatasourceImpl with UriBuilder implements ProductDatasource {
   Future<List<SelectModel>> getAllProductsToSelect(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.productEndpoint + AppEndpoints.selectEndpoint,
     );
 
@@ -76,7 +76,7 @@ class ProductDatasourceImpl with UriBuilder implements ProductDatasource {
   Future<List<ProductModel>> getAllProductsByTypeId(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.productEndpoint,
     );
 
@@ -102,7 +102,7 @@ class ProductDatasourceImpl with UriBuilder implements ProductDatasource {
   Future<List<SelectModel>> getAllProductsByTypeIdToSelect(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.productEndpoint + AppEndpoints.selectEndpoint,
     );
 
@@ -128,7 +128,7 @@ class ProductDatasourceImpl with UriBuilder implements ProductDatasource {
   Future<ResponseModel<ProductModel>> getProductById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.productEndpoint + AppEndpoints.selectEndpoint,
     );
 

@@ -22,7 +22,7 @@ class CompanySegmentDatasourceImpl with UriBuilder implements CompanySegmentData
   Future<List<SegmentModel>> getAllCompanySegments(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.companySegmentEndpoint,
     );
 
@@ -48,7 +48,7 @@ class CompanySegmentDatasourceImpl with UriBuilder implements CompanySegmentData
   Future<List<SelectModel>> getAllCompanySegmentsToSelect(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.companySegmentEndpoint + AppEndpoints.selectEndpoint,
     );
 
@@ -74,7 +74,7 @@ class CompanySegmentDatasourceImpl with UriBuilder implements CompanySegmentData
   Future<ResponseModel<SegmentModel>> getCompanySegmentById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.companySegmentEndpoint,
     );
 

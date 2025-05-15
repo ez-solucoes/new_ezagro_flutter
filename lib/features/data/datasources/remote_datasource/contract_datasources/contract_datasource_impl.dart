@@ -19,7 +19,7 @@ class ContractDatasourceImpl with UriBuilder implements ContractDatasource {
   Future<List<ContractModel>> getContracts(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.getContractListEndpoint,
     );
 
@@ -45,7 +45,7 @@ class ContractDatasourceImpl with UriBuilder implements ContractDatasource {
   Future<ResponseModel<ContractModel>> getContractById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.getContractByIdEndpoint + (argParams.firstArgs as String),
     );
 

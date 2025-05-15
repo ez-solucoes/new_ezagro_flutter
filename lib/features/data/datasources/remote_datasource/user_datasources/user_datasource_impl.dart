@@ -19,7 +19,7 @@ class UserDatasourceImpl with UriBuilder implements UserDatasource {
   Future<ResponseModel<UserModel>> getAllUsers(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.userEndpoint,
     );
 
@@ -42,7 +42,7 @@ class UserDatasourceImpl with UriBuilder implements UserDatasource {
   Future<ResponseModel<UserModel>> getUserById(UserParams userParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.userEndpoint + userParams.id.toString(),
     );
 
@@ -65,7 +65,7 @@ class UserDatasourceImpl with UriBuilder implements UserDatasource {
   Future<ResponseModel<UserModel>> updateUserById(UserParams userParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.userByIdEndpoint + userParams.id.toString(),
     );
 

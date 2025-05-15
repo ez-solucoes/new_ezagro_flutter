@@ -21,7 +21,7 @@ class CompanyDatasourceImpl with UriBuilder implements CompanyDatasource {
   Future<List<CompanyModel>> getAllCompanies(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.companyEndpoint,
     );
 
@@ -47,7 +47,7 @@ class CompanyDatasourceImpl with UriBuilder implements CompanyDatasource {
   Future<ResponseModel<CompanyModel>> getCompanyById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.companyEndpoint + (argParams.firstArgs as String),
     );
 
@@ -70,7 +70,7 @@ class CompanyDatasourceImpl with UriBuilder implements CompanyDatasource {
   Future<List<SelectModel>> getAllCompaniesToSelect(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.companyEndpoint + AppEndpoints.selectEndpoint,
     );
 

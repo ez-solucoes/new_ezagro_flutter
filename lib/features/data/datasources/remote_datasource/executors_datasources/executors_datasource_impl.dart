@@ -19,7 +19,7 @@ class ExecutorsDatasourceImpl with UriBuilder implements ExecutorsDatasource {
   Future<ResponseModel<PaginationModel<EmployeeModel>>> getExecutors(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.getExecutorsEndpoint,
     );
 

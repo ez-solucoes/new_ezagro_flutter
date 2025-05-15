@@ -19,7 +19,7 @@ class PurchaseRequestTypeDatasourceImpl with UriBuilder implements PurchaseReque
   Future<List<SelectModel>> getAllPurchaseRequestTypeToSelect(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.purchaseRequestTypeEndpoint + AppEndpoints.selectEndpoint,
     );
 

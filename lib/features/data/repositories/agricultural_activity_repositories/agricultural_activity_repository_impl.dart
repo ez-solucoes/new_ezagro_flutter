@@ -3,27 +3,29 @@ import 'package:new_ezagro_flutter/core/errors/application_error.dart';
 import 'package:new_ezagro_flutter/core/errors/generic_error.dart';
 import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/data/models/agricultural_models/agricultural_activity_model.dart';
-import 'package:new_ezagro_flutter/features/domain/repositories/activity_repository/activity_repository.dart';
 
-import '../../datasources/remote_datasource/activity_datasources/activity_datasource.dart';
+
+
+import '../../../domain/repositories/agricultural_activity_repositories/agricultural_activity_repository.dart';
+import '../../datasources/remote_datasource/agricultural_activity_datasources/agricultural_activity_datasource.dart';
 import '../../models/pagination_model/pagination_model.dart';
 
-class ActivityRepositoryImpl implements ActivityRepository {
-  final ActivityDatasource datasource;
+class AgriculturalActivityRepositoryImpl implements AgriculturalActivityRepository {
+  final AgriculturalActivityDatasource datasource;
 
-  ActivityRepositoryImpl(this.datasource);
+  AgriculturalActivityRepositoryImpl(this.datasource);
 
   @override
   Future<Either<ApplicationError, PaginationModel<AgriculturalActivityModel>>>
-      getActivities(NoParams noParams) async {
+  getAllAgriculturalActivities(NoParams noParams) async {
     try {
-      final result = await datasource.getActivities(noParams);
+      final result = await datasource.getAllAgriculturalActivities(noParams);
       return Right(result.data!);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {
       return Left(GenericError(
-          fingerprint: '$ActivityRepositoryImpl.getActivities',
+          fingerprint: '$AgriculturalActivityRepositoryImpl.getAllAgriculturalActivities',
           additionalInfo: stacktrace.toString()));
     }
   }

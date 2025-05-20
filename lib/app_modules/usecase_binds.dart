@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../features/domain/usecases/activity_usecase/activity_usecase.dart';
-import '../features/domain/usecases/activity_usecase/activity_usecase_impl.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_usecase.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_usecase_impl.dart';
 import '../features/domain/usecases/authentication_usecases/authenticate_usecase/authenticate_usecase.dart';
 import '../features/domain/usecases/authentication_usecases/authenticate_usecase/authenticate_usecase_impl.dart';
 import '../features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase.dart';
@@ -91,7 +91,7 @@ class UsecaseBinds {
     i.addLazySingleton<RecoverPasswordUsecase>(RecoverPasswordUsecaseImpl.new);
     i.addLazySingleton<UpdatePasswordUsecase>(UpdatePasswordUsecaseImpl.new);
     i.addLazySingleton<ServiceOrderListUsecase>(ServiceOrderListUsecaseImpl.new);
-    i.addLazySingleton<ActivityUsecase>(ActivityUsecaseImpl.new);
+    i.addLazySingleton<GetAllAgriculturalActivitiesUsecase>(GetAllAgriculturalActivitiesUsecaseImpl.new);
 
     i.addLazySingleton<GetAllCostCenterToSelectUsecase>(GetAllCostCenterToSelectUsecaseImpl.new);
     i.addLazySingleton<FarmUsecase>(FarmUsecaseImpl.new);

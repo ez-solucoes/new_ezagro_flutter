@@ -6,6 +6,7 @@ import 'package:new_ezagro_flutter/core/connection_manager/connection_status_imp
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_client.dart';
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_client_shared_prefs_impl.dart';
 import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/agricultural_activity_datasources/agricultural_activity_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/authentication_datasource/authentication_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/authentication_datasource/authentication_datasources_impl.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/company_datasources/company_datasource.dart';
@@ -21,6 +22,7 @@ import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/p
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/purchase_request_datasources/purchase_request_type_datasource/purchase_request_type_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/user_datasources/user_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/user_datasources/user_datasource_impl.dart';
+import 'package:new_ezagro_flutter/features/data/repositories/agricultural_activity_repositories/agricultural_activity_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/authentication_repository/authentication_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/company_repositories/company_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/company_repositories/company_segment_repository/company_segment_repository_impl.dart';
@@ -39,8 +41,6 @@ import 'package:new_ezagro_flutter/features/domain/repositories/product_reposito
 import 'package:new_ezagro_flutter/features/domain/repositories/purchase_request_repositories/purchase_request_delivery_location_repositories/purchase_request_delivery_location_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/purchase_request_repositories/purchase_request_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/user_repositories/user_repository.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/activity_usecase/activity_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/authenticate_usecase/authenticate_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase_impl.dart';
@@ -137,12 +137,11 @@ import 'package:new_ezagro_flutter/features/presenter/modules/service_order/serv
 import '../core/http_client/http_client.dart';
 import '../core/http_client/http_client_dio_imp.dart';
 import '../core/local_storage/local_storage_client_secure_impl.dart';
+import '../features/data/datasources/remote_datasource/agricultural_activity_datasources/agricultural_activity_datasource_impl.dart';
 import '../features/data/datasources/remote_datasource/employee_datasources/employee_datasource.dart';
 import '../features/data/datasources/remote_datasource/employee_datasources/employee_datasource_impl.dart';
 import '../features/data/datasources/remote_datasource/contract_datasources/contract_datasource.dart';
 import '../features/data/datasources/remote_datasource/contract_datasources/contract_datasource_impl.dart';
-import '../features/data/datasources/remote_datasource/activity_datasources/activity_datasource.dart';
-import '../features/data/datasources/remote_datasource/activity_datasources/activity_datasource_impl.dart';
 import '../features/data/datasources/remote_datasource/cost_center_datasource/cost_center_datasource.dart';
 import '../features/data/datasources/remote_datasource/cost_center_datasource/cost_center_datasource_impl.dart';
 import '../features/data/datasources/remote_datasource/crop_datasource/crop_datasource.dart';
@@ -164,7 +163,6 @@ import '../features/data/datasources/remote_datasource/purchase_request_datasour
 import '../features/data/datasources/remote_datasource/purchase_request_datasources/purchase_request_type_datasource/purchase_request_type_datasource_impl.dart';
 import '../features/data/datasources/remote_datasource/service_order_datasources/service_order_datasource.dart';
 import '../features/data/datasources/remote_datasource/service_order_datasources/service_order_datasource_impl.dart';
-import '../features/data/repositories/activity_repositories/activity_repository_impl.dart';
 import '../features/data/repositories/cost_center_repositories/cost_center_repository_impl.dart';
 import '../features/data/repositories/crop_repositories/crop_repository_impl.dart';
 import '../features/data/repositories/employee_repositories/employee_repository_impl.dart';
@@ -177,7 +175,7 @@ import '../features/data/repositories/purchase_request_repositories/purchase_req
 import '../features/data/repositories/purchase_request_repositories/purchase_request_repository_impl.dart';
 import '../features/data/repositories/purchase_request_repositories/purchase_request_type_repository/purchase_request_type_repository_impl.dart';
 import '../features/data/repositories/service_order_repositories/service_order_repository_impl.dart';
-import '../features/domain/repositories/activity_repository/activity_repository.dart';
+import '../features/domain/repositories/agricultural_activity_repositories/agricultural_activity_repository.dart';
 import '../features/domain/repositories/cost_center_repositories/cost_center_repository.dart';
 import '../features/domain/repositories/crop_repositories/crop_repository.dart';
 import '../features/domain/repositories/employee_repositories/employee_repository.dart';
@@ -188,6 +186,8 @@ import '../features/domain/repositories/plots_repositories/plots_repository.dart
 import '../features/domain/repositories/product_repositories/product_repository.dart';
 import '../features/domain/repositories/purchase_request_repositories/purchase_request_type_repository/purchase_request_type_repository.dart';
 import '../features/domain/repositories/service_order_repositories/service_order_repository.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_usecase.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_usecase_impl.dart';
 import '../features/domain/usecases/authentication_usecases/authenticate_usecase/authenticate_usecase.dart';
 import '../features/domain/usecases/authentication_usecases/update_password/update_password_usecase_impl.dart';
 import '../features/domain/usecases/company_usecases/company_segment_usecases/get_all_company_segments_to_select_usecases/get_all_company_segments_to_select_usecases_impl.dart';
@@ -266,6 +266,7 @@ import '../features/presenter/modules/register/registers_page.dart';
 import '../features/presenter/modules/service_order/controller/create_service_order_controller/create_service_order_controller.dart';
 import '../features/presenter/modules/service_order/controller/service_order_controller/service_order_controller.dart';
 import '../features/presenter/modules/service_order/create_service_order_page/create_service_order_page.dart';
+import '../features/presenter/modules/service_order/service_order_create/service_order_create_controller.dart';
 import '../features/presenter/modules/service_order/service_order_list_page/service_order_list_page.dart';
 import '../features/presenter/modules/service_order/service_order_page/service_order_page.dart';
 import '../features/presenter/modules/splash/splash_page/splash_page.dart';
@@ -289,7 +290,7 @@ class AppModule extends Module {
     i.addLazySingleton<RecoverPasswordUsecase>(RecoverPasswordUsecaseImpl.new);
     i.addLazySingleton<UpdatePasswordUsecase>(UpdatePasswordUsecaseImpl.new);
     i.addLazySingleton<ServiceOrderListUsecase>(ServiceOrderListUsecaseImpl.new);
-    i.addLazySingleton<ActivityUsecase>(ActivityUsecaseImpl.new);
+    i.addLazySingleton<GetAllAgriculturalActivitiesUsecase>(GetAllAgriculturalActivitiesUsecaseImpl.new);
 
     i.addLazySingleton<GetAllCostCenterToSelectUsecase>(GetAllCostCenterToSelectUsecaseImpl.new);
     i.addLazySingleton<FarmUsecase>(FarmUsecaseImpl.new);
@@ -360,7 +361,7 @@ class AppModule extends Module {
     //Repository
     i.addLazySingleton<AuthenticationRepository>(AuthenticationRepositoryImpl.new);
     i.addLazySingleton<ServiceOrderRepository>(ServiceOrderRepositoryImpl.new);
-    i.addLazySingleton<ActivityRepository>(ActivityRepositoryImpl.new);
+    i.addLazySingleton<AgriculturalActivityRepository>(AgriculturalActivityRepositoryImpl.new);
     i.addLazySingleton<CostCenterRepository>(CostCenterRepositoryImpl.new);
     i.addLazySingleton<FarmRepository>(FarmRepositoryImpl.new);
     i.addLazySingleton<CropRepository>(CropRepositoryImpl.new);
@@ -384,7 +385,7 @@ class AppModule extends Module {
     //Datasource
     i.addLazySingleton<AuthenticationDatasource>(AuthenticationDatasourceImpl.new);
     i.addLazySingleton<ServiceOrderDatasource>(ServiceOrderDatasourceImpl.new);
-    i.addLazySingleton<ActivityDatasource>(ActivityDatasourceImpl.new);
+    i.addLazySingleton<AgriculturalActivityDatasource>(AgriculturalActivityDatasourceImpl.new);
     i.addLazySingleton<CostCenterDatasource>(CostCenterDatasourceImpl.new);
     i.addLazySingleton<FarmDatasource>(FarmDatasourceImpl.new);
     i.addLazySingleton<CropDatasource>(CropDatasourceImpl.new);
@@ -418,6 +419,8 @@ class AppModule extends Module {
     i.addLazySingleton<ApprovalsListController>(ApprovalsListController.new);
     i.addLazySingleton<ApprovalsDetailController>(ApprovalsDetailController.new);
     i.addLazySingleton<HomeController>(HomeController.new);
+
+    i.addLazySingleton<ServiceOrderCreateController>(ServiceOrderCreateController.new);
 
     i.addLazySingleton<PurchaseRequestListController>(PurchaseRequestListController.new);
     i.addLazySingleton<PurchaseRequestDetailController>(PurchaseRequestDetailController.new);

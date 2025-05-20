@@ -5,7 +5,7 @@ import 'package:new_ezagro_flutter/features/domain/entities/pagination_entity/pa
 
 import '../../../../core/usecase/usecase.dart';
 
-abstract class ActivityRepository {
+abstract class AgriculturalActivityRepository {
   Future<Either<ApplicationError, PaginationEntity<AgriculturalActivityEntity>>>
-      getActivities(NoParams noParams);
+  getAllAgriculturalActivities(NoParams noParams);
 }

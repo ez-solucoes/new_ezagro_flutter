@@ -11,6 +11,7 @@ class CustomUnderlinedTextField extends StatefulWidget {
   final bool passwordField;
   final TextInputType? inputType;
   final List<TextInputFormatter>? inputFormatters;
+  final FocusNode? focusNode;
 
   const CustomUnderlinedTextField(
       {super.key,
@@ -19,11 +20,11 @@ class CustomUnderlinedTextField extends StatefulWidget {
       this.hintText,
       this.inputType,
       this.inputFormatters,
+      this.focusNode,
       required this.passwordField});
 
   @override
-  State<CustomUnderlinedTextField> createState() =>
-      _CustomUnderlinedTextFieldState();
+  State<CustomUnderlinedTextField> createState() => _CustomUnderlinedTextFieldState();
 }
 
 class _CustomUnderlinedTextFieldState extends State<CustomUnderlinedTextField> {
@@ -32,13 +33,14 @@ class _CustomUnderlinedTextFieldState extends State<CustomUnderlinedTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      focusNode: widget.focusNode,
+      onTap: widget.onPressed,
       controller: widget.controller,
       inputFormatters: widget.inputFormatters,
       keyboardType: widget.inputType,
       decoration: InputDecoration(
           hintText: widget.hintText ?? '',
-          hintStyle: AppTextStyles.hintTextFieldTextStyle(
-              color: AppColors.dividerGreyColor),
+          hintStyle: AppTextStyles.hintTextFieldTextStyle(color: AppColors.dividerGreyColor),
           border: const UnderlineInputBorder(),
           suffixIcon: widget.passwordField
               ? IconButton(
@@ -47,13 +49,10 @@ class _CustomUnderlinedTextFieldState extends State<CustomUnderlinedTextField> {
                       sufixIconPressed = !sufixIconPressed;
                     });
                   },
-                  icon: sufixIconPressed
-                      ? Icon(Icons.visibility_off)
-                      : Icon(Icons.visibility),
+                  icon: sufixIconPressed ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
                 )
               : null,
-          focusedBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(color: AppColors.formGreyColor))),
+          focusedBorder: const UnderlineInputBorder(borderSide: BorderSide(color: AppColors.formGreyColor))),
       obscureText: (widget.passwordField && !sufixIconPressed),
     );
   }

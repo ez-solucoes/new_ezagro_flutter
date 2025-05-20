@@ -250,6 +250,25 @@ mixin _$PurchaseRequestCreateController
     });
   }
 
+  late final _$deliveryLocationListToSelectAtom = Atom(
+      name:
+          'PurchaseRequestCreateControllerAbstract.deliveryLocationListToSelect',
+      context: context);
+
+  @override
+  List<SelectEntity> get deliveryLocationListToSelect {
+    _$deliveryLocationListToSelectAtom.reportRead();
+    return super.deliveryLocationListToSelect;
+  }
+
+  @override
+  set deliveryLocationListToSelect(List<SelectEntity> value) {
+    _$deliveryLocationListToSelectAtom
+        .reportWrite(value, super.deliveryLocationListToSelect, () {
+      super.deliveryLocationListToSelect = value;
+    });
+  }
+
   late final _$productListToSelectAtom = Atom(
       name: 'PurchaseRequestCreateControllerAbstract.productListToSelect',
       context: context);
@@ -583,6 +602,58 @@ mixin _$PurchaseRequestCreateController
     });
   }
 
+  late final _$quotationExpirationDateAtom = Atom(
+      name: 'PurchaseRequestCreateControllerAbstract.quotationExpirationDate',
+      context: context);
+
+  @override
+  String get quotationExpirationDate {
+    _$quotationExpirationDateAtom.reportRead();
+    return super.quotationExpirationDate;
+  }
+
+  @override
+  set quotationExpirationDate(String value) {
+    _$quotationExpirationDateAtom
+        .reportWrite(value, super.quotationExpirationDate, () {
+      super.quotationExpirationDate = value;
+    });
+  }
+
+  late final _$paymentDateAtom = Atom(
+      name: 'PurchaseRequestCreateControllerAbstract.paymentDate',
+      context: context);
+
+  @override
+  String get paymentDate {
+    _$paymentDateAtom.reportRead();
+    return super.paymentDate;
+  }
+
+  @override
+  set paymentDate(String value) {
+    _$paymentDateAtom.reportWrite(value, super.paymentDate, () {
+      super.paymentDate = value;
+    });
+  }
+
+  late final _$deliveryLocationIdAtom = Atom(
+      name: 'PurchaseRequestCreateControllerAbstract.deliveryLocationId',
+      context: context);
+
+  @override
+  SelectEntity? get deliveryLocationId {
+    _$deliveryLocationIdAtom.reportRead();
+    return super.deliveryLocationId;
+  }
+
+  @override
+  set deliveryLocationId(SelectEntity? value) {
+    _$deliveryLocationIdAtom.reportWrite(value, super.deliveryLocationId, () {
+      super.deliveryLocationId = value;
+    });
+  }
+
   late final _$getAllProductsToSelectAsyncAction = AsyncAction(
       'PurchaseRequestCreateControllerAbstract.getAllProductsToSelect',
       context: context);
@@ -709,6 +780,16 @@ mixin _$PurchaseRequestCreateController
   Future<void> getAllEmployeesByFarmIdToSelect(int farmId) {
     return _$getAllEmployeesByFarmIdToSelectAsyncAction
         .run(() => super.getAllEmployeesByFarmIdToSelect(farmId));
+  }
+
+  late final _$createPurchaseRequestAsyncAction = AsyncAction(
+      'PurchaseRequestCreateControllerAbstract.createPurchaseRequest',
+      context: context);
+
+  @override
+  Future<void> createPurchaseRequest(BuildContext context) {
+    return _$createPurchaseRequestAsyncAction
+        .run(() => super.createPurchaseRequest(context));
   }
 
   late final _$PurchaseRequestCreateControllerAbstractActionController =
@@ -1044,6 +1125,7 @@ costCenterListToSelect: ${costCenterListToSelect},
 farmsByCostCenterIdListToSelect: ${farmsByCostCenterIdListToSelect},
 employeeByFarmIdListToSelect: ${employeeByFarmIdListToSelect},
 paymentMethodListToSelect: ${paymentMethodListToSelect},
+deliveryLocationListToSelect: ${deliveryLocationListToSelect},
 productListToSelect: ${productListToSelect},
 productTypesListToSelect: ${productTypesListToSelect},
 filteredProductTypeListToSelect: ${filteredProductTypeListToSelect},
@@ -1063,6 +1145,9 @@ paymentMethod: ${paymentMethod},
 searchQuery: ${searchQuery},
 currentLoadedItemType: ${currentLoadedItemType},
 isUrgent: ${isUrgent},
+quotationExpirationDate: ${quotationExpirationDate},
+paymentDate: ${paymentDate},
+deliveryLocationId: ${deliveryLocationId},
 filteredAddItemsList: ${filteredAddItemsList},
 filteredPaymentMethodList: ${filteredPaymentMethodList},
 finalRequestedCompanies: ${finalRequestedCompanies}

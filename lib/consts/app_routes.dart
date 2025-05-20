@@ -64,4 +64,7 @@ class AppRoutes {
   //Miscellaneous
   static const String appViewListedItemsPage = '/viewListedItemsPage';
   static const String appEditListedItemsPage = '/editListedItemsPage';
+
+  ///Service Order
+  static const String appServiceOrderCreateGeneralInfoFirstPage = '/serviceOrderCreateGeneralInfoFirstPage';
 }

@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_usecase.dart';
-import '../features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_usecase_impl.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_usecases/get_all_agricultural_activities_usecase.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_usecases/get_all_agricultural_activities_usecase_impl.dart';
 import '../features/domain/usecases/authentication_usecases/authenticate_usecase/authenticate_usecase.dart';
 import '../features/domain/usecases/authentication_usecases/authenticate_usecase/authenticate_usecase_impl.dart';
 import '../features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase.dart';

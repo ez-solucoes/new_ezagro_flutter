@@ -1,10 +1,11 @@
+
+
 import 'package:dartz/dartz.dart';
 import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/agricultural_entities/agricultural_activity_entity.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/pagination_entity/pagination_entity.dart';
 
-import '../../../../core/errors/application_error.dart';
-import '../../repositories/agricultural_activity_repositories/agricultural_activity_repository.dart';
+import '../../../../../core/errors/application_error.dart';
+import '../../../repositories/agricultural_activity_repositories/agricultural_activity_repository.dart';
 import 'get_all_agricultural_activities_usecase.dart';
 
 class GetAllAgriculturalActivitiesUsecaseImpl implements GetAllAgriculturalActivitiesUsecase {
@@ -13,7 +14,7 @@ class GetAllAgriculturalActivitiesUsecaseImpl implements GetAllAgriculturalActiv
   GetAllAgriculturalActivitiesUsecaseImpl(this.repository);
 
   @override
-  Future<Either<ApplicationError, PaginationEntity<AgriculturalActivityEntity>>>
+  Future<Either<ApplicationError, List<AgriculturalActivityEntity>>>
       call(NoParams noParams) async {
     return await repository.getAllAgriculturalActivities(noParams);
   }

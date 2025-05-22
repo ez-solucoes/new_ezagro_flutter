@@ -9,4 +9,5 @@ abstract class AgriculturalActivityDatasource {
   Future<List<AgriculturalActivityModel>> getAllAgriculturalActivities(NoParams noParams);
   Future<List<SelectModel>> getAllAgriculturalActivitiesToSelect(NoParams noParams);
   Future<ResponseModel<AgriculturalActivityModel>> getAgriculturalActivityById(ArgParams argParams);
+  Future<ResponseModel<AgriculturalActivityModel>> getAgriculturalActivityByTypeId(ArgParams argParams);
 }

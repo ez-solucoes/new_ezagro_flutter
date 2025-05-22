@@ -1,11 +1,10 @@
-// ignore_for_file: unused_import
+
 
 import 'dart:convert';
 
 import 'package:new_ezagro_flutter/features/data/models/machinery_implement_models/machinery_implement_model.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/machinery_implement_entities/machinery_implement_activity_entity.dart';
 
-import '../../../domain/entities/machinery_implement_entities/machinery_implement_entity.dart';
 
 class MachineryImplementActivityModel extends MachineryImplementActivityEntity {
   const MachineryImplementActivityModel({

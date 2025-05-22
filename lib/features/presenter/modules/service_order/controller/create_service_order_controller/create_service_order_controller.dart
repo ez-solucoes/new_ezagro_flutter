@@ -18,7 +18,7 @@ import '../../../../../../core/enums/field_service_order_type_enum.dart';
 import '../../../../../../core/usecase/usecase.dart';
 import '../../../../../domain/entities/pest_entities/pest_entity.dart';
 import '../../../../../domain/params/arg_params/arg_params.dart';
-import '../../../../../domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_usecase.dart';
+import '../../../../../domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_usecases/get_all_agricultural_activities_usecase.dart';
 import '../../../../../domain/usecases/cost_center_usecases/get_all_cost_center_to_select_usecase.dart';
 import '../../../../../domain/usecases/plots_usecases/plots_with_farm_id_usecase.dart';
 part 'create_service_order_controller.g.dart';

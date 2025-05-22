@@ -1,5 +1,5 @@
 class AppEndpoints {
-  static const mainBaseUrl = mainBaseUrlProd;
+  static const mainBaseUrl = mainBaseUrlDev;
   static const mainBaseUrlProd = 'api.ezagro.com.br';
   static const mainBaseUrlDev = 'api.dev.temp.ezagro.com.br';
 
@@ -28,6 +28,11 @@ class AppEndpoints {
   //Contract
   static const String getContractListEndpoint = '/contract';
   static const String getContractByIdEndpoint = '/contract/';
+
+  //Agricultural Activities
+  static const String agriculturalActivityEndpoint = '/agricultural-activity';
+  static const String agriculturalActivityTypeEndpoint = '/agricultural-activity-type';
+  static const String agriculturalSubActivityEndpoint = '/agricultural-sub-activity';
 
   //Service Order
   static const String getFieldServiceOrderListEndpoint = '/field-service-order';

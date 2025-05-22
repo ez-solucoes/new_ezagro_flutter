@@ -1,9 +1,8 @@
-// ignore_for_file: unused_import
+
 
 import 'package:equatable/equatable.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/agricultural_input_entities/agricultural_input_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/products_entities/product_entity.dart';
-import 'package:new_ezagro_flutter/features/domain/entities/products_entities/product_history_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/stock_entities/stock_entity.dart';
 
 class ProductUsageRecommendationEntity extends Equatable {

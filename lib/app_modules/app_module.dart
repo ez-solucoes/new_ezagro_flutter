@@ -7,6 +7,7 @@ import 'package:new_ezagro_flutter/core/local_storage/local_storage_client.dart'
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_client_shared_prefs_impl.dart';
 import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/agricultural_activity_datasources/agricultural_activity_datasource.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/agricultural_activity_datasources/agricultural_activity_type_datasources/agricultural_activity_type_datasource_impl.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/authentication_datasource/authentication_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/authentication_datasource/authentication_datasources_impl.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/company_datasources/company_datasource.dart';
@@ -41,6 +42,12 @@ import 'package:new_ezagro_flutter/features/domain/repositories/product_reposito
 import 'package:new_ezagro_flutter/features/domain/repositories/purchase_request_repositories/purchase_request_delivery_location_repositories/purchase_request_delivery_location_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/purchase_request_repositories/purchase_request_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/user_repositories/user_repository.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_activity_usecases/get_agricultural_activity_by_id_usecases/get_agricultural_activity_by_id_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_activity_usecases/get_agricultural_activity_by_id_usecases/get_agricultural_activity_by_id_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_activity_usecases/get_agricultural_activity_by_type_id_usecases/get_agricultural_activity_by_type_id_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_activity_usecases/get_agricultural_activity_by_type_id_usecases/get_agricultural_activity_by_type_id_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_to_select_usecases/get_all_agricultural_activities_to_select_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_to_select_usecases/get_all_agricultural_activities_to_select_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/authenticate_usecase/authenticate_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase_impl.dart';
@@ -138,6 +145,9 @@ import '../core/http_client/http_client.dart';
 import '../core/http_client/http_client_dio_imp.dart';
 import '../core/local_storage/local_storage_client_secure_impl.dart';
 import '../features/data/datasources/remote_datasource/agricultural_activity_datasources/agricultural_activity_datasource_impl.dart';
+import '../features/data/datasources/remote_datasource/agricultural_activity_datasources/agricultural_activity_type_datasources/agricultural_activity_type_datasource.dart';
+import '../features/data/datasources/remote_datasource/agricultural_activity_datasources/agricultural_sub_activity_datasources/agricultural_sub_activity_datasource.dart';
+import '../features/data/datasources/remote_datasource/agricultural_activity_datasources/agricultural_sub_activity_datasources/agricultural_sub_activity_datasource_impl.dart';
 import '../features/data/datasources/remote_datasource/employee_datasources/employee_datasource.dart';
 import '../features/data/datasources/remote_datasource/employee_datasources/employee_datasource_impl.dart';
 import '../features/data/datasources/remote_datasource/contract_datasources/contract_datasource.dart';
@@ -163,6 +173,8 @@ import '../features/data/datasources/remote_datasource/purchase_request_datasour
 import '../features/data/datasources/remote_datasource/purchase_request_datasources/purchase_request_type_datasource/purchase_request_type_datasource_impl.dart';
 import '../features/data/datasources/remote_datasource/service_order_datasources/service_order_datasource.dart';
 import '../features/data/datasources/remote_datasource/service_order_datasources/service_order_datasource_impl.dart';
+import '../features/data/repositories/agricultural_activity_repositories/agricultural_activity_type_repositories/agricultural_activity_type_respository_impl.dart';
+import '../features/data/repositories/agricultural_activity_repositories/agricultural_sub_activity_repositories/agricultural_sub_activity_repository_impl.dart';
 import '../features/data/repositories/cost_center_repositories/cost_center_repository_impl.dart';
 import '../features/data/repositories/crop_repositories/crop_repository_impl.dart';
 import '../features/data/repositories/employee_repositories/employee_repository_impl.dart';
@@ -176,6 +188,8 @@ import '../features/data/repositories/purchase_request_repositories/purchase_req
 import '../features/data/repositories/purchase_request_repositories/purchase_request_type_repository/purchase_request_type_repository_impl.dart';
 import '../features/data/repositories/service_order_repositories/service_order_repository_impl.dart';
 import '../features/domain/repositories/agricultural_activity_repositories/agricultural_activity_repository.dart';
+import '../features/domain/repositories/agricultural_activity_repositories/agricultural_activity_type_repositories/agricultural_activity_type_respository.dart';
+import '../features/domain/repositories/agricultural_activity_repositories/agricultural_sub_activity_repositories/agricultural_sub_activity_repository.dart';
 import '../features/domain/repositories/cost_center_repositories/cost_center_repository.dart';
 import '../features/domain/repositories/crop_repositories/crop_repository.dart';
 import '../features/domain/repositories/employee_repositories/employee_repository.dart';
@@ -186,8 +200,20 @@ import '../features/domain/repositories/plots_repositories/plots_repository.dart
 import '../features/domain/repositories/product_repositories/product_repository.dart';
 import '../features/domain/repositories/purchase_request_repositories/purchase_request_type_repository/purchase_request_type_repository.dart';
 import '../features/domain/repositories/service_order_repositories/service_order_repository.dart';
-import '../features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_usecase.dart';
-import '../features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_usecase_impl.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/agricultural_activity_type_usecases/get_agricultural_activity_type_by_id_usecases/get_agricultural_activity_type_by_id_usecase.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/agricultural_activity_type_usecases/get_agricultural_activity_type_by_id_usecases/get_agricultural_activity_type_by_id_usecases_impl.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/agricultural_activity_type_usecases/get_all_agricultural_activity_types_to_select_usecases/get_all_agricultural_activity_types_to_select_usecase.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/agricultural_activity_type_usecases/get_all_agricultural_activity_types_to_select_usecases/get_all_agricultural_activity_types_to_select_usecase_impl.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/agricultural_activity_type_usecases/get_all_agricultural_activity_types_usecases/get_all_agricultural_activity_types_usecase.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/agricultural_activity_type_usecases/get_all_agricultural_activity_types_usecases/get_all_agricultural_activity_types_usecase_impl.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_agricultural_sub_activity_by_id_usecases/get_agricultural_sub_activity_by_id_usecase.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_agricultural_sub_activity_by_id_usecases/get_agricultural_sub_activity_by_id_usecase_impl.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_all_agricultural_sub_activities_to_select_usecases/get_all_agricultural_sub_activities_to_select_usecase.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_all_agricultural_sub_activities_to_select_usecases/get_all_agricultural_sub_activities_to_select_usecase_impl.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_all_agricultural_sub_activities_usecases/get_all_agricultural_sub_activities_usecase.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_all_agricultural_sub_activities_usecases/get_all_agricultural_sub_activities_usecase_impl.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_usecases/get_all_agricultural_activities_usecase.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_usecases/get_all_agricultural_activities_usecase_impl.dart';
 import '../features/domain/usecases/authentication_usecases/authenticate_usecase/authenticate_usecase.dart';
 import '../features/domain/usecases/authentication_usecases/update_password/update_password_usecase_impl.dart';
 import '../features/domain/usecases/company_usecases/company_segment_usecases/get_all_company_segments_to_select_usecases/get_all_company_segments_to_select_usecases_impl.dart';
@@ -267,6 +293,7 @@ import '../features/presenter/modules/service_order/controller/create_service_or
 import '../features/presenter/modules/service_order/controller/service_order_controller/service_order_controller.dart';
 import '../features/presenter/modules/service_order/create_service_order_page/create_service_order_page.dart';
 import '../features/presenter/modules/service_order/service_order_create/service_order_create_controller.dart';
+import '../features/presenter/modules/service_order/service_order_create/service_order_create_general_info_first_page.dart';
 import '../features/presenter/modules/service_order/service_order_list_page/service_order_list_page.dart';
 import '../features/presenter/modules/service_order/service_order_page/service_order_page.dart';
 import '../features/presenter/modules/splash/splash_page/splash_page.dart';
@@ -290,7 +317,6 @@ class AppModule extends Module {
     i.addLazySingleton<RecoverPasswordUsecase>(RecoverPasswordUsecaseImpl.new);
     i.addLazySingleton<UpdatePasswordUsecase>(UpdatePasswordUsecaseImpl.new);
     i.addLazySingleton<ServiceOrderListUsecase>(ServiceOrderListUsecaseImpl.new);
-    i.addLazySingleton<GetAllAgriculturalActivitiesUsecase>(GetAllAgriculturalActivitiesUsecaseImpl.new);
 
     i.addLazySingleton<GetAllCostCenterToSelectUsecase>(GetAllCostCenterToSelectUsecaseImpl.new);
     i.addLazySingleton<FarmUsecase>(FarmUsecaseImpl.new);
@@ -358,10 +384,23 @@ class AppModule extends Module {
 
     i.addLazySingleton<GetAllPaymentMethodsToSelectUsecase>(GetAllPaymentMethodsToSelectUsecaseImpl.new);
 
+    i.addLazySingleton<GetAllAgriculturalActivitiesUsecase>(GetAllAgriculturalActivitiesUsecaseImpl.new);
+    i.addLazySingleton<GetAllAgriculturalActivitiesToSelectUsecase>(GetAllAgriculturalActivitiesToSelectUsecaseImpl.new);
+    i.addLazySingleton<GetAgriculturalActivityByIdUsecase>(GetAgriculturalActivityByIdUsecaseImpl.new);
+    i.addLazySingleton<GetAgriculturalActivityByTypeIdUsecase>(GetAgriculturalActivityByTypeIdUsecaseImpl.new);
+    i.addLazySingleton<GetAllAgriculturalSubActivitiesUsecase>(GetAllAgriculturalSubActivitiesUsecaseImpl.new);
+    i.addLazySingleton<GetAllAgriculturalSubActivitiesToSelectUsecase>(GetAllAgriculturalSubActivitiesToSelectUsecaseImpl.new);
+    i.addLazySingleton<GetAgriculturalSubActivityByIdUsecase>(GetAgriculturalSubActivityByIdUsecaseImpl.new);
+
+    i.addLazySingleton<GetAgriculturalActivityTypeByIdUsecase>(GetAgriculturalActivityTypeByIdUsecaseImpl.new);
+    i.addLazySingleton<GetAllAgriculturalActivityTypesUsecase>(GetAllAgriculturalActivityTypesUsecaseImpl.new);
+    i.addLazySingleton<GetAllAgriculturalActivityTypesToSelectUsecase>(GetAllAgriculturalActivityTypesToSelectUsecaseImpl.new);
+
     //Repository
     i.addLazySingleton<AuthenticationRepository>(AuthenticationRepositoryImpl.new);
     i.addLazySingleton<ServiceOrderRepository>(ServiceOrderRepositoryImpl.new);
     i.addLazySingleton<AgriculturalActivityRepository>(AgriculturalActivityRepositoryImpl.new);
+    i.addLazySingleton<AgriculturalSubActivityRepository>(AgriculturalSubActivityRepositoryImpl.new);
     i.addLazySingleton<CostCenterRepository>(CostCenterRepositoryImpl.new);
     i.addLazySingleton<FarmRepository>(FarmRepositoryImpl.new);
     i.addLazySingleton<CropRepository>(CropRepositoryImpl.new);
@@ -377,6 +416,7 @@ class AppModule extends Module {
     i.addLazySingleton<CompanySegmentRepository>(CompanySegmentRepositoryImpl.new);
     i.addLazySingleton<ContractRepository>(ContractRepositoryImpl.new);
     i.addLazySingleton<PaymentMethodRepository>(PaymentMethodRepositoryImpl.new);
+    i.addLazySingleton<AgriculturalActivityTypeRepository>(AgriculturalActivityTypeRepositoryImpl.new);
 
     i.addLazySingleton<PurchaseRequestRepository>(PurchaseRequestRepositoryImpl.new);
     i.addLazySingleton<PurchaseRequestTypeRepository>(PurchaseRequestTypeRepositoryImpl.new);
@@ -386,6 +426,7 @@ class AppModule extends Module {
     i.addLazySingleton<AuthenticationDatasource>(AuthenticationDatasourceImpl.new);
     i.addLazySingleton<ServiceOrderDatasource>(ServiceOrderDatasourceImpl.new);
     i.addLazySingleton<AgriculturalActivityDatasource>(AgriculturalActivityDatasourceImpl.new);
+    i.addLazySingleton<AgriculturalSubActivityDatasource>(AgriculturalSubActivityDatasourceImpl.new);
     i.addLazySingleton<CostCenterDatasource>(CostCenterDatasourceImpl.new);
     i.addLazySingleton<FarmDatasource>(FarmDatasourceImpl.new);
     i.addLazySingleton<CropDatasource>(CropDatasourceImpl.new);
@@ -404,6 +445,7 @@ class AppModule extends Module {
     i.addLazySingleton<PurchaseRequestDatasource>(PurchaseRequestDatasourceImpl.new);
     i.addLazySingleton<PurchaseRequestTypeDatasource>(PurchaseRequestTypeDatasourceImpl.new);
     i.addLazySingleton<PurchaseRequestDeliveryLocationDatasource>(PurchaseRequestDeliveryLocationDatasourceImpl.new);
+    i.addLazySingleton<AgriculturalActivityTypeDatasource>(AgriculturalActivityTypeDatasourceImpl.new);
 
     //Controllers
     i.addLazySingleton<AuthenticationController>(AuthenticationController.new);
@@ -435,7 +477,7 @@ class AppModule extends Module {
 
   @override
   void routes(RouteManager r) {
-    r.child(AppRoutes.appDefaultPage, child: (context) => SplashPage());
+    r.child(AppRoutes.appDefaultPage, child: (context) => ServiceOrderCreateGeneralInfoFirstPage());
     r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
     r.child(AppRoutes.appLoginPage, child: (context) => LoginPage());
     r.child(AppRoutes.appRegistersPage, child: (context) => RegistersPage());
@@ -477,6 +519,8 @@ class AppModule extends Module {
     r.child(AppRoutes.addPurchaseRequestCreateAddItemsPage, child: (context) => PurchaseRequestCreateAddItemsPage(args: r.args.data,));
     r.child(AppRoutes.addPurchaseRequestCreatePaymentMethodPage, child: (context) => PurchaseRequestCreatePaymentMethodPage());
     r.child(AppRoutes.appPurchaseRequestCreateDeliveryPage, child: (context) => PurchaseRequestCreateDeliveryPage());
+
+    r.child(AppRoutes.appServiceOrderCreateGeneralInfoFirstPage, child: (context) => ServiceOrderCreateGeneralInfoFirstPage());
 
     //Miscellaneous
     r.child(AppRoutes.appEditListedItemsPage, child: (context) => EditListedItemsPage(args: r.args.data,));

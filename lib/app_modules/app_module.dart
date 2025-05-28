@@ -14,6 +14,8 @@ import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/c
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/company_datasources/company_datasource_impl.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/company_datasources/company_segment_datasources/company_segment_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/company_datasources/company_segment_datasources/company_segment_datasource_impl.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/crop_datasources/crop_variety_datasources/crop_variety_datasource.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/crop_datasources/crop_variety_datasources/crop_variety_datasource_impl.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/payment_method_datasources/payment_method_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/payment_method_datasources/payment_method_datasource_impl.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/product_datasources/product_datasource.dart';
@@ -28,6 +30,7 @@ import 'package:new_ezagro_flutter/features/data/repositories/authentication_rep
 import 'package:new_ezagro_flutter/features/data/repositories/company_repositories/company_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/company_repositories/company_segment_repository/company_segment_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/contract_repositories/contract_repository_impl.dart';
+import 'package:new_ezagro_flutter/features/data/repositories/crop_repositories/crop_variety_repositories/crop_variety_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/payment_method_repositories/payment_method_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/pest_repositories/pest_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/products_repositories/product_type_repository_impl.dart';
@@ -36,6 +39,7 @@ import 'package:new_ezagro_flutter/features/domain/repositories/authentication_r
 import 'package:new_ezagro_flutter/features/domain/repositories/company_repositories/company_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/company_repositories/company_segment_repository/company_segment_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/contract_repositories/contract_repository.dart';
+import 'package:new_ezagro_flutter/features/domain/repositories/crop_repositories/crop_variety_repositories/crop_variety_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/payment_method_repositories/payment_method_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/pest_repositories/pest_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/product_repositories/product_type_repository.dart';
@@ -44,10 +48,10 @@ import 'package:new_ezagro_flutter/features/domain/repositories/purchase_request
 import 'package:new_ezagro_flutter/features/domain/repositories/user_repositories/user_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_activity_usecases/get_agricultural_activity_by_id_usecases/get_agricultural_activity_by_id_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_activity_usecases/get_agricultural_activity_by_id_usecases/get_agricultural_activity_by_id_usecase_impl.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_activity_usecases/get_agricultural_activity_by_type_id_usecases/get_agricultural_activity_by_type_id_usecase.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_activity_usecases/get_agricultural_activity_by_type_id_usecases/get_agricultural_activity_by_type_id_usecase_impl.dart';
+
 import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_to_select_usecases/get_all_agricultural_activities_to_select_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_to_select_usecases/get_all_agricultural_activities_to_select_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activity_by_type_id_to_select_usecases/get_all_agricultural_activity_by_type_id_to_select_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/authenticate_usecase/authenticate_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase_impl.dart';
@@ -65,8 +69,22 @@ import 'package:new_ezagro_flutter/features/domain/usecases/contract_usecases/ge
 import 'package:new_ezagro_flutter/features/domain/usecases/contract_usecases/get_contract_by_id_usecase/get_contract_by_id_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/contract_usecases/get_contract_list_usecase/get_contract_list_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/contract_usecases/get_contract_list_usecase/get_contract_list_usecase_impl.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_usecase.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_variety_usecases/get_all_crop_varieties_by_crop_id_to_select_usecases/get_all_crop_varieties_by_crop_id_to_select_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_variety_usecases/get_all_crop_varieties_by_crop_id_to_select_usecases/get_all_crop_varieties_by_crop_id_to_select_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_variety_usecases/get_all_crop_varieties_by_crop_id_usecases/get_all_crop_varieties_by_crop_id_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_variety_usecases/get_all_crop_varieties_by_crop_id_usecases/get_all_crop_varieties_by_crop_id_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_variety_usecases/get_all_crop_variety_to_select_usecases/get_all_crop_varieties_to_select_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_variety_usecases/get_all_crop_variety_to_select_usecases/get_all_crop_varieties_to_select_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_variety_usecases/get_all_crop_variety_usecases/get_all_crop_varieties_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_variety_usecases/get_all_crop_variety_usecases/get_all_crop_varieties_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_variety_usecases/get_crop_variety_by_id_usecases/get_crop_variety_by_id_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_variety_usecases/get_crop_variety_by_id_usecases/get_crop_variety_by_id_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/get_all_crops_to_select_usecases/get_all_crops_to_select_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/get_all_crops_to_select_usecases/get_all_crops_to_select_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/get_all_crops_usecases/get_all_crops_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/get_all_crops_usecases/get_all_crops_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/get_crop_by_id_usecases/get_crop_by_id_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/get_crop_by_id_usecases/get_crop_by_id_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/employee_usecase/get_employee_by_id_usecase/get_employee_by_id_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/employee_usecase/get_employee_by_id_usecase/get_employee_by_id_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/employee_usecase/get_employee_list_usecase/get_employee_list_usecase.dart';
@@ -148,14 +166,14 @@ import '../features/data/datasources/remote_datasource/agricultural_activity_dat
 import '../features/data/datasources/remote_datasource/agricultural_activity_datasources/agricultural_activity_type_datasources/agricultural_activity_type_datasource.dart';
 import '../features/data/datasources/remote_datasource/agricultural_activity_datasources/agricultural_sub_activity_datasources/agricultural_sub_activity_datasource.dart';
 import '../features/data/datasources/remote_datasource/agricultural_activity_datasources/agricultural_sub_activity_datasources/agricultural_sub_activity_datasource_impl.dart';
+import '../features/data/datasources/remote_datasource/crop_datasources/crop_datasource.dart';
+import '../features/data/datasources/remote_datasource/crop_datasources/crop_datasource_impl.dart';
 import '../features/data/datasources/remote_datasource/employee_datasources/employee_datasource.dart';
 import '../features/data/datasources/remote_datasource/employee_datasources/employee_datasource_impl.dart';
 import '../features/data/datasources/remote_datasource/contract_datasources/contract_datasource.dart';
 import '../features/data/datasources/remote_datasource/contract_datasources/contract_datasource_impl.dart';
 import '../features/data/datasources/remote_datasource/cost_center_datasource/cost_center_datasource.dart';
 import '../features/data/datasources/remote_datasource/cost_center_datasource/cost_center_datasource_impl.dart';
-import '../features/data/datasources/remote_datasource/crop_datasource/crop_datasource.dart';
-import '../features/data/datasources/remote_datasource/crop_datasource/crop_datasource_impl.dart';
 import '../features/data/datasources/remote_datasource/executors_datasources/executors_datasource.dart';
 import '../features/data/datasources/remote_datasource/executors_datasources/executors_datasource_impl.dart';
 import '../features/data/datasources/remote_datasource/farm_datasource/farm_datasource.dart';
@@ -208,12 +226,17 @@ import '../features/domain/usecases/agricultural_activity_usecases/agricultural_
 import '../features/domain/usecases/agricultural_activity_usecases/agricultural_activity_type_usecases/get_all_agricultural_activity_types_usecases/get_all_agricultural_activity_types_usecase_impl.dart';
 import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_agricultural_sub_activity_by_id_usecases/get_agricultural_sub_activity_by_id_usecase.dart';
 import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_agricultural_sub_activity_by_id_usecases/get_agricultural_sub_activity_by_id_usecase_impl.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_all_Agricultural_sub_activities_by_activity_id_to_select_usecases/get_all_agricultural_sub_activities_by_activity_id_to_select_usecase.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_all_Agricultural_sub_activities_by_activity_id_to_select_usecases/get_all_agricultural_sub_activities_by_activity_id_to_select_usecases_impl.dart';
 import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_all_agricultural_sub_activities_to_select_usecases/get_all_agricultural_sub_activities_to_select_usecase.dart';
 import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_all_agricultural_sub_activities_to_select_usecases/get_all_agricultural_sub_activities_to_select_usecase_impl.dart';
 import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_all_agricultural_sub_activities_usecases/get_all_agricultural_sub_activities_usecase.dart';
 import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_all_agricultural_sub_activities_usecases/get_all_agricultural_sub_activities_usecase_impl.dart';
 import '../features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_usecases/get_all_agricultural_activities_usecase.dart';
 import '../features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_usecases/get_all_agricultural_activities_usecase_impl.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activity_by_type_id_to_select_usecases/get_all_agricultural_activity_by_type_id_to_select_usecase_impl.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activity_by_type_id_usecases/get_all_agricultural_activity_by_type_id_usecase.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activity_by_type_id_usecases/get_all_agricultural_activity_by_type_id_usecase_impl.dart';
 import '../features/domain/usecases/authentication_usecases/authenticate_usecase/authenticate_usecase.dart';
 import '../features/domain/usecases/authentication_usecases/update_password/update_password_usecase_impl.dart';
 import '../features/domain/usecases/company_usecases/company_segment_usecases/get_all_company_segments_to_select_usecases/get_all_company_segments_to_select_usecases_impl.dart';
@@ -294,6 +317,7 @@ import '../features/presenter/modules/service_order/controller/service_order_con
 import '../features/presenter/modules/service_order/create_service_order_page/create_service_order_page.dart';
 import '../features/presenter/modules/service_order/service_order_create/service_order_create_controller.dart';
 import '../features/presenter/modules/service_order/service_order_create/service_order_create_general_info_first_page.dart';
+import '../features/presenter/modules/service_order/service_order_create/service_order_create_general_info_second_page.dart';
 import '../features/presenter/modules/service_order/service_order_list_page/service_order_list_page.dart';
 import '../features/presenter/modules/service_order/service_order_page/service_order_page.dart';
 import '../features/presenter/modules/splash/splash_page/splash_page.dart';
@@ -320,7 +344,17 @@ class AppModule extends Module {
 
     i.addLazySingleton<GetAllCostCenterToSelectUsecase>(GetAllCostCenterToSelectUsecaseImpl.new);
     i.addLazySingleton<FarmUsecase>(FarmUsecaseImpl.new);
-    i.addLazySingleton<CropUsecase>(CropUsecaseImpl.new);
+
+    i.addLazySingleton<GetAllCropsUsecase>(GetAllCropsUsecaseImpl.new);
+    i.addLazySingleton<GetAllCropsToSelectUsecase>(GetAllCropsToSelectUsecaseImpl.new);
+    i.addLazySingleton<GetCropByIdUsecase>(GetCropByIdUsecaseImpl.new);
+
+    i.addLazySingleton<GetCropVarietyByIdUsecase>(GetCropVarietyByIdUsecaseImpl.new);
+    i.addLazySingleton<GetAllCropVarietiesUsecase>(GetAllCropVarietiesUsecaseImpl.new);
+    i.addLazySingleton<GetAllCropVarietiesByCropIdUsecase>(GetAllCropVarietiesByCropIdUsecaseImpl.new);
+    i.addLazySingleton<GetAllCropVarietiesToSelectUsecase>(GetAllCropVarietiesToSelectUsecaseImpl.new);
+    i.addLazySingleton<GetAllCropVarietiesByCropIdToSelectUsecase>(GetAllCropVarietiesByCropIdToSelectUsecaseImpl.new);
+
     i.addLazySingleton<PlotsUsecase>(PlotsUsecaseImpl.new);
     i.addLazySingleton<ExecutorUsecase>(ExecutorUsecaseImpl.new);
     i.addLazySingleton<MachineryUsecase>(MachineryUsecaseImpl.new);
@@ -387,9 +421,11 @@ class AppModule extends Module {
     i.addLazySingleton<GetAllAgriculturalActivitiesUsecase>(GetAllAgriculturalActivitiesUsecaseImpl.new);
     i.addLazySingleton<GetAllAgriculturalActivitiesToSelectUsecase>(GetAllAgriculturalActivitiesToSelectUsecaseImpl.new);
     i.addLazySingleton<GetAgriculturalActivityByIdUsecase>(GetAgriculturalActivityByIdUsecaseImpl.new);
-    i.addLazySingleton<GetAgriculturalActivityByTypeIdUsecase>(GetAgriculturalActivityByTypeIdUsecaseImpl.new);
+    i.addLazySingleton<GetAllAgriculturalActivityByTypeIdUsecase>(GetAllAgriculturalActivityByTypeIdUsecaseImpl.new);
     i.addLazySingleton<GetAllAgriculturalSubActivitiesUsecase>(GetAllAgriculturalSubActivitiesUsecaseImpl.new);
     i.addLazySingleton<GetAllAgriculturalSubActivitiesToSelectUsecase>(GetAllAgriculturalSubActivitiesToSelectUsecaseImpl.new);
+    i.addLazySingleton<GetAllAgriculturalSubActivitiesByActivityIdToSelectUsecase>(GetAllAgriculturalSubActivitiesByActivityIdToSelectUsecaseImpl.new);
+    i.addLazySingleton<GetAllAgriculturalActivityByTypeIdToSelectUsecase>(GetAllAgriculturalActivitiesByTypeIdToSelectUsecaseImpl.new);
     i.addLazySingleton<GetAgriculturalSubActivityByIdUsecase>(GetAgriculturalSubActivityByIdUsecaseImpl.new);
 
     i.addLazySingleton<GetAgriculturalActivityTypeByIdUsecase>(GetAgriculturalActivityTypeByIdUsecaseImpl.new);
@@ -404,6 +440,7 @@ class AppModule extends Module {
     i.addLazySingleton<CostCenterRepository>(CostCenterRepositoryImpl.new);
     i.addLazySingleton<FarmRepository>(FarmRepositoryImpl.new);
     i.addLazySingleton<CropRepository>(CropRepositoryImpl.new);
+    i.addLazySingleton<CropVarietyRepository>(CropVarietyRepositoryImpl.new);
     i.addLazySingleton<PlotsRepository>(PlotsRepositoryImpl.new);
     i.addLazySingleton<ExecutorsRepository>(ExecutorsRepositoryImpl.new);
     i.addLazySingleton<MachineryRepository>(MachineryRepositoryImpl.new);
@@ -430,6 +467,7 @@ class AppModule extends Module {
     i.addLazySingleton<CostCenterDatasource>(CostCenterDatasourceImpl.new);
     i.addLazySingleton<FarmDatasource>(FarmDatasourceImpl.new);
     i.addLazySingleton<CropDatasource>(CropDatasourceImpl.new);
+    i.addLazySingleton<CropVarietyDatasource>(CropVarietyDatasourceImpl.new);
     i.addLazySingleton<PlotsDatasource>(PlotsDatasourceImpl.new);
     i.addLazySingleton<ExecutorsDatasource>(ExecutorsDatasourceImpl.new);
     i.addLazySingleton<MachineryDatasource>(MachineryDatasourceImpl.new);
@@ -477,7 +515,7 @@ class AppModule extends Module {
 
   @override
   void routes(RouteManager r) {
-    r.child(AppRoutes.appDefaultPage, child: (context) => ServiceOrderCreateGeneralInfoFirstPage());
+    r.child(AppRoutes.appDefaultPage, child: (context) => SplashPage());
     r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
     r.child(AppRoutes.appLoginPage, child: (context) => LoginPage());
     r.child(AppRoutes.appRegistersPage, child: (context) => RegistersPage());
@@ -521,6 +559,7 @@ class AppModule extends Module {
     r.child(AppRoutes.appPurchaseRequestCreateDeliveryPage, child: (context) => PurchaseRequestCreateDeliveryPage());
 
     r.child(AppRoutes.appServiceOrderCreateGeneralInfoFirstPage, child: (context) => ServiceOrderCreateGeneralInfoFirstPage());
+    r.child(AppRoutes.appServiceOrderCreateGeneralInfoSecondPage, child: (context) => ServiceOrderCreateGeneralInfoSecondPage());
 
     //Miscellaneous
     r.child(AppRoutes.appEditListedItemsPage, child: (context) => EditListedItemsPage(args: r.args.data,));

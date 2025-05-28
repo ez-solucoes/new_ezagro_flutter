@@ -16,6 +16,9 @@ abstract class AgriculturalActivityRepository {
   Future<Either<ApplicationError, AgriculturalActivityEntity>>
       getAgriculturalActivityById(ArgParams argParams);
 
-  Future<Either<ApplicationError, AgriculturalActivityEntity>>
-      getAgriculturalActivityByTypeId(ArgParams argParams);
+  Future<Either<ApplicationError, List<AgriculturalActivityEntity>>>
+      getAllAgriculturalActivityByTypeId(ArgParams argParams);
+
+  Future<Either<ApplicationError, List<SelectEntity>>>
+  getAllAgriculturalActivitiesByTypeToSelect(ArgParams argParams);
 }

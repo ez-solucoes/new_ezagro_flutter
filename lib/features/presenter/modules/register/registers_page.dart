@@ -8,6 +8,7 @@ import '../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../widgets/appbar/custom_appbar_widget.dart';
 import '../../widgets/background/background_widget.dart';
 import '../../widgets/buttons/custom_navigation_button.dart';
+import '../home/home_page.dart';
 import 'company/company_list_page.dart';
 import 'contracts/contract_list_page.dart';
 import 'employees/employees_list_page.dart';
@@ -20,6 +21,7 @@ class RegistersPage extends StatelessWidget {
   static navigate() => Modular.to.navigate(routePath);
 
   static push() => Modular.to.pushNamed(routePath);
+  static pop() => Modular.to.pop(routePath);
 
   const RegistersPage({super.key});
 
@@ -29,10 +31,11 @@ class RegistersPage extends StatelessWidget {
         appBar: CustomAppBarWidget(
           indicatorValue: 0.8,
           title: AppStringsPortuguese.appCapitalTile,
-          appBarType: AppBarType.hamburgerAndTitle,
+          appBarType: AppBarType.backArrow,
+          callback: () => HomePage.push(),
         ),
         scrollable: true,
-        needsDrawer: true,
+        needsDrawer: false,
         child: Container(
           padding: EdgeInsets.all(50),
           child: Column(

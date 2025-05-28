@@ -6,7 +6,7 @@ import 'package:new_ezagro_flutter/features/domain/entities/farm_entities/farm_e
 import 'package:new_ezagro_flutter/features/domain/entities/plot_entities/plot_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/select_entities/select_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/params/create_service_order_params/create_service_order_params.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/get_all_crops_to_select_usecases/get_all_crops_to_select_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/employee_usecase/employee_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/executor_usecases/executor_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/get_farms_by_cost_center_id_usecases/get_farms_by_cost_center_id_usecase.dart';
@@ -196,7 +196,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   @action
   Future getSimplifiedCrops() async {
     isLoading = true;
-    final getSimplifiedCrops = Modular.get<CropUsecase>();
+    final getSimplifiedCrops = Modular.get<GetAllCropsToSelectUsecase>();
     final result = await getSimplifiedCrops(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
       //cropOptions= success.content;

@@ -57,4 +57,18 @@ class AgriculturalSubActivityRepositoryImpl implements AgriculturalSubActivityRe
     }
   }
 
+  @override
+  Future<Either<ApplicationError, List<SelectModel>>> getAllAgriculturalSubActivitiesByActivityIdToSelect(ArgParams argParams) async {
+    try {
+      final result = await datasource.getAllAgriculturalSubActivitiesByActivityIdToSelect(argParams);
+      return Right(result);
+    } on ApplicationError catch (e) {
+      return Left(e);
+    } catch (e, stacktrace) {
+      return Left(GenericError(
+          fingerprint: '$AgriculturalSubActivityRepositoryImpl.getAllAgriculturalSubActivitiesByActivityIdToSelect',
+          additionalInfo: stacktrace.toString()));
+    }
+  }
+
 }

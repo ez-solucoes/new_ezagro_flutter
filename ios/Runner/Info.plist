@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>NSLocalNetworkUsageDescription</key>
+    <string>Este aplicativo precisa acessar a rede local para funcionalidades de desenvolvimento como hot reload e debugging.</string>
+
+    <key>NSBonjourServices</key>
+    <array>
+    <string>_dartobservatory._tcp</string>
+    </array>
+
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>

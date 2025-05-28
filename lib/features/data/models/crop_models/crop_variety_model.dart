@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import '../../../domain/entities/crop_entities/crop_variety_entity.dart';
+import '../type_models/type_model.dart';
 import 'crop_model.dart';
 
 class CropVarietyModel extends CropVarietyEntity {
@@ -14,6 +15,7 @@ class CropVarietyModel extends CropVarietyEntity {
     super.updatedAt,
     super.deletedAt,
     super.crop,
+    super.productionCycle,
   });
 
   Map<String, dynamic> toMap() => {
@@ -26,6 +28,7 @@ class CropVarietyModel extends CropVarietyEntity {
     'updatedAt': updatedAt,
     'deletedAt': deletedAt,
     'crop': (crop as CropModel).toMap(),
+    'productionCycle': (productionCycle as TypeModel).toMap(),
   };
 
   factory CropVarietyModel.fromMap(Map<String, dynamic> map) => CropVarietyModel(
@@ -38,6 +41,7 @@ class CropVarietyModel extends CropVarietyEntity {
     updatedAt: map['updatedAt'],
     deletedAt: map['deletedAt'],
     crop: map['crop'] == null ? null : CropModel.fromMap(map['crop']),
+    productionCycle: map['productionCycle'] == null ? null : TypeModel.fromMap(map['productionCycle']),
   );
 
   String toJson() => json.encode(toMap());

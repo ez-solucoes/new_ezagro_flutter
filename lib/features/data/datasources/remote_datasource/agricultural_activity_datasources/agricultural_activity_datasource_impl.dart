@@ -107,9 +107,62 @@ class AgriculturalActivityDatasourceImpl
   }
 
   @override
-  Future<ResponseModel<AgriculturalActivityModel>> getAgriculturalActivityByTypeId(
-      ArgParams argParams) {
-    // TODO: implement getAgriculturalActivityByTypeId
-    throw UnimplementedError();
+  Future<List<AgriculturalActivityModel>> getAllAgriculturalActivityByTypeId(
+      ArgParams argParams) async {
+    final String url = mountUrl(
+      AppEndpoints.baseUrlProtocolWithSecurity,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.agriculturalActivityEndpoint,
+    );
+
+    final HttpRequest request =
+        HttpRequest.get(path: url, queryParams: {"activityTypeId": argParams.firstArgs});
+    final result = await httpClient.execute(request);
+
+    switch (result.statusCode) {
+      case 200:
+        return mountListModelInstanceFromResponse(
+          response: result,
+          fromListMap: (map) =>
+              (map).map((e) => AgriculturalActivityModel.fromMap(e)).toList(),
+          fromJsonList: (jsonString) {
+            final List<dynamic> jsonList = jsonDecode(jsonString);
+            return jsonList
+                .map((json) => AgriculturalActivityModel.fromJson(jsonEncode(json)))
+                .toList();
+          },
+        );
+      default:
+        throw mountServerErrorInstance(request: request, response: result);
+    }
+  }
+
+  @override
+    Future<List<SelectModel>> getAllAgriculturalActivityByTypeIdToSelect(
+        ArgParams argParams) async {
+    final String url = mountUrl(
+      AppEndpoints.baseUrlProtocolWithSecurity,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.agriculturalActivityEndpoint + AppEndpoints.selectEndpoint,
+    );
+
+    final HttpRequest request = HttpRequest.get(path: url,queryParams: {"activityTypeId": argParams.firstArgs});
+    final result = await httpClient.execute(request);
+
+    switch (result.statusCode) {
+      case 200:
+        return mountListModelInstanceFromResponse(
+          response: result,
+          fromListMap: (map) => (map).map((e) => SelectModel.fromMap(e)).toList(),
+          fromJsonList: (jsonString) {
+            final List<dynamic> jsonList = jsonDecode(jsonString);
+            return jsonList
+                .map((json) => SelectModel.fromJson(jsonEncode(json)))
+                .toList();
+          },
+        );
+      default:
+        throw mountServerErrorInstance(request: request, response: result);
+    }
   }
 }

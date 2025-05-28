@@ -2,11 +2,14 @@ import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/data/models/cost_center_models/cost_center_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/response_models/response_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/select_models/select_model.dart';
+import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 
 import '../../../models/pagination_model/pagination_model.dart';
 
 abstract class CostCenterDatasource {
-  Future<ResponseModel<PaginationModel<CostCenterModel>>> getCostCenters(NoParams noParams);
-
-  Future<List<SelectModel>> getAllCostCenterToSelect(NoParams noParams);
+  Future<List<CostCenterModel>> getAllCostCenters(NoParams noParams);
+  Future<List<SelectModel>> getAllCostCentersToSelect(NoParams noParams);
+  Future<ResponseModel<CostCenterModel>> getCostCenterById(ArgParams argParams);
+  Future<List<CostCenterModel>> getAllCostCentersByCostCenterTypeId(ArgParams argParams);
+  Future<List<SelectModel>> getAllCostCentersByCostCenterTypeIdToSelect(ArgParams argParams);
 }

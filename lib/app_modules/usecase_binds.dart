@@ -20,8 +20,6 @@ import '../features/domain/usecases/contract_usecases/get_contract_list_usecase/
 import '../features/domain/usecases/contract_usecases/get_contract_list_usecase/get_contract_list_usecase_impl.dart';
 import '../features/domain/usecases/cost_center_usecases/get_all_cost_center_to_select_impl.dart';
 import '../features/domain/usecases/cost_center_usecases/get_all_cost_center_to_select_usecase.dart';
-import '../features/domain/usecases/crop_usecases/crop_usecase.dart';
-import '../features/domain/usecases/crop_usecases/crop_usecase_impl.dart';
 import '../features/domain/usecases/employee_usecase/employee_usecase.dart';
 import '../features/domain/usecases/employee_usecase/employee_usecase_impl.dart';
 import '../features/domain/usecases/employee_usecase/get_employee_by_id_usecase/get_employee_by_id_usecase.dart';
@@ -95,7 +93,6 @@ class UsecaseBinds {
 
     i.addLazySingleton<GetAllCostCenterToSelectUsecase>(GetAllCostCenterToSelectUsecaseImpl.new);
     i.addLazySingleton<FarmUsecase>(FarmUsecaseImpl.new);
-    i.addLazySingleton<CropUsecase>(CropUsecaseImpl.new);
     i.addLazySingleton<PlotsUsecase>(PlotsUsecaseImpl.new);
     i.addLazySingleton<ExecutorUsecase>(ExecutorUsecaseImpl.new);
     i.addLazySingleton<MachineryUsecase>(MachineryUsecaseImpl.new);

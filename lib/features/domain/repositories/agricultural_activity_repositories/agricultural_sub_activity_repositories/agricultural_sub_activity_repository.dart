@@ -13,6 +13,9 @@ abstract class AgriculturalSubActivityRepository {
   Future<Either<ApplicationError, List<SelectEntity>>>
       getAllAgriculturalSubActivitiesToSelect(NoParams noParams);
 
+  Future<Either<ApplicationError, List<SelectEntity>>>
+      getAllAgriculturalSubActivitiesByActivityIdToSelect(ArgParams argParams);
+
   Future<Either<ApplicationError, AgriculturalSubActivityEntity>>
       getAgriculturalSubActivityById(ArgParams argParams);
 }

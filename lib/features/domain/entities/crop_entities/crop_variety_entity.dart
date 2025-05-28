@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/type_entities/type_entity.dart';
 
 import 'crop_entity.dart';
 
@@ -12,6 +13,7 @@ class CropVarietyEntity extends Equatable {
   final String? updatedAt;
   final String? deletedAt;
   final CropEntity? crop;
+  final TypeEntity? productionCycle;
 
   const CropVarietyEntity({
     required this.id,
@@ -23,6 +25,7 @@ class CropVarietyEntity extends Equatable {
     this.updatedAt,
     this.deletedAt,
     this.crop,
+    this.productionCycle,
 });
 
   @override
@@ -36,5 +39,6 @@ class CropVarietyEntity extends Equatable {
     updatedAt,
     deletedAt,
     crop,
+    productionCycle,
   ];
 }

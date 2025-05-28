@@ -44,15 +44,15 @@ class AgriculturalActivityRepositoryImpl implements AgriculturalActivityReposito
   }
 
   @override
-  Future<Either<ApplicationError, AgriculturalActivityModel>> getAgriculturalActivityByTypeId(ArgParams argParams) async {
+  Future<Either<ApplicationError, List<AgriculturalActivityModel>>> getAllAgriculturalActivityByTypeId(ArgParams argParams) async {
     try {
-      final result = await datasource.getAgriculturalActivityByTypeId(argParams);
-      return Right(result.data!);
+      final result = await datasource.getAllAgriculturalActivityByTypeId(argParams);
+      return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {
       return Left(GenericError(
-          fingerprint: '$AgriculturalActivityRepositoryImpl.getAgriculturalActivityByTypeId',
+          fingerprint: '$AgriculturalActivityRepositoryImpl.getAllAgriculturalActivityByTypeId',
           additionalInfo: stacktrace.toString()));
     }
   }
@@ -67,6 +67,20 @@ class AgriculturalActivityRepositoryImpl implements AgriculturalActivityReposito
     } catch (e, stacktrace) {
       return Left(GenericError(
           fingerprint: '$AgriculturalActivityRepositoryImpl.getAllAgriculturalActivitiesToSelect',
+          additionalInfo: stacktrace.toString()));
+    }
+  }
+
+  @override
+  Future<Either<ApplicationError, List<SelectModel>>> getAllAgriculturalActivitiesByTypeToSelect(ArgParams argParams) async {
+    try {
+      final result = await datasource.getAllAgriculturalActivityByTypeIdToSelect(argParams);
+      return Right(result);
+    } on ApplicationError catch (e) {
+      return Left(e);
+    } catch (e, stacktrace) {
+      return Left(GenericError(
+          fingerprint: '$AgriculturalActivityRepositoryImpl.getAllAgriculturalActivityByTypeIdToSelect',
           additionalInfo: stacktrace.toString()));
     }
   }

@@ -45,7 +45,8 @@ class AppEndpoints {
   static const String getFarmById = '/farm/';
   static const String getFarmsSimplifiedEndpoint = '/farm/simplified';
   static const String getCostCenterFarmsEndpoint = '/farm/cost-center/';
-  static const String getSimplifiedCropsEndpoint = '/crop/simplified';
+  static const String cropEndpoint = '/crop';
+  static const String cropVarietyEndpoint = '/crop-variety';
   static const String getPlotsEndpoint = '/farm/plot';
   static const String getExecutorsEndpoint = '/employee';
   static const String productEndpoint = '/product';

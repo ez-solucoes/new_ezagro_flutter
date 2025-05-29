@@ -69,6 +69,9 @@ import 'package:new_ezagro_flutter/features/domain/usecases/contract_usecases/ge
 import 'package:new_ezagro_flutter/features/domain/usecases/contract_usecases/get_contract_by_id_usecase/get_contract_by_id_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/contract_usecases/get_contract_list_usecase/get_contract_list_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/contract_usecases/get_contract_list_usecase/get_contract_list_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/get_all_cost_centers_by_cost_center_type_id_to_select_usecases/get_all_cost_centers_by_cost_center_type_id_to_select_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/get_all_cost_centers_usecases/get_all_cost_centers_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/get_cost_center_by_id_usecases/get_cost_center_by_id_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_variety_usecases/get_all_crop_varieties_by_crop_id_to_select_usecases/get_all_crop_varieties_by_crop_id_to_select_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_variety_usecases/get_all_crop_varieties_by_crop_id_to_select_usecases/get_all_crop_varieties_by_crop_id_to_select_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_variety_usecases/get_all_crop_varieties_by_crop_id_usecases/get_all_crop_varieties_by_crop_id_usecase.dart';
@@ -242,8 +245,11 @@ import '../features/domain/usecases/authentication_usecases/update_password/upda
 import '../features/domain/usecases/company_usecases/company_segment_usecases/get_all_company_segments_to_select_usecases/get_all_company_segments_to_select_usecases_impl.dart';
 import '../features/domain/usecases/company_usecases/get_all_companies_to_select_usecase/get_all_companies_to_select_usecase.dart';
 import '../features/domain/usecases/company_usecases/get_all_companies_to_select_usecase/get_all_companies_to_select_usecase_impl.dart';
-import '../features/domain/usecases/cost_center_usecases/get_all_cost_center_to_select_impl.dart';
-import '../features/domain/usecases/cost_center_usecases/get_all_cost_center_to_select_usecase.dart';
+import '../features/domain/usecases/cost_center_usecases/get_all_cost_centers_by_cost_center_type_id_to_select_usecases/get_all_cost_centers_by_cost_center_type_id_to_select_usecase.dart';
+import '../features/domain/usecases/cost_center_usecases/get_all_cost_centers_by_cost_center_type_id_usecases/get_all_cost_centers_by_cost_center_type_id_usecase.dart';
+import '../features/domain/usecases/cost_center_usecases/get_all_cost_centers_to_select_usecases/get_all_cost_centers_to_select_usecase.dart';
+import '../features/domain/usecases/cost_center_usecases/get_all_cost_centers_usecases/get_all_cost_centers_usecase.dart';
+import '../features/domain/usecases/cost_center_usecases/get_cost_center_by_id_usecases/get_cost_center_by_id_usecase.dart';
 import '../features/domain/usecases/employee_usecase/employee_usecase.dart';
 import '../features/domain/usecases/employee_usecase/employee_usecase_impl.dart';
 import '../features/domain/usecases/employee_usecase/get_all_employees_by_farm_id_to_select_usecases/get_all_employees_by_farm_id_to_select_usecase.dart';
@@ -342,7 +348,13 @@ class AppModule extends Module {
     i.addLazySingleton<UpdatePasswordUsecase>(UpdatePasswordUsecaseImpl.new);
     i.addLazySingleton<ServiceOrderListUsecase>(ServiceOrderListUsecaseImpl.new);
 
-    i.addLazySingleton<GetAllCostCenterToSelectUsecase>(GetAllCostCenterToSelectUsecaseImpl.new);
+    i.addLazySingleton<GetAllCostCentersByCostCenterTypeIdToSelectUsecase>(GetAllCostCentersByCostCenterTypeIdToSelectUsecaseImpl.new);
+    i.addLazySingleton<GetAllCostCentersByCostCenterTypeIdUsecase>(GetAllCostCentersByCostCenterTypeIdToSelectUsecaseImpl.new);
+    i.addLazySingleton<GetAllCostCentersToSelectUsecase>(GetAllCostCentersByCostCenterTypeIdToSelectUsecaseImpl.new);
+    i.addLazySingleton<GetAllCostCentersUsecase>(GetAllCostCentersUsecaseImpl.new);
+    i.addLazySingleton<GetCostCenterByIdUsecase>(GetCostCenterByIdUsecaseImpl.new);
+
+
     i.addLazySingleton<FarmUsecase>(FarmUsecaseImpl.new);
 
     i.addLazySingleton<GetAllCropsUsecase>(GetAllCropsUsecaseImpl.new);

@@ -1,6 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/get_all_cost_centers_to_select_usecases/get_all_cost_centers_to_select_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_variety_usecases/get_all_crop_varieties_by_crop_id_to_select_usecases/get_all_crop_varieties_by_crop_id_to_select_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_variety_usecases/get_crop_variety_by_id_usecases/get_crop_variety_by_id_usecase.dart';
 
@@ -12,7 +13,6 @@ import '../../../../domain/usecases/agricultural_activity_usecases/agricultural_
 import '../../../../domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_to_select_usecases/get_all_agricultural_activities_to_select_usecase.dart';
 import '../../../../domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_usecases/get_all_agricultural_activities_usecase.dart';
 import '../../../../domain/usecases/agricultural_activity_usecases/get_all_agricultural_activity_by_type_id_to_select_usecases/get_all_agricultural_activity_by_type_id_to_select_usecase.dart';
-import '../../../../domain/usecases/cost_center_usecases/get_all_cost_center_to_select_usecase.dart';
 import '../../../../domain/usecases/crop_usecases/get_all_crops_to_select_usecases/get_all_crops_to_select_usecase.dart';
 import '../../../../domain/usecases/farm_usecases/get_all_farms_by_cost_center_id_to_select_usecases/get_all_farms_by_cost_center_id_to_select_usecase.dart';
 
@@ -163,7 +163,7 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
   Future<void> getAllCostCenterToSelect() async {
     isCostCenterLoading = true;
 
-    final getAllCostCenterToSelect = Modular.get<GetAllCostCenterToSelectUsecase>();
+    final getAllCostCenterToSelect = Modular.get<GetAllCostCentersToSelectUsecase>();
     final result = await getAllCostCenterToSelect(NoParams());
 
     result.fold((error) => error.friendlyMessage, (success) {

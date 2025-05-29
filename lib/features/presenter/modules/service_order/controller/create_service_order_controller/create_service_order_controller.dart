@@ -6,6 +6,7 @@ import 'package:new_ezagro_flutter/features/domain/entities/farm_entities/farm_e
 import 'package:new_ezagro_flutter/features/domain/entities/plot_entities/plot_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/select_entities/select_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/params/create_service_order_params/create_service_order_params.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/get_all_cost_centers_to_select_usecases/get_all_cost_centers_to_select_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/get_all_crops_to_select_usecases/get_all_crops_to_select_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/employee_usecase/employee_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/executor_usecases/executor_usecase.dart';
@@ -19,7 +20,6 @@ import '../../../../../../core/usecase/usecase.dart';
 import '../../../../../domain/entities/pest_entities/pest_entity.dart';
 import '../../../../../domain/params/arg_params/arg_params.dart';
 import '../../../../../domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_usecases/get_all_agricultural_activities_usecase.dart';
-import '../../../../../domain/usecases/cost_center_usecases/get_all_cost_center_to_select_usecase.dart';
 import '../../../../../domain/usecases/plots_usecases/plots_with_farm_id_usecase.dart';
 part 'create_service_order_controller.g.dart';
 
@@ -170,7 +170,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   @action
   Future getCostCenters() async {
     isLoading = true;
-    final getCostCenters = Modular.get<GetAllCostCenterToSelectUsecase>();
+    final getCostCenters = Modular.get<GetAllCostCentersToSelectUsecase>();
     final result = await getCostCenters(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
       costCenterOptions = success;

@@ -6,6 +6,7 @@ import 'package:new_ezagro_flutter/features/domain/entities/company_entities/com
 import 'package:new_ezagro_flutter/features/domain/entities/items_entities/items_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/purchase_request_entities/send_purchase_request_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/company_usecases/get_all_companies_usecase/get_all_companies_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/get_all_cost_centers_to_select_usecases/get_all_cost_centers_to_select_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/employee_usecase/get_all_employees_by_farm_id_to_select_usecases/get_all_employees_by_farm_id_to_select_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/get_all_products_by_type_id_to_select_usecases/get_all_products_by_type_id_to_select_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/purchase_request_usecases/purchase_request_delivery_location_usecases/get_all_purchase_request_delivery_locations_to_select_usecases/get_all_purchase_request_delivery_locations_to_select_usecase.dart';
@@ -19,7 +20,6 @@ import '../../../../domain/usecases/company_usecases/get_all_companies_to_select
 
 
 
-import '../../../../domain/usecases/cost_center_usecases/get_all_cost_center_to_select_usecase.dart';
 import '../../../../domain/usecases/farm_usecases/get_all_farms_by_cost_center_id_to_select_usecases/get_all_farms_by_cost_center_id_to_select_usecase.dart';
 import '../../../../domain/usecases/payment_method_usecases/get_all_payment_methods_to_select_usecase/get_all_payment_methods_to_select_usecase.dart';
 import '../../../../domain/usecases/product_usecases/get_all_products_to_select_usecase/get_all_products_to_select_usecase.dart';
@@ -754,7 +754,7 @@ abstract class PurchaseRequestCreateControllerAbstract with Store {
   Future<void> getAllCostCenterToSelect() async {
     isFirstLoading = true; // Pode usar isFirstLoading ou um estado específico
 
-    final getAllCostCenterToSelect = Modular.get<GetAllCostCenterToSelectUsecase>();
+    final getAllCostCenterToSelect = Modular.get<GetAllCostCentersToSelectUsecase>();
     final result = await getAllCostCenterToSelect(NoParams());
 
     result.fold((error) => error.friendlyMessage, (success) {

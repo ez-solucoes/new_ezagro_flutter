@@ -13,7 +13,7 @@ class LogoutDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+      padding: EdgeInsets.symmetric(vertical: 65, horizontal: 15),
       decoration: BoxDecoration(color: AppColors.backgroundColor, borderRadius: BorderRadius.circular(5)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -24,9 +24,9 @@ class LogoutDialog extends StatelessWidget {
             textAlign: TextAlign.center,
             style: AppTextStyles.bottomSheetAlert(color: AppColors.primaryBlackColor),
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 55),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CustomOutlinedButton(
                 onPressed: () {
@@ -35,9 +35,10 @@ class LogoutDialog extends StatelessWidget {
                 label: AppStringsPortuguese.cancelButtonLabel, textStyle: AppTextStyles.labelTextButtonStyle(color: AppColors.primaryBlackColor),
                 customColor: AppColors.primaryBlackColor,
               ),
+              const SizedBox(width: 10),
               CustomElevatedButton(
                 onPressed: () {
-                  LoginPage.navigate();
+                  LoginPage.push();
                 },
                 label: AppStringsPortuguese.leaveButtonLabel,
                 backgroundColor: AppColors.primaryRedColor,

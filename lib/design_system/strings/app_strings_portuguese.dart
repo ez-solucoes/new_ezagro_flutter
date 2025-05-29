@@ -23,7 +23,7 @@ class AppStringsPortuguese {
   static const String privacyPolicy = 'Política de Privacidade';
   static const String and = ' e ';
   static const String userTerms = 'Termos do Usuário';
-  static const String logoutConfirmationMessage = 'Tem certeza de que deseja sair?';
+  static const String logoutConfirmationMessage = 'Tem certeza de que\ndeseja sair?';
   static const String cancelButtonLabel = 'Cancelar';
   static const String leaveButtonLabel = 'Sair';
 

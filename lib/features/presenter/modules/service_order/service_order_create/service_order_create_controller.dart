@@ -1,9 +1,12 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/plot_entities/farm_plot_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/get_all_cost_centers_to_select_usecases/get_all_cost_centers_to_select_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_variety_usecases/get_all_crop_varieties_by_crop_id_to_select_usecases/get_all_crop_varieties_by_crop_id_to_select_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_variety_usecases/get_crop_variety_by_id_usecases/get_crop_variety_by_id_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_plot_usecases/get_all_farm_plots_to_select_usecases/get_all_farm_plots_to_select_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_plot_usecases/get_all_farm_plots_usecases/get_all_farm_plots_usecase.dart';
 
 import '../../../../../core/usecase/usecase.dart';
 import '../../../../domain/entities/agricultural_entities/agricultural_activity_entity.dart';
@@ -13,6 +16,7 @@ import '../../../../domain/usecases/agricultural_activity_usecases/agricultural_
 import '../../../../domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_to_select_usecases/get_all_agricultural_activities_to_select_usecase.dart';
 import '../../../../domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_usecases/get_all_agricultural_activities_usecase.dart';
 import '../../../../domain/usecases/agricultural_activity_usecases/get_all_agricultural_activity_by_type_id_to_select_usecases/get_all_agricultural_activity_by_type_id_to_select_usecase.dart';
+import '../../../../domain/usecases/cost_center_usecases/get_all_cost_centers_by_cost_center_type_id_to_select_usecases/get_all_cost_centers_by_cost_center_type_id_to_select_usecase.dart';
 import '../../../../domain/usecases/crop_usecases/get_all_crops_to_select_usecases/get_all_crops_to_select_usecase.dart';
 import '../../../../domain/usecases/farm_usecases/get_all_farms_by_cost_center_id_to_select_usecases/get_all_farms_by_cost_center_id_to_select_usecase.dart';
 
@@ -44,6 +48,8 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
   bool isNewPlanting = false;
   @observable
   bool isTechnologyLoading = false;
+  @observable
+  bool isFarmPlotLoading = false;
 
 
   //Select Lists
@@ -56,15 +62,21 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
   @observable
   List<SelectEntity> costCenterListToSelect = ObservableList();
   @observable
+  List<SelectEntity> costCenterByCostCenterTypeIdListToSelect = ObservableList();
+  @observable
   List<SelectEntity> farmsByCostCenterIdListToSelect = ObservableList();
   @observable
   List<SelectEntity> cropListToSelect = ObservableList();
   @observable
   List<SelectEntity> cropVarietyListToSelect = ObservableList();
+  @observable
+  List<SelectEntity> farmPlotListToSelect = ObservableList();
 
   //Entities List
   @observable
   List<AgriculturalActivityEntity> agriculturalActivityList = ObservableList();
+  @observable
+  List<FarmPlotEntity> farmPlotList = ObservableList();
 
   //Selected items
   @observable
@@ -75,6 +87,9 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
   SelectEntity? agriculturalSubActivity;
   @observable
   SelectEntity? costCenter;
+
+  @observable
+  SelectEntity? costCenterByCostCenterTypeId;
   @observable
   SelectEntity? farm;
   @observable
@@ -83,8 +98,9 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
   SelectEntity? cropVariety;
   @observable
   String? technologyName;
-
   String? harvestOrder;
+  @observable
+  List<SelectEntity> selectedFarmPlotList = ObservableList();
 
   @action
   void updateCostCenterAndReload(SelectEntity costCenter) {
@@ -174,6 +190,18 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
   }
 
   @action
+  Future<void> getAllCostCentersByCostCenterTypeIdToSelect() async {
+    isCostCenterLoading = true;
+    final getAllCostCentersByCostCenterTypeIdToSelect = Modular.get<GetAllCostCentersByCostCenterTypeIdToSelectUsecase>();
+    final result = await getAllCostCentersByCostCenterTypeIdToSelect(ArgParams(firstArgs: 2));
+    result.fold((error) => error.friendlyMessage, (success) {
+      costCenterByCostCenterTypeIdListToSelect = success;
+      return success;
+    });
+     isCostCenterLoading = false;
+  }
+
+  @action
   Future<void> getAllFarmsByCostCenterIdToSelect(int costCenterId) async {
     isFarmLoading = true;
 
@@ -225,6 +253,29 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
       }
     });
     isTechnologyLoading = false;
+  }
+
+  @action
+  Future<void> getAllFarmPloToSelect() async {
+    isFirstLoading = true;
+
+    final getAllFarmPlotListToSelect = Modular.get<GetAllFarmPlotsToSelectUsecase>();
+    final result = await getAllFarmPlotListToSelect(ArgParams(firstArgs: 15));
+    result.fold((error) => error.friendlyMessage,  (success){
+      farmPlotListToSelect = success;
+    });
+    isFirstLoading = false;
+  }
+
+  @action
+  Future<void> getAllFarmPlots() async {
+    isFirstLoading = true;
+    final getAllFarmPlots = Modular.get<GetAllFarmPlotsUsecase>();
+    final result = await getAllFarmPlots(ArgParams(firstArgs: 15));
+    result.fold((error) => error.friendlyMessage, (success){
+      farmPlotList = success;
+    });
+    isFirstLoading = false;
   }
 
 }

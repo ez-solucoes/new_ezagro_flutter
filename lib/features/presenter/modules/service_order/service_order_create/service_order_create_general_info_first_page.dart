@@ -6,6 +6,7 @@ import 'package:new_ezagro_flutter/design_system/colors/app_colors.dart';
 import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 import 'package:new_ezagro_flutter/design_system/typography/app_text_styles.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/service_order/service_order_create/service_order_create_controller.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/service_order/service_order_create/service_order_create_general_info_second_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/background/background_widget.dart';
 
 import '../../../../domain/entities/select_entities/select_entity.dart';
@@ -17,11 +18,11 @@ import '../../../widgets/custom_autocomplete/custom_autocomplete_widget.dart';
 class ServiceOrderCreateGeneralInfoFirstPage extends StatelessWidget {
   static const String routePath = AppRoutes.appServiceOrderCreateGeneralInfoFirstPage;
 
-  static navigate() => Modular.to.navigate(routePath);
+  static void navigate() => Modular.to.navigate(routePath);
 
-  static push() => Modular.to.pushNamed(routePath);
+  static Future<Object?> push() => Modular.to.pushNamed(routePath);
 
-  static pop() => Modular.to.pop();
+  static void pop() => Modular.to.pop();
 
   const ServiceOrderCreateGeneralInfoFirstPage({super.key});
 
@@ -164,7 +165,7 @@ class ServiceOrderCreateGeneralInfoFirstPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CustomElevatedButton(
-                          onPressed: () {},
+                          onPressed: () => ServiceOrderCreateGeneralInfoSecondPage.push(),
                           label: 'Próximo',
                           backgroundColor: AppColors.primaryGreenColor,
                           borderColor: Colors.transparent,

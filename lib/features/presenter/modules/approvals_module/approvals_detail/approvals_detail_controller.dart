@@ -113,7 +113,7 @@ abstract class ApprovalsDetailControllerAbstract with Store {
     isLoading = false;
   }
 
-  _buildDataLists() {
+  void _buildDataLists() {
     informationList = [
       ["Safra: ", serviceOrder?.harvestCostCenter!.name ?? ""],
       ["Talhões:", _buildPlotStringPreview(serviceOrder?.plots?.map((e) => e.id.toString()).toList() ?? [])],

@@ -24,7 +24,7 @@ abstract class MachineryControllerAbstract with Store {
   String errorMessage = '';
 
   @action
-  getAllMachineryImplements() async {
+  Future<void> getAllMachineryImplements() async {
     isLoading = true;
     final getAllMachineryUsecase = Modular.get<GetAllMachineryUsecase>();
 
@@ -44,7 +44,7 @@ abstract class MachineryControllerAbstract with Store {
     isLoading = false;
   }
 
-  getMachineryImplementById(int id) async {
+  Future<void> getMachineryImplementById(int id) async {
     isLoading = true;
     final getMachineryImplementByIdUsecase = Modular.get<GetMachineryImplementByIdUsecase>();
     final result = await getMachineryImplementByIdUsecase(id);

@@ -36,7 +36,7 @@ abstract class ServiceOrderControllerAbstract with Store {
     isLoading = false;
   }
 
-  _buildDataLists() {
+  void _buildDataLists() {
       informationList = [
         // ["Fazenda: ", serviceOrder?.farm?.farmName ?? ""],
         // ["Safra: ", serviceOrder?.cropDiversity?.crop?.name ?? ""],

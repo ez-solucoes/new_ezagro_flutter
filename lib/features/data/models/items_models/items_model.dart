@@ -27,7 +27,7 @@ class ItemsModel extends ItemsEntity {
     };
   }
 
-  factory ItemsModel.fromMap(map) {
+  factory ItemsModel.fromMap(Map<String, dynamic> map) {
     return ItemsModel(
       productId: map['productId'] as int,
       requestedQuantity: map['requestedQuantity'] as int,

@@ -1,3 +1,4 @@
+
 // [ EMPLOYEE, OUTSOURCE ]
 
 enum EmployeeOrOutsourceEnum {

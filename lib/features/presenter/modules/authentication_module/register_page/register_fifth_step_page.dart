@@ -18,10 +18,10 @@ class RegisterFifthStepPage extends StatelessWidget {
   final ArgParams? args;
   static const String routePath = AppRoutes.appRegisterFifthStepPage;
 
-  static navigate() =>
+  static void navigate() =>
       Modular.to.navigate(routePath);
 
-  static push(ArgParams args) =>
+  static Future<Object?> push(ArgParams args) =>
       Modular.to.pushNamed(routePath, arguments: args);
 
   const RegisterFifthStepPage({super.key, this.args});

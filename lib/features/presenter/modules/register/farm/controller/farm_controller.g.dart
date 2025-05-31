@@ -93,7 +93,7 @@ mixin _$FarmController on FarmControllerAbstract, Store {
       ActionController(name: 'FarmControllerAbstract', context: context);
 
   @override
-  dynamic searchFarm(String searchText) {
+  void searchFarm(String searchText) {
     final _$actionInfo = _$FarmControllerAbstractActionController.startAction(
         name: 'FarmControllerAbstract.searchFarm');
     try {

@@ -19,8 +19,11 @@ class CompanyPage extends StatelessWidget {
   static void navigate(ArgParams args) =>
       Modular.to.navigate(routePath, arguments: args);
 
-  static push(ArgParams args) =>
+  static Future<Object?> push(ArgParams args) =>
       Modular.to.pushNamed(routePath, arguments: args);
+
+  static void pop() =>
+      Modular.to.pop(routePath);
 
   const CompanyPage({super.key, required this.args});
 
@@ -33,7 +36,7 @@ class CompanyPage extends StatelessWidget {
         appBar: const CustomAppBarWidget(
           appBarType: AppBarType.centeredTitleAndBackArrow,
           title: AppStringsPortuguese.singularCompanyTitle,
-          callback: CompanyListPage.navigate,
+          callback: CompanyListPage.pop,
         ),
         child: Observer(
           builder: (context) => controller.isLoading

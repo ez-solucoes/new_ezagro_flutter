@@ -6,9 +6,9 @@ import '../../../../consts/app_routes.dart';
 class HomeScreen extends StatelessWidget {
   static const String routePath = AppRoutes.appHomeScreen;
 
-  static navigate() => Modular.to.navigate(routePath);
+  static void navigate() => Modular.to.navigate(routePath);
 
-  static push() => Modular.to.pushNamed(routePath);
+  static Future<Object?> push() => Modular.to.pushNamed(routePath);
 
   const HomeScreen({super.key});
 

@@ -22,7 +22,7 @@ class ContractPage extends StatelessWidget {
   static void navigate(ArgParams args) =>
       Modular.to.navigate(routePath, arguments: args);
 
-  static push(ArgParams args) =>
+  static Future<Object?> push(ArgParams args) =>
       Modular.to.pushNamed(routePath, arguments: args);
 
   const ContractPage({super.key, required this.args});
@@ -37,7 +37,7 @@ class ContractPage extends StatelessWidget {
           appBarType: AppBarType.centeredTitleAndBackArrow,
           title: AppStringsPortuguese.singularContractTitle,
           callback: (){
-            ContractListPage.navigate();
+            ContractListPage.pop();
           },
         ),
         child: Observer(

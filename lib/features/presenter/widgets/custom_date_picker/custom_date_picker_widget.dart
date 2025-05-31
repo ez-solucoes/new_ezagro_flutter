@@ -58,7 +58,7 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
             ])));
   }
 
-  _showCalendar(DateTime now) async {
+  Future<void> _showCalendar(DateTime now) async {
     FocusScope.of(context).requestFocus(FocusNode());
     DateTime? date = await showDatePicker(
       helpText: 'Selecione a data',

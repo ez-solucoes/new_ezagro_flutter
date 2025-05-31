@@ -5,9 +5,11 @@ import 'package:new_ezagro_flutter/features/presenter/modules/service_order/serv
 import 'package:new_ezagro_flutter/features/presenter/widgets/appbar/custom_appbar_widget.dart';
 
 import '../../../../../consts/app_routes.dart';
+import '../../../../../design_system/colors/app_colors.dart';
 import '../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../domain/entities/select_entities/select_entity.dart';
 import '../../../widgets/background/background_widget.dart';
+import '../../../widgets/buttons/custom_elevated_button.dart';
 import '../../../widgets/custom_autocomplete/custom_autocomplete_card_widget.dart';
 import '../../../widgets/custom_autocomplete/custom_autocomplete_widget.dart';
 import '../../../widgets/custom_simple_info_card/custom_simple_info_card_widget.dart';
@@ -16,11 +18,11 @@ import '../../../widgets/custom_text_input/custom_text_input_widget.dart';
 class ServiceOrderCreateGeneralInfoSecondPage extends StatelessWidget {
   static const String routePath = AppRoutes.appServiceOrderCreateGeneralInfoSecondPage;
 
-  static navigate() => Modular.to.navigate(routePath);
+  static void navigate() => Modular.to.navigate(routePath);
 
-  static push() => Modular.to.pushNamed(routePath);
+  static Future<Object?> push() => Modular.to.pushNamed(routePath);
 
-  static pop() => Modular.to.pop();
+  static void pop() => Modular.to.pop();
 
   const ServiceOrderCreateGeneralInfoSecondPage({super.key});
 
@@ -30,11 +32,11 @@ class ServiceOrderCreateGeneralInfoSecondPage extends StatelessWidget {
     controller.getAllCropsToSelect();
 
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         FocusScope.of(context).unfocus();
       },
       child: BackgroundWidget(
-        scrollable: true,
+        scrollable: false,
         appBar: CustomAppBarWidget(
           appBarType: AppBarType.backArrow,
           title: AppStringsPortuguese.createServiceOrder,
@@ -74,44 +76,74 @@ class ServiceOrderCreateGeneralInfoSecondPage extends StatelessWidget {
                               debugPrint('Selecionado: ${item.label}');
                               controller.technologyName = null;
                               controller.getCropVarietyById();
+                              controller.getAllCostCentersByCostCenterTypeIdToSelect();
                             },
                             autoCompleteType: AutoCompleteType.simple,
                           );
                   }),
                   SizedBox(height: 10),
-                  Observer(builder: (BuildContext context){
+                  Observer(builder: (BuildContext context) {
                     return controller.isTechnologyLoading
                         ? Center(child: CircularProgressIndicator())
                         : controller.technologyName != null
-                        ? CustomSimpleInfoCardWidget(
-                        label: 'Tecnologia', data: '${controller.technologyName}')
-                        : Container();
+                            ? CustomSimpleInfoCardWidget(
+                                label: 'Tecnologia', data: '${controller.technologyName}')
+                            : Container();
                   }),
+                  SizedBox(height: 10),
+                  CustomTextInputWidget(
+                    title: 'Numero da Ordem de Colheita',
+                    getText: (answer) {
+                      controller.harvestOrder = answer;
+                    },
+                  ),
                   SizedBox(height: 10),
                   Observer(
                     builder: (context) {
-                      return CustomTextInputWidget(
-                        title: 'Numero da Ordem de Colheita',
-                        getText: (answer) {
-                          controller.harvestOrder = answer;
-                        },
-                      );
-                    }
+                      return controller.isCostCenterLoading
+                          ? Center(child: CircularProgressIndicator())
+                          : CustomAutocompleteCardWidget(
+                              title: 'Safra:',
+                              itemList:
+                                  controller.costCenterByCostCenterTypeIdListToSelect,
+                              onItemSelected: (SelectEntity item) {
+                                controller.costCenterByCostCenterTypeId = item;
+                                debugPrint(
+                                    'id: ${controller.costCenterByCostCenterTypeId}');
+                                debugPrint('Selecionado: ${item.label}');
+                              },
+                              autoCompleteType: AutoCompleteType.simple,
+                            );
+                    },
                   ),
-                  SizedBox(height: 10),
-                  Observer(
-                    builder: (context) => CustomAutocompleteCardWidget(
-                      title: 'Safra:',
-                      itemList: controller.cropListToSelect,
-                      onItemSelected: (SelectEntity item) {
-                        controller.crop = item;
-                        debugPrint('id: ${controller.crop}');
-                        debugPrint('Selecionado: ${item.label}');
-                        controller.getAllCropVarietiesByCropIdToSelect();
-                      },
-                      autoCompleteType: AutoCompleteType.simple,
+                  Expanded(child: SizedBox(height: 10,)),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: CustomElevatedButton(
+                            onPressed: () => ServiceOrderCreateGeneralInfoSecondPage.pop(),
+                            label: 'Anterior',
+                            textColor: AppColors.primaryBlackColor,
+                            backgroundColor: AppColors.backgroundColor,
+                            borderColor: AppColors.formGreyColor,
+                          ),
+                        ),
+                        const SizedBox(width: 30),
+                        Expanded(
+                          child: CustomElevatedButton(
+                            onPressed: () {
+                            },
+                            label: 'Próximo',
+                            backgroundColor: AppColors.primaryGreenColor,
+                            borderColor: Colors.transparent,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
+                  )
                 ],
               );
             }

@@ -402,5 +402,5 @@ class CustomInfoCardWidget extends StatelessWidget {
     }
   }
 
-  static _defaultIconAction(int index) {}
+  static void _defaultIconAction(int index) {}
 }

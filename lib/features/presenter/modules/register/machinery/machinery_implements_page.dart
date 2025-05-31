@@ -15,9 +15,9 @@ class MachineryImplementsPage extends StatelessWidget {
 
   static void navigate(ArgParams args) => Modular.to.navigate(routePath, arguments: args);
 
-  static push(ArgParams args) => Modular.to.pushNamed(routePath, arguments: args);
+  static Future<Object?> push(ArgParams args) => Modular.to.pushNamed(routePath, arguments: args);
 
-  static pop() => Modular.to.pop();
+  static void pop() => Modular.to.pop();
 
   const MachineryImplementsPage({super.key, required this.args});
 
@@ -30,7 +30,7 @@ class MachineryImplementsPage extends StatelessWidget {
         appBar: CustomAppBarWidget(
           appBarType: AppBarType.centeredTitleAndBackArrow,
           title: AppStringsPortuguese.singularFarmTitle,
-          callback: () {},
+          callback: () => MachineryImplementsPage.pop(),
         ),
         child: Observer(
           builder: (context) => controller.isLoading

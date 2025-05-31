@@ -20,7 +20,7 @@ class FarmPage extends StatelessWidget {
   static void navigate(ArgParams args) =>
       Modular.to.navigate(routePath, arguments: args);
 
-  static push(ArgParams args) =>
+  static Future<Object?> push(ArgParams args) =>
       Modular.to.pushNamed(routePath, arguments: args);
 
   const FarmPage({super.key, required this.args});
@@ -35,7 +35,7 @@ class FarmPage extends StatelessWidget {
           appBarType: AppBarType.centeredTitleAndBackArrow,
           title: AppStringsPortuguese.singularFarmTitle,
           callback: () {
-            FarmListPage.navigate();
+            FarmListPage.pop();
           },
         ),
         child: Observer(

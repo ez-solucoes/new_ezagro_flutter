@@ -1,3 +1,4 @@
+
 // [ EMPLOYMENT, FINANCIAL, GENERAL ]
 
 enum DutyTypeEnum {

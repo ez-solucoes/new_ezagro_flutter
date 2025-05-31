@@ -1,25 +1,26 @@
-// [ MACHINE, IMPLEMENT ]
 
-enum MachineImplementTypeEnum {
-  machine,
-  implement,
+// [ COMPANY, RURAL_PRODUCER ]
+
+enum IssuerRecipientTypeEnum {
+  company,
+  ruralProducer,
 }
 
-machineImplementTypeEnum(String machineImplementType) {
-  switch (machineImplementType) {
-    case 'MACHINE':
-      return MachineImplementTypeEnum.machine;
-    case 'IMPLEMENT':
-      return MachineImplementTypeEnum.implement;
+issuerRecipientTypeEnum(String issuerRecipientType) {
+  switch (issuerRecipientType) {
+    case 'COMPANY':
+      return IssuerRecipientTypeEnum.company;
+    case 'RURAL_PRODUCER':
+      return IssuerRecipientTypeEnum.ruralProducer;
   }
 }
 
-machineImplementTypeString(type) {
+issuerRecipientTypeString(type) {
   switch (type) {
-    case MachineImplementTypeEnum.machine:
-      return 'MACHINE';
-    case MachineImplementTypeEnum.implement:
-      return 'IMPLEMENT';
+    case IssuerRecipientTypeEnum.company:
+      return 'COMPANY';
+    case IssuerRecipientTypeEnum.ruralProducer:
+      return 'RURAL_PRODUCER';
     default:
       return '';
   }

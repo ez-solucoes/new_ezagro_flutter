@@ -16,9 +16,9 @@ class UsernameInputPage extends StatefulWidget {
   final ArgParams? args;
   static const String routePath = AppRoutes.appUsernameInputPage;
 
-  static navigate() => Modular.to.navigate(routePath);
+  static void navigate() => Modular.to.navigate(routePath);
 
-  static push() => Modular.to.pushNamed(routePath);
+  static Future<Object?> push() => Modular.to.pushNamed(routePath);
 
   const UsernameInputPage({super.key, this.args});
 

@@ -39,7 +39,7 @@ abstract class ServiceOrderListControllerAbstract with Store {
     isLoading = false;
   }
 
-  filterSOList(String searchText) {
+  void filterSOList(String searchText) {
     if(searchText == "") {
       filteredServiceOrders = serviceOrderListEntities;
     } else {

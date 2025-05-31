@@ -54,7 +54,7 @@ abstract class EmployeeControllerAbstract with Store {
   }
 
   @action
-  searchEmployee(String searchText) {
+  void searchEmployee(String searchText) {
     filteredEmployees = employees.where((e) =>
     (e.name?.toLowerCase() ?? "").contains(searchText.toLowerCase()) ||
         (e.position?.toLowerCase() ?? "").contains(searchText.toLowerCase())

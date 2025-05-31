@@ -20,9 +20,9 @@ class LoginPage extends StatelessWidget {
   final ArgParams? args;
   static const String routePath = AppRoutes.appLoginPage;
 
-  static navigate() => Modular.to.navigate(routePath);
+  static void navigate() => Modular.to.navigate(routePath);
 
-  static push() => Modular.to.pushNamed(routePath);
+  static Future<Object?> push() => Modular.to.pushNamed(routePath);
 
   const LoginPage({super.key, this.args});
 

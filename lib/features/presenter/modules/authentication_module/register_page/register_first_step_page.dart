@@ -14,10 +14,10 @@ class RegisterFirstStepPage extends StatelessWidget {
   final ArgParams? args;
   static const String routePath = AppRoutes.appRegisterFirstStepPage;
 
-  static navigate() =>
+  static void navigate() =>
       Modular.to.navigate(routePath);
 
-  static push() =>
+  static Future<Object?> push() =>
       Modular.to.pushNamed(routePath);
 
   const RegisterFirstStepPage({super.key, this.args});

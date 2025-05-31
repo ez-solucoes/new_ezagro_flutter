@@ -16,6 +16,8 @@ import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/c
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/company_datasources/company_segment_datasources/company_segment_datasource_impl.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/crop_datasources/crop_variety_datasources/crop_variety_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/crop_datasources/crop_variety_datasources/crop_variety_datasource_impl.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/farm_datasource/farm_plot_datasources/farm_plot_datasource.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/farm_datasource/farm_plot_datasources/farm_plot_datasource_impl.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/payment_method_datasources/payment_method_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/payment_method_datasources/payment_method_datasource_impl.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/product_datasources/product_datasource.dart';
@@ -31,6 +33,7 @@ import 'package:new_ezagro_flutter/features/data/repositories/company_repositori
 import 'package:new_ezagro_flutter/features/data/repositories/company_repositories/company_segment_repository/company_segment_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/contract_repositories/contract_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/crop_repositories/crop_variety_repositories/crop_variety_repository_impl.dart';
+import 'package:new_ezagro_flutter/features/data/repositories/farm_repositories/farm_plot_repositories/farm_plot_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/payment_method_repositories/payment_method_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/pest_repositories/pest_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/products_repositories/product_type_repository_impl.dart';
@@ -40,6 +43,7 @@ import 'package:new_ezagro_flutter/features/domain/repositories/company_reposito
 import 'package:new_ezagro_flutter/features/domain/repositories/company_repositories/company_segment_repository/company_segment_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/contract_repositories/contract_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/crop_repositories/crop_variety_repositories/crop_variety_repository.dart';
+import 'package:new_ezagro_flutter/features/domain/repositories/farm_repositories/farm_plot_repositories/farm_plot_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/payment_method_repositories/payment_method_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/pest_repositories/pest_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/product_repositories/product_type_repository.dart';
@@ -70,6 +74,8 @@ import 'package:new_ezagro_flutter/features/domain/usecases/contract_usecases/ge
 import 'package:new_ezagro_flutter/features/domain/usecases/contract_usecases/get_contract_list_usecase/get_contract_list_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/contract_usecases/get_contract_list_usecase/get_contract_list_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/get_all_cost_centers_by_cost_center_type_id_to_select_usecases/get_all_cost_centers_by_cost_center_type_id_to_select_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/get_all_cost_centers_by_cost_center_type_id_usecases/get_all_cost_centers_by_cost_center_type_id_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/get_all_cost_centers_to_select_usecases/get_all_cost_centers_to_select_usecases_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/get_all_cost_centers_usecases/get_all_cost_centers_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/get_cost_center_by_id_usecases/get_cost_center_by_id_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_variety_usecases/get_all_crop_varieties_by_crop_id_to_select_usecases/get_all_crop_varieties_by_crop_id_to_select_usecase.dart';
@@ -94,6 +100,12 @@ import 'package:new_ezagro_flutter/features/domain/usecases/employee_usecase/get
 import 'package:new_ezagro_flutter/features/domain/usecases/employee_usecase/get_employee_list_usecase/get_employee_list_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/executor_usecases/executor_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/executor_usecases/executor_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_plot_usecases/get_all_farm_plots_to_select_usecases/get_all_farm_plots_to_select_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_plot_usecases/get_all_farm_plots_to_select_usecases/get_all_farm_plots_to_select_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_plot_usecases/get_all_farm_plots_usecases/get_all_farm_plots_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_plot_usecases/get_all_farm_plots_usecases/get_all_farm_plots_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_plot_usecases/get_farm_plot_by_id_usecases/get_farm_plot_by_id_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_plot_usecases/get_farm_plot_by_id_usecases/get_farm_plot_by_id_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/get_farms_by_cost_center_id_usecases/get_farms_by_cost_center_id_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/get_farms_by_cost_center_id_usecases/get_farms_by_cost_center_id_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_usecase.dart';
@@ -324,6 +336,8 @@ import '../features/presenter/modules/service_order/create_service_order_page/cr
 import '../features/presenter/modules/service_order/service_order_create/service_order_create_controller.dart';
 import '../features/presenter/modules/service_order/service_order_create/service_order_create_general_info_first_page.dart';
 import '../features/presenter/modules/service_order/service_order_create/service_order_create_general_info_second_page.dart';
+import '../features/presenter/modules/service_order/service_order_create/service_order_create_plot_add_page.dart';
+import '../features/presenter/modules/service_order/service_order_create/service_order_create_plot_list_page.dart';
 import '../features/presenter/modules/service_order/service_order_list_page/service_order_list_page.dart';
 import '../features/presenter/modules/service_order/service_order_page/service_order_page.dart';
 import '../features/presenter/modules/splash/splash_page/splash_page.dart';
@@ -349,13 +363,16 @@ class AppModule extends Module {
     i.addLazySingleton<ServiceOrderListUsecase>(ServiceOrderListUsecaseImpl.new);
 
     i.addLazySingleton<GetAllCostCentersByCostCenterTypeIdToSelectUsecase>(GetAllCostCentersByCostCenterTypeIdToSelectUsecaseImpl.new);
-    i.addLazySingleton<GetAllCostCentersByCostCenterTypeIdUsecase>(GetAllCostCentersByCostCenterTypeIdToSelectUsecaseImpl.new);
-    i.addLazySingleton<GetAllCostCentersToSelectUsecase>(GetAllCostCentersByCostCenterTypeIdToSelectUsecaseImpl.new);
+    i.addLazySingleton<GetAllCostCentersByCostCenterTypeIdUsecase>(GetAllCostCentersByCostCenterTypeIdUsecaseImpl.new);
+    i.addLazySingleton<GetAllCostCentersToSelectUsecase>(GetAllCostCentersToSelectUsecaseImpl.new);
     i.addLazySingleton<GetAllCostCentersUsecase>(GetAllCostCentersUsecaseImpl.new);
     i.addLazySingleton<GetCostCenterByIdUsecase>(GetCostCenterByIdUsecaseImpl.new);
 
 
     i.addLazySingleton<FarmUsecase>(FarmUsecaseImpl.new);
+    i.addLazySingleton<GetAllFarmPlotsUsecase>(GetAllFarmPlotsUsecaseImpl.new);
+    i.addLazySingleton<GetAllFarmPlotsToSelectUsecase>(GetAllFarmPlotsToSelectUsecaseImpl.new);
+    i.addLazySingleton<GetFarmPlotByIdUsecase>(GetFarmPlotByIdUsecaseImpl.new);
 
     i.addLazySingleton<GetAllCropsUsecase>(GetAllCropsUsecaseImpl.new);
     i.addLazySingleton<GetAllCropsToSelectUsecase>(GetAllCropsToSelectUsecaseImpl.new);
@@ -451,6 +468,8 @@ class AppModule extends Module {
     i.addLazySingleton<AgriculturalSubActivityRepository>(AgriculturalSubActivityRepositoryImpl.new);
     i.addLazySingleton<CostCenterRepository>(CostCenterRepositoryImpl.new);
     i.addLazySingleton<FarmRepository>(FarmRepositoryImpl.new);
+    i.addLazySingleton<FarmPlotRepository>(FarmPlotRepositoryImpl.new);
+
     i.addLazySingleton<CropRepository>(CropRepositoryImpl.new);
     i.addLazySingleton<CropVarietyRepository>(CropVarietyRepositoryImpl.new);
     i.addLazySingleton<PlotsRepository>(PlotsRepositoryImpl.new);
@@ -478,6 +497,7 @@ class AppModule extends Module {
     i.addLazySingleton<AgriculturalSubActivityDatasource>(AgriculturalSubActivityDatasourceImpl.new);
     i.addLazySingleton<CostCenterDatasource>(CostCenterDatasourceImpl.new);
     i.addLazySingleton<FarmDatasource>(FarmDatasourceImpl.new);
+    i.addLazySingleton<FarmPlotDatasource>(FarmPlotDatasourceImpl.new);
     i.addLazySingleton<CropDatasource>(CropDatasourceImpl.new);
     i.addLazySingleton<CropVarietyDatasource>(CropVarietyDatasourceImpl.new);
     i.addLazySingleton<PlotsDatasource>(PlotsDatasourceImpl.new);
@@ -572,6 +592,8 @@ class AppModule extends Module {
 
     r.child(AppRoutes.appServiceOrderCreateGeneralInfoFirstPage, child: (context) => ServiceOrderCreateGeneralInfoFirstPage());
     r.child(AppRoutes.appServiceOrderCreateGeneralInfoSecondPage, child: (context) => ServiceOrderCreateGeneralInfoSecondPage());
+    r.child(AppRoutes.appServiceOrderCreatePlotListPage, child: (context) => ServiceOrderCreatePlotListPage());
+    r.child(AppRoutes.appServiceOrderCreatePlotAddPage, child: (context) => ServiceOrderCreatePlotAddPage());
 
     //Miscellaneous
     r.child(AppRoutes.appEditListedItemsPage, child: (context) => EditListedItemsPage(args: r.args.data,));

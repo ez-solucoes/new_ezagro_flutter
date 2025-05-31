@@ -21,9 +21,9 @@ import '../../../widgets/boxes/step_box_widget.dart';
 class PurchaseRequestListPage extends StatelessWidget {
   static const String routePath = AppRoutes.appPurchaseRequestListPage;
 
-  static navigate() => Modular.to.navigate(routePath);
+  static void navigate() => Modular.to.navigate(routePath);
 
-  static push(ArgParams args) => Modular.to.pushNamed(routePath, arguments: args);
+  static Future<Object?> push(ArgParams args) => Modular.to.pushNamed(routePath, arguments: args);
 
   const PurchaseRequestListPage({super.key});
 

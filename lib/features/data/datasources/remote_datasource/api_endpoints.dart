@@ -42,6 +42,7 @@ class AppEndpoints {
   static const String getActivityTypesEndpoint = '/activity-type';
   static const String costCentersEndpoint = '/cost-center';
   static const String farmEndpoint = '/farm';
+  static const String farmPlotEndpoint = '/farm-plot';
   static const String getFarmById = '/farm/';
   static const String getFarmsSimplifiedEndpoint = '/farm/simplified';
   static const String getCostCenterFarmsEndpoint = '/farm/cost-center/';

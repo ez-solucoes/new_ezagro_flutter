@@ -82,7 +82,7 @@ mixin _$MachineryController on MachineryControllerAbstract, Store {
       context: context);
 
   @override
-  Future getAllMachineryImplements() {
+  Future<void> getAllMachineryImplements() {
     return _$getAllMachineryImplementsAsyncAction
         .run(() => super.getAllMachineryImplements());
   }

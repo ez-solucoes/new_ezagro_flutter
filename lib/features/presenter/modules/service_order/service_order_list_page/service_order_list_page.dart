@@ -20,10 +20,10 @@ class ServiceOrderListPage extends StatelessWidget {
 
   static const String routePath = AppRoutes.appServiceOrderListPage;
 
-  static navigate() =>
+  static void navigate() =>
       Modular.to.navigate(routePath);
 
-  static push(ArgParams args) =>
+  static Future<Object?> push(ArgParams args) =>
       Modular.to.pushNamed(routePath, arguments: args);
 
   const ServiceOrderListPage({super.key});

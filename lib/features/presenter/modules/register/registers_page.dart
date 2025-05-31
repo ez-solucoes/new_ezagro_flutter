@@ -8,7 +8,6 @@ import '../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../widgets/appbar/custom_appbar_widget.dart';
 import '../../widgets/background/background_widget.dart';
 import '../../widgets/buttons/custom_navigation_button.dart';
-import '../home/home_page.dart';
 import 'company/company_list_page.dart';
 import 'contracts/contract_list_page.dart';
 import 'employees/employees_list_page.dart';
@@ -18,10 +17,10 @@ import 'machinery/machinery_list_page.dart';
 class RegistersPage extends StatelessWidget {
   static const String routePath = AppRoutes.appRegistersPage;
 
-  static navigate() => Modular.to.navigate(routePath);
+  static void navigate() => Modular.to.navigate(routePath);
 
-  static push() => Modular.to.pushNamed(routePath);
-  static pop() => Modular.to.pop(routePath);
+  static Future<Object?> push() => Modular.to.pushNamed(routePath);
+  static void pop() => Modular.to.pop(routePath);
 
   const RegistersPage({super.key});
 
@@ -32,7 +31,7 @@ class RegistersPage extends StatelessWidget {
           indicatorValue: 0.8,
           title: AppStringsPortuguese.appCapitalTile,
           appBarType: AppBarType.backArrow,
-          callback: () => HomePage.push(),
+          callback: () => RegistersPage.pop(),
         ),
         scrollable: true,
         needsDrawer: false,
@@ -44,35 +43,35 @@ class RegistersPage extends StatelessWidget {
                   title: AppStringsPortuguese.pluralFarmTitle,
                   icon: SvgPicture.asset(AppDrawables.farmIcon),
                   onPressed: () {
-                    FarmListPage.navigate();
+                    FarmListPage.push();
                   }),
               const SizedBox(height: 40),
               CustomNavigationButton(
                   title: AppStringsPortuguese.pluralEmployeeTitle,
                   icon: Icons.people_outline_rounded,
                   onPressed: () {
-                    EmployeesListPage.navigate();
+                    EmployeesListPage.push();
                   }),
               const SizedBox(height: 40),
               CustomNavigationButton(
                   title: AppStringsPortuguese.machineryPluralTitle,
                   icon: Icons.agriculture_outlined,
                   onPressed: () {
-                    MachineryListPage.navigate();
+                    MachineryListPage.push();
                   }),
               const SizedBox(height: 40),
               CustomNavigationButton(
                   title: AppStringsPortuguese.pluralCompanyTitle,
                   icon: SvgPicture.asset(AppDrawables.companyIcon),
                   onPressed: () {
-                    CompanyListPage.navigate();
+                    CompanyListPage.push();
                   }),
               const SizedBox(height: 40),
               CustomNavigationButton(
                   title: AppStringsPortuguese.pluralContractTitle,
                   icon: Icons.description_outlined,
                   onPressed: () {
-                    ContractListPage.navigate();
+                    ContractListPage.push();
                   }),
               const SizedBox(height: 40),
             ],

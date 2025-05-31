@@ -15,9 +15,9 @@ class NewPasswordPage extends StatelessWidget {
   final ArgParams? args;
   static const String routePath = AppRoutes.appNewPasswordPage;
 
-  static navigate() => Modular.to.navigate(routePath);
+  static void navigate() => Modular.to.navigate(routePath);
 
-  static push() => Modular.to.pushNamed(routePath);
+  static Future<Object?> push() => Modular.to.pushNamed(routePath);
 
   const NewPasswordPage({super.key, this.args});
 

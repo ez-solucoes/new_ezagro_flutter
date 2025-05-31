@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:new_ezagro_flutter/design_system/colors/app_colors.dart';
 
 import '../../../../design_system/typography/app_text_styles.dart';
+import '../../../domain/entities/company_entities/company_entity.dart';
 
 enum DynamicListType {
   oneColumn,
@@ -93,6 +94,8 @@ class CustomDynamicListWidget extends StatelessWidget {
               shrinkWrap: true,
               itemCount: data.length,
               itemBuilder: (context, index) {
+                final CompanyEntity company = data[index];
+
                 return GestureDetector(
                   onTap: () => onItemTap(index),
                   child: Container(
@@ -104,7 +107,7 @@ class CustomDynamicListWidget extends StatelessWidget {
                         Expanded(
                           flex: 1,
                           child: Text(
-                            data[index],
+                            company.name.toString(),
                             style: AppTextStyles.cardBodyTextStyle(color: AppColors.primaryBlackColor),
                             textAlign: TextAlign.start,
                           ),

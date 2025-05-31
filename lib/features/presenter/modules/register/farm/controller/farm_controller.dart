@@ -52,7 +52,7 @@ abstract class FarmControllerAbstract with Store {
   }
 
   @action
-  searchFarm(String searchText) {
+  void searchFarm(String searchText) {
     filteredFarms = farms.where((e) =>
     (e.name?.toLowerCase() ?? "").contains(searchText.toLowerCase()) ||
         (e.ownerName?.toLowerCase() ?? "").contains(searchText.toLowerCase())

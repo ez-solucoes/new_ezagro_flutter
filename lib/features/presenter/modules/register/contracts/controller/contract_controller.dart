@@ -55,7 +55,7 @@ abstract class ContractControllerAbstract with Store {
   }
 
   @action
-  searchContract(String searchText) {
+  void searchContract(String searchText) {
     filteredContracts = contracts.where((e) =>
     (e.contract?.toLowerCase() ?? "").contains(searchText.toLowerCase()) ||
         (e.contractType?.name?.toLowerCase() ?? "").contains(searchText.toLowerCase())

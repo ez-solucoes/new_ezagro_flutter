@@ -299,7 +299,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
     isLoading = false;
   }
 
-  finishOSCreation() {
+  void finishOSCreation() {
     if (_validFields()) {
     createServiceOrder();
     }
@@ -307,7 +307,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
 
 
   @action
-  toggleSelectAll() {
+  void toggleSelectAll() {
     if(plotsOptions.length != selectedPlots.length) {
       for (int i = 0; i < plotsOptions.length; i++) {
           selectedPlots.add(plotsOptions[i].id);
@@ -318,7 +318,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   }
 
   @action
-   incrementPage() {
+   void incrementPage() {
     if (page<=6) {
       page+=1;
     }
@@ -326,7 +326,7 @@ abstract class CreateServiceOrderControllerAbstract with Store {
   }
 
   @action
-  decrementPage() {
+  void decrementPage() {
     if (page>0) {
       page-=1;
     }

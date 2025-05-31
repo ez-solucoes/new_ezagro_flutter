@@ -1,3 +1,4 @@
+
 // [ COMPANY, RURAL_PRODUCER ]
 
 enum IssuerRecipientTypeEnum {

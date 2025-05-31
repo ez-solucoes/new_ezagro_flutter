@@ -100,12 +100,12 @@ abstract class PlotsListControllerAbstract with Store {
   ];
 
   @action
-  applyFilter() {
+  void applyFilter() {
 
   }
 
   @action
-  cleanFilter() {
+  void cleanFilter() {
     filterOptions.map((e) => e = (e.$1, false));
     applyFilter();
   }

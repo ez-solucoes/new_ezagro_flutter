@@ -205,6 +205,23 @@ mixin _$ServiceOrderCreateController
     });
   }
 
+  late final _$isFarmPlotLoadingAtom = Atom(
+      name: 'ServiceOrderCreateControllerAbstract.isFarmPlotLoading',
+      context: context);
+
+  @override
+  bool get isFarmPlotLoading {
+    _$isFarmPlotLoadingAtom.reportRead();
+    return super.isFarmPlotLoading;
+  }
+
+  @override
+  set isFarmPlotLoading(bool value) {
+    _$isFarmPlotLoadingAtom.reportWrite(value, super.isFarmPlotLoading, () {
+      super.isFarmPlotLoading = value;
+    });
+  }
+
   late final _$agriculturalActivityListToSelectAtom = Atom(
       name:
           'ServiceOrderCreateControllerAbstract.agriculturalActivityListToSelect',
@@ -280,6 +297,25 @@ mixin _$ServiceOrderCreateController
     });
   }
 
+  late final _$costCenterByCostCenterTypeIdListToSelectAtom = Atom(
+      name:
+          'ServiceOrderCreateControllerAbstract.costCenterByCostCenterTypeIdListToSelect',
+      context: context);
+
+  @override
+  List<SelectEntity> get costCenterByCostCenterTypeIdListToSelect {
+    _$costCenterByCostCenterTypeIdListToSelectAtom.reportRead();
+    return super.costCenterByCostCenterTypeIdListToSelect;
+  }
+
+  @override
+  set costCenterByCostCenterTypeIdListToSelect(List<SelectEntity> value) {
+    _$costCenterByCostCenterTypeIdListToSelectAtom
+        .reportWrite(value, super.costCenterByCostCenterTypeIdListToSelect, () {
+      super.costCenterByCostCenterTypeIdListToSelect = value;
+    });
+  }
+
   late final _$farmsByCostCenterIdListToSelectAtom = Atom(
       name:
           'ServiceOrderCreateControllerAbstract.farmsByCostCenterIdListToSelect',
@@ -331,6 +367,24 @@ mixin _$ServiceOrderCreateController
     _$cropVarietyListToSelectAtom
         .reportWrite(value, super.cropVarietyListToSelect, () {
       super.cropVarietyListToSelect = value;
+    });
+  }
+
+  late final _$farmPlotListToSelectAtom = Atom(
+      name: 'ServiceOrderCreateControllerAbstract.farmPlotListToSelect',
+      context: context);
+
+  @override
+  List<SelectEntity> get farmPlotListToSelect {
+    _$farmPlotListToSelectAtom.reportRead();
+    return super.farmPlotListToSelect;
+  }
+
+  @override
+  set farmPlotListToSelect(List<SelectEntity> value) {
+    _$farmPlotListToSelectAtom.reportWrite(value, super.farmPlotListToSelect,
+        () {
+      super.farmPlotListToSelect = value;
     });
   }
 
@@ -423,6 +477,24 @@ mixin _$ServiceOrderCreateController
     });
   }
 
+  late final _$costCenterByCostCenterTypeIdAtom = Atom(
+      name: 'ServiceOrderCreateControllerAbstract.costCenterByCostCenterTypeId',
+      context: context);
+
+  @override
+  SelectEntity? get costCenterByCostCenterTypeId {
+    _$costCenterByCostCenterTypeIdAtom.reportRead();
+    return super.costCenterByCostCenterTypeId;
+  }
+
+  @override
+  set costCenterByCostCenterTypeId(SelectEntity? value) {
+    _$costCenterByCostCenterTypeIdAtom
+        .reportWrite(value, super.costCenterByCostCenterTypeId, () {
+      super.costCenterByCostCenterTypeId = value;
+    });
+  }
+
   late final _$farmAtom =
       Atom(name: 'ServiceOrderCreateControllerAbstract.farm', context: context);
 
@@ -489,6 +561,24 @@ mixin _$ServiceOrderCreateController
     });
   }
 
+  late final _$selectedFarmPlotListAtom = Atom(
+      name: 'ServiceOrderCreateControllerAbstract.selectedFarmPlotList',
+      context: context);
+
+  @override
+  List<SelectEntity> get selectedFarmPlotList {
+    _$selectedFarmPlotListAtom.reportRead();
+    return super.selectedFarmPlotList;
+  }
+
+  @override
+  set selectedFarmPlotList(List<SelectEntity> value) {
+    _$selectedFarmPlotListAtom.reportWrite(value, super.selectedFarmPlotList,
+        () {
+      super.selectedFarmPlotList = value;
+    });
+  }
+
   late final _$getAllAgriculturalActivityTypesToSelectAsyncAction = AsyncAction(
       'ServiceOrderCreateControllerAbstract.getAllAgriculturalActivityTypesToSelect',
       context: context);
@@ -550,6 +640,16 @@ mixin _$ServiceOrderCreateController
         .run(() => super.getAllCostCenterToSelect());
   }
 
+  late final _$getAllCostCentersByCostCenterTypeIdToSelectAsyncAction = AsyncAction(
+      'ServiceOrderCreateControllerAbstract.getAllCostCentersByCostCenterTypeIdToSelect',
+      context: context);
+
+  @override
+  Future<void> getAllCostCentersByCostCenterTypeIdToSelect() {
+    return _$getAllCostCentersByCostCenterTypeIdToSelectAsyncAction
+        .run(() => super.getAllCostCentersByCostCenterTypeIdToSelect());
+  }
+
   late final _$getAllFarmsByCostCenterIdToSelectAsyncAction = AsyncAction(
       'ServiceOrderCreateControllerAbstract.getAllFarmsByCostCenterIdToSelect',
       context: context);
@@ -590,6 +690,16 @@ mixin _$ServiceOrderCreateController
         .run(() => super.getCropVarietyById());
   }
 
+  late final _$getAllFarmPloToSelectAsyncAction = AsyncAction(
+      'ServiceOrderCreateControllerAbstract.getAllFarmPloToSelect',
+      context: context);
+
+  @override
+  Future<void> getAllFarmPloToSelect() {
+    return _$getAllFarmPloToSelectAsyncAction
+        .run(() => super.getAllFarmPloToSelect());
+  }
+
   late final _$ServiceOrderCreateControllerAbstractActionController =
       ActionController(
           name: 'ServiceOrderCreateControllerAbstract', context: context);
@@ -622,22 +732,27 @@ isCropLoading: ${isCropLoading},
 isCropVarietyLoading: ${isCropVarietyLoading},
 isNewPlanting: ${isNewPlanting},
 isTechnologyLoading: ${isTechnologyLoading},
+isFarmPlotLoading: ${isFarmPlotLoading},
 agriculturalActivityListToSelect: ${agriculturalActivityListToSelect},
 agriculturalSubActivityListToSelect: ${agriculturalSubActivityListToSelect},
 agriculturalActivityTypeListToSelect: ${agriculturalActivityTypeListToSelect},
 costCenterListToSelect: ${costCenterListToSelect},
+costCenterByCostCenterTypeIdListToSelect: ${costCenterByCostCenterTypeIdListToSelect},
 farmsByCostCenterIdListToSelect: ${farmsByCostCenterIdListToSelect},
 cropListToSelect: ${cropListToSelect},
 cropVarietyListToSelect: ${cropVarietyListToSelect},
+farmPlotListToSelect: ${farmPlotListToSelect},
 agriculturalActivityList: ${agriculturalActivityList},
 agriculturalActivity: ${agriculturalActivity},
 agriculturalActivityType: ${agriculturalActivityType},
 agriculturalSubActivity: ${agriculturalSubActivity},
 costCenter: ${costCenter},
+costCenterByCostCenterTypeId: ${costCenterByCostCenterTypeId},
 farm: ${farm},
 crop: ${crop},
 cropVariety: ${cropVariety},
-technologyName: ${technologyName}
+technologyName: ${technologyName},
+selectedFarmPlotList: ${selectedFarmPlotList}
     ''';
   }
 }

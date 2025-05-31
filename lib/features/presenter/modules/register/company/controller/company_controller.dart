@@ -54,7 +54,7 @@ abstract class CompanyControllerAbstract with Store {
   }
 
   @action
-  searchCompany(String searchText) {
+  void searchCompany(String searchText) {
     filteredCompanies = companies.where((e) =>
     (e.name?.toLowerCase() ?? "").contains(searchText.toLowerCase()) ||
         (e.legalDocumentNumber?.toLowerCase() ?? "").contains(searchText.toLowerCase())

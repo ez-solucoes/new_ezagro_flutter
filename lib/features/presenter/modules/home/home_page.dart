@@ -23,9 +23,9 @@ class HomePage extends StatelessWidget {
   final ArgParams? args;
   static const String routePath = AppRoutes.appHomePage;
 
-  static navigate() => Modular.to.navigate(routePath);
+  static void navigate() => Modular.to.navigate(routePath);
 
-  static push() => Modular.to.pushNamed(routePath);
+  static Future<Object?> push() => Modular.to.pushNamed(routePath);
 
   const HomePage({super.key, this.args});
 
@@ -104,7 +104,7 @@ class HomePage extends StatelessWidget {
                             BlendMode.srcIn,
                           ),
                         ),
-                        onPressed: () => RegistersPage.navigate()),
+                        onPressed: () => RegistersPage.push()),
                   ),
                   const SizedBox(width: 34),
                   Expanded(

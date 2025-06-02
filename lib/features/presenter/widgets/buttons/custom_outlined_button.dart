@@ -22,7 +22,7 @@ class CustomOutlinedButton extends StatelessWidget {
         onPressed();
       },
       style: ElevatedButton.styleFrom(
-          minimumSize: const Size(150, 38),
+          minimumSize: const Size(120, 38),
           backgroundColor: AppColors.transparent,
           shape: RoundedRectangleBorder(
               side: BorderSide(color: customColor ?? AppColors.dividerGreyColor, width: 1),

@@ -32,7 +32,8 @@ class LogoutDialog extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                label: AppStringsPortuguese.cancelButtonLabel, textStyle: AppTextStyles.labelTextButtonStyle(color: AppColors.primaryBlackColor),
+                label: AppStringsPortuguese.cancelButtonLabel,
+                textStyle: AppTextStyles.labelTextButtonStyle(color: AppColors.primaryBlackColor),
                 customColor: AppColors.primaryBlackColor,
               ),
               const SizedBox(width: 10),

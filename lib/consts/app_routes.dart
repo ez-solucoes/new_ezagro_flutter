@@ -70,4 +70,5 @@ class AppRoutes {
   static const String appServiceOrderCreateGeneralInfoSecondPage = '/serviceOrderCreateGeneralInfoSecondPage';
   static const String appServiceOrderCreatePlotListPage = '/serviceOrderCreatePlotListPage';
   static const String appServiceOrderCreatePlotAddPage = '/serviceOrderCreatePlotAddPage';
+  static const String appServiceOrderCreateOriginTransfersPage = '/serviceOrderCreateOriginTransfersPage';
 }

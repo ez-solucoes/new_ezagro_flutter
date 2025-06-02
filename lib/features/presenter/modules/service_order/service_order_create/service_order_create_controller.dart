@@ -71,6 +71,10 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
   List<SelectEntity> cropVarietyListToSelect = ObservableList();
   @observable
   List<SelectEntity> farmPlotListToSelect = ObservableList();
+  @observable
+  List<SelectEntity> originListToSelect = ObservableList();
+  @observable
+  List<SelectEntity> destinationListToSelect = ObservableList();
 
   //Entities List
   @observable
@@ -101,6 +105,10 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
   String? harvestOrder;
   @observable
   List<SelectEntity> selectedFarmPlotList = ObservableList();
+  @observable
+  String? origin;
+  @observable
+  String? destination;
 
   @action
   void updateCostCenterAndReload(SelectEntity costCenter) {

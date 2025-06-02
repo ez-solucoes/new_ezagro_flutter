@@ -336,6 +336,7 @@ import '../features/presenter/modules/service_order/create_service_order_page/cr
 import '../features/presenter/modules/service_order/service_order_create/service_order_create_controller.dart';
 import '../features/presenter/modules/service_order/service_order_create/service_order_create_general_info_first_page.dart';
 import '../features/presenter/modules/service_order/service_order_create/service_order_create_general_info_second_page.dart';
+import '../features/presenter/modules/service_order/service_order_create/service_order_create_origin_transfers_page.dart';
 import '../features/presenter/modules/service_order/service_order_create/service_order_create_plot_add_page.dart';
 import '../features/presenter/modules/service_order/service_order_create/service_order_create_plot_list_page.dart';
 import '../features/presenter/modules/service_order/service_order_list_page/service_order_list_page.dart';
@@ -547,7 +548,7 @@ class AppModule extends Module {
 
   @override
   void routes(RouteManager r) {
-    r.child(AppRoutes.appDefaultPage, child: (context) => SplashPage());
+    r.child(AppRoutes.appDefaultPage, child: (context) => ServiceOrderCreateOriginTransfersPage());
     r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
     r.child(AppRoutes.appLoginPage, child: (context) => LoginPage());
     r.child(AppRoutes.appRegistersPage, child: (context) => RegistersPage());
@@ -594,6 +595,7 @@ class AppModule extends Module {
     r.child(AppRoutes.appServiceOrderCreateGeneralInfoSecondPage, child: (context) => ServiceOrderCreateGeneralInfoSecondPage());
     r.child(AppRoutes.appServiceOrderCreatePlotListPage, child: (context) => ServiceOrderCreatePlotListPage());
     r.child(AppRoutes.appServiceOrderCreatePlotAddPage, child: (context) => ServiceOrderCreatePlotAddPage());
+    r.child(AppRoutes.appServiceOrderCreateOriginTransfersPage, child: (context) => ServiceOrderCreateOriginTransfersPage());
 
     //Miscellaneous
     r.child(AppRoutes.appEditListedItemsPage, child: (context) => EditListedItemsPage(args: r.args.data,));

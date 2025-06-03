@@ -8,6 +8,8 @@ import 'package:new_ezagro_flutter/core/local_storage/local_storage_client_share
 import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/agricultural_activity_datasources/agricultural_activity_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/agricultural_activity_datasources/agricultural_activity_type_datasources/agricultural_activity_type_datasource_impl.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/agricultural_input_datasources/agricultural_input_datasource.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/agricultural_input_datasources/agricultural_input_datasource_impl.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/authentication_datasource/authentication_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/authentication_datasource/authentication_datasources_impl.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/company_datasources/company_datasource.dart';
@@ -28,6 +30,7 @@ import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/p
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/user_datasources/user_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/user_datasources/user_datasource_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/agricultural_activity_repositories/agricultural_activity_repository_impl.dart';
+import 'package:new_ezagro_flutter/features/data/repositories/agricultural_input_repositories/agricultural_input_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/authentication_repository/authentication_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/company_repositories/company_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/company_repositories/company_segment_repository/company_segment_repository_impl.dart';
@@ -38,6 +41,7 @@ import 'package:new_ezagro_flutter/features/data/repositories/payment_method_rep
 import 'package:new_ezagro_flutter/features/data/repositories/pest_repositories/pest_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/products_repositories/product_type_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/user_repositories/user_repository_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/repositories/agricultural_input_repositories/agricultural_input_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/authentication_repository/authentication_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/company_repositories/company_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/company_repositories/company_segment_repository/company_segment_repository.dart';
@@ -56,6 +60,12 @@ import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_activit
 import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_to_select_usecases/get_all_agricultural_activities_to_select_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activities_to_select_usecases/get_all_agricultural_activities_to_select_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activity_by_type_id_to_select_usecases/get_all_agricultural_activity_by_type_id_to_select_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_input_usecases/get_agricultural_input_by_id_usecases/get_agricultural_input_by_id_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_input_usecases/get_agricultural_input_by_id_usecases/get_agricultural_input_by_id_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_input_usecases/get_all_agricultural_inputs_to_select_usecases/get_all_agricultural_inputs_to_select_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_input_usecases/get_all_agricultural_inputs_to_select_usecases/get_all_agricultural_inputs_to_select_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_input_usecases/get_all_agricultural_inputs_usecases/get_all_agricultural_inputs_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_input_usecases/get_all_agricultural_inputs_usecases/get_all_agricultural_inputs_usecases_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/authenticate_usecase/authenticate_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase_impl.dart';
@@ -462,10 +472,15 @@ class AppModule extends Module {
     i.addLazySingleton<GetAllAgriculturalActivityTypesUsecase>(GetAllAgriculturalActivityTypesUsecaseImpl.new);
     i.addLazySingleton<GetAllAgriculturalActivityTypesToSelectUsecase>(GetAllAgriculturalActivityTypesToSelectUsecaseImpl.new);
 
+    i.addLazySingleton<GetAllAgriculturalInputsUsecase>(GetAllAgriculturalInputsUsecaseImpl.new);
+    i.addLazySingleton<GetAllAgriculturalInputsToSelectUsecase>(GetAllAgriculturalInputsToSelectUsecaseImpl.new);
+    i.addLazySingleton<GetAgriculturalInputByIdUsecase>(GetAgriculturalInputByIdUsecaseImpl.new);
+
     //Repository
     i.addLazySingleton<AuthenticationRepository>(AuthenticationRepositoryImpl.new);
     i.addLazySingleton<ServiceOrderRepository>(ServiceOrderRepositoryImpl.new);
     i.addLazySingleton<AgriculturalActivityRepository>(AgriculturalActivityRepositoryImpl.new);
+    i.addLazySingleton<AgriculturalInputRepository>(AgriculturalInputRepositoryImpl.new);
     i.addLazySingleton<AgriculturalSubActivityRepository>(AgriculturalSubActivityRepositoryImpl.new);
     i.addLazySingleton<CostCenterRepository>(CostCenterRepositoryImpl.new);
     i.addLazySingleton<FarmRepository>(FarmRepositoryImpl.new);
@@ -495,6 +510,7 @@ class AppModule extends Module {
     i.addLazySingleton<AuthenticationDatasource>(AuthenticationDatasourceImpl.new);
     i.addLazySingleton<ServiceOrderDatasource>(ServiceOrderDatasourceImpl.new);
     i.addLazySingleton<AgriculturalActivityDatasource>(AgriculturalActivityDatasourceImpl.new);
+    i.addLazySingleton<AgriculturalInputDatasource>(AgriculturalInputDatasourceImpl.new);
     i.addLazySingleton<AgriculturalSubActivityDatasource>(AgriculturalSubActivityDatasourceImpl.new);
     i.addLazySingleton<CostCenterDatasource>(CostCenterDatasourceImpl.new);
     i.addLazySingleton<FarmDatasource>(FarmDatasourceImpl.new);

@@ -8,6 +8,8 @@ import 'package:new_ezagro_flutter/features/data/models/select_models/select_mod
 
 import '../../../../../core/http_client/http_client_helper.dart';
 import '../../../../../core/http_client/http_request.dart';
+import '../../../../../core/usecase/usecase.dart';
+import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../models/response_models/response_model.dart';
 import '../api_endpoints.dart';
 import 'agricultural_input_datasource.dart';
@@ -18,14 +20,14 @@ class AgriculturalInputDatasourceImpl with UriBuilder implements AgriculturalInp
   AgriculturalInputDatasourceImpl({required this.httpClient});
 
   @override
-  Future<ResponseModel<AgriculturalInputModel>> getAgriculturalInputById(int id) async {
+  Future<ResponseModel<AgriculturalInputModel>> getAgriculturalInputById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
       AppEndpoints.agriculturalInputEndpoint,
     );
 
-    final HttpRequest request = HttpRequest.get(path: url, id: id);
+    final HttpRequest request = HttpRequest.get(path: url, id: argParams.firstArgs);
     final result = await httpClient.execute(request);
 
     switch (result.statusCode) {
@@ -44,7 +46,7 @@ class AgriculturalInputDatasourceImpl with UriBuilder implements AgriculturalInp
   }
 
   @override
-  Future<List<AgriculturalInputModel>> getAllAgriculturalInputs() async {
+  Future<List<AgriculturalInputModel>> getAllAgriculturalInputs(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
@@ -73,7 +75,7 @@ class AgriculturalInputDatasourceImpl with UriBuilder implements AgriculturalInp
   }
 
   @override
-  Future<List<SelectModel>> getAllAgriculturalInputsToSelect() async {
+  Future<List<SelectModel>> getAllAgriculturalInputsToSelect(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,

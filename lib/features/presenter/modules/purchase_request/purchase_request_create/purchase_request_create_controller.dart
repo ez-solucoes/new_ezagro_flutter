@@ -20,6 +20,7 @@ import '../../../../domain/usecases/company_usecases/get_all_companies_to_select
 
 
 
+import '../../../../domain/usecases/cost_center_usecases/get_all_cost_centers_by_cost_center_type_id_to_select_usecases/get_all_cost_centers_by_cost_center_type_id_to_select_usecase.dart';
 import '../../../../domain/usecases/farm_usecases/get_all_farms_by_cost_center_id_to_select_usecases/get_all_farms_by_cost_center_id_to_select_usecase.dart';
 import '../../../../domain/usecases/payment_method_usecases/get_all_payment_methods_to_select_usecase/get_all_payment_methods_to_select_usecase.dart';
 import '../../../../domain/usecases/product_usecases/get_all_products_to_select_usecase/get_all_products_to_select_usecase.dart';
@@ -58,6 +59,8 @@ abstract class PurchaseRequestCreateControllerAbstract with Store {
   List<SelectEntity> purchaseRequestTypeListToSelect = ObservableList<SelectEntity>();
   @observable
   List<SelectEntity> costCenterListToSelect = ObservableList<SelectEntity>();
+  @observable
+  List<SelectEntity> costCenterByCostCenterTypeIdListToSelect = ObservableList();
   @observable
   List<SelectEntity> farmsByCostCenterIdListToSelect = ObservableList<SelectEntity>();
   @observable
@@ -762,6 +765,18 @@ abstract class PurchaseRequestCreateControllerAbstract with Store {
       return success;
     });
     isFirstLoading = false;
+  }
+
+  @action
+  Future<void> getAllCostCentersByCostCenterTypeIdToSelect() async {
+    isCostCenterLoading = true;
+    final getAllCostCentersByCostCenterTypeIdToSelect = Modular.get<GetAllCostCentersByCostCenterTypeIdToSelectUsecase>();
+    final result = await getAllCostCentersByCostCenterTypeIdToSelect(ArgParams(firstArgs: 1));
+    result.fold((error) => error.friendlyMessage, (success) {
+      costCenterByCostCenterTypeIdListToSelect = success;
+      return success;
+    });
+    isCostCenterLoading = false;
   }
 
   Future<void> getAllDeliveryLocationsToSelect() async {

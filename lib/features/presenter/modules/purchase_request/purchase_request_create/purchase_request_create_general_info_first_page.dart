@@ -31,7 +31,7 @@ class PurchaseRequestCreateGeneralInfoFirstPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Modular.get<PurchaseRequestCreateController>();
     controller.getAllPurchaseRequestTypeToSelect();
-    controller.getAllCostCenterToSelect();
+    controller.getAllCostCentersByCostCenterTypeIdToSelect();
 
     return BackgroundWidget(
         scrollable: true,
@@ -64,7 +64,7 @@ class PurchaseRequestCreateGeneralInfoFirstPage extends StatelessWidget {
                   Observer(
                     builder: (BuildContext context) => CustomAutocompleteCardWidget(
                       title: 'Centro de custo',
-                      itemList: controller.costCenterListToSelect,
+                      itemList: controller.costCenterByCostCenterTypeIdListToSelect,
                       onItemSelected: (SelectEntity selectedItem) {
                         controller.updateCostCenterAndReload(selectedItem);
                         debugPrint('id: ${controller.costCenter}');

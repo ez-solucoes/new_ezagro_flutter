@@ -124,7 +124,7 @@ class PurchaseRequestCreateGeneralInfoFirstPage extends StatelessWidget {
                       children: [
                         Expanded(
                           child: CustomElevatedButton(
-                            onPressed: () => PurchaseRequestCreateGeneralInfoFirstPage.pop(),
+                            onPressed: () => PurchaseRequestListPage.navigate(),
                             label: 'Cancelar',
                             textColor: AppColors.primaryBlackColor,
                             backgroundColor: AppColors.backgroundColor,

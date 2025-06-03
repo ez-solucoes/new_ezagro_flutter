@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:new_ezagro_flutter/features/domain/entities/agricultural_input_entities/agricultural_input_entity.dart';
 
 import '../class_models/class_model.dart';
+import '../measurement_unit_type_model/measurement_unit_model.dart';
 
 class AgriculturalInputModel extends AgriculturalInputEntity {
   const AgriculturalInputModel({
@@ -16,7 +17,8 @@ class AgriculturalInputModel extends AgriculturalInputEntity {
     super.updatedAt,
     super.deletedAt,
     super.classes,
-});
+    super.measurementUnit,
+  });
 
   Map<String, dynamic> toMap() {
     return {
@@ -30,6 +32,7 @@ class AgriculturalInputModel extends AgriculturalInputEntity {
       'updatedAt': updatedAt,
       'deletedAt': deletedAt,
       'classes': classes,
+      'measurementUnit': measurementUnit,
     };
   }
 
@@ -46,7 +49,12 @@ class AgriculturalInputModel extends AgriculturalInputEntity {
       deletedAt: map['deletedAt'] == null ? null : map['deletedAt'] as String,
       classes: map['classes'] == null
           ? null
-          : (map['classes'] as List<dynamic>).map((item) => ClassModel.fromMap(item)).toList(),
+          : (map['classes'] as List<dynamic>)
+              .map((item) => ClassModel.fromMap(item))
+              .toList(),
+      measurementUnit: map['measurementUnit'] == null
+          ? null
+          : MeasurementUnitModel.fromMap(map['measurementUnit'] as Map<String, dynamic>),
     );
   }
 
@@ -54,5 +62,4 @@ class AgriculturalInputModel extends AgriculturalInputEntity {
 
   factory AgriculturalInputModel.fromJson(String source) =>
       AgriculturalInputModel.fromMap(json.decode(source) as Map<String, dynamic>);
-
 }

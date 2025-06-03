@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/class_entities/class_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/measurement_unit_entities/measurement_unit_entity.dart';
 
 class AgriculturalInputEntity extends Equatable {
   final int id;
@@ -12,6 +13,7 @@ class AgriculturalInputEntity extends Equatable {
   final String? updatedAt;
   final String? deletedAt;
   final List<ClassEntity>? classes;
+  final MeasurementUnitEntity? measurementUnit;
 
   const AgriculturalInputEntity ({
     required this.id,
@@ -24,6 +26,7 @@ class AgriculturalInputEntity extends Equatable {
     this.updatedAt,
     this.deletedAt,
     this.classes,
+    this.measurementUnit,
 });
 
   @override
@@ -38,6 +41,7 @@ class AgriculturalInputEntity extends Equatable {
     updatedAt,
     deletedAt,
     classes,
+    measurementUnit,
   ];
 
 }

@@ -21,6 +21,9 @@ class AppEndpoints {
   static const String userEndpoint = '/user';
   static const String userByIdEndpoint = '/user/';
 
+  //Agricultural Input
+  static const String agriculturalInputEndpoint = '/agricultural-input';
+
   //Company
   static const String companyEndpoint = '/company';
   static const String companySegmentEndpoint = '/company-segment';

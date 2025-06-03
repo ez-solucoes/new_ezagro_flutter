@@ -241,8 +241,8 @@ import '../features/domain/usecases/agricultural_activity_usecases/agricultural_
 import '../features/domain/usecases/agricultural_activity_usecases/agricultural_activity_type_usecases/get_all_agricultural_activity_types_usecases/get_all_agricultural_activity_types_usecase_impl.dart';
 import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_agricultural_sub_activity_by_id_usecases/get_agricultural_sub_activity_by_id_usecase.dart';
 import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_agricultural_sub_activity_by_id_usecases/get_agricultural_sub_activity_by_id_usecase_impl.dart';
-import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_all_Agricultural_sub_activities_by_activity_id_to_select_usecases/get_all_agricultural_sub_activities_by_activity_id_to_select_usecase.dart';
-import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_all_Agricultural_sub_activities_by_activity_id_to_select_usecases/get_all_agricultural_sub_activities_by_activity_id_to_select_usecases_impl.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_all_agricultural_sub_activities_by_activity_id_to_select_usecases/get_all_agricultural_sub_activities_by_activity_id_to_select_usecase.dart';
+import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_all_agricultural_sub_activities_by_activity_id_to_select_usecases/get_all_agricultural_sub_activities_by_activity_id_to_select_usecases_impl.dart';
 import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_all_agricultural_sub_activities_to_select_usecases/get_all_agricultural_sub_activities_to_select_usecase.dart';
 import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_all_agricultural_sub_activities_to_select_usecases/get_all_agricultural_sub_activities_to_select_usecase_impl.dart';
 import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_all_agricultural_sub_activities_usecases/get_all_agricultural_sub_activities_usecase.dart';
@@ -548,7 +548,7 @@ class AppModule extends Module {
 
   @override
   void routes(RouteManager r) {
-    r.child(AppRoutes.appDefaultPage, child: (context) => PurchaseRequestCreateGeneralInfoFirstPage());
+    r.child(AppRoutes.appDefaultPage, child: (context) => ServiceOrderCreateOriginTransfersPage());
     r.child(AppRoutes.appSplashPage, child: (context) => const SplashPage());
     r.child(AppRoutes.appLoginPage, child: (context) => LoginPage());
     r.child(AppRoutes.appRegistersPage, child: (context) => RegistersPage());

@@ -34,7 +34,7 @@ class ServiceOrderCreateGeneralInfoFirstPage extends StatelessWidget {
     return BackgroundWidget(
       scrollable: true,
       appBar: CustomAppBarWidget(
-        appBarType: AppBarType.backArrow,
+        appBarType: AppBarType.centeredTitleAndBackArrow,
         title: AppStringsPortuguese.createServiceOrder,
         callback: () => ServiceOrderCreateGeneralInfoFirstPage.pop(),
       ),

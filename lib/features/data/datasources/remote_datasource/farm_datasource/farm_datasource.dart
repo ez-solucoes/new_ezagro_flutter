@@ -6,13 +6,9 @@ import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../models/pagination_model/pagination_model.dart';
 
 abstract class FarmDatasource {
-  Future<ResponseModel<PaginationModel<FarmModel>>> getSimplifiedFarms(NoParams noParams);
-
   Future<ResponseModel<FarmModel>> getFarmById(ArgParams argParams);
-
-  Future<ResponseModel<List<FarmModel>>> getAllFarmsByCostCenterId(String costCenterId);
-
-  Future<List<FarmModel>> getAllFarms(NoParams noParams);
-  Future<List<SelectModel>> getAllFarmsToSelect(NoParams noParams);
-  Future<List<SelectModel>> getAllFarmsByCostCenterIdToSelect(ArgParams argParams);
+  Future<ResponseModel<List<FarmModel>>> getAllFarmsByCostCenterId(ArgParams argParams);
+  Future<ResponseModel<List<FarmModel>>> getAllFarms(NoParams noParams);
+  Future<ResponseModel<List<SelectModel>>> getAllFarmsToSelect(NoParams noParams);
+  Future<ResponseModel<List<SelectModel>>> getAllFarmsByCostCenterIdToSelect(ArgParams argParams);
 }

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:new_ezagro_flutter/core/http_client/http_client.dart';
 import 'package:new_ezagro_flutter/core/mixins/uri_builder_mixin.dart';
 import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
@@ -19,7 +17,7 @@ class PurchaseRequestDeliveryLocationDatasourceImpl with UriBuilder implements P
   PurchaseRequestDeliveryLocationDatasourceImpl(this.httpClient);
 
   @override
-  Future<List<TypeModel>> getAllPurchaseRequestDeliveryLocations(NoParams noParams) async {
+  Future<ResponseModel<List<TypeModel>>> getAllPurchaseRequestDeliveryLocations(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
@@ -29,13 +27,9 @@ class PurchaseRequestDeliveryLocationDatasourceImpl with UriBuilder implements P
     final result = await httpClient.execute(request);
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<TypeModel>(
           response: result,
           fromListMap: (map) => (map).map((e) => TypeModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => TypeModel.fromJson(jsonEncode(json))).toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -43,7 +37,7 @@ class PurchaseRequestDeliveryLocationDatasourceImpl with UriBuilder implements P
   }
 
   @override
-  Future<List<SelectModel>> getAllPurchaseRequestDeliveryLocationsToSelect(NoParams noParams) async {
+  Future<ResponseModel<List<SelectModel>>> getAllPurchaseRequestDeliveryLocationsToSelect(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
@@ -54,13 +48,9 @@ class PurchaseRequestDeliveryLocationDatasourceImpl with UriBuilder implements P
     final result = await httpClient.execute(request);
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<SelectModel>(
           response: result,
           fromListMap: (map) => (map).map((e) => SelectModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => SelectModel.fromJson(jsonEncode(json))).toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -79,10 +69,9 @@ class PurchaseRequestDeliveryLocationDatasourceImpl with UriBuilder implements P
     final result = await httpClient.execute(request);
     switch (result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForSingleItem(
           response: result,
           fromMap: (map) => TypeModel.fromMap(map),
-          fromJson: (jsonString) => TypeModel.fromJson(jsonString),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

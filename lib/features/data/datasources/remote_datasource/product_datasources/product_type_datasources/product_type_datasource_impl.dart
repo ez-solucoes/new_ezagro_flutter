@@ -1,4 +1,4 @@
-import 'dart:convert';
+
 
 import 'package:new_ezagro_flutter/core/http_client/http_client.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_client_helper.dart';
@@ -19,7 +19,7 @@ class ProductTypeDatasourceImpl with UriBuilder implements ProductTypeDatasource
   ProductTypeDatasourceImpl({required this.httpClient});
 
   @override
-  Future<List<ProductTypeModel>> getAllProductTypes(NoParams noParams) async {
+  Future<ResponseModel<List<ProductTypeModel>>> getAllProductTypes(NoParams noParams) async {
     final String url = mountUrl(
         AppEndpoints.baseUrlProtocolWithSecurity,
         AppEndpoints.mainBaseUrl,
@@ -31,13 +31,9 @@ class ProductTypeDatasourceImpl with UriBuilder implements ProductTypeDatasource
 
     switch(result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<ProductTypeModel>(
             response: result,
             fromListMap: (map) => (map).map((e) => ProductTypeModel.fromMap(e)).toList(),
-            fromJsonList: (jsonString) {
-              final List<dynamic> jsonList = jsonDecode(jsonString);
-              return jsonList.map((json) => ProductTypeModel.fromJson(jsonEncode(json))).toList();
-            },
         );
         default:
           throw mountServerErrorInstance(request: request, response: result);
@@ -45,7 +41,7 @@ class ProductTypeDatasourceImpl with UriBuilder implements ProductTypeDatasource
   }
 
   @override
-  Future<List<SelectModel>> getAllProductTypesToSelect(NoParams noParams) async {
+  Future<ResponseModel<List<SelectModel>>> getAllProductTypesToSelect(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
@@ -57,13 +53,9 @@ class ProductTypeDatasourceImpl with UriBuilder implements ProductTypeDatasource
 
     switch(result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<SelectModel>(
           response: result,
           fromListMap: (map) => (map).map((e) => SelectModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => SelectModel.fromJson(jsonEncode(json))).toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -83,36 +75,9 @@ class ProductTypeDatasourceImpl with UriBuilder implements ProductTypeDatasource
 
     switch(result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForSingleItem<ProductTypeModel>(
           response: result,
           fromMap: (map) => ProductTypeModel.fromMap(map),
-          fromJson: (jsonString) => ProductTypeModel.fromJson(jsonString),
-        );
-      default:
-        throw mountServerErrorInstance(request: request, response: result);
-    }
-  }
-
-  @override
-  Future<List<SelectModel>> getFilteredProductTypesToSelect(ArgParams argParams) async {
-    final String url = mountUrl(
-      AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrl,
-      AppEndpoints.productTypeEndpoint + AppEndpoints.selectEndpoint,
-    );
-
-    final HttpRequest request = HttpRequest.get(path: url, queryParams: argParams.mountQueryParam(firstParamName: 'typeId'));
-    final result = await httpClient.execute(request);
-
-    switch(result.statusCode) {
-      case 200:
-        return mountListModelInstanceFromResponse(
-          response: result,
-          fromListMap: (map) => (map).map((e) => SelectModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => SelectModel.fromJson(jsonEncode(json))).toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

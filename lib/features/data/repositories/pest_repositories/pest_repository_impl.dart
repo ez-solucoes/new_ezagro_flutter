@@ -17,7 +17,7 @@ class PestRepositoryImpl implements PestRepository {
   Future<Either<ApplicationError, PaginationModel<PestModel>>>
   getPests(NoParams noParams) async {
     try {
-      final result = await datasource.getPests(noParams);
+      final result = await datasource.getAllPests(noParams);
       return Right(result.data!);
     } on ApplicationError catch (e) {
       return Left(e);

@@ -3,10 +3,10 @@ import 'package:new_ezagro_flutter/features/data/models/plot_models/plot_model.d
 import 'package:new_ezagro_flutter/features/data/models/response_models/response_model.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 
-import '../../../models/pagination_model/pagination_model.dart';
+import '../../../models/select_models/select_model.dart';
 
 abstract class PlotsDatasource {
-  Future<ResponseModel<PaginationModel<PlotModel>>> getPlots(NoParams noParams);
-
-  Future<ResponseModel<PaginationModel<PlotModel>>> getPlotByFarmId(ArgParams params);
+  Future<ResponseModel<List<PlotModel>>> getAllPlots(NoParams noParams);
+  Future<ResponseModel<List<SelectModel>>> getAllPlotsToSelect(NoParams noParams);
+  Future<ResponseModel<PlotModel>> getPlotByFarmId(ArgParams argParams);
 }

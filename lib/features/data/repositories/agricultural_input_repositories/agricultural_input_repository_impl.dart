@@ -58,4 +58,32 @@ class AgriculturalInputRepositoryImpl implements AgriculturalInputRepository{
           additionalInfo: stacktrace.toString()));
     }
   }
+
+  @override
+  Future<Either<ApplicationError, List<AgriculturalInputEntity>>> getAllAgriculturalInputsByClassId(ArgParams argParams) async {
+    try {
+      final result = await datasource.getAllAgriculturalInputsByClassId(argParams);
+      return Right(result);
+    } on ApplicationError catch (e) {
+      return Left(e);
+    } catch (e, stacktrace) {
+      return Left(GenericError(
+          fingerprint: '$AgriculturalInputRepositoryImpl.getAllAgriculturalInputsByClassId',
+          additionalInfo: stacktrace.toString()));
+    }
+  }
+
+  @override
+  Future<Either<ApplicationError, List<SelectEntity>>> getAllAgriculturalInputsByClassIdToSelect(ArgParams argParams) async {
+    try {
+      final result = await datasource.getAllAgriculturalInputsByClassIdToSelect(argParams);
+      return Right(result);
+    } on ApplicationError catch (e) {
+      return Left(e);
+    } catch (e, stacktrace) {
+      return Left(GenericError(
+          fingerprint: '$AgriculturalInputRepositoryImpl.getAllAgriculturalInputsByClassIdToSelect',
+          additionalInfo: stacktrace.toString()));
+    }
+  }
 }

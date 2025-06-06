@@ -61,7 +61,7 @@ class ProductTypeRepositoryImpl implements ProductTypeRepository {
   @override
   Future<Either<ApplicationError, List<SelectModel>>> getFilteredProductTypesToSelect(ArgParams argParams) async {
     try {
-      final result = await datasource.getFilteredProductTypesToSelect(argParams);
+      final result = await datasource.getProductTypeByIdToSelect(argParams);
       return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);

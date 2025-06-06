@@ -30,10 +30,9 @@ import '../../../../domain/usecases/purchase_request_usecases/get_all_purchase_r
 
 import 'package:collection/collection.dart';
 
+import '../../../miscellaneous/item_selection_controller.dart';
+
 part 'purchase_request_create_controller.g.dart';
-
-
-enum ItemType { product, company }
 
 class PurchaseRequestCreateController = PurchaseRequestCreateControllerAbstract with _$PurchaseRequestCreateController;
 

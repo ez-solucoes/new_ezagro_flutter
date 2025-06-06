@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:new_ezagro_flutter/core/http_client/http_client.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_client_helper.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
@@ -21,7 +19,7 @@ class AgriculturalActivityDatasourceImpl
   AgriculturalActivityDatasourceImpl(this.httpClient);
 
   @override
-  Future<List<AgriculturalActivityModel>> getAllAgriculturalActivities(
+  Future<ResponseModel<List<AgriculturalActivityModel>>> getAllAgriculturalActivities(
       NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
@@ -34,16 +32,10 @@ class AgriculturalActivityDatasourceImpl
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList(
           response: result,
           fromListMap: (map) =>
               (map).map((e) => AgriculturalActivityModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList
-                .map((json) => AgriculturalActivityModel.fromJson(jsonEncode(json)))
-                .toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -64,13 +56,9 @@ class AgriculturalActivityDatasourceImpl
 
     switch (result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForSingleItem<AgriculturalActivityModel>(
           response: result,
           fromMap: (map) => AgriculturalActivityModel.fromMap(map),
-          fromJson: (jsonString) {
-            final Map<String, dynamic> jsonMap = jsonDecode(jsonString);
-            return AgriculturalActivityModel.fromJson(jsonEncode(jsonMap));
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -78,7 +66,7 @@ class AgriculturalActivityDatasourceImpl
   }
 
   @override
-  Future<List<SelectModel>> getAllAgriculturalActivitiesToSelect(
+  Future<ResponseModel<List<SelectModel>>> getAllAgriculturalActivitiesToSelect(
       NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
@@ -91,15 +79,9 @@ class AgriculturalActivityDatasourceImpl
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList(
           response: result,
           fromListMap: (map) => (map).map((e) => SelectModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList
-                .map((json) => SelectModel.fromJson(jsonEncode(json)))
-                .toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -107,8 +89,8 @@ class AgriculturalActivityDatasourceImpl
   }
 
   @override
-  Future<List<AgriculturalActivityModel>> getAllAgriculturalActivityByTypeId(
-      ArgParams argParams) async {
+  Future<ResponseModel<List<AgriculturalActivityModel>>>
+      getAllAgriculturalActivityByTypeId(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
@@ -121,16 +103,10 @@ class AgriculturalActivityDatasourceImpl
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList(
           response: result,
           fromListMap: (map) =>
               (map).map((e) => AgriculturalActivityModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList
-                .map((json) => AgriculturalActivityModel.fromJson(jsonEncode(json)))
-                .toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -138,28 +114,23 @@ class AgriculturalActivityDatasourceImpl
   }
 
   @override
-    Future<List<SelectModel>> getAllAgriculturalActivityByTypeIdToSelect(
-        ArgParams argParams) async {
+  Future<ResponseModel<List<SelectModel>>> getAllAgriculturalActivityByTypeIdToSelect(
+      ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
       AppEndpoints.agriculturalActivityEndpoint + AppEndpoints.selectEndpoint,
     );
 
-    final HttpRequest request = HttpRequest.get(path: url,queryParams: {"activityTypeId": argParams.firstArgs});
+    final HttpRequest request =
+        HttpRequest.get(path: url, queryParams: {"activityTypeId": argParams.firstArgs});
     final result = await httpClient.execute(request);
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList(
           response: result,
           fromListMap: (map) => (map).map((e) => SelectModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList
-                .map((json) => SelectModel.fromJson(jsonEncode(json)))
-                .toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

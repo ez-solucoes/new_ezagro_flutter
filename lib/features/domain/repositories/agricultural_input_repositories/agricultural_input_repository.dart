@@ -10,4 +10,6 @@ abstract class AgriculturalInputRepository {
   Future<Either<ApplicationError, List<AgriculturalInputEntity>>> getAllAgriculturalInputs(NoParams noParams);
   Future<Either<ApplicationError, AgriculturalInputEntity>> getAgriculturalInputById(ArgParams argParams);
   Future<Either<ApplicationError, List<SelectEntity>>> getAllAgriculturalInputsToSelect(NoParams noParams);
+  Future<Either<ApplicationError, List<SelectEntity>>> getAllAgriculturalInputsByClassIdToSelect(ArgParams argParams);
+  Future<Either<ApplicationError, List<AgriculturalInputEntity>>> getAllAgriculturalInputsByClassId(ArgParams argParams);
 }

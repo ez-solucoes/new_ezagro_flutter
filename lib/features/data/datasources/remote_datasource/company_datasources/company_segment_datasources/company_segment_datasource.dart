@@ -6,7 +6,7 @@ import '../../../../models/response_models/response_model.dart';
 import '../../../../models/segment_models/segment_model.dart';
 
 abstract class CompanySegmentDatasource {
-  Future<List<SegmentModel>> getAllCompanySegments(NoParams noParams);
+  Future<ResponseModel<List<SegmentModel>>> getAllCompanySegments(NoParams noParams);
   Future<ResponseModel<SegmentModel>> getCompanySegmentById(ArgParams argParams);
-  Future<List<SelectModel>> getAllCompanySegmentsToSelect(ArgParams argParams);
+  Future<ResponseModel<List<SelectModel>>> getAllCompanySegmentsToSelect(ArgParams argParams);
 }

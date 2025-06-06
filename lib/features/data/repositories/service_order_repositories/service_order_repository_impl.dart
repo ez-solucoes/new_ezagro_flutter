@@ -20,7 +20,7 @@ class ServiceOrderRepositoryImpl implements ServiceOrderRepository {
   Future<Either<ApplicationError, PaginationModel<FieldServiceOrderModel>>> getServiceOrderList(
       NoParams noParams) async {
     try {
-      final result = await datasource.getServiceOrderList(noParams);
+      final result = await datasource.getAllServiceOrders(noParams);
       return Right(result.data!);
     } on ApplicationError catch (e) {
       return Left(e);
@@ -65,7 +65,7 @@ class ServiceOrderRepositoryImpl implements ServiceOrderRepository {
   Future<Either<ApplicationError, List<ServiceOrderModel>>> getServiceOrderByStatusId(
       ArgParams params) async {
     try {
-      final result = await datasource.getServiceOrderListByStatusId(params);
+      final result = await datasource.getAllServiceOrdersByStatusId(params);
       return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);

@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:new_ezagro_flutter/core/http_client/http_client.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_client_helper.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
@@ -17,7 +16,7 @@ class CostCenterDatasourceImpl with UriBuilder implements CostCenterDatasource {
   CostCenterDatasourceImpl(this.httpClient);
 
   @override
-  Future<List<CostCenterModel>> getAllCostCenters(
+  Future<ResponseModel<List<CostCenterModel>>> getAllCostCenters(
       NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
@@ -30,22 +29,17 @@ class CostCenterDatasourceImpl with UriBuilder implements CostCenterDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<CostCenterModel>(
           response: result,
           fromListMap: (map) => (map).map((e) => CostCenterModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList
-                .map((json) => CostCenterModel.fromJson(jsonEncode(json)))
-                .toList();
-          });
+        );
       default:
         throw mountServerErrorInstance(request: request, response: result);
     }
   }
 
   @override
-  Future<List<SelectModel>> getAllCostCentersToSelect(
+  Future<ResponseModel<List<SelectModel>>> getAllCostCentersToSelect(
       NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
@@ -58,13 +52,9 @@ class CostCenterDatasourceImpl with UriBuilder implements CostCenterDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<SelectModel>(
           response: result,
           fromListMap: (map) => (map).map((e) => SelectModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => SelectModel.fromJson(jsonEncode(json))).toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -72,25 +62,23 @@ class CostCenterDatasourceImpl with UriBuilder implements CostCenterDatasource {
   }
 
   @override
-  Future<List<SelectModel>> getAllCostCentersByCostCenterTypeIdToSelect(ArgParams argParams) async {
+  Future<ResponseModel<List<SelectModel>>> getAllCostCentersByCostCenterTypeIdToSelect(
+      ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
       AppEndpoints.costCentersEndpoint + AppEndpoints.selectEndpoint,
     );
 
-    final HttpRequest request = HttpRequest.get(path: url, queryParams: {'costCenterTypeId': argParams.firstArgs});
+    final HttpRequest request = HttpRequest.get(
+        path: url, queryParams: {'costCenterTypeId': argParams.firstArgs});
     final result = await httpClient.execute(request);
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<SelectModel>(
           response: result,
           fromListMap: (map) => (map).map((e) => SelectModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => SelectModel.fromJson(jsonEncode(json))).toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -103,7 +91,6 @@ class CostCenterDatasourceImpl with UriBuilder implements CostCenterDatasource {
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
       AppEndpoints.costCentersEndpoint,
-
     );
 
     final HttpRequest request = HttpRequest.get(path: url, id: argParams.firstArgs);
@@ -111,13 +98,9 @@ class CostCenterDatasourceImpl with UriBuilder implements CostCenterDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForSingleItem<CostCenterModel>(
           response: result,
           fromMap: (map) => CostCenterModel.fromMap(map),
-          fromJson: (jsonString) {
-            final Map<String, dynamic> jsonMap = jsonDecode(jsonString);
-            return CostCenterModel.fromJson(jsonEncode(jsonMap));
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -125,7 +108,8 @@ class CostCenterDatasourceImpl with UriBuilder implements CostCenterDatasource {
   }
 
   @override
-  Future<List<CostCenterModel>> getAllCostCentersByCostCenterTypeId(ArgParams argParams) async {
+  Future<ResponseModel<List<CostCenterModel>>> getAllCostCentersByCostCenterTypeId(
+      ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
@@ -137,15 +121,10 @@ class CostCenterDatasourceImpl with UriBuilder implements CostCenterDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
-            response: result,
-            fromListMap: (map) => (map).map((e) => CostCenterModel.fromMap(e)).toList(),
-            fromJsonList: (jsonString) {
-              final List<dynamic> jsonList = jsonDecode(jsonString);
-              return jsonList
-                  .map((json) => CostCenterModel.fromJson(jsonEncode(json)))
-                  .toList();
-            });
+        return mountResponseModelForPaginatedList<CostCenterModel>(
+          response: result,
+          fromListMap: (map) => (map).map((e) => CostCenterModel.fromMap(e)).toList(),
+        );
       default:
         throw mountServerErrorInstance(request: request, response: result);
     }

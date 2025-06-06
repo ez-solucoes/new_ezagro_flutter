@@ -18,7 +18,7 @@ class PurchaseRequestRepositoryImpl implements PurchaseRequestRepository {
   @override
   Future<Either<ApplicationError, List<PurchaseRequestModel>>> getAllPurchaseRequest(NoParams noParams) async {
     try {
-      final result = await datasource.getAllPurchaseRequest(noParams);
+      final result = await datasource.getAllPurchaseRequests(noParams);
       return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);
@@ -44,7 +44,7 @@ class PurchaseRequestRepositoryImpl implements PurchaseRequestRepository {
   @override
   Future<Either<ApplicationError, List<PurchaseRequestModel>>> getPurchaseRequestByStatusId(ArgParams argParams) async {
     try {
-      final result = await datasource.getPurchaseRequestByStatusId(argParams);
+      final result = await datasource.getAllPurchaseRequestsByStatusId(argParams);
       return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);
@@ -86,7 +86,7 @@ class PurchaseRequestRepositoryImpl implements PurchaseRequestRepository {
   @override
   Future<Either<ApplicationError, List<SelectEntity>>> getAllPurchaseRequestToSelect(NoParams noParams) async {
     try {
-      final result = await datasource.getAllPurchaseRequestToSelect(noParams);
+      final result = await datasource.getAllPurchaseRequestsToSelect(noParams);
       return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);

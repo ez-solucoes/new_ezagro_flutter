@@ -18,7 +18,7 @@ class PlotsRepositoryImpl implements PlotsRepository {
   Future<Either<ApplicationError, PaginationModel<PlotModel>>> getPlots(
       NoParams noParams) async {
     try {
-      final result = await datasource.getPlots(noParams);
+      final result = await datasource.getAllPlots(noParams);
       return Right(result.data!);
     } on ApplicationError catch (e) {
       return Left(e);

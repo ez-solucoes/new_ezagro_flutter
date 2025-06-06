@@ -5,7 +5,7 @@ import 'package:new_ezagro_flutter/features/data/models/type_models/type_model.d
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 
 abstract class PurchaseRequestDeliveryLocationDatasource {
-  Future<List<TypeModel>> getAllPurchaseRequestDeliveryLocations(NoParams noParams);
-  Future<List<SelectModel>> getAllPurchaseRequestDeliveryLocationsToSelect(NoParams noParams);
+  Future<ResponseModel<List<TypeModel>>> getAllPurchaseRequestDeliveryLocations(NoParams noParams);
+  Future<ResponseModel<List<SelectModel>>> getAllPurchaseRequestDeliveryLocationsToSelect(NoParams noParams);
   Future<ResponseModel<TypeModel>> getPurchaseRequestDeliveryLocationById(ArgParams argParams);
 }

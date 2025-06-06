@@ -3,9 +3,6 @@ import 'package:new_ezagro_flutter/features/data/models/authentication_models/au
 import 'package:new_ezagro_flutter/features/data/models/response_models/response_model.dart';
 import 'package:new_ezagro_flutter/features/domain/params/authentication_params/authentication_params.dart';
 
-
-
-
 abstract class AuthenticationDatasource {
   Future<ResponseModel<AuthenticationModel>> authenticate(
       AuthenticationParams authenticationParams);

@@ -17,7 +17,7 @@ class EmployeeRepositoryImpl implements EmployeeRepository {
   Future<Either<ApplicationError, List<EmployeeModel>>> getEmployees(
       NoParams noParams) async {
     try {
-      final result = await datasource.getEmployees(noParams);
+      final result = await datasource.getAllEmployees(noParams);
       return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);
@@ -46,7 +46,7 @@ class EmployeeRepositoryImpl implements EmployeeRepository {
   @override
   Future<Either<ApplicationError, List<SelectEntity>>> getEmployeeByFarmIdToSelect(ArgParams argParams) async {
     try {
-      final result = await datasource.getEmployeesByFarmIdToSelect(argParams);
+      final result = await datasource.getAllEmployeesByFarmIdToSelect(argParams);
       return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);

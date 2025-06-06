@@ -17,7 +17,7 @@ class ExecutorsRepositoryImpl implements ExecutorsRepository {
   Future<Either<ApplicationError, PaginationModel<EmployeeModel>>> getExecutors(
       NoParams noParams) async {
     try {
-      final result = await datasource.getExecutors(noParams);
+      final result = await datasource.getAllExecutors(noParams);
       return Right(result.data!);
     } on ApplicationError catch (e) {
       return Left(e);

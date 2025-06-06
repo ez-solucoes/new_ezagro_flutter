@@ -12,7 +12,9 @@ import 'package:new_ezagro_flutter/features/presenter/widgets/custom_autocomplet
 
 import '../../../../../consts/app_routes.dart';
 import '../../../../../design_system/colors/app_colors.dart';
+import '../../../../../design_system/widgets/snackbars/custon_snack_bar_widget.dart';
 import '../../../../domain/entities/select_entities/select_entity.dart';
+import '../../../miscellaneous/item_selection_controller.dart';
 import '../../../widgets/buttons/custom_elevated_button.dart';
 import '../../../widgets/custom_autocomplete/custom_autocomplete_widget.dart';
 
@@ -134,7 +136,44 @@ class PurchaseRequestCreateGeneralInfoFirstPage extends StatelessWidget {
                         const SizedBox(width: 30),
                         Expanded(
                           child: CustomElevatedButton(
-                            onPressed: () => PurchaseRequestCreateListItemsPage.push(args: ArgParams(firstArgs: ItemType.product)),
+                            onPressed: () {
+
+                              final SelectEntity? selectedRequestType = controller.purchaseRequestType;
+
+                              if (selectedRequestType == null) {
+                                CustomSnackBarWidget.show(
+                                  SnackBarType.alert,
+                                  context,
+                                  'Por favor, selecione o Tipo de Solicitação antes de prosseguir.',
+                                );
+                                return;
+                              }
+
+                              ItemType targetItemType;
+                              switch (selectedRequestType.value) {
+                                case 1:
+                                  targetItemType = ItemType.product;
+                                  break;
+                                case 2:
+                                  targetItemType = ItemType.agriculturalInput;
+                                  break;
+                                case 3:
+                                  CustomSnackBarWidget.show(
+                                    SnackBarType.alert,
+                                    context,
+                                    'Solicitações de Serviço têm um fluxo diferente e não requerem lista de itens aqui.',
+                                  );
+                                  return;
+                                default:
+                                  CustomSnackBarWidget.show(
+                                    SnackBarType.error,
+                                    context,
+                                    'Tipo de solicitação não reconhecido. Não é possível prosseguir.',
+                                  );
+                                  return;
+                              }
+                              PurchaseRequestCreateListItemsPage.push(args: ArgParams(firstArgs: targetItemType));
+                            },
                             label: 'Próximo',
                             backgroundColor: AppColors.primaryGreenColor,
                             borderColor: Colors.transparent,

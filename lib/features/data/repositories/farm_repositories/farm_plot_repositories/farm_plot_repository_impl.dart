@@ -20,7 +20,7 @@ class FarmPlotRepositoryImpl implements FarmPlotRepository{
   @override
   Future<Either<ApplicationError, List<FarmPlotModel>>> getAllFarmPlots(ArgParams argParams) async {
     try {
-      final result = await datasource.getAllFarmPlots(argParams);
+      final result = await datasource.getAllFarmByFarmIdPlots(argParams);
       return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);
@@ -50,7 +50,7 @@ class FarmPlotRepositoryImpl implements FarmPlotRepository{
   @override
   Future<Either<ApplicationError, List<SelectModel>>> getAllFarmPlotsToSelect(ArgParams argParams) async {
     try {
-      final result = await datasource.getAllFarmPlotsToSelect(argParams);
+      final result = await datasource.getAllFarmPlotsByFarmIdToSelect(argParams);
       return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);

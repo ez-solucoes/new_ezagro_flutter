@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:new_ezagro_flutter/core/http_client/http_client.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_client_helper.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
@@ -19,7 +17,7 @@ class CropDatasourceImpl with UriBuilder implements CropDatasource {
   CropDatasourceImpl(this.httpClient);
 
   @override
-  Future<List<CropModel>> getAllCrops(NoParams noParams) async {
+  Future<ResponseModel<List<CropModel>>> getAllCrops(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
@@ -31,13 +29,9 @@ class CropDatasourceImpl with UriBuilder implements CropDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<CropModel>(
           response: result,
           fromListMap: (map) => (map).map((e) => CropModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => CropModel.fromJson(jsonEncode(json))).toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -45,7 +39,7 @@ class CropDatasourceImpl with UriBuilder implements CropDatasource {
   }
 
   @override
-  Future<List<SelectModel>> getAllCropsToSelect(NoParams noParams) async {
+  Future<ResponseModel<List<SelectModel>>> getAllCropsToSelect(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
@@ -57,15 +51,9 @@ class CropDatasourceImpl with UriBuilder implements CropDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<SelectModel>(
           response: result,
           fromListMap: (map) => (map).map((e) => SelectModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList
-                .map((json) => SelectModel.fromJson(jsonEncode(json)))
-                .toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -85,13 +73,9 @@ class CropDatasourceImpl with UriBuilder implements CropDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForSingleItem<CropModel>(
           response: result,
           fromMap: (map) => CropModel.fromMap(map),
-          fromJson: (jsonString) {
-            final Map<String, dynamic> jsonMap = jsonDecode(jsonString);
-            return CropModel.fromJson(jsonEncode(jsonMap));
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

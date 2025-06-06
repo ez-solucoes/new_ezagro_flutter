@@ -17,7 +17,7 @@ class PurchaseRequestTypeRepositoryImpl implements PurchaseRequestTypeRepository
   @override
   Future<Either<ApplicationError, List<SelectModel>>> getAllPurchaseRequestTypeToSelect(NoParams noParams) async {
     try {
-      final result = await datasource.getAllPurchaseRequestTypeToSelect(noParams);
+      final result = await datasource.getAllPurchaseRequestTypesToSelect(noParams);
       return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);

@@ -11,7 +11,7 @@ import '../../datasources/remote_datasource/machinery_datasources/machinery_data
 import '../../models/pagination_model/pagination_model.dart';
 
 class MachineryRepositoryImpl implements MachineryRepository {
-  final MachineryDatasource datasource;
+  final MachineryImplementDatasource datasource;
 
   MachineryRepositoryImpl(this.datasource);
 

@@ -194,6 +194,25 @@ mixin _$PurchaseRequestCreateController
     });
   }
 
+  late final _$costCenterByCostCenterTypeIdListToSelectAtom = Atom(
+      name:
+          'PurchaseRequestCreateControllerAbstract.costCenterByCostCenterTypeIdListToSelect',
+      context: context);
+
+  @override
+  List<SelectEntity> get costCenterByCostCenterTypeIdListToSelect {
+    _$costCenterByCostCenterTypeIdListToSelectAtom.reportRead();
+    return super.costCenterByCostCenterTypeIdListToSelect;
+  }
+
+  @override
+  set costCenterByCostCenterTypeIdListToSelect(List<SelectEntity> value) {
+    _$costCenterByCostCenterTypeIdListToSelectAtom
+        .reportWrite(value, super.costCenterByCostCenterTypeIdListToSelect, () {
+      super.costCenterByCostCenterTypeIdListToSelect = value;
+    });
+  }
+
   late final _$farmsByCostCenterIdListToSelectAtom = Atom(
       name:
           'PurchaseRequestCreateControllerAbstract.farmsByCostCenterIdListToSelect',
@@ -762,6 +781,16 @@ mixin _$PurchaseRequestCreateController
         .run(() => super.getAllCostCenterToSelect());
   }
 
+  late final _$getAllCostCentersByCostCenterTypeIdToSelectAsyncAction = AsyncAction(
+      'PurchaseRequestCreateControllerAbstract.getAllCostCentersByCostCenterTypeIdToSelect',
+      context: context);
+
+  @override
+  Future<void> getAllCostCentersByCostCenterTypeIdToSelect() {
+    return _$getAllCostCentersByCostCenterTypeIdToSelectAsyncAction
+        .run(() => super.getAllCostCentersByCostCenterTypeIdToSelect());
+  }
+
   late final _$getAllFarmsByCostCenterIdToSelectAsyncAction = AsyncAction(
       'PurchaseRequestCreateControllerAbstract.getAllFarmsByCostCenterIdToSelect',
       context: context);
@@ -1122,6 +1151,7 @@ isCompanyLoading: ${isCompanyLoading},
 isPaymentMethodLoading: ${isPaymentMethodLoading},
 purchaseRequestTypeListToSelect: ${purchaseRequestTypeListToSelect},
 costCenterListToSelect: ${costCenterListToSelect},
+costCenterByCostCenterTypeIdListToSelect: ${costCenterByCostCenterTypeIdListToSelect},
 farmsByCostCenterIdListToSelect: ${farmsByCostCenterIdListToSelect},
 employeeByFarmIdListToSelect: ${employeeByFarmIdListToSelect},
 paymentMethodListToSelect: ${paymentMethodListToSelect},

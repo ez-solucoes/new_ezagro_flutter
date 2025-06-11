@@ -1,4 +1,4 @@
-import 'dart:convert';
+
 import 'package:new_ezagro_flutter/features/data/models/response_models/response_model.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 
@@ -18,10 +18,10 @@ class CompanyDatasourceImpl with UriBuilder implements CompanyDatasource {
   CompanyDatasourceImpl(this.httpClient);
 
   @override
-  Future<List<CompanyModel>> getAllCompanies(NoParams noParams) async {
+  Future<ResponseModel<List<CompanyModel>>> getAllCompanies(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.companyEndpoint,
     );
 
@@ -30,13 +30,9 @@ class CompanyDatasourceImpl with UriBuilder implements CompanyDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<CompanyModel>(
           response: result,
           fromListMap: (map) => (map).map((e) => CompanyModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => CompanyModel.fromJson(jsonEncode(json))).toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -47,7 +43,7 @@ class CompanyDatasourceImpl with UriBuilder implements CompanyDatasource {
   Future<ResponseModel<CompanyModel>> getCompanyById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.companyEndpoint + (argParams.firstArgs as String),
     );
 
@@ -56,10 +52,9 @@ class CompanyDatasourceImpl with UriBuilder implements CompanyDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForSingleItem(
           response: result,
           fromMap: (map) => CompanyModel.fromMap(map),
-          fromJson: (jsonString) => CompanyModel.fromJson(jsonString),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -67,10 +62,10 @@ class CompanyDatasourceImpl with UriBuilder implements CompanyDatasource {
   }
 
   @override
-  Future<List<SelectModel>> getAllCompaniesToSelect(NoParams noParams) async {
+  Future<ResponseModel<List<SelectModel>>> getAllCompaniesToSelect(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.companyEndpoint + AppEndpoints.selectEndpoint,
     );
 
@@ -79,13 +74,9 @@ class CompanyDatasourceImpl with UriBuilder implements CompanyDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList(
           response: result,
           fromListMap: (map) => (map).map((e) => SelectModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => SelectModel.fromJson(jsonEncode(json))).toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

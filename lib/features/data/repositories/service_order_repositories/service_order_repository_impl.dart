@@ -2,14 +2,14 @@ import 'package:dartz/dartz.dart';
 import 'package:new_ezagro_flutter/core/errors/application_error.dart';
 import 'package:new_ezagro_flutter/core/errors/generic_error.dart';
 import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
-import 'package:new_ezagro_flutter/features/data/models/field_service_order_models/field_service_order_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/response_models/response_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/service_order_list_model/service_order_list_model.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/response_entities/response_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/select_entities/select_entity.dart';
 
 import '../../../domain/params/arg_params/arg_params.dart';
-import '../../../domain/params/create_service_order_params/create_service_order_params.dart';
 import '../../../domain/repositories/service_order_repositories/service_order_repository.dart';
 import '../../datasources/remote_datasource/service_order_datasources/service_order_datasource.dart';
-import '../../models/pagination_model/pagination_model.dart';
 
 class ServiceOrderRepositoryImpl implements ServiceOrderRepository {
   final ServiceOrderDatasource datasource;
@@ -17,26 +17,26 @@ class ServiceOrderRepositoryImpl implements ServiceOrderRepository {
   ServiceOrderRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<ApplicationError, PaginationModel<FieldServiceOrderModel>>> getServiceOrderList(
-      NoParams noParams) async {
+  Future<Either<ApplicationError, ResponseModel<List<ServiceOrderModel>>>>
+      getAllServiceOrders(NoParams noParams) async {
     try {
-      final result = await datasource.getServiceOrderList(noParams);
-      return Right(result.data!);
+      final result = await datasource.getAllServiceOrders(noParams);
+      return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {
       return Left(GenericError(
-          fingerprint: '$ServiceOrderRepositoryImpl.getServiceOrderList',
+          fingerprint: '$ServiceOrderRepositoryImpl.getAllServiceOrders',
           additionalInfo: stacktrace.toString()));
     }
   }
 
   @override
-  Future<Either<ApplicationError, FieldServiceOrderModel>> createServiceOrder(
-      MockParams mockParams) async {
+  Future<Either<ApplicationError, ResponseModel<ServiceOrderModel>>> createServiceOrder(
+      ArgParams argParams) async {
     try {
-      final result = await datasource.createServiceOrder(mockParams);
-      return Right(result.data!);
+      final result = await datasource.createServiceOrder(argParams);
+      return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {
@@ -48,10 +48,11 @@ class ServiceOrderRepositoryImpl implements ServiceOrderRepository {
   }
 
   @override
-  Future<Either<ApplicationError, ServiceOrderModel>> getServiceOrderById(ArgParams params) async {
+  Future<Either<ApplicationError, ResponseModel<ServiceOrderModel>>> getServiceOrderById(
+      ArgParams argParams) async {
     try {
-      final result = await datasource.getServiceOrderById(params);
-      return Right(result.data!);
+      final result = await datasource.getServiceOrderById(argParams);
+      return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {
@@ -62,10 +63,10 @@ class ServiceOrderRepositoryImpl implements ServiceOrderRepository {
   }
 
   @override
-  Future<Either<ApplicationError, List<ServiceOrderModel>>> getServiceOrderByStatusId(
-      ArgParams params) async {
+  Future<Either<ApplicationError, ResponseModel<List<ServiceOrderModel>>>>
+      getAllServiceOrdersByStatusId(ArgParams argParams) async {
     try {
-      final result = await datasource.getServiceOrderListByStatusId(params);
+      final result = await datasource.getAllServiceOrdersByStatusId(argParams);
       return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);
@@ -78,11 +79,11 @@ class ServiceOrderRepositoryImpl implements ServiceOrderRepository {
   }
 
   @override
-  Future<Either<ApplicationError, ServiceOrderModel>> approveServiceOrderById(
-      ArgParams params) async {
+  Future<Either<ApplicationError, ResponseModel<ServiceOrderModel>>>
+      approveServiceOrderById(ArgParams argParams) async {
     try {
-      final result = await datasource.approveServiceOrderById(params);
-      return Right(result.data!);
+      final result = await datasource.approveServiceOrderById(argParams);
+      return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {
@@ -94,16 +95,32 @@ class ServiceOrderRepositoryImpl implements ServiceOrderRepository {
   }
 
   @override
-  Future<Either<ApplicationError, ServiceOrderModel>> cancelServiceOrderById(
-      ArgParams params) async {
+  Future<Either<ApplicationError, ResponseModel<ServiceOrderModel>>>
+      cancelServiceOrderById(ArgParams argParams) async {
     try {
-      final result = await datasource.cancelServiceOrderById(params);
-      return Right(result.data!);
+      final result = await datasource.cancelServiceOrderById(argParams);
+      return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {
       return Left(GenericError(
         fingerprint: '$ServiceOrderRepositoryImpl.cancelServiceOrderById',
+        additionalInfo: stacktrace.toString(),
+      ));
+    }
+  }
+
+  @override
+  Future<Either<ApplicationError, ResponseEntity<List<SelectEntity>>>>
+      getAllServiceOrdersToSelect(NoParams noParams) async {
+    try {
+      final result = await datasource.getAllServiceOrdersToSelect(noParams);
+      return Right(result);
+    } on ApplicationError catch (e) {
+      return Left(e);
+    } catch (e, stacktrace) {
+      return Left(GenericError(
+        fingerprint: '$ServiceOrderRepositoryImpl.getAllServiceOrdersToSelect',
         additionalInfo: stacktrace.toString(),
       ));
     }

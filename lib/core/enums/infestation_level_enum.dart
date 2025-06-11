@@ -1,3 +1,4 @@
+
 //[ SEM_REGISTRO, BAIXO, ATENCAO, ALTO ]
 
 enum InfestationLevelEnum {

@@ -3,9 +3,10 @@ import 'package:new_ezagro_flutter/features/domain/entities/company_entities/com
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 import '../../../../../core/errors/application_error.dart';
 import '../../../../../core/usecase/usecase.dart';
+import '../../../entities/response_entities/response_entity.dart';
 
-abstract class GetCompanyByIdUsecase implements Usecase<CompanyEntity, ArgParams> {
+abstract class GetCompanyByIdUsecase implements Usecase<ResponseEntity<CompanyEntity>, ArgParams> {
   @override
-  Future<Either<ApplicationError, CompanyEntity>> call(
+  Future<Either<ApplicationError, ResponseEntity<CompanyEntity>>> call(
       ArgParams argParams);
 }

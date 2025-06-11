@@ -1,20 +1,24 @@
+
 // [ EMPLOYEE, OUTSOURCE ]
 
 enum EmployeeOrOutsourceEnum {
   employee,
   outsource,
+  none,
 }
 
-employeeOrOutsourceEnum(String type) {
+EmployeeOrOutsourceEnum employeeOrOutsourceEnum(String type) {
   switch (type) {
     case 'EMPLOYEE':
       return EmployeeOrOutsourceEnum.employee;
     case 'OUTSOURCE':
       return EmployeeOrOutsourceEnum.outsource;
+      default:
+        return EmployeeOrOutsourceEnum.none;
   }
 }
 
-dutyTypeString(type) {
+String dutyTypeString(EmployeeOrOutsourceEnum type) {
   switch (type) {
     case EmployeeOrOutsourceEnum.employee:
       return 'EMPLOYEE';

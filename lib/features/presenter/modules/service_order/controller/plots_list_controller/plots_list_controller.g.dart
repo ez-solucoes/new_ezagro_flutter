@@ -45,7 +45,7 @@ mixin _$PlotsListController on PlotsListControllerAbstract, Store {
       ActionController(name: 'PlotsListControllerAbstract', context: context);
 
   @override
-  dynamic applyFilter() {
+  void applyFilter() {
     final _$actionInfo = _$PlotsListControllerAbstractActionController
         .startAction(name: 'PlotsListControllerAbstract.applyFilter');
     try {
@@ -56,7 +56,7 @@ mixin _$PlotsListController on PlotsListControllerAbstract, Store {
   }
 
   @override
-  dynamic cleanFilter() {
+  void cleanFilter() {
     final _$actionInfo = _$PlotsListControllerAbstractActionController
         .startAction(name: 'PlotsListControllerAbstract.cleanFilter');
     try {

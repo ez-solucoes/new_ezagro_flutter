@@ -12,30 +12,52 @@ import '../../../../../core/utils/text_input_formatter_mask.dart';
 import '../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../../design_system/widgets/snackbars/custon_snack_bar_widget.dart';
 
-class UsernameInputPage extends StatelessWidget {
+class UsernameInputPage extends StatefulWidget {
   final ArgParams? args;
   static const String routePath = AppRoutes.appUsernameInputPage;
 
-  static navigate() => Modular.to.navigate(routePath);
+  static void navigate() => Modular.to.navigate(routePath);
 
-  static push() => Modular.to.pushNamed(routePath);
+  static Future<Object?> push() => Modular.to.pushNamed(routePath);
 
   const UsernameInputPage({super.key, this.args});
 
+  @override
+  State<UsernameInputPage> createState() => _UsernameInputPageState();
+}
+
+class _UsernameInputPageState extends State<UsernameInputPage> {
+  final FocusNode usernameFocusNode = FocusNode();
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      usernameFocusNode.requestFocus();
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    usernameFocusNode.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     final controller = Modular.get<AuthenticationController>();
     final TextEditingController textController = TextEditingController();
 
+
     return BackgroundWidget(
       appBar: CustomAppBarWidget(
         appBarType: AppBarType.backArrow,
-        callback: () {LoginPage.navigate;}
+        callback: () => LoginPage.navigate,
       ),
       scrollable: true,
       child: Padding(
         padding: const EdgeInsets.all(19),
         child: PasswordFormWidget(
+          focusNode: usernameFocusNode,
             isLoading: controller.isLoading,
             inputType: TextInputType.number,
             inputFormatters: [TextInputFormatterMask(mask: 'CPF')],

@@ -564,7 +564,7 @@ mixin _$CreateServiceOrderController
   }
 
   @override
-  dynamic toggleSelectAll() {
+  void toggleSelectAll() {
     final _$actionInfo =
         _$CreateServiceOrderControllerAbstractActionController.startAction(
             name: 'CreateServiceOrderControllerAbstract.toggleSelectAll');
@@ -577,7 +577,7 @@ mixin _$CreateServiceOrderController
   }
 
   @override
-  dynamic incrementPage() {
+  void incrementPage() {
     final _$actionInfo =
         _$CreateServiceOrderControllerAbstractActionController.startAction(
             name: 'CreateServiceOrderControllerAbstract.incrementPage');
@@ -590,7 +590,7 @@ mixin _$CreateServiceOrderController
   }
 
   @override
-  dynamic decrementPage() {
+  void decrementPage() {
     final _$actionInfo =
         _$CreateServiceOrderControllerAbstractActionController.startAction(
             name: 'CreateServiceOrderControllerAbstract.decrementPage');

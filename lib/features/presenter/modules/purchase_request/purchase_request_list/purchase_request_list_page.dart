@@ -21,9 +21,9 @@ import '../../../widgets/boxes/step_box_widget.dart';
 class PurchaseRequestListPage extends StatelessWidget {
   static const String routePath = AppRoutes.appPurchaseRequestListPage;
 
-  static navigate() => Modular.to.navigate(routePath);
+  static void navigate() => Modular.to.navigate(routePath);
 
-  static push(ArgParams args) => Modular.to.pushNamed(routePath, arguments: args);
+  static Future<Object?> push(ArgParams args) => Modular.to.pushNamed(routePath, arguments: args);
 
   const PurchaseRequestListPage({super.key});
 
@@ -172,19 +172,19 @@ class PurchaseRequestListPage extends StatelessWidget {
   }
 
   Widget _buildDismissibleContainer(PurchaseRequestEntity purchaseRequestItem) {
-    if (purchaseRequestItem.isUrgent! && purchaseRequestItem.hasErrorInQuotationItem!) {
+    if (purchaseRequestItem.isUrgent! && purchaseRequestItem.hasErrorInOrderItem!) {
       return Container(
         width: 10,
         decoration: BoxDecoration(color: AppColors.primaryBlackColor),
         child: Icon(Icons.gpp_bad_outlined, color: AppColors.primaryWhiteColor),
       );
-    } else if (purchaseRequestItem.isUrgent! && !purchaseRequestItem.hasErrorInQuotationItem!) {
+    } else if (purchaseRequestItem.isUrgent! && !purchaseRequestItem.hasErrorInOrderItem!) {
       return Container(
         width: 10,
         decoration: BoxDecoration(color: AppColors.primaryRedColor),
         child: Icon(Icons.gpp_bad_outlined, color: AppColors.primaryWhiteColor),
       );
-    } else if (!purchaseRequestItem.isUrgent! && purchaseRequestItem.hasErrorInQuotationItem!) {
+    } else if (!purchaseRequestItem.isUrgent! && purchaseRequestItem.hasErrorInOrderItem!) {
       return Container(
         width: 10,
         decoration: BoxDecoration(color: AppColors.primaryYellowColor),
@@ -196,7 +196,7 @@ class PurchaseRequestListPage extends StatelessWidget {
   }
 
   Widget _buildDismissibleItem(PurchaseRequestEntity purchaseRequestItem) {
-    if (purchaseRequestItem.isUrgent! && purchaseRequestItem.hasErrorInQuotationItem!) {
+    if (purchaseRequestItem.isUrgent! && purchaseRequestItem.hasErrorInOrderItem!) {
       return AnimatedContainer(
         duration: Duration(milliseconds: 300),
         color: AppColors.primaryBlackColor,
@@ -211,7 +211,7 @@ class PurchaseRequestListPage extends StatelessWidget {
           ],
         ),
       );
-    } else if (purchaseRequestItem.isUrgent! && !purchaseRequestItem.hasErrorInQuotationItem!) {
+    } else if (purchaseRequestItem.isUrgent! && !purchaseRequestItem.hasErrorInOrderItem!) {
       return AnimatedContainer(
         duration: Duration(milliseconds: 300),
         color: AppColors.primaryRedColor,
@@ -226,7 +226,7 @@ class PurchaseRequestListPage extends StatelessWidget {
           ],
         ),
       );
-    } else if (!purchaseRequestItem.isUrgent! && purchaseRequestItem.hasErrorInQuotationItem!) {
+    } else if (!purchaseRequestItem.isUrgent! && purchaseRequestItem.hasErrorInOrderItem!) {
       return AnimatedContainer(
         duration: Duration(milliseconds: 300),
         color: AppColors.primaryYellowColor,

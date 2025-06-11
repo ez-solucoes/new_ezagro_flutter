@@ -19,7 +19,7 @@ class CompanySegmentRepositoryImpl implements CompanySegmentRepository {
   CompanySegmentRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<ApplicationError, List<SegmentModel>>> getAllCompanySegments(NoParams noParams) async {
+  Future<Either<ApplicationError, ResponseModel<List<SegmentModel>>>> getAllCompanySegments(NoParams noParams) async {
     try {
       final result = await datasource.getAllCompanySegments(noParams);
       return Right(result);
@@ -33,7 +33,7 @@ class CompanySegmentRepositoryImpl implements CompanySegmentRepository {
   }
 
   @override
-  Future<Either<ApplicationError, List<SelectModel>>> getAllCompanySegmentsToSelect(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseModel<List<SelectModel>>>> getAllCompanySegmentsToSelect(ArgParams argParams) async {
     try {
       final result = await datasource.getAllCompanySegmentsToSelect(argParams);
       return Right(result);
@@ -47,10 +47,10 @@ class CompanySegmentRepositoryImpl implements CompanySegmentRepository {
   }
 
   @override
-  Future<Either<ApplicationError, SegmentModel>> getCompanySegmentById(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseModel<SegmentModel>>> getCompanySegmentById(ArgParams argParams) async {
     try {
       final result = await datasource.getCompanySegmentById(argParams);
-      return Right(result.data!);
+      return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {

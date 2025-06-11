@@ -17,7 +17,7 @@ class PurchaseRequestEntity extends Equatable {
   final String? paymentDate;
   final String? notes;
   final bool? isUrgent;
-  final bool? hasErrorInQuotationItem;
+  final bool? hasErrorInOrderItem;
   final String? createdAt;
   final String? updatedAt;
   final String? deletedAt;
@@ -38,7 +38,7 @@ class PurchaseRequestEntity extends Equatable {
       this.paymentDate,
       this.notes,
       this.isUrgent,
-      this.hasErrorInQuotationItem,
+      this.hasErrorInOrderItem,
       this.createdAt,
       this.updatedAt,
       this.deletedAt,
@@ -60,7 +60,7 @@ class PurchaseRequestEntity extends Equatable {
         paymentDate,
         notes,
         isUrgent,
-        hasErrorInQuotationItem,
+        hasErrorInOrderItem,
         createdAt,
         updatedAt,
         deletedAt,

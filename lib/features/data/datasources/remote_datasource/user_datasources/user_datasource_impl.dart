@@ -3,10 +3,11 @@ import 'package:new_ezagro_flutter/core/http_client/http_client_helper.dart';
 import 'package:new_ezagro_flutter/core/mixins/uri_builder_mixin.dart';
 import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/user_datasources/user_datasource.dart';
+import 'package:new_ezagro_flutter/features/data/models/select_models/select_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/user_models/user_model.dart';
-import 'package:new_ezagro_flutter/features/domain/params/user_params/user_params.dart';
 
 import '../../../../../core/http_client/http_request.dart';
+import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../models/response_models/response_model.dart';
 import '../api_endpoints.dart';
 
@@ -16,10 +17,10 @@ class UserDatasourceImpl with UriBuilder implements UserDatasource {
   UserDatasourceImpl(this.httpClient);
 
   @override
-  Future<ResponseModel<UserModel>> getAllUsers(NoParams noParams) async {
+  Future<ResponseModel<List<UserModel>>> getAllUsers(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.userEndpoint,
     );
 
@@ -28,10 +29,9 @@ class UserDatasourceImpl with UriBuilder implements UserDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<UserModel>(
           response: result,
-          fromMap: (map) => UserModel.fromMap(map),
-          fromJson: (jsonString) => UserModel.fromJson(jsonString),
+          fromListMap: (mapList) => mapList.map((e) => UserModel.fromMap(e)).toList(),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -39,11 +39,62 @@ class UserDatasourceImpl with UriBuilder implements UserDatasource {
   }
 
   @override
-  Future<ResponseModel<UserModel>> getUserById(UserParams userParams) async {
+  Future<ResponseModel<UserModel>> getUserById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.userEndpoint + userParams.id.toString(),
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.userEndpoint,
+    );
+
+    final HttpRequest request = HttpRequest.get(path: url, id: argParams.firstArgs);
+    final result = await httpClient.execute(request);
+
+    switch (result.statusCode) {
+      case 200:
+        return mountResponseModelForSingleItem<UserModel>(
+          response: result,
+          fromMap: (map) => UserModel.fromMap(map),
+        );
+      default:
+        throw mountServerErrorInstance(request: request, response: result);
+    }
+  }
+
+  @override
+  Future<ResponseModel<UserModel>> updateUserById(ArgParams argParams) async {
+    final String url = mountUrl(
+      AppEndpoints.baseUrlProtocolWithSecurity,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.userByIdEndpoint,
+    );
+
+    final HttpRequest request = HttpRequest.patch(
+      path: url,
+      id: argParams.firstArgs,
+      payload: {
+        'password': argParams.secondArgs,
+      },
+    );
+
+    final result = await httpClient.execute(request);
+
+    switch (result.statusCode) {
+      case 200:
+        return mountResponseModelForSingleItem<UserModel>(
+          response: result,
+          fromMap: (map) => UserModel.fromMap(map),
+        );
+      default:
+        throw mountServerErrorInstance(request: request, response: result);
+    }
+  }
+
+  @override
+  Future<ResponseModel<List<SelectModel>>> getAllUsersToSelect(NoParams noParams) async {
+    final String url = mountUrl(
+      AppEndpoints.baseUrlProtocolWithSecurity,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.userEndpoint + AppEndpoints.selectEndpoint,
     );
 
     final HttpRequest request = HttpRequest.get(path: url);
@@ -51,36 +102,9 @@ class UserDatasourceImpl with UriBuilder implements UserDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<SelectModel>(
           response: result,
-          fromMap: (map) => UserModel.fromMap(map),
-          fromJson: (jsonString) => UserModel.fromJson(jsonString),
-        );
-      default:
-        throw mountServerErrorInstance(request: request, response: result);
-    }
-  }
-
-  @override
-  Future<ResponseModel<UserModel>> updateUserById(UserParams userParams) async {
-    final String url = mountUrl(
-      AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.userByIdEndpoint + userParams.id.toString(),
-    );
-
-    final HttpRequest request = HttpRequest.patch(path: url, payload: {
-      'password': userParams.password,
-    });
-
-    final result = await httpClient.execute(request);
-
-    switch (result.statusCode) {
-      case 200:
-        return mountModelInstanceFromResponse(
-          response: result,
-          fromMap: (map) => UserModel.fromMap(map),
-          fromJson: (jsonString) => UserModel.fromJson(jsonString),
+          fromListMap: (mapList) => mapList.map((e) => SelectModel.fromMap(e)).toList(),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

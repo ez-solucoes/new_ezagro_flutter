@@ -23,7 +23,7 @@ abstract class EditListedItemsPageAbstract with Store {
     final getAllCompaniesToSelectUsecase = Modular.get<GetAllCompaniesToSelectUsecase>();
     final result = await getAllCompaniesToSelectUsecase(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      autoCompleteList = success;
+      autoCompleteList = success.data!;
       return success;
     });
 

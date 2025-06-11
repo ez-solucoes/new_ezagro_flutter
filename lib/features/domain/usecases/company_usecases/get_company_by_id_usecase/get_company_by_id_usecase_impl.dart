@@ -3,6 +3,7 @@ import 'package:new_ezagro_flutter/features/domain/entities/company_entities/com
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/company_usecases/get_company_by_id_usecase/get_company_by_id_usecase.dart';
 import '../../../../../core/errors/application_error.dart';
+import '../../../entities/response_entities/response_entity.dart';
 import '../../../repositories/company_repositories/company_repository.dart';
 
 class GetCompanyByIdUsecaseImpl implements GetCompanyByIdUsecase {
@@ -12,7 +13,7 @@ class GetCompanyByIdUsecaseImpl implements GetCompanyByIdUsecase {
   GetCompanyByIdUsecaseImpl(this.repository);
 
   @override
-  Future<Either<ApplicationError, CompanyEntity>> call(
+  Future<Either<ApplicationError, ResponseEntity<CompanyEntity>>> call(
       ArgParams argParams) async {
     return await repository.getCompanyById(argParams);
   }

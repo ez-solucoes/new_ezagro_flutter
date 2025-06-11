@@ -58,13 +58,27 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
             ])));
   }
 
-  _showCalendar(DateTime now) async {
+  Future<void> _showCalendar(DateTime now) async {
     FocusScope.of(context).requestFocus(FocusNode());
     DateTime? date = await showDatePicker(
+      helpText: 'Selecione a data',
+        cancelText: 'Cancelar',
+        confirmText: 'Confirmar',
         context: context,
         initialDate: now,
-        firstDate: DateTime(2023),
-        lastDate: now.add(const Duration(days: 1827)));
+        firstDate: DateTime.now(),
+        lastDate: now.add(const Duration(days: 1827)),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            colorScheme: ColorScheme.light(
+              primary: AppColors.primaryGreenColor,
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
     setState(() {
       selectedDate = date ?? DateTime.now();
       String formattedDate = df.format(selectedDate).toString();

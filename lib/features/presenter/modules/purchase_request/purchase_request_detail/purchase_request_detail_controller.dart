@@ -23,7 +23,7 @@ abstract class PurchaseRequestDetailControllerAbstract with Store {
     final getPurchaseRequestByIdUsecase = Modular.get<GetPurchaseRequestByIdUsecase>();
     final result = await getPurchaseRequestByIdUsecase(ArgParams(firstArgs: id));
     result.fold((error) => error.friendlyMessage, (success) {
-      purchaseRequestEntity = success;
+      purchaseRequestEntity = success.data!;
       return success;
     });
     isLoading = false;

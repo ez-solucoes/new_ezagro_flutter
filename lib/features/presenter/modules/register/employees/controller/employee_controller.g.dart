@@ -95,7 +95,7 @@ mixin _$EmployeeController on EmployeeControllerAbstract, Store {
       ActionController(name: 'EmployeeControllerAbstract', context: context);
 
   @override
-  dynamic searchEmployee(String searchText) {
+  void searchEmployee(String searchText) {
     final _$actionInfo = _$EmployeeControllerAbstractActionController
         .startAction(name: 'EmployeeControllerAbstract.searchEmployee');
     try {

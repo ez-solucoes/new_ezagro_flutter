@@ -16,9 +16,9 @@ class RepeatPasswordPage extends StatelessWidget {
   final ArgParams? args;
   static const String routePath = AppRoutes.appRepeatPasswordPage;
 
-  static navigate() => Modular.to.navigate(routePath);
+  static void navigate() => Modular.to.navigate(routePath);
 
-  static push() => Modular.to.pushNamed(routePath);
+  static Future<Object?> push() => Modular.to.pushNamed(routePath);
 
   const RepeatPasswordPage({super.key, this.args});
 

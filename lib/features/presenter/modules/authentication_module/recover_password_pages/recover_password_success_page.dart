@@ -17,9 +17,9 @@ class RecoverPasswordSuccessPage extends StatelessWidget {
   final ArgParams? args;
   static const String routePath = AppRoutes.appRecoverPasswordSuccessPage;
 
-  static navigate() => Modular.to.navigate(routePath);
+  static void navigate() => Modular.to.navigate(routePath);
 
-  static push() => Modular.to.pushNamed(routePath);
+  static Future<Object?> push() => Modular.to.pushNamed(routePath);
 
   const RecoverPasswordSuccessPage({super.key, this.args});
 

@@ -1,8 +1,9 @@
-import 'dart:convert';
 
 import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/purchase_request_datasources/purchase_request_datasource.dart';
+import 'package:new_ezagro_flutter/features/data/models/purchase_request_models/send_purchase_request_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/select_models/select_model.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/purchase_request_entities/send_purchase_request_entity.dart';
 
 import '../../../../../core/http_client/http_client.dart';
 import '../../../../../core/http_client/http_client_helper.dart';
@@ -19,24 +20,20 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
   PurchaseRequestDatasourceImpl(this.httpClient);
 
   @override
-  Future<List<PurchaseRequestModel>> getAllPurchaseRequest(NoParams noParams) async {
+  Future<ResponseModel<List<PurchaseRequestModel>>> getAllPurchaseRequests(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.getPurchaseRequest,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.purchaseRequest,
     );
 
     final HttpRequest request = HttpRequest.get(path: url);
     final result = await httpClient.execute(request);
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<PurchaseRequestModel>(
           response: result,
           fromListMap: (map) => (map).map((e) => PurchaseRequestModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => PurchaseRequestModel.fromJson(jsonEncode(json))).toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -47,18 +44,17 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
   Future<ResponseModel<PurchaseRequestModel>> getPurchaseRequestById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.getPurchaseRequest,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.purchaseRequest,
     );
 
     final HttpRequest request = HttpRequest.get(path: url, id: argParams.firstArgs);
     final result = await httpClient.execute(request);
     switch (result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForSingleItem<PurchaseRequestModel>(
           response: result,
           fromMap: (map) => PurchaseRequestModel.fromMap(map),
-          fromJson: (jsonString) => PurchaseRequestModel.fromJson(jsonString),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -66,11 +62,11 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
   }
 
   @override
-  Future<List<PurchaseRequestModel>> getPurchaseRequestByStatusId(ArgParams argParams) async {
+  Future<ResponseModel<List<PurchaseRequestModel>>> getAllPurchaseRequestsByStatusId(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.getPurchaseRequest,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.purchaseRequest,
     );
 
     final HttpRequest request =
@@ -78,13 +74,9 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
     final result = await httpClient.execute(request);
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<PurchaseRequestModel>(
           response: result,
           fromListMap: (map) => (map).map((e) => PurchaseRequestModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => PurchaseRequestModel.fromJson(jsonEncode(json))).toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -95,18 +87,17 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
   Future<ResponseModel<PurchaseRequestModel>> approvePurchaseRequestById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.getPurchaseRequest,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.purchaseRequest,
     );
 
     final HttpRequest request = HttpRequest.patch(path: url, id: argParams.firstArgs, sufix: 'approve');
     final result = await httpClient.execute(request);
     switch (result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForSingleItem<PurchaseRequestModel>(
           response: result,
           fromMap: (map) => PurchaseRequestModel.fromMap(map),
-          fromJson: (jsonString) => PurchaseRequestModel.fromJson(jsonString),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -117,18 +108,17 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
   Future<ResponseModel<PurchaseRequestModel>> cancelPurchaseRequestById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.getPurchaseRequest,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.purchaseRequest,
     );
 
     final HttpRequest request = HttpRequest.patch(path: url, id: argParams.firstArgs, sufix: 'cancel');
     final result = await httpClient.execute(request);
     switch (result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForSingleItem<PurchaseRequestModel>(
           response: result,
           fromMap: (map) => PurchaseRequestModel.fromMap(map),
-          fromJson: (jsonString) => PurchaseRequestModel.fromJson(jsonString),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -136,24 +126,20 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
   }
 
   @override
-  Future<List<SelectModel>> getAllPurchaseRequestToSelect(NoParams noParams) async {
+  Future<ResponseModel<List<SelectModel>>> getAllPurchaseRequestsToSelect(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.getPurchaseRequest + AppEndpoints.selectEndpoint,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.purchaseRequest + AppEndpoints.selectEndpoint,
     );
 
     final HttpRequest request = HttpRequest.get(path: url);
     final result = await httpClient.execute(request);
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<SelectModel>(
           response: result,
           fromListMap: (map) => (map).map((e) => SelectModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => SelectModel.fromJson(jsonEncode(json))).toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -164,18 +150,23 @@ class PurchaseRequestDatasourceImpl with UriBuilder implements PurchaseRequestDa
   Future<ResponseModel<PurchaseRequestModel>> createPurchaseRequest(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.getPurchaseRequest,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.purchaseRequest,
     );
 
-    final HttpRequest request = HttpRequest.post(path: url, payload: argParams.firstArgs);
+    final SendPurchaseRequestEntity sendPurchaseRequestEntity = argParams.firstArgs as SendPurchaseRequestEntity;
+    final SendPurchaseRequestModel sendPurchaseRequestModel = SendPurchaseRequestModel.fromEntity(sendPurchaseRequestEntity);
+    final payload = sendPurchaseRequestModel.toMap();
+
+
+    final HttpRequest request = HttpRequest.post(path: url, payload: payload);
+
     final result = await httpClient.execute(request);
     switch(result.statusCode) {
-      case 200:
-        return mountModelInstanceFromResponse(
+      case 201:
+        return mountResponseModelForSingleItem<PurchaseRequestModel>(
           response: result,
           fromMap: (map) => PurchaseRequestModel.fromMap(map),
-          fromJson: (jsonString) => PurchaseRequestModel.fromJson(jsonString),
         );
         default:
           throw mountServerErrorInstance(request: request, response: result);

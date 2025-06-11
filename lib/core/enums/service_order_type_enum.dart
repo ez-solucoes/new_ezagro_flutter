@@ -10,7 +10,7 @@ enum ServiceOrderTypeEnum {
 }
 
 extension ServiceOrderTypeEnumExtension on ServiceOrderTypeEnum {
-  static enumServiceOrderTypeToString(type) {
+  static String enumServiceOrderTypeToString(type) {
     switch (type) {
       case ServiceOrderTypeEnum.toBeStarted:
         return AppStringsPortuguese.toBeStartedSOEnum;
@@ -29,7 +29,7 @@ extension ServiceOrderTypeEnumExtension on ServiceOrderTypeEnum {
     }
   }
 
-  static getEnumServiceOrderTypeFromString(type) {
+  static ServiceOrderTypeEnum getEnumServiceOrderTypeFromString(type) {
     switch (type) {
       case AppStringsPortuguese.toBeStartedSOKey || AppStringsPortuguese.toBeStartedSOEnum:
         return ServiceOrderTypeEnum.toBeStarted;

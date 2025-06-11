@@ -17,9 +17,11 @@ import 'machinery_implements_page.dart';
 class MachineryListPage extends StatelessWidget {
   static const String routePath = AppRoutes.appMachineryListPage;
 
-  static navigate() => Modular.to.navigate(routePath);
+  static void navigate() => Modular.to.navigate(routePath);
 
-  static push(ArgParams args) => Modular.to.pushNamed(routePath, arguments: args);
+  static Future<Object?> push() => Modular.to.pushNamed(routePath);
+
+  static void pop() => Modular.to.pop();
 
   const MachineryListPage({super.key});
 
@@ -38,9 +40,10 @@ class MachineryListPage extends StatelessWidget {
         child: Scaffold(
             backgroundColor: AppColors.transparent,
             resizeToAvoidBottomInset: false,
-            appBar: const CustomAppBarWidget(
-              appBarType: AppBarType.hamburgerAndTitle,
+            appBar: CustomAppBarWidget(
+              appBarType: AppBarType.centeredTitleAndBackArrow,
               title: AppStringsPortuguese.machineryAndImplementsTitle,
+              callback: () => MachineryListPage.pop(),
             ),
             drawer: CustomDrawerWidget(),
             body: Stack(

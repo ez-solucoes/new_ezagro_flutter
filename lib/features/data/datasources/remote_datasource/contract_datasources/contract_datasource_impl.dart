@@ -1,4 +1,6 @@
-import 'dart:convert';
+
+import 'package:new_ezagro_flutter/features/data/models/select_models/select_model.dart';
+
 import '../../../../../core/http_client/http_client.dart';
 import '../../../../../core/http_client/http_client_helper.dart';
 import '../../../../../core/http_client/http_request.dart';
@@ -16,11 +18,11 @@ class ContractDatasourceImpl with UriBuilder implements ContractDatasource {
   ContractDatasourceImpl(this.httpClient);
 
   @override
-  Future<List<ContractModel>> getContracts(NoParams noParams) async {
+  Future<ResponseModel<List<ContractModel>>> getAllContracts(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.getContractListEndpoint,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.contractEndpoint,
     );
 
     final HttpRequest request = HttpRequest.get(path: url);
@@ -28,13 +30,9 @@ class ContractDatasourceImpl with UriBuilder implements ContractDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<ContractModel>(
           response: result,
           fromListMap: (map) => (map).map((e) => ContractModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => ContractModel.fromJson(jsonEncode(json))).toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -45,8 +43,31 @@ class ContractDatasourceImpl with UriBuilder implements ContractDatasource {
   Future<ResponseModel<ContractModel>> getContractById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.getContractByIdEndpoint + (argParams.firstArgs as String),
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.contractEndpoint,
+    );
+
+    final HttpRequest request = HttpRequest.get(path: url, id: argParams.firstArgs);
+    final result = await httpClient.execute(request);
+
+    switch (result.statusCode) {
+      case 200:
+        return mountResponseModelForSingleItem<ContractModel>(
+          response: result,
+          fromMap: (map) => ContractModel.fromMap(map),
+        );
+      default:
+        throw mountServerErrorInstance(request: request, response: result);
+    }
+  }
+
+  @override
+  Future<ResponseModel<List<SelectModel>>> getAllContractsToSelect(
+      NoParams noParams) async {
+    final String url = mountUrl(
+      AppEndpoints.baseUrlProtocolWithSecurity,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.contractEndpoint + AppEndpoints.selectEndpoint,
     );
 
     final HttpRequest request = HttpRequest.get(path: url);
@@ -54,10 +75,9 @@ class ContractDatasourceImpl with UriBuilder implements ContractDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<SelectModel>(
           response: result,
-          fromMap: (map) => ContractModel.fromMap(map),
-          fromJson: (jsonString) => ContractModel.fromJson(jsonString),
+          fromListMap: (map) => (map).map((e) => SelectModel.fromMap(e)).toList(),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

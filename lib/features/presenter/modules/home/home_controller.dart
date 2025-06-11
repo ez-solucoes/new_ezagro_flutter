@@ -2,10 +2,10 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/purchase_request_usecases/get_purchase_request_by_status_id_usecases/get_purchase_request_by_status_id_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/service_order_usecase/get_all_service_order_by_status_id_usecase/get_all_service_order_by_status_id_usecase.dart';
 
 import '../../../../core/local_storage/local_storage_client_secure_impl.dart';
 import '../../../../design_system/strings/app_strings_portuguese.dart';
-import '../../../domain/usecases/service_order_usecase/get_service_order_by_status_id_usecase/get_service_order_by_status_id_usecase.dart';
 
 
 part'home_controller.g.dart';
@@ -55,7 +55,7 @@ abstract class HomeControllerAbstract with Store {
     final result = await getPurchaseRequestByStatusIdUsecase(
         ArgParams(firstArgs: purchaseStatusId));
     result.fold((error) => error.friendlyMessage, (success) {
-      totalPurchases = success.length;
+      totalPurchases = success.data!.length;
 
       calculateApprovals(totalPurchases, totalServiceOrders);
       return success;
@@ -68,10 +68,10 @@ abstract class HomeControllerAbstract with Store {
   Future<void> getServiceOrdersByStatusId(int serviceOrderStatusId) async {
     isLoading = true;
 
-    final getPurchaseRequestByStatusIdUsecase = Modular.get<GetServiceOrderByStatusIdUsecase>();
-    final result = await getPurchaseRequestByStatusIdUsecase(ArgParams(firstArgs: serviceOrderStatusId));
+    final getAllServiceOrderByStatusIdUsecase = Modular.get<GetAllServiceOrderByStatusIdUsecase>();
+    final result = await getAllServiceOrderByStatusIdUsecase(ArgParams(firstArgs: serviceOrderStatusId));
     result.fold((error) => error.friendlyMessage, (success) {
-      totalServiceOrders = success.length;
+      totalServiceOrders = success.data!.length;
 
       calculateApprovals(totalPurchases, totalServiceOrders);
       return success;

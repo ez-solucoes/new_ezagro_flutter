@@ -94,7 +94,7 @@ mixin _$CompanyController on CompanyControllerAbstract, Store {
       ActionController(name: 'CompanyControllerAbstract', context: context);
 
   @override
-  dynamic searchCompany(String searchText) {
+  void searchCompany(String searchText) {
     final _$actionInfo = _$CompanyControllerAbstractActionController
         .startAction(name: 'CompanyControllerAbstract.searchCompany');
     try {

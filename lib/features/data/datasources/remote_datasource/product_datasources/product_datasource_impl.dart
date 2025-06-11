@@ -1,7 +1,3 @@
-
-
-import 'dart:convert';
-
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/product_datasources/product_datasource.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 
@@ -21,10 +17,10 @@ class ProductDatasourceImpl with UriBuilder implements ProductDatasource {
   ProductDatasourceImpl(this.httpClient);
 
   @override
-  Future<List<ProductModel>> getAllProducts(NoParams noParams) async {
+  Future<ResponseModel<List<ProductModel>>> getAllProducts(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.productEndpoint,
     );
 
@@ -33,13 +29,9 @@ class ProductDatasourceImpl with UriBuilder implements ProductDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<ProductModel>(
           response: result,
           fromListMap: (map) => (map).map((e) => ProductModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => ProductModel.fromJson(jsonEncode(json))).toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -47,10 +39,10 @@ class ProductDatasourceImpl with UriBuilder implements ProductDatasource {
   }
 
   @override
-  Future<List<SelectModel>> getAllProductsToSelect(NoParams noParams) async {
+  Future<ResponseModel<List<SelectModel>>> getAllProductsToSelect(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.productEndpoint + AppEndpoints.selectEndpoint,
     );
 
@@ -59,13 +51,9 @@ class ProductDatasourceImpl with UriBuilder implements ProductDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<SelectModel>(
           response: result,
-          fromListMap: (map) => (map).map((e) => SelectModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => SelectModel.fromJson(jsonEncode(json))).toList();
-          },
+          fromListMap: (mapList) => mapList.map((e) => SelectModel.fromMap(e)).toList(),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -73,10 +61,10 @@ class ProductDatasourceImpl with UriBuilder implements ProductDatasource {
   }
 
   @override
-  Future<List<ProductModel>> getAllProductsByTypeId(ArgParams argParams) async {
+  Future<ResponseModel<List<ProductModel>>> getAllProductsByTypeId(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.productEndpoint,
     );
 
@@ -85,13 +73,9 @@ class ProductDatasourceImpl with UriBuilder implements ProductDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<ProductModel>(
           response: result,
           fromListMap: (map) => (map).map((e) => ProductModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => ProductModel.fromJson(jsonEncode(json))).toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -99,10 +83,10 @@ class ProductDatasourceImpl with UriBuilder implements ProductDatasource {
   }
 
   @override
-  Future<List<SelectModel>> getAllProductsByTypeIdToSelect(ArgParams argParams) async {
+  Future<ResponseModel<List<SelectModel>>> getAllProductsByTypeIdToSelect(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.productEndpoint + AppEndpoints.selectEndpoint,
     );
 
@@ -111,13 +95,9 @@ class ProductDatasourceImpl with UriBuilder implements ProductDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<SelectModel>(
           response: result,
-          fromListMap: (map) => (map).map((e) => SelectModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => SelectModel.fromJson(jsonEncode(json))).toList();
-          },
+          fromListMap: (mapList) => mapList.map((e) => SelectModel.fromMap(e)).toList(),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -128,7 +108,7 @@ class ProductDatasourceImpl with UriBuilder implements ProductDatasource {
   Future<ResponseModel<ProductModel>> getProductById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.productEndpoint + AppEndpoints.selectEndpoint,
     );
 
@@ -137,10 +117,9 @@ class ProductDatasourceImpl with UriBuilder implements ProductDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForSingleItem<ProductModel>(
           response: result,
           fromMap: (map) => ProductModel.fromMap(map),
-          fromJson: (jsonString) => ProductModel.fromJson(jsonString),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

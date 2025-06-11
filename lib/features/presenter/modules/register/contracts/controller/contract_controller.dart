@@ -1,7 +1,7 @@
 
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/contract_usecases/get_contract_list_usecase/get_contract_list_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/contract_usecases/get_all_contracts_usecases/get_all_contracts_usecase.dart';
 
 import '../../../../../../core/usecase/usecase.dart';
 import '../../../../../domain/entities/contract_entities/contract_entity.dart';
@@ -30,10 +30,10 @@ abstract class ContractControllerAbstract with Store {
   @action
   Future getContractsList() async {
     isLoading = true;
-    final getContracts = Modular.get<GetContractListUsecase>();
-    final result = await getContracts(NoParams());
+    final getAllContracts = Modular.get<GetAllContractsUsecase>();
+    final result = await getAllContracts(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      contracts = success;
+      contracts = success.data!;
       filteredContracts = contracts;
       return success;
     });
@@ -47,7 +47,7 @@ abstract class ContractControllerAbstract with Store {
     final getContract = Modular.get<GetContractByIdUsecase>();
     final result = await getContract(args);
     result.fold((error) => error.friendlyMessage, (success) {
-      contract = success;
+      contract = success.data!;
       return success;
     });
 
@@ -55,7 +55,7 @@ abstract class ContractControllerAbstract with Store {
   }
 
   @action
-  searchContract(String searchText) {
+  void searchContract(String searchText) {
     filteredContracts = contracts.where((e) =>
     (e.contract?.toLowerCase() ?? "").contains(searchText.toLowerCase()) ||
         (e.contractType?.name?.toLowerCase() ?? "").contains(searchText.toLowerCase())

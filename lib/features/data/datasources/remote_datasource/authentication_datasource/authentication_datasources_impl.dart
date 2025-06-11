@@ -20,8 +20,8 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
       AuthenticationParams authenticationParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.loginEndpoint,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.authenticationLoginEndpoint,
     );
 
     final HttpRequest request = HttpRequest.post(path: url, payload: {
@@ -33,10 +33,9 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
 
     switch (result.statusCode) {
       case 201:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForSingleItem<AuthenticationModel>(
           response: result,
           fromMap: (map) => AuthenticationModel.fromMap(map),
-          fromJson: (jsonString) => AuthenticationModel.fromJson(jsonString),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -47,8 +46,8 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
   Future<EmptyResult> recoverPassword(AuthenticationParams authenticationParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.forgotPasswordEndpoint,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.authenticationForgotPasswordEndpoint,
     );
 
     final HttpRequest request = HttpRequest.post(path: url, payload: {
@@ -69,8 +68,8 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
   Future<ResponseModel<AuthenticationModel>> updatePassword(AuthenticationParams authenticationParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.updatePasswordEndpoint,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.authenticationUpdatePasswordEndpoint,
     );
 
     final HttpRequest request = HttpRequest.post(path: url, payload: {
@@ -82,10 +81,9 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
 
     switch (result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForSingleItem<AuthenticationModel>(
           response: result,
           fromMap: (map) => AuthenticationModel.fromMap(map),
-          fromJson: (jsonString) => AuthenticationModel.fromJson(jsonString),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

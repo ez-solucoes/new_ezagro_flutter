@@ -4,7 +4,9 @@ import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/select_entities/select_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 
-abstract class GetAllProductsByTypeIdToSelectUsecase implements Usecase<List<SelectEntity>, ArgParams> {
+import '../../../entities/response_entities/response_entity.dart';
+
+abstract class GetAllProductsByTypeIdToSelectUsecase implements Usecase<ResponseEntity<List<SelectEntity>>, ArgParams> {
   @override
-  Future<Either<ApplicationError, List<SelectEntity>>> call(ArgParams params);
+  Future<Either<ApplicationError, ResponseEntity<List<SelectEntity>>>> call(ArgParams params);
 }

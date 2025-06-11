@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/features/data/models/contract_models/contract_model.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/custom_drawer/custom_drawer_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/custom_striped_table/custom_striped_table_widget.dart';
 import '../../../../../consts/app_routes.dart';
 import '../../../../../design_system/colors/app_colors.dart';
@@ -18,11 +17,14 @@ class ContractListPage extends StatelessWidget {
 
   static const String routePath = AppRoutes.appContractListPage;
 
-  static navigate() =>
+  static void navigate() =>
       Modular.to.navigate(routePath);
 
-  static push(ArgParams args) =>
-      Modular.to.pushNamed(routePath, arguments: args);
+  static Future<Object?> push() =>
+      Modular.to.pushNamed(routePath);
+
+  static void pop() =>
+      Modular.to.pop();
 
   const ContractListPage({super.key});
 
@@ -35,11 +37,11 @@ class ContractListPage extends StatelessWidget {
         child: Scaffold(
             backgroundColor: AppColors.transparent,
             resizeToAvoidBottomInset: false,
-            appBar: const CustomAppBarWidget(
-              appBarType: AppBarType.hamburgerAndTitle,
+            appBar: CustomAppBarWidget(
+              appBarType: AppBarType.centeredTitleAndBackArrow,
               title: AppStringsPortuguese.pluralContractTitle,
+              callback: () => ContractListPage.pop(),
             ),
-            drawer: CustomDrawerWidget(),
             body: Stack(
               alignment: AlignmentDirectional.bottomCenter,
               children: [
@@ -64,7 +66,7 @@ class ContractListPage extends StatelessWidget {
                             data: ContractModel.convertToTableList(controller.filteredContracts),
                             maxHeight:0.7* MediaQuery.of(context).size.height,
                               onTap: (index){
-                                ContractPage.navigate(ArgParams(firstArgs: controller.filteredContracts[index].id.toString()));
+                                ContractPage.push(ArgParams(firstArgs: controller.filteredContracts[index].id.toString()));
                               }))
                     ],
                   ),

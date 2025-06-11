@@ -95,7 +95,7 @@ mixin _$ContractController on ContractControllerAbstract, Store {
       ActionController(name: 'ContractControllerAbstract', context: context);
 
   @override
-  dynamic searchContract(String searchText) {
+  void searchContract(String searchText) {
     final _$actionInfo = _$ContractControllerAbstractActionController
         .startAction(name: 'ContractControllerAbstract.searchContract');
     try {

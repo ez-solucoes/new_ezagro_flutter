@@ -1,9 +1,8 @@
-// ignore_for_file: unused_import
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:new_ezagro_flutter/core/enums/service_order_type_enum.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/service_order/create_service_order_page/create_service_order_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/custom_drawer/custom_drawer_widget.dart';
 import '../../../../../consts/app_routes.dart';
@@ -21,10 +20,10 @@ class ServiceOrderListPage extends StatelessWidget {
 
   static const String routePath = AppRoutes.appServiceOrderListPage;
 
-  static navigate() =>
+  static void navigate() =>
       Modular.to.navigate(routePath);
 
-  static push(ArgParams args) =>
+  static Future<Object?> push(ArgParams args) =>
       Modular.to.pushNamed(routePath, arguments: args);
 
   const ServiceOrderListPage({super.key});

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../design_system/colors/app_colors.dart';
 import '../../../../design_system/typography/app_text_styles.dart';
+import '../../miscellaneous/item_selection_controller.dart';
 import '../buttons/custom_outlined_icon_button.dart';
-import '../../modules/purchase_request/purchase_request_create/purchase_request_create_controller.dart'; // Importar ItemType
 
 class CustomProductExpandedCardWidget extends StatelessWidget {
   final int index;

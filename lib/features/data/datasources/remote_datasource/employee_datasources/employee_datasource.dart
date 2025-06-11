@@ -6,9 +6,9 @@ import '../../../models/response_models/response_model.dart';
 
 
 abstract class EmployeeDatasource {
-  Future<List<EmployeeModel>> getEmployees(NoParams noParams);
-
-  Future<List<SelectModel>> getEmployeesByFarmIdToSelect(ArgParams argParams);
-
+  Future<ResponseModel<List<EmployeeModel>>> getAllEmployees(NoParams noParams);
+  Future<ResponseModel<List<SelectModel>>> getAllEmployeesToSelect(NoParams noParams);
+  Future<ResponseModel<List<SelectModel>>> getAllEmployeesByFarmIdToSelect(ArgParams argParams);
+  Future<ResponseModel<List<EmployeeModel>>> getAllEmployeesByFarmId(ArgParams argParams);
   Future<ResponseModel<EmployeeModel>> getEmployeeById(ArgParams argParams);
 }

@@ -74,8 +74,8 @@ class AuthInterceptor extends Interceptor {
 }
 
 List<String> get unauthenticatedRoutes => [
-      AppEndpoints.loginEndpoint,
-      AppEndpoints.updatePasswordEndpoint,
+      AppEndpoints.authenticationLoginEndpoint,
+      AppEndpoints.authenticationUpdatePasswordEndpoint,
       AppEndpoints.validateTokenEndpoint,
-      AppEndpoints.forgotPasswordEndpoint,
+      AppEndpoints.authenticationForgotPasswordEndpoint,
     ];

@@ -16,6 +16,7 @@ class PasswordFormWidget extends StatelessWidget {
   final bool passwordField;
   final TextInputType? inputType;
   final List<TextInputFormatter>? inputFormatters;
+  final FocusNode? focusNode;
 
   const PasswordFormWidget({
     super.key,
@@ -27,6 +28,7 @@ class PasswordFormWidget extends StatelessWidget {
     required this.passwordField,
     this.inputType,
     this.inputFormatters,
+    this.focusNode,
   });
 
   @override
@@ -41,6 +43,7 @@ class PasswordFormWidget extends StatelessWidget {
         ),
         const SizedBox(height: 67),
         CustomUnderlinedTextField(
+          focusNode: focusNode,
           inputFormatters: inputFormatters,
           inputType: inputType,
           hintText: !passwordField ? maskString(MaskTypeEnum.cpf) : '',

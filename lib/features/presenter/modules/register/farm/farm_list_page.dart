@@ -17,10 +17,12 @@ import 'farm_page.dart';
 class FarmListPage extends StatelessWidget {
   static const String routePath = AppRoutes.appFarmListPage;
 
-  static navigate() => Modular.to.navigate(routePath);
+  static void navigate() => Modular.to.navigate(routePath);
 
-  static push(ArgParams args) =>
-      Modular.to.pushNamed(routePath, arguments: args);
+  static Future<Object?> push() =>
+      Modular.to.pushNamed(routePath);
+
+  static void pop() => Modular.to.pop();
 
   const FarmListPage({super.key});
 
@@ -33,9 +35,10 @@ class FarmListPage extends StatelessWidget {
         child: Scaffold(
             backgroundColor: AppColors.transparent,
             resizeToAvoidBottomInset: false,
-            appBar: const CustomAppBarWidget(
-              appBarType: AppBarType.hamburgerAndTitle,
+            appBar: CustomAppBarWidget(
+              appBarType: AppBarType.centeredTitleAndBackArrow,
               title: AppStringsPortuguese.pluralFarmTitle,
+              callback: () => FarmListPage.pop(),
             ),
             drawer: CustomDrawerWidget(),
             body: Observer(
@@ -70,7 +73,7 @@ class FarmListPage extends StatelessWidget {
                                           controller.filteredFarms),
                                       maxHeight: 0.7 * MediaQuery.of(context).size.height,
                                       onTap: (index) {
-                                        FarmPage.navigate(ArgParams(firstArgs: controller.filteredFarms[index].id.toString()));
+                                        FarmPage.push(ArgParams(firstArgs: controller.filteredFarms[index].id.toString()));
                                       }),
                                 )
                           ],

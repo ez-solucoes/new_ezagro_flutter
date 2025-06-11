@@ -2,10 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/employee_entities/employee_entity/employee_entity.dart';
 import '../../../../../core/errors/application_error.dart';
 import '../../../../../core/usecase/usecase.dart';
+import '../../../entities/response_entities/response_entity.dart';
 import '../../../params/arg_params/arg_params.dart';
 
-abstract class GetEmployeeByIdUsecase implements Usecase<EmployeeEntity, ArgParams> {
+abstract class GetEmployeeByIdUsecase implements Usecase<ResponseEntity<EmployeeEntity>, ArgParams> {
   @override
-  Future<Either<ApplicationError, EmployeeEntity>> call(
+  Future<Either<ApplicationError, ResponseEntity<EmployeeEntity>>> call(
       ArgParams argParams);
 }

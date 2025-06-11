@@ -24,8 +24,8 @@ enum PlotSoilStageEnum {
 
 plotSoilStageEnum(String plotSoilStage) {
   switch (plotSoilStage) {
-    // case 'DEFAULT':
-    //   return PlotSoilStageEnum.default;
+  // case 'DEFAULT':
+  //   return PlotSoilStageEnum.default;
     case 'FALLOW':
       return PlotSoilStageEnum.fallow;
     case 'PLANTING_YEAR_AND_HALF':
@@ -67,8 +67,8 @@ plotSoilStageEnum(String plotSoilStage) {
 
 plotSoilStageString(type) {
   switch (type) {
-    // case PlotSoilStageEnum.default:
-    //   return 'DEFAULT';
+  // case PlotSoilStageEnum.default:
+  //   return 'DEFAULT';
     case PlotSoilStageEnum.fallow:
       return 'FALLOW';
     case PlotSoilStageEnum.plantingYearAndHalf:

@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:new_ezagro_flutter/core/http_client/http_client.dart';
 import 'package:new_ezagro_flutter/core/mixins/uri_builder_mixin.dart';
@@ -19,10 +18,10 @@ class CompanySegmentDatasourceImpl with UriBuilder implements CompanySegmentData
   CompanySegmentDatasourceImpl(this.httpClient);
 
   @override
-  Future<List<SegmentModel>> getAllCompanySegments(NoParams noParams) async {
+  Future<ResponseModel<List<SegmentModel>>> getAllCompanySegments(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.companySegmentEndpoint,
     );
 
@@ -31,13 +30,9 @@ class CompanySegmentDatasourceImpl with UriBuilder implements CompanySegmentData
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<SegmentModel>(
           response: result,
           fromListMap: (map) => (map).map((e) => SegmentModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => SegmentModel.fromJson(jsonEncode(json))).toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -45,10 +40,10 @@ class CompanySegmentDatasourceImpl with UriBuilder implements CompanySegmentData
   }
 
   @override
-  Future<List<SelectModel>> getAllCompanySegmentsToSelect(ArgParams argParams) async {
+  Future<ResponseModel<List<SelectModel>>> getAllCompanySegmentsToSelect(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.companySegmentEndpoint + AppEndpoints.selectEndpoint,
     );
 
@@ -57,13 +52,9 @@ class CompanySegmentDatasourceImpl with UriBuilder implements CompanySegmentData
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<SelectModel>(
           response: result,
           fromListMap: (map) => (map).map((e) => SelectModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => SelectModel.fromJson(jsonEncode(json))).toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -74,7 +65,7 @@ class CompanySegmentDatasourceImpl with UriBuilder implements CompanySegmentData
   Future<ResponseModel<SegmentModel>> getCompanySegmentById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
+      AppEndpoints.mainBaseUrl,
       AppEndpoints.companySegmentEndpoint,
     );
 
@@ -83,10 +74,9 @@ class CompanySegmentDatasourceImpl with UriBuilder implements CompanySegmentData
 
     switch (result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForSingleItem(
           response: result,
           fromMap: (map) => SegmentModel.fromMap(map),
-          fromJson: (jsonString) => SegmentModel.fromJson(jsonString),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

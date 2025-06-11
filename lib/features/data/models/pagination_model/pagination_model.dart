@@ -14,12 +14,11 @@ class PaginationModel<T> extends PaginationEntity<T> {
       'page': page,
       'pageSize': pageSize,
       'total': total,
-
     };
   }
 
-  factory PaginationModel.fromMap(Map<String, dynamic> map,
-      T Function(Map<String, dynamic>) fromMapFunction) {
+
+  factory PaginationModel.fromMap(Map<String, dynamic> map) {
     return PaginationModel(
       page: map['page'] != null ? map['page'] as int : null,
       pageSize: map['pageSize']!= null ? map['pageSize'] as int : null,
@@ -29,8 +28,7 @@ class PaginationModel<T> extends PaginationEntity<T> {
 
   String toJson() => json.encode(toMap());
 
-  factory PaginationModel.fromJson(
-      String source, T Function(Map<String, dynamic>) fromMapFunction) {
-    return PaginationModel.fromMap(json.decode(source), fromMapFunction);
+  factory PaginationModel.fromJson(String source) {
+    return PaginationModel.fromMap(json.decode(source));
   }
 }

@@ -1,7 +1,9 @@
 import 'dart:convert';
 
+import 'package:new_ezagro_flutter/features/data/models/type_models/type_model.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/plot_entities/farm_plot_entity.dart';
 
+import '../../../domain/entities/type_entities/type_entity.dart';
 import '../crop_models/crop_variety_model.dart';
 
 class FarmPlotModel extends FarmPlotEntity {
@@ -25,6 +27,7 @@ class FarmPlotModel extends FarmPlotEntity {
         'updatedAt': updatedAt,
         'deletedAt': deletedAt,
         'cropVariety': cropVariety == null ? null : (cropVariety as CropVarietyModel).toMap(),
+        'plotSoilStage': plotSoilStage == null ? null : (TypeEntity as TypeModel).toMap(),
       };
 
   factory FarmPlotModel.fromMap(Map<String, dynamic> map) => FarmPlotModel(
@@ -37,6 +40,10 @@ class FarmPlotModel extends FarmPlotEntity {
         cropVariety: map['cropVariety'] != null
             ? CropVarietyModel.fromMap(map['cropVariety'] as Map<String, dynamic>)
             : null,
+        plotSoilStage: map['plotSoilStage'] != null
+            ? TypeModel.fromMap(map['plotSoilStage'] as Map<String, dynamic>)
+            : null,
+
       );
 
   String toJson() => json.encode(toMap());

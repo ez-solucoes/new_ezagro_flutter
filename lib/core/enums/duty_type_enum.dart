@@ -1,12 +1,14 @@
+
 // [ EMPLOYMENT, FINANCIAL, GENERAL ]
 
 enum DutyTypeEnum {
   employment,
   financial,
   general,
+  none,
 }
 
-dutyTypeEnum(String dutyType) {
+DutyTypeEnum dutyTypeEnum(String dutyType) {
   switch (dutyType) {
     case 'EMPLOYMENT':
       return DutyTypeEnum.employment;
@@ -14,10 +16,12 @@ dutyTypeEnum(String dutyType) {
       return DutyTypeEnum.financial;
     case 'GENERAL':
       return DutyTypeEnum.general;
+      default:
+        return DutyTypeEnum.none;
   }
 }
 
-dutyTypeString(type) {
+String dutyTypeString(DutyTypeEnum type) {
   switch (type) {
     case DutyTypeEnum.employment:
       return 'EMPLOYMENT';

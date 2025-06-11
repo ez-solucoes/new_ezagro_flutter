@@ -3,11 +3,11 @@ import 'package:new_ezagro_flutter/core/http_client/http_client_helper.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/plots_datasource/plots_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/models/plot_models/plot_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/select_models/select_model.dart';
 
 import '../../../../../core/mixins/uri_builder_mixin.dart';
 import '../../../../../core/usecase/usecase.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
-import '../../../models/pagination_model/pagination_model.dart';
 import '../../../models/response_models/response_model.dart';
 import '../api_endpoints.dart';
 
@@ -17,11 +17,11 @@ class PlotsDatasourceImpl with UriBuilder implements PlotsDatasource {
   PlotsDatasourceImpl(this.httpClient);
 
   @override
-  Future<ResponseModel<PaginationModel<PlotModel>>> getPlots(NoParams noParams) async {
+  Future<ResponseModel<List<PlotModel>>> getAllPlots(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.getPlotsEndpoint,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.farmPlotEndpoint,
     );
 
     final HttpRequest request = HttpRequest.get(path: url);
@@ -29,11 +29,9 @@ class PlotsDatasourceImpl with UriBuilder implements PlotsDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<PlotModel>(
           response: result,
-          fromMap: (map) => PaginationModel.fromMap(map, PlotModel.fromMap),
-          fromJson: (jsonString) =>
-              PaginationModel.fromJson(jsonString, PlotModel.fromMap),
+          fromListMap: (mapList) => mapList.map((e) => PlotModel.fromMap(e)).toList(),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -41,12 +39,33 @@ class PlotsDatasourceImpl with UriBuilder implements PlotsDatasource {
   }
 
   @override
-  Future<ResponseModel<PaginationModel<PlotModel>>> getPlotByFarmId(ArgParams params) async {
-    final String id = params.firstArgs == null ? "" : params.firstArgs as String;
+  Future<ResponseModel<List<PlotModel>>> getAllPlotsByFarmId(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
-      AppEndpoints.mainBaseUrlDev,
-      AppEndpoints.getPlotsByFarmIdEndpoint + id
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.farmPlotEndpoint,
+    );
+
+    final HttpRequest request = HttpRequest.get(path: url, queryParams: {'farmId': argParams.firstArgs});
+    final result = await httpClient.execute(request);
+
+    switch (result.statusCode) {
+      case 200:
+        return mountResponseModelForPaginatedList<PlotModel>(
+          response: result,
+          fromListMap: (mapList) => mapList.map((e) => PlotModel.fromMap(e)).toList(),
+        );
+      default:
+        throw mountServerErrorInstance(request: request, response: result);
+    }
+  }
+
+  @override
+  Future<ResponseModel<List<SelectModel>>> getAllPlotsToSelect(NoParams noParams) async {
+    final String url = mountUrl(
+      AppEndpoints.baseUrlProtocolWithSecurity,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.farmPlotEndpoint + AppEndpoints.selectEndpoint,
     );
 
     final HttpRequest request = HttpRequest.get(path: url);
@@ -54,11 +73,31 @@ class PlotsDatasourceImpl with UriBuilder implements PlotsDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<SelectModel>(
           response: result,
-          fromMap: (map) => PaginationModel.fromMap(map, PlotModel.fromMap),
-          fromJson: (jsonString) =>
-              PaginationModel.fromJson(jsonString, PlotModel.fromMap),
+          fromListMap: (mapList) => mapList.map((e) => SelectModel.fromMap(e)).toList(),
+        );
+      default:
+        throw mountServerErrorInstance(request: request, response: result);
+    }
+  }
+
+  @override
+  Future<ResponseModel<PlotModel>> getPlotById(ArgParams argParams) async {
+    final String url = mountUrl(
+        AppEndpoints.baseUrlProtocolWithSecurity,
+        AppEndpoints.mainBaseUrl,
+        AppEndpoints.farmPlotEndpoint,
+    );
+
+    final HttpRequest request = HttpRequest.get(path: url, id: argParams.firstArgs);
+    final result = await httpClient.execute(request);
+
+    switch (result.statusCode) {
+      case 200:
+        return mountResponseModelForSingleItem<PlotModel>(
+          response: result,
+          fromMap: (map) => PlotModel.fromMap(map),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

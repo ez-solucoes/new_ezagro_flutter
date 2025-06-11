@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/features/data/models/company_models/company_model.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/register/company/company_page.dart';
-import 'package:new_ezagro_flutter/features/presenter/widgets/custom_drawer/custom_drawer_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/custom_striped_table/custom_striped_table_widget.dart';
 import '../../../../../consts/app_routes.dart';
 import '../../../../../design_system/colors/app_colors.dart';
@@ -18,12 +17,13 @@ class CompanyListPage extends StatelessWidget {
 
   static const String routePath = AppRoutes.appCompanyListPage;
 
-  static navigate() =>
+  static void navigate() =>
       Modular.to.navigate(routePath);
 
-  static push(ArgParams args) =>
-      Modular.to.pushNamed(routePath, arguments: args);
+  static Future<Object?> push() =>
+      Modular.to.pushNamed(routePath);
 
+  static void pop() => Modular.to.pop();
   const CompanyListPage({super.key});
 
   @override
@@ -35,11 +35,11 @@ class CompanyListPage extends StatelessWidget {
         child: Scaffold(
           backgroundColor: AppColors.transparent,
           resizeToAvoidBottomInset: false,
-          appBar: const CustomAppBarWidget(
-            appBarType: AppBarType.hamburgerAndTitle,
+          appBar: CustomAppBarWidget(
+            appBarType: AppBarType.centeredTitleAndBackArrow,
+            callback: () => CompanyListPage.pop(),
             title: AppStringsPortuguese.pluralCompanyTitle,
           ),
-          drawer: CustomDrawerWidget(),
           body: Stack(
             alignment: AlignmentDirectional.bottomCenter,
             children: [
@@ -65,7 +65,7 @@ class CompanyListPage extends StatelessWidget {
                             data: CompanyModel.convertToTableList(controller.filteredCompanies),
                             maxHeight:0.7* MediaQuery.of(context).size.height,
                               onTap: (index){
-                                CompanyPage.navigate(ArgParams(firstArgs: controller.filteredCompanies[index].id.toString()));
+                                CompanyPage.push(ArgParams(firstArgs: controller.filteredCompanies[index].id.toString()));
                               })))
                 ],
               ),

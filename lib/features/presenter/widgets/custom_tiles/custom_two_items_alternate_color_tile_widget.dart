@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../design_system/colors/app_colors.dart';
 import '../../../../design_system/typography/app_text_styles.dart';
-import '../../modules/purchase_request/purchase_request_create/purchase_request_create_controller.dart';
+import '../../miscellaneous/item_selection_controller.dart';
 
 class CustomTwoItemsAlternateColorTileWidget extends StatelessWidget {
   final int index;

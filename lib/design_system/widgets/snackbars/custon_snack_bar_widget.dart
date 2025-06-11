@@ -22,7 +22,7 @@ class CustomSnackBarWidget {
     required this.icon,
   });
 
-  static show(SnackBarType type, BuildContext context, String message) {
+  static dynamic show(SnackBarType type, BuildContext context, String message) {
     // Limpa quaisquer SnackBars anteriores para evitar sobreposição
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
 
@@ -36,7 +36,7 @@ class CustomSnackBarWidget {
     }
   }
 
-  static _buildSuccessSnackBar(BuildContext context, String message) {
+  static void _buildSuccessSnackBar(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
@@ -57,7 +57,7 @@ class CustomSnackBarWidget {
     ));
   }
 
-  static _buildErrorSnackBar(BuildContext context, String message) {
+  static void _buildErrorSnackBar(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
@@ -78,7 +78,7 @@ class CustomSnackBarWidget {
     ));
   }
 
-  static _buildAlertSnackBar(BuildContext context, String message) {
+  static void _buildAlertSnackBar(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),

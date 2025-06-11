@@ -32,7 +32,7 @@ abstract class CompanyControllerAbstract with Store {
     final getCompanies = Modular.get<GetAllCompaniesUsecase>();
     final result = await getCompanies(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      companies = success;
+      companies = success.data!;
       filteredCompanies = companies;
       return success;
     });
@@ -46,7 +46,7 @@ abstract class CompanyControllerAbstract with Store {
     final getCompany = Modular.get<GetCompanyByIdUsecase>();
     final result = await getCompany(args);
     result.fold((error) => error.friendlyMessage, (success) {
-      company = success;
+      company = success.data!;
       return success;
     });
 
@@ -54,7 +54,7 @@ abstract class CompanyControllerAbstract with Store {
   }
 
   @action
-  searchCompany(String searchText) {
+  void searchCompany(String searchText) {
     filteredCompanies = companies.where((e) =>
     (e.name?.toLowerCase() ?? "").contains(searchText.toLowerCase()) ||
         (e.legalDocumentNumber?.toLowerCase() ?? "").contains(searchText.toLowerCase())

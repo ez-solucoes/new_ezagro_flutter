@@ -18,9 +18,9 @@ import 'approvals_list_controller.dart';
 class ApprovalsListPage extends StatelessWidget {
   static const String routePath = AppRoutes.appApprovalsListPage;
 
-  static navigate() => Modular.to.navigate(routePath);
+  static void navigate() => Modular.to.navigate(routePath);
 
-  static push(ArgParams args) => Modular.to.pushNamed(routePath, arguments: args);
+  static Future<Object?> push(ArgParams args) => Modular.to.pushNamed(routePath, arguments: args);
 
   const ApprovalsListPage({super.key});
 

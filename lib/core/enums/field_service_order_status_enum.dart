@@ -7,9 +7,10 @@ enum FieldServiceOrderStatusEnum {
   completed,
   pendingApproval,
   cancelled,
+  none,
 }
 
-fieldServiceOrderStatusEnum(String type) {
+FieldServiceOrderStatusEnum fieldServiceOrderStatusEnum(String type) {
   switch (type) {
     case 'TO_START':
       return FieldServiceOrderStatusEnum.toStart;
@@ -23,10 +24,12 @@ fieldServiceOrderStatusEnum(String type) {
       return FieldServiceOrderStatusEnum.pendingApproval;
     case 'CANCELLED':
       return FieldServiceOrderStatusEnum.cancelled;
+    default:
+      return FieldServiceOrderStatusEnum.none;
   }
 }
 
-fieldServiceOrderStatusString(type) {
+String fieldServiceOrderStatusString(FieldServiceOrderStatusEnum type) {
   switch (type) {
     case FieldServiceOrderStatusEnum.toStart:
       return 'TO_START';

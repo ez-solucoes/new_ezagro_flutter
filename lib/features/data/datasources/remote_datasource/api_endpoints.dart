@@ -1,5 +1,5 @@
 class AppEndpoints {
-  static const mainBaseUrl = mainBaseUrlDev;
+  static const mainBaseUrl = mainBaseUrlProd;
   static const mainBaseUrlProd = 'api.ezagro.com.br';
   static const mainBaseUrlDev = 'api.dev.temp.ezagro.com.br';
 

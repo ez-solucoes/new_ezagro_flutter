@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_add_items_page.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_controller.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_delivery_page.dart';
 
 import '../../../../../consts/app_routes.dart';
@@ -37,6 +38,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final ItemType currentItemType = args.firstArgs as ItemType;
     final ItemSelectionController itemSelectionController = Modular.get<ItemSelectionController>();
+    final PurchaseRequestCreateController createController = Modular.get<PurchaseRequestCreateController>();
 
     final String firstLabel;
     final String secondLabel;
@@ -116,7 +118,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
+                          color: Colors.grey.withValues(alpha: 0.5),
                           spreadRadius: 2,
                           blurRadius: 5,
                           offset: const Offset(0, 3),
@@ -142,9 +144,8 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
                                 itemBuilder: (context, index) {
                                   final selectedItem = finalItemsList[index];
 
-                                  // --- AQUI ESTÃO AS VERIFICAÇÕES DE TIPO MAIS ROBUSTAS ---
                                   if (currentItemType == ItemType.product && selectedItem is ItemsEntity) {
-                                    final productItem = selectedItem; // O cast 'as ItemsEntity' não é mais necessário aqui
+                                    final productItem = selectedItem;
                                     return Theme(
                                       data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
                                       child: ExpansionTile(
@@ -242,7 +243,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
                                           CustomProductExpandedCardWidget(
                                             index: index,
                                             itemType: currentItemType,
-                                            onRemove: () => itemSelectionController.removeRequestedAgriculturalInput(agriculturalInputItem.productId!),
+                                            onRemove: () => itemSelectionController.removeRequestedAgriculturalInput(agriculturalInputItem.agriculturalInputId!),
                                             onEdit: () => PurchaseRequestCreateAddItemsPage.push(args: ArgParams(firstArgs: currentItemType)),
                                             firstColumnData: const [
                                               {'title': 'Medida', 'conteudo': 'UN'},
@@ -314,10 +315,13 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
                               );
                             } else {
                               if (currentItemType == ItemType.product) {
+                                createController.finalRequestedProducts = itemSelectionController.finalRequestedProducts;
                                 PurchaseRequestCreateListItemsPage.push(args: ArgParams(firstArgs: ItemType.company));
                               } else if (currentItemType == ItemType.agriculturalInput) {
+                                createController.finalRequestedAgriculturalInputs = itemSelectionController.finalRequestedAgriculturalInputs;
                                 PurchaseRequestCreateListItemsPage.push(args: ArgParams(firstArgs: ItemType.company));
                               } else if (currentItemType == ItemType.company) {
+                                createController.finalRequestedCompanies = itemSelectionController.finalRequestedCompanies;
                                 PurchaseRequestCreateDeliveryPage.push();
                               }
                             }
@@ -346,9 +350,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
         return 'Empresas da Requisição';
       case ItemType.agriculturalInput:
         return 'Insumos da Requisição';
-      default:
-        return 'Itens da Requisição';
-    }
+      }
   }
 
   String _getAddItemsText(ItemType type) {
@@ -359,9 +361,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
         return 'Adicionar Empresas';
       case ItemType.agriculturalInput:
         return 'Adicionar Insumos';
-      default:
-        return 'Adicionar Itens';
-    }
+      }
   }
 
   String _getEmptyListMessage(ItemType type) {
@@ -372,9 +372,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
         return 'Nenhuma empresa selecionada para a requisição.';
       case ItemType.agriculturalInput:
         return 'Nenhum insumo selecionado para a requisição.';
-      default:
-        return 'Nenhum item selecionado para a requisição.';
-    }
+      }
   }
 
   String _getEmptySelectionMessage(ItemType type) {
@@ -385,8 +383,6 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
         return 'Selecione pelo menos uma empresa.';
       case ItemType.agriculturalInput:
         return 'Selecione pelo menos um insumo.';
-      default:
-        return 'Selecione pelo menos um item.';
-    }
+      }
   }
 }

@@ -10,7 +10,6 @@ import '../../../core/usecase/usecase.dart';
 import '../../domain/entities/items_entities/items_entity.dart';
 import '../../domain/entities/select_entities/select_entity.dart';
 import '../../domain/params/arg_params/arg_params.dart';
-import '../../domain/usecases/agricultural_input_usecases/get_all_agricultural_inputs_by_class_id_to_select_usecases/get_all_agricultural_inputs_by_class_id_to_select_usecase.dart';
 import '../../domain/usecases/company_usecases/company_segment_usecases/get_all_company_segments_to_select_usecases/get_all_company_segments_to_select_usecases.dart';
 import '../../domain/usecases/company_usecases/get_all_companies_to_select_usecase/get_all_companies_to_select_usecase.dart';
 import '../../domain/usecases/company_usecases/get_all_companies_usecase/get_all_companies_usecase.dart';
@@ -25,6 +24,18 @@ class ItemSelectionController = ItemSelectionControllerAbstract
     with _$ItemSelectionController;
 
 abstract class ItemSelectionControllerAbstract with Store {
+  ScrollController scrollController = ScrollController();
+  @observable
+  int agriculturalInputCurrentPage = 1;
+
+  @observable
+  bool isAgriculturalInputLoadingMore = false;
+
+  @observable
+  bool hasMoreAgriculturalInputs = true;
+
+  final int agriculturalInputPageLimit = 20;
+
   @observable
   bool isFirstLoading = false;
   @observable
@@ -32,7 +43,6 @@ abstract class ItemSelectionControllerAbstract with Store {
   @observable
   String searchQuery = '';
 
-  // Observáveis e listas de produtos
   @observable
   bool isProductLoading = false;
   @observable
@@ -43,13 +53,13 @@ abstract class ItemSelectionControllerAbstract with Store {
   @observable
   List<SelectEntity> productTypesListToSelect = ObservableList<SelectEntity>();
   @observable
-  List<SelectEntity> filteredProductTypeListToSelect = ObservableList<SelectEntity>();
+  List<SelectEntity> filteredProductTypeListToSelect =
+  ObservableList<SelectEntity>();
   @observable
   List<ItemsEntity> requestedProductItems = ObservableList<ItemsEntity>();
   @observable
   List<ItemsEntity> finalRequestedProducts = ObservableList<ItemsEntity>();
 
-  // Observáveis e listas de Empresas
   @observable
   bool isCompanyLoading = false;
   @observable
@@ -61,7 +71,8 @@ abstract class ItemSelectionControllerAbstract with Store {
   @observable
   List<SelectEntity> companySegmentsListToSelect = ObservableList<SelectEntity>();
   @observable
-  List<SelectEntity> filteredCompanySegmentsListToSelect = ObservableList<SelectEntity>();
+  List<SelectEntity> filteredCompanySegmentsListToSelect =
+  ObservableList<SelectEntity>();
   @observable
   Set<int> selectedCompanyIds = ObservableSet<int>();
   @observable
@@ -73,11 +84,11 @@ abstract class ItemSelectionControllerAbstract with Store {
   @observable
   List<SelectEntity> finalRequestedCompanies = ObservableList<SelectEntity>();
 
-  //Observáveis e lista de insumos
   @observable
   bool isAgriculturalInputLoading = false;
   @observable
-  List<SelectEntity> agriculturalInputListToSelect = ObservableList<SelectEntity>();
+  List<SelectEntity> agriculturalInputListToSelect =
+  ObservableList<SelectEntity>();
   List<SelectEntity> allAgriculturalInputs = [];
   @observable
   List<SelectEntity> agriculturalInputClassesListToSelect =
@@ -86,9 +97,31 @@ abstract class ItemSelectionControllerAbstract with Store {
   List<SelectEntity> filteredAgriculturalInputClassesListToSelect =
   ObservableList<SelectEntity>();
   @observable
-  List<ItemsEntity> requestedAgriculturalInputItems = ObservableList<ItemsEntity>();
+  List<ItemsEntity> requestedAgriculturalInputItems =
+  ObservableList<ItemsEntity>();
   @observable
-  List<ItemsEntity> finalRequestedAgriculturalInputs = ObservableList<ItemsEntity>();
+  List<ItemsEntity> finalRequestedAgriculturalInputs =
+  ObservableList<ItemsEntity>();
+
+  ItemSelectionControllerAbstract() {
+    scrollController.addListener(agriculturalInputScrollListener);
+  }
+
+  @action
+  void agriculturalInputScrollListener() {
+    if (currentLoadedItemType == ItemType.agriculturalInput &&
+        scrollController.position.pixels >=
+            scrollController.position.maxScrollExtent * 0.9 &&
+        !isAgriculturalInputLoadingMore &&
+        hasMoreAgriculturalInputs) {
+      loadMoreAgriculturalInputs();
+    }
+  }
+
+  void dispose() {
+    scrollController.removeListener(agriculturalInputScrollListener);
+    scrollController.dispose();
+  }
 
   @computed
   List get filteredAddItemsList {
@@ -117,7 +150,6 @@ abstract class ItemSelectionControllerAbstract with Store {
                   .toLowerCase()
                   .contains(searchQuery.toLowerCase());
         } else {
-          // ItemType.company
           final companyItem = item as SelectEntity;
           return companyItem.label != null &&
               companyItem.label!.toLowerCase().contains(searchQuery.toLowerCase());
@@ -127,7 +159,12 @@ abstract class ItemSelectionControllerAbstract with Store {
   }
 
   @action
-  void updateSearchQuery(String query) => searchQuery = query;
+  void updateSearchQuery(String query) {
+    searchQuery = query;
+    if (currentLoadedItemType == ItemType.agriculturalInput) {
+      loadInitialAgriculturalInputs(isSearch: true);
+    }
+  }
 
   @action
   Future<void> loadItems(ItemType type) async {
@@ -151,6 +188,7 @@ abstract class ItemSelectionControllerAbstract with Store {
       isCompanyLoading = false;
     } else if (type == ItemType.agriculturalInput) {
       isAgriculturalInputLoading = true;
+      await loadInitialAgriculturalInputs();
       await getAllAgriculturalInputsToSelect();
       await getAllAgriculturalInputClassesToSelect();
       isAgriculturalInputLoading = false;
@@ -163,7 +201,6 @@ abstract class ItemSelectionControllerAbstract with Store {
     searchQuery = '';
     currentLoadedItemType = null;
 
-    // Limpar estados de produtos
     isProductLoading = false;
     productListToSelect.clear();
     allProducts.clear();
@@ -172,7 +209,6 @@ abstract class ItemSelectionControllerAbstract with Store {
     requestedProductItems.clear();
     finalRequestedProducts.clear();
 
-    // Limpar estados de empresas
     isCompanyLoading = false;
     companiesListToSelect.clear();
     allCompaniesToSelect.clear();
@@ -185,8 +221,10 @@ abstract class ItemSelectionControllerAbstract with Store {
     companySegmentNames.clear();
     finalRequestedCompanies.clear();
 
-    // Limpar estados de insumos
     isAgriculturalInputLoading = false;
+    isAgriculturalInputLoadingMore = false;
+    agriculturalInputCurrentPage = 1;
+    hasMoreAgriculturalInputs = true;
     agriculturalInputListToSelect.clear();
     allAgriculturalInputs.clear();
     agriculturalInputClassesListToSelect.clear();
@@ -195,7 +233,6 @@ abstract class ItemSelectionControllerAbstract with Store {
     finalRequestedAgriculturalInputs.clear();
   }
 
-  //Actions de produtos
   @action
   Future<void> getAllProductsToSelect() async {
     isProductLoading = true;
@@ -205,8 +242,8 @@ abstract class ItemSelectionControllerAbstract with Store {
     result.fold(
           (error) => error.friendlyMessage,
           (success) {
-        allProducts = success;
-        productListToSelect = ObservableList<SelectEntity>.of(success);
+        allProducts = success.data!;
+        productListToSelect = ObservableList<SelectEntity>.of(success.data!);
         requestedProductItems.clear();
         requestedProductItems.addAll(allProducts.map((selectEntity) =>
             ItemsEntity(
@@ -222,13 +259,14 @@ abstract class ItemSelectionControllerAbstract with Store {
   @action
   Future<void> getAllProductTypesToSelect() async {
     isProductTypeLoading = true;
-    final getAllProductTypesToSelect = Modular.get<GetAllProductTypesToSelectUsecase>();
+    final getAllProductTypesToSelect =
+    Modular.get<GetAllProductTypesToSelectUsecase>();
     final result = await getAllProductTypesToSelect(NoParams());
 
     result.fold(
           (error) => debugPrint('Error loading product types: ${error.friendlyMessage}'),
           (success) =>
-      productTypesListToSelect = ObservableList<SelectEntity>.of(success),
+      productTypesListToSelect = ObservableList<SelectEntity>.of(success.data!),
     );
     isProductTypeLoading = false;
   }
@@ -312,25 +350,24 @@ abstract class ItemSelectionControllerAbstract with Store {
     Modular.get<GetAllProductsByTypeIdToSelectUsecase>();
     final result = await getAllProductsByTypeIdToSelectUsecase(ArgParams(
         firstArgs: filteredProductTypeListToSelect.map((e) => e.value).toList()));
-    result
-        .fold((error) => debugPrint('Error filtering products: ${error.friendlyMessage}'),
+    result.fold(
+            (error) => debugPrint('Error filtering products: ${error.friendlyMessage}'),
             (success) {
           final currentRequestedQuantities = Map.fromEntries(requestedProductItems
               .map((item) => MapEntry(item.productId, item.requestedQuantity)));
           requestedProductItems.clear();
           productListToSelect.clear();
-          requestedProductItems.addAll(success.map((selectEntity) =>
+          requestedProductItems.addAll(success.data!.map((selectEntity) =>
               ItemsEntity(
                 productId: selectEntity.value,
                 productName: selectEntity.label,
                 requestedQuantity: currentRequestedQuantities[selectEntity.value] ?? 0,
               )));
-          productListToSelect = ObservableList<SelectEntity>.of(success);
+          productListToSelect = ObservableList<SelectEntity>.of(success.data!);
         });
     isProductLoading = false;
   }
 
-//Actions de Empresas
   @action
   Future<void> getAllCompanies() async {
     isCompanyLoading = true;
@@ -339,7 +376,7 @@ abstract class ItemSelectionControllerAbstract with Store {
 
     result.fold(
           (error) => debugPrint('Error loading companies: ${error.friendlyMessage}'),
-          (success) => companiesList = ObservableList<CompanyEntity>.of(success),
+          (success) => companiesList = ObservableList<CompanyEntity>.of(success.data!),
     );
     isCompanyLoading = false;
   }
@@ -355,8 +392,8 @@ abstract class ItemSelectionControllerAbstract with Store {
           (error) =>
           debugPrint('Error loading companies for select: ${error.friendlyMessage}'),
           (success) {
-        allCompaniesToSelect = success;
-        companiesListToSelect = ObservableList<SelectEntity>.of(success);
+        allCompaniesToSelect = success.data!;
+        companiesListToSelect = ObservableList<SelectEntity>.of(success.data!);
       },
     );
     isCompanyLoading = false;
@@ -383,9 +420,9 @@ abstract class ItemSelectionControllerAbstract with Store {
             (error) =>
             debugPrint('Error loading company segments: ${error.friendlyMessage}'),
             (success) {
-          companySegmentsListToSelect = ObservableList<SelectEntity>.of(success);
+          companySegmentsListToSelect = ObservableList<SelectEntity>.of(success.data!);
           companySegmentNames = ObservableMap.of(
-              Map.fromEntries(success.map((e) => MapEntry(e.value, e.label ?? ''))));
+              Map.fromEntries(success.data!.map((e) => MapEntry(e.value, e.label ?? ''))));
         });
     isCompanyLoading = false;
   }
@@ -513,8 +550,7 @@ abstract class ItemSelectionControllerAbstract with Store {
       return matchesSegment && matchesCity && matchesState;
     }).toList();
 
-    companiesListToSelect =
-    ObservableList<SelectEntity>.of(filteredCompaniesSelectEntity);
+    companiesListToSelect = ObservableList<SelectEntity>.of(filteredCompaniesSelectEntity);
 
     isCompanyLoading = false;
   }
@@ -523,19 +559,18 @@ abstract class ItemSelectionControllerAbstract with Store {
   Future<void> getAllAgriculturalInputsToSelect() async {
     final getAllAgriculturalInputsToSelect =
     Modular.get<GetAllAgriculturalInputsToSelectUsecase>();
-    final result = await getAllAgriculturalInputsToSelect(NoParams());
+    final result = await getAllAgriculturalInputsToSelect(ArgParams(secondArgs: '10'));
     result.fold((error) => error.friendlyMessage, (success) {
-      allAgriculturalInputs = success;
-      agriculturalInputListToSelect = ObservableList<SelectEntity>.of(success);
+      allAgriculturalInputs = success.data!;
+      agriculturalInputListToSelect = ObservableList<SelectEntity>.of(success.data!);
       requestedAgriculturalInputItems.clear();
-      requestedAgriculturalInputItems
-          .addAll(allAgriculturalInputs.map((selectEntity) =>
+      requestedAgriculturalInputItems.addAll(allAgriculturalInputs.map((selectEntity) =>
           ItemsEntity(
-            productId: selectEntity.value,
+            agriculturalInputId: selectEntity.value,
             productName: selectEntity.label,
             requestedQuantity: 0,
           )));
-      return success;
+      return success.data!;
     });
   }
 
@@ -545,16 +580,15 @@ abstract class ItemSelectionControllerAbstract with Store {
     Modular.get<GetAllAgriculturalInputClassesToSelectUsecase>();
     final result = await getAllAgriculturalInputClassesToSelectUsecase(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      agriculturalInputClassesListToSelect = success;
+      agriculturalInputClassesListToSelect = success.data!;
       return success;
     });
   }
 
   @action
   void incrementRequestedAgriculturalInputQuantity(int agriculturalInputId) {
-    final index =
-    requestedAgriculturalInputItems.indexWhere((item) =>
-    item.productId == agriculturalInputId);
+    final index = requestedAgriculturalInputItems.indexWhere((item) =>
+    item.agriculturalInputId == agriculturalInputId);
     if (index != -1) {
       final currentItem = requestedAgriculturalInputItems[index];
       final updatedItem =
@@ -566,9 +600,8 @@ abstract class ItemSelectionControllerAbstract with Store {
 
   @action
   void decrementRequestedAgriculturalInputQuantity(int agriculturalInputId) {
-    final index =
-    requestedAgriculturalInputItems.indexWhere((item) =>
-    item.productId == agriculturalInputId);
+    final index = requestedAgriculturalInputItems.indexWhere((item) =>
+    item.agriculturalInputId == agriculturalInputId);
     if (index != -1) {
       final currentItem = requestedAgriculturalInputItems[index];
       if (currentItem.requestedQuantity > 0) {
@@ -583,7 +616,7 @@ abstract class ItemSelectionControllerAbstract with Store {
   @action
   void removeRequestedAgriculturalInput(int agriculturalInputId) {
     requestedAgriculturalInputItems.removeWhere((item) =>
-    item.productId == agriculturalInputId);
+    item.agriculturalInputId == agriculturalInputId);
     updateFinalRequestedAgriculturalInput();
   }
 
@@ -599,8 +632,8 @@ abstract class ItemSelectionControllerAbstract with Store {
   void updateSelectedAgriculturalInputClasses(Set<int> selectedIds) {
     filteredAgriculturalInputClassesListToSelect.clear();
     for (var id in selectedIds) {
-      final type = agriculturalInputClassesListToSelect
-          .firstWhere((element) => element.value == id);
+      final type =
+      agriculturalInputClassesListToSelect.firstWhere((element) => element.value == id);
       filteredAgriculturalInputClassesListToSelect.add(type);
     }
     applyAgriculturalFilters();
@@ -615,49 +648,191 @@ abstract class ItemSelectionControllerAbstract with Store {
   @action
   Future<void> applyAgriculturalFilters() async {
     isAgriculturalInputLoading = true;
-    if (filteredAgriculturalInputClassesListToSelect.isEmpty) {
-      final currentRequestedQuantities = Map.fromEntries(requestedAgriculturalInputItems
-          .map((item) => MapEntry(item.productId, item.requestedQuantity)));
-      requestedAgriculturalInputItems.clear();
-      agriculturalInputListToSelect.clear();
-      requestedAgriculturalInputItems
-          .addAll(allAgriculturalInputs.map((selectEntity) =>
-          ItemsEntity(
-            productId: selectEntity.value,
-            productName: selectEntity.label,
-            requestedQuantity: currentRequestedQuantities[selectEntity.value] ?? 0,
-          )));
-      agriculturalInputListToSelect.addAll(allAgriculturalInputs);
-      isAgriculturalInputLoading = false;
-      return;
-    }
+    agriculturalInputCurrentPage = 1;
+    hasMoreAgriculturalInputs = true;
 
-    final getAllAgriculturalInputsByClassIdToSelectUsecase = Modular.get<
-        GetAllAgriculturalInputsByClassIdToSelectUsecase>();
-    final result = await getAllAgriculturalInputsByClassIdToSelectUsecase(ArgParams(
-        firstArgs: filteredAgriculturalInputClassesListToSelect
-            .map((e) => e.value)
-            .toList()));
+    final currentRequestedQuantities = Map.fromEntries(
+        requestedAgriculturalInputItems.where((item) => item.requestedQuantity > 0).map((item) =>
+            MapEntry(item.agriculturalInputId, item.requestedQuantity)));
+
+    requestedAgriculturalInputItems.clear();
+    agriculturalInputListToSelect.clear();
+
+    final argParams = ArgParams(
+      firstArgs: agriculturalInputCurrentPage,
+      secondArgs: agriculturalInputPageLimit,
+      thirdArgs: searchQuery.isNotEmpty ? searchQuery : null,
+      fourthArgs: filteredAgriculturalInputClassesListToSelect.isNotEmpty
+          ? filteredAgriculturalInputClassesListToSelect.map((e) => e.value).toList()
+          : null,
+    );
+
+    final getAllAgriculturalInputsToSelect =
+    Modular.get<GetAllAgriculturalInputsToSelectUsecase>();
+    final result = await getAllAgriculturalInputsToSelect(argParams);
 
     result.fold(
-          (error) => debugPrint('Error filtering agricultural inputs: ${error.friendlyMessage}'),
-          (success) {
-        final currentRequestedQuantities = Map.fromEntries(
-            requestedAgriculturalInputItems.map((item) =>
-                MapEntry(item.productId, item.requestedQuantity)));
+          (error) {
+        debugPrint('Error filtering agricultural inputs: ${error.friendlyMessage}');
+        hasMoreAgriculturalInputs = false;
+      },
+          (responseModel) {
+        if (responseModel.data != null && responseModel.data!.isNotEmpty) {
+          final newItems = responseModel.data!
+              .map((selectEntity) => ItemsEntity(
+            agriculturalInputId: selectEntity.value,
+            productName: selectEntity.label,
+            requestedQuantity:
+            currentRequestedQuantities[selectEntity.value] ?? 0,
+          ))
+              .toList();
+          requestedAgriculturalInputItems.addAll(newItems);
 
-        requestedAgriculturalInputItems.clear();
-        agriculturalInputListToSelect.clear();
+          agriculturalInputListToSelect = ObservableList<SelectEntity>.of(
+              requestedAgriculturalInputItems
+                  .map((e) => SelectEntity(
+                  value: e.agriculturalInputId!, label: e.productName))
+                  .toList());
+        }
 
-        requestedAgriculturalInputItems.addAll(success.map((selectEntity) => ItemsEntity(
-          productId: selectEntity.value,
-          productName: selectEntity.label,
-          requestedQuantity: currentRequestedQuantities[selectEntity.value] ?? 0,
-        )));
-        agriculturalInputListToSelect = ObservableList<SelectEntity>.of(success);
+        if (responseModel.pagination != null) {
+          hasMoreAgriculturalInputs = ((responseModel.pagination?.page ?? 0) *
+              (responseModel.pagination?.pageSize ?? 0)) <
+              (responseModel.pagination?.total ?? 0);
+        } else {
+          hasMoreAgriculturalInputs = (responseModel.data?.length ?? 0) == agriculturalInputPageLimit;
+        }
       },
     );
 
     isAgriculturalInputLoading = false;
+  }
+
+  @action
+  Future<void> loadInitialAgriculturalInputs({bool isSearch = false}) async {
+    isAgriculturalInputLoading = true;
+    agriculturalInputCurrentPage = 1;
+    hasMoreAgriculturalInputs = true;
+
+    if (!isSearch) {
+      requestedAgriculturalInputItems.clear();
+      agriculturalInputListToSelect.clear();
+    }
+
+    final argParams = ArgParams(
+      firstArgs: agriculturalInputCurrentPage,
+      secondArgs: agriculturalInputPageLimit,
+      thirdArgs: searchQuery.isNotEmpty ? searchQuery : null,
+      fourthArgs: filteredAgriculturalInputClassesListToSelect.isNotEmpty
+          ? filteredAgriculturalInputClassesListToSelect.map((e) => e.value).toList()
+          : null,
+    );
+
+    final getAllAgriculturalInputsToSelect =
+    Modular.get<GetAllAgriculturalInputsToSelectUsecase>();
+    final result = await getAllAgriculturalInputsToSelect(argParams);
+
+    result.fold(
+          (error) {
+        debugPrint('Erro ao carregar insumos inicialmente: ${error.friendlyMessage}');
+        hasMoreAgriculturalInputs = false;
+      },
+          (responseModel) {
+        if (responseModel.data != null && responseModel.data!.isNotEmpty) {
+          final newItems = responseModel.data!
+              .map((selectEntity) => ItemsEntity(
+            agriculturalInputId: selectEntity.value,
+            productName: selectEntity.label,
+            requestedQuantity: 0,
+          ))
+              .toList();
+
+          requestedAgriculturalInputItems.addAll(newItems);
+
+          agriculturalInputListToSelect = ObservableList<SelectEntity>.of(
+              requestedAgriculturalInputItems
+                  .map((e) => SelectEntity(
+                  value: e.agriculturalInputId!, label: e.productName))
+                  .toList());
+        }
+
+        if (responseModel.pagination != null) {
+          hasMoreAgriculturalInputs = (responseModel.pagination!.page! *
+              responseModel.pagination!.pageSize!) <
+              responseModel.pagination!.total!;
+        } else {
+          hasMoreAgriculturalInputs = (responseModel.data?.length ?? 0) == agriculturalInputPageLimit;
+        }
+      },
+    );
+    isAgriculturalInputLoading = false;
+  }
+
+  @action
+  Future<void> loadMoreAgriculturalInputs() async {
+    if (isAgriculturalInputLoadingMore || !hasMoreAgriculturalInputs) return;
+
+    isAgriculturalInputLoadingMore = true;
+    agriculturalInputCurrentPage++;
+
+    final argParams = ArgParams(
+      firstArgs: agriculturalInputCurrentPage,
+      secondArgs: agriculturalInputPageLimit,
+      thirdArgs: searchQuery.isNotEmpty ? searchQuery : null,
+      fourthArgs: filteredAgriculturalInputClassesListToSelect.isNotEmpty
+          ? filteredAgriculturalInputClassesListToSelect.map((e) => e.value).toList()
+          : null,
+    );
+
+    final getAllAgriculturalInputsToSelect =
+    Modular.get<GetAllAgriculturalInputsToSelectUsecase>();
+    final result = await getAllAgriculturalInputsToSelect(argParams);
+
+    result.fold(
+          (error) {
+        debugPrint('Erro ao carregar mais insumos: ${error.friendlyMessage}');
+        agriculturalInputCurrentPage--;
+      },
+          (responseModel) {
+        if (responseModel.data != null && responseModel.data!.isNotEmpty) {
+          final newItems = responseModel.data!
+              .map((selectEntity) => ItemsEntity(
+            agriculturalInputId: selectEntity.value,
+            productName: selectEntity.label,
+            requestedQuantity: 0,
+          ))
+              .toList();
+
+          final currentRequestedQuantities = Map.fromEntries(
+              requestedAgriculturalInputItems.where((item) => item.requestedQuantity > 0).map((item) =>
+                  MapEntry(item.agriculturalInputId, item.requestedQuantity)));
+
+          for (var newItem in newItems) {
+            if (currentRequestedQuantities.containsKey(newItem.agriculturalInputId)) {
+              newItem = newItem.copyWith(
+                  requestedQuantity:
+                  currentRequestedQuantities[newItem.agriculturalInputId]);
+            }
+          }
+
+          requestedAgriculturalInputItems.addAll(newItems);
+
+          agriculturalInputListToSelect = ObservableList<SelectEntity>.of(
+              requestedAgriculturalInputItems
+                  .map((e) => SelectEntity(
+                  value: e.agriculturalInputId!, label: e.productName))
+                  .toList());
+        }
+
+        if (responseModel.pagination != null) {
+          hasMoreAgriculturalInputs = ((responseModel.pagination?.page ?? 0) *
+              (responseModel.pagination?.pageSize ?? 0)) <
+              (responseModel.pagination?.total ?? 0);
+        } else {
+          hasMoreAgriculturalInputs = (responseModel.data?.length ?? 0) == agriculturalInputPageLimit;
+        }
+      },
+    );
+    isAgriculturalInputLoadingMore = false;
   }
 }

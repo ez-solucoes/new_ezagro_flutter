@@ -17,6 +17,60 @@ mixin _$ItemSelectionController on ItemSelectionControllerAbstract, Store {
               name: 'ItemSelectionControllerAbstract.filteredAddItemsList'))
       .value;
 
+  late final _$agriculturalInputCurrentPageAtom = Atom(
+      name: 'ItemSelectionControllerAbstract.agriculturalInputCurrentPage',
+      context: context);
+
+  @override
+  int get agriculturalInputCurrentPage {
+    _$agriculturalInputCurrentPageAtom.reportRead();
+    return super.agriculturalInputCurrentPage;
+  }
+
+  @override
+  set agriculturalInputCurrentPage(int value) {
+    _$agriculturalInputCurrentPageAtom
+        .reportWrite(value, super.agriculturalInputCurrentPage, () {
+      super.agriculturalInputCurrentPage = value;
+    });
+  }
+
+  late final _$isAgriculturalInputLoadingMoreAtom = Atom(
+      name: 'ItemSelectionControllerAbstract.isAgriculturalInputLoadingMore',
+      context: context);
+
+  @override
+  bool get isAgriculturalInputLoadingMore {
+    _$isAgriculturalInputLoadingMoreAtom.reportRead();
+    return super.isAgriculturalInputLoadingMore;
+  }
+
+  @override
+  set isAgriculturalInputLoadingMore(bool value) {
+    _$isAgriculturalInputLoadingMoreAtom
+        .reportWrite(value, super.isAgriculturalInputLoadingMore, () {
+      super.isAgriculturalInputLoadingMore = value;
+    });
+  }
+
+  late final _$hasMoreAgriculturalInputsAtom = Atom(
+      name: 'ItemSelectionControllerAbstract.hasMoreAgriculturalInputs',
+      context: context);
+
+  @override
+  bool get hasMoreAgriculturalInputs {
+    _$hasMoreAgriculturalInputsAtom.reportRead();
+    return super.hasMoreAgriculturalInputs;
+  }
+
+  @override
+  set hasMoreAgriculturalInputs(bool value) {
+    _$hasMoreAgriculturalInputsAtom
+        .reportWrite(value, super.hasMoreAgriculturalInputs, () {
+      super.hasMoreAgriculturalInputs = value;
+    });
+  }
+
   late final _$isFirstLoadingAtom = Atom(
       name: 'ItemSelectionControllerAbstract.isFirstLoading', context: context);
 
@@ -599,9 +653,42 @@ mixin _$ItemSelectionController on ItemSelectionControllerAbstract, Store {
         .run(() => super.applyAgriculturalFilters());
   }
 
+  late final _$loadInitialAgriculturalInputsAsyncAction = AsyncAction(
+      'ItemSelectionControllerAbstract.loadInitialAgriculturalInputs',
+      context: context);
+
+  @override
+  Future<void> loadInitialAgriculturalInputs({bool isSearch = false}) {
+    return _$loadInitialAgriculturalInputsAsyncAction
+        .run(() => super.loadInitialAgriculturalInputs(isSearch: isSearch));
+  }
+
+  late final _$loadMoreAgriculturalInputsAsyncAction = AsyncAction(
+      'ItemSelectionControllerAbstract.loadMoreAgriculturalInputs',
+      context: context);
+
+  @override
+  Future<void> loadMoreAgriculturalInputs() {
+    return _$loadMoreAgriculturalInputsAsyncAction
+        .run(() => super.loadMoreAgriculturalInputs());
+  }
+
   late final _$ItemSelectionControllerAbstractActionController =
       ActionController(
           name: 'ItemSelectionControllerAbstract', context: context);
+
+  @override
+  void agriculturalInputScrollListener() {
+    final _$actionInfo =
+        _$ItemSelectionControllerAbstractActionController.startAction(
+            name:
+                'ItemSelectionControllerAbstract.agriculturalInputScrollListener');
+    try {
+      return super.agriculturalInputScrollListener();
+    } finally {
+      _$ItemSelectionControllerAbstractActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void updateSearchQuery(String query) {
@@ -914,6 +1001,9 @@ mixin _$ItemSelectionController on ItemSelectionControllerAbstract, Store {
   @override
   String toString() {
     return '''
+agriculturalInputCurrentPage: ${agriculturalInputCurrentPage},
+isAgriculturalInputLoadingMore: ${isAgriculturalInputLoadingMore},
+hasMoreAgriculturalInputs: ${hasMoreAgriculturalInputs},
 isFirstLoading: ${isFirstLoading},
 currentLoadedItemType: ${currentLoadedItemType},
 searchQuery: ${searchQuery},

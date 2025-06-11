@@ -7,7 +7,7 @@ import '../../../entities/select_entities/select_entity.dart';
 import '../../../params/arg_params/arg_params.dart';
 
 abstract class FarmPlotRepository {
-  Future<Either<ApplicationError, List<FarmPlotEntity>>> getAllFarmPlots(ArgParams argParams);
-  Future<Either<ApplicationError, List<SelectEntity>>> getAllFarmPlotsToSelect(ArgParams argParams);
+  Future<Either<ApplicationError, ResponseEntity<List<FarmPlotEntity>>>> getAllFarmPlotsByFarmId(ArgParams argParams);
+  Future<Either<ApplicationError, ResponseEntity<List<SelectEntity>>>> getAllFarmPlotsByFarmIdToSelect(ArgParams argParams);
   Future<Either<ApplicationError, ResponseEntity<FarmPlotEntity>>> getFarmPlotById(ArgParams argParams);
 }

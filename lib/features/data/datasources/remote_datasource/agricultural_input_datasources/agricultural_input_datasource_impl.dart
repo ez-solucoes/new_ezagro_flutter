@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:new_ezagro_flutter/core/http_client/http_client.dart';
 import 'package:new_ezagro_flutter/core/mixins/uri_builder_mixin.dart';
@@ -8,6 +7,7 @@ import 'package:new_ezagro_flutter/features/data/models/select_models/select_mod
 
 import '../../../../../core/http_client/http_client_helper.dart';
 import '../../../../../core/http_client/http_request.dart';
+import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../models/response_models/response_model.dart';
 import '../api_endpoints.dart';
 import 'agricultural_input_datasource.dart';
@@ -18,25 +18,21 @@ class AgriculturalInputDatasourceImpl with UriBuilder implements AgriculturalInp
   AgriculturalInputDatasourceImpl({required this.httpClient});
 
   @override
-  Future<ResponseModel<AgriculturalInputModel>> getAgriculturalInputById(int id) async {
+  Future<ResponseModel<AgriculturalInputModel>> getAgriculturalInputById(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
       AppEndpoints.agriculturalInputEndpoint,
     );
 
-    final HttpRequest request = HttpRequest.get(path: url, id: id);
+    final HttpRequest request = HttpRequest.get(path: url, id: argParams.firstArgs);
     final result = await httpClient.execute(request);
 
     switch (result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForSingleItem<AgriculturalInputModel>(
           response: result,
           fromMap: (map) => AgriculturalInputModel.fromMap(map),
-          fromJson: (jsonString) {
-            final Map<String, dynamic> jsonMap = jsonDecode(jsonString);
-            return AgriculturalInputModel.fromJson(jsonEncode(jsonMap));
-          },
         );
         default:
           throw mountServerErrorInstance(request: request, response: result);
@@ -44,28 +40,27 @@ class AgriculturalInputDatasourceImpl with UriBuilder implements AgriculturalInp
   }
 
   @override
-  Future<List<AgriculturalInputModel>> getAllAgriculturalInputs() async {
+  Future<ResponseModel<List<AgriculturalInputModel>>> getAllAgriculturalInputs(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
       AppEndpoints.agriculturalInputEndpoint,
     );
 
-    final HttpRequest request = HttpRequest.get(path: url);
+    final Map<String, dynamic> queryParams = argParams.mountQueryParam(
+      firstParamName: 'page',
+      secondParamName: 'pageSize',
+      thirdParamName: 'search',
+    );
+
+    final HttpRequest request = HttpRequest.get(path: url, queryParams: queryParams);
     final result = await httpClient.execute(request);
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<AgriculturalInputModel>(
           response: result,
-          fromListMap: (map) =>
-              (map).map((e) => AgriculturalInputModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList
-                .map((json) => AgriculturalInputModel.fromJson(jsonEncode(json)))
-                .toList();
-          },
+          fromListMap: (map) => (map).map((e) => AgriculturalInputModel.fromMap(e)).toList(),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -73,27 +68,86 @@ class AgriculturalInputDatasourceImpl with UriBuilder implements AgriculturalInp
   }
 
   @override
-  Future<List<SelectModel>> getAllAgriculturalInputsToSelect() async {
+  Future<ResponseModel<List<SelectModel>>> getAllAgriculturalInputsToSelect(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
       AppEndpoints.agriculturalInputEndpoint + AppEndpoints.selectEndpoint,
     );
 
-    final HttpRequest request = HttpRequest.get(path: url);
+    final Map<String, dynamic> queryParams = argParams.mountQueryParam(
+      firstParamName: 'page',
+      secondParamName: 'pageSize',
+      thirdParamName: 'trademark',
+      fourthParamName: 'ClassId',
+    );
+
+    final HttpRequest request = HttpRequest.get(path: url, queryParams: queryParams);
     final result = await httpClient.execute(request);
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList(
           response: result,
-          fromListMap: (map) => (map).map((e) => SelectModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList
-                .map((json) => SelectModel.fromJson(jsonEncode(json)))
-                .toList();
-          },
+          fromListMap: (mapList) => mapList.map((e) => SelectModel.fromMap(e)).toList(),
+        );
+      default:
+        throw mountServerErrorInstance(request: request, response: result);
+    }
+  }
+
+  @override
+  Future<ResponseModel<List<AgriculturalInputModel>>> getAllAgriculturalInputsByClassId(ArgParams argParams) async {
+    final String url = mountUrl(
+      AppEndpoints.baseUrlProtocolWithSecurity,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.agriculturalInputEndpoint,
+    );
+
+    final Map<String, dynamic> queryParams = argParams.mountQueryParam(
+      firstParamName: 'classId',
+      secondParamName: 'page',
+      thirdParamName: 'pageSize',
+    );
+
+    final HttpRequest request = HttpRequest.get(path: url, queryParams: queryParams);
+    final result = await httpClient.execute(request);
+
+    switch (result.statusCode) {
+      case 200:
+        return mountResponseModelForPaginatedList(
+          response: result,
+          fromListMap: (mapList) =>
+              mapList.map((e) => AgriculturalInputModel.fromMap(e)).toList(),
+
+        );
+      default:
+        throw mountServerErrorInstance(request: request, response: result);
+    }
+  }
+
+  @override
+  Future<ResponseModel<List<SelectModel>>> getAllAgriculturalInputsByClassIdToSelect(ArgParams argParams) async {
+    final String url = mountUrl(
+      AppEndpoints.baseUrlProtocolWithSecurity,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.agriculturalInputEndpoint + AppEndpoints.selectEndpoint,
+    );
+
+    final Map<String, dynamic> queryParams = argParams.mountQueryParam(
+      firstParamName: 'classId',
+      secondParamName: 'page',
+      thirdParamName: 'pageSize',
+    );
+
+    final HttpRequest request = HttpRequest.get(path: url, queryParams: queryParams);
+    final result = await httpClient.execute(request);
+
+    switch (result.statusCode) {
+      case 200:
+        return mountResponseModelForPaginatedList(
+          response: result,
+          fromListMap: (mapList) => mapList.map((e) => SelectModel.fromMap(e)).toList(),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

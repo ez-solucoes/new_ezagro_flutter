@@ -5,6 +5,7 @@ import 'package:new_ezagro_flutter/features/domain/repositories/product_reposito
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/get_all_products_by_type_id_to_select_usecases/get_all_products_by_type_id_to_select_usecase.dart';
 
 import '../../../../../core/errors/application_error.dart';
+import '../../../entities/response_entities/response_entity.dart';
 
 class GetAllProductsByTypeIdToSelectUsecaseImpl implements GetAllProductsByTypeIdToSelectUsecase {
   final ProductRepository repository;
@@ -12,7 +13,7 @@ class GetAllProductsByTypeIdToSelectUsecaseImpl implements GetAllProductsByTypeI
   GetAllProductsByTypeIdToSelectUsecaseImpl(this.repository);
 
   @override
-  Future<Either<ApplicationError, List<SelectEntity>>> call(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseEntity<List<SelectEntity>>>> call(ArgParams argParams) async {
     return await repository.getAllProductsByTypeIdToSelect(argParams);
   }
 }

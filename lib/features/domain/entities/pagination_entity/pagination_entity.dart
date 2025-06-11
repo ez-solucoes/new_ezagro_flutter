@@ -13,8 +13,8 @@ class PaginationEntity<T> extends Equatable {
 
   @override
   List<Object?> get props => [
-        page,
-        pageSize,
-        total,
-      ];
+    page,
+    pageSize,
+    total,
+  ];
 }

@@ -5,7 +5,7 @@ import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.
 
 import '../../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../../domain/entities/service_order_entities/service_order_entity.dart';
-import '../../../../../domain/usecases/service_order_usecase/get_service_order_by_id_usecase.dart';
+import '../../../../../domain/usecases/service_order_usecase/get_service_order_by_id_usecases/get_service_order_by_id_usecase.dart';
 part 'service_order_controller.g.dart';
 
 class ServiceOrderController = ServiceOrderControllerAbstract with _$ServiceOrderController;

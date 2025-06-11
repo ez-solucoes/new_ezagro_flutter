@@ -5,9 +5,9 @@ import 'package:new_ezagro_flutter/features/data/models/select_models/select_mod
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 
 abstract class CropDatasource {
-  Future<List<CropModel>> getAllCrops(NoParams noParams);
+  Future<ResponseModel<List<CropModel>>> getAllCrops(NoParams noParams);
 
-  Future<List<SelectModel>> getAllCropsToSelect(NoParams noParams);
+  Future<ResponseModel<List<SelectModel>>> getAllCropsToSelect(NoParams noParams);
 
   Future<ResponseModel<CropModel>> getCropById(ArgParams argParams);
 }

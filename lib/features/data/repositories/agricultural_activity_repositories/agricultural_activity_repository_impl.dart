@@ -3,6 +3,7 @@ import 'package:new_ezagro_flutter/core/errors/application_error.dart';
 import 'package:new_ezagro_flutter/core/errors/generic_error.dart';
 import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/data/models/agricultural_models/agricultural_activity_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/response_models/response_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/select_models/select_model.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 
@@ -15,7 +16,7 @@ class AgriculturalActivityRepositoryImpl implements AgriculturalActivityReposito
   AgriculturalActivityRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<ApplicationError, List<AgriculturalActivityModel>>>
+  Future<Either<ApplicationError, ResponseModel<List<AgriculturalActivityModel>>>>
       getAllAgriculturalActivities(NoParams noParams) async {
     try {
       final result = await datasource.getAllAgriculturalActivities(noParams);
@@ -30,10 +31,10 @@ class AgriculturalActivityRepositoryImpl implements AgriculturalActivityReposito
   }
 
   @override
-  Future<Either<ApplicationError, AgriculturalActivityModel>> getAgriculturalActivityById(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseModel<AgriculturalActivityModel>>> getAgriculturalActivityById(ArgParams argParams) async {
     try {
       final result = await datasource.getAgriculturalActivityById(argParams);
-      return Right(result.data!);
+      return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {
@@ -44,7 +45,7 @@ class AgriculturalActivityRepositoryImpl implements AgriculturalActivityReposito
   }
 
   @override
-  Future<Either<ApplicationError, List<AgriculturalActivityModel>>> getAllAgriculturalActivityByTypeId(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseModel<List<AgriculturalActivityModel>>>> getAllAgriculturalActivityByTypeId(ArgParams argParams) async {
     try {
       final result = await datasource.getAllAgriculturalActivityByTypeId(argParams);
       return Right(result);
@@ -58,7 +59,7 @@ class AgriculturalActivityRepositoryImpl implements AgriculturalActivityReposito
   }
 
   @override
-  Future<Either<ApplicationError, List<SelectModel>>> getAllAgriculturalActivitiesToSelect(NoParams noParams) async {
+  Future<Either<ApplicationError,ResponseModel< List<SelectModel>>>> getAllAgriculturalActivitiesToSelect(NoParams noParams) async {
     try {
       final result = await datasource.getAllAgriculturalActivitiesToSelect(noParams);
       return Right(result);
@@ -72,7 +73,7 @@ class AgriculturalActivityRepositoryImpl implements AgriculturalActivityReposito
   }
 
   @override
-  Future<Either<ApplicationError, List<SelectModel>>> getAllAgriculturalActivitiesByTypeToSelect(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseModel<List<SelectModel>>>> getAllAgriculturalActivitiesByTypeToSelect(ArgParams argParams) async {
     try {
       final result = await datasource.getAllAgriculturalActivityByTypeIdToSelect(argParams);
       return Right(result);

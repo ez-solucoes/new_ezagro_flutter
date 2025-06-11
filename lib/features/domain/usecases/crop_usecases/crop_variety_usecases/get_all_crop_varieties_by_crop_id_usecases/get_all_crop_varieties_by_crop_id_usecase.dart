@@ -4,8 +4,9 @@ import 'package:new_ezagro_flutter/features/domain/entities/crop_entities/crop_v
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 
 import '../../../../../../core/errors/application_error.dart';
+import '../../../../entities/response_entities/response_entity.dart';
 
-abstract class GetAllCropVarietiesByCropIdUsecase implements Usecase<List<CropVarietyEntity>, ArgParams> {
+abstract class GetAllCropVarietiesByCropIdUsecase implements Usecase<ResponseEntity<List<CropVarietyEntity>>, ArgParams> {
   @override
-  Future<Either<ApplicationError, List<CropVarietyEntity>>> call(ArgParams argParams);
+  Future<Either<ApplicationError, ResponseEntity<List<CropVarietyEntity>>>> call(ArgParams argParams);
 }

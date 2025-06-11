@@ -33,7 +33,7 @@ abstract class PurchaseRequestListControllerAbstract with Store {
     final result = await getAllPurchaseRequestUsecase(NoParams());
 
     result.fold((error) => error.friendlyMessage, (success){
-      purchaseRequestListEntities = success;
+      purchaseRequestListEntities = success.data!;
       return success;
 
     });

@@ -5,6 +5,8 @@ import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.
 import 'package:new_ezagro_flutter/features/domain/repositories/company_repositories/company_segment_repository/company_segment_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/company_usecases/company_segment_usecases/get_company_segment_by_id_usecases/get_company_segment_by_id_usecase.dart';
 
+import '../../../../entities/response_entities/response_entity.dart';
+
 class GetCompanySegmentByIdUsecaseImpl implements GetCompanySegmentByIdUsecase {
 
   final CompanySegmentRepository repository;
@@ -12,7 +14,7 @@ class GetCompanySegmentByIdUsecaseImpl implements GetCompanySegmentByIdUsecase {
   GetCompanySegmentByIdUsecaseImpl(this.repository);
 
   @override
-  Future<Either<ApplicationError, SegmentEntity>> call(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseEntity<SegmentEntity>>> call(ArgParams argParams) async {
     return await repository.getCompanySegmentById(argParams);
   }
 

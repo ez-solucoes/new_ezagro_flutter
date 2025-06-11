@@ -3,6 +3,7 @@ import 'package:new_ezagro_flutter/features/domain/usecases/company_usecases/get
 
 import '../../../../../core/errors/application_error.dart';
 import '../../../../../core/usecase/usecase.dart';
+import '../../../entities/response_entities/response_entity.dart';
 import '../../../entities/select_entities/select_entity.dart';
 import '../../../repositories/company_repositories/company_repository.dart';
 
@@ -12,7 +13,7 @@ class GetAllCompaniesToSelectUsecaseImpl implements GetAllCompaniesToSelectUseca
   GetAllCompaniesToSelectUsecaseImpl(this.repository);
 
   @override
-  Future<Either<ApplicationError, List<SelectEntity>>> call(NoParams params) async {
+  Future<Either<ApplicationError, ResponseEntity<List<SelectEntity>>>> call(NoParams params) async {
     return await repository.getAllCompaniesToSelect(params);
   }
 }

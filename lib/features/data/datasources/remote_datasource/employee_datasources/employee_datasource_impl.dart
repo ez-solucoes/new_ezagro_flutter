@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:new_ezagro_flutter/core/http_client/http_client.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_client_helper.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
@@ -17,7 +16,7 @@ class EmployeeDatasourceImpl with UriBuilder implements EmployeeDatasource {
   EmployeeDatasourceImpl(this.httpClient);
 
   @override
-  Future<List<EmployeeModel>> getEmployees(NoParams noParams) async {
+  Future<ResponseModel<List<EmployeeModel>>> getAllEmployees(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
@@ -29,13 +28,10 @@ class EmployeeDatasourceImpl with UriBuilder implements EmployeeDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<EmployeeModel>(
           response: result,
           fromListMap: (map) => (map).map((e) => EmployeeModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => EmployeeModel.fromJson(jsonEncode(json))).toList();
-          },
+
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -47,18 +43,17 @@ class EmployeeDatasourceImpl with UriBuilder implements EmployeeDatasource {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
-      AppEndpoints.getEmployeeById + (argParams.firstArgs as String),
+      AppEndpoints.employeeEndpoint,
     );
 
-    final HttpRequest request = HttpRequest.get(path: url);
+    final HttpRequest request = HttpRequest.get(path: url, id: argParams.firstArgs);
     final result = await httpClient.execute(request);
 
     switch (result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForSingleItem(
           response: result,
           fromMap: (map) => EmployeeModel.fromMap(map),
-          fromJson: (jsonString) => EmployeeModel.fromJson(jsonString),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -66,7 +61,7 @@ class EmployeeDatasourceImpl with UriBuilder implements EmployeeDatasource {
   }
 
   @override
-  Future<List<SelectModel>> getEmployeesByFarmIdToSelect(ArgParams argParams) async {
+  Future<ResponseModel<List<SelectModel>>> getAllEmployeesByFarmIdToSelect(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
@@ -79,13 +74,55 @@ class EmployeeDatasourceImpl with UriBuilder implements EmployeeDatasource {
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList<SelectModel>(
           response: result,
           fromListMap: (map) => (map).map((e) => SelectModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => SelectModel.fromJson(jsonEncode(json))).toList();
-          },
+        );
+      default:
+        throw mountServerErrorInstance(request: request, response: result);
+    }
+  }
+
+  @override
+  Future<ResponseModel<List<EmployeeModel>>> getAllEmployeesByFarmId(ArgParams argParams) async {
+    final String url = mountUrl(
+      AppEndpoints.baseUrlProtocolWithSecurity,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.employeeEndpoint,
+    );
+
+    final HttpRequest request = HttpRequest.get(
+        path: url, queryParams: {'contractorFarmId': argParams.firstArgs.toString()});
+    final result = await httpClient.execute(request);
+
+    switch (result.statusCode) {
+      case 200:
+        return mountResponseModelForPaginatedList<EmployeeModel>(
+          response: result,
+          fromListMap: (map) => (map).map((e) => EmployeeModel.fromMap(e)).toList(),
+        );
+      default:
+        throw mountServerErrorInstance(request: request, response: result);
+    }
+  }
+
+  @override
+  Future<ResponseModel<List<SelectModel>>> getAllEmployeesToSelect(NoParams noParams) async {
+    final String url = mountUrl(
+      AppEndpoints.baseUrlProtocolWithSecurity,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.employeeEndpoint + AppEndpoints.selectEndpoint,
+    );
+
+    final HttpRequest request = HttpRequest.get(
+        path: url);
+    final result = await httpClient.execute(request);
+
+    switch (result.statusCode) {
+      case 200:
+        return mountResponseModelForPaginatedList<SelectModel>(
+          response: result,
+          fromListMap: (map) => (map).map((e) => SelectModel.fromMap(e)).toList(),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

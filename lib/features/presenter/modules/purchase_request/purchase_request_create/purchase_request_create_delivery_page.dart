@@ -31,6 +31,7 @@ class PurchaseRequestCreateDeliveryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Modular.get<PurchaseRequestCreateController>();
     controller.getAllDeliveryLocationsToSelect();
+    controller.initializeDates();
 
     return BackgroundWidget(
       scrollable: false,

@@ -16,8 +16,8 @@ class CostCenterRepositoryImpl implements CostCenterRepository {
   CostCenterRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<ApplicationError, List<CostCenterModel>>> getAllCostCenters(
-      NoParams noParams) async {
+  Future<Either<ApplicationError, ResponseModel<List<CostCenterModel>>>>
+      getAllCostCenters(NoParams noParams) async {
     try {
       final result = await datasource.getAllCostCenters(noParams);
       return Right(result);
@@ -31,7 +31,7 @@ class CostCenterRepositoryImpl implements CostCenterRepository {
   }
 
   @override
-  Future<Either<ApplicationError, List<CostCenterModel>>>
+  Future<Either<ApplicationError, ResponseModel<List<CostCenterModel>>>>
       getAllCostCentersByCostCenterTypeId(ArgParams argParams) async {
     try {
       final result = await datasource.getAllCostCentersByCostCenterTypeId(argParams);
@@ -46,7 +46,7 @@ class CostCenterRepositoryImpl implements CostCenterRepository {
   }
 
   @override
-  Future<Either<ApplicationError, List<SelectModel>>>
+  Future<Either<ApplicationError, ResponseModel<List<SelectModel>>>>
       getAllCostCentersByCostCenterTypeIdToSelect(ArgParams argParams) async {
     try {
       final result =
@@ -63,8 +63,8 @@ class CostCenterRepositoryImpl implements CostCenterRepository {
   }
 
   @override
-  Future<Either<ApplicationError, List<SelectModel>>> getAllCostCentersToSelect(
-      NoParams noParams) async {
+  Future<Either<ApplicationError, ResponseModel<List<SelectModel>>>>
+      getAllCostCentersToSelect(NoParams noParams) async {
     try {
       final result = await datasource.getAllCostCentersToSelect(noParams);
       return Right(result);

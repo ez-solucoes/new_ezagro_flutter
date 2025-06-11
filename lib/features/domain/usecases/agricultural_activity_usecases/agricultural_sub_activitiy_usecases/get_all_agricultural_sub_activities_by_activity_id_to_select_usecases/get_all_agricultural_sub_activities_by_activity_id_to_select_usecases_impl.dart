@@ -6,6 +6,7 @@ import 'package:new_ezagro_flutter/features/domain/entities/select_entities/sele
 
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 
+import '../../../../entities/response_entities/response_entity.dart';
 import '../../../../repositories/agricultural_activity_repositories/agricultural_sub_activity_repositories/agricultural_sub_activity_repository.dart';
 import 'get_all_agricultural_sub_activities_by_activity_id_to_select_usecase.dart';
 
@@ -15,7 +16,7 @@ class GetAllAgriculturalSubActivitiesByActivityIdToSelectUsecaseImpl implements 
   GetAllAgriculturalSubActivitiesByActivityIdToSelectUsecaseImpl(this.repository);
 
   @override
-  Future<Either<ApplicationError, List<SelectEntity>>> call(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseEntity<List<SelectEntity>>>> call(ArgParams argParams) async {
     return await repository.getAllAgriculturalSubActivitiesByActivityIdToSelect(argParams);
   }
 }

@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_mobx/flutter_mobx.dart'; // Importar Observer para reagir a mudanças na controller
+
 import '../../../../design_system/colors/app_colors.dart';
 import '../../../domain/entities/select_entities/select_entity.dart';
-import '../../modules/purchase_request/purchase_request_create/purchase_request_create_controller.dart';
+import '../../miscellaneous/item_selection_controller.dart';
 import '../buttons/custom_elevated_button.dart';
 
 class FilterProductsBottomSheetWidget extends StatefulWidget {
-  final List<SelectEntity> productTypesList;
+  // REMOVIDO: final List<SelectEntity> productTypesList;
+  // NOVO: Recebe a ItemSelectionController diretamente
+  final ItemSelectionController controller;
 
-  const FilterProductsBottomSheetWidget({super.key, required this.productTypesList});
+  const FilterProductsBottomSheetWidget({super.key, required this.controller});
 
   @override
   State<FilterProductsBottomSheetWidget> createState() => _FilterProductsBottomSheetWidgetState();
@@ -16,12 +19,20 @@ class FilterProductsBottomSheetWidget extends StatefulWidget {
 
 class _FilterProductsBottomSheetWidgetState extends State<FilterProductsBottomSheetWidget> {
   final Set<int> selectedProductTypes = {};
-  final controller = Modular.get<PurchaseRequestCreateController>();
+  // A controller agora é acessada via widget.controller
+  // final controller = Modular.get<PurchaseRequestCreateController>(); // REMOVIDO
+
+  @override
+  void initState() {
+    super.initState();
+    // Inicializa o estado local com as seleções atuais da controller
+    selectedProductTypes.addAll(widget.controller.filteredProductTypeListToSelect.map((s) => s.value));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration( // Adicionado const
         color: AppColors.primaryWhiteColor,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(16),
@@ -30,113 +41,121 @@ class _FilterProductsBottomSheetWidgetState extends State<FilterProductsBottomSh
       ),
       child: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Icon(Icons.filter_alt_outlined),
-                const SizedBox(width: 10),
-                Text(
-                  'Filtrar por',
-                  style: TextStyle(color: AppColors.formGreyColor, fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            SizedBox(height: 20),
-            Row(
-              children: [
-                Text(
-                  'Segmento:',
-                  style: TextStyle(color: AppColors.primaryBlackColor, fontSize: 14),
-                ),
-              ],
-            ),
-            SizedBox(height: 10),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Wrap(
-                  spacing: 10,
-                  runSpacing: 5,
-                  children: widget.productTypesList.map((product) {
-                    final isSelected = selectedProductTypes.contains(product.value);
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          if (isSelected) {
-                            selectedProductTypes.remove(product.value);
-                          } else {
-                            selectedProductTypes.add(product.value);
-                          }
-                        });
-                      },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-                        decoration: BoxDecoration(
-                          color: isSelected ? AppColors.primaryGreenColor : Colors.transparent,
-                          borderRadius: BorderRadius.circular(2),
-                          border: Border.all(color: AppColors.formGreyColor, width: 1)
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              product.label ?? 'Sem Label',
-                              style: TextStyle(
-                                color: isSelected ? AppColors.primaryWhiteColor : AppColors.primaryBlackColor,
-                              ),
-                            ),
-                            if (isSelected) ...[
-                              SizedBox(width: 5),
-                              Icon(
-                                Icons.close,
-                                color: AppColors.primaryWhiteColor,
-                                size: 18,
-                              ),
-                            ],
-                          ],
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min, // Adicionado para BottomSheet
+            children: [
+              Row(
                 children: [
-                  Expanded(
-                    child: CustomElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          selectedProductTypes.clear();
-                          controller.clearSelectedProductTypes();
-                        });
-
-                      },
-                      label: 'Limpar Filtros',
-                      textColor: AppColors.primaryBlackColor,
-                      backgroundColor: AppColors.backgroundColor,
-                      borderColor: AppColors.formGreyColor,
-                    ),
-                  ),
-                  const SizedBox(width: 30),
-                  Expanded(
-                    child: CustomElevatedButton(
-                      onPressed: () {
-                        controller.updateSelectedProductTypes(selectedProductTypes);
-                        Navigator.pop(context);
-                      },
-                      label: 'Aplicar',
-                      backgroundColor: AppColors.primaryGreenColor,
-                      borderColor: Colors.transparent,
-                    ),
+                  const Icon(Icons.filter_alt_outlined), // Adicionado const
+                  const SizedBox(width: 10), // Adicionado const
+                  Text(
+                    'Filtrar por',
+                    style: TextStyle(color: AppColors.formGreyColor, fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
-            ),
-          ],
+              const SizedBox(height: 20), // Adicionado const
+              Row(
+                children: [
+                  Text(
+                    'Segmento:', // Ou "Tipo de Produto:" se for mais preciso
+                    style: TextStyle(color: AppColors.primaryBlackColor, fontSize: 14),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10), // Adicionado const
+              // REMOVIDO: Expanded
+              Observer( // Adicionado Observer para reagir a mudanças na lista de tipos da controller
+                builder: (_) {
+                  // Usar a lista de tipos de produto da controller para as opções
+                  final List<SelectEntity> productTypes = widget.controller.productTypesListToSelect;
+          
+                  return SingleChildScrollView(
+                    child: Wrap(
+                      spacing: 10,
+                      runSpacing: 5,
+                      children: productTypes.map((productType) { // Usa a lista da controller
+                        final isSelected = selectedProductTypes.contains(productType.value);
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              if (isSelected) {
+                                selectedProductTypes.remove(productType.value);
+                              } else {
+                                selectedProductTypes.add(productType.value);
+                              }
+                            });
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12), // Adicionado const
+                            decoration: BoxDecoration(
+                              color: isSelected ? AppColors.primaryGreenColor : Colors.transparent,
+                              borderRadius: BorderRadius.circular(2),
+                              border: Border.all(color: AppColors.formGreyColor, width: 1),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  productType.label ?? 'Sem Label',
+                                  style: TextStyle(
+                                    color: isSelected ? AppColors.primaryWhiteColor : AppColors.primaryBlackColor,
+                                  ),
+                                ),
+                                if (isSelected) ...[
+                                  const SizedBox(width: 5), // Adicionado const
+                                  const Icon( // Adicionado const
+                                    Icons.close,
+                                    color: AppColors.primaryWhiteColor,
+                                    size: 18,
+                                  ),
+                                ],
+                              ],
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  );
+                },
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0, bottom: 10.0), // Adicionado const
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: CustomElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            selectedProductTypes.clear();
+                            widget.controller.clearSelectedProductTypes(); // USA widget.controller
+                          });
+                        },
+                        label: 'Limpar Filtros',
+                        textColor: AppColors.primaryBlackColor,
+                        backgroundColor: AppColors.backgroundColor,
+                        borderColor: AppColors.formGreyColor,
+                      ),
+                    ),
+                    const SizedBox(width: 30), // Adicionado const
+                    Expanded(
+                      child: CustomElevatedButton(
+                        onPressed: () {
+                          widget.controller.updateSelectedProductTypes(selectedProductTypes); // USA widget.controller
+                          Navigator.pop(context);
+                        },
+                        label: 'Aplicar',
+                        backgroundColor: AppColors.primaryGreenColor,
+                        borderColor: Colors.transparent,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

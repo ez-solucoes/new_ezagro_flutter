@@ -126,7 +126,7 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
     final result = await getAllAgriculturalActivityTypesToSelect(NoParams());
 
     result.fold((error) => error.friendlyMessage, (success) {
-      agriculturalActivityTypeListToSelect = success;
+      agriculturalActivityTypeListToSelect = success.data!;
     });
     isFirstLoading = false;
   }
@@ -137,7 +137,7 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
     final getAllAgriculturalActivitiesToSelect = Modular.get<GetAllAgriculturalActivitiesToSelectUsecase>();
     final result = await getAllAgriculturalActivitiesToSelect(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      agriculturalActivityListToSelect = success;
+      agriculturalActivityListToSelect = success.data!;
 
     });
     isAgriculturalActivityLoading = false;
@@ -149,7 +149,7 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
     final getAllAgriculturalActivities = Modular.get<GetAllAgriculturalActivitiesUsecase>();
     final result = await getAllAgriculturalActivities(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      agriculturalActivityList = ObservableList.of(success);
+      agriculturalActivityList = ObservableList.of(success.data!);
 
     });
     isAgriculturalActivityLoading = false;
@@ -159,10 +159,10 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
   Future<void> getAllAgriculturalActivityByTypeIdToSelect() async {
     isAgriculturalActivityLoading = true;
 
-    final getAllAgriculturalActivityByTypeIdToSelect = Modular.get<GetAllAgriculturalActivityByTypeIdToSelectUsecase>();
+    final getAllAgriculturalActivityByTypeIdToSelect = Modular.get<GetAllAgriculturalActivitiesByTypeIdToSelectUsecase>();
     final result = await getAllAgriculturalActivityByTypeIdToSelect(ArgParams(firstArgs: agriculturalActivityType?.value));
     result.fold((error) => error.friendlyMessage, (success) {
-      agriculturalActivityListToSelect = ObservableList.of(success);
+      agriculturalActivityListToSelect = ObservableList.of(success.data!);
 
 
   });
@@ -176,7 +176,7 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
     final getAllAgriculturalSubActivitiesByActivityIdToSelect = Modular.get<GetAllAgriculturalSubActivitiesByActivityIdToSelectUsecase>();
     final result = await getAllAgriculturalSubActivitiesByActivityIdToSelect(ArgParams(firstArgs: agriculturalActivity?.value));
     result.fold((error) => error.friendlyMessage, (success) {
-      agriculturalSubActivityListToSelect = ObservableList.of(success);
+      agriculturalSubActivityListToSelect = ObservableList.of(success.data!);
       hasAgriculturalSubActivity = true;
     });
     isAgriculturalSubActivityLoading = false;
@@ -191,7 +191,7 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
     final result = await getAllCostCenterToSelect(NoParams());
 
     result.fold((error) => error.friendlyMessage, (success) {
-      costCenterListToSelect = success;
+      costCenterListToSelect = success.data!;
       return success;
     });
     isCostCenterLoading = false;
@@ -203,7 +203,7 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
     final getAllCostCentersByCostCenterTypeIdToSelect = Modular.get<GetAllCostCentersByCostCenterTypeIdToSelectUsecase>();
     final result = await getAllCostCentersByCostCenterTypeIdToSelect(ArgParams(firstArgs: 2));
     result.fold((error) => error.friendlyMessage, (success) {
-      costCenterByCostCenterTypeIdListToSelect = success;
+      costCenterByCostCenterTypeIdListToSelect = success.data!;
       return success;
     });
      isCostCenterLoading = false;
@@ -217,7 +217,7 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
     final result = await getAllFarmsByCostCenterIdToSelect(ArgParams(firstArgs: costCenterId));
 
     result.fold((error) => error.friendlyMessage, (success) {
-      farmsByCostCenterIdListToSelect = success;
+      farmsByCostCenterIdListToSelect = success.data!;
       return success;
     });
     isFarmLoading = false;
@@ -230,7 +230,7 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
     final getAllCropsToSelect = Modular.get<GetAllCropsToSelectUsecase>();
     final result = await getAllCropsToSelect(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      cropListToSelect = success;
+      cropListToSelect = success.data!;
 
     });
     isCropLoading = false;
@@ -243,7 +243,7 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
     final getAllCropVarietiesByCropIdToSelect = Modular.get<GetAllCropVarietiesByCropIdToSelectUsecase>();
     final result = await getAllCropVarietiesByCropIdToSelect(ArgParams(firstArgs: crop?.value));
     result.fold((error) => error.friendlyMessage, (success) {
-      cropVarietyListToSelect = success;
+      cropVarietyListToSelect = success.data!;
 
     });
     isCropVarietyLoading = false;
@@ -256,8 +256,8 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
     final result = await getCropVarietyById(ArgParams(firstArgs: cropVariety?.value));
     result.fold((error) => error.friendlyMessage, (success) {
 
-      if(success.technologyName != null) {
-        technologyName = success.technologyName;
+      if(success.data!.technologyName != null) {
+        technologyName = success.data!.technologyName;
       }
     });
     isTechnologyLoading = false;
@@ -270,7 +270,7 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
     final getAllFarmPlotListToSelect = Modular.get<GetAllFarmPlotsToSelectUsecase>();
     final result = await getAllFarmPlotListToSelect(ArgParams(firstArgs: 15));
     result.fold((error) => error.friendlyMessage,  (success){
-      farmPlotListToSelect = success;
+      farmPlotListToSelect = success.data!;
     });
     isFirstLoading = false;
   }
@@ -281,7 +281,7 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
     final getAllFarmPlots = Modular.get<GetAllFarmPlotsUsecase>();
     final result = await getAllFarmPlots(ArgParams(firstArgs: 15));
     result.fold((error) => error.friendlyMessage, (success){
-      farmPlotList = success;
+      farmPlotList = success.data!;
     });
     isFirstLoading = false;
   }

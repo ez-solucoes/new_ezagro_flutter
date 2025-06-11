@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:new_ezagro_flutter/core/errors/server_error.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_response.dart';
@@ -31,37 +33,75 @@ String _replaceServerErrorMessage(String serverErrorMessage) {
   return serverErrorMessage;
 }
 
-ResponseModel<T> mountModelInstanceFromResponse<T>({
+// ResponseModel<T> mountModelInstanceFromResponse<T>({
+//   required HttpResponse response,
+//   required T Function(Map<String, dynamic>) fromMap,
+//   required T Function(String) fromJson,
+//   String? mountMapDataFromNodeName,
+// }) {
+//   final data = response.data;
+//   if (data is Map) {
+//     if (mountMapDataFromNodeName != null &&
+//         data.containsKey(mountMapDataFromNodeName)) {
+//       return ResponseModel.fromMap(data[mountMapDataFromNodeName], fromMap);
+//     }
+//     return ResponseModel.fromMap(data as Map<String, dynamic>, fromMap);
+//   }
+//   return ResponseModel.fromJson(data, fromJson);
+// }
+
+// T mountListModelInstanceFromResponse<T>({
+//   required HttpResponse response,
+//   required T Function(List) fromListMap,
+//   required T Function(String) fromJsonList,
+//   String? mountMapDataFromNodeName,
+// }) {
+//   final data = response.data['data'];
+//   if (data is List ||
+//       (mountMapDataFromNodeName != null &&
+//           data is Map &&
+//           data.containsKey(mountMapDataFromNodeName))) {
+//     return fromListMap(
+//       data is List ? data : ((data as Map)[mountMapDataFromNodeName] as List),
+//     );
+//   }
+//   return fromJsonList(data);
+// }
+
+ResponseModel<T> mountResponseModelForSingleItem<T>({
   required HttpResponse response,
   required T Function(Map<String, dynamic>) fromMap,
-  required T Function(String) fromJson,
-  String? mountMapDataFromNodeName,
 }) {
-  final data = response.data;
-  if (data is Map) {
-    if (mountMapDataFromNodeName != null &&
-        data.containsKey(mountMapDataFromNodeName)) {
-      return ResponseModel.fromMap(data[mountMapDataFromNodeName], fromMap);
-    }
-    return ResponseModel.fromMap(data as Map<String, dynamic>, fromMap);
+  final Map<String, dynamic> responseMap;
+
+  if(response.data is String) {
+    responseMap = jsonDecode(response.data as String) as Map<String, dynamic>;
+  } else if(response.data is Map<String, dynamic>) {
+    responseMap = response.data as Map<String, dynamic>;
+  } else {
+    throw Exception("Tipo de dado inesperado na resposta HTTP: ${response.data.runtimeType}. Esperava String ou Map.");
   }
-  return ResponseModel.fromJson(data, fromJson);
+
+  return ResponseModel.fromMap(responseMap, (data) {
+    return fromMap(data as Map<String, dynamic>);
+  });
 }
 
-T mountListModelInstanceFromResponse<T>({
+ResponseModel<List<T>> mountResponseModelForPaginatedList<T>({
   required HttpResponse response,
-  required T Function(List) fromListMap,
-  required T Function(String) fromJsonList,
-  String? mountMapDataFromNodeName,
+  required List<T> Function(List<dynamic>) fromListMap,
 }) {
-  final data = response.data['data'];
-  if (data is List ||
-      (mountMapDataFromNodeName != null &&
-          data is Map &&
-          data.containsKey(mountMapDataFromNodeName))) {
-    return fromListMap(
-      data is List ? data : ((data as Map)[mountMapDataFromNodeName] as List),
-    );
+  final Map<String, dynamic> responseMap;
+
+  if (response.data is String) {
+    responseMap = jsonDecode(response.data as String) as Map<String, dynamic>;
+  } else if (response.data is Map<String, dynamic>) {
+    responseMap = response.data as Map<String, dynamic>;
+  } else {
+    throw Exception("Tipo de dado inesperado na resposta HTTP: ${response.data.runtimeType}. Esperava String ou Map.");
   }
-  return fromJsonList(data);
+
+  return ResponseModel.fromMap(responseMap, (data) {
+    return fromListMap(data as List<dynamic>);
+  });
 }

@@ -5,13 +5,15 @@ import 'package:new_ezagro_flutter/features/domain/entities/select_entities/sele
 import 'package:new_ezagro_flutter/features/domain/repositories/payment_method_repositories/payment_method_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/payment_method_usecases/get_all_payment_methods_to_select_usecase/get_all_payment_methods_to_select_usecase.dart';
 
+import '../../../entities/response_entities/response_entity.dart';
+
 class GetAllPaymentMethodsToSelectUsecaseImpl implements GetAllPaymentMethodsToSelectUsecase {
   final PaymentMethodRepository repository;
 
   GetAllPaymentMethodsToSelectUsecaseImpl(this.repository);
 
   @override
-  Future<Either<ApplicationError, List<SelectEntity>>> call(NoParams noParams) async {
+  Future<Either<ApplicationError, ResponseEntity<List<SelectEntity>>>> call(NoParams noParams) async {
     return await repository.getAllPaymentMethodsToSelect(noParams);
   }
 

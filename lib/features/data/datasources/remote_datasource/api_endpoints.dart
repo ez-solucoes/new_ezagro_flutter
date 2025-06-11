@@ -12,9 +12,9 @@ class AppEndpoints {
   static const String selectEndpoint = '/select';
 
   //Authentication
-  static const String loginEndpoint = '/authentication/login';
-  static const String updatePasswordEndpoint = '/update-password';
-  static const String forgotPasswordEndpoint = '/authentication/forgot-password';
+  static const String authenticationLoginEndpoint = '/authentication/login';
+  static const String authenticationUpdatePasswordEndpoint = '/update-password';
+  static const String authenticationForgotPasswordEndpoint = '/authentication/forgot-password';
   static const String validateTokenEndpoint = '/validate-token';
 
   //User
@@ -23,14 +23,14 @@ class AppEndpoints {
 
   //Agricultural Input
   static const String agriculturalInputEndpoint = '/agricultural-input';
+  static const String agriculturalInputClassEndpoint = '/agricultural-input-class';
 
   //Company
   static const String companyEndpoint = '/company';
   static const String companySegmentEndpoint = '/company-segment';
 
   //Contract
-  static const String getContractListEndpoint = '/contract';
-  static const String getContractByIdEndpoint = '/contract/';
+  static const String contractEndpoint = '/contract';
 
   //Agricultural Activities
   static const String agriculturalActivityEndpoint = '/agricultural-activity';
@@ -39,7 +39,7 @@ class AppEndpoints {
 
   //Service Order
   static const String getFieldServiceOrderListEndpoint = '/field-service-order';
-  static const String getServiceOrderListEndpoint = '/service-order';
+  static const String serviceOrderEndpoint = '/service-order';
   static const String getServiceOrderEndpoint = '/service-order';
   static const String getServiceOrderById = 'field-service-order';
   static const String getActivityTypesEndpoint = '/activity-type';
@@ -59,11 +59,11 @@ class AppEndpoints {
   static const String employeeEndpoint = '/employee';
   static const String getEmployeeById = '/employee/';
   static const String postServiceOrderEndpoint = '/field-service-order';
-  static const String getPestsEndpoint = '/pest';
+  static const String pestEndpoint = '/pest';
   static const String getPlotsByFarmIdEndpoint = '/farm/plot/farm/';
   static const String getCostCenterSelectorOptions = '/cost-center/select';
 
-  static const String getAllMachineryImplementEndpoint = '/machinery-implement';
+  static const String machineryImplementEndpoint = '/machinery-implement';
   static const String paymentMethodEndpoint = '/payment-method';
 
   ///Purchase Request

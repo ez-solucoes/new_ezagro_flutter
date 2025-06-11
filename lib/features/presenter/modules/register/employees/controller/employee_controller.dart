@@ -4,8 +4,8 @@ import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.
 import '../../../../../../core/usecase/usecase.dart';
 import '../../../../../domain/entities/employee_entities/employee_entity/employee_entity.dart';
 import '../../../../../domain/params/arg_params/arg_params.dart';
+import '../../../../../domain/usecases/employee_usecase/get_all_employees_usecases/get_all_employees_usecase.dart';
 import '../../../../../domain/usecases/employee_usecase/get_employee_by_id_usecase/get_employee_by_id_usecase.dart';
-import '../../../../../domain/usecases/employee_usecase/get_employee_list_usecase/get_employee_list_usecase.dart';
 
 part 'employee_controller.g.dart';
 
@@ -29,10 +29,10 @@ abstract class EmployeeControllerAbstract with Store {
   @action
   Future getEmployeesList() async {
     isLoading = true;
-    final getEmployees = Modular.get<GetEmployeeListUsecase>();
+    final getEmployees = Modular.get<GetAllEmployeesUsecase>();
     final result = await getEmployees(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      employees = success;
+      employees = success.data!;
       filteredEmployees = employees;
       return success;
     });
@@ -46,7 +46,7 @@ abstract class EmployeeControllerAbstract with Store {
     final getCompany = Modular.get<GetEmployeeByIdUsecase>();
     final result = await getCompany(args);
     result.fold((error) => error.friendlyMessage, (success) {
-      employee = success;
+      employee = success.data!;
       return success;
     });
 

@@ -4,9 +4,10 @@ import 'package:new_ezagro_flutter/features/domain/entities/agricultural_entitie
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 
 import '../../../../../core/errors/application_error.dart';
+import '../../../entities/response_entities/response_entity.dart';
 
 abstract class GetAgriculturalActivityByIdUsecase
-    implements Usecase<AgriculturalActivityEntity, ArgParams> {
+    implements Usecase<ResponseEntity<AgriculturalActivityEntity>, ArgParams> {
   @override
-  Future<Either<ApplicationError, AgriculturalActivityEntity>> call(ArgParams params);
+  Future<Either<ApplicationError, ResponseEntity<AgriculturalActivityEntity>>> call(ArgParams params);
 }

@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:new_ezagro_flutter/core/errors/application_error.dart';
 import 'package:new_ezagro_flutter/core/errors/generic_error.dart';
 import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
+import 'package:new_ezagro_flutter/features/data/models/response_models/response_model.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/crop_entities/crop_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/select_entities/select_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
@@ -15,7 +16,7 @@ class CropRepositoryImpl implements CropRepository {
   CropRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<ApplicationError, List<CropEntity>>> getAllCrops(NoParams noParams) async {
+  Future<Either<ApplicationError, ResponseModel<List<CropEntity>>>> getAllCrops(NoParams noParams) async {
     try {
       final result = await datasource.getAllCrops(noParams);
       return Right(result);
@@ -29,7 +30,7 @@ class CropRepositoryImpl implements CropRepository {
   }
 
   @override
-  Future<Either<ApplicationError, List<SelectEntity>>> getAllCropsToSelect(NoParams noParams) async {
+  Future<Either<ApplicationError, ResponseModel<List<SelectEntity>>>> getAllCropsToSelect(NoParams noParams) async {
     try {
       final result = await datasource.getAllCropsToSelect(noParams);
       return Right(result);
@@ -43,10 +44,10 @@ class CropRepositoryImpl implements CropRepository {
   }
 
   @override
-  Future<Either<ApplicationError, CropEntity>> getCropById(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseModel<CropEntity>>> getCropById(ArgParams argParams) async {
     try {
       final result = await datasource.getCropById(argParams);
-      return Right(result.data!);
+      return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {

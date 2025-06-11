@@ -7,9 +7,9 @@ import '../../../../core/usecase/usecase.dart';
 import '../../params/arg_params/arg_params.dart';
 
 abstract class CostCenterRepository {
-  Future<Either<ApplicationError, List<CostCenterEntity>>> getAllCostCenters(NoParams noParams);
-  Future<Either<ApplicationError, List<SelectEntity>>> getAllCostCentersToSelect(NoParams noParams);
+  Future<Either<ApplicationError, ResponseEntity<List<CostCenterEntity>>>> getAllCostCenters(NoParams noParams);
+  Future<Either<ApplicationError, ResponseEntity<List<SelectEntity>>>> getAllCostCentersToSelect(NoParams noParams);
   Future<Either<ApplicationError, ResponseEntity<CostCenterEntity>>> getCostCenterById(ArgParams argParams);
-  Future<Either<ApplicationError, List<CostCenterEntity>>> getAllCostCentersByCostCenterTypeId(ArgParams argParams);
-  Future<Either<ApplicationError, List<SelectEntity>>> getAllCostCentersByCostCenterTypeIdToSelect(ArgParams argParams);
+  Future<Either<ApplicationError, ResponseEntity<List<CostCenterEntity>>>> getAllCostCentersByCostCenterTypeId(ArgParams argParams);
+  Future<Either<ApplicationError, ResponseEntity<List<SelectEntity>>>> getAllCostCentersByCostCenterTypeIdToSelect(ArgParams argParams);
 }

@@ -6,9 +6,9 @@ import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.
 
 
 abstract class AgriculturalActivityDatasource {
-  Future<List<AgriculturalActivityModel>> getAllAgriculturalActivities(NoParams noParams);
-  Future<List<SelectModel>> getAllAgriculturalActivitiesToSelect(NoParams noParams);
+  Future<ResponseModel<List<AgriculturalActivityModel>>> getAllAgriculturalActivities(NoParams noParams);
+  Future<ResponseModel<List<SelectModel>>> getAllAgriculturalActivitiesToSelect(NoParams noParams);
   Future<ResponseModel<AgriculturalActivityModel>> getAgriculturalActivityById(ArgParams argParams);
-  Future<List<AgriculturalActivityModel>> getAllAgriculturalActivityByTypeId(ArgParams argParams);
-  Future<List<SelectModel>> getAllAgriculturalActivityByTypeIdToSelect(ArgParams argParams);
+  Future<ResponseModel<List<AgriculturalActivityModel>>> getAllAgriculturalActivityByTypeId(ArgParams argParams);
+  Future<ResponseModel<List<SelectModel>>> getAllAgriculturalActivityByTypeIdToSelect(ArgParams argParams);
 }

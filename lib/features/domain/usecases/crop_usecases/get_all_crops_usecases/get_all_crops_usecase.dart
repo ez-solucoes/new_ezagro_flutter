@@ -3,8 +3,9 @@ import 'package:new_ezagro_flutter/features/domain/entities/crop_entities/crop_e
 
 import '../../../../../core/errors/application_error.dart';
 import '../../../../../core/usecase/usecase.dart';
+import '../../../entities/response_entities/response_entity.dart';
 
-abstract class GetAllCropsUsecase implements Usecase<List<CropEntity>, NoParams> {
+abstract class GetAllCropsUsecase implements Usecase<ResponseEntity<List<CropEntity>>, NoParams> {
   @override
-  Future<Either<ApplicationError, List<CropEntity>>> call(NoParams params);
+  Future<Either<ApplicationError, ResponseEntity<List<CropEntity>>>> call(NoParams params);
 }

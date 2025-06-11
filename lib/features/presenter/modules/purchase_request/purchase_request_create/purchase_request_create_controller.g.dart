@@ -10,33 +10,6 @@ part of 'purchase_request_create_controller.dart';
 
 mixin _$PurchaseRequestCreateController
     on PurchaseRequestCreateControllerAbstract, Store {
-  Computed<List<dynamic>>? _$filteredAddItemsListComputed;
-
-  @override
-  List<dynamic> get filteredAddItemsList => (_$filteredAddItemsListComputed ??=
-          Computed<List<dynamic>>(() => super.filteredAddItemsList,
-              name:
-                  'PurchaseRequestCreateControllerAbstract.filteredAddItemsList'))
-      .value;
-  Computed<List<SelectEntity>>? _$filteredPaymentMethodListComputed;
-
-  @override
-  List<SelectEntity> get filteredPaymentMethodList =>
-      (_$filteredPaymentMethodListComputed ??= Computed<List<SelectEntity>>(
-              () => super.filteredPaymentMethodList,
-              name:
-                  'PurchaseRequestCreateControllerAbstract.filteredPaymentMethodList'))
-          .value;
-  Computed<List<SelectEntity>>? _$finalRequestedCompaniesComputed;
-
-  @override
-  List<SelectEntity> get finalRequestedCompanies =>
-      (_$finalRequestedCompaniesComputed ??= Computed<List<SelectEntity>>(
-              () => super.finalRequestedCompanies,
-              name:
-                  'PurchaseRequestCreateControllerAbstract.finalRequestedCompanies'))
-          .value;
-
   late final _$isFirstLoadingAtom = Atom(
       name: 'PurchaseRequestCreateControllerAbstract.isFirstLoading',
       context: context);
@@ -105,40 +78,6 @@ mixin _$PurchaseRequestCreateController
     });
   }
 
-  late final _$isProductLoadingAtom = Atom(
-      name: 'PurchaseRequestCreateControllerAbstract.isProductLoading',
-      context: context);
-
-  @override
-  bool get isProductLoading {
-    _$isProductLoadingAtom.reportRead();
-    return super.isProductLoading;
-  }
-
-  @override
-  set isProductLoading(bool value) {
-    _$isProductLoadingAtom.reportWrite(value, super.isProductLoading, () {
-      super.isProductLoading = value;
-    });
-  }
-
-  late final _$isCompanyLoadingAtom = Atom(
-      name: 'PurchaseRequestCreateControllerAbstract.isCompanyLoading',
-      context: context);
-
-  @override
-  bool get isCompanyLoading {
-    _$isCompanyLoadingAtom.reportRead();
-    return super.isCompanyLoading;
-  }
-
-  @override
-  set isCompanyLoading(bool value) {
-    _$isCompanyLoadingAtom.reportWrite(value, super.isCompanyLoading, () {
-      super.isCompanyLoading = value;
-    });
-  }
-
   late final _$isPaymentMethodLoadingAtom = Atom(
       name: 'PurchaseRequestCreateControllerAbstract.isPaymentMethodLoading',
       context: context);
@@ -191,6 +130,25 @@ mixin _$PurchaseRequestCreateController
     _$costCenterListToSelectAtom
         .reportWrite(value, super.costCenterListToSelect, () {
       super.costCenterListToSelect = value;
+    });
+  }
+
+  late final _$costCenterByCostCenterTypeIdListToSelectAtom = Atom(
+      name:
+          'PurchaseRequestCreateControllerAbstract.costCenterByCostCenterTypeIdListToSelect',
+      context: context);
+
+  @override
+  List<SelectEntity> get costCenterByCostCenterTypeIdListToSelect {
+    _$costCenterByCostCenterTypeIdListToSelectAtom.reportRead();
+    return super.costCenterByCostCenterTypeIdListToSelect;
+  }
+
+  @override
+  set costCenterByCostCenterTypeIdListToSelect(List<SelectEntity> value) {
+    _$costCenterByCostCenterTypeIdListToSelectAtom
+        .reportWrite(value, super.costCenterByCostCenterTypeIdListToSelect, () {
+      super.costCenterByCostCenterTypeIdListToSelect = value;
     });
   }
 
@@ -269,220 +227,6 @@ mixin _$PurchaseRequestCreateController
     });
   }
 
-  late final _$productListToSelectAtom = Atom(
-      name: 'PurchaseRequestCreateControllerAbstract.productListToSelect',
-      context: context);
-
-  @override
-  List<SelectEntity> get productListToSelect {
-    _$productListToSelectAtom.reportRead();
-    return super.productListToSelect;
-  }
-
-  @override
-  set productListToSelect(List<SelectEntity> value) {
-    _$productListToSelectAtom.reportWrite(value, super.productListToSelect, () {
-      super.productListToSelect = value;
-    });
-  }
-
-  late final _$productTypesListToSelectAtom = Atom(
-      name: 'PurchaseRequestCreateControllerAbstract.productTypesListToSelect',
-      context: context);
-
-  @override
-  List<SelectEntity> get productTypesListToSelect {
-    _$productTypesListToSelectAtom.reportRead();
-    return super.productTypesListToSelect;
-  }
-
-  @override
-  set productTypesListToSelect(List<SelectEntity> value) {
-    _$productTypesListToSelectAtom
-        .reportWrite(value, super.productTypesListToSelect, () {
-      super.productTypesListToSelect = value;
-    });
-  }
-
-  late final _$filteredProductTypeListToSelectAtom = Atom(
-      name:
-          'PurchaseRequestCreateControllerAbstract.filteredProductTypeListToSelect',
-      context: context);
-
-  @override
-  List<SelectEntity> get filteredProductTypeListToSelect {
-    _$filteredProductTypeListToSelectAtom.reportRead();
-    return super.filteredProductTypeListToSelect;
-  }
-
-  @override
-  set filteredProductTypeListToSelect(List<SelectEntity> value) {
-    _$filteredProductTypeListToSelectAtom
-        .reportWrite(value, super.filteredProductTypeListToSelect, () {
-      super.filteredProductTypeListToSelect = value;
-    });
-  }
-
-  late final _$companiesListToSelectAtom = Atom(
-      name: 'PurchaseRequestCreateControllerAbstract.companiesListToSelect',
-      context: context);
-
-  @override
-  List<SelectEntity> get companiesListToSelect {
-    _$companiesListToSelectAtom.reportRead();
-    return super.companiesListToSelect;
-  }
-
-  @override
-  set companiesListToSelect(List<SelectEntity> value) {
-    _$companiesListToSelectAtom.reportWrite(value, super.companiesListToSelect,
-        () {
-      super.companiesListToSelect = value;
-    });
-  }
-
-  late final _$companiesListAtom = Atom(
-      name: 'PurchaseRequestCreateControllerAbstract.companiesList',
-      context: context);
-
-  @override
-  List<CompanyEntity> get companiesList {
-    _$companiesListAtom.reportRead();
-    return super.companiesList;
-  }
-
-  @override
-  set companiesList(List<CompanyEntity> value) {
-    _$companiesListAtom.reportWrite(value, super.companiesList, () {
-      super.companiesList = value;
-    });
-  }
-
-  late final _$companySegmentsListToSelectAtom = Atom(
-      name:
-          'PurchaseRequestCreateControllerAbstract.companySegmentsListToSelect',
-      context: context);
-
-  @override
-  List<SelectEntity> get companySegmentsListToSelect {
-    _$companySegmentsListToSelectAtom.reportRead();
-    return super.companySegmentsListToSelect;
-  }
-
-  @override
-  set companySegmentsListToSelect(List<SelectEntity> value) {
-    _$companySegmentsListToSelectAtom
-        .reportWrite(value, super.companySegmentsListToSelect, () {
-      super.companySegmentsListToSelect = value;
-    });
-  }
-
-  late final _$filteredCompanySegmentsListToSelectAtom = Atom(
-      name:
-          'PurchaseRequestCreateControllerAbstract.filteredCompanySegmentsListToSelect',
-      context: context);
-
-  @override
-  List<SelectEntity> get filteredCompanySegmentsListToSelect {
-    _$filteredCompanySegmentsListToSelectAtom.reportRead();
-    return super.filteredCompanySegmentsListToSelect;
-  }
-
-  @override
-  set filteredCompanySegmentsListToSelect(List<SelectEntity> value) {
-    _$filteredCompanySegmentsListToSelectAtom
-        .reportWrite(value, super.filteredCompanySegmentsListToSelect, () {
-      super.filteredCompanySegmentsListToSelect = value;
-    });
-  }
-
-  late final _$cityFilterTextAtom = Atom(
-      name: 'PurchaseRequestCreateControllerAbstract.cityFilterText',
-      context: context);
-
-  @override
-  String get cityFilterText {
-    _$cityFilterTextAtom.reportRead();
-    return super.cityFilterText;
-  }
-
-  @override
-  set cityFilterText(String value) {
-    _$cityFilterTextAtom.reportWrite(value, super.cityFilterText, () {
-      super.cityFilterText = value;
-    });
-  }
-
-  late final _$stateFilterTextAtom = Atom(
-      name: 'PurchaseRequestCreateControllerAbstract.stateFilterText',
-      context: context);
-
-  @override
-  String get stateFilterText {
-    _$stateFilterTextAtom.reportRead();
-    return super.stateFilterText;
-  }
-
-  @override
-  set stateFilterText(String value) {
-    _$stateFilterTextAtom.reportWrite(value, super.stateFilterText, () {
-      super.stateFilterText = value;
-    });
-  }
-
-  late final _$selectedCompanyIdsAtom = Atom(
-      name: 'PurchaseRequestCreateControllerAbstract.selectedCompanyIds',
-      context: context);
-
-  @override
-  ObservableSet<int> get selectedCompanyIds {
-    _$selectedCompanyIdsAtom.reportRead();
-    return super.selectedCompanyIds;
-  }
-
-  @override
-  set selectedCompanyIds(ObservableSet<int> value) {
-    _$selectedCompanyIdsAtom.reportWrite(value, super.selectedCompanyIds, () {
-      super.selectedCompanyIds = value;
-    });
-  }
-
-  late final _$requestedProductItemsAtom = Atom(
-      name: 'PurchaseRequestCreateControllerAbstract.requestedProductItems',
-      context: context);
-
-  @override
-  List<ItemsEntity> get requestedProductItems {
-    _$requestedProductItemsAtom.reportRead();
-    return super.requestedProductItems;
-  }
-
-  @override
-  set requestedProductItems(List<ItemsEntity> value) {
-    _$requestedProductItemsAtom.reportWrite(value, super.requestedProductItems,
-        () {
-      super.requestedProductItems = value;
-    });
-  }
-
-  late final _$finalRequestedProductsAtom = Atom(
-      name: 'PurchaseRequestCreateControllerAbstract.finalRequestedProducts',
-      context: context);
-
-  @override
-  List<ItemsEntity> get finalRequestedProducts {
-    _$finalRequestedProductsAtom.reportRead();
-    return super.finalRequestedProducts;
-  }
-
-  @override
-  set finalRequestedProducts(List<ItemsEntity> value) {
-    _$finalRequestedProductsAtom
-        .reportWrite(value, super.finalRequestedProducts, () {
-      super.finalRequestedProducts = value;
-    });
-  }
-
   late final _$purchaseRequestTypeAtom = Atom(
       name: 'PurchaseRequestCreateControllerAbstract.purchaseRequestType',
       context: context);
@@ -547,41 +291,6 @@ mixin _$PurchaseRequestCreateController
   set paymentMethod(SelectEntity? value) {
     _$paymentMethodAtom.reportWrite(value, super.paymentMethod, () {
       super.paymentMethod = value;
-    });
-  }
-
-  late final _$searchQueryAtom = Atom(
-      name: 'PurchaseRequestCreateControllerAbstract.searchQuery',
-      context: context);
-
-  @override
-  String get searchQuery {
-    _$searchQueryAtom.reportRead();
-    return super.searchQuery;
-  }
-
-  @override
-  set searchQuery(String value) {
-    _$searchQueryAtom.reportWrite(value, super.searchQuery, () {
-      super.searchQuery = value;
-    });
-  }
-
-  late final _$currentLoadedItemTypeAtom = Atom(
-      name: 'PurchaseRequestCreateControllerAbstract.currentLoadedItemType',
-      context: context);
-
-  @override
-  ItemType? get currentLoadedItemType {
-    _$currentLoadedItemTypeAtom.reportRead();
-    return super.currentLoadedItemType;
-  }
-
-  @override
-  set currentLoadedItemType(ItemType? value) {
-    _$currentLoadedItemTypeAtom.reportWrite(value, super.currentLoadedItemType,
-        () {
-      super.currentLoadedItemType = value;
     });
   }
 
@@ -654,82 +363,59 @@ mixin _$PurchaseRequestCreateController
     });
   }
 
-  late final _$getAllProductsToSelectAsyncAction = AsyncAction(
-      'PurchaseRequestCreateControllerAbstract.getAllProductsToSelect',
+  late final _$finalRequestedProductsAtom = Atom(
+      name: 'PurchaseRequestCreateControllerAbstract.finalRequestedProducts',
       context: context);
 
   @override
-  Future<void> getAllProductsToSelect() {
-    return _$getAllProductsToSelectAsyncAction
-        .run(() => super.getAllProductsToSelect());
+  List<ItemsEntity> get finalRequestedProducts {
+    _$finalRequestedProductsAtom.reportRead();
+    return super.finalRequestedProducts;
   }
 
-  late final _$getAllProductTypesToSelectAsyncAction = AsyncAction(
-      'PurchaseRequestCreateControllerAbstract.getAllProductTypesToSelect',
-      context: context);
-
   @override
-  Future<void> getAllProductTypesToSelect() {
-    return _$getAllProductTypesToSelectAsyncAction
-        .run(() => super.getAllProductTypesToSelect());
+  set finalRequestedProducts(List<ItemsEntity> value) {
+    _$finalRequestedProductsAtom
+        .reportWrite(value, super.finalRequestedProducts, () {
+      super.finalRequestedProducts = value;
+    });
   }
 
-  late final _$applyProductFiltersAsyncAction = AsyncAction(
-      'PurchaseRequestCreateControllerAbstract.applyProductFilters',
+  late final _$finalRequestedCompaniesAtom = Atom(
+      name: 'PurchaseRequestCreateControllerAbstract.finalRequestedCompanies',
       context: context);
 
   @override
-  Future<void> applyProductFilters() {
-    return _$applyProductFiltersAsyncAction
-        .run(() => super.applyProductFilters());
+  List<SelectEntity> get finalRequestedCompanies {
+    _$finalRequestedCompaniesAtom.reportRead();
+    return super.finalRequestedCompanies;
   }
 
-  late final _$getAllCompaniesAsyncAction = AsyncAction(
-      'PurchaseRequestCreateControllerAbstract.getAllCompanies',
-      context: context);
-
   @override
-  Future<void> getAllCompanies() {
-    return _$getAllCompaniesAsyncAction.run(() => super.getAllCompanies());
+  set finalRequestedCompanies(List<SelectEntity> value) {
+    _$finalRequestedCompaniesAtom
+        .reportWrite(value, super.finalRequestedCompanies, () {
+      super.finalRequestedCompanies = value;
+    });
   }
 
-  late final _$getAllCompaniesToSelectAsyncAction = AsyncAction(
-      'PurchaseRequestCreateControllerAbstract.getAllCompaniesToSelect',
+  late final _$finalRequestedAgriculturalInputsAtom = Atom(
+      name:
+          'PurchaseRequestCreateControllerAbstract.finalRequestedAgriculturalInputs',
       context: context);
 
   @override
-  Future<void> getAllCompaniesToSelect() {
-    return _$getAllCompaniesToSelectAsyncAction
-        .run(() => super.getAllCompaniesToSelect());
+  List<ItemsEntity> get finalRequestedAgriculturalInputs {
+    _$finalRequestedAgriculturalInputsAtom.reportRead();
+    return super.finalRequestedAgriculturalInputs;
   }
 
-  late final _$getAllCompanySegmentsToSelectAsyncAction = AsyncAction(
-      'PurchaseRequestCreateControllerAbstract.getAllCompanySegmentsToSelect',
-      context: context);
-
   @override
-  Future<void> getAllCompanySegmentsToSelect() {
-    return _$getAllCompanySegmentsToSelectAsyncAction
-        .run(() => super.getAllCompanySegmentsToSelect());
-  }
-
-  late final _$applyCompanyFiltersAsyncAction = AsyncAction(
-      'PurchaseRequestCreateControllerAbstract.applyCompanyFilters',
-      context: context);
-
-  @override
-  Future<void> applyCompanyFilters() {
-    return _$applyCompanyFiltersAsyncAction
-        .run(() => super.applyCompanyFilters());
-  }
-
-  late final _$loadItemsAsyncAction = AsyncAction(
-      'PurchaseRequestCreateControllerAbstract.loadItems',
-      context: context);
-
-  @override
-  Future<void> loadItems(ItemType type) {
-    return _$loadItemsAsyncAction.run(() => super.loadItems(type));
+  set finalRequestedAgriculturalInputs(List<ItemsEntity> value) {
+    _$finalRequestedAgriculturalInputsAtom
+        .reportWrite(value, super.finalRequestedAgriculturalInputs, () {
+      super.finalRequestedAgriculturalInputs = value;
+    });
   }
 
   late final _$getAllPaymentMethodsToSelectAsyncAction = AsyncAction(
@@ -762,6 +448,26 @@ mixin _$PurchaseRequestCreateController
         .run(() => super.getAllCostCenterToSelect());
   }
 
+  late final _$getAllCostCentersByCostCenterTypeIdToSelectAsyncAction = AsyncAction(
+      'PurchaseRequestCreateControllerAbstract.getAllCostCentersByCostCenterTypeIdToSelect',
+      context: context);
+
+  @override
+  Future<void> getAllCostCentersByCostCenterTypeIdToSelect() {
+    return _$getAllCostCentersByCostCenterTypeIdToSelectAsyncAction
+        .run(() => super.getAllCostCentersByCostCenterTypeIdToSelect());
+  }
+
+  late final _$getAllDeliveryLocationsToSelectAsyncAction = AsyncAction(
+      'PurchaseRequestCreateControllerAbstract.getAllDeliveryLocationsToSelect',
+      context: context);
+
+  @override
+  Future<void> getAllDeliveryLocationsToSelect() {
+    return _$getAllDeliveryLocationsToSelectAsyncAction
+        .run(() => super.getAllDeliveryLocationsToSelect());
+  }
+
   late final _$getAllFarmsByCostCenterIdToSelectAsyncAction = AsyncAction(
       'PurchaseRequestCreateControllerAbstract.getAllFarmsByCostCenterIdToSelect',
       context: context);
@@ -787,7 +493,8 @@ mixin _$PurchaseRequestCreateController
       context: context);
 
   @override
-  Future<void> createPurchaseRequest(BuildContext context) {
+  Future<Either<ApplicationError, dynamic>> createPurchaseRequest(
+      BuildContext context) {
     return _$createPurchaseRequestAsyncAction
         .run(() => super.createPurchaseRequest(context));
   }
@@ -797,12 +504,12 @@ mixin _$PurchaseRequestCreateController
           name: 'PurchaseRequestCreateControllerAbstract', context: context);
 
   @override
-  void updateSearchQuery(String query) {
+  void initializeDates() {
     final _$actionInfo =
         _$PurchaseRequestCreateControllerAbstractActionController.startAction(
-            name: 'PurchaseRequestCreateControllerAbstract.updateSearchQuery');
+            name: 'PurchaseRequestCreateControllerAbstract.initializeDates');
     try {
-      return super.updateSearchQuery(query);
+      return super.initializeDates();
     } finally {
       _$PurchaseRequestCreateControllerAbstractActionController
           .endAction(_$actionInfo);
@@ -844,226 +551,6 @@ mixin _$PurchaseRequestCreateController
             name: 'PurchaseRequestCreateControllerAbstract.updateEmployee');
     try {
       return super.updateEmployee(employee);
-    } finally {
-      _$PurchaseRequestCreateControllerAbstractActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void updateRequestItems(int index) {
-    final _$actionInfo =
-        _$PurchaseRequestCreateControllerAbstractActionController.startAction(
-            name: 'PurchaseRequestCreateControllerAbstract.updateRequestItems');
-    try {
-      return super.updateRequestItems(index);
-    } finally {
-      _$PurchaseRequestCreateControllerAbstractActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void updateRequestItemsQuantity({required int id, required int value}) {
-    final _$actionInfo =
-        _$PurchaseRequestCreateControllerAbstractActionController.startAction(
-            name:
-                'PurchaseRequestCreateControllerAbstract.updateRequestItemsQuantity');
-    try {
-      return super.updateRequestItemsQuantity(id: id, value: value);
-    } finally {
-      _$PurchaseRequestCreateControllerAbstractActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void incrementRequestedProductQuantity(int productId) {
-    final _$actionInfo =
-        _$PurchaseRequestCreateControllerAbstractActionController.startAction(
-            name:
-                'PurchaseRequestCreateControllerAbstract.incrementRequestedProductQuantity');
-    try {
-      return super.incrementRequestedProductQuantity(productId);
-    } finally {
-      _$PurchaseRequestCreateControllerAbstractActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void decrementRequestedProductQuantity(int productId) {
-    final _$actionInfo =
-        _$PurchaseRequestCreateControllerAbstractActionController.startAction(
-            name:
-                'PurchaseRequestCreateControllerAbstract.decrementRequestedProductQuantity');
-    try {
-      return super.decrementRequestedProductQuantity(productId);
-    } finally {
-      _$PurchaseRequestCreateControllerAbstractActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void removeRequestedProduct(int productId) {
-    final _$actionInfo =
-        _$PurchaseRequestCreateControllerAbstractActionController.startAction(
-            name:
-                'PurchaseRequestCreateControllerAbstract.removeRequestedProduct');
-    try {
-      return super.removeRequestedProduct(productId);
-    } finally {
-      _$PurchaseRequestCreateControllerAbstractActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void updateSelectedProductTypes(Set<int> selectedIds) {
-    final _$actionInfo =
-        _$PurchaseRequestCreateControllerAbstractActionController.startAction(
-            name:
-                'PurchaseRequestCreateControllerAbstract.updateSelectedProductTypes');
-    try {
-      return super.updateSelectedProductTypes(selectedIds);
-    } finally {
-      _$PurchaseRequestCreateControllerAbstractActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void clearSelectedProductTypes() {
-    final _$actionInfo =
-        _$PurchaseRequestCreateControllerAbstractActionController.startAction(
-            name:
-                'PurchaseRequestCreateControllerAbstract.clearSelectedProductTypes');
-    try {
-      return super.clearSelectedProductTypes();
-    } finally {
-      _$PurchaseRequestCreateControllerAbstractActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void updateFinalRequestedProducts() {
-    final _$actionInfo =
-        _$PurchaseRequestCreateControllerAbstractActionController.startAction(
-            name:
-                'PurchaseRequestCreateControllerAbstract.updateFinalRequestedProducts');
-    try {
-      return super.updateFinalRequestedProducts();
-    } finally {
-      _$PurchaseRequestCreateControllerAbstractActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void toggleCompanySelection(int companyId, bool isSelected) {
-    final _$actionInfo =
-        _$PurchaseRequestCreateControllerAbstractActionController.startAction(
-            name:
-                'PurchaseRequestCreateControllerAbstract.toggleCompanySelection');
-    try {
-      return super.toggleCompanySelection(companyId, isSelected);
-    } finally {
-      _$PurchaseRequestCreateControllerAbstractActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void removeSelectedCompany(int companyId) {
-    final _$actionInfo =
-        _$PurchaseRequestCreateControllerAbstractActionController.startAction(
-            name:
-                'PurchaseRequestCreateControllerAbstract.removeSelectedCompany');
-    try {
-      return super.removeSelectedCompany(companyId);
-    } finally {
-      _$PurchaseRequestCreateControllerAbstractActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void updateSelectedCompanySegments(Set<int> selectedIds) {
-    final _$actionInfo =
-        _$PurchaseRequestCreateControllerAbstractActionController.startAction(
-            name:
-                'PurchaseRequestCreateControllerAbstract.updateSelectedCompanySegments');
-    try {
-      return super.updateSelectedCompanySegments(selectedIds);
-    } finally {
-      _$PurchaseRequestCreateControllerAbstractActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void clearSelectedCompanySegments() {
-    final _$actionInfo =
-        _$PurchaseRequestCreateControllerAbstractActionController.startAction(
-            name:
-                'PurchaseRequestCreateControllerAbstract.clearSelectedCompanySegments');
-    try {
-      return super.clearSelectedCompanySegments();
-    } finally {
-      _$PurchaseRequestCreateControllerAbstractActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void updateStateFilter(String text) {
-    final _$actionInfo =
-        _$PurchaseRequestCreateControllerAbstractActionController.startAction(
-            name: 'PurchaseRequestCreateControllerAbstract.updateStateFilter');
-    try {
-      return super.updateStateFilter(text);
-    } finally {
-      _$PurchaseRequestCreateControllerAbstractActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void updateCityFilter(String text) {
-    final _$actionInfo =
-        _$PurchaseRequestCreateControllerAbstractActionController.startAction(
-            name: 'PurchaseRequestCreateControllerAbstract.updateCityFilter');
-    try {
-      return super.updateCityFilter(text);
-    } finally {
-      _$PurchaseRequestCreateControllerAbstractActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void applyCityFilter() {
-    final _$actionInfo =
-        _$PurchaseRequestCreateControllerAbstractActionController.startAction(
-            name: 'PurchaseRequestCreateControllerAbstract.applyCityFilter');
-    try {
-      return super.applyCityFilter();
-    } finally {
-      _$PurchaseRequestCreateControllerAbstractActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void clearSelectedCityFilter() {
-    final _$actionInfo =
-        _$PurchaseRequestCreateControllerAbstractActionController.startAction(
-            name:
-                'PurchaseRequestCreateControllerAbstract.clearSelectedCityFilter');
-    try {
-      return super.clearSelectedCityFilter();
     } finally {
       _$PurchaseRequestCreateControllerAbstractActionController
           .endAction(_$actionInfo);
@@ -1117,40 +604,25 @@ isFirstLoading: ${isFirstLoading},
 isCostCenterLoading: ${isCostCenterLoading},
 isFarmLoading: ${isFarmLoading},
 isEmployeeLoading: ${isEmployeeLoading},
-isProductLoading: ${isProductLoading},
-isCompanyLoading: ${isCompanyLoading},
 isPaymentMethodLoading: ${isPaymentMethodLoading},
 purchaseRequestTypeListToSelect: ${purchaseRequestTypeListToSelect},
 costCenterListToSelect: ${costCenterListToSelect},
+costCenterByCostCenterTypeIdListToSelect: ${costCenterByCostCenterTypeIdListToSelect},
 farmsByCostCenterIdListToSelect: ${farmsByCostCenterIdListToSelect},
 employeeByFarmIdListToSelect: ${employeeByFarmIdListToSelect},
 paymentMethodListToSelect: ${paymentMethodListToSelect},
 deliveryLocationListToSelect: ${deliveryLocationListToSelect},
-productListToSelect: ${productListToSelect},
-productTypesListToSelect: ${productTypesListToSelect},
-filteredProductTypeListToSelect: ${filteredProductTypeListToSelect},
-companiesListToSelect: ${companiesListToSelect},
-companiesList: ${companiesList},
-companySegmentsListToSelect: ${companySegmentsListToSelect},
-filteredCompanySegmentsListToSelect: ${filteredCompanySegmentsListToSelect},
-cityFilterText: ${cityFilterText},
-stateFilterText: ${stateFilterText},
-selectedCompanyIds: ${selectedCompanyIds},
-requestedProductItems: ${requestedProductItems},
-finalRequestedProducts: ${finalRequestedProducts},
 purchaseRequestType: ${purchaseRequestType},
 costCenter: ${costCenter},
 farm: ${farm},
 paymentMethod: ${paymentMethod},
-searchQuery: ${searchQuery},
-currentLoadedItemType: ${currentLoadedItemType},
 isUrgent: ${isUrgent},
 quotationExpirationDate: ${quotationExpirationDate},
 paymentDate: ${paymentDate},
 deliveryLocationId: ${deliveryLocationId},
-filteredAddItemsList: ${filteredAddItemsList},
-filteredPaymentMethodList: ${filteredPaymentMethodList},
-finalRequestedCompanies: ${finalRequestedCompanies}
+finalRequestedProducts: ${finalRequestedProducts},
+finalRequestedCompanies: ${finalRequestedCompanies},
+finalRequestedAgriculturalInputs: ${finalRequestedAgriculturalInputs}
     ''';
   }
 }

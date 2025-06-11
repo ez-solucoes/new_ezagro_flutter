@@ -2,9 +2,10 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/machinery_implement_entities/machinery_implement_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/machinery_implement_usecases/get_all_machinery_implement_usecases/get_all_machinery_implements_usecase.dart';
 
-import '../../../../domain/usecases/machinery_usecases/get_all_machinery_usecases/get_all_machinery_usecase.dart';
-import '../../../../domain/usecases/machinery_usecases/get_machinery_implement_by_id/get_machinery_implement_by_id_usecase.dart';
+import '../../../../domain/usecases/machinery_implement_usecases/get_machinery_implement_by_id/get_machinery_implement_by_id_usecase.dart';
 
 part 'machinery_controller.g.dart';
 
@@ -26,14 +27,14 @@ abstract class MachineryControllerAbstract with Store {
   @action
   Future<void> getAllMachineryImplements() async {
     isLoading = true;
-    final getAllMachineryUsecase = Modular.get<GetAllMachineryUsecase>();
+    final getAllMachineryImplementsUsecase = Modular.get<GetAllMachineryImplementsUsecase>();
 
-    final result = await getAllMachineryUsecase(NoParams());
+    final result = await getAllMachineryImplementsUsecase(NoParams());
 
     result.fold((error) {
       errorMessage = error.friendlyMessage;
     }, (success) {
-      for (var machineryImplementEntity in success) {
+      for (var machineryImplementEntity in success.data!) {
         machineryImplementList.add(machineryImplementEntity);
       }
 
@@ -47,7 +48,7 @@ abstract class MachineryControllerAbstract with Store {
   Future<void> getMachineryImplementById(int id) async {
     isLoading = true;
     final getMachineryImplementByIdUsecase = Modular.get<GetMachineryImplementByIdUsecase>();
-    final result = await getMachineryImplementByIdUsecase(id);
+    final result = await getMachineryImplementByIdUsecase(ArgParams(firstArgs: id));
 
     result.fold((error) {
       errorMessage = error.friendlyMessage;

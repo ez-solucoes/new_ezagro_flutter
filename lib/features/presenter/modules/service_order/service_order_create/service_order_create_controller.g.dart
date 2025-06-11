@@ -388,6 +388,41 @@ mixin _$ServiceOrderCreateController
     });
   }
 
+  late final _$originListToSelectAtom = Atom(
+      name: 'ServiceOrderCreateControllerAbstract.originListToSelect',
+      context: context);
+
+  @override
+  List<SelectEntity> get originListToSelect {
+    _$originListToSelectAtom.reportRead();
+    return super.originListToSelect;
+  }
+
+  @override
+  set originListToSelect(List<SelectEntity> value) {
+    _$originListToSelectAtom.reportWrite(value, super.originListToSelect, () {
+      super.originListToSelect = value;
+    });
+  }
+
+  late final _$destinationListToSelectAtom = Atom(
+      name: 'ServiceOrderCreateControllerAbstract.destinationListToSelect',
+      context: context);
+
+  @override
+  List<SelectEntity> get destinationListToSelect {
+    _$destinationListToSelectAtom.reportRead();
+    return super.destinationListToSelect;
+  }
+
+  @override
+  set destinationListToSelect(List<SelectEntity> value) {
+    _$destinationListToSelectAtom
+        .reportWrite(value, super.destinationListToSelect, () {
+      super.destinationListToSelect = value;
+    });
+  }
+
   late final _$agriculturalActivityListAtom = Atom(
       name: 'ServiceOrderCreateControllerAbstract.agriculturalActivityList',
       context: context);
@@ -403,6 +438,23 @@ mixin _$ServiceOrderCreateController
     _$agriculturalActivityListAtom
         .reportWrite(value, super.agriculturalActivityList, () {
       super.agriculturalActivityList = value;
+    });
+  }
+
+  late final _$farmPlotListAtom = Atom(
+      name: 'ServiceOrderCreateControllerAbstract.farmPlotList',
+      context: context);
+
+  @override
+  List<FarmPlotEntity> get farmPlotList {
+    _$farmPlotListAtom.reportRead();
+    return super.farmPlotList;
+  }
+
+  @override
+  set farmPlotList(List<FarmPlotEntity> value) {
+    _$farmPlotListAtom.reportWrite(value, super.farmPlotList, () {
+      super.farmPlotList = value;
     });
   }
 
@@ -579,6 +631,39 @@ mixin _$ServiceOrderCreateController
     });
   }
 
+  late final _$originAtom = Atom(
+      name: 'ServiceOrderCreateControllerAbstract.origin', context: context);
+
+  @override
+  String? get origin {
+    _$originAtom.reportRead();
+    return super.origin;
+  }
+
+  @override
+  set origin(String? value) {
+    _$originAtom.reportWrite(value, super.origin, () {
+      super.origin = value;
+    });
+  }
+
+  late final _$destinationAtom = Atom(
+      name: 'ServiceOrderCreateControllerAbstract.destination',
+      context: context);
+
+  @override
+  String? get destination {
+    _$destinationAtom.reportRead();
+    return super.destination;
+  }
+
+  @override
+  set destination(String? value) {
+    _$destinationAtom.reportWrite(value, super.destination, () {
+      super.destination = value;
+    });
+  }
+
   late final _$getAllAgriculturalActivityTypesToSelectAsyncAction = AsyncAction(
       'ServiceOrderCreateControllerAbstract.getAllAgriculturalActivityTypesToSelect',
       context: context);
@@ -700,6 +785,15 @@ mixin _$ServiceOrderCreateController
         .run(() => super.getAllFarmPloToSelect());
   }
 
+  late final _$getAllFarmPlotsAsyncAction = AsyncAction(
+      'ServiceOrderCreateControllerAbstract.getAllFarmPlots',
+      context: context);
+
+  @override
+  Future<void> getAllFarmPlots() {
+    return _$getAllFarmPlotsAsyncAction.run(() => super.getAllFarmPlots());
+  }
+
   late final _$ServiceOrderCreateControllerAbstractActionController =
       ActionController(
           name: 'ServiceOrderCreateControllerAbstract', context: context);
@@ -742,7 +836,10 @@ farmsByCostCenterIdListToSelect: ${farmsByCostCenterIdListToSelect},
 cropListToSelect: ${cropListToSelect},
 cropVarietyListToSelect: ${cropVarietyListToSelect},
 farmPlotListToSelect: ${farmPlotListToSelect},
+originListToSelect: ${originListToSelect},
+destinationListToSelect: ${destinationListToSelect},
 agriculturalActivityList: ${agriculturalActivityList},
+farmPlotList: ${farmPlotList},
 agriculturalActivity: ${agriculturalActivity},
 agriculturalActivityType: ${agriculturalActivityType},
 agriculturalSubActivity: ${agriculturalSubActivity},
@@ -752,7 +849,9 @@ farm: ${farm},
 crop: ${crop},
 cropVariety: ${cropVariety},
 technologyName: ${technologyName},
-selectedFarmPlotList: ${selectedFarmPlotList}
+selectedFarmPlotList: ${selectedFarmPlotList},
+origin: ${origin},
+destination: ${destination}
     ''';
   }
 }

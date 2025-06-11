@@ -9,7 +9,7 @@ import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../../domain/usecases/purchase_request_usecases/approve_purchase_request_by_id_usecases/approve_purchase_request_by_id_usecase.dart';
 import '../../../../domain/usecases/purchase_request_usecases/cancel_purchase_request_by_id_usecases/cancel_purchase_request_by_id_usecase.dart';
 import '../../../../domain/usecases/purchase_request_usecases/get_purchase_request_by_id_usecases/get_purchase_request_by_id_usecase.dart';
-import '../../../../domain/usecases/service_order_usecase/get_service_order_by_id_usecase.dart';
+import '../../../../domain/usecases/service_order_usecase/get_service_order_by_id_usecases/get_service_order_by_id_usecase.dart';
 
 part 'approvals_detail_controller.g.dart';
 
@@ -40,7 +40,7 @@ abstract class ApprovalsDetailControllerAbstract with Store {
     final getPurchaseRequestByItUsecase = Modular.get<GetPurchaseRequestByIdUsecase>();
     final result = await getPurchaseRequestByItUsecase(ArgParams(firstArgs: purchaseRequestId));
     result.fold((error) => error.friendlyMessage, (success) {
-      purchaseRequest = success;
+      purchaseRequest = success.data!;
       return success;
     });
     isLoading = false;
@@ -53,7 +53,7 @@ abstract class ApprovalsDetailControllerAbstract with Store {
     final approvePurchaseRequestByItUsecase = Modular.get<ApprovePurchaseRequestByIdUsecase>();
     final result = await approvePurchaseRequestByItUsecase(ArgParams(firstArgs: purchaseRequestId));
     result.fold((error) => error.friendlyMessage, (success) {
-      purchaseRequest = success;
+      purchaseRequest = success.data!;
       return success;
     });
     isLoading = false;
@@ -66,7 +66,7 @@ abstract class ApprovalsDetailControllerAbstract with Store {
     final cancelPurchaseRequestByItUsecase = Modular.get<CancelPurchaseRequestByIdUsecase>();
     final result = await cancelPurchaseRequestByItUsecase(ArgParams(firstArgs: purchaseRequestId));
     result.fold((error) => error.friendlyMessage, (success) {
-      purchaseRequest = success;
+      purchaseRequest = success.data!;
       return success;
     });
     isLoading = false;

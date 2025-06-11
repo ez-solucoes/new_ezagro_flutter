@@ -6,9 +6,9 @@ import '../../../../../domain/params/arg_params/arg_params.dart';
 import '../../../../models/select_models/select_model.dart';
 
 abstract class AgriculturalSubActivityDatasource {
-  Future<List<AgriculturalSubActivityModel>> getAllAgriculturalSubActivities(NoParams noParams);
-  Future<List<SelectModel>> getAllAgriculturalSubActivitiesToSelect(NoParams noParams);
-  Future<List<SelectModel>> getAllAgriculturalSubActivitiesByActivityIdToSelect(ArgParams argParams);
+  Future<ResponseModel<List<AgriculturalSubActivityModel>>> getAllAgriculturalSubActivities(NoParams noParams);
+  Future<ResponseModel<List<SelectModel>>> getAllAgriculturalSubActivitiesToSelect(NoParams noParams);
+  Future<ResponseModel<List<SelectModel>>> getAllAgriculturalSubActivitiesByActivityIdToSelect(ArgParams argParams);
   Future<ResponseModel<AgriculturalSubActivityModel>> getAgriculturalSubActivityById(ArgParams argParams);
 
 }

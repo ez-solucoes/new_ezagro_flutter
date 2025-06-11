@@ -5,6 +5,7 @@ import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_v
 import '../../../../../../core/errors/application_error.dart';
 import '../../../../../../core/usecase/usecase.dart';
 import '../../../../entities/crop_entities/crop_variety_entity.dart';
+import '../../../../entities/response_entities/response_entity.dart';
 
 class GetAllCropVarietiesUsecaseImpl implements GetAllCropVarietiesUsecase {
   final CropVarietyRepository repository;
@@ -12,7 +13,7 @@ class GetAllCropVarietiesUsecaseImpl implements GetAllCropVarietiesUsecase {
   GetAllCropVarietiesUsecaseImpl(this.repository);
 
   @override
-  Future<Either<ApplicationError, List<CropVarietyEntity>>> call(
+  Future<Either<ApplicationError, ResponseEntity<List<CropVarietyEntity>>>> call(
       NoParams noParams) async {
     return await repository.getAllCropVarieties(noParams);
   }

@@ -21,7 +21,7 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
-      AppEndpoints.loginEndpoint,
+      AppEndpoints.authenticationLoginEndpoint,
     );
 
     final HttpRequest request = HttpRequest.post(path: url, payload: {
@@ -33,10 +33,9 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
 
     switch (result.statusCode) {
       case 201:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForSingleItem<AuthenticationModel>(
           response: result,
           fromMap: (map) => AuthenticationModel.fromMap(map),
-          fromJson: (jsonString) => AuthenticationModel.fromJson(jsonString),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -48,7 +47,7 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
-      AppEndpoints.forgotPasswordEndpoint,
+      AppEndpoints.authenticationForgotPasswordEndpoint,
     );
 
     final HttpRequest request = HttpRequest.post(path: url, payload: {
@@ -70,7 +69,7 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
-      AppEndpoints.updatePasswordEndpoint,
+      AppEndpoints.authenticationUpdatePasswordEndpoint,
     );
 
     final HttpRequest request = HttpRequest.post(path: url, payload: {
@@ -82,10 +81,9 @@ class AuthenticationDatasourceImpl with UriBuilder implements AuthenticationData
 
     switch (result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForSingleItem<AuthenticationModel>(
           response: result,
           fromMap: (map) => AuthenticationModel.fromMap(map),
-          fromJson: (jsonString) => AuthenticationModel.fromJson(jsonString),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

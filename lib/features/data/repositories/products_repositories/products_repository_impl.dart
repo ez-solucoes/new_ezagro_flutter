@@ -16,7 +16,7 @@ class ProductRepositoryImpl implements ProductRepository {
   ProductRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<ApplicationError, List<ProductModel>>> getAllProducts(
+  Future<Either<ApplicationError, ResponseModel<List<ProductModel>>>> getAllProducts(
       NoParams noParams) async {
     try {
       final result = await datasource.getAllProducts(noParams);
@@ -25,13 +25,14 @@ class ProductRepositoryImpl implements ProductRepository {
       return Left(e);
     } catch (e, stacktrace) {
       return Left(GenericError(
-          fingerprint: '$ProductRepositoryImpl.getProducts',
+          fingerprint: '$ProductRepositoryImpl.getAllProducts',
           additionalInfo: stacktrace.toString()));
     }
   }
 
   @override
-  Future<Either<ApplicationError, List<SelectModel>>> getAllProductsToSelect(NoParams noParams) async {
+  Future<Either<ApplicationError, ResponseModel<List<SelectModel>>>>
+      getAllProductsToSelect(NoParams noParams) async {
     try {
       final result = await datasource.getAllProductsToSelect(noParams);
       return Right(result);
@@ -45,7 +46,8 @@ class ProductRepositoryImpl implements ProductRepository {
   }
 
   @override
-  Future<Either<ApplicationError, List<ProductModel>>> getAllProductsByTypeId(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseModel<List<ProductModel>>>>
+      getAllProductsByTypeId(ArgParams argParams) async {
     try {
       final result = await datasource.getAllProductsByTypeId(argParams);
       return Right(result);
@@ -59,7 +61,8 @@ class ProductRepositoryImpl implements ProductRepository {
   }
 
   @override
-  Future<Either<ApplicationError, List<SelectModel>>> getAllProductsByTypeIdToSelect(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseModel<List<SelectModel>>>>
+      getAllProductsByTypeIdToSelect(ArgParams argParams) async {
     try {
       final result = await datasource.getAllProductsByTypeIdToSelect(argParams);
       return Right(result);
@@ -73,7 +76,8 @@ class ProductRepositoryImpl implements ProductRepository {
   }
 
   @override
-  Future<Either<ApplicationError, ResponseModel<ProductModel>>> getProductById(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseModel<ProductModel>>> getProductById(
+      ArgParams argParams) async {
     try {
       final result = await datasource.getProductById(argParams);
       return Right(result);

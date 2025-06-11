@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:new_ezagro_flutter/core/errors/application_error.dart';
 
 import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
+import 'package:new_ezagro_flutter/features/data/models/response_models/response_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/segment_models/segment_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/select_models/select_model.dart';
 
@@ -18,7 +19,7 @@ class CompanySegmentRepositoryImpl implements CompanySegmentRepository {
   CompanySegmentRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<ApplicationError, List<SegmentModel>>> getAllCompanySegments(NoParams noParams) async {
+  Future<Either<ApplicationError, ResponseModel<List<SegmentModel>>>> getAllCompanySegments(NoParams noParams) async {
     try {
       final result = await datasource.getAllCompanySegments(noParams);
       return Right(result);
@@ -32,7 +33,7 @@ class CompanySegmentRepositoryImpl implements CompanySegmentRepository {
   }
 
   @override
-  Future<Either<ApplicationError, List<SelectModel>>> getAllCompanySegmentsToSelect(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseModel<List<SelectModel>>>> getAllCompanySegmentsToSelect(ArgParams argParams) async {
     try {
       final result = await datasource.getAllCompanySegmentsToSelect(argParams);
       return Right(result);
@@ -46,10 +47,10 @@ class CompanySegmentRepositoryImpl implements CompanySegmentRepository {
   }
 
   @override
-  Future<Either<ApplicationError, SegmentModel>> getCompanySegmentById(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseModel<SegmentModel>>> getCompanySegmentById(ArgParams argParams) async {
     try {
       final result = await datasource.getCompanySegmentById(argParams);
-      return Right(result.data!);
+      return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {

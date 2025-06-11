@@ -12,28 +12,30 @@ import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.
 
 import '../../../../domain/repositories/farm_repositories/farm_plot_repositories/farm_plot_repository.dart';
 
-class FarmPlotRepositoryImpl implements FarmPlotRepository{
+class FarmPlotRepositoryImpl implements FarmPlotRepository {
   final FarmPlotDatasource datasource;
 
   FarmPlotRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<ApplicationError, List<FarmPlotModel>>> getAllFarmPlots(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseModel<List<FarmPlotModel>>>>
+      getAllFarmPlotsByFarmId(ArgParams argParams) async {
     try {
-      final result = await datasource.getAllFarmPlots(argParams);
+      final result = await datasource.getAllFarmPlotsByFarmId(argParams);
       return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {
       return Left(GenericError(
-        fingerprint: '$FarmPlotRepositoryImpl.getAllFarmPlots',
+        fingerprint: '$FarmPlotRepositoryImpl.getAllFarmPlotsByFarmId',
         additionalInfo: stacktrace.toString(),
       ));
     }
   }
 
   @override
-  Future<Either<ApplicationError, ResponseModel<FarmPlotModel>>> getFarmPlotById(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseModel<FarmPlotModel>>> getFarmPlotById(
+      ArgParams argParams) async {
     try {
       final result = await datasource.getFarmPlotById(argParams);
       return Right(result);
@@ -48,15 +50,16 @@ class FarmPlotRepositoryImpl implements FarmPlotRepository{
   }
 
   @override
-  Future<Either<ApplicationError, List<SelectModel>>> getAllFarmPlotsToSelect(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseModel<List<SelectModel>>>>
+      getAllFarmPlotsByFarmIdToSelect(ArgParams argParams) async {
     try {
-      final result = await datasource.getAllFarmPlotsToSelect(argParams);
+      final result = await datasource.getAllFarmPlotsByFarmIdToSelect(argParams);
       return Right(result);
     } on ApplicationError catch (e) {
       return Left(e);
     } catch (e, stacktrace) {
       return Left(GenericError(
-        fingerprint: '$FarmPlotRepositoryImpl.getAllFarmPlotsToSelect',
+        fingerprint: '$FarmPlotRepositoryImpl.getAllFarmPlotsByFarmIdToSelect',
         additionalInfo: stacktrace.toString(),
       ));
     }

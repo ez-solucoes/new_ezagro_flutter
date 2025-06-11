@@ -3,9 +3,10 @@ import 'package:new_ezagro_flutter/features/domain/entities/type_entities/type_e
 
 import '../../../../../../core/errors/application_error.dart';
 import '../../../../../../core/usecase/usecase.dart';
+import '../../../../entities/response_entities/response_entity.dart';
 
 abstract class GetAllAgriculturalActivityTypesUsecase
-    implements Usecase<List<TypeEntity>, NoParams> {
+    implements Usecase<ResponseEntity<List<TypeEntity>>, NoParams> {
   @override
-  Future<Either<ApplicationError, List<TypeEntity>>> call(NoParams params);
+  Future<Either<ApplicationError, ResponseEntity<List<TypeEntity>>>> call(NoParams params);
 }

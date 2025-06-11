@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:new_ezagro_flutter/core/mixins/uri_builder_mixin.dart';
 import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
@@ -31,13 +30,9 @@ class AgriculturalSubActivityDatasourceImpl with UriBuilder implements Agricultu
 
     switch (result.statusCode) {
       case 200:
-        return mountModelInstanceFromResponse(
+        return mountResponseModelForSingleItem<AgriculturalSubActivityModel>(
           response: result,
           fromMap: (map) => AgriculturalSubActivityModel.fromMap(map),
-          fromJson: (jsonString) {
-            final Map<String, dynamic> jsonMap = jsonDecode(jsonString);
-            return AgriculturalSubActivityModel.fromJson(jsonEncode(jsonMap));
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -45,7 +40,7 @@ class AgriculturalSubActivityDatasourceImpl with UriBuilder implements Agricultu
   }
 
   @override
-  Future<List<AgriculturalSubActivityModel>> getAllAgriculturalSubActivities(NoParams noParams) async {
+  Future<ResponseModel<List<AgriculturalSubActivityModel>>> getAllAgriculturalSubActivities(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
@@ -57,13 +52,9 @@ class AgriculturalSubActivityDatasourceImpl with UriBuilder implements Agricultu
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList(
           response: result,
           fromListMap: (map) => (map).map((e) => AgriculturalSubActivityModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList.map((json) => AgriculturalSubActivityModel.fromJson(jsonEncode(json))).toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -71,7 +62,7 @@ class AgriculturalSubActivityDatasourceImpl with UriBuilder implements Agricultu
   }
 
   @override
-  Future<List<SelectModel>> getAllAgriculturalSubActivitiesToSelect(NoParams noParams) async {
+  Future<ResponseModel<List<SelectModel>>> getAllAgriculturalSubActivitiesToSelect(NoParams noParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
@@ -83,15 +74,9 @@ class AgriculturalSubActivityDatasourceImpl with UriBuilder implements Agricultu
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList(
           response: result,
           fromListMap: (map) => (map).map((e) => SelectModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList
-                .map((json) => SelectModel.fromJson(jsonEncode(json)))
-                .toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -99,7 +84,7 @@ class AgriculturalSubActivityDatasourceImpl with UriBuilder implements Agricultu
   }
 
   @override
-  Future<List<SelectModel>> getAllAgriculturalSubActivitiesByActivityIdToSelect(ArgParams argParams) async {
+  Future<ResponseModel<List<SelectModel>>> getAllAgriculturalSubActivitiesByActivityIdToSelect(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
@@ -111,15 +96,9 @@ class AgriculturalSubActivityDatasourceImpl with UriBuilder implements Agricultu
 
     switch (result.statusCode) {
       case 200:
-        return mountListModelInstanceFromResponse(
+        return mountResponseModelForPaginatedList(
           response: result,
           fromListMap: (map) => (map).map((e) => SelectModel.fromMap(e)).toList(),
-          fromJsonList: (jsonString) {
-            final List<dynamic> jsonList = jsonDecode(jsonString);
-            return jsonList
-                .map((json) => SelectModel.fromJson(jsonEncode(json)))
-                .toList();
-          },
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

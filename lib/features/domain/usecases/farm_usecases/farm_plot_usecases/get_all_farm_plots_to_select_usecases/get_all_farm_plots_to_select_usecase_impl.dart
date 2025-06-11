@@ -6,6 +6,7 @@ import 'package:new_ezagro_flutter/features/domain/entities/select_entities/sele
 
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 
+import '../../../../entities/response_entities/response_entity.dart';
 import '../../../../repositories/farm_repositories/farm_plot_repositories/farm_plot_repository.dart';
 import 'get_all_farm_plots_to_select_usecase.dart';
 
@@ -15,7 +16,7 @@ class GetAllFarmPlotsToSelectUsecaseImpl implements GetAllFarmPlotsToSelectUseca
   GetAllFarmPlotsToSelectUsecaseImpl(this.repository);
 
   @override
-  Future<Either<ApplicationError, List<SelectEntity>>> call(ArgParams argParams) async {
-    return await repository.getAllFarmPlotsToSelect(argParams);
+  Future<Either<ApplicationError, ResponseEntity<List<SelectEntity>>>> call(ArgParams argParams) async {
+    return await repository.getAllFarmPlotsByFarmIdToSelect(argParams);
   }
 }

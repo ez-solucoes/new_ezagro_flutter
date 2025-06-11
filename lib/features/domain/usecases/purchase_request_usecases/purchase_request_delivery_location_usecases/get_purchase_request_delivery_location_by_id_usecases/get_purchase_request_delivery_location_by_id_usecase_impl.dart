@@ -6,6 +6,7 @@ import 'package:new_ezagro_flutter/features/domain/entities/type_entities/type_e
 
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 
+import '../../../../entities/response_entities/response_entity.dart';
 import '../../../../repositories/purchase_request_repositories/purchase_request_delivery_location_repositories/purchase_request_delivery_location_repository.dart';
 import 'get_purchase_request_delivery_location_by_id_usecase.dart';
 
@@ -16,7 +17,7 @@ class GetPurchaseRequestDeliveryLocationByIdUsecaseImpl implements GetPurchaseRe
   GetPurchaseRequestDeliveryLocationByIdUsecaseImpl(this.repository);
 
   @override
-  Future<Either<ApplicationError, TypeEntity>> call(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseEntity<TypeEntity>>> call(ArgParams argParams) async {
     return await repository.getPurchaseRequestDeliveryLocationById(argParams);
   }
 

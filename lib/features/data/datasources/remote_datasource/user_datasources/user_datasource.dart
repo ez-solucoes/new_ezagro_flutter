@@ -3,7 +3,6 @@ import 'package:new_ezagro_flutter/features/data/models/response_models/response
 import 'package:new_ezagro_flutter/features/data/models/select_models/select_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/user_models/user_model.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
-import 'package:new_ezagro_flutter/features/domain/params/user_params/user_params.dart';
 
 abstract class UserDatasource{
   Future<ResponseModel<List<UserModel>>> getAllUsers(NoParams noParams);

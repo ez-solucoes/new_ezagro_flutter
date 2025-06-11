@@ -7,6 +7,7 @@ import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/select_entities/select_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/agricultural_activity_repositories/agricultural_activity_type_repositories/agricultural_activity_type_respository.dart';
 
+import '../../../../entities/response_entities/response_entity.dart';
 import 'get_all_agricultural_activity_types_to_select_usecase.dart';
 
 class GetAllAgriculturalActivityTypesToSelectUsecaseImpl
@@ -16,7 +17,7 @@ class GetAllAgriculturalActivityTypesToSelectUsecaseImpl
   GetAllAgriculturalActivityTypesToSelectUsecaseImpl(this.repository);
 
   @override
-  Future<Either<ApplicationError, List<SelectEntity>>> call(NoParams noParams) async {
+  Future<Either<ApplicationError, ResponseEntity<List<SelectEntity>>>> call(NoParams noParams) async {
     return await repository.getAllAgriculturalActivityTypesToSelect(noParams);
   }
 }

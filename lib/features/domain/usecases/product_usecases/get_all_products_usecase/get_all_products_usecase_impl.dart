@@ -4,6 +4,7 @@ import 'package:new_ezagro_flutter/features/domain/entities/products_entities/pr
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/get_all_products_usecase/get_all_products_usecase.dart';
 
 import '../../../../../core/errors/application_error.dart';
+import '../../../entities/response_entities/response_entity.dart';
 import '../../../repositories/product_repositories/product_repository.dart';
 
 class GetAllProductsUsecaseImpl implements GetAllProductsUsecase {
@@ -12,7 +13,7 @@ class GetAllProductsUsecaseImpl implements GetAllProductsUsecase {
   GetAllProductsUsecaseImpl(this.repository);
 
   @override
-  Future<Either<ApplicationError, List<ProductEntity>>> call(
+  Future<Either<ApplicationError, ResponseEntity<List<ProductEntity>>>> call(
       NoParams noParams) async {
     return await repository.getAllProducts(noParams);
   }

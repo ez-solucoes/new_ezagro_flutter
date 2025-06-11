@@ -4,9 +4,10 @@ import 'package:new_ezagro_flutter/features/domain/entities/plot_entities/farm_p
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 
 import '../../../../../../core/errors/application_error.dart';
+import '../../../../entities/response_entities/response_entity.dart';
 
-abstract class GetAllFarmPlotsUsecase implements Usecase<List<FarmPlotEntity>, ArgParams> {
+abstract class GetAllFarmPlotsUsecase implements Usecase<ResponseEntity<List<FarmPlotEntity>>, ArgParams> {
   @override
-  Future<Either<ApplicationError, List<FarmPlotEntity>>> call(ArgParams argParams);
+  Future<Either<ApplicationError, ResponseEntity<List<FarmPlotEntity>>>> call(ArgParams argParams);
 
 }

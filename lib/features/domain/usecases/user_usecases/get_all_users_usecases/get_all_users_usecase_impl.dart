@@ -12,7 +12,7 @@ class GetAllUsersUsecaseImpl implements GetAllUsersUsecase{
   const GetAllUsersUsecaseImpl({required this.repository});
 
   @override
-  Future<Either<ApplicationError, ResponseEntity<UserEntity>>> call(NoParams noParams) async {
+  Future<Either<ApplicationError, ResponseEntity<List<UserEntity>>>> call(NoParams noParams) async {
     return await repository.getAllUsers(noParams);
   }
 }

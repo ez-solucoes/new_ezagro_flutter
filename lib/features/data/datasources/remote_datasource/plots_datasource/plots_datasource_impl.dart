@@ -39,21 +39,21 @@ class PlotsDatasourceImpl with UriBuilder implements PlotsDatasource {
   }
 
   @override
-  Future<ResponseModel<PlotModel>> getPlotByFarmId(ArgParams argParams) async {
+  Future<ResponseModel<List<PlotModel>>> getAllPlotsByFarmId(ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,
       AppEndpoints.mainBaseUrl,
-      AppEndpoints.getPlotsByFarmIdEndpoint,
+      AppEndpoints.farmPlotEndpoint,
     );
 
-    final HttpRequest request = HttpRequest.get(path: url, id: argParams.firstArgs);
+    final HttpRequest request = HttpRequest.get(path: url, queryParams: {'farmId': argParams.firstArgs});
     final result = await httpClient.execute(request);
 
     switch (result.statusCode) {
       case 200:
-        return mountResponseModelForSingleItem(
+        return mountResponseModelForPaginatedList<PlotModel>(
           response: result,
-          fromMap: (map) => PlotModel.fromMap(map),
+          fromListMap: (mapList) => mapList.map((e) => PlotModel.fromMap(e)).toList(),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);
@@ -76,6 +76,28 @@ class PlotsDatasourceImpl with UriBuilder implements PlotsDatasource {
         return mountResponseModelForPaginatedList<SelectModel>(
           response: result,
           fromListMap: (mapList) => mapList.map((e) => SelectModel.fromMap(e)).toList(),
+        );
+      default:
+        throw mountServerErrorInstance(request: request, response: result);
+    }
+  }
+
+  @override
+  Future<ResponseModel<PlotModel>> getPlotById(ArgParams argParams) async {
+    final String url = mountUrl(
+        AppEndpoints.baseUrlProtocolWithSecurity,
+        AppEndpoints.mainBaseUrl,
+        AppEndpoints.farmPlotEndpoint,
+    );
+
+    final HttpRequest request = HttpRequest.get(path: url, id: argParams.firstArgs);
+    final result = await httpClient.execute(request);
+
+    switch (result.statusCode) {
+      case 200:
+        return mountResponseModelForSingleItem<PlotModel>(
+          response: result,
+          fromMap: (map) => PlotModel.fromMap(map),
         );
       default:
         throw mountServerErrorInstance(request: request, response: result);

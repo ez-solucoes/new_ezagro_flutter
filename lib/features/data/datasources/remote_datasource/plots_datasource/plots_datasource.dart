@@ -8,5 +8,6 @@ import '../../../models/select_models/select_model.dart';
 abstract class PlotsDatasource {
   Future<ResponseModel<List<PlotModel>>> getAllPlots(NoParams noParams);
   Future<ResponseModel<List<SelectModel>>> getAllPlotsToSelect(NoParams noParams);
-  Future<ResponseModel<PlotModel>> getPlotByFarmId(ArgParams argParams);
+  Future<ResponseModel<List<PlotModel>>> getAllPlotsByFarmId(ArgParams argParams);
+  Future<ResponseModel<PlotModel>> getPlotById(ArgParams argParams);
 }

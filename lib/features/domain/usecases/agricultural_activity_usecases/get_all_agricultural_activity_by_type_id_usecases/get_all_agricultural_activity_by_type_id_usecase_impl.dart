@@ -7,6 +7,7 @@ import 'package:new_ezagro_flutter/features/domain/entities/agricultural_entitie
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activity_by_type_id_usecases/get_all_agricultural_activity_by_type_id_usecase.dart';
 
+import '../../../entities/response_entities/response_entity.dart';
 import '../../../repositories/agricultural_activity_repositories/agricultural_activity_repository.dart';
 
 
@@ -17,7 +18,7 @@ class GetAllAgriculturalActivityByTypeIdUsecaseImpl
   GetAllAgriculturalActivityByTypeIdUsecaseImpl(this.repository);
 
   @override
-  Future<Either<ApplicationError, List<AgriculturalActivityEntity>>> call(
+  Future<Either<ApplicationError, ResponseEntity<List<AgriculturalActivityEntity>>>> call(
       ArgParams argParams) async {
     return await repository.getAllAgriculturalActivityByTypeId(argParams);
   }

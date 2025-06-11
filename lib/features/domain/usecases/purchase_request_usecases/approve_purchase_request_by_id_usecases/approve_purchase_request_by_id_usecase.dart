@@ -4,8 +4,9 @@ import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.
 
 import '../../../../../core/errors/application_error.dart';
 import '../../../../../core/usecase/usecase.dart';
+import '../../../entities/response_entities/response_entity.dart';
 
-abstract  class ApprovePurchaseRequestByIdUsecase implements Usecase<PurchaseRequestEntity, ArgParams> {
+abstract  class ApprovePurchaseRequestByIdUsecase implements Usecase<ResponseEntity<PurchaseRequestEntity>, ArgParams> {
   @override
-  Future<Either<ApplicationError, PurchaseRequestEntity>> call(ArgParams argParams);
+  Future<Either<ApplicationError, ResponseEntity<PurchaseRequestEntity>>> call(ArgParams argParams);
 }

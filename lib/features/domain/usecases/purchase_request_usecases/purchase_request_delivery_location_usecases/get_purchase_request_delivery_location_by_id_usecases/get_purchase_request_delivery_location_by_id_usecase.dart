@@ -4,9 +4,10 @@ import 'package:new_ezagro_flutter/features/domain/entities/type_entities/type_e
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 
 import '../../../../../../core/errors/application_error.dart';
+import '../../../../entities/response_entities/response_entity.dart';
 
-abstract class GetPurchaseRequestDeliveryLocationByIdUsecase implements Usecase<TypeEntity, ArgParams> {
+abstract class GetPurchaseRequestDeliveryLocationByIdUsecase implements Usecase<ResponseEntity<TypeEntity>, ArgParams> {
   @override
-  Future<Either<ApplicationError, TypeEntity>> call(ArgParams argParams);
+  Future<Either<ApplicationError, ResponseEntity<TypeEntity>>> call(ArgParams argParams);
 
 }

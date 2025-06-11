@@ -2,10 +2,10 @@ import 'package:dartz/dartz.dart';
 
 import 'package:new_ezagro_flutter/core/errors/application_error.dart';
 
-import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
-
 import 'package:new_ezagro_flutter/features/domain/entities/agricultural_input_entities/agricultural_input_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 
+import '../../../entities/response_entities/response_entity.dart';
 import '../../../repositories/agricultural_input_repositories/agricultural_input_repository.dart';
 import 'get_all_agricultural_inputs_usecase.dart';
 
@@ -15,8 +15,8 @@ class GetAllAgriculturalInputsUsecaseImpl implements GetAllAgriculturalInputsUse
   GetAllAgriculturalInputsUsecaseImpl(this.repository);
 
   @override
-  Future<Either<ApplicationError, List<AgriculturalInputEntity>>> call(
-      NoParams noParams) async {
-    return await repository.getAllAgriculturalInputs(noParams);
+  Future<Either<ApplicationError, ResponseEntity<List<AgriculturalInputEntity>>>> call(
+      ArgParams argParams) async {
+    return await repository.getAllAgriculturalInputs(argParams);
   }
 }

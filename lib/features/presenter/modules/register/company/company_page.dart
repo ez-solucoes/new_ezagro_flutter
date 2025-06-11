@@ -29,8 +29,11 @@ class CompanyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final controller = Modular.get<CompanyController>();
     controller.getCompanyById(args);
+
+
     return BackgroundWidget(
         scrollable: true,
         appBar: const CustomAppBarWidget(

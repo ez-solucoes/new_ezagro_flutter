@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class ItemsEntity extends Equatable {
-  final int productId;
+  final int? productId;
   final String? productName;
   final int? agriculturalInputId;
   final int? machineryImplementId;
@@ -11,7 +11,7 @@ class ItemsEntity extends Equatable {
   final List<String>? attachmentUrls;
 
   const ItemsEntity({
-    required this.productId,
+    this.productId,
     this.productName,
     this.agriculturalInputId,
     this.machineryImplementId,

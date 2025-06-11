@@ -1,10 +1,10 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/get_farm_list_usecase/get_farm_list_usecase.dart';
 import '../../../../../../core/usecase/usecase.dart';
 import '../../../../../domain/entities/farm_entities/farm_entity.dart';
 import '../../../../../domain/params/arg_params/arg_params.dart';
-import '../../../../../domain/usecases/farm_usecases/get_farm_by_id_usecase/get_farm_by_id_usecase.dart';
+import '../../../../../domain/usecases/farm_usecases/get_all_farms_usecases/get_all_farms_usecase.dart';
+import '../../../../../domain/usecases/farm_usecases/get_farm_by_id_usecases/get_farm_by_id_usecase.dart';
 part 'farm_controller.g.dart';
 
 class FarmController = FarmControllerAbstract with _$FarmController;
@@ -27,10 +27,10 @@ abstract class FarmControllerAbstract with Store {
   @action
   Future getFarmsList() async {
     isLoading = true;
-    final getFarms = Modular.get<GetFarmListUsecase>();
+    final getFarms = Modular.get<GetAllFarmsUsecase>();
     final result = await getFarms(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
-      farms = success;
+      farms = success.data!;
       filteredFarms = farms;
       return success;
     });
@@ -44,7 +44,7 @@ abstract class FarmControllerAbstract with Store {
     final getFarm = Modular.get<GetFarmByIdUsecase>();
     final result = await getFarm(args);
     result.fold((error) => error.friendlyMessage, (success) {
-      farm = success;
+      farm = success.data!;
       return success;
     });
 

@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:new_ezagro_flutter/core/enums/service_order_type_enum.dart';
-import 'package:new_ezagro_flutter/features/domain/usecases/service_order_usecase/service_order_list_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/service_order_usecase/get_all_service_orders_usecases/get_all_service_orders_usecase.dart';
 import '../../../../../../core/usecase/usecase.dart';
 import '../../../../../../design_system/colors/app_colors.dart';
 import '../../../../../domain/entities/service_order_entities/service_order_entity.dart';
@@ -28,7 +28,7 @@ abstract class ServiceOrderListControllerAbstract with Store {
   @action
   Future getServiceOrderList() async {
     isLoading = true;
-    final getServiceOrdersListUsecase = Modular.get<ServiceOrderListUsecase>();
+    final getServiceOrdersListUsecase = Modular.get<GetAllServiceOrdersUsecase>();
     final result = await getServiceOrdersListUsecase(NoParams());
     result.fold((error) => error.friendlyMessage, (success) {
       // serviceOrderListEntities = success.content!;

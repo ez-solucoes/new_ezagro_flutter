@@ -4,10 +4,11 @@ import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.
 
 import '../../../../../core/errors/application_error.dart';
 import '../../../../../core/usecase/usecase.dart';
+import '../../../entities/response_entities/response_entity.dart';
 
-abstract class GetAllAgriculturalInputsByClassIdUsecase implements Usecase<List<AgriculturalInputEntity>, ArgParams> {
+abstract class GetAllAgriculturalInputsByClassIdUsecase implements Usecase<ResponseEntity<List<AgriculturalInputEntity>>, ArgParams> {
   @override
-  Future<Either<ApplicationError, List<AgriculturalInputEntity>>> call(ArgParams argParams);
+  Future<Either<ApplicationError, ResponseEntity<List<AgriculturalInputEntity>>>> call(ArgParams argParams);
 
 
 }

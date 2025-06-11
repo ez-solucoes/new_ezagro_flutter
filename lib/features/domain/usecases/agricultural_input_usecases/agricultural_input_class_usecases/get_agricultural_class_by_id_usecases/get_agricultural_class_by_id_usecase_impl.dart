@@ -6,6 +6,7 @@ import 'package:new_ezagro_flutter/features/domain/entities/class_entities/class
 
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 
+import '../../../../entities/response_entities/response_entity.dart';
 import '../../../../repositories/agricultural_input_repositories/agricultural_input_class_repositories/agricultural_input_class_repository.dart';
 import 'get_agricultural_class_by_id_usecase.dart';
 
@@ -15,7 +16,7 @@ class GetAgriculturalInputClassByIdUsecaseImpl implements GetAgriculturalInputCl
   GetAgriculturalInputClassByIdUsecaseImpl(this.repository);
 
   @override
-  Future<Either<ApplicationError, ClassEntity>> call(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseEntity<ClassEntity>>> call(ArgParams argParams) async {
     return await repository.getAgriculturalInputClassById(argParams);
   }
 }

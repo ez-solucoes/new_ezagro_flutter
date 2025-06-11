@@ -78,7 +78,8 @@ class AgriculturalInputDatasourceImpl with UriBuilder implements AgriculturalInp
     final Map<String, dynamic> queryParams = argParams.mountQueryParam(
       firstParamName: 'page',
       secondParamName: 'pageSize',
-      thirdParamName: 'search',
+      thirdParamName: 'trademark',
+      fourthParamName: 'ClassId',
     );
 
     final HttpRequest request = HttpRequest.get(path: url, queryParams: queryParams);

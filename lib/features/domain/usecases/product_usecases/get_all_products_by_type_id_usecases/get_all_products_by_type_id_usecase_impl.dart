@@ -5,13 +5,15 @@ import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.
 import 'package:new_ezagro_flutter/features/domain/repositories/product_repositories/product_repository.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/get_all_products_by_type_id_usecases/get_all_products_by_type_id_usecase.dart';
 
+import '../../../entities/response_entities/response_entity.dart';
+
 class GetAllProductsByTypeIdUsecaseImpl implements GetAllProductsByTypeIdUsecase {
   final ProductRepository repository;
 
   GetAllProductsByTypeIdUsecaseImpl(this.repository);
 
   @override
-  Future<Either<ApplicationError, List<ProductEntity>>> call(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseEntity<List<ProductEntity>>>> call(ArgParams argParams) async {
     return await repository.getAllProductsByTypeId(argParams);
   }
 }

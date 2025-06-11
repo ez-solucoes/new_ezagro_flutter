@@ -5,7 +5,7 @@ import 'package:new_ezagro_flutter/core/extensions/unmask_text_field_extension.d
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_client.dart';
 import 'package:new_ezagro_flutter/core/local_storage/local_storage_item.dart';
 import 'package:new_ezagro_flutter/design_system/widgets/snackbars/custon_snack_bar_widget.dart';
-import 'package:new_ezagro_flutter/features/domain/params/user_params/user_params.dart';
+import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/authentication_usecases/recover_password_usecase/recover_password_usecase.dart';
 
 import '../../../../../design_system/strings/app_strings_portuguese.dart';
@@ -16,7 +16,8 @@ import '../../../../domain/usecases/user_usecases/update_user_by_id_usecase/upda
 
 part 'authentication_controller.g.dart';
 
-class AuthenticationController = AuthenticationControllerAbstract with _$AuthenticationController;
+class AuthenticationController = AuthenticationControllerAbstract
+    with _$AuthenticationController;
 
 abstract class AuthenticationControllerAbstract with Store {
   @observable
@@ -60,7 +61,8 @@ abstract class AuthenticationControllerAbstract with Store {
 
     result.fold((error) {
       errorMessage = error.friendlyMessage;
-      CustomSnackBarWidget.show(SnackBarType.error, context, 'Usuário ou senha incorretos!');
+      CustomSnackBarWidget.show(
+          SnackBarType.error, context, 'Usuário ou senha incorretos!');
     }, (success) async {
       name = success.data!.user!.client!.name;
       username = success.data!.user!.client!.name;
@@ -74,7 +76,6 @@ abstract class AuthenticationControllerAbstract with Store {
       saveToken(success.data!);
     });
 
-
     isLoading = false;
   }
 
@@ -84,16 +85,19 @@ abstract class AuthenticationControllerAbstract with Store {
 
     final recoverPasswordUsecase = Modular.get<RecoverPasswordUsecase>();
 
-    final result = await recoverPasswordUsecase(AuthenticationParams(username: username.unmask));
+    final result =
+        await recoverPasswordUsecase(AuthenticationParams(username: username.unmask));
     result.fold((error) async {
       errorMessage = error.friendlyMessage;
-      CustomSnackBarWidget.show(SnackBarType.error, context, 'Usuário incorreto!\nVerifique os dados digitados!');
-      isSuccess =  false;
+      CustomSnackBarWidget.show(SnackBarType.error, context,
+          'Usuário incorreto!\nVerifique os dados digitados!');
+      isSuccess = false;
     }, (success) async {
-      CustomSnackBarWidget.show(SnackBarType.success, context, 'Senha enviada com sucesso!\nRefazer o login com a senha enviada.');
+      CustomSnackBarWidget.show(SnackBarType.success, context,
+          'Senha enviada com sucesso!\nRefazer o login com a senha enviada.');
       debugPrint('Envio efetuado com sucesso');
       debugPrint(success.toString());
-      isSuccess =  true;
+      isSuccess = true;
     });
     isLoading = false;
     return isSuccess;
@@ -104,12 +108,14 @@ abstract class AuthenticationControllerAbstract with Store {
 
     final updateUserByIdUsecase = Modular.get<UpdateUserByIdUsecase>();
 
-    final result = await updateUserByIdUsecase.call(UserParams(id: userId, password: password));
+    final result = await updateUserByIdUsecase
+        .call(ArgParams(firstArgs: userId, secondArgs: password));
 
-    result.fold((error){
+    result.fold((error) {
       errorMessage = error.friendlyMessage;
     }, (success) {
-      CustomSnackBarWidget.show(SnackBarType.success, context, 'Senha alterada com sucesso!');
+      CustomSnackBarWidget.show(
+          SnackBarType.success, context, 'Senha alterada com sucesso!');
     });
     isLoading = false;
   }
@@ -118,21 +124,20 @@ abstract class AuthenticationControllerAbstract with Store {
     if (password.compareTo(retypedPassword) == 0) {
       return true;
     } else {
-
       return false;
     }
   }
 
   void saveToken(AuthenticationEntity success) async {
     final localStorage =
-    Modular.get<LocalStorageClient>(key: AppStringsPortuguese.storageTypeSecure);
+        Modular.get<LocalStorageClient>(key: AppStringsPortuguese.storageTypeSecure);
 
-    await localStorage.writeData(
-        LocalStorageItem(key: AppStringsPortuguese.idKey, value: success.user!.id.toString()));
-    await localStorage.writeData(
-        LocalStorageItem(key: AppStringsPortuguese.tokenKey, value: success.token.toString()));
+    await localStorage.writeData(LocalStorageItem(
+        key: AppStringsPortuguese.idKey, value: success.user!.id.toString()));
+    await localStorage.writeData(LocalStorageItem(
+        key: AppStringsPortuguese.tokenKey, value: success.token.toString()));
 
-    await localStorage.writeData(
-        LocalStorageItem(key: AppStringsPortuguese.nameKey, value: success.user!.client!.name));
+    await localStorage.writeData(LocalStorageItem(
+        key: AppStringsPortuguese.nameKey, value: success.user!.client!.name));
   }
 }

@@ -7,6 +7,7 @@ import 'package:new_ezagro_flutter/features/domain/entities/select_entities/sele
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/agricultural_input_repositories/agricultural_input_repository.dart';
 
+import '../../../entities/response_entities/response_entity.dart';
 import 'get_all_agricultural_inputs_by_class_id_to_select_usecase.dart';
 
 class GetAllAgriculturalInputsByClassIdToSelectUsecaseImpl implements GetAllAgriculturalInputsByClassIdToSelectUsecase{
@@ -15,7 +16,7 @@ class GetAllAgriculturalInputsByClassIdToSelectUsecaseImpl implements GetAllAgri
   GetAllAgriculturalInputsByClassIdToSelectUsecaseImpl(this.repository);
 
   @override
-  Future<Either<ApplicationError, List<SelectEntity>>> call(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseEntity<List<SelectEntity>>>> call(ArgParams argParams) async {
     return repository.getAllAgriculturalInputsByClassIdToSelect(argParams);
   }
 }

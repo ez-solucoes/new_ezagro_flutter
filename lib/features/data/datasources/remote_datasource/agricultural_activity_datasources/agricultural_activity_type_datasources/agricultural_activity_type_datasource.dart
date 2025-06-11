@@ -1,4 +1,4 @@
-import 'package:http/http.dart';
+
 import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/data/models/type_models/type_model.dart';
 

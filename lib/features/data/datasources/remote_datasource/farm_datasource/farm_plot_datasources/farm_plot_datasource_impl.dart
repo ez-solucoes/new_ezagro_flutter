@@ -19,7 +19,7 @@ class FarmPlotDatasourceImpl with UriBuilder implements FarmPlotDatasource {
   FarmPlotDatasourceImpl(this.httpClient);
 
   @override
-  Future<ResponseModel<List<FarmPlotModel>>> getAllFarmByFarmIdPlots(
+  Future<ResponseModel<List<FarmPlotModel>>> getAllFarmPlotsByFarmId(
       ArgParams argParams) async {
     final String url = mountUrl(
       AppEndpoints.baseUrlProtocolWithSecurity,

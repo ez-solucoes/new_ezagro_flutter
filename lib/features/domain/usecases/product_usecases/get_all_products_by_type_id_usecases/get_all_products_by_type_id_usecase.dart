@@ -4,8 +4,9 @@ import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.
 
 import '../../../../../core/errors/application_error.dart';
 import '../../../../../core/usecase/usecase.dart';
+import '../../../entities/response_entities/response_entity.dart';
 
-abstract class GetAllProductsByTypeIdUsecase implements Usecase<List<ProductEntity>, ArgParams> {
+abstract class GetAllProductsByTypeIdUsecase implements Usecase<ResponseEntity<List<ProductEntity>>, ArgParams> {
   @override
-  Future<Either<ApplicationError, List<ProductEntity>>> call(ArgParams params);
+  Future<Either<ApplicationError, ResponseEntity<List<ProductEntity>>>> call(ArgParams params);
 }

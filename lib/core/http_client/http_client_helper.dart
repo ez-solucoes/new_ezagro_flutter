@@ -72,8 +72,17 @@ ResponseModel<T> mountResponseModelForSingleItem<T>({
   required HttpResponse response,
   required T Function(Map<String, dynamic>) fromMap,
 }) {
-  final Map<String, dynamic> decodedJson = jsonDecode(response.data);
-  return ResponseModel.fromMap(decodedJson, (data) {
+  final Map<String, dynamic> responseMap;
+
+  if(response.data is String) {
+    responseMap = jsonDecode(response.data as String) as Map<String, dynamic>;
+  } else if(response.data is Map<String, dynamic>) {
+    responseMap = response.data as Map<String, dynamic>;
+  } else {
+    throw Exception("Tipo de dado inesperado na resposta HTTP: ${response.data.runtimeType}. Esperava String ou Map.");
+  }
+
+  return ResponseModel.fromMap(responseMap, (data) {
     return fromMap(data as Map<String, dynamic>);
   });
 }
@@ -82,8 +91,17 @@ ResponseModel<List<T>> mountResponseModelForPaginatedList<T>({
   required HttpResponse response,
   required List<T> Function(List<dynamic>) fromListMap,
 }) {
-  final Map<String, dynamic> decodedJson = jsonDecode(response.data);
-  return ResponseModel.fromMap(decodedJson, (data) {
+  final Map<String, dynamic> responseMap;
+
+  if (response.data is String) {
+    responseMap = jsonDecode(response.data as String) as Map<String, dynamic>;
+  } else if (response.data is Map<String, dynamic>) {
+    responseMap = response.data as Map<String, dynamic>;
+  } else {
+    throw Exception("Tipo de dado inesperado na resposta HTTP: ${response.data.runtimeType}. Esperava String ou Map.");
+  }
+
+  return ResponseModel.fromMap(responseMap, (data) {
     return fromListMap(data as List<dynamic>);
   });
 }

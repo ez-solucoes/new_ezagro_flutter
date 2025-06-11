@@ -1,4 +1,3 @@
-import 'package:new_ezagro_flutter/core/usecase/usecase.dart';
 import 'package:new_ezagro_flutter/features/data/models/agricultural_input_models/agricultural_input_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/response_models/response_model.dart'; // Importe ResponseModel
 import 'package:new_ezagro_flutter/features/data/models/select_models/select_model.dart';

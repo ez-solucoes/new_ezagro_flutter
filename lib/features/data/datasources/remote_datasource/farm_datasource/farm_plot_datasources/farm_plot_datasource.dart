@@ -5,7 +5,7 @@ import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.
 
 abstract class FarmPlotDatasource {
 
-  Future<ResponseModel<List<FarmPlotModel>>> getAllFarmByFarmIdPlots(ArgParams argParams);
+  Future<ResponseModel<List<FarmPlotModel>>> getAllFarmPlotsByFarmId(ArgParams argParams);
   Future<ResponseModel<List<SelectModel>>> getAllFarmPlotsByFarmIdToSelect(ArgParams argParams);
   Future<ResponseModel<FarmPlotModel>> getFarmPlotById(ArgParams argParams);
 

@@ -4,6 +4,7 @@ import 'package:new_ezagro_flutter/features/domain/repositories/agricultural_act
 import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_activity_usecases/agricultural_activity_type_usecases/get_agricultural_activity_type_by_id_usecases/get_agricultural_activity_type_by_id_usecase.dart';
 
 import '../../../../../../core/errors/application_error.dart';
+import '../../../../entities/response_entities/response_entity.dart';
 import '../../../../params/arg_params/arg_params.dart';
 
 class GetAgriculturalActivityTypeByIdUsecaseImpl
@@ -13,7 +14,7 @@ class GetAgriculturalActivityTypeByIdUsecaseImpl
   GetAgriculturalActivityTypeByIdUsecaseImpl(this.repository);
 
   @override
-  Future<Either<ApplicationError, TypeEntity>> call(ArgParams argParams) async {
+  Future<Either<ApplicationError, ResponseEntity<TypeEntity>>> call(ArgParams argParams) async {
     return await repository.getAgriculturalActivityTypeById(argParams);
   }
 }

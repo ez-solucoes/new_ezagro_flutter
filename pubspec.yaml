@@ -40,8 +40,8 @@ dependencies:
   equatable: ^2.0.7
   dartz: ^0.10.1
   http: ^1.4.0
-  flutter_modular: ^6.3.4
-  flutter_svg: ^2.1.0
+  flutter_modular: ^6.4.1
+  flutter_svg: ^2.2.0
   mobx: ^2.5.0
   flutter_mobx: ^2.3.0
   dio: ^5.8.0+1
@@ -58,7 +58,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mocktail: ^1.0.4
-  build_runner: ^2.4.15
+  build_runner: ^2.5.1
   mobx_codegen: ^2.7.1
 
   # The "flutter_lints" package below contains a set of recommended lints to

@@ -20,7 +20,8 @@ class ApprovalsListPage extends StatelessWidget {
 
   static void navigate() => Modular.to.navigate(routePath);
 
-  static Future<Object?> push(ArgParams args) => Modular.to.pushNamed(routePath, arguments: args);
+  static Future<Object?> push(ArgParams args) =>
+      Modular.to.pushNamed(routePath, arguments: args);
 
   const ApprovalsListPage({super.key});
 
@@ -61,7 +62,9 @@ class ApprovalsListPage extends StatelessWidget {
                         },
                         child: Observer(builder: (context) {
                           return Container(
-                            color: controller.pageIndex == 0 ? Colors.white : Colors.transparent,
+                            color: controller.pageIndex == 0
+                                ? Colors.white
+                                : Colors.transparent,
                             child: Padding(
                               padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
                               child: Center(
@@ -84,7 +87,9 @@ class ApprovalsListPage extends StatelessWidget {
                         },
                         child: Observer(builder: (context) {
                           return Container(
-                            color: controller.pageIndex == 1 ? Colors.white : Colors.transparent,
+                            color: controller.pageIndex == 1
+                                ? Colors.white
+                                : Colors.transparent,
                             child: Padding(
                               padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
                               child: Center(
@@ -102,24 +107,6 @@ class ApprovalsListPage extends StatelessWidget {
                   ],
                 ),
               ),
-              // Padding(
-              //   padding: const EdgeInsets.only(top: 30.0, bottom: 10.0),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //     children: [
-              //       CustomElevatedButton(
-              //         onPressed: () {},
-              //         label: 'Rejeitar Todas',
-              //         backgroundColor: AppColors.primaryRedColor,
-              //       ),
-              //       CustomElevatedButton(
-              //         onPressed: () {},
-              //         label: 'Aprovar Todas',
-              //         backgroundColor: AppColors.primaryGreenColor,
-              //       ),
-              //     ],
-              //   ),
-              // ),
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.only(left: 20, right: 20, top: 30),
@@ -137,149 +124,196 @@ class ApprovalsListPage extends StatelessWidget {
                             Text('ID',
                                 style: AppTextStyles.appBarTitleTextStyle(
                                     color: AppColors.primaryBlackColor)),
-                            Observer(
-                              builder: (context) {
-                                return Text(controller.pageIndex == 0 ? 'Solicitação' : 'Ordem de serviço',
-                                    style: AppTextStyles.appBarTitleTextStyle(
-                                        color: AppColors.primaryBlackColor));
-                              }
-                            ),
+                            Observer(builder: (context) {
+                              return Text(
+                                  controller.pageIndex == 0
+                                      ? 'Solicitação'
+                                      : 'Ordem de serviço',
+                                  style: AppTextStyles.appBarTitleTextStyle(
+                                      color: AppColors.primaryBlackColor));
+                            }),
                             Text('Centro de custo',
                                 style: AppTextStyles.appBarTitleTextStyle(
                                     color: AppColors.primaryBlackColor)),
                             Text('CheckBox',
-                                style:
-                                    AppTextStyles.appBarTitleTextStyle(color: Colors.transparent)),
+                                style: AppTextStyles.appBarTitleTextStyle(
+                                    color: Colors.transparent)),
                           ],
                         ),
                         const SizedBox(height: AppDimens.titleDimen),
                         Observer(
                           builder: (context) => controller.isLoading
-                              ? Center(child: const CircularProgressIndicator())
+                              ? const Center(child: CircularProgressIndicator())
                               : Flexible(
                                   child: Observer(
-                                    builder: (context) => controller.pageIndex == 0
-                                        ? ListView.separated(
-                                            itemCount: controller.purchaseRequestListEntities.length,
-                                            itemBuilder: (context, index) {
-                                              List<dynamic> listItens;
-                                                listItens = controller.purchaseRequestListEntities;
-                                              return GestureDetector(
-                                                onTap: () {
-                                                  ApprovalsPurchaseRequestDetailPage.navigate(
-                                                      ArgParams(firstArgs: listItens[index].id, secondArgs: 'purchase-request'));
-                                                },
-                                                child: Dismissible(
-                                                    key: Key(index.toString()),
-                                                    background: Container(
-                                                      color: AppColors.primaryRedColor,
-                                                      alignment: Alignment.centerRight,
-                                                      padding: const EdgeInsets.only(right: 16.0),
-                                                      margin: const EdgeInsets.symmetric(
-                                                          horizontal: 16.0),
-                                                      child: Icon(
-                                                        Icons.delete,
-                                                        color: AppColors.primaryWhiteColor,
-                                                      ),
+                                    builder: (context) {
+                                      if (controller.pageIndex == 0) {
+                                        if (controller
+                                            .purchaseRequestListEntities.isEmpty) {
+                                          return Center(
+                                            child: Text(
+                                              "Não há solicitações para visualizar!",
+                                              style:
+                                                  AppTextStyles.appBarSubTitleTextStyle(
+                                                      color: AppColors.primaryBlackColor),
+                                            ),
+                                          );
+                                        }
+                                        return ListView.separated(
+                                          itemCount: controller
+                                              .purchaseRequestListEntities.length,
+                                          itemBuilder: (context, index) {
+                                            List<dynamic> listItens;
+                                            listItens =
+                                                controller.purchaseRequestListEntities;
+                                            return GestureDetector(
+                                              onTap: () {
+                                                ApprovalsPurchaseRequestDetailPage
+                                                    .navigate(ArgParams(
+                                                        firstArgs: listItens[index].id,
+                                                        secondArgs: 'purchase-request'));
+                                              },
+                                              child: Dismissible(
+                                                  key: Key(index.toString()),
+                                                  background: Container(
+                                                    color: AppColors.primaryRedColor,
+                                                    alignment: Alignment.centerRight,
+                                                    padding: const EdgeInsets.only(
+                                                        right: 16.0),
+                                                    margin: const EdgeInsets.symmetric(
+                                                        horizontal: 16.0),
+                                                    child: Icon(
+                                                      Icons.delete,
+                                                      color: AppColors.primaryWhiteColor,
                                                     ),
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment.spaceBetween,
-                                                      children: [
-                                                        Text(listItens[index].id.toString(),
-                                                            style: AppTextStyles
-                                                                .appBarSubTitleTextStyle(
-                                                                    color: AppColors
-                                                                        .primaryBlackColor)),
-                                                        const SizedBox(width: 20),
-                                                        Text(listItens[index].type!.name!,
-                                                            textAlign: TextAlign.start,
-                                                            style: AppTextStyles
-                                                                .appBarSubTitleTextStyle(
-                                                                    color: AppColors
-                                                                        .primaryBlackColor)),
-                                                        const SizedBox(width: 10),
-                                                        Text(
-                                                            listItens[index].costCenter == null
-                                                                ? ''
-                                                                : listItens[index]
-                                                                    .costCenter!
-                                                                    .name!,
-                                                            style: AppTextStyles
-                                                                .appBarSubTitleTextStyle(
-                                                                    color: AppColors
-                                                                        .primaryBlackColor)),
-                                                        const SizedBox(width: 10),
-                                                        Icon(Icons.navigate_next),
-                                                      ],
-                                                    )),
-                                              );
-                                            },
-                                            separatorBuilder: (BuildContext context, int index) {
-                                              return Divider(color: AppColors.borderWhiteColor);
-                                            },
-                                          )
-                                        : ListView.separated(
-                                            itemCount: controller.serviceOrderListEntities.length,
-                                            itemBuilder: (context, index) {
-                                              List<dynamic> listItens;
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.spaceBetween,
+                                                    children: [
+                                                      Text(listItens[index].id.toString(),
+                                                          style: AppTextStyles
+                                                              .appBarSubTitleTextStyle(
+                                                                  color: AppColors
+                                                                      .primaryBlackColor)),
+                                                      const SizedBox(width: 20),
+                                                      Text(listItens[index].type!.name!,
+                                                          textAlign: TextAlign.start,
+                                                          style: AppTextStyles
+                                                              .appBarSubTitleTextStyle(
+                                                                  color: AppColors
+                                                                      .primaryBlackColor)),
+                                                      const SizedBox(width: 10),
+                                                      Text(
+                                                          listItens[index].costCenter ==
+                                                                  null
+                                                              ? ''
+                                                              : listItens[index]
+                                                                  .costCenter!
+                                                                  .name!,
+                                                          style: AppTextStyles
+                                                              .appBarSubTitleTextStyle(
+                                                                  color: AppColors
+                                                                      .primaryBlackColor)),
+                                                      const SizedBox(width: 10),
+                                                      Icon(Icons.navigate_next),
+                                                    ],
+                                                  )),
+                                            );
+                                          },
+                                          separatorBuilder:
+                                              (BuildContext context, int index) {
+                                            return Divider(
+                                                color: AppColors.borderWhiteColor);
+                                          },
+                                        );
+                                      } else {
+                                        if (controller.serviceOrderListEntities.isEmpty) {
+                                          return Center(
+                                            child: Text(
+                                              "Não há Ordens de serviço para visualizar!",
+                                              style:
+                                                  AppTextStyles.appBarSubTitleTextStyle(
+                                                      color: AppColors.primaryBlackColor),
+                                            ),
+                                          );
+                                        }
+                                        return ListView.separated(
+                                          itemCount:
+                                              controller.serviceOrderListEntities.length,
+                                          itemBuilder: (context, index) {
+                                            List<dynamic> listItens;
 
-                                              listItens = controller.serviceOrderListEntities;
+                                            listItens =
+                                                controller.serviceOrderListEntities;
 
-                                              return GestureDetector(
-                                                onTap: () {
-                                                  ApprovalsServiceOrderDetailPage.navigate(
-                                                      ArgParams(firstArgs: listItens[index].id, secondArgs: 'service-order'));
-                                                },
-                                                child: Dismissible(
-                                                    key: Key(index.toString()),
-                                                    background: Container(
-                                                      color: AppColors.primaryRedColor,
-                                                      alignment: Alignment.centerRight,
-                                                      padding: const EdgeInsets.only(right: 16.0),
-                                                      margin: const EdgeInsets.symmetric(
-                                                          horizontal: 16.0),
-                                                      child: Icon(
-                                                        Icons.delete,
-                                                        color: AppColors.primaryWhiteColor,
-                                                      ),
+                                            return GestureDetector(
+                                              onTap: () {
+                                                ApprovalsServiceOrderDetailPage.navigate(
+                                                    ArgParams(
+                                                        firstArgs: listItens[index].id,
+                                                        secondArgs: 'service-order'));
+                                              },
+                                              child: Dismissible(
+                                                  key: Key(index.toString()),
+                                                  background: Container(
+                                                    color: AppColors.primaryRedColor,
+                                                    alignment: Alignment.centerRight,
+                                                    padding: const EdgeInsets.only(
+                                                        right: 16.0),
+                                                    margin: const EdgeInsets.symmetric(
+                                                        horizontal: 16.0),
+                                                    child: Icon(
+                                                      Icons.delete,
+                                                      color: AppColors.primaryWhiteColor,
                                                     ),
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment.spaceBetween,
-                                                      children: [
-                                                        Text(listItens[index].id.toString(),
-                                                            style: AppTextStyles
-                                                                .appBarSubTitleTextStyle(
-                                                                    color: AppColors
-                                                                        .primaryBlackColor)),
-                                                        const SizedBox(width: 20),
-                                                        Text(listItens[index].agriculturalActivity!.activityType!.name!,
-                                                            style: AppTextStyles
-                                                                .appBarSubTitleTextStyle(
-                                                                    color: AppColors
-                                                                        .primaryBlackColor)),
-                                                        const SizedBox(width: 10),
-                                                        Text(
-                                                            listItens[index].localCostCenter == null
-                                                                ? ''
-                                                                : listItens[index]
-                                                                    .localCostCenter!
-                                                                    .name!,
-                                                            style: AppTextStyles
-                                                                .appBarSubTitleTextStyle(
-                                                                    color: AppColors
-                                                                        .primaryBlackColor)),
-                                                        const SizedBox(width: 10),
-                                                        Icon(Icons.navigate_next),
-                                                      ],
-                                                    )),
-                                              );
-                                            },
-                                            separatorBuilder: (BuildContext context, int index) {
-                                              return Divider(color: AppColors.borderWhiteColor);
-                                            },
-                                          ),
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.spaceBetween,
+                                                    children: [
+                                                      Text(listItens[index].id.toString(),
+                                                          style: AppTextStyles
+                                                              .appBarSubTitleTextStyle(
+                                                                  color: AppColors
+                                                                      .primaryBlackColor)),
+                                                      const SizedBox(width: 20),
+                                                      Text(
+                                                          listItens[index]
+                                                              .agriculturalActivity!
+                                                              .activityType!
+                                                              .name!,
+                                                          style: AppTextStyles
+                                                              .appBarSubTitleTextStyle(
+                                                                  color: AppColors
+                                                                      .primaryBlackColor)),
+                                                      const SizedBox(width: 10),
+                                                      Text(
+                                                          listItens[index]
+                                                                      .localCostCenter ==
+                                                                  null
+                                                              ? ''
+                                                              : listItens[index]
+                                                                  .localCostCenter!
+                                                                  .name!,
+                                                          style: AppTextStyles
+                                                              .appBarSubTitleTextStyle(
+                                                                  color: AppColors
+                                                                      .primaryBlackColor)),
+                                                      const SizedBox(width: 10),
+                                                      Icon(Icons.navigate_next),
+                                                    ],
+                                                  )),
+                                            );
+                                          },
+                                          separatorBuilder:
+                                              (BuildContext context, int index) {
+                                            return Divider(
+                                                color: AppColors.borderWhiteColor);
+                                          },
+                                        );
+                                      }
+                                    },
                                   ),
                                 ),
                         ),

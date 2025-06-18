@@ -5,6 +5,7 @@ import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.
 import 'package:new_ezagro_flutter/features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_add_items_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_controller.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_delivery_page.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_general_info_first_page.dart';
 
 import '../../../../../consts/app_routes.dart';
 import '../../../../../design_system/colors/app_colors.dart';
@@ -289,12 +290,14 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
                       Expanded(
                         child: CustomElevatedButton(
                           onPressed: () {
-                            if (currentItemType == ItemType.product) {
-                              Modular.to.pop();
-                            } else if (currentItemType == ItemType.agriculturalInput) {
-                              PurchaseRequestCreateListItemsPage.push(args: ArgParams(firstArgs: ItemType.product));
-                            } else if (currentItemType == ItemType.company) {
-                              PurchaseRequestCreateListItemsPage.push(args: ArgParams(firstArgs: ItemType.agriculturalInput));
+                            if(currentItemType == ItemType.product || currentItemType == ItemType.agriculturalInput){
+                             PurchaseRequestCreateGeneralInfoFirstPage.navigate();
+                            } else if(currentItemType == ItemType.company) {
+                              if(createController.purchaseRequestType?.value == 1){
+                                PurchaseRequestCreateListItemsPage.push(args: ArgParams(firstArgs: ItemType.product));
+                              } else {
+                                PurchaseRequestCreateListItemsPage.push(args: ArgParams(firstArgs: ItemType.agriculturalInput));
+                              }
                             }
                           },
                           label: 'Voltar',

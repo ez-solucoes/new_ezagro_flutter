@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/register/machinery/machinery_controller.dart';
 
 import '../../../../../consts/app_routes.dart';
 import '../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/appbar/custom_appbar_widget.dart';
 import '../../../widgets/background/background_widget.dart';
-import '../farm/controller/farm_controller.dart';
 
 class MachineryImplementsPage extends StatelessWidget {
   final ArgParams args;
@@ -23,7 +23,7 @@ class MachineryImplementsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Modular.get<FarmController>();
+    final controller = Modular.get<MachineryController>();
 
     return BackgroundWidget(
         scrollable: true,

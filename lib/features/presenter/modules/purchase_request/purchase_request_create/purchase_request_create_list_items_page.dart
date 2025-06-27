@@ -57,6 +57,9 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
         firstLabel = 'Nome';
         secondLabel = 'Quantidade';
         break;
+      default:
+        firstLabel = 'Nome';
+        secondLabel = 'Quantidade';
     }
 
     return BackgroundWidget(
@@ -164,6 +167,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
                                           CustomProductExpandedCardWidget(
                                             index: index,
                                             itemType: currentItemType,
+                                            canBeRemoved: true,
                                             onRemove: () => itemSelectionController.removeRequestedProduct(productItem.productId!),
                                             onEdit: () => PurchaseRequestCreateAddItemsPage.push(args: ArgParams(firstArgs: currentItemType)),
                                             firstColumnData: const [
@@ -217,6 +221,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
                                           CustomProductExpandedCardWidget(
                                             index: index,
                                             itemType: currentItemType,
+                                            canBeRemoved: true,
                                             onRemove: () => itemSelectionController.removeSelectedCompany(companySelectEntity.value),
                                             onEdit: () => PurchaseRequestCreateAddItemsPage.push(args: ArgParams(firstArgs: currentItemType)),
                                             firstColumnData: companyFirstColumnData,
@@ -244,6 +249,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
                                           CustomProductExpandedCardWidget(
                                             index: index,
                                             itemType: currentItemType,
+                                            canBeRemoved: true,
                                             onRemove: () => itemSelectionController.removeRequestedAgriculturalInput(agriculturalInputItem.agriculturalInputId!),
                                             onEdit: () => PurchaseRequestCreateAddItemsPage.push(args: ArgParams(firstArgs: currentItemType)),
                                             firstColumnData: const [
@@ -353,6 +359,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
         return 'Empresas da Requisição';
       case ItemType.agriculturalInput:
         return 'Insumos da Requisição';
+      default: return '';
       }
   }
 
@@ -364,6 +371,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
         return 'Adicionar Empresas';
       case ItemType.agriculturalInput:
         return 'Adicionar Insumos';
+      default: return '';
       }
   }
 
@@ -375,6 +383,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
         return 'Nenhuma empresa selecionada para a requisição.';
       case ItemType.agriculturalInput:
         return 'Nenhum insumo selecionado para a requisição.';
+      default: return '';
       }
   }
 
@@ -386,6 +395,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
         return 'Selecione pelo menos uma empresa.';
       case ItemType.agriculturalInput:
         return 'Selecione pelo menos um insumo.';
+      default: return '';
       }
   }
 }

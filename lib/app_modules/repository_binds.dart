@@ -1,4 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:new_ezagro_flutter/features/data/repositories/farm_repositories/farm_plot_repositories/farm_plot_soil_stage_repositores/farm_plot_soil_stage_repository_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/repositories/farm_repositories/farm_plot_repositories/farm_plot_soil_stage_repositores/farm_plot_soil_stage_repository.dart';
 
 import '../features/data/repositories/agricultural_activity_repositories/agricultural_activity_repository_impl.dart';
 import '../features/data/repositories/agricultural_activity_repositories/agricultural_activity_type_repositories/agricultural_activity_type_respository_impl.dart';
@@ -66,6 +68,7 @@ class RepositoryBinds {
     i.addLazySingleton<CostCenterRepository>(CostCenterRepositoryImpl.new);
     i.addLazySingleton<FarmRepository>(FarmRepositoryImpl.new);
     i.addLazySingleton<FarmPlotRepository>(FarmPlotRepositoryImpl.new);
+    i.addLazySingleton<FarmPlotSoilStageRepository>(FarmPlotSoilStageRepositoryImpl.new);
     i.addLazySingleton<CropRepository>(CropRepositoryImpl.new);
     i.addLazySingleton<CropVarietyRepository>(CropVarietyRepositoryImpl.new);
     i.addLazySingleton<PlotsRepository>(PlotsRepositoryImpl.new);

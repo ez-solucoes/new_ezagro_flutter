@@ -81,7 +81,7 @@ abstract class ApprovalsDetailControllerAbstract with Store {
     final getServiceOrderByIdUsecase = Modular.get<GetServiceOrderByIdUsecase>();
     final result = await getServiceOrderByIdUsecase(ArgParams(firstArgs: id));
     result.fold((error) => error.friendlyMessage, (success) {
-      serviceOrder = success as ServiceOrderEntity?;
+      serviceOrder = success.data;
       _buildDataLists();
       return success;
     });

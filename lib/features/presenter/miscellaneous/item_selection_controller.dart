@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/company_entities/company_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/plot_entities/farm_plot_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_input_usecases/agricultural_input_class_usecases/get_all_agricultural_input_classes_to_select_usecases/get_all_agricultural_input_classes_to_select_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/agricultural_input_usecases/get_all_agricultural_inputs_to_select_usecases/get_all_agricultural_inputs_to_select_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/product_usecases/get_all_products_to_select_usecase/get_all_products_to_select_usecase.dart';
@@ -13,12 +14,16 @@ import '../../domain/params/arg_params/arg_params.dart';
 import '../../domain/usecases/company_usecases/company_segment_usecases/get_all_company_segments_to_select_usecases/get_all_company_segments_to_select_usecases.dart';
 import '../../domain/usecases/company_usecases/get_all_companies_to_select_usecase/get_all_companies_to_select_usecase.dart';
 import '../../domain/usecases/company_usecases/get_all_companies_usecase/get_all_companies_usecase.dart';
+import '../../domain/usecases/farm_usecases/farm_plot_usecases/get_all_farm_plots_by_filter_to_select_usecases/get_all_farm_plots_by_filter_to_select_usecase.dart';
+import '../../domain/usecases/farm_usecases/farm_plot_usecases/get_all_farm_plots_by_filter_usecases/get_all_farm_plots_by_filter_usecase.dart';
 import '../../domain/usecases/product_usecases/get_all_products_by_type_id_to_select_usecases/get_all_products_by_type_id_to_select_usecase.dart';
 import '../../domain/usecases/product_usecases/product_types_usecases/get_all_product_types_to_select_usecases/get_all_product_types_to_select_usecase.dart';
 
 part 'item_selection_controller.g.dart';
 
-enum ItemType { product, company, agriculturalInput }
+enum ItemType { product, company, agriculturalInput, plot }
+
+enum ModuleFlux { purchaseRequest, serviceOrder }
 
 class ItemSelectionController = ItemSelectionControllerAbstract
     with _$ItemSelectionController;
@@ -53,8 +58,7 @@ abstract class ItemSelectionControllerAbstract with Store {
   @observable
   List<SelectEntity> productTypesListToSelect = ObservableList<SelectEntity>();
   @observable
-  List<SelectEntity> filteredProductTypeListToSelect =
-  ObservableList<SelectEntity>();
+  List<SelectEntity> filteredProductTypeListToSelect = ObservableList<SelectEntity>();
   @observable
   List<ItemsEntity> requestedProductItems = ObservableList<ItemsEntity>();
   @observable
@@ -71,8 +75,7 @@ abstract class ItemSelectionControllerAbstract with Store {
   @observable
   List<SelectEntity> companySegmentsListToSelect = ObservableList<SelectEntity>();
   @observable
-  List<SelectEntity> filteredCompanySegmentsListToSelect =
-  ObservableList<SelectEntity>();
+  List<SelectEntity> filteredCompanySegmentsListToSelect = ObservableList<SelectEntity>();
   @observable
   Set<int> selectedCompanyIds = ObservableSet<int>();
   @observable
@@ -87,8 +90,7 @@ abstract class ItemSelectionControllerAbstract with Store {
   @observable
   bool isAgriculturalInputLoading = false;
   @observable
-  List<SelectEntity> agriculturalInputListToSelect =
-  ObservableList<SelectEntity>();
+  List<SelectEntity> agriculturalInputListToSelect = ObservableList<SelectEntity>();
   List<SelectEntity> allAgriculturalInputs = [];
   @observable
   List<SelectEntity> agriculturalInputClassesListToSelect =
@@ -97,11 +99,20 @@ abstract class ItemSelectionControllerAbstract with Store {
   List<SelectEntity> filteredAgriculturalInputClassesListToSelect =
   ObservableList<SelectEntity>();
   @observable
-  List<ItemsEntity> requestedAgriculturalInputItems =
-  ObservableList<ItemsEntity>();
+  List<ItemsEntity> requestedAgriculturalInputItems = ObservableList<ItemsEntity>();
   @observable
-  List<ItemsEntity> finalRequestedAgriculturalInputs =
-  ObservableList<ItemsEntity>();
+  List<ItemsEntity> finalRequestedAgriculturalInputs = ObservableList<ItemsEntity>();
+
+  @observable
+  bool isPlotLoading = false;
+  @observable
+  List<SelectEntity> plotListByFilterToSelect = ObservableList<SelectEntity>();
+  @observable
+  List<FarmPlotEntity> plotListByFilter = ObservableList<FarmPlotEntity>();
+  @observable
+  Set<int> selectedPlotIds = ObservableSet<int>();
+  @observable
+  List<FarmPlotEntity> finalRequestedPlots = ObservableList<FarmPlotEntity>();
 
   ItemSelectionControllerAbstract() {
     scrollController.addListener(agriculturalInputScrollListener);
@@ -134,26 +145,29 @@ abstract class ItemSelectionControllerAbstract with Store {
       baseList = requestedProductItems;
     } else if (currentLoadedItemType == ItemType.company) {
       baseList = companiesListToSelect;
-    } else {
+    } else if (currentLoadedItemType == ItemType.agriculturalInput) {
       baseList = requestedAgriculturalInputItems;
+    } else if (currentLoadedItemType == ItemType.plot) {
+      baseList = plotListByFilter;
+    } else {
+      return [];
     }
 
     if (searchQuery.isEmpty) {
       return baseList;
     } else {
       return baseList.where((item) {
-        if (currentLoadedItemType == ItemType.product ||
-            currentLoadedItemType == ItemType.agriculturalInput) {
-          final itemWithQuantity = item as ItemsEntity;
-          return itemWithQuantity.productName != null &&
-              itemWithQuantity.productName!
-                  .toLowerCase()
-                  .contains(searchQuery.toLowerCase());
-        } else {
-          final companyItem = item as SelectEntity;
-          return companyItem.label != null &&
-              companyItem.label!.toLowerCase().contains(searchQuery.toLowerCase());
+        String? nameToSearch;
+        if (item is ItemsEntity) {
+          nameToSearch = item.productName;
+        } else if (item is SelectEntity) {
+          nameToSearch = item.label;
+        } else if (item is FarmPlotEntity) {
+          nameToSearch = item.number;
         }
+
+        return nameToSearch != null &&
+            nameToSearch.toLowerCase().contains(searchQuery.toLowerCase());
       }).toList();
     }
   }
@@ -167,11 +181,12 @@ abstract class ItemSelectionControllerAbstract with Store {
   }
 
   @action
-  Future<void> loadItems(ItemType type) async {
+  Future<void> loadItems(ItemType type, {ArgParams? filterParams}) async {
     isFirstLoading = true;
     isProductLoading = false;
     isCompanyLoading = false;
     isAgriculturalInputLoading = false;
+    isPlotLoading = false;
     currentLoadedItemType = type;
     searchQuery = '';
 
@@ -192,6 +207,14 @@ abstract class ItemSelectionControllerAbstract with Store {
       await getAllAgriculturalInputsToSelect();
       await getAllAgriculturalInputClassesToSelect();
       isAgriculturalInputLoading = false;
+    } else if (type == ItemType.plot) {
+      isPlotLoading = true;
+
+      if(filterParams != null) {
+        await getAllFarmPlotsByFilter(filterParams.thirdArgs, filterParams.fourthArgs, filterParams.fifthArgs, filterParams.sixthArgs);
+        await getAllFarmPlotsByFilterToSelect(filterParams.thirdArgs, filterParams.fourthArgs, filterParams.fifthArgs, filterParams.sixthArgs);
+      }
+      isPlotLoading = false;
     }
     isFirstLoading = false;
   }
@@ -231,6 +254,12 @@ abstract class ItemSelectionControllerAbstract with Store {
     filteredAgriculturalInputClassesListToSelect.clear();
     requestedAgriculturalInputItems.clear();
     finalRequestedAgriculturalInputs.clear();
+
+    isPlotLoading = false;
+    plotListByFilterToSelect.clear();
+    plotListByFilter.clear();
+    selectedPlotIds.clear();
+    finalRequestedPlots.clear();
   }
 
   @action
@@ -259,8 +288,7 @@ abstract class ItemSelectionControllerAbstract with Store {
   @action
   Future<void> getAllProductTypesToSelect() async {
     isProductTypeLoading = true;
-    final getAllProductTypesToSelect =
-    Modular.get<GetAllProductTypesToSelectUsecase>();
+    final getAllProductTypesToSelect = Modular.get<GetAllProductTypesToSelectUsecase>();
     final result = await getAllProductTypesToSelect(NoParams());
 
     result.fold(
@@ -350,8 +378,8 @@ abstract class ItemSelectionControllerAbstract with Store {
     Modular.get<GetAllProductsByTypeIdToSelectUsecase>();
     final result = await getAllProductsByTypeIdToSelectUsecase(ArgParams(
         firstArgs: filteredProductTypeListToSelect.map((e) => e.value).toList()));
-    result.fold(
-            (error) => debugPrint('Error filtering products: ${error.friendlyMessage}'),
+    result
+        .fold((error) => debugPrint('Error filtering products: ${error.friendlyMessage}'),
             (success) {
           final currentRequestedQuantities = Map.fromEntries(requestedProductItems
               .map((item) => MapEntry(item.productId, item.requestedQuantity)));
@@ -422,7 +450,8 @@ abstract class ItemSelectionControllerAbstract with Store {
             (success) {
           companySegmentsListToSelect = ObservableList<SelectEntity>.of(success.data!);
           companySegmentNames = ObservableMap.of(
-              Map.fromEntries(success.data!.map((e) => MapEntry(e.value, e.label ?? ''))));
+              Map.fromEntries(
+                  success.data!.map((e) => MapEntry(e.value, e.label ?? ''))));
         });
     isCompanyLoading = false;
   }
@@ -436,6 +465,7 @@ abstract class ItemSelectionControllerAbstract with Store {
     }
     updateFinalRequestedCompanies();
   }
+
 
   @action
   bool isCompanySelected(int companyId) => selectedCompanyIds.contains(companyId);
@@ -453,6 +483,26 @@ abstract class ItemSelectionControllerAbstract with Store {
       final company = allCompaniesToSelect.firstWhere((element) => element.value == id);
       finalRequestedCompanies.add(company);
     }
+  }
+
+  @action
+  void toggleAllCompaniesSelection(bool isSelected) {
+    if (isSelected) {
+      selectedCompanyIds.clear();
+      for (var company in filteredAddItemsList.whereType<SelectEntity>()) {
+        selectedCompanyIds.add(company.value);
+            }
+    } else {
+      selectedCompanyIds.clear();
+    }
+    updateFinalRequestedCompanies();
+  }
+
+  @computed
+  bool get areAllCompaniesSelected {
+    final List<SelectEntity> visibleCompanies = filteredAddItemsList.whereType<SelectEntity>().toList();
+    if (visibleCompanies.isEmpty) return false;
+    return visibleCompanies.every((company) => selectedCompanyIds.contains(company.value));
   }
 
   CompanyEntity? getCompanyDetails(int companyId) {
@@ -550,7 +600,8 @@ abstract class ItemSelectionControllerAbstract with Store {
       return matchesSegment && matchesCity && matchesState;
     }).toList();
 
-    companiesListToSelect = ObservableList<SelectEntity>.of(filteredCompaniesSelectEntity);
+    companiesListToSelect =
+    ObservableList<SelectEntity>.of(filteredCompaniesSelectEntity);
 
     isCompanyLoading = false;
   }
@@ -564,7 +615,8 @@ abstract class ItemSelectionControllerAbstract with Store {
       allAgriculturalInputs = success.data!;
       agriculturalInputListToSelect = ObservableList<SelectEntity>.of(success.data!);
       requestedAgriculturalInputItems.clear();
-      requestedAgriculturalInputItems.addAll(allAgriculturalInputs.map((selectEntity) =>
+      requestedAgriculturalInputItems
+          .addAll(allAgriculturalInputs.map((selectEntity) =>
           ItemsEntity(
             agriculturalInputId: selectEntity.value,
             productName: selectEntity.label,
@@ -587,8 +639,8 @@ abstract class ItemSelectionControllerAbstract with Store {
 
   @action
   void incrementRequestedAgriculturalInputQuantity(int agriculturalInputId) {
-    final index = requestedAgriculturalInputItems.indexWhere((item) =>
-    item.agriculturalInputId == agriculturalInputId);
+    final index = requestedAgriculturalInputItems
+        .indexWhere((item) => item.agriculturalInputId == agriculturalInputId);
     if (index != -1) {
       final currentItem = requestedAgriculturalInputItems[index];
       final updatedItem =
@@ -600,8 +652,8 @@ abstract class ItemSelectionControllerAbstract with Store {
 
   @action
   void decrementRequestedAgriculturalInputQuantity(int agriculturalInputId) {
-    final index = requestedAgriculturalInputItems.indexWhere((item) =>
-    item.agriculturalInputId == agriculturalInputId);
+    final index = requestedAgriculturalInputItems
+        .indexWhere((item) => item.agriculturalInputId == agriculturalInputId);
     if (index != -1) {
       final currentItem = requestedAgriculturalInputItems[index];
       if (currentItem.requestedQuantity > 0) {
@@ -615,8 +667,8 @@ abstract class ItemSelectionControllerAbstract with Store {
 
   @action
   void removeRequestedAgriculturalInput(int agriculturalInputId) {
-    requestedAgriculturalInputItems.removeWhere((item) =>
-    item.agriculturalInputId == agriculturalInputId);
+    requestedAgriculturalInputItems
+        .removeWhere((item) => item.agriculturalInputId == agriculturalInputId);
     updateFinalRequestedAgriculturalInput();
   }
 
@@ -632,8 +684,8 @@ abstract class ItemSelectionControllerAbstract with Store {
   void updateSelectedAgriculturalInputClasses(Set<int> selectedIds) {
     filteredAgriculturalInputClassesListToSelect.clear();
     for (var id in selectedIds) {
-      final type =
-      agriculturalInputClassesListToSelect.firstWhere((element) => element.value == id);
+      final type = agriculturalInputClassesListToSelect
+          .firstWhere((element) => element.value == id);
       filteredAgriculturalInputClassesListToSelect.add(type);
     }
     applyAgriculturalFilters();
@@ -651,9 +703,9 @@ abstract class ItemSelectionControllerAbstract with Store {
     agriculturalInputCurrentPage = 1;
     hasMoreAgriculturalInputs = true;
 
-    final currentRequestedQuantities = Map.fromEntries(
-        requestedAgriculturalInputItems.where((item) => item.requestedQuantity > 0).map((item) =>
-            MapEntry(item.agriculturalInputId, item.requestedQuantity)));
+    final currentRequestedQuantities = Map.fromEntries(requestedAgriculturalInputItems
+        .where((item) => item.requestedQuantity > 0)
+        .map((item) => MapEntry(item.agriculturalInputId, item.requestedQuantity)));
 
     requestedAgriculturalInputItems.clear();
     agriculturalInputListToSelect.clear();
@@ -679,19 +731,20 @@ abstract class ItemSelectionControllerAbstract with Store {
           (responseModel) {
         if (responseModel.data != null && responseModel.data!.isNotEmpty) {
           final newItems = responseModel.data!
-              .map((selectEntity) => ItemsEntity(
-            agriculturalInputId: selectEntity.value,
-            productName: selectEntity.label,
-            requestedQuantity:
-            currentRequestedQuantities[selectEntity.value] ?? 0,
-          ))
+              .map((selectEntity) =>
+              ItemsEntity(
+                agriculturalInputId: selectEntity.value,
+                productName: selectEntity.label,
+                requestedQuantity:
+                currentRequestedQuantities[selectEntity.value] ?? 0,
+              ))
               .toList();
           requestedAgriculturalInputItems.addAll(newItems);
 
           agriculturalInputListToSelect = ObservableList<SelectEntity>.of(
               requestedAgriculturalInputItems
-                  .map((e) => SelectEntity(
-                  value: e.agriculturalInputId!, label: e.productName))
+                  .map((e) =>
+                  SelectEntity(value: e.agriculturalInputId!, label: e.productName))
                   .toList());
         }
 
@@ -700,7 +753,8 @@ abstract class ItemSelectionControllerAbstract with Store {
               (responseModel.pagination?.pageSize ?? 0)) <
               (responseModel.pagination?.total ?? 0);
         } else {
-          hasMoreAgriculturalInputs = (responseModel.data?.length ?? 0) == agriculturalInputPageLimit;
+          hasMoreAgriculturalInputs =
+              (responseModel.data?.length ?? 0) == agriculturalInputPageLimit;
         }
       },
     );
@@ -740,28 +794,30 @@ abstract class ItemSelectionControllerAbstract with Store {
           (responseModel) {
         if (responseModel.data != null && responseModel.data!.isNotEmpty) {
           final newItems = responseModel.data!
-              .map((selectEntity) => ItemsEntity(
-            agriculturalInputId: selectEntity.value,
-            productName: selectEntity.label,
-            requestedQuantity: 0,
-          ))
+              .map((selectEntity) =>
+              ItemsEntity(
+                agriculturalInputId: selectEntity.value,
+                productName: selectEntity.label,
+                requestedQuantity: 0,
+              ))
               .toList();
 
           requestedAgriculturalInputItems.addAll(newItems);
 
           agriculturalInputListToSelect = ObservableList<SelectEntity>.of(
               requestedAgriculturalInputItems
-                  .map((e) => SelectEntity(
-                  value: e.agriculturalInputId!, label: e.productName))
+                  .map((e) =>
+                  SelectEntity(value: e.agriculturalInputId!, label: e.productName))
                   .toList());
         }
 
         if (responseModel.pagination != null) {
-          hasMoreAgriculturalInputs = (responseModel.pagination!.page! *
-              responseModel.pagination!.pageSize!) <
-              responseModel.pagination!.total!;
+          hasMoreAgriculturalInputs =
+              (responseModel.pagination!.page! * responseModel.pagination!.pageSize!) <
+                  responseModel.pagination!.total!;
         } else {
-          hasMoreAgriculturalInputs = (responseModel.data?.length ?? 0) == agriculturalInputPageLimit;
+          hasMoreAgriculturalInputs =
+              (responseModel.data?.length ?? 0) == agriculturalInputPageLimit;
         }
       },
     );
@@ -796,15 +852,18 @@ abstract class ItemSelectionControllerAbstract with Store {
           (responseModel) {
         if (responseModel.data != null && responseModel.data!.isNotEmpty) {
           final newItems = responseModel.data!
-              .map((selectEntity) => ItemsEntity(
-            agriculturalInputId: selectEntity.value,
-            productName: selectEntity.label,
-            requestedQuantity: 0,
-          ))
+              .map((selectEntity) =>
+              ItemsEntity(
+                agriculturalInputId: selectEntity.value,
+                productName: selectEntity.label,
+                requestedQuantity: 0,
+              ))
               .toList();
 
           final currentRequestedQuantities = Map.fromEntries(
-              requestedAgriculturalInputItems.where((item) => item.requestedQuantity > 0).map((item) =>
+              requestedAgriculturalInputItems
+                  .where((item) => item.requestedQuantity > 0)
+                  .map((item) =>
                   MapEntry(item.agriculturalInputId, item.requestedQuantity)));
 
           for (var newItem in newItems) {
@@ -819,8 +878,8 @@ abstract class ItemSelectionControllerAbstract with Store {
 
           agriculturalInputListToSelect = ObservableList<SelectEntity>.of(
               requestedAgriculturalInputItems
-                  .map((e) => SelectEntity(
-                  value: e.agriculturalInputId!, label: e.productName))
+                  .map((e) =>
+                  SelectEntity(value: e.agriculturalInputId!, label: e.productName))
                   .toList());
         }
 
@@ -829,10 +888,108 @@ abstract class ItemSelectionControllerAbstract with Store {
               (responseModel.pagination?.pageSize ?? 0)) <
               (responseModel.pagination?.total ?? 0);
         } else {
-          hasMoreAgriculturalInputs = (responseModel.data?.length ?? 0) == agriculturalInputPageLimit;
+          hasMoreAgriculturalInputs =
+              (responseModel.data?.length ?? 0) == agriculturalInputPageLimit;
         }
       },
     );
     isAgriculturalInputLoadingMore = false;
   }
+
+  @action
+  Future<void> getAllFarmPlotsByFilterToSelect(int? agriculturalActivityTypeId, int? farmId,
+      int? harvestCostCenterId, int? cropVarietyId) async {
+    isPlotLoading = true;
+
+    final getAllFarmPlotsByFilterToSelectUsecase =
+    Modular.get<GetAllFarmPlotsByFilterToSelectUsecase>();
+    final result = await getAllFarmPlotsByFilterToSelectUsecase(ArgParams(
+      firstArgs: agriculturalActivityTypeId,
+      secondArgs: farmId,
+      thirdArgs: harvestCostCenterId,
+      fourthArgs: cropVarietyId,
+    ));
+
+    result.fold((error) => error.friendlyMessage, (success) {
+    plotListByFilterToSelect = ObservableList<SelectEntity>.of(success.data!);
+    return success;
+    });
+  }
+  @action
+  Future<void> getAllFarmPlotsByFilter(int? agriculturalActivityTypeId, int? farmId,
+      int? harvestCostCenterId, int? cropVarietyId) async {
+    isPlotLoading = true;
+    final getAllFarmPlotsByFilterUsecase =
+    Modular.get<GetAllFarmPlotsByFilterUsecase>();
+    final result = await getAllFarmPlotsByFilterUsecase(ArgParams(
+      firstArgs: agriculturalActivityTypeId,
+      secondArgs: farmId,
+      thirdArgs: harvestCostCenterId,
+      fourthArgs: cropVarietyId,
+    ));
+
+    result.fold((error) => error.friendlyMessage, (success){
+      plotListByFilter = ObservableList<FarmPlotEntity>.of(success.data as Iterable<FarmPlotEntity>);
+    });
+    isPlotLoading = false;
+
+  }
+
+  @action
+  void togglePlotSelection(int? plotId, bool isSelected) {
+    if (plotId != null) {
+      if (isSelected) {
+        selectedPlotIds.add(plotId);
+      } else {
+        selectedPlotIds.remove(plotId);
+      }
+    }
+    updateFinalRequestedPlots();
+  }
+
+  @action
+  bool isPlotSelected(int? plotId) => plotId != null && selectedPlotIds.contains(plotId);
+
+  @action
+  void removeSelectedPlot(int? plotId) {
+    if (plotId != null) {
+      selectedPlotIds.remove(plotId);
+    }
+    updateFinalRequestedPlots();
+  }
+
+  @action
+  void updateFinalRequestedPlots() {
+    finalRequestedPlots.clear();
+    for (var id in selectedPlotIds) {
+      final plot = plotListByFilter.firstWhere((element) => element.id == id,
+          orElse: () => FarmPlotEntity(id: -1, number: 'Talhão Desconhecido')); // Adicionado orElse
+      if (plot.id != -1) {
+        finalRequestedPlots.add(plot);
+      }
+    }
+  }
+
+  @action
+  void toggleAllPlotsSelection(bool isSelected) {
+    if (isSelected) {
+      selectedPlotIds.clear(); // Limpa existing para adicionar todos os visíveis
+      for (var plot in filteredAddItemsList.whereType<FarmPlotEntity>()) {
+        if (plot.id != null) {
+          selectedPlotIds.add(plot.id!);
+        }
+      }
+    } else {
+      selectedPlotIds.clear();
+    }
+    updateFinalRequestedPlots();
+  }
+
+  @computed
+  bool get areAllPlotsSelected {
+    final List<FarmPlotEntity> visiblePlots = filteredAddItemsList.whereType<FarmPlotEntity>().toList();
+    if (visiblePlots.isEmpty) return false;
+    return visiblePlots.every((plot) => plot.id != null && selectedPlotIds.contains(plot.id!));
+  }
+
 }

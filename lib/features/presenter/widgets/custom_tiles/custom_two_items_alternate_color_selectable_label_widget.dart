@@ -5,13 +5,14 @@ import '../../../../design_system/typography/app_text_styles.dart';
 
 typedef SelectableItemCallback = void Function(bool isSelected);
 
-class CustomTwoItemsAlternateColorSelectableTileWidget extends StatefulWidget {
+class CustomTwoItemsAlternateColorSelectableLabelWidget extends StatefulWidget {
   final String firstLabel;
   final String secondLabel;
   final bool initialIsSelected;
   final SelectableItemCallback onChanged;
 
-  const CustomTwoItemsAlternateColorSelectableTileWidget({
+
+  const CustomTwoItemsAlternateColorSelectableLabelWidget({
     super.key,
     required this.firstLabel,
     required this.secondLabel,
@@ -20,10 +21,10 @@ class CustomTwoItemsAlternateColorSelectableTileWidget extends StatefulWidget {
   });
 
   @override
-  State<CustomTwoItemsAlternateColorSelectableTileWidget> createState() => _CustomTwoItemsAlternateColorSelectableTileWidgetState();
+  State<CustomTwoItemsAlternateColorSelectableLabelWidget> createState() => _CustomTwoItemsAlternateColorSelectableLabelWidgetState();
 }
 
-class _CustomTwoItemsAlternateColorSelectableTileWidgetState extends State<CustomTwoItemsAlternateColorSelectableTileWidget> {
+class _CustomTwoItemsAlternateColorSelectableLabelWidgetState extends State<CustomTwoItemsAlternateColorSelectableLabelWidget> {
   late bool _isChecked;
 
   @override
@@ -33,8 +34,9 @@ class _CustomTwoItemsAlternateColorSelectableTileWidgetState extends State<Custo
   }
 
 
+
   @override
-  void didUpdateWidget(covariant CustomTwoItemsAlternateColorSelectableTileWidget oldWidget) {
+  void didUpdateWidget(covariant CustomTwoItemsAlternateColorSelectableLabelWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.initialIsSelected != oldWidget.initialIsSelected) {
       _isChecked = widget.initialIsSelected;
@@ -44,7 +46,6 @@ class _CustomTwoItemsAlternateColorSelectableTileWidgetState extends State<Custo
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
@@ -53,16 +54,14 @@ class _CustomTwoItemsAlternateColorSelectableTileWidgetState extends State<Custo
             flex: 2,
             child: Text(
               widget.firstLabel,
-              style:AppTextStyles.cardBodyTextStyle(color: AppColors.primaryBlackColor),
-
+              style: AppTextStyles.smallBoldTextOnCardStyle(color: AppColors.primaryBlackColor),
             ),
           ),
           Expanded(
             flex: 1,
             child: Text(
               widget.secondLabel,
-              style: AppTextStyles.cardBodyTextStyle(color: AppColors.primaryBlackColor),
-              overflow: TextOverflow.ellipsis,
+              style: AppTextStyles.smallBoldTextOnCardStyle(color: AppColors.primaryBlackColor),
             ),
           ),
           Expanded(
@@ -71,7 +70,7 @@ class _CustomTwoItemsAlternateColorSelectableTileWidgetState extends State<Custo
               alignment: Alignment.centerRight,
               child: Checkbox(
                 value: _isChecked,
-                onChanged: (bool? newValue) {
+                onChanged: (newValue) {
                   if (newValue != null) {
                     setState(() {
                       _isChecked = newValue;
@@ -82,7 +81,8 @@ class _CustomTwoItemsAlternateColorSelectableTileWidgetState extends State<Custo
                 activeColor: AppColors.primaryGreenColor,
               ),
             ),
-          )
+          ),
+
         ],
       ),
     );

@@ -1,8 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../features/presenter/miscellaneous/edit_listed_items/edit_listed_items_controller.dart';
 import '../features/presenter/miscellaneous/item_selection_controller.dart';
-import '../features/presenter/miscellaneous/view_listed_itens/view_listed_items_controller.dart';
 import '../features/presenter/modules/approvals_module/approvals_detail/approvals_detail_controller.dart';
 import '../features/presenter/modules/approvals_module/approvals_list/approvals_list_controller.dart';
 import '../features/presenter/modules/authentication_module/authentication_controller/authentication_controller.dart';
@@ -44,8 +42,6 @@ class ControllerBinds {
     i.addLazySingleton<PurchaseRequestCreateController>(PurchaseRequestCreateController.new);
 
     //Miscellaneous
-    i.addLazySingleton<EditListedItemsController>(EditListedItemsController.new);
-    i.addLazySingleton<ViewListedItemsController>(ViewListedItemsController.new);
     i.addLazySingleton<ItemSelectionController>(ItemSelectionController.new);
   }
 }

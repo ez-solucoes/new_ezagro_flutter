@@ -61,6 +61,7 @@ import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/get_all_cost_centers_by_cost_center_type_id_usecases/get_all_cost_centers_by_cost_center_type_id_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/get_all_cost_centers_by_cost_center_type_id_usecases/get_all_cost_centers_by_cost_center_type_id_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/get_all_cost_centers_to_select_usecases/get_all_cost_centers_to_select_usecase.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/get_all_cost_centers_to_select_usecases/get_all_cost_centers_to_select_usecases_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/get_all_cost_centers_usecases/get_all_cost_centers_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/get_all_cost_centers_usecases/get_all_cost_centers_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/get_cost_center_by_id_usecases/get_cost_center_by_id_usecase.dart';
@@ -91,6 +92,8 @@ import 'package:new_ezagro_flutter/features/domain/usecases/employee_usecase/get
 import 'package:new_ezagro_flutter/features/domain/usecases/employee_usecase/get_all_employees_usecases/get_all_employees_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/employee_usecase/get_employee_by_id_usecase/get_employee_by_id_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/employee_usecase/get_employee_by_id_usecase/get_employee_by_id_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_plot_usecases/get_all_farm_plots_by_filter_to_select_usecases/get_all_farm_plots_by_filter_to_select_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_plot_usecases/get_all_farm_plots_by_filter_usecases/get_all_farm_plots_by_filter_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_plot_usecases/get_all_farm_plots_to_select_usecases/get_all_farm_plots_to_select_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_plot_usecases/get_all_farm_plots_to_select_usecases/get_all_farm_plots_to_select_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_plot_usecases/get_all_farm_plots_usecases/get_all_farm_plots_usecase.dart';
@@ -191,6 +194,14 @@ import 'package:new_ezagro_flutter/features/domain/usecases/user_usecases/update
 import '../features/domain/usecases/agricultural_activity_usecases/agricultural_activity_type_usecases/get_all_agricultural_activity_types_usecases/get_all_agricultural_activity_types_usecase.dart';
 import '../features/domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_all_agricultural_sub_activities_to_select_usecases/get_all_agricultural_sub_activities_to_select_usecase.dart';
 import '../features/domain/usecases/agricultural_activity_usecases/get_all_agricultural_activity_by_type_id_to_select_usecases/get_all_agricultural_activity_by_type_id_to_select_usecase_impl.dart';
+import '../features/domain/usecases/farm_usecases/farm_plot_usecases/farm_plot_soil_stage_usecases/get_all_farm_plot_soil_stages_to_select_usecases/get_all_farm_plot_soil_stages_to_select_usecase.dart';
+import '../features/domain/usecases/farm_usecases/farm_plot_usecases/farm_plot_soil_stage_usecases/get_all_farm_plot_soil_stages_to_select_usecases/get_all_farm_plot_soil_stages_to_select_usecase_impl.dart';
+import '../features/domain/usecases/farm_usecases/farm_plot_usecases/farm_plot_soil_stage_usecases/get_all_farm_plot_soil_stages_usecases/get_all_farm_plot_soil_stages_usecase.dart';
+import '../features/domain/usecases/farm_usecases/farm_plot_usecases/farm_plot_soil_stage_usecases/get_all_farm_plot_soil_stages_usecases/get_all_farm_plot_soil_stages_usecase_impl.dart';
+import '../features/domain/usecases/farm_usecases/farm_plot_usecases/farm_plot_soil_stage_usecases/get_farm_plot_soil_stage_by_id_usecases/get_farm_plot_soil_stage_by_id_usecase.dart';
+import '../features/domain/usecases/farm_usecases/farm_plot_usecases/farm_plot_soil_stage_usecases/get_farm_plot_soil_stage_by_id_usecases/get_farm_plot_soil_stage_by_id_usecase_impl.dart';
+import '../features/domain/usecases/farm_usecases/farm_plot_usecases/get_all_farm_plots_by_filter_to_select_usecases/get_all_farm_plots_by_filter_to_select_usecase.dart';
+import '../features/domain/usecases/farm_usecases/farm_plot_usecases/get_all_farm_plots_by_filter_usecases/get_all_farm_plots_by_filter_usecase.dart';
 import '../features/domain/usecases/product_usecases/get_product_by_id_usecases/get_product_by_id_usecase_impl.dart';
 
 class UsecaseBinds {
@@ -248,7 +259,7 @@ class UsecaseBinds {
     ///Cost Center
     i.addLazySingleton<GetAllCostCentersByCostCenterTypeIdToSelectUsecase>(GetAllCostCentersByCostCenterTypeIdToSelectUsecaseImpl.new);
     i.addLazySingleton<GetAllCostCentersByCostCenterTypeIdUsecase>(GetAllCostCentersByCostCenterTypeIdUsecaseImpl.new);
-    i.addLazySingleton<GetAllCostCentersToSelectUsecase>(GetAllCostCentersByCostCenterTypeIdToSelectUsecaseImpl.new);
+    i.addLazySingleton<GetAllCostCentersToSelectUsecase>(GetAllCostCentersToSelectUsecaseImpl.new);
     i.addLazySingleton<GetAllCostCentersUsecase>(GetAllCostCentersUsecaseImpl.new);
     i.addLazySingleton<GetCostCenterByIdUsecase>(GetCostCenterByIdUsecaseImpl.new);
 
@@ -271,10 +282,17 @@ class UsecaseBinds {
     i.addLazySingleton<GetAllEmployeesUsecase>(GetAllEmployeesUsecaseImpl.new);
     i.addLazySingleton<GetEmployeeByIdUsecase>(GetEmployeeByIdUsecaseImpl.new);
 
+    //Farm Plot Soil Stage
+    i.addLazySingleton<GetAllFarmPlotSoilStagesToSelectUsecase>(GetAllFarmPlotSoilStagesToSelectUsecaseImpl.new);
+    i.addLazySingleton<GetAllFarmPlotSoilStagesUsecase>(GetAllFarmPlotSoilStagesUsecaseImpl.new);
+    i.addLazySingleton<GetFarmPlotSoilStageByIdUsecase>(GetFarmPlotSoilStageByIdUsecaseImpl.new);
+
     //Farm Plot
     i.addLazySingleton<GetAllFarmPlotsToSelectUsecase>(GetAllFarmPlotsToSelectUsecaseImpl.new);
     i.addLazySingleton<GetAllFarmPlotsUsecase>(GetAllFarmPlotsUsecaseImpl.new);
     i.addLazySingleton<GetFarmPlotByIdUsecase>(GetFarmPlotByIdUsecaseImpl.new);
+    i.addLazySingleton<GetAllFarmPlotsByFilterUsecase>(GetAllFarmPlotsByFilterUsecaseImpl.new);
+    i.addLazySingleton<GetAllFarmPlotsByFilterToSelectUsecase>(GetAllFarmPlotsByFilterToSelectUsecaseImpl.new);
 
     ///Farm
     i.addLazySingleton<GetAllFarmsByCostCenterIdToSelectUsecase>(GetAllFarmsByCostCenterIdToSelectUsecaseImpl.new);

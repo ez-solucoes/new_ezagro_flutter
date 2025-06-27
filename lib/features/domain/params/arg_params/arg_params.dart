@@ -6,11 +6,12 @@ class ArgParams extends Equatable {
   final dynamic thirdArgs;
   final dynamic fourthArgs;
   final dynamic fifthArgs;
+  final dynamic sixthArgs;
 
-  const ArgParams({this.firstArgs, this.secondArgs, this.thirdArgs, this.fourthArgs, this.fifthArgs});
+  const ArgParams({this.firstArgs, this.secondArgs, this.thirdArgs, this.fourthArgs, this.fifthArgs, this.sixthArgs});
 
   @override
-  List<Object?> get props => [firstArgs, secondArgs, thirdArgs, fourthArgs, fifthArgs];
+  List<Object?> get props => [firstArgs, secondArgs, thirdArgs, fourthArgs, fifthArgs, sixthArgs];
 
   // Map<String, dynamic> toQueryParams() {
   //   Map<String, dynamic> queryParams = {};
@@ -36,6 +37,7 @@ class ArgParams extends Equatable {
     String? thirdParamName,
     String? fourthParamName,
     String? fifthParamName,
+    String? sixthParamName,
   }) {
     Map<String, dynamic> queryParams = {};
     if (firstArgs != null) {
@@ -54,6 +56,9 @@ class ArgParams extends Equatable {
     }
     if (fifthParamName != null && fifthArgs != null) {
       queryParams[fifthParamName] = fifthArgs is List ? fifthArgs.join(',') : fifthArgs.toString();
+    }
+    if (sixthParamName != null && sixthArgs != null) {
+      queryParams[sixthParamName] = sixthArgs is List ? sixthArgs.join(',') : sixthArgs.toString();
     }
 
     return queryParams;

@@ -10,4 +10,6 @@ abstract class FarmPlotRepository {
   Future<Either<ApplicationError, ResponseEntity<List<FarmPlotEntity>>>> getAllFarmPlotsByFarmId(ArgParams argParams);
   Future<Either<ApplicationError, ResponseEntity<List<SelectEntity>>>> getAllFarmPlotsByFarmIdToSelect(ArgParams argParams);
   Future<Either<ApplicationError, ResponseEntity<FarmPlotEntity>>> getFarmPlotById(ArgParams argParams);
+  Future<Either<ApplicationError, ResponseEntity<List<FarmPlotEntity>>>> getAllFarmPlotsByFilter(ArgParams argParams);
+  Future<Either<ApplicationError, ResponseEntity<List<SelectEntity>>>> getAllFarmPlotsByFilterToSelect(ArgParams argParams);
 }

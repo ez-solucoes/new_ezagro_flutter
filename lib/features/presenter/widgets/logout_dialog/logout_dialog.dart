@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/authentication_controller/authentication_controller.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/authentication_module/login_pages/login_page.dart';
 import '../../../../design_system/colors/app_colors.dart';
 import '../../../../design_system/strings/app_strings_portuguese.dart';
@@ -38,8 +40,14 @@ class LogoutDialog extends StatelessWidget {
               ),
               const SizedBox(width: 10),
               CustomElevatedButton(
-                onPressed: () {
-                  LoginPage.push();
+                onPressed: () async {
+                  Navigator.of(context).pop();
+                  
+
+                  final authController = Modular.get<AuthenticationController>();
+                  await authController.logout();
+
+                  Modular.to.navigate(LoginPage.routePath);
                 },
                 label: AppStringsPortuguese.leaveButtonLabel,
                 backgroundColor: AppColors.primaryRedColor,

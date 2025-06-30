@@ -64,8 +64,15 @@ abstract class AuthenticationControllerAbstract with Store {
       CustomSnackBarWidget.show(
           SnackBarType.error, context, 'Usuário ou senha incorretos!');
     }, (success) async {
-      name = success.data!.user!.client!.name;
-      username = success.data!.user!.client!.name;
+      String displayName;
+      if (success.data!.user!.ruralProducer != null) {
+        displayName = success.data!.user!.ruralProducer!.name!;
+      } else {
+        displayName = success.data!.user!.client!.name;
+      }
+      
+      name = displayName;
+      username = displayName;
       token = success.data!.token!;
       isResetPassword = success.data!.user!.isResetPassword!;
       isFirstAccess = success.data!.user!.isFirstLogin!;
@@ -197,7 +204,15 @@ abstract class AuthenticationControllerAbstract with Store {
     await localStorage.writeData(LocalStorageItem(
         key: AppStringsPortuguese.tokenKey, value: success.token.toString()));
 
+    // 🔧 Fix: Save ruralProducer name if available, otherwise client name
+    String displayName;
+    if (success.user!.ruralProducer != null) {
+      displayName = success.user!.ruralProducer!.name;
+    } else {
+      displayName = success.user!.client!.name;
+    }
+    
     await localStorage.writeData(LocalStorageItem(
-        key: AppStringsPortuguese.nameKey, value: success.user!.client!.name));
+        key: AppStringsPortuguese.nameKey, value: displayName));
   }
 }

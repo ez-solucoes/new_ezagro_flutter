@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/access_groups_entities/access_groups_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/rural_producer_entities/rural_producer_entity.dart';
 
 import '../client_entities/client_entity.dart';
 
@@ -15,6 +16,7 @@ class UserEntity extends Equatable {
   final bool? isResetPassword;
   final bool? isFirstLogin;
   final ClientEntity? client;
+  final RuralProducerEntity? ruralProducer;
   final List<AccessGroupsEntity>? accessGroups;
 
   const UserEntity({
@@ -29,6 +31,7 @@ class UserEntity extends Equatable {
     this.isResetPassword,
     this.isFirstLogin,
     this.client,
+    this.ruralProducer,
     this.accessGroups,
   });
 
@@ -45,6 +48,7 @@ class UserEntity extends Equatable {
     isResetPassword,
     isFirstLogin,
     client,
+    ruralProducer, // 🔧 Added to props
     accessGroups,
   ];
 }

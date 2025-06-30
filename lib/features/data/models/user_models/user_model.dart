@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:new_ezagro_flutter/features/data/models/access_groups_models/access_groups_model.dart';
 import 'package:new_ezagro_flutter/features/data/models/client_models/client_model.dart';
+import 'package:new_ezagro_flutter/features/data/models/rural_producer_models/rural_producer_model.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/user_entities/user_entity.dart';
 
 class UserModel extends UserEntity {
@@ -17,6 +18,7 @@ class UserModel extends UserEntity {
     super.isResetPassword,
     super.isFirstLogin,
     super.client,
+    super.ruralProducer,
     super.accessGroups,
   });
 
@@ -33,6 +35,7 @@ class UserModel extends UserEntity {
       'isResetPassword': isResetPassword,
       'isFirstLogin': isFirstLogin,
       'client': client,
+      'ruralProducer': ruralProducer,
       'accessGroups': accessGroups,
     };
   }
@@ -50,6 +53,7 @@ class UserModel extends UserEntity {
       isResetPassword: map['isResetPassword'] == null ? null : map['isResetPassword'] as bool,
       isFirstLogin: map['isFirstLogin'] == null ? null : map['isFirstLogin'] as bool,
       client: map['client'] == null ? null : ClientModel.fromMap(map['client']),
+      ruralProducer: map['ruralProducer'] == null ? null : RuralProducerModel.fromMap(map['ruralProducer']),
       accessGroups: map['accessGroups'] != null ? (map['accessGroups'] as List).map((e) => AccessGroupsModel.fromMap(e)).toList() : null,
     );
   }

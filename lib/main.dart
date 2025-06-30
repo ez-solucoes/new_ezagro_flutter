@@ -14,8 +14,11 @@ void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
 
-  // 🔍 Debug: Show current environment (remove this later)
-  print('🌐 Ez Agro Environment: ${EnvironmentConfig.environmentInfo}');
+  // 🔍 Safe Environment Debug (only in development)
+  if (EnvironmentConfig.isDevelopment) {
+    print('🌱 Ez Agro Environment: ${EnvironmentConfig.isDevelopment ? "Development" : "Production"}');
+    print('🌐 API URL: ${EnvironmentConfig.apiUrl}');
+  }
 
   runApp(
     ModularApp(

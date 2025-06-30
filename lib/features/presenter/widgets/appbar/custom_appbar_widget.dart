@@ -65,7 +65,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
     title: Column(
       children: [
         GestureDetector(
-          onTap: () => callback,
+          onTap: callback, // Fixed: Call callback directly
           child: Row(
             children: [
               const Icon(Icons.arrow_back_ios, size: 19),
@@ -121,7 +121,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GestureDetector(
-                onTap: () => callback,
+                onTap: callback, // Fixed: Call callback directly
                 child: Row(
                   children: [
                     const Icon(Icons.arrow_back_ios, size: 19),

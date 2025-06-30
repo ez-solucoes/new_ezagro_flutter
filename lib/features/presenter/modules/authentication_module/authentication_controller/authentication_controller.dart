@@ -204,10 +204,10 @@ abstract class AuthenticationControllerAbstract with Store {
     await localStorage.writeData(LocalStorageItem(
         key: AppStringsPortuguese.tokenKey, value: success.token.toString()));
 
-    // 🔧 Fix: Save ruralProducer name if available, otherwise client name
+    // Fix: Save ruralProducer name if available, otherwise client name
     String displayName;
     if (success.user!.ruralProducer != null) {
-      displayName = success.user!.ruralProducer!.name;
+      displayName = success.user!.ruralProducer!.name!;
     } else {
       displayName = success.user!.client!.name;
     }

@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/features/presenter/miscellaneous/item_selection_controller.dart';
 import 'package:new_ezagro_flutter/features/presenter/miscellaneous/view_listed_itens/view_listed_items_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/service_order/service_order_create/service_order_create_controller.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/service_order/service_order_create/service_order_create_origin_transfers_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/appbar/custom_appbar_widget.dart';
 
 import '../../../../../consts/app_routes.dart';
@@ -143,7 +144,7 @@ class ServiceOrderCreateGeneralInfoSecondPage extends StatelessWidget {
                               if(controller.agriculturalActivityType?.value != 3){
                                 ViewListedItemsPage.push(args: ArgParams(firstArgs: ItemType.plot, secondArgs: ModuleFlux.serviceOrder));
                               } else {
-
+                                ServiceOrderCreateOriginTransfersPage.push();
                               }
                             },
                             label: 'Próximo',

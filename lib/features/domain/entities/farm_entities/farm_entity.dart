@@ -8,6 +8,7 @@ import '../rural_producer_entities/rural_producer_entity.dart';
 class FarmEntity extends Equatable {
   final int id;
   final String? name;
+  final String? externalCode;
   final String? ownerName;
   final String? stateRegistration;
   final String? car;
@@ -25,6 +26,7 @@ class FarmEntity extends Equatable {
   final String? addressComplement;
   final String? addressReference;
   final bool? isFavorite;
+  final bool? isOwn;
   final String? area;
   final String? createdAt;
   final String? updatedAt;
@@ -61,7 +63,9 @@ class FarmEntity extends Equatable {
     this.localCostCenter,
     this.company,
     this.plots,
-    this.ruralProducers
+    this.ruralProducers,
+    this.externalCode,
+    this.isOwn,
   });
 
   @override
@@ -92,6 +96,8 @@ class FarmEntity extends Equatable {
     localCostCenter,
     company,
     plots,
-    ruralProducers
+    ruralProducers,
+    externalCode,
+    isOwn,
   ];
 }

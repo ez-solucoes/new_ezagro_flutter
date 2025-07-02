@@ -1,4 +1,8 @@
 import 'package:equatable/equatable.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/cost_center_entities/cost_center_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/stock_entities/stock_item_entity.dart';
+
+import '../farm_entities/farm_entity.dart';
 
 class StockEntity extends Equatable {
   final int id;
@@ -22,6 +26,9 @@ class StockEntity extends Equatable {
   final String? createdAt;
   final String? updatedAt;
   final String? deletedAt;
+  final CostCenterEntity? costCenter;
+  final FarmEntity? farm;
+  final List<StockItemEntity>? stockItems;
 
   const StockEntity({
     required this.id,
@@ -45,6 +52,9 @@ class StockEntity extends Equatable {
     this.createdAt,
     this.updatedAt,
     this.deletedAt,
+    this.costCenter,
+    this.farm,
+    this.stockItems,
   });
 
   @override
@@ -70,5 +80,8 @@ class StockEntity extends Equatable {
     createdAt,
     updatedAt,
     deletedAt,
+    costCenter,
+    farm,
+    stockItems,
   ];
 }

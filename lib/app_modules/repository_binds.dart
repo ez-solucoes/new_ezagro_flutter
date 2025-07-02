@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/features/data/repositories/farm_repositories/farm_plot_repositories/farm_plot_soil_stage_repositores/farm_plot_soil_stage_repository_impl.dart';
+import 'package:new_ezagro_flutter/features/data/repositories/stock_repositories/stock_repository_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/repositories/farm_repositories/farm_plot_repositories/farm_plot_soil_stage_repositores/farm_plot_soil_stage_repository.dart';
 
 import '../features/data/repositories/agricultural_activity_repositories/agricultural_activity_repository_impl.dart';
@@ -55,6 +56,7 @@ import '../features/domain/repositories/purchase_request_repositories/purchase_r
 import '../features/domain/repositories/purchase_request_repositories/purchase_request_repository.dart';
 import '../features/domain/repositories/purchase_request_repositories/purchase_request_type_repository/purchase_request_type_repository.dart';
 import '../features/domain/repositories/service_order_repositories/service_order_repository.dart';
+import '../features/domain/repositories/stock_repositories/stock_repository.dart';
 import '../features/domain/repositories/user_repositories/user_repository.dart';
 
 class RepositoryBinds {
@@ -87,5 +89,6 @@ class RepositoryBinds {
     i.addLazySingleton<PurchaseRequestRepository>(PurchaseRequestRepositoryImpl.new);
     i.addLazySingleton<PurchaseRequestTypeRepository>(PurchaseRequestTypeRepositoryImpl.new);
     i.addLazySingleton<PurchaseRequestDeliveryLocationRepository>(PurchaseRequestDeliveryLocationRepositoryImpl.new);
+    i.addLazySingleton<StockRepository>(StockRepositoryImpl.new);
   }
 }

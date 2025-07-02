@@ -1,6 +1,10 @@
 import 'dart:convert';
 
+import 'package:new_ezagro_flutter/features/data/models/stock_models/stock_item_model.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/stock_entities/stock_entity.dart';
+
+import '../cost_center_models/cost_center_model.dart';
+import '../farm_models/farm_model.dart';
 
 class StockModel extends StockEntity {
   const StockModel({
@@ -25,6 +29,9 @@ class StockModel extends StockEntity {
     super.createdAt,
     super.updatedAt,
     super.deletedAt,
+    super.costCenter,
+    super.farm,
+    super.stockItems,
   });
 
   Map<String, dynamic> toMap() {
@@ -38,11 +45,11 @@ class StockModel extends StockEntity {
       'longitude': longitude,
       'phoneNumber': phoneNumber,
       'whatsappNumber': whatsappNumber,
-      'addressStreet' : addressStreet,
-      'addressNumber' : addressNumber,
-      'addressNeighborhood' : addressNeighborhood,
-      'addressCity' : addressCity,
-      'addressState' : addressState,
+      'addressStreet': addressStreet,
+      'addressNumber': addressNumber,
+      'addressNeighborhood': addressNeighborhood,
+      'addressCity': addressCity,
+      'addressState': addressState,
       'addressCountry': addressCountry,
       'addressZipCode': addressZipCode,
       'addressComplement': addressComplement,
@@ -50,6 +57,9 @@ class StockModel extends StockEntity {
       'createdAt': createdAt,
       'updatedAt': updatedAt,
       'deletedAt': deletedAt,
+      'costCenter': costCenter,
+      'farm': farm,
+      'stockItems': stockItems,
     };
   }
 
@@ -57,7 +67,7 @@ class StockModel extends StockEntity {
     return StockModel(
       id: map['id'] as int,
       name: map['name'] as String,
-      email: map['email'] as String,
+      email: map['email'] as String?,
       isInternal: map['isInternal'] as bool,
       isExternal: map['isExternal'] as bool,
       latitude: map['latitude'] == null ? null : map['latitude'] as String,
@@ -76,11 +86,14 @@ class StockModel extends StockEntity {
       createdAt: map['createdAt'] as String?,
       updatedAt: map['updatedAt'] as String?,
       deletedAt: map['deletedAt'] == null ? null : map['deletedAt'] as String?,
+      costCenter: map['costCenter'] == null ? null : CostCenterModel.fromMap(map['costCenter']),
+      farm: map['farm'] == null ? null : FarmModel.fromMap(map['farm']),
+      stockItems:
+          map['stockItems'] == null ? null : (map['stockItems'] as List).map((e) => StockItemModel.fromMap(e)).toList(),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory StockModel.fromJson(String source) =>
-      StockModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory StockModel.fromJson(String source) => StockModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

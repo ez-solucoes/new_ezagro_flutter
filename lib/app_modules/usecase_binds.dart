@@ -183,6 +183,9 @@ import 'package:new_ezagro_flutter/features/domain/usecases/service_order_usecas
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_usecase/get_all_service_orders_usecases/get_all_service_orders_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_usecase/get_service_order_by_id_usecases/get_service_order_by_id_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/service_order_usecase/get_service_order_by_id_usecases/get_service_order_by_id_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/stock_usecases/get_all_stocks_to_select_usecases/get_all_stocks_to_select_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/stock_usecases/get_all_stocks_usecases/get_all_stocks_usecase_impl.dart';
+import 'package:new_ezagro_flutter/features/domain/usecases/stock_usecases/get_stock_by_id_usecases/get_stock_by_id_usecase_impl.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/user_usecases/get_all_users_to_select_usecases/get_all_users_to_select_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/user_usecases/get_all_users_usecases/get_all_users_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/user_usecases/get_all_users_usecases/get_all_users_usecase_impl.dart';
@@ -203,6 +206,9 @@ import '../features/domain/usecases/farm_usecases/farm_plot_usecases/farm_plot_s
 import '../features/domain/usecases/farm_usecases/farm_plot_usecases/get_all_farm_plots_by_filter_to_select_usecases/get_all_farm_plots_by_filter_to_select_usecase.dart';
 import '../features/domain/usecases/farm_usecases/farm_plot_usecases/get_all_farm_plots_by_filter_usecases/get_all_farm_plots_by_filter_usecase.dart';
 import '../features/domain/usecases/product_usecases/get_product_by_id_usecases/get_product_by_id_usecase_impl.dart';
+import '../features/domain/usecases/stock_usecases/get_all_stocks_to_select_usecases/get_all_stocks_to_select_usecase.dart';
+import '../features/domain/usecases/stock_usecases/get_all_stocks_usecases/get_all_stocks_usecase.dart';
+import '../features/domain/usecases/stock_usecases/get_stock_by_id_usecases/get_stock_by_id_usecase.dart';
 
 class UsecaseBinds {
   void binds(Injector i) {
@@ -364,8 +370,10 @@ class UsecaseBinds {
     i.addLazySingleton<GetUserByIdUsecase>(GetUserByIdUsecaseImpl.new);
     i.addLazySingleton<UpdateUserByIdUsecase>(UpdateUserByIdUsecaseImpl.new);
 
-
-
+    ///Stock
+    i.addLazySingleton<GetAllStocksUsecase>(GetAllStocksUsecaseImpl.new);
+    i.addLazySingleton<GetAllStocksToSelectUsecase>(GetAllStocksToSelectUsecaseImpl.new);
+    i.addLazySingleton<GetStockByIdUsecase>(GetStockByIdUsecaseImpl.new);
 
   }
 }

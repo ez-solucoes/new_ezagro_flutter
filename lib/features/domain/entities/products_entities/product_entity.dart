@@ -16,8 +16,7 @@ class ProductEntity extends Equatable {
   final String? brand;
   final String? productCode;
   final TypeEntity? type;
-  final List<AgriculturalInputClassificationTypeEntity>?
-      agriculturalInputClassificationType;
+  final List<AgriculturalInputClassificationTypeEntity>? agriculturalInputClassificationType;
   final String? trademark;
   final String? registrationHolder;
   final bool? active;
@@ -35,27 +34,27 @@ class ProductEntity extends Equatable {
 
   const ProductEntity({
     this.agriculturalInputClassificationType,
-     this.trademark,
-     this.registrationHolder,
-     this.toxicologicalClass,
-     this.activeIngredient1,
-     this.activeIngredient2,
-     this.activeIngredient3,
-     this.activeIngredient4,
-     this.measurementUnit,
-     this.pests,
-     this.crops,
+    this.trademark,
+    this.registrationHolder,
+    this.toxicologicalClass,
+    this.activeIngredient1,
+    this.activeIngredient2,
+    this.activeIngredient3,
+    this.activeIngredient4,
+    this.measurementUnit,
+    this.pests,
+    this.crops,
     required this.id,
-     this.name,
-     this.description,
-     this.brand,
-     this.productCode,
-     this.type,
-     this.file,
-     this.businessCategory,
-     this.attachmentNames,
-     this.attachments,
-     this.active,
+    this.name,
+    this.description,
+    this.brand,
+    this.productCode,
+    this.type,
+    this.file,
+    this.businessCategory,
+    this.attachmentNames,
+    this.attachments,
+    this.active,
   });
 
   @override

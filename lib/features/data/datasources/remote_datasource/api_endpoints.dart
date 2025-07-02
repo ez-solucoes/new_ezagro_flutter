@@ -75,4 +75,9 @@ class AppEndpoints {
   ///Approvals
   static const String approvePurchaseRequest = '/approve';
 
+  ///Stock
+  static const String stockEndpoint = '/stocks';
+
+
+
 }

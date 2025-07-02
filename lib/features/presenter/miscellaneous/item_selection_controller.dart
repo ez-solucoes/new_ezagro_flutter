@@ -963,7 +963,7 @@ abstract class ItemSelectionControllerAbstract with Store {
     finalRequestedPlots.clear();
     for (var id in selectedPlotIds) {
       final plot = plotListByFilter.firstWhere((element) => element.id == id,
-          orElse: () => FarmPlotEntity(id: -1, number: 'Talhão Desconhecido')); // Adicionado orElse
+          orElse: () => FarmPlotEntity(id: -1, number: 'Talhão Desconhecido'));
       if (plot.id != -1) {
         finalRequestedPlots.add(plot);
       }
@@ -973,12 +973,10 @@ abstract class ItemSelectionControllerAbstract with Store {
   @action
   void toggleAllPlotsSelection(bool isSelected) {
     if (isSelected) {
-      selectedPlotIds.clear(); // Limpa existing para adicionar todos os visíveis
+      selectedPlotIds.clear();
       for (var plot in filteredAddItemsList.whereType<FarmPlotEntity>()) {
-        if (plot.id != null) {
-          selectedPlotIds.add(plot.id!);
-        }
-      }
+        selectedPlotIds.add(plot.id);
+            }
     } else {
       selectedPlotIds.clear();
     }
@@ -989,7 +987,7 @@ abstract class ItemSelectionControllerAbstract with Store {
   bool get areAllPlotsSelected {
     final List<FarmPlotEntity> visiblePlots = filteredAddItemsList.whereType<FarmPlotEntity>().toList();
     if (visiblePlots.isEmpty) return false;
-    return visiblePlots.every((plot) => plot.id != null && selectedPlotIds.contains(plot.id!));
+    return visiblePlots.every((plot) => selectedPlotIds.contains(plot.id));
   }
 
 }

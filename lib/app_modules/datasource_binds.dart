@@ -1,6 +1,8 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/farm_datasource/farm_plot_datasources/farm_plot_soil_stage_datasources/farm_plot_soil_stage_datasource.dart';
 import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/farm_datasource/farm_plot_datasources/farm_plot_soil_stage_datasources/farm_plot_soil_stage_datasource_impl.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/stock_datasources/stock_datasource.dart';
+import 'package:new_ezagro_flutter/features/data/datasources/remote_datasource/stock_datasources/stock_datasource_impl.dart';
 
 import '../features/data/datasources/remote_datasource/agricultural_activity_datasources/agricultural_activity_datasource.dart';
 import '../features/data/datasources/remote_datasource/agricultural_activity_datasources/agricultural_activity_datasource_impl.dart';
@@ -88,5 +90,6 @@ class DatasourceBinds {
     i.addLazySingleton<PurchaseRequestTypeDatasource>(PurchaseRequestTypeDatasourceImpl.new);
     i.addLazySingleton<PurchaseRequestDeliveryLocationDatasource>(PurchaseRequestDeliveryLocationDatasourceImpl.new);
     i.addLazySingleton<AgriculturalActivityTypeDatasource>(AgriculturalActivityTypeDatasourceImpl.new);
+    i.addLazySingleton<StockDatasource>(StockDatasourceImpl.new);
   }
 }

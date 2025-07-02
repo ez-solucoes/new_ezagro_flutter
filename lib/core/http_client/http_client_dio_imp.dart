@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
+import 'package:new_ezagro_flutter/core/config/environment_config.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_client.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_request.dart';
 import 'package:new_ezagro_flutter/core/http_client/http_response.dart';
@@ -12,9 +13,32 @@ class HttpClientDioImp extends DioForNative implements HttpClient {
     BaseOptions? options,
   }) : super(options) {
     interceptors.add(AuthInterceptor());
+    
+    // Environment-based logging for security
     interceptors.add(LogInterceptor(
-      requestBody: true,
-      responseBody: true,
+      // Development: Full logging for debugging
+      requestBody: EnvironmentConfig.isDevelopment,
+      responseBody: EnvironmentConfig.isDevelopment,
+      requestHeader: EnvironmentConfig.isDevelopment,
+      responseHeader: EnvironmentConfig.isDevelopment,
+      
+      // Always log basic request info (safe)
+      request: true,
+      error: true, // Always log errors
+      
+      // Custom logging format
+      logPrint: (obj) {
+        if (EnvironmentConfig.isDevelopment) {
+          // Development: Detailed logs
+          print('🔧 [DEV] $obj');
+        } else {
+          // Production: Basic logs only (no sensitive data)
+          if (!obj.toString().contains('data:') && 
+              !obj.toString().contains('headers:')) {
+            print('🌐 [PROD] $obj');
+          }
+        }
+      },
     ));
   }
 

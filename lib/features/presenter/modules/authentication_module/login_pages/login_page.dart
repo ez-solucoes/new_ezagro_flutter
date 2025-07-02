@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:new_ezagro_flutter/consts/app_routes.dart';
 import 'package:new_ezagro_flutter/design_system/strings/app_strings_portuguese.dart';
@@ -55,25 +56,26 @@ class LoginPage extends StatelessWidget {
               passwordField: true,
             ),
             const SizedBox(height: 37),
-            CustomElevatedButton(
-              onPressed: () async {
+            Observer(
+              builder: (_) => CustomElevatedButton(
+                onPressed: controller.isLoading ? () {} : () async {
+                  controller.username = usernameController.text;
+                  controller.password = passwordController.text;
 
-                controller.username = usernameController.text;
-                controller.password = passwordController.text;
-
-                await controller.authenticate(context);
-                if(controller.isResetPassword){
-                  NewPasswordPage.navigate();
-                }else if(controller.isFirstAccess){
-                  RegisterFirstStepPage.navigate();
-                } else{
-                  if (controller.token != '') {
-                    HomePage.navigate();
+                  await controller.authenticate(context);
+                  if(controller.isResetPassword){
+                    NewPasswordPage.navigate();
+                  }else if(controller.isFirstAccess){
+                    RegisterFirstStepPage.navigate();
+                  } else{
+                    if (controller.token != '') {
+                      HomePage.navigate();
+                    }
                   }
-                }
-              },
-              label: AppStringsPortuguese.enterString,
-              isLoading: controller.isLoading,
+                },
+                label: AppStringsPortuguese.enterString,
+                isLoading: controller.isLoading,
+              ),
             ),
             const SizedBox(height: 37),
             CustomUnderlinedTextButton(

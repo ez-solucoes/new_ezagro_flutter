@@ -1,9 +1,14 @@
+import '../../../../core/config/environment_config.dart';
+
 class AppEndpoints {
-  static const mainBaseUrl = mainBaseUrlDev;
+  // Dynamic URL based on environment
+  static String get mainBaseUrl => EnvironmentConfig.apiUrl;
+  
+  // Legacy constants for reference
   static const mainBaseUrlProd = 'api.ezagro.com.br';
   static const mainBaseUrlDev = 'api.dev.temp.ezagro.com.br';
 
-  static const String baseUrlProtocolWithSecurity = 'https';
+  static String get baseUrlProtocolWithSecurity => EnvironmentConfig.scheme;
   static const String baseUrlProtocol = 'http';
 
   //Swagger documentation

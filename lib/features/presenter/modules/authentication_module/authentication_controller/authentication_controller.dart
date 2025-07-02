@@ -64,8 +64,15 @@ abstract class AuthenticationControllerAbstract with Store {
       CustomSnackBarWidget.show(
           SnackBarType.error, context, 'Usuário ou senha incorretos!');
     }, (success) async {
-      name = success.data!.user!.client!.name;
-      username = success.data!.user!.client!.name;
+      String displayName;
+      if (success.data!.user!.ruralProducer != null) {
+        displayName = success.data!.user!.ruralProducer!.name!;
+      } else {
+        displayName = success.data!.user!.client!.name;
+      }
+      
+      name = displayName;
+      username = displayName;
       token = success.data!.token!;
       isResetPassword = success.data!.user!.isResetPassword!;
       isFirstAccess = success.data!.user!.isFirstLogin!;
@@ -128,6 +135,66 @@ abstract class AuthenticationControllerAbstract with Store {
     }
   }
 
+  Future logout() async {
+    // 🔒 SAFE LOGOUT: Only clear authentication/session data
+    // This preserves all offline cached data, user preferences, and app state
+    
+    final secureStorage =
+        Modular.get<LocalStorageClient>(key: AppStringsPortuguese.storageTypeSecure);
+    
+    // Only clear authentication-related data from secure storage
+    await secureStorage.deleteData(AppStringsPortuguese.tokenKey);    // Auth token
+    await secureStorage.deleteData(AppStringsPortuguese.idKey);       // User ID
+    await secureStorage.deleteData(AppStringsPortuguese.nameKey);     // User name
+    
+    // 💾 PRESERVED: All cached business data, offline sync state, app preferences
+    // 💾 PRESERVED: Service orders, farms, machinery, etc. cached for offline use
+    // 💾 PRESERVED: User settings and app configuration in local storage
+    
+    // Reset only authentication state in controller
+    _resetAuthenticationState();
+    
+    // Note: This does NOT clear:
+    // - SharedPreferences (app settings, cached data)
+    // - Local database/SQLite data  
+    // - Offline sync state
+    // - Business data cache
+  }
+
+  Future logoutAndClearAllData() async {
+    // ⚠️ FULL LOGOUT: Clears ALL data (use only for environment switching or debugging)
+    // WARNING: This will clear offline cached data and force re-sync on next login
+    
+    final secureStorage =
+        Modular.get<LocalStorageClient>(key: AppStringsPortuguese.storageTypeSecure);
+    final localStorage =
+        Modular.get<LocalStorageClient>(key: AppStringsPortuguese.storageTypeLocal);
+    
+    // Clear ALL stored data
+    await secureStorage.clearData();  // Clears all secure storage
+    await localStorage.clearData();   // Clears all local storage
+    
+    // Reset authentication state
+    _resetAuthenticationState();
+    
+    // Note: Use this method only when:
+    // - Switching between different user accounts
+    // - Changing environments (dev/prod)
+    // - Debugging storage issues
+    // - User explicitly requests to "clear all app data"
+  }
+
+  void _resetAuthenticationState() {
+    token = '';
+    name = '';
+    username = '';
+    password = '';
+    isFirstAccess = false;
+    isResetPassword = false;
+    userId = 0;
+    errorMessage = '';
+  }
+
   void saveToken(AuthenticationEntity success) async {
     final localStorage =
         Modular.get<LocalStorageClient>(key: AppStringsPortuguese.storageTypeSecure);
@@ -137,7 +204,15 @@ abstract class AuthenticationControllerAbstract with Store {
     await localStorage.writeData(LocalStorageItem(
         key: AppStringsPortuguese.tokenKey, value: success.token.toString()));
 
+    // Fix: Save ruralProducer name if available, otherwise client name
+    String displayName;
+    if (success.user!.ruralProducer != null) {
+      displayName = success.user!.ruralProducer!.name!;
+    } else {
+      displayName = success.user!.client!.name;
+    }
+    
     await localStorage.writeData(LocalStorageItem(
-        key: AppStringsPortuguese.nameKey, value: success.user!.client!.name));
+        key: AppStringsPortuguese.nameKey, value: displayName));
   }
 }

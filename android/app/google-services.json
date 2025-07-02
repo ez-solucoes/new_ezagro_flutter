@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "470444987138",
+    "project_id": "ezagro-17f15",
+    "storage_bucket": "ezagro-17f15.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470444987138:android:bbb63c47e4823b6093e81b",
+        "android_client_info": {
+          "package_name": "br.com.ezsolucoes.new_ezagro_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5yjKVKtJTcKOdHtN_mt1Tnfu1LQkkMGQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

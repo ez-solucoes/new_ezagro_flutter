@@ -14,7 +14,8 @@ class MachineryImplementEntity extends Equatable {
   final String? modelName;
   final int? fabricationYear;
   final String? renavam;
-  final int? assetNumber;
+  final String? assetNumber;
+  final String? licensePlate;
   final String? chassisNumber;
   final String? workHours;
   final int? mileage;
@@ -41,6 +42,7 @@ class MachineryImplementEntity extends Equatable {
     this.fabricationYear,
     this.renavam,
     this.assetNumber,
+    this.licensePlate,
     this.chassisNumber,
     this.workHours,
     this.mileage,
@@ -69,6 +71,7 @@ class MachineryImplementEntity extends Equatable {
     fabricationYear,
     renavam,
     assetNumber,
+    licensePlate,
     chassisNumber,
     workHours,
     mileage,

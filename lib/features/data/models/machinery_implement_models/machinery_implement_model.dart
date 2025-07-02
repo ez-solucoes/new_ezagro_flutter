@@ -19,6 +19,7 @@ class MachineryImplementModel extends MachineryImplementEntity {
     super.fabricationYear,
     super.renavam,
     super.assetNumber,
+    super.licensePlate,
     super.chassisNumber,
     super.workHours,
     super.mileage,
@@ -52,6 +53,7 @@ class MachineryImplementModel extends MachineryImplementEntity {
         'renavam': renavam,
         'assetNumber': assetNumber,
         'chassisNumber': chassisNumber,
+        'licensePlate': licensePlate,
         'workHours': workHours,
         'mileage': mileage,
         'tankCapacity': tankCapacity,
@@ -66,10 +68,12 @@ class MachineryImplementModel extends MachineryImplementEntity {
         'department': department == null ? null : (department as DepartmentModel).toMap(),
         'subDepartment':
             subDepartment == null ? null : (subDepartment as SubDepartmentModel).toMap(),
-        'insuranceContracts': insuranceContracts?.map((e) => (e as ContractModel).toMap()).toList(),
+        'insuranceContracts':
+            insuranceContracts?.map((e) => (e as ContractModel).toMap()).toList(),
       };
 
-  factory MachineryImplementModel.fromMap(Map<String, dynamic> map) => MachineryImplementModel(
+  factory MachineryImplementModel.fromMap(Map<String, dynamic> map) =>
+      MachineryImplementModel(
         id: map['id'],
         isMachinery: map['isMachinery'],
         nickname: map['nickname'],
@@ -79,6 +83,7 @@ class MachineryImplementModel extends MachineryImplementEntity {
         fabricationYear: map['fabricationYear'],
         renavam: map['renavam'],
         assetNumber: map['assetNumber'],
+        licensePlate: map['licensePlate'],
         chassisNumber: map['chassisNumber'],
         workHours: map['workHours'],
         mileage: map['mileage'],
@@ -89,11 +94,15 @@ class MachineryImplementModel extends MachineryImplementEntity {
         createdAt: map['createdAt'],
         updatedAt: map['updatedAt'],
         deletedAt: map['deletedAt'],
-        type: map['type'] == null ? null : MachineryImplementTypeModel.fromMap(map['type']),
-        costCenter: map['costCenter'] == null ? null : CostCenterModel.fromMap(map['costCenter']),
-        department: map['department'] == null ? null : DepartmentModel.fromMap(map['department']),
-        subDepartment:
-            map['subDepartment'] == null ? null : SubDepartmentModel.fromMap(map['subDepartment']),
+        type:
+            map['type'] == null ? null : MachineryImplementTypeModel.fromMap(map['type']),
+        costCenter:
+            map['costCenter'] == null ? null : CostCenterModel.fromMap(map['costCenter']),
+        department:
+            map['department'] == null ? null : DepartmentModel.fromMap(map['department']),
+        subDepartment: map['subDepartment'] == null
+            ? null
+            : SubDepartmentModel.fromMap(map['subDepartment']),
         insuranceContracts: map['insuranceContracts'] == null
             ? null
             : List<InsuranceContractModel>.from(
@@ -104,5 +113,7 @@ class MachineryImplementModel extends MachineryImplementEntity {
       list.map((e) => MachineryImplementModel.fromMap(e)).toList();
 
   static List<MachineryImplementModel> fromJsonList(String source) =>
-      (json.decode(source) as List).map((e) => MachineryImplementModel.fromMap(e)).toList();
+      (json.decode(source) as List)
+          .map((e) => MachineryImplementModel.fromMap(e))
+          .toList();
 }

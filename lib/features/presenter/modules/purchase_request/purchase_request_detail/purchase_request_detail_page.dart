@@ -75,7 +75,7 @@ class PurchaseRequestDetailPage extends StatelessWidget {
                   maxHeight: 0.7 * MediaQuery.of(context).size.height,
                   onEditTap: () {
                     debugPrint('Apertou');
-                    ViewListedItemsPage.push(ArgParams(firstArgs: 'Empresa'));
+                    ViewListedItemsPage.push(args: ArgParams(firstArgs: 'Empresa'));
                   },
                   onItemTap: (index) {},
                 ),

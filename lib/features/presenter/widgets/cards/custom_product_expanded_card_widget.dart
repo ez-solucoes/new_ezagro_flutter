@@ -9,9 +9,10 @@ class CustomProductExpandedCardWidget extends StatelessWidget {
   final int index;
   final List<Map<String, dynamic>> firstColumnData;
   final List<Map<String, dynamic>> secondColumnData;
-  final ItemType itemType; // Adicionado para saber se é produto ou empresa
-  final VoidCallback onRemove; // Callback para a ação de remover
-  final VoidCallback? onEdit; // Callback para a ação de editar (opcional para empresas)
+  final ItemType itemType;
+  final bool canBeRemoved;
+  final VoidCallback onRemove;
+  final VoidCallback? onEdit;
 
 
   const CustomProductExpandedCardWidget({
@@ -19,19 +20,19 @@ class CustomProductExpandedCardWidget extends StatelessWidget {
     required this.index,
     required this.firstColumnData,
     required this.secondColumnData,
-    required this.itemType, // Requerido
-    required this.onRemove, // Requerido
-    this.onEdit, // Opcional
+    required this.itemType,
+    required this.onRemove,
+    required this.canBeRemoved,
+    this.onEdit,
   });
 
   @override
   Widget build(BuildContext context) {
-    // Determine a cor de fundo com base no índice (alternando cores)
     final Color backgroundColor = index % 2 == 0 ? AppColors.primaryWhiteColor : AppColors.softGreenColor;
 
     return Container(
       color: backgroundColor,
-      padding: const EdgeInsets.all(10.0), // Adicionado padding para o conteúdo interno
+      padding: const EdgeInsets.all(10.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -39,17 +40,18 @@ class CustomProductExpandedCardWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Primeira coluna de dados
               Expanded(
+                flex: 2,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: firstColumnData.map((data) => _buildRowItem(data)).toList(),
                 ),
               ),
-              SizedBox(width: 16.0), // Espaço entre as colunas
+              SizedBox(width: 16.0),
 
-              // Segunda coluna de dados
+
               Expanded(
+                flex: 1,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: secondColumnData.map((data) => _buildRowItem(data)).toList(),
@@ -57,18 +59,17 @@ class CustomProductExpandedCardWidget extends StatelessWidget {
               ),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10.0), // Espaço acima dos botões
+          canBeRemoved
+          ? Padding(
+            padding: const EdgeInsets.only(top: 10.0),
             child: Row(
-              // Alinha os botões. Para empresas, queremos o remover à esquerda.
               mainAxisAlignment: itemType == ItemType.company ? MainAxisAlignment.start : MainAxisAlignment.spaceBetween,
               children: [
-                // Botão Remover
                 Expanded(
-                  // Para empresas, o botão remover não precisa ocupar o espaçotodo se não tiver editar
+
                   flex: itemType == ItemType.company && onEdit == null ? 0 : 1,
                   child: CustomOutlinedIconButton(
-                    onPressed: onRemove, // Usa o callback onRemove
+                    onPressed: onRemove,
                     label: 'Remover',
                     textColor: AppColors.primaryBlackColor,
                     backgroundColor: AppColors.primaryWhiteColor,
@@ -78,11 +79,11 @@ class CustomProductExpandedCardWidget extends StatelessWidget {
                   ),
                 ),
 
-                // Espaço entre os botões (somente se houver botão de editar)
+
                 if (itemType == ItemType.product || (itemType == ItemType.company && onEdit != null))
                   const SizedBox(width: 30),
 
-                // Botão Editar (aparece apenas para produtos ou se onEdit for fornecido para empresas)
+
                 if (itemType == ItemType.product || (itemType == ItemType.company && onEdit != null))
                   Expanded(
                     child: CustomOutlinedIconButton(
@@ -97,13 +98,13 @@ class CustomProductExpandedCardWidget extends StatelessWidget {
                   ),
               ],
             ),
-          ),
+          )
+          : const SizedBox(),
         ],
       ),
     );
   }
 
-  // Widget auxiliar para construir um item de linha (título e conteúdo)
   Widget _buildRowItem(Map<String, dynamic> item) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
@@ -111,11 +112,11 @@ class CustomProductExpandedCardWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            item['title'] as String, // o título (string)
+            item['title'] as String,
             style: AppTextStyles.boldTextOnCardStyle(color: AppColors.primaryBlackColor),
           ),
           Text(
-            '${item['conteudo']}', // o conteúdo (pode ser dynamic convertido para string)
+            '${item['conteudo']}',
             style: AppTextStyles.labelOnCardStyle(color: AppColors.primaryBlackColor),
           ),
         ],

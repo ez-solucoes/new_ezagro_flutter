@@ -8,5 +8,8 @@ abstract class FarmPlotDatasource {
   Future<ResponseModel<List<FarmPlotModel>>> getAllFarmPlotsByFarmId(ArgParams argParams);
   Future<ResponseModel<List<SelectModel>>> getAllFarmPlotsByFarmIdToSelect(ArgParams argParams);
   Future<ResponseModel<FarmPlotModel>> getFarmPlotById(ArgParams argParams);
+  Future<ResponseModel<List<FarmPlotModel>>> getAllFarmPlotsByFilter(ArgParams argParams);
+  Future<ResponseModel<List<SelectModel>>> getAllFarmPlotsByFilterToSelect(ArgParams argParams);
+
 
 }

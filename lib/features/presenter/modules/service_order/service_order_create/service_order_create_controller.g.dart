@@ -222,6 +222,23 @@ mixin _$ServiceOrderCreateController
     });
   }
 
+  late final _$isStockLoadingAtom = Atom(
+      name: 'ServiceOrderCreateControllerAbstract.isStockLoading',
+      context: context);
+
+  @override
+  bool get isStockLoading {
+    _$isStockLoadingAtom.reportRead();
+    return super.isStockLoading;
+  }
+
+  @override
+  set isStockLoading(bool value) {
+    _$isStockLoadingAtom.reportWrite(value, super.isStockLoading, () {
+      super.isStockLoading = value;
+    });
+  }
+
   late final _$agriculturalActivityListToSelectAtom = Atom(
       name:
           'ServiceOrderCreateControllerAbstract.agriculturalActivityListToSelect',
@@ -420,6 +437,23 @@ mixin _$ServiceOrderCreateController
     _$destinationListToSelectAtom
         .reportWrite(value, super.destinationListToSelect, () {
       super.destinationListToSelect = value;
+    });
+  }
+
+  late final _$stockListToSelectAtom = Atom(
+      name: 'ServiceOrderCreateControllerAbstract.stockListToSelect',
+      context: context);
+
+  @override
+  List<SelectEntity> get stockListToSelect {
+    _$stockListToSelectAtom.reportRead();
+    return super.stockListToSelect;
+  }
+
+  @override
+  set stockListToSelect(List<SelectEntity> value) {
+    _$stockListToSelectAtom.reportWrite(value, super.stockListToSelect, () {
+      super.stockListToSelect = value;
     });
   }
 
@@ -631,36 +665,87 @@ mixin _$ServiceOrderCreateController
     });
   }
 
-  late final _$originAtom = Atom(
-      name: 'ServiceOrderCreateControllerAbstract.origin', context: context);
-
-  @override
-  String? get origin {
-    _$originAtom.reportRead();
-    return super.origin;
-  }
-
-  @override
-  set origin(String? value) {
-    _$originAtom.reportWrite(value, super.origin, () {
-      super.origin = value;
-    });
-  }
-
-  late final _$destinationAtom = Atom(
-      name: 'ServiceOrderCreateControllerAbstract.destination',
+  late final _$originStockIdAtom = Atom(
+      name: 'ServiceOrderCreateControllerAbstract.originStockId',
       context: context);
 
   @override
-  String? get destination {
-    _$destinationAtom.reportRead();
-    return super.destination;
+  int? get originStockId {
+    _$originStockIdAtom.reportRead();
+    return super.originStockId;
   }
 
   @override
-  set destination(String? value) {
-    _$destinationAtom.reportWrite(value, super.destination, () {
-      super.destination = value;
+  set originStockId(int? value) {
+    _$originStockIdAtom.reportWrite(value, super.originStockId, () {
+      super.originStockId = value;
+    });
+  }
+
+  late final _$destinationStockIdAtom = Atom(
+      name: 'ServiceOrderCreateControllerAbstract.destinationStockId',
+      context: context);
+
+  @override
+  int? get destinationStockId {
+    _$destinationStockIdAtom.reportRead();
+    return super.destinationStockId;
+  }
+
+  @override
+  set destinationStockId(int? value) {
+    _$destinationStockIdAtom.reportWrite(value, super.destinationStockId, () {
+      super.destinationStockId = value;
+    });
+  }
+
+  late final _$stockListAtom = Atom(
+      name: 'ServiceOrderCreateControllerAbstract.stockList', context: context);
+
+  @override
+  List<StockEntity> get stockList {
+    _$stockListAtom.reportRead();
+    return super.stockList;
+  }
+
+  @override
+  set stockList(List<StockEntity> value) {
+    _$stockListAtom.reportWrite(value, super.stockList, () {
+      super.stockList = value;
+    });
+  }
+
+  late final _$originStockAtom = Atom(
+      name: 'ServiceOrderCreateControllerAbstract.originStock',
+      context: context);
+
+  @override
+  StockEntity? get originStock {
+    _$originStockAtom.reportRead();
+    return super.originStock;
+  }
+
+  @override
+  set originStock(StockEntity? value) {
+    _$originStockAtom.reportWrite(value, super.originStock, () {
+      super.originStock = value;
+    });
+  }
+
+  late final _$destinationStockAtom = Atom(
+      name: 'ServiceOrderCreateControllerAbstract.destinationStock',
+      context: context);
+
+  @override
+  StockEntity? get destinationStock {
+    _$destinationStockAtom.reportRead();
+    return super.destinationStock;
+  }
+
+  @override
+  set destinationStock(StockEntity? value) {
+    _$destinationStockAtom.reportWrite(value, super.destinationStock, () {
+      super.destinationStock = value;
     });
   }
 
@@ -794,6 +879,35 @@ mixin _$ServiceOrderCreateController
     return _$getAllFarmPlotsAsyncAction.run(() => super.getAllFarmPlots());
   }
 
+  late final _$getAllStocksToSelectAsyncAction = AsyncAction(
+      'ServiceOrderCreateControllerAbstract.getAllStocksToSelect',
+      context: context);
+
+  @override
+  Future<void> getAllStocksToSelect() {
+    return _$getAllStocksToSelectAsyncAction
+        .run(() => super.getAllStocksToSelect());
+  }
+
+  late final _$getAllStocksAsyncAction = AsyncAction(
+      'ServiceOrderCreateControllerAbstract.getAllStocks',
+      context: context);
+
+  @override
+  Future<void> getAllStocks() {
+    return _$getAllStocksAsyncAction.run(() => super.getAllStocks());
+  }
+
+  late final _$getStockByIdAsyncAction = AsyncAction(
+      'ServiceOrderCreateControllerAbstract.getStockById',
+      context: context);
+
+  @override
+  Future<Either<ApplicationError, ResponseEntity<StockEntity>>> getStockById(
+      int stockId) {
+    return _$getStockByIdAsyncAction.run(() => super.getStockById(stockId));
+  }
+
   late final _$ServiceOrderCreateControllerAbstractActionController =
       ActionController(
           name: 'ServiceOrderCreateControllerAbstract', context: context);
@@ -827,6 +941,7 @@ isCropVarietyLoading: ${isCropVarietyLoading},
 isNewPlanting: ${isNewPlanting},
 isTechnologyLoading: ${isTechnologyLoading},
 isFarmPlotLoading: ${isFarmPlotLoading},
+isStockLoading: ${isStockLoading},
 agriculturalActivityListToSelect: ${agriculturalActivityListToSelect},
 agriculturalSubActivityListToSelect: ${agriculturalSubActivityListToSelect},
 agriculturalActivityTypeListToSelect: ${agriculturalActivityTypeListToSelect},
@@ -838,6 +953,7 @@ cropVarietyListToSelect: ${cropVarietyListToSelect},
 farmPlotListToSelect: ${farmPlotListToSelect},
 originListToSelect: ${originListToSelect},
 destinationListToSelect: ${destinationListToSelect},
+stockListToSelect: ${stockListToSelect},
 agriculturalActivityList: ${agriculturalActivityList},
 farmPlotList: ${farmPlotList},
 agriculturalActivity: ${agriculturalActivity},
@@ -850,8 +966,11 @@ crop: ${crop},
 cropVariety: ${cropVariety},
 technologyName: ${technologyName},
 selectedFarmPlotList: ${selectedFarmPlotList},
-origin: ${origin},
-destination: ${destination}
+originStockId: ${originStockId},
+destinationStockId: ${destinationStockId},
+stockList: ${stockList},
+originStock: ${originStock},
+destinationStock: ${destinationStock}
     ''';
   }
 }

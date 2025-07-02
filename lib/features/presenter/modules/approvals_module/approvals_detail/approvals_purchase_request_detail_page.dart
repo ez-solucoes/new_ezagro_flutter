@@ -229,9 +229,8 @@ class ApprovalsPurchaseRequestDetailPage extends StatelessWidget {
                             onPressed: () {
                               try {
                                 controller.cancelPurchaseRequestById(args.firstArgs);
-                                CustomSnackBarWidget.show(SnackBarType.success, context, 'Solicitação ${args.firstArgs}/n cancelada com sucesso!');
-                                pop();
-                                ApprovalsListPage.navigate;
+                                CustomSnackBarWidget.show(SnackBarType.success, context, 'Solicitação ${args.firstArgs} cancelada com sucesso!');
+                                ApprovalsListPage.navigate();
                               } catch (e) {
                                 CustomSnackBarWidget.show(SnackBarType.error, context, 'Erro ao cancelar solicitação ${args.firstArgs}');
                                 return;
@@ -247,9 +246,8 @@ class ApprovalsPurchaseRequestDetailPage extends StatelessWidget {
                             onPressed: () {
                               try{
                                 controller.approvePurchaseRequestById(args.firstArgs);
-                                CustomSnackBarWidget.show(SnackBarType.success, context, 'Solicitação ${args.firstArgs}/n aprovada com sucesso!');
-                                pop();
-                                ApprovalsListPage.navigate;
+                                CustomSnackBarWidget.show(SnackBarType.success, context, 'Solicitação ${args.firstArgs} aprovada com sucesso!');
+                                ApprovalsListPage.navigate();
                               } catch (e) {
                                 CustomSnackBarWidget.show(SnackBarType.error, context, 'Erro ao aprovar solicitação ${args.firstArgs}');
                                 return;

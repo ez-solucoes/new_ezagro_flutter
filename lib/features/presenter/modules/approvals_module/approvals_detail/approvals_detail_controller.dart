@@ -81,7 +81,7 @@ abstract class ApprovalsDetailControllerAbstract with Store {
     final getServiceOrderByIdUsecase = Modular.get<GetServiceOrderByIdUsecase>();
     final result = await getServiceOrderByIdUsecase(ArgParams(firstArgs: id));
     result.fold((error) => error.friendlyMessage, (success) {
-      serviceOrder = success as ServiceOrderEntity?;
+      serviceOrder = success.data;
       _buildDataLists();
       return success;
     });
@@ -142,7 +142,7 @@ abstract class ApprovalsDetailControllerAbstract with Store {
   String _buildPlotStringPreview(List<String?> plots) {
     String plot = plots
         .where((plot) => plot != null)
-        .cast<String>().join(', '); // Join the remaining elements
+        .cast<String>().join(', ');
     return plot == "" ? "Sem talhões cadastrados" : plot;
   }
 

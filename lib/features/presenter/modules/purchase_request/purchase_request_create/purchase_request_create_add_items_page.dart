@@ -28,22 +28,18 @@ class PurchaseRequestCreateAddItemsPage extends StatefulWidget {
 
   static const String routePath = AppRoutes.addPurchaseRequestCreateAddItemsPage;
 
-  static void push({required ArgParams args}) =>
-      Modular.to.pushNamed(routePath, arguments: args);
+  static void push({required ArgParams args}) => Modular.to.pushNamed(routePath, arguments: args);
 
   static void pop() => Modular.to.pop();
 
   const PurchaseRequestCreateAddItemsPage({super.key, required this.args});
 
   @override
-  State<PurchaseRequestCreateAddItemsPage> createState() =>
-      _PurchaseRequestCreateAddItemsPageState();
+  State<PurchaseRequestCreateAddItemsPage> createState() => _PurchaseRequestCreateAddItemsPageState();
 }
 
-class _PurchaseRequestCreateAddItemsPageState
-    extends State<PurchaseRequestCreateAddItemsPage> {
-  final ItemSelectionController itemSelectionController =
-  Modular.get<ItemSelectionController>();
+class _PurchaseRequestCreateAddItemsPageState extends State<PurchaseRequestCreateAddItemsPage> {
+  final ItemSelectionController itemSelectionController = Modular.get<ItemSelectionController>();
   final TextEditingController _autocompleteSearchController = TextEditingController();
   Timer? _debounce;
 
@@ -73,6 +69,8 @@ class _PurchaseRequestCreateAddItemsPageState
         return 'Adicionar Empresas';
       case ItemType.agriculturalInput:
         return 'Adicionar Insumos';
+      default:
+        return '';
     }
   }
 
@@ -84,6 +82,8 @@ class _PurchaseRequestCreateAddItemsPageState
         return 'Buscar empresa...';
       case ItemType.agriculturalInput:
         return 'Buscar insumo...';
+      default:
+        return '';
     }
   }
 
@@ -95,6 +95,8 @@ class _PurchaseRequestCreateAddItemsPageState
         return 'Nenhuma empresa encontrada. Verifique os filtros ou a busca.';
       case ItemType.agriculturalInput:
         return 'Nenhum insumo encontrado. Verifique os filtros ou a busca.';
+      default:
+        return '';
     }
   }
 
@@ -118,6 +120,9 @@ class _PurchaseRequestCreateAddItemsPageState
         firstLabel = 'Nome';
         secondLabel = 'Quantidade';
         break;
+      default:
+        firstLabel = 'Nome';
+        secondLabel = 'Quantidade';
     }
 
     return BackgroundWidget(
@@ -136,14 +141,11 @@ class _PurchaseRequestCreateAddItemsPageState
                       isScrollControlled: true,
                       builder: (context) {
                         if (currentItemType == ItemType.company) {
-                          return FilterCompaniesBottomSheetWidget(
-                              controller: itemSelectionController);
+                          return FilterCompaniesBottomSheetWidget(controller: itemSelectionController);
                         } else if (currentItemType == ItemType.product) {
-                          return FilterProductsBottomSheetWidget(
-                              controller: itemSelectionController);
+                          return FilterProductsBottomSheetWidget(controller: itemSelectionController);
                         } else if (currentItemType == ItemType.agriculturalInput) {
-                          return FilterAgriculturalInputBottomSheetWidget(
-                              controller: itemSelectionController);
+                          return FilterAgriculturalInputBottomSheetWidget(controller: itemSelectionController);
                         }
                         return Container();
                       },
@@ -162,8 +164,7 @@ class _PurchaseRequestCreateAddItemsPageState
                     } else if (currentItemType == ItemType.company) {
                       selectedItems = itemSelectionController.finalRequestedCompanies;
                     } else {
-                      selectedItems =
-                          itemSelectionController.finalRequestedAgriculturalInputs;
+                      selectedItems = itemSelectionController.finalRequestedAgriculturalInputs;
                     }
                     Modular.to.pop(selectedItems);
                   },
@@ -187,10 +188,8 @@ class _PurchaseRequestCreateAddItemsPageState
         child: Observer(
           builder: (context) {
             final bool isLoadingInitialData = itemSelectionController.isFirstLoading ||
-                (currentItemType == ItemType.product &&
-                    itemSelectionController.isProductLoading) ||
-                (currentItemType == ItemType.company &&
-                    itemSelectionController.isCompanyLoading) ||
+                (currentItemType == ItemType.product && itemSelectionController.isProductLoading) ||
+                (currentItemType == ItemType.company && itemSelectionController.isCompanyLoading) ||
                 (currentItemType == ItemType.agriculturalInput &&
                     itemSelectionController.isAgriculturalInputLoading &&
                     itemSelectionController.agriculturalInputCurrentPage == 1);
@@ -204,14 +203,10 @@ class _PurchaseRequestCreateAddItemsPageState
             return Column(
               children: [
                 Autocomplete<String>(
-                  fieldViewBuilder: (BuildContext context,
-                      TextEditingController fieldTextEditingController,
-                      FocusNode fieldFocusNode,
-                      VoidCallback onFieldSubmitted) {
-                    if (fieldTextEditingController.text !=
-                        itemSelectionController.searchQuery) {
-                      fieldTextEditingController.text =
-                          itemSelectionController.searchQuery;
+                  fieldViewBuilder: (BuildContext context, TextEditingController fieldTextEditingController,
+                      FocusNode fieldFocusNode, VoidCallback onFieldSubmitted) {
+                    if (fieldTextEditingController.text != itemSelectionController.searchQuery) {
+                      fieldTextEditingController.text = itemSelectionController.searchQuery;
                       fieldTextEditingController.selection = TextSelection.fromPosition(
                         TextPosition(offset: fieldTextEditingController.text.length),
                       );
@@ -232,11 +227,9 @@ class _PurchaseRequestCreateAddItemsPageState
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(4),
-                          borderSide: const BorderSide(
-                              color: AppColors.primaryGreenColor, width: 2),
+                          borderSide: const BorderSide(color: AppColors.primaryGreenColor, width: 2),
                         ),
-                        contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 15),
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 15),
                       ),
                       onChanged: (text) {
                         if (_debounce?.isActive ?? false) _debounce!.cancel();
@@ -268,19 +261,15 @@ class _PurchaseRequestCreateAddItemsPageState
                     if (currentItemType == ItemType.product) {
                       sourceListForAutocomplete = itemSelectionController.allProducts;
                     } else if (currentItemType == ItemType.company) {
-                      sourceListForAutocomplete =
-                          itemSelectionController.allCompaniesToSelect;
+                      sourceListForAutocomplete = itemSelectionController.allCompaniesToSelect;
                     } else {
-                      sourceListForAutocomplete =
-                          itemSelectionController.agriculturalInputListToSelect;
+                      sourceListForAutocomplete = itemSelectionController.agriculturalInputListToSelect;
                     }
 
                     return sourceListForAutocomplete
                         .where((item) =>
-                    item.label != null &&
-                        item.label!
-                            .toLowerCase()
-                            .contains(textEditingValue.text.toLowerCase()))
+                            item.label != null &&
+                            item.label!.toLowerCase().contains(textEditingValue.text.toLowerCase()))
                         .map((item) => item.label!);
                   },
                   onSelected: (String selection) {
@@ -288,17 +277,14 @@ class _PurchaseRequestCreateAddItemsPageState
                     itemSelectionController.updateSearchQuery(selection);
                     FocusScope.of(context).unfocus();
                   },
-                  optionsViewBuilder: (BuildContext context,
-                      AutocompleteOnSelected<String> onSelected,
-                      Iterable<String> options) {
+                  optionsViewBuilder:
+                      (BuildContext context, AutocompleteOnSelected<String> onSelected, Iterable<String> options) {
                     return Align(
                         alignment: Alignment.topLeft,
                         child: Material(
                           elevation: 4.0,
                           child: SizedBox(
-                            height: options.isNotEmpty
-                                ? (options.length > 4 ? 200.0 : options.length * 50.0)
-                                : 0,
+                            height: options.isNotEmpty ? (options.length > 4 ? 200.0 : options.length * 50.0) : 0,
                             child: ListView.builder(
                               padding: EdgeInsets.zero,
                               shrinkWrap: true,
@@ -352,8 +338,7 @@ class _PurchaseRequestCreateAddItemsPageState
                                 padding: const EdgeInsets.symmetric(vertical: 20.0),
                                 child: Text(
                                   _getEmptyListMessage(currentItemType),
-                                  style: AppTextStyles.cardBodyTextStyle(
-                                      color: AppColors.primaryBlackColor),
+                                  style: AppTextStyles.cardBodyTextStyle(color: AppColors.primaryBlackColor),
                                   textAlign: TextAlign.center,
                                 ),
                               );
@@ -370,20 +355,18 @@ class _PurchaseRequestCreateAddItemsPageState
                                     : const NeverScrollableScrollPhysics(),
                                 itemCount: itemsList.length +
                                     (currentItemType == ItemType.agriculturalInput &&
-                                        itemSelectionController
-                                            .isAgriculturalInputLoadingMore
+                                            itemSelectionController.isAgriculturalInputLoadingMore
                                         ? 1
                                         : 0),
                                 itemBuilder: (context, index) {
                                   if (index == itemsList.length &&
                                       currentItemType == ItemType.agriculturalInput &&
-                                      itemSelectionController
-                                          .isAgriculturalInputLoadingMore) {
+                                      itemSelectionController.isAgriculturalInputLoadingMore) {
                                     return const Center(
                                         child: Padding(
-                                          padding: EdgeInsets.all(8.0),
-                                          child: CircularProgressIndicator(),
-                                        ));
+                                      padding: EdgeInsets.all(8.0),
+                                      child: CircularProgressIndicator(),
+                                    ));
                                   }
 
                                   final item = itemsList[index];
@@ -392,8 +375,7 @@ class _PurchaseRequestCreateAddItemsPageState
                                     if (item is ItemsEntity) {
                                       final productItem = item;
                                       return Theme(
-                                        data: Theme.of(context)
-                                            .copyWith(dividerColor: Colors.transparent),
+                                        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
                                         child: ExpansionTile(
                                           initiallyExpanded: false,
                                           showTrailingIcon: false,
@@ -402,14 +384,11 @@ class _PurchaseRequestCreateAddItemsPageState
                                           title: CustomTwoItemsAlternateColorEditWidget(
                                             index: index,
                                             firstItem: productItem.productName!,
-                                            secondItem:
-                                            productItem.requestedQuantity.toString(),
+                                            secondItem: productItem.requestedQuantity.toString(),
                                             addQuantity: () => itemSelectionController
-                                                .incrementRequestedProductQuantity(
-                                                productItem.productId!),
+                                                .incrementRequestedProductQuantity(productItem.productId!),
                                             removeQuantity: () => itemSelectionController
-                                                .decrementRequestedProductQuantity(
-                                                productItem.productId!),
+                                                .decrementRequestedProductQuantity(productItem.productId!),
                                           ),
                                         ),
                                       );
@@ -418,44 +397,33 @@ class _PurchaseRequestCreateAddItemsPageState
                                     if (item is SelectEntity) {
                                       final companySelectEntity = item;
                                       final CompanyEntity? companyDetails =
-                                      itemSelectionController.getCompanyDetails(
-                                          companySelectEntity.value);
+                                          itemSelectionController.getCompanyDetails(companySelectEntity.value);
 
                                       return Theme(
-                                        data: Theme.of(context)
-                                            .copyWith(dividerColor: Colors.transparent),
+                                        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
                                         child: ExpansionTile(
                                           initiallyExpanded: false,
                                           showTrailingIcon: false,
                                           tilePadding: const EdgeInsets.all(0),
                                           trailing: const SizedBox(width: 0.0),
-                                          title:
-                                          CustomTwoItemsAlternateColorSelectableTileWidget(
-                                            firstLabel: companySelectEntity.label ??
-                                                'Nome da Empresa',
-                                            secondLabel:
-                                            companyDetails?.legalDocumentNumber ??
-                                                'N/A',
+                                          title: CustomTwoItemsAlternateColorSelectableTileWidget(
+                                            firstLabel: companySelectEntity.label ?? 'Nome da Empresa',
+                                            secondLabel: companyDetails?.legalDocumentNumber ?? 'N/A',
                                             initialIsSelected:
-                                            itemSelectionController.isCompanySelected(
-                                                companySelectEntity.value),
+                                                itemSelectionController.isCompanySelected(companySelectEntity.value),
                                             onChanged: (isSelected) {
-                                              itemSelectionController
-                                                  .toggleCompanySelection(
-                                                  companySelectEntity.value,
-                                                  isSelected);
+                                              itemSelectionController.toggleCompanySelection(
+                                                  companySelectEntity.value, isSelected);
                                             },
                                           ),
                                         ),
                                       );
                                     }
-                                  } else if (currentItemType ==
-                                      ItemType.agriculturalInput) {
+                                  } else if (currentItemType == ItemType.agriculturalInput) {
                                     if (item is ItemsEntity) {
                                       final agriculturalInputItem = item;
                                       return Theme(
-                                        data: Theme.of(context)
-                                            .copyWith(dividerColor: Colors.transparent),
+                                        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
                                         child: ExpansionTile(
                                           initiallyExpanded: false,
                                           showTrailingIcon: false,
@@ -464,21 +432,23 @@ class _PurchaseRequestCreateAddItemsPageState
                                           title: CustomTwoItemsAlternateColorEditWidget(
                                             index: index,
                                             firstItem: agriculturalInputItem.productName!,
-                                            secondItem: agriculturalInputItem
-                                                .requestedQuantity
-                                                .toString(),
+                                            secondItem: agriculturalInputItem.requestedQuantity.toString(),
                                             addQuantity: () {
-                                              final int? agriculturalInputId = agriculturalInputItem.agriculturalInputId;
+                                              final int? agriculturalInputId =
+                                                  agriculturalInputItem.agriculturalInputId;
                                               if (agriculturalInputId != null) {
-                                                itemSelectionController.incrementRequestedAgriculturalInputQuantity(agriculturalInputId);
+                                                itemSelectionController
+                                                    .incrementRequestedAgriculturalInputQuantity(agriculturalInputId);
                                               } else {
                                                 debugPrint('Erro: ID do insumo agrícola é nulo.');
                                               }
                                             },
                                             removeQuantity: () {
-                                              final int? agriculturalInputId = agriculturalInputItem.agriculturalInputId;
+                                              final int? agriculturalInputId =
+                                                  agriculturalInputItem.agriculturalInputId;
                                               if (agriculturalInputId != null) {
-                                                itemSelectionController.decrementRequestedAgriculturalInputQuantity(agriculturalInputId);
+                                                itemSelectionController
+                                                    .decrementRequestedAgriculturalInputQuantity(agriculturalInputId);
                                               } else {
                                                 debugPrint('Erro: ID do insumo agrícola é nulo.');
                                               }

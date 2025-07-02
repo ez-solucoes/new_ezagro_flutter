@@ -64,4 +64,34 @@ class FarmPlotRepositoryImpl implements FarmPlotRepository {
       ));
     }
   }
+
+  @override
+  Future<Either<ApplicationError, ResponseModel<List<FarmPlotModel>>>> getAllFarmPlotsByFilter(ArgParams argParams) async {
+    try {
+      final result = await datasource.getAllFarmPlotsByFilter(argParams);
+      return Right(result);
+    } on ApplicationError catch (e) {
+      return Left(e);
+    } catch (e, stacktrace) {
+      return Left(GenericError(
+        fingerprint: '$FarmPlotRepositoryImpl.getAllFarmPlotsByFilter',
+        additionalInfo: stacktrace.toString(),
+      ));
+    }
+  }
+
+  @override
+  Future<Either<ApplicationError, ResponseModel<List<SelectModel>>>> getAllFarmPlotsByFilterToSelect(ArgParams argParams) async {
+    try {
+      final result = await datasource.getAllFarmPlotsByFilterToSelect(argParams);
+      return Right(result);
+    } on ApplicationError catch (e) {
+      return Left(e);
+    } catch (e, stacktrace) {
+      return Left(GenericError(
+        fingerprint: '$FarmPlotRepositoryImpl.getAllFarmPlotsByFilterToSelect',
+        additionalInfo: stacktrace.toString(),
+      ));
+    }
+  }
 }

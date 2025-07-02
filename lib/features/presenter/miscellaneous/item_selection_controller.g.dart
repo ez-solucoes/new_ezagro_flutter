@@ -16,6 +16,20 @@ mixin _$ItemSelectionController on ItemSelectionControllerAbstract, Store {
           Computed<List<dynamic>>(() => super.filteredAddItemsList,
               name: 'ItemSelectionControllerAbstract.filteredAddItemsList'))
       .value;
+  Computed<bool>? _$areAllCompaniesSelectedComputed;
+
+  @override
+  bool get areAllCompaniesSelected => (_$areAllCompaniesSelectedComputed ??=
+          Computed<bool>(() => super.areAllCompaniesSelected,
+              name: 'ItemSelectionControllerAbstract.areAllCompaniesSelected'))
+      .value;
+  Computed<bool>? _$areAllPlotsSelectedComputed;
+
+  @override
+  bool get areAllPlotsSelected => (_$areAllPlotsSelectedComputed ??=
+          Computed<bool>(() => super.areAllPlotsSelected,
+              name: 'ItemSelectionControllerAbstract.areAllPlotsSelected'))
+      .value;
 
   late final _$agriculturalInputCurrentPageAtom = Atom(
       name: 'ItemSelectionControllerAbstract.agriculturalInputCurrentPage',
@@ -545,13 +559,99 @@ mixin _$ItemSelectionController on ItemSelectionControllerAbstract, Store {
     });
   }
 
+  late final _$isPlotLoadingAtom = Atom(
+      name: 'ItemSelectionControllerAbstract.isPlotLoading', context: context);
+
+  @override
+  bool get isPlotLoading {
+    _$isPlotLoadingAtom.reportRead();
+    return super.isPlotLoading;
+  }
+
+  @override
+  set isPlotLoading(bool value) {
+    _$isPlotLoadingAtom.reportWrite(value, super.isPlotLoading, () {
+      super.isPlotLoading = value;
+    });
+  }
+
+  late final _$plotListByFilterToSelectAtom = Atom(
+      name: 'ItemSelectionControllerAbstract.plotListByFilterToSelect',
+      context: context);
+
+  @override
+  List<SelectEntity> get plotListByFilterToSelect {
+    _$plotListByFilterToSelectAtom.reportRead();
+    return super.plotListByFilterToSelect;
+  }
+
+  @override
+  set plotListByFilterToSelect(List<SelectEntity> value) {
+    _$plotListByFilterToSelectAtom
+        .reportWrite(value, super.plotListByFilterToSelect, () {
+      super.plotListByFilterToSelect = value;
+    });
+  }
+
+  late final _$plotListByFilterAtom = Atom(
+      name: 'ItemSelectionControllerAbstract.plotListByFilter',
+      context: context);
+
+  @override
+  List<FarmPlotEntity> get plotListByFilter {
+    _$plotListByFilterAtom.reportRead();
+    return super.plotListByFilter;
+  }
+
+  @override
+  set plotListByFilter(List<FarmPlotEntity> value) {
+    _$plotListByFilterAtom.reportWrite(value, super.plotListByFilter, () {
+      super.plotListByFilter = value;
+    });
+  }
+
+  late final _$selectedPlotIdsAtom = Atom(
+      name: 'ItemSelectionControllerAbstract.selectedPlotIds',
+      context: context);
+
+  @override
+  Set<int> get selectedPlotIds {
+    _$selectedPlotIdsAtom.reportRead();
+    return super.selectedPlotIds;
+  }
+
+  @override
+  set selectedPlotIds(Set<int> value) {
+    _$selectedPlotIdsAtom.reportWrite(value, super.selectedPlotIds, () {
+      super.selectedPlotIds = value;
+    });
+  }
+
+  late final _$finalRequestedPlotsAtom = Atom(
+      name: 'ItemSelectionControllerAbstract.finalRequestedPlots',
+      context: context);
+
+  @override
+  List<FarmPlotEntity> get finalRequestedPlots {
+    _$finalRequestedPlotsAtom.reportRead();
+    return super.finalRequestedPlots;
+  }
+
+  @override
+  set finalRequestedPlots(List<FarmPlotEntity> value) {
+    _$finalRequestedPlotsAtom.reportWrite(value, super.finalRequestedPlots, () {
+      super.finalRequestedPlots = value;
+    });
+  }
+
   late final _$loadItemsAsyncAction = AsyncAction(
       'ItemSelectionControllerAbstract.loadItems',
       context: context);
 
   @override
-  Future<void> loadItems(ItemType type) {
-    return _$loadItemsAsyncAction.run(() => super.loadItems(type));
+  Future<void> loadItems(ItemType type, {ArgParams? filterParams}) {
+    return _$loadItemsAsyncAction
+        .run(() => super.loadItems(type, filterParams: filterParams));
   }
 
   late final _$getAllProductsToSelectAsyncAction = AsyncAction(
@@ -671,6 +771,30 @@ mixin _$ItemSelectionController on ItemSelectionControllerAbstract, Store {
   Future<void> loadMoreAgriculturalInputs() {
     return _$loadMoreAgriculturalInputsAsyncAction
         .run(() => super.loadMoreAgriculturalInputs());
+  }
+
+  late final _$getAllFarmPlotsByFilterToSelectAsyncAction = AsyncAction(
+      'ItemSelectionControllerAbstract.getAllFarmPlotsByFilterToSelect',
+      context: context);
+
+  @override
+  Future<void> getAllFarmPlotsByFilterToSelect(int? agriculturalActivityTypeId,
+      int? farmId, int? harvestCostCenterId, int? cropVarietyId) {
+    return _$getAllFarmPlotsByFilterToSelectAsyncAction.run(() => super
+        .getAllFarmPlotsByFilterToSelect(agriculturalActivityTypeId, farmId,
+            harvestCostCenterId, cropVarietyId));
+  }
+
+  late final _$getAllFarmPlotsByFilterAsyncAction = AsyncAction(
+      'ItemSelectionControllerAbstract.getAllFarmPlotsByFilter',
+      context: context);
+
+  @override
+  Future<void> getAllFarmPlotsByFilter(int? agriculturalActivityTypeId,
+      int? farmId, int? harvestCostCenterId, int? cropVarietyId) {
+    return _$getAllFarmPlotsByFilterAsyncAction.run(() => super
+        .getAllFarmPlotsByFilter(agriculturalActivityTypeId, farmId,
+            harvestCostCenterId, cropVarietyId));
   }
 
   late final _$ItemSelectionControllerAbstractActionController =
@@ -831,6 +955,19 @@ mixin _$ItemSelectionController on ItemSelectionControllerAbstract, Store {
                 'ItemSelectionControllerAbstract.updateFinalRequestedCompanies');
     try {
       return super.updateFinalRequestedCompanies();
+    } finally {
+      _$ItemSelectionControllerAbstractActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void toggleAllCompaniesSelection(bool isSelected) {
+    final _$actionInfo =
+        _$ItemSelectionControllerAbstractActionController.startAction(
+            name:
+                'ItemSelectionControllerAbstract.toggleAllCompaniesSelection');
+    try {
+      return super.toggleAllCompaniesSelection(isSelected);
     } finally {
       _$ItemSelectionControllerAbstractActionController.endAction(_$actionInfo);
     }
@@ -999,6 +1136,65 @@ mixin _$ItemSelectionController on ItemSelectionControllerAbstract, Store {
   }
 
   @override
+  void togglePlotSelection(int? plotId, bool isSelected) {
+    final _$actionInfo =
+        _$ItemSelectionControllerAbstractActionController.startAction(
+            name: 'ItemSelectionControllerAbstract.togglePlotSelection');
+    try {
+      return super.togglePlotSelection(plotId, isSelected);
+    } finally {
+      _$ItemSelectionControllerAbstractActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  bool isPlotSelected(int? plotId) {
+    final _$actionInfo = _$ItemSelectionControllerAbstractActionController
+        .startAction(name: 'ItemSelectionControllerAbstract.isPlotSelected');
+    try {
+      return super.isPlotSelected(plotId);
+    } finally {
+      _$ItemSelectionControllerAbstractActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void removeSelectedPlot(int? plotId) {
+    final _$actionInfo =
+        _$ItemSelectionControllerAbstractActionController.startAction(
+            name: 'ItemSelectionControllerAbstract.removeSelectedPlot');
+    try {
+      return super.removeSelectedPlot(plotId);
+    } finally {
+      _$ItemSelectionControllerAbstractActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void updateFinalRequestedPlots() {
+    final _$actionInfo =
+        _$ItemSelectionControllerAbstractActionController.startAction(
+            name: 'ItemSelectionControllerAbstract.updateFinalRequestedPlots');
+    try {
+      return super.updateFinalRequestedPlots();
+    } finally {
+      _$ItemSelectionControllerAbstractActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void toggleAllPlotsSelection(bool isSelected) {
+    final _$actionInfo =
+        _$ItemSelectionControllerAbstractActionController.startAction(
+            name: 'ItemSelectionControllerAbstract.toggleAllPlotsSelection');
+    try {
+      return super.toggleAllPlotsSelection(isSelected);
+    } finally {
+      _$ItemSelectionControllerAbstractActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 agriculturalInputCurrentPage: ${agriculturalInputCurrentPage},
@@ -1031,7 +1227,14 @@ agriculturalInputClassesListToSelect: ${agriculturalInputClassesListToSelect},
 filteredAgriculturalInputClassesListToSelect: ${filteredAgriculturalInputClassesListToSelect},
 requestedAgriculturalInputItems: ${requestedAgriculturalInputItems},
 finalRequestedAgriculturalInputs: ${finalRequestedAgriculturalInputs},
-filteredAddItemsList: ${filteredAddItemsList}
+isPlotLoading: ${isPlotLoading},
+plotListByFilterToSelect: ${plotListByFilterToSelect},
+plotListByFilter: ${plotListByFilter},
+selectedPlotIds: ${selectedPlotIds},
+finalRequestedPlots: ${finalRequestedPlots},
+filteredAddItemsList: ${filteredAddItemsList},
+areAllCompaniesSelected: ${areAllCompaniesSelected},
+areAllPlotsSelected: ${areAllPlotsSelected}
     ''';
   }
 }

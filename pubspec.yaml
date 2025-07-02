@@ -51,14 +51,14 @@ dependencies:
   pinput: ^5.0.1
   sqflite: ^2.4.2
   connectivity_plus: ^6.1.4
-  flutter_localization: ^0.3.2
+  flutter_localization: ^0.3.3
   collection: ^1.19.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   mocktail: ^1.0.4
-  build_runner: ^2.5.1
+  build_runner: ^2.5.4
   mobx_codegen: ^2.7.1
 
   # The "flutter_lints" package below contains a set of recommended lints to

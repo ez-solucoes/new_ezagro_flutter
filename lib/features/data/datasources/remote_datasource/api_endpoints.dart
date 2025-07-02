@@ -51,6 +51,7 @@ class AppEndpoints {
   static const String costCentersEndpoint = '/cost-center';
   static const String farmEndpoint = '/farm';
   static const String farmPlotEndpoint = '/farm-plot';
+  static const String farmPlotSoilStageEndpoint = '/farm-plot-soil-stage';
   static const String getFarmById = '/farm/';
   static const String getFarmsSimplifiedEndpoint = '/farm/simplified';
   static const String getCostCenterFarmsEndpoint = '/farm/cost-center/';
@@ -78,5 +79,10 @@ class AppEndpoints {
 
   ///Approvals
   static const String approvePurchaseRequest = '/approve';
+
+  ///Stock
+  static const String stockEndpoint = '/stocks';
+
+
 
 }

@@ -11,17 +11,18 @@ class BackgroundWidget extends StatelessWidget {
   final Widget child;
   final bool needsDrawer;
   final Widget? floatButton;
+  final bool? resizeToAvoidBottomInset;
 
   final FloatingActionButtonLocation? floatingActionButtonLocation;
 
-  const BackgroundWidget({super.key,this.floatingActionButtonLocation, required this.scrollable, this.floatButton, required this.child, this.appBar, this.needsDrawer = false});
+  const BackgroundWidget({super.key,this.floatingActionButtonLocation, required this.scrollable, this.floatButton, required this.child, this.appBar, this.needsDrawer = false, this.resizeToAvoidBottomInset = true});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: appBar,
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: resizeToAvoidBottomInset ?? false,
       drawer: needsDrawer ? CustomDrawerWidget() : null,
       body: SafeArea(
         child: Stack(

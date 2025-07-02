@@ -33,7 +33,9 @@ class FarmModel extends FarmEntity {
     super.localCostCenter,
     super.company,
     super.plots,
-    super.ruralProducers
+    super.ruralProducers,
+    super.externalCode,
+    super.isOwn,
   });
 
   Map<String, dynamic> toMap() {
@@ -64,7 +66,9 @@ class FarmModel extends FarmEntity {
       'localCostCenter': localCostCenter,
       'company': company,
       'plots': plots,
-      'ruralProducers': ruralProducers
+      'ruralProducers': ruralProducers,
+      'externalCode': externalCode,
+      'isOwn': isOwn,
     };
   }
 
@@ -96,7 +100,9 @@ class FarmModel extends FarmEntity {
       localCostCenter: map['localCostCenter'] == null ? null : CostCenterModel.fromMap(map['localCostCenter']),
       company: map['company'] == null ? null : CompanyModel.fromMap(map['company']),
       plots: map['plots'] == null ? null : (map['plots'] as List).map((e) => PlotModel.fromMap(e)).toList(),
-      ruralProducers: map['ruralProducers'] == null ? null : (map['ruralProducers'] as List).map((e) => RuralProducerModel.fromMap(e)).toList()
+      ruralProducers: map['ruralProducers'] == null ? null : (map['ruralProducers'] as List).map((e) => RuralProducerModel.fromMap(e)).toList(),
+      externalCode: map['externalCode'] as String?,
+      isOwn: map['isOwn'] as bool?,
     );
   }
 

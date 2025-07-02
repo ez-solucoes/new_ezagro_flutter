@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:new_ezagro_flutter/features/presenter/miscellaneous/item_selection_controller.dart';
+import 'package:new_ezagro_flutter/features/presenter/miscellaneous/view_listed_itens/view_listed_items_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/service_order/service_order_create/service_order_create_controller.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/service_order/service_order_create/service_order_create_origin_transfers_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/appbar/custom_appbar_widget.dart';
 
 import '../../../../../consts/app_routes.dart';
 import '../../../../../design_system/colors/app_colors.dart';
 import '../../../../../design_system/strings/app_strings_portuguese.dart';
 import '../../../../domain/entities/select_entities/select_entity.dart';
+import '../../../../domain/params/arg_params/arg_params.dart';
 import '../../../widgets/background/background_widget.dart';
 import '../../../widgets/buttons/custom_elevated_button.dart';
 import '../../../widgets/custom_autocomplete/custom_autocomplete_card_widget.dart';
@@ -91,12 +95,14 @@ class ServiceOrderCreateGeneralInfoSecondPage extends StatelessWidget {
                             : Container();
                   }),
                   SizedBox(height: 10),
+                  controller.agriculturalActivityType?.value == 2 ?
                   CustomTextInputWidget(
                     title: 'Numero da Ordem de Colheita',
                     getText: (answer) {
                       controller.harvestOrder = answer;
                     },
-                  ),
+                  )
+                  : Container(),
                   SizedBox(height: 10),
                   Observer(
                     builder: (context) {
@@ -135,6 +141,11 @@ class ServiceOrderCreateGeneralInfoSecondPage extends StatelessWidget {
                         Expanded(
                           child: CustomElevatedButton(
                             onPressed: () {
+                              if(controller.agriculturalActivityType?.value != 3){
+                                ViewListedItemsPage.push(args: ArgParams(firstArgs: ItemType.plot, secondArgs: ModuleFlux.serviceOrder));
+                              } else {
+                                ServiceOrderCreateOriginTransfersPage.push();
+                              }
                             },
                             label: 'Próximo',
                             backgroundColor: AppColors.primaryGreenColor,

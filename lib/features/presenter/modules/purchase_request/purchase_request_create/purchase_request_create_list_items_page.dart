@@ -5,6 +5,7 @@ import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.
 import 'package:new_ezagro_flutter/features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_add_items_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_controller.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_delivery_page.dart';
+import 'package:new_ezagro_flutter/features/presenter/modules/purchase_request/purchase_request_create/purchase_request_create_general_info_first_page.dart';
 
 import '../../../../../consts/app_routes.dart';
 import '../../../../../design_system/colors/app_colors.dart';
@@ -56,6 +57,9 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
         firstLabel = 'Nome';
         secondLabel = 'Quantidade';
         break;
+      default:
+        firstLabel = 'Nome';
+        secondLabel = 'Quantidade';
     }
 
     return BackgroundWidget(
@@ -163,6 +167,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
                                           CustomProductExpandedCardWidget(
                                             index: index,
                                             itemType: currentItemType,
+                                            canBeRemoved: true,
                                             onRemove: () => itemSelectionController.removeRequestedProduct(productItem.productId!),
                                             onEdit: () => PurchaseRequestCreateAddItemsPage.push(args: ArgParams(firstArgs: currentItemType)),
                                             firstColumnData: const [
@@ -216,6 +221,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
                                           CustomProductExpandedCardWidget(
                                             index: index,
                                             itemType: currentItemType,
+                                            canBeRemoved: true,
                                             onRemove: () => itemSelectionController.removeSelectedCompany(companySelectEntity.value),
                                             onEdit: () => PurchaseRequestCreateAddItemsPage.push(args: ArgParams(firstArgs: currentItemType)),
                                             firstColumnData: companyFirstColumnData,
@@ -243,6 +249,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
                                           CustomProductExpandedCardWidget(
                                             index: index,
                                             itemType: currentItemType,
+                                            canBeRemoved: true,
                                             onRemove: () => itemSelectionController.removeRequestedAgriculturalInput(agriculturalInputItem.agriculturalInputId!),
                                             onEdit: () => PurchaseRequestCreateAddItemsPage.push(args: ArgParams(firstArgs: currentItemType)),
                                             firstColumnData: const [
@@ -289,12 +296,14 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
                       Expanded(
                         child: CustomElevatedButton(
                           onPressed: () {
-                            if (currentItemType == ItemType.product) {
-                              Modular.to.pop();
-                            } else if (currentItemType == ItemType.agriculturalInput) {
-                              PurchaseRequestCreateListItemsPage.push(args: ArgParams(firstArgs: ItemType.product));
-                            } else if (currentItemType == ItemType.company) {
-                              PurchaseRequestCreateListItemsPage.push(args: ArgParams(firstArgs: ItemType.agriculturalInput));
+                            if(currentItemType == ItemType.product || currentItemType == ItemType.agriculturalInput){
+                             PurchaseRequestCreateGeneralInfoFirstPage.navigate();
+                            } else if(currentItemType == ItemType.company) {
+                              if(createController.purchaseRequestType?.value == 1){
+                                PurchaseRequestCreateListItemsPage.push(args: ArgParams(firstArgs: ItemType.product));
+                              } else {
+                                PurchaseRequestCreateListItemsPage.push(args: ArgParams(firstArgs: ItemType.agriculturalInput));
+                              }
                             }
                           },
                           label: 'Voltar',
@@ -350,6 +359,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
         return 'Empresas da Requisição';
       case ItemType.agriculturalInput:
         return 'Insumos da Requisição';
+      default: return '';
       }
   }
 
@@ -361,6 +371,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
         return 'Adicionar Empresas';
       case ItemType.agriculturalInput:
         return 'Adicionar Insumos';
+      default: return '';
       }
   }
 
@@ -372,6 +383,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
         return 'Nenhuma empresa selecionada para a requisição.';
       case ItemType.agriculturalInput:
         return 'Nenhum insumo selecionado para a requisição.';
+      default: return '';
       }
   }
 
@@ -383,6 +395,7 @@ class PurchaseRequestCreateListItemsPage extends StatelessWidget {
         return 'Selecione pelo menos uma empresa.';
       case ItemType.agriculturalInput:
         return 'Selecione pelo menos um insumo.';
+      default: return '';
       }
   }
 }

@@ -31,7 +31,7 @@ class CustomTwoItemsAlternateColorTileWidget extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: itemType == ItemType.product ? 1 : 2,
+              flex: (itemType == ItemType.product || itemType == ItemType.plot) ? 1 : 2,
               child: Text(
                 secondItem,
                 style: AppTextStyles.cardBodyTextStyle(color: AppColors.primaryBlackColor),

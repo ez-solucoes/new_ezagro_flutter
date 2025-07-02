@@ -1,6 +1,9 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:new_ezagro_flutter/core/errors/application_error.dart';
 import 'package:new_ezagro_flutter/features/domain/entities/plot_entities/farm_plot_entity.dart';
+import 'package:new_ezagro_flutter/features/domain/entities/stock_entities/stock_entity.dart';
 import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/cost_center_usecases/get_all_cost_centers_to_select_usecases/get_all_cost_centers_to_select_usecase.dart';
 import 'package:new_ezagro_flutter/features/domain/usecases/crop_usecases/crop_variety_usecases/get_all_crop_varieties_by_crop_id_to_select_usecases/get_all_crop_varieties_by_crop_id_to_select_usecase.dart';
@@ -10,6 +13,7 @@ import 'package:new_ezagro_flutter/features/domain/usecases/farm_usecases/farm_p
 
 import '../../../../../core/usecase/usecase.dart';
 import '../../../../domain/entities/agricultural_entities/agricultural_activity_entity.dart';
+import '../../../../domain/entities/response_entities/response_entity.dart';
 import '../../../../domain/entities/select_entities/select_entity.dart';
 import '../../../../domain/usecases/agricultural_activity_usecases/agricultural_activity_type_usecases/get_all_agricultural_activity_types_to_select_usecases/get_all_agricultural_activity_types_to_select_usecase.dart';
 import '../../../../domain/usecases/agricultural_activity_usecases/agricultural_sub_activitiy_usecases/get_all_agricultural_sub_activities_by_activity_id_to_select_usecases/get_all_agricultural_sub_activities_by_activity_id_to_select_usecase.dart';
@@ -19,6 +23,9 @@ import '../../../../domain/usecases/agricultural_activity_usecases/get_all_agric
 import '../../../../domain/usecases/cost_center_usecases/get_all_cost_centers_by_cost_center_type_id_to_select_usecases/get_all_cost_centers_by_cost_center_type_id_to_select_usecase.dart';
 import '../../../../domain/usecases/crop_usecases/get_all_crops_to_select_usecases/get_all_crops_to_select_usecase.dart';
 import '../../../../domain/usecases/farm_usecases/get_all_farms_by_cost_center_id_to_select_usecases/get_all_farms_by_cost_center_id_to_select_usecase.dart';
+import '../../../../domain/usecases/stock_usecases/get_all_stocks_to_select_usecases/get_all_stocks_to_select_usecase.dart';
+import '../../../../domain/usecases/stock_usecases/get_all_stocks_usecases/get_all_stocks_usecase.dart';
+import '../../../../domain/usecases/stock_usecases/get_stock_by_id_usecases/get_stock_by_id_usecase.dart';
 
 part 'service_order_create_controller.g.dart';
 
@@ -50,7 +57,8 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
   bool isTechnologyLoading = false;
   @observable
   bool isFarmPlotLoading = false;
-
+  @observable
+  bool isStockLoading = false;
 
   //Select Lists
   @observable
@@ -75,6 +83,8 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
   List<SelectEntity> originListToSelect = ObservableList();
   @observable
   List<SelectEntity> destinationListToSelect = ObservableList();
+  @observable
+  List<SelectEntity> stockListToSelect = ObservableList();
 
   //Entities List
   @observable
@@ -106,9 +116,15 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
   @observable
   List<SelectEntity> selectedFarmPlotList = ObservableList();
   @observable
-  String? origin;
+  int? originStockId;
   @observable
-  String? destination;
+  int? destinationStockId;
+  @observable
+  List<StockEntity> stockList = ObservableList();
+  @observable
+  StockEntity? originStock;
+  @observable
+  StockEntity? destinationStock;
 
   @action
   void updateCostCenterAndReload(SelectEntity costCenter) {
@@ -286,4 +302,40 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
     isFirstLoading = false;
   }
 
+  @action
+  Future<void> getAllStocksToSelect() async {
+    isFirstLoading = true;
+
+    final getAllStocksToSelect = Modular.get<GetAllStocksToSelectUsecase>();
+    final result = await getAllStocksToSelect(NoParams());
+    result.fold((error) => error.friendlyMessage, (success) {
+      stockListToSelect = success.data!;
+    });
+    isFirstLoading = false;
+  }
+
+  @action
+  Future<void> getAllStocks() async {
+    isFirstLoading = true;
+    final getAllStocks = Modular.get<GetAllStocksUsecase>();
+    final result = await getAllStocks(NoParams());
+    result.fold((error) => error.friendlyMessage, (success) {
+      stockList = success.data!;
+    });
+    isFirstLoading = false;
+  }
+
+  @action
+  Future<Either<ApplicationError, ResponseEntity<StockEntity>>> getStockById(int stockId) async {
+    isStockLoading = true;
+
+    try{
+      final getStockById = Modular.get<GetStockByIdUsecase>();
+      final result = await getStockById(ArgParams(firstArgs: stockId));
+      return result;
+    } finally {
+      isStockLoading = false;
+    }
+
+  }
 }

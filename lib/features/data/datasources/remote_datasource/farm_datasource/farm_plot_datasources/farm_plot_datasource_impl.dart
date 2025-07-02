@@ -87,4 +87,85 @@ class FarmPlotDatasourceImpl with UriBuilder implements FarmPlotDatasource {
         throw mountServerErrorInstance(request: request, response: result);
     }
   }
+
+  @override
+  Future<ResponseModel<List<FarmPlotModel>>> getAllFarmPlotsByFilter(
+      ArgParams argParams) async {
+    final String url = mountUrl(
+      AppEndpoints.baseUrlProtocolWithSecurity,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.farmPlotEndpoint,
+    );
+
+    Map<String, dynamic> queryParams = { };
+
+    if(argParams.firstArgs != null){
+      queryParams['agriculturalActivityTypeId'] = argParams.firstArgs;
+    }
+    if(argParams.secondArgs != null){
+      queryParams['farmId'] = argParams.secondArgs;
+    }
+    if(argParams.thirdArgs != null){
+      queryParams['harvestCostCenterId'] = argParams.thirdArgs;
+    }
+    if(argParams.fourthArgs != null){
+      queryParams['cropVarietyId'] = argParams.fourthArgs;
+    }
+
+    final HttpRequest request = HttpRequest.get(
+        path: url,
+        queryParams: queryParams);
+
+    final result = await httpClient.execute(request);
+
+    switch (result.statusCode) {
+      case 200:
+        return mountResponseModelForPaginatedList<FarmPlotModel>(
+          response: result,
+          fromListMap: (map) => map.map((e) => FarmPlotModel.fromMap(e)).toList(),
+        );
+      default:
+        throw mountServerErrorInstance(request: request, response: result);
+    }
+  }
+
+  @override
+  Future<ResponseModel<List<SelectModel>>> getAllFarmPlotsByFilterToSelect(
+      ArgParams argParams) async {
+    final String url = mountUrl(
+      AppEndpoints.baseUrlProtocolWithSecurity,
+      AppEndpoints.mainBaseUrl,
+      AppEndpoints.farmPlotEndpoint + AppEndpoints.selectEndpoint,
+    );
+
+    Map<String, dynamic> queryParams = { };
+
+    if(argParams.firstArgs != null){
+      queryParams['agriculturalActivityTypeId'] = argParams.firstArgs;
+    }
+    if(argParams.secondArgs != null){
+      queryParams['farmId'] = argParams.secondArgs;
+    }
+    if(argParams.thirdArgs != null){
+      queryParams['harvestCostCenterId'] = argParams.thirdArgs;
+    }
+    if(argParams.fourthArgs != null){
+      queryParams['cropVarietyId'] = argParams.fourthArgs;
+    }
+
+    final HttpRequest request = HttpRequest.get(
+        path: url,
+        queryParams: queryParams);
+    final result = await httpClient.execute(request);
+
+    switch (result.statusCode) {
+      case 200:
+        return mountResponseModelForPaginatedList<SelectModel>(
+          response: result,
+          fromListMap: (map) => map.map((e) => SelectModel.fromMap(e)).toList(),
+        );
+      default:
+        throw mountServerErrorInstance(request: request, response: result);
+    }
+  }
 }

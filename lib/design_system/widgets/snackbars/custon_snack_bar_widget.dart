@@ -23,7 +23,6 @@ class CustomSnackBarWidget {
   });
 
   static dynamic show(SnackBarType type, BuildContext context, String message) {
-    // Limpa quaisquer SnackBars anteriores para evitar sobreposição
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
 
     switch (type) {
@@ -43,13 +42,13 @@ class CustomSnackBarWidget {
       content: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded( // <--- Envolvido o Text com Expanded
+          Expanded(
             child: Text(
               message,
-              overflow: TextOverflow.ellipsis, // Adicionado para lidar com textos muito longos
+              overflow: TextOverflow.ellipsis,
             ),
           ),
-          SizedBox(width: 8.0), // Espaço entre o texto e o ícone
+          SizedBox(width: 8.0),
           SvgPicture.asset(AppDrawables.checkWhiteIcon),
         ],
       ),
@@ -64,13 +63,13 @@ class CustomSnackBarWidget {
       content: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded( // <--- Envolvido o Text com Expanded
+          Expanded(
             child: Text(
               message,
-              overflow: TextOverflow.ellipsis, // Adicionado para lidar com textos muito longos
+              overflow: TextOverflow.ellipsis,
             ),
           ),
-          SizedBox(width: 8.0), // Espaço entre o texto e o ícone
+          SizedBox(width: 8.0),
           SvgPicture.asset(AppDrawables.closeWhiteIcon),
         ],
       ),
@@ -85,13 +84,13 @@ class CustomSnackBarWidget {
       content: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded( // <--- Envolvido o Text com Expanded
+          Expanded(
             child: Text(
               message,
-              overflow: TextOverflow.ellipsis, // Adicionado para lidar com textos muito longos
+              overflow: TextOverflow.ellipsis,
             ),
           ),
-          SizedBox(width: 8.0), // Espaço entre o texto e o ícone
+          SizedBox(width: 8.0),
           SvgPicture.asset(AppDrawables.warningWhiteIcon,
               colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn)),
         ],

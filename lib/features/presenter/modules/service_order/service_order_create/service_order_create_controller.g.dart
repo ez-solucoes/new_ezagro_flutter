@@ -227,15 +227,15 @@ mixin _$ServiceOrderCreateController
       context: context);
 
   @override
-  bool get isStockLoading {
+  bool get isOriginLoading {
     _$isStockLoadingAtom.reportRead();
-    return super.isStockLoading;
+    return super.isOriginLoading;
   }
 
   @override
-  set isStockLoading(bool value) {
-    _$isStockLoadingAtom.reportWrite(value, super.isStockLoading, () {
-      super.isStockLoading = value;
+  set isOriginLoading(bool value) {
+    _$isStockLoadingAtom.reportWrite(value, super.isOriginLoading, () {
+      super.isOriginLoading = value;
     });
   }
 
@@ -941,7 +941,7 @@ isCropVarietyLoading: ${isCropVarietyLoading},
 isNewPlanting: ${isNewPlanting},
 isTechnologyLoading: ${isTechnologyLoading},
 isFarmPlotLoading: ${isFarmPlotLoading},
-isStockLoading: ${isStockLoading},
+isStockLoading: ${isOriginLoading},
 agriculturalActivityListToSelect: ${agriculturalActivityListToSelect},
 agriculturalSubActivityListToSelect: ${agriculturalSubActivityListToSelect},
 agriculturalActivityTypeListToSelect: ${agriculturalActivityTypeListToSelect},

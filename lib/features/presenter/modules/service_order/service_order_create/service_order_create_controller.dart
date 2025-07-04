@@ -58,7 +58,9 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
   @observable
   bool isFarmPlotLoading = false;
   @observable
-  bool isStockLoading = false;
+  bool isOriginLoading = false;
+  @observable
+  bool isDestinationLoading = false;
 
   //Select Lists
   @observable
@@ -327,15 +329,11 @@ abstract class ServiceOrderCreateControllerAbstract with Store {
 
   @action
   Future<Either<ApplicationError, ResponseEntity<StockEntity>>> getStockById(int stockId) async {
-    isStockLoading = true;
-
     try{
       final getStockById = Modular.get<GetStockByIdUsecase>();
       final result = await getStockById(ArgParams(firstArgs: stockId));
       return result;
     } finally {
-      isStockLoading = false;
     }
-
   }
 }

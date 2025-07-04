@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:new_ezagro_flutter/features/domain/params/arg_params/arg_params.dart';
+import 'package:new_ezagro_flutter/features/presenter/miscellaneous/item_selection_controller.dart';
+import 'package:new_ezagro_flutter/features/presenter/miscellaneous/view_listed_itens/view_listed_items_page.dart';
 import 'package:new_ezagro_flutter/features/presenter/modules/service_order/service_order_create/service_order_create_controller.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/appbar/custom_appbar_widget.dart';
 import 'package:new_ezagro_flutter/features/presenter/widgets/background/background_widget.dart';
@@ -63,19 +66,23 @@ class ServiceOrderCreateOriginTransfersPage extends StatelessWidget {
                 SizedBox(height: 10),
                 Observer(builder: (context) {
                   if (controller.originStock != null) {
-                    return controller.isStockLoading
+                    return controller.isOriginLoading
                         ? const Center(child: CircularProgressIndicator())
-                        : AddressInfoCard(addressInfo: [
-                            {'label': 'Origem: ', 'value': controller.originStock?.name},
-                            {
-                              'label': 'Endereço: ',
-                              'value':
-                                  '${controller.originStock?.addressStreet}, ${controller.originStock?.addressNumber}'
-                            },
-                            {'label': 'Bairro: ', 'value': '${controller.originStock?.addressNeighborhood}'},
-                            {'label': 'Cidade: ', 'value': '${controller.originStock?.addressCity}'},
-                            {'label': 'CEP: ', 'value': '${controller.originStock?.addressCity}'},
-                          ]);
+                        : AddressInfoCard(
+                            trailingIcon: Icons.map_outlined,
+                            onIconTap: () {},
+                            addressInfo: [
+                              {'label': 'Origem: ', 'value': controller.originStock?.name},
+                              {
+                                'label': 'Endereço: ',
+                                'value':
+                                    '${controller.originStock?.addressStreet}, ${controller.originStock?.addressNumber}'
+                              },
+                              {'label': 'Bairro: ', 'value': '${controller.originStock?.addressNeighborhood}'},
+                              {'label': 'Cidade: ', 'value': '${controller.originStock?.addressCity}'},
+                              {'label': 'CEP: ', 'value': '${controller.originStock?.addressCity}'},
+                            ],
+                          );
                   } else {
                     return Container();
                   }
@@ -86,31 +93,36 @@ class ServiceOrderCreateOriginTransfersPage extends StatelessWidget {
                           title: 'Destino',
                           itemList: controller.stockListToSelect,
                           onItemSelected: (SelectEntity selectedItem) async {
+                            controller.isDestinationLoading = true;
                             final result = await controller.getStockById(selectedItem.value);
                             result.fold((error) {
                               CustomSnackBarWidget.show(SnackBarType.alert, context, error.friendlyMessage);
                             }, (success) {
                               controller.destinationStock = success.data;
                             });
+                            controller.isDestinationLoading = false;
                           },
                           autoCompleteType: AutoCompleteType.simple,
                         )),
                 SizedBox(height: 10),
                 Observer(builder: (context) {
                   if (controller.destinationStock != null) {
-                    return controller.isStockLoading
+                    return controller.isDestinationLoading
                         ? const Center(child: CircularProgressIndicator())
-                        : AddressInfoCard(addressInfo: [
-                      {'label': 'Destino: ', 'value': controller.destinationStock?.name},
-                      {
-                        'label': 'Endereço: ',
-                        'value':
-                        '${controller.destinationStock?.addressStreet}, ${controller.destinationStock?.addressNumber}'
-                      },
-                      {'label': 'Bairro: ', 'value': '${controller.destinationStock?.addressNeighborhood}'},
-                      {'label': 'Cidade: ', 'value': '${controller.destinationStock?.addressCity}'},
-                      {'label': 'CEP: ', 'value': '${controller.destinationStock?.addressCity}'},
-                    ]);
+                        : AddressInfoCard(
+                        trailingIcon: Icons.map_outlined,
+                        onIconTap: () {},
+                        addressInfo: [
+                            {'label': 'Destino: ', 'value': controller.destinationStock?.name},
+                            {
+                              'label': 'Endereço: ',
+                              'value':
+                                  '${controller.destinationStock?.addressStreet}, ${controller.destinationStock?.addressNumber}'
+                            },
+                            {'label': 'Bairro: ', 'value': '${controller.destinationStock?.addressNeighborhood}'},
+                            {'label': 'Cidade: ', 'value': '${controller.destinationStock?.addressCity}'},
+                            {'label': 'CEP: ', 'value': '${controller.destinationStock?.addressCity}'},
+                          ]);
                   } else {
                     return Container();
                   }
@@ -133,7 +145,13 @@ class ServiceOrderCreateOriginTransfersPage extends StatelessWidget {
                       const SizedBox(width: 30),
                       Expanded(
                         child: CustomElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            if(controller.originStock == null || controller.destinationStock == null){
+                              CustomSnackBarWidget.show(SnackBarType.alert, context, 'Selecione a origem e o destino!');
+                            } else{
+                              ViewListedItemsPage(args: ArgParams(firstArgs: ItemType.product));
+                            }
+                          },
                           label: 'Próximo',
                           backgroundColor: AppColors.primaryGreenColor,
                           borderColor: Colors.transparent,
